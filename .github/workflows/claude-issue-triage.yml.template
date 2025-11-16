@@ -1,0 +1,143 @@
+name: Claude Issue Triage
+
+# TEMPLATE FILE - Requires Setup
+# 1. Add ANTHROPIC_API_KEY to GitHub Secrets
+# 2. Rename to claude-issue-triage.yml to activate
+# 3. Ensure Claude Code CLI is available in CI
+
+on:
+  issues:
+    types: [opened, reopened]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  triage-issue:
+    name: Auto-triage New Issues
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Analyze issue with Claude
+        id: claude-analysis
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          # Create analysis prompt
+          cat > triage_prompt.md <<EOF
+          # Issue Triage Task
+
+          Analyze this GitHub issue and provide:
+          1. **Type**: bug, feature, documentation, question, or enhancement
+          2. **Priority**: high, medium, or low
+          3. **Effort**: 1h, 4h, 1d, 3d, or 1w
+          4. **Areas**: Which parts of the codebase are affected (audio-intel, pitch-generator, tracker, infrastructure, etc.)
+
+          ## Issue Title
+          ${{ github.event.issue.title }}
+
+          ## Issue Body
+          ${{ github.event.issue.body }}
+
+          ## Issue Author
+          ${{ github.event.issue.user.login }}
+
+          Provide output in JSON format:
+          {
+            "type": "bug",
+            "priority": "high",
+            "effort": "4h",
+            "areas": ["audio-intel", "mobile-ux"],
+            "summary": "Brief one-sentence summary",
+            "suggestedLabels": ["bug", "mobile-ux", "high-priority"]
+          }
+          EOF
+
+          # TODO: Replace with actual Claude Code CLI invocation
+          # For now, create placeholder analysis
+          cat > triage_output.json <<EOF
+          {
+            "type": "unknown",
+            "priority": "medium",
+            "effort": "unknown",
+            "areas": ["needs-triage"],
+            "summary": "Template workflow - requires Claude Code CLI setup",
+            "suggestedLabels": ["needs-triage", "template-workflow"]
+          }
+          EOF
+
+          cat triage_output.json
+
+      - name: Add labels to issue
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const analysis = JSON.parse(fs.readFileSync('triage_output.json', 'utf8'));
+
+            // Add suggested labels
+            if (analysis.suggestedLabels && analysis.suggestedLabels.length > 0) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.issue.number,
+                labels: analysis.suggestedLabels
+              });
+            }
+
+      - name: Add triage comment
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const analysis = JSON.parse(fs.readFileSync('triage_output.json', 'utf8'));
+
+            const comment = `## 🤖 Automated Triage
+
+            **Type**: ${analysis.type}
+            **Priority**: ${analysis.priority}
+            **Estimated Effort**: ${analysis.effort}
+            **Affected Areas**: ${analysis.areas.join(', ')}
+
+            **Summary**: ${analysis.summary}
+
+            ---
+
+            ${analysis.type === 'unknown' ? `
+            ⚠️ **Template Workflow Active**
+
+            This is a placeholder triage. To enable real Claude-powered triage:
+            1. Install Claude Code CLI in GitHub Actions
+            2. Add ANTHROPIC_API_KEY to repository secrets
+            3. Rename \`.github/workflows/claude-issue-triage.yml.template\` to \`.github/workflows/claude-issue-triage.yml\`
+            ` : ''}
+
+            *Automated triage by Claude Code*`;
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              body: comment
+            });
+
+      - name: Assign based on area
+        uses: actions/github-script@v7
+        if: github.event.issue.user.login != 'dependabot[bot]'
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const analysis = JSON.parse(fs.readFileSync('triage_output.json', 'utf8'));
+
+            // TODO: Customize assignment logic based on your team
+            // Example: Assign audio-intel issues to specific developers
+
+            // For now, just add a project board column based on priority
+            if (analysis.priority === 'high') {
+              console.log('High priority issue - would add to urgent column');
+            }

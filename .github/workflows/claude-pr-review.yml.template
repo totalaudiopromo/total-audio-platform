@@ -1,0 +1,152 @@
+name: Claude PR Review
+
+# TEMPLATE FILE - Requires Setup
+# 1. Add ANTHROPIC_API_KEY to GitHub Secrets
+# 2. Rename to claude-pr-review.yml to activate
+# 3. Ensure Claude Code CLI is available in CI
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  claude-review:
+    name: Automated Code Review
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Need full history for diff analysis
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: |
+          corepack enable
+          pnpm install --frozen-lockfile
+
+      - name: Get changed files
+        id: changed-files
+        run: |
+          # Get list of changed files in this PR
+          git diff --name-only ${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }} > changed_files.txt
+          echo "files<<EOF" >> $GITHUB_OUTPUT
+          cat changed_files.txt >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Review with Claude
+        id: claude-review
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          # Create review prompt for Claude
+          cat > review_prompt.md <<EOF
+          # PR Review Task
+
+          Review the following changes for:
+          1. **Security Issues**: XSS, SQL injection, authentication bypasses, exposed secrets
+          2. **Performance Issues**: Unnecessary re-renders, inefficient algorithms, memory leaks
+          3. **Mobile UX Issues**: Touch targets < 44px, missing ARIA attributes, poor responsive design
+          4. **Code Quality**: Type safety, error handling, naming conventions
+
+          ## Changed Files
+          $(cat changed_files.txt)
+
+          ## PR Description
+          ${{ github.event.pull_request.title }}
+          ${{ github.event.pull_request.body }}
+
+          Provide a structured review with:
+          - ✅ What looks good
+          - ⚠️ Warnings (non-blocking issues)
+          - ❌ Critical issues (should block merge)
+          - 💡 Suggestions for improvement
+          EOF
+
+          # TODO: Replace with actual Claude Code CLI invocation
+          # For now, create a placeholder review
+          cat > review_output.md <<EOF
+          ## 🤖 Claude Code Review
+
+          **Status**: ⚠️ Template workflow - requires Claude Code CLI setup
+
+          ### Setup Required
+          1. Install Claude Code CLI in GitHub Actions
+          2. Configure ANTHROPIC_API_KEY in repository secrets
+          3. Rename \`.github/workflows/claude-pr-review.yml.template\` to \`.github/workflows/claude-pr-review.yml\`
+
+          ### What This Will Do (Once Configured)
+          - ✅ Automated security review (XSS, injection, auth issues)
+          - ✅ Performance analysis (re-renders, memory leaks)
+          - ✅ Mobile UX validation (touch targets, ARIA, responsive)
+          - ✅ Code quality checks (types, error handling, naming)
+
+          ---
+
+          *This is a template workflow. See \`.github/workflows/claude-pr-review.yml.template\` for setup instructions.*
+          EOF
+
+          cat review_output.md
+
+      - name: Post review comment
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const review = fs.readFileSync('review_output.md', 'utf8');
+
+            // Post review as PR comment
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body: review
+            });
+
+      - name: Check for critical issues
+        run: |
+          # If review contains critical issues, fail the workflow
+          if grep -q "❌" review_output.md; then
+            echo "::error::Critical issues found in PR - see review comment"
+            exit 1
+          fi
+
+          echo "✅ No critical issues found"
+
+      - name: Add review labels
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const review = fs.readFileSync('review_output.md', 'utf8');
+            const labels = [];
+
+            // Add labels based on review content
+            if (review.includes('security')) labels.push('security');
+            if (review.includes('performance')) labels.push('performance');
+            if (review.includes('mobile')) labels.push('mobile-ux');
+            if (review.includes('❌')) labels.push('needs-changes');
+            if (!review.includes('❌') && !review.includes('⚠️')) labels.push('ready-to-merge');
+
+            if (labels.length > 0) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.pull_request.number,
+                labels: labels
+              });
+            }

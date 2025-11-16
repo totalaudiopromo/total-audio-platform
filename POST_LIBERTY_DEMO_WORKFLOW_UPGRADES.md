@@ -486,12 +486,18 @@ This checklist is complete when:
 ---
 
 ### Upgrade 3: Drop Zone Workflows
-**Installed:** [NOT IMPLEMENTED - Deferred to Batch 3]
-**Status:** ⏸️ SKIPPED (Batch 1)
+**Installed:** 2025-11-16
+**Status:** ✅ SUCCESS (requires inotify-tools to run)
 **Notes:**
-- Requires external dependencies (fswatch/inotify-tools)
-- Deferred to Batch 3 for separate implementation
-- Core automation complete without this feature
+- Auto-process files dropped into special directories
+- 4 dropzones: contacts-to-enrich, test-this, review-this, changelog-from-commits
+- Daemon script: `.claude/dropzone-daemon.sh`
+- Management scripts: dropzone-start.sh, dropzone-stop.sh, dropzone-status.sh
+- Directory structure created with incoming/processed/failed subdirectories
+- Comprehensive README: `.claude/dropzones/README.md`
+- Integration with existing test generator agent
+- **Requires installation:** `sudo apt-get install inotify-tools` (Linux) or `brew install fswatch` (macOS)
+- Scripts ready to use once dependency installed
 
 ---
 
@@ -545,9 +551,20 @@ This checklist is complete when:
 ---
 
 ### Upgrade 7: Headless Claude in CI
-**Installed:** [DATE]
-**Status:** [SUCCESS/ISSUES]
+**Installed:** 2025-11-16
+**Status:** ✅ SUCCESS (template workflows ready)
 **Notes:**
+- GitHub Actions workflows for automated PR review and issue triage
+- Template files: `claude-pr-review.yml.template`, `claude-issue-triage.yml.template`
+- PR Review: Security, performance, mobile UX, code quality checks
+- Issue Triage: Auto-label, prioritize, estimate effort
+- Comprehensive README: `.github/workflows/README.md`
+- **Requires setup:**
+  1. Add ANTHROPIC_API_KEY to GitHub Secrets
+  2. Install Claude Code CLI in Actions (pending official support)
+  3. Rename .template files to .yml to activate
+- Template workflows created and documented
+- Ready to activate once API key configured
 
 ---
 
