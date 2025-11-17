@@ -1,0 +1,40 @@
+{
+  "name": "@total-audio/agent-mesh-os",
+  "version": "1.0.0",
+  "description": "Multi-agent coordination, negotiation, and shared-memory orchestration layer",
+  "main": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./registry": "./src/agentRegistry.ts",
+    "./context": "./src/meshContextBuilder.ts",
+    "./memory": "./src/memory/meshMemory.ts",
+    "./messaging": "./src/messaging/meshBus.ts",
+    "./teaming": "./src/teaming/microTeamEngine.ts",
+    "./reasoning": "./src/reasoning/meshReasoner.ts",
+    "./execution": "./src/execution/actionRouter.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --ext .ts,.tsx",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [
+    "total-audio",
+    "agent-mesh",
+    "multi-agent",
+    "orchestration"
+  ],
+  "author": "Total Audio Promo",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@total-audio/core-db": "workspace:*",
+    "@anthropic-ai/sdk": "^0.32.1",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}
