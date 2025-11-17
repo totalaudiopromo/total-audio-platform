@@ -5,6 +5,11 @@ import { useSession } from '@/hooks/useAuth';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Sparkles, Save, CheckCircle, Zap, FileText, Loader2 } from 'lucide-react';
+import {
+  VoiceGuardLogo,
+  VoiceGuardFeatureBox,
+  VoiceGuardExplainer,
+} from '@/components/VoiceGuardBrand';
 
 interface VoiceProfile {
   voice_background: string;
@@ -217,12 +222,20 @@ export default function VoiceProfilePage() {
 
         <div className="glass-panel px-8 py-10">
           <div className="mb-8 text-center">
-            <Sparkles className="mx-auto h-12 w-12 text-brand-amber-dark" />
-            <h1 className="mt-4 text-3xl font-bold">Create Your Voice Profile</h1>
+            <div className="mx-auto mb-4">
+              <VoiceGuardLogo size="lg" />
+            </div>
+            <h1 className="mt-4 text-3xl font-bold">Create Your VoiceGuard™ Profile</h1>
             <p className="mt-3 text-gray-900/60 max-w-2xl mx-auto">
-              Help AI write pitches that sound exactly like you. Choose how you'd like to set up
-              your profile:
+              AI that sounds exactly like you - authentic, personal, credible
             </p>
+          </div>
+
+          <div className="mb-8 max-w-3xl mx-auto">
+            <VoiceGuardFeatureBox
+              title="VoiceGuard™ Technology"
+              description="Advanced AI voice preservation that ensures your pitches sound authentic, not robotic. Used by professional promoters to maintain credibility at scale."
+            />
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 max-w-3xl mx-auto">
@@ -265,7 +278,7 @@ export default function VoiceProfilePage() {
           {/* Stats */}
           <div className="mt-8 rounded-xl border border-brand-amber/30 bg-brand-amber/5 p-6 max-w-3xl mx-auto">
             <h4 className="font-semibold text-brand-amber-dark text-center">
-              Why Voice Profiles Matter
+              Why VoiceGuard™ Matters
             </h4>
             <div className="mt-4 grid gap-4 sm:grid-cols-3 text-center">
               <div>
@@ -309,12 +322,13 @@ export default function VoiceProfilePage() {
           <div className="mb-8 border-b border-white/10 pb-6">
             <div className="flex items-start justify-between">
               <div>
-                <h1 className="text-3xl font-bold">Quick Setup</h1>
+                <h1 className="text-3xl font-bold">Quick VoiceGuard™ Setup</h1>
                 <p className="mt-2 text-gray-900/60">
-                  Paste a pitch or email you've written - AI will analyse your writing style
+                  Paste a pitch or email you've written - VoiceGuard™ will analyse your writing
+                  style
                 </p>
               </div>
-              <Zap className="h-8 w-8 text-brand-amber-dark" />
+              <VoiceGuardLogo size="md" showText={false} />
             </div>
           </div>
 
@@ -346,7 +360,7 @@ The more text you provide, the better I can understand your natural writing styl
             </div>
 
             <div className="rounded-xl border-2 border-black bg-white p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <h4 className="text-sm font-semibold">What AI Will Analyse:</h4>
+              <h4 className="text-sm font-semibold">What VoiceGuard™ Will Analyse:</h4>
               <ul className="mt-2 space-y-1 text-xs text-gray-900/70">
                 <li>• Writing style (formal vs casual, sentence structure)</li>
                 <li>• Communication patterns (how you open, close, transition)</li>
@@ -398,9 +412,9 @@ The more text you provide, the better I can understand your natural writing styl
           <div className="glass-panel px-8 py-6">
             <div className="flex items-start justify-between">
               <div>
-                <h1 className="text-2xl font-bold">Your Voice Analysis</h1>
+                <h1 className="text-2xl font-bold">Your VoiceGuard™ Analysis</h1>
                 <p className="mt-2 text-sm text-gray-900/60">
-                  Review and refine the AI's analysis of your writing style
+                  Review and refine VoiceGuard's analysis of your writing style
                 </p>
               </div>
               <CheckCircle className="h-8 w-8 text-success" />
@@ -635,22 +649,22 @@ The more text you provide, the better I can understand your natural writing styl
         <div className="mb-8 border-b border-white/10 pb-6">
           <div className="flex items-start justify-between">
             <div>
-              <h1 className="text-3xl font-bold">Your Voice Profile</h1>
+              <h1 className="text-3xl font-bold">Your VoiceGuard™ Profile</h1>
               <p className="mt-2 text-gray-900/60">
-                Help AI write pitches that sound exactly like you - authentic, personal, and
-                effective
+                Help VoiceGuard™ write pitches that sound exactly like you - authentic, personal,
+                and effective
               </p>
             </div>
-            <Sparkles className="h-8 w-8 text-brand-amber-dark" />
+            <VoiceGuardLogo size="md" showText={false} />
           </div>
         </div>
 
         {/* Why This Matters */}
         <div className="mb-8 rounded-2xl border border-brand-amber/30 bg-brand-amber/5 p-6">
-          <h3 className="font-semibold text-brand-amber-dark">Why This Matters</h3>
+          <h3 className="font-semibold text-brand-amber-dark">Why VoiceGuard™ Matters</h3>
           <p className="mt-2 text-sm text-gray-900/70">
             Generic AI pitches get ignored. Pitches that sound like they came from a real person
-            with real experience get responses. This profile teaches our AI to write in{' '}
+            with real experience get responses. VoiceGuard™ teaches AI to write in{' '}
             <strong>your voice</strong> - with your energy, your credibility, and your authentic
             story. Answer honestly and you will get pitches that sound like you actually wrote them.
           </p>

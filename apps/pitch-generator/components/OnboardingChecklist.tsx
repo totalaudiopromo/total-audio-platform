@@ -34,9 +34,9 @@ export function OnboardingChecklist({ userId }: OnboardingChecklistProps) {
     },
     {
       id: 'customize_voice',
-      title: 'Customize your voice profile',
-      description: 'Personalise how the AI writes pitches in your style',
-      href: '/profile',
+      title: 'Activate VoiceGuard™',
+      description: 'Enable AI voice preservation for authentic pitches',
+      href: '/profile/voice',
       completed: false,
     },
   ]);
