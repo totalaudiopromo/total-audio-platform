@@ -36,3 +36,23 @@ export * as cmgAdapter from './contextAdapters/cmgAdapter.js';
 export * as mathUtils from './utils/math.js';
 export * as dateUtils from './utils/dates.js';
 export { logger, Logger } from './utils/logger.js';
+
+// Phase 2: Roster management
+export * from './roster/rosterEngine.js';
+export * from './roster/rosterStore.js';
+
+// Phase 2: Deal flow
+export * from './deals/dealEngine.js';
+export * from './deals/dealStore.js';
+
+// Phase 2: Watchlists
+export * from './watchlists/watchlistEngine.js';
+export * from './watchlists/watchlistStore.js';
+
+// Phase 2: Showcases
+export * from './showcases/showcaseEngine.js';
+export * from './showcases/showcaseStore.js';
+export * from './showcases/showcaseExporter.js';
+
+// Phase 2: Collaborations
+export * from './collabs/collabEngine.js';
