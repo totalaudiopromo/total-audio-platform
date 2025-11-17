@@ -24,11 +24,12 @@ export default function MIGDashboard() {
       {/* Main Content */}
       <main className="container mx-auto px-6 py-8">
         {/* Quick Actions */}
-        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           <Link
             href="/mig/search"
             className="p-6 bg-slate-900/50 border border-slate-800 rounded-lg hover:border-cyan-500/50 transition-all duration-240 group"
           >
+            <div className="text-3xl mb-3">🔍</div>
             <h3 className="text-lg font-semibold text-cyan-400 mb-2 group-hover:text-cyan-300">
               Search Graph
             </h3>
@@ -38,9 +39,23 @@ export default function MIGDashboard() {
           </Link>
 
           <Link
+            href="/mig/console"
+            className="p-6 bg-slate-900/50 border border-slate-800 rounded-lg hover:border-cyan-500/50 transition-all duration-240 group"
+          >
+            <div className="text-3xl mb-3">💬</div>
+            <h3 className="text-lg font-semibold text-cyan-400 mb-2 group-hover:text-cyan-300">
+              AI Console
+            </h3>
+            <p className="text-slate-400 text-sm">
+              Ask questions in natural language
+            </p>
+          </Link>
+
+          <Link
             href="/mig/pulse"
             className="p-6 bg-slate-900/50 border border-slate-800 rounded-lg hover:border-cyan-500/50 transition-all duration-240 group"
           >
+            <div className="text-3xl mb-3">📊</div>
             <h3 className="text-lg font-semibold text-cyan-400 mb-2 group-hover:text-cyan-300">
               Scene Pulse
             </h3>
@@ -50,14 +65,15 @@ export default function MIGDashboard() {
           </Link>
 
           <Link
-            href="/mig/recommendations"
+            href="/mig/search?type=scene"
             className="p-6 bg-slate-900/50 border border-slate-800 rounded-lg hover:border-cyan-500/50 transition-all duration-240 group"
           >
+            <div className="text-3xl mb-3">🎵</div>
             <h3 className="text-lg font-semibold text-cyan-400 mb-2 group-hover:text-cyan-300">
-              Recommendations
+              Explore Scenes
             </h3>
             <p className="text-slate-400 text-sm">
-              Get AI-powered recommendations for your campaigns
+              Browse all music scenes in the graph
             </p>
           </Link>
         </section>

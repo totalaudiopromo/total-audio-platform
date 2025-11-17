@@ -1,0 +1,19 @@
+{
+  "name": "@total-audio/mig-scenes",
+  "version": "1.0.0",
+  "description": "MIG Scenes - Scenes Engine fusion layer",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@total-audio/music-industry-graph": "workspace:*",
+    "@total-audio/mig-dashboard-integration": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0"
+  }
+}
