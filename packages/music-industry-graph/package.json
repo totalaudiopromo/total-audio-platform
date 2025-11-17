@@ -1,0 +1,35 @@
+{
+  "name": "@total-audio/music-industry-graph",
+  "version": "1.0.0",
+  "description": "Music Industry Graph (MIG) - Graph-based data intelligence layer for the music ecosystem",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "test": "jest",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "music",
+    "graph",
+    "analytics",
+    "recommendations",
+    "music-industry"
+  ],
+  "author": "Total Audio",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.3.0",
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.0"
+  },
+  "peerDependencies": {
+    "@supabase/supabase-js": "^2.39.0"
+  }
+}
