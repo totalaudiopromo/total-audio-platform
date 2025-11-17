@@ -24,6 +24,9 @@ import {
   PolicyViolationError,
 } from '../utils/errors';
 import { emitGlobalEvent, createEvent } from './events';
+import { calculateConfidence } from '../confidence/confidenceEngine';
+import { createTelemetryEngine, type TelemetryEngine } from '../telemetry/telemetryEngine';
+import { shouldRetry, type RetryConfig } from '../retry/retryEngine';
 
 export interface RunOptions {
   maxIterations?: number;
@@ -34,10 +37,12 @@ export interface RunOptions {
 export class RunEngine {
   private store: MissionStore;
   private router: TaskRouter;
+  private telemetry: TelemetryEngine;
 
   constructor(private supabase: SupabaseClient) {
     this.store = new MissionStore(supabase);
     this.router = new TaskRouter(supabase);
+    this.telemetry = createTelemetryEngine(supabase);
   }
 
   /**
@@ -221,6 +226,84 @@ export class RunEngine {
     task: AutopilotTask,
     context: AgentContext
   ): Promise<void> {
+    const taskStartTime = Date.now();
+
+    // Step 1: Calculate confidence score BEFORE execution
+    const confidence = calculateConfidence({
+      agentRole: task.agent_role,
+      task,
+      mission: context.mission,
+      fusionContext: context.fusionContext,
+      availableData: task.input,
+    });
+
+    // Log confidence score to telemetry
+    await this.telemetry.logConfidence(
+      context.mission.id,
+      task.id,
+      task.agent_role,
+      confidence.score,
+      confidence.breakdown
+    );
+
+    // Log confidence score to logger
+    context.logger.info(
+      `Confidence assessment for ${task.agent_role}:${task.task_type}`,
+      {
+        score: confidence.score,
+        label: confidence.score >= 0.75 ? 'High' : confidence.score >= 0.5 ? 'Moderate' : 'Low',
+        shouldEscalate: confidence.shouldEscalate,
+        warnings: confidence.warnings.length,
+        blockers: confidence.blockers.length,
+      }
+    );
+
+    // Step 2: Check if confidence is too low - auto-escalate to approval
+    if (confidence.shouldEscalate || confidence.score < 0.5) {
+      context.logger.warn(
+        `Low confidence (${confidence.score.toFixed(2)}) - escalating to human approval`,
+        {
+          rationale: confidence.rationale,
+          warnings: confidence.warnings,
+          blockers: confidence.blockers,
+        }
+      );
+
+      // Update task metadata with confidence details
+      await this.store.updateTask(task.id, {
+        metadata: {
+          ...((task.metadata as Record<string, unknown>) || {}),
+          confidence: {
+            score: confidence.score,
+            rationale: confidence.rationale,
+            warnings: confidence.warnings,
+            blockers: confidence.blockers,
+            timestamp: new Date().toISOString(),
+          },
+        },
+      });
+
+      // Mark task as waiting approval and throw approval required error
+      await this.store.updateTaskStatus(task.id, 'waiting_approval');
+
+      await emitGlobalEvent(
+        createEvent('approval_requested', context.mission.id, {
+          taskId: task.id,
+          actionType: task.type as ActionType,
+          reason: 'low_confidence',
+          confidence: confidence.score,
+          details: {
+            rationale: confidence.rationale,
+            warnings: confidence.warnings,
+            blockers: confidence.blockers,
+          },
+        })
+      );
+
+      throw new ApprovalRequiredError(task.type, task.id);
+    }
+
+    // Step 3: Confidence is acceptable - proceed with execution
     // Mark task as in progress
     await this.store.updateTaskStatus(task.id, 'in_progress');
 
@@ -228,6 +311,7 @@ export class RunEngine {
       createEvent('task_started', context.mission.id, {
         taskId: task.id,
         agentRole: task.agent_role,
+        confidence: confidence.score,
       })
     );
 
@@ -242,36 +326,149 @@ export class RunEngine {
         context
       );
 
-      // Mark task as completed
-      await this.store.updateTaskStatus(task.id, 'completed', output);
+      // Calculate task duration
+      const taskDuration = Date.now() - taskStartTime;
+
+      // Log latency to telemetry
+      await this.telemetry.logLatency(
+        context.mission.id,
+        task.id,
+        task.agent_role,
+        taskDuration
+      );
+
+      // Log success to telemetry
+      await this.telemetry.logTaskResult(
+        context.mission.id,
+        task.id,
+        task.agent_role,
+        true
+      );
+
+      // Mark task as completed with confidence metadata
+      await this.store.updateTaskStatus(task.id, 'completed', {
+        ...output,
+        confidence: {
+          score: confidence.score,
+          breakdown: confidence.breakdown,
+        },
+        duration_ms: taskDuration,
+      });
 
       await emitGlobalEvent(
         createEvent('task_completed', context.mission.id, {
           taskId: task.id,
           agentRole: task.agent_role,
           output,
+          durationMs: taskDuration,
         })
       );
 
       // Route completion - create downstream tasks
       await this.router.routeTaskCompletion(task, output);
     } catch (error) {
-      // Mark task as failed
-      await this.store.updateTaskStatus(task.id, 'failed', {
-        error: error instanceof Error ? error.message : String(error),
+      // Calculate task duration (even for failures)
+      const taskDuration = Date.now() - taskStartTime;
+
+      const errorMessage = error instanceof Error ? error.message : String(error);
+
+      // Check if task should be retried
+      const retryDecision = shouldRetry(task, error);
+
+      // Log retry attempt to telemetry if applicable
+      if (retryDecision.shouldRetry && retryDecision.attemptNumber) {
+        await this.telemetry.logRetry(
+          context.mission.id,
+          task.id,
+          task.agent_role,
+          retryDecision.attemptNumber,
+          {
+            reason: retryDecision.reason,
+          }
+        );
+
+        context.logger.info(retryDecision.reason!, {
+          taskId: task.id,
+          attemptNumber: retryDecision.attemptNumber,
+          backoffMs: retryDecision.backoffMs,
+        });
+
+        // Update task with retry information (but keep it in failed state)
+        // The scheduler/orchestrator will pick it up for retry after backoff
+        await this.store.updateTask(task.id, {
+          retry_count: retryDecision.attemptNumber,
+          metadata: {
+            ...((task.metadata as Record<string, unknown>) || {}),
+            lastRetry: {
+              attemptNumber: retryDecision.attemptNumber,
+              backoffMs: retryDecision.backoffMs,
+              scheduledRetryAt: new Date(
+                Date.now() + (retryDecision.backoffMs || 0)
+              ).toISOString(),
+              error: errorMessage,
+            },
+          },
+        });
+      }
+
+      // Log failure to telemetry
+      await this.telemetry.logTaskResult(
+        context.mission.id,
+        task.id,
+        task.agent_role,
+        false,
+        {
+          error: errorMessage,
+        }
+      );
+
+      // Log error to telemetry
+      await this.telemetry.logError(
+        context.mission.id,
+        errorMessage,
+        {
+          taskId: task.id,
+          agentRole: task.agent_role,
+          severity: retryDecision.shouldRetry ? 'medium' : 'high',
+          metadata: {
+            retryable: retryDecision.shouldRetry,
+            retryAttempt: task.retry_count || 0,
+          },
+        }
+      );
+
+      // Mark task as failed (or pending for retry)
+      const taskStatus = retryDecision.shouldRetry ? 'pending' : 'failed';
+      await this.store.updateTaskStatus(task.id, taskStatus, {
+        error: errorMessage,
+        duration_ms: taskDuration,
+        will_retry: retryDecision.shouldRetry,
+        retry_count: task.retry_count || 0,
       });
 
       await emitGlobalEvent(
-        createEvent('task_failed', context.mission.id, {
+        createEvent(retryDecision.shouldRetry ? 'task_retry_scheduled' : 'task_failed', context.mission.id, {
           taskId: task.id,
           agentRole: task.agent_role,
-          error: error instanceof Error ? error.message : String(error),
+          error: errorMessage,
+          durationMs: taskDuration,
+          willRetry: retryDecision.shouldRetry,
+          retryAttempt: task.retry_count || 0,
+          backoffMs: retryDecision.backoffMs,
         })
       );
 
-      throw new AgentExecutionError(
-        task.agent_role,
-        error instanceof Error ? error : new Error(String(error))
+      // If not retrying, throw error to stop execution
+      if (!retryDecision.shouldRetry) {
+        throw new AgentExecutionError(
+          task.agent_role,
+          error instanceof Error ? error : new Error(String(error))
+        );
+      }
+
+      // If retrying, don't throw - the task will be picked up again after backoff
+      context.logger.info(
+        `Task ${task.id} will be retried after ${retryDecision.backoffMs}ms backoff`
       );
     }
   }
