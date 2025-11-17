@@ -1,6 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+
+  // Transpile OperatorOS packages
+  transpilePackages: [
+    '@total-audio/operator-os',
+    '@total-audio/operator-boot',
+    '@total-audio/operator-services',
+  ],
+
   typescript: {
     ignoreBuildErrors: true,
   },
