@@ -8,3 +8,5 @@ export * from './exportPDF';
 export * from './exportBundle';
 export * from './exportPalette';
 export * from './exportScript';
+
+export * from './exportBrandKit';

@@ -11,3 +11,5 @@ export * from './trailerScriptGenerator';
 export * from './moodboardIdeas';
 export * from './brandIdentityGenerator';
 export * from './visualIdentityAnalyser';
+
+export * from './contextAwareGenerator';
