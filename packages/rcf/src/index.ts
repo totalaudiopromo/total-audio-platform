@@ -24,6 +24,16 @@ export * from './subscriptionEngine';
 export * from './feedBuilder';
 export * from './pipeline';
 
+// Export Phase 2 modules
+export * from './trends';
+export * from './alerts';
+export * from './velocity';
+export * from './mediaGraph';
+export * from './rules';
+export * from './digests';
+export * from './timelines';
+export * from './comparison';
+
 // Re-export commonly used functions
 export { runPipeline, runPipelineManual } from './pipeline';
 export { buildUserFeed } from './feedBuilder';
