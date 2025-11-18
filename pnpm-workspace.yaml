@@ -4,11 +4,13 @@ packages:
   - 'apps/pitch-generator'
   - 'apps/tracker'
   - 'apps/web'
+  # Command centre for MeshOS and internal tools
+  - 'apps/command-centre'
+
   # Removed apps with build errors, unused, or personal
   # - 'apps/api'  # Has TypeScript errors, not in production
   # - 'apps/mobile'  # Security vulnerabilities
   # - 'apps/tap-saas-template-DO-NOT-DELETE'  # Unused template
-  # - 'apps/command-centre'  # Personal productivity app (excluded from CI)
 
   # Shared packages
   - 'packages/*'
