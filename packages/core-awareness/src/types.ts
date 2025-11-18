@@ -233,12 +233,15 @@ export type RiskType =
 
 export interface Trajectory {
   period: string; // '7d' | '30d' | '45d'
+  direction: 'rising' | 'stable' | 'declining';
+  confidence: number;
   projections: {
     momentum: TrendProjection;
     coverage: TrendProjection;
     engagement: TrendProjection;
     creative_output: TrendProjection;
   };
+  projectedMetrics: Record<string, number>;
   inflectionPoints: InflectionPoint[];
 }
 
@@ -251,7 +254,9 @@ export interface TrendProjection {
 
 export interface InflectionPoint {
   date: Date;
-  type: string;
+  expectedAt: Date;
+  metric: string;
+  type: 'peak' | 'trough' | 'inflection';
   description: string;
   significance: 'low' | 'medium' | 'high';
 }
@@ -299,6 +304,7 @@ export interface AutopilotMissionState {
   missionId: string;
   phase: string;
   status: string;
+  isActive: boolean;
   progress: number;
   blockers: string[];
   outcomes: Record<string, any>;
@@ -461,3 +467,34 @@ export interface CacheEntry<T> {
 }
 
 export type TimeWindow = '1h' | '6h' | '24h' | '7d' | '30d' | '90d';
+
+// ============================================================================
+// TYPE ALIASES FOR CONVENIENCE
+// ============================================================================
+
+export type IdentityProfile = IdentityKernelProfile;
+export type CampaignMetric = CampaignMetrics;
+export type PredictionInput = {
+  campaignMetrics: CampaignMetrics[];
+  migClusters: MIGCluster[];
+  cmgFingerprints: CMGFingerprint[];
+  autopilotStates: AutopilotMissionState[];
+  malStates: MALFlowState[];
+};
+export type PredictiveScores = {
+  momentum: number;
+  burnoutRisk: number;
+  fatigueRisk: number;
+  liftPotential: number;
+  freshness: number;
+};
+export type IntegrationData = {
+  fusionContext: FusionContext;
+  cmgFingerprints: CMGFingerprint[];
+  migClusters: MIGCluster[];
+  identityProfile: IdentityKernelProfile;
+  autopilotStates: AutopilotMissionState[];
+  malStates: MALFlowState[];
+  campaignMetrics: CampaignMetrics[];
+  creativeAssets: CISCreativeAsset[];
+};
