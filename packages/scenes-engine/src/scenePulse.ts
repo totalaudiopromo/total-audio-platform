@@ -15,6 +15,8 @@ import {
 } from './types.js';
 import { createLogger } from './utils/logger.js';
 import { momentumScore, growthRate, weightedAverage } from './utils/math.js';
+import { Cache, ScenesCacheKeys } from './utils/cache.js';
+import { getConfig, ScenesEngineConfig } from './config.js';
 
 const logger = createLogger('ScenePulse');
 
@@ -35,6 +37,8 @@ export class ScenePulse {
   private trendsEngine: TrendsEngine;
   private relationshipEngine: RelationshipEngine;
   private membershipEngine: MembershipEngine;
+  private cache: Cache<ScenePulseSnapshot>;
+  private config: ScenesEngineConfig;
 
   constructor(config: ScenePulseConfig) {
     this.supabase = config.supabase;
@@ -42,13 +46,33 @@ export class ScenePulse {
     this.trendsEngine = config.trendsEngine;
     this.relationshipEngine = config.relationshipEngine;
     this.membershipEngine = config.membershipEngine;
+    this.config = getConfig();
+    this.cache = new Cache<ScenePulseSnapshot>({
+      defaultTTL: this.config.cache.scenePulseTTL,
+      maxSize: this.config.cache.maxCacheSize,
+    });
+
+    // Clean expired cache entries every 5 minutes
+    setInterval(() => {
+      this.cache.cleanExpired();
+    }, 300000);
   }
 
   /**
    * Get comprehensive pulse snapshot for a scene
    */
-  async getScenePulse(sceneSlug: string): Promise<ScenePulseSnapshot> {
+  async getScenePulse(sceneSlug: string, skipCache = false): Promise<ScenePulseSnapshot> {
     try {
+      // Check cache first
+      if (!skipCache) {
+        const cacheKey = ScenesCacheKeys.scenePulse(sceneSlug);
+        const cached = this.cache.get(cacheKey);
+        if (cached) {
+          logger.info(`Using cached pulse for: ${sceneSlug}`);
+          return cached;
+        }
+      }
+
       logger.info(`Computing scene pulse for: ${sceneSlug}`);
 
       const scene = await this.scenesStore.getSceneBySlug(sceneSlug);
@@ -86,7 +110,7 @@ export class ScenePulse {
       // Get current metrics
       const metrics = await this.getCurrentMetrics(sceneSlug);
 
-      return {
+      const snapshot: ScenePulseSnapshot = {
         sceneSlug: scene.slug,
         sceneName: scene.name,
         region: scene.region,
@@ -99,6 +123,12 @@ export class ScenePulse {
         metrics,
         timestamp: new Date().toISOString(),
       };
+
+      // Cache the result
+      const cacheKey = ScenesCacheKeys.scenePulse(sceneSlug);
+      this.cache.set(cacheKey, snapshot, this.config.cache.scenePulseTTL);
+
+      return snapshot;
     } catch (error) {
       logger.error(`Failed to compute scene pulse for ${sceneSlug}:`, error);
       throw error;
@@ -425,17 +455,15 @@ export class ScenePulse {
   /**
    * Get regional scene pulse overview
    */
-  async getRegionScenePulse(region: string): Promise<ScenePulseSnapshot[]> {
+  async getRegionScenePulse(region: string, limit?: number): Promise<ScenePulseSnapshot[]> {
     try {
       logger.info(`Computing regional pulse for: ${region}`);
 
       const scenes = await this.scenesStore.listScenes({ region });
-      const pulses: ScenePulseSnapshot[] = [];
+      const limitedScenes = scenes.slice(0, limit || this.config.limits.maxScenesPerQuery);
 
-      for (const scene of scenes) {
-        const pulse = await this.getScenePulse(scene.slug);
-        pulses.push(pulse);
-      }
+      // Process in parallel batches to avoid overwhelming the system
+      const pulses = await this.batchProcessScenes(limitedScenes.map(s => s.slug));
 
       // Sort by hotness score
       return pulses.sort((a, b) => b.hotnessScore - a.hotnessScore);
@@ -448,17 +476,20 @@ export class ScenePulse {
   /**
    * Get global scene pulse overview
    */
-  async getGlobalScenePulse(limit: number = 20): Promise<ScenePulseSnapshot[]> {
+  async getGlobalScenePulse(limit?: number): Promise<ScenePulseSnapshot[]> {
     try {
       logger.info('Computing global scene pulse');
 
-      const scenes = await this.scenesStore.listScenes();
-      const pulses: ScenePulseSnapshot[] = [];
+      const effectiveLimit = Math.min(
+        limit || 20,
+        this.config.limits.maxScenesPerQuery
+      );
 
-      for (const scene of scenes.slice(0, limit)) {
-        const pulse = await this.getScenePulse(scene.slug);
-        pulses.push(pulse);
-      }
+      const scenes = await this.scenesStore.listScenes();
+      const limitedScenes = scenes.slice(0, effectiveLimit);
+
+      // Process in parallel batches
+      const pulses = await this.batchProcessScenes(limitedScenes.map(s => s.slug));
 
       // Sort by hotness score
       return pulses.sort((a, b) => b.hotnessScore - a.hotnessScore);
@@ -466,5 +497,50 @@ export class ScenePulse {
       logger.error('Failed to get global pulse:', error);
       return [];
     }
+  }
+
+  /**
+   * Batch process multiple scenes in parallel with concurrency control
+   */
+  private async batchProcessScenes(sceneSlugs: string[]): Promise<ScenePulseSnapshot[]> {
+    const results: ScenePulseSnapshot[] = [];
+    const batchSize = this.config.batch.maxConcurrency;
+
+    // Process in batches to control concurrency
+    for (let i = 0; i < sceneSlugs.length; i += batchSize) {
+      const batch = sceneSlugs.slice(i, i + batchSize);
+      const batchPromises = batch.map(slug =>
+        this.getScenePulse(slug).catch(error => {
+          logger.error(`Failed to get pulse for ${slug}:`, error);
+          return null;
+        })
+      );
+
+      const batchResults = await Promise.all(batchPromises);
+      results.push(...batchResults.filter(r => r !== null) as ScenePulseSnapshot[]);
+    }
+
+    return results;
+  }
+
+  /**
+   * Clear cache for a specific scene or all scenes
+   */
+  clearCache(sceneSlug?: string): void {
+    if (sceneSlug) {
+      const cacheKey = ScenesCacheKeys.scenePulse(sceneSlug);
+      this.cache.clear(cacheKey);
+      logger.info(`Cleared cache for scene: ${sceneSlug}`);
+    } else {
+      this.cache.clear();
+      logger.info('Cleared all scene pulse cache');
+    }
+  }
+
+  /**
+   * Get cache statistics
+   */
+  getCacheStats(): { size: number; maxSize: number } {
+    return this.cache.stats();
   }
 }

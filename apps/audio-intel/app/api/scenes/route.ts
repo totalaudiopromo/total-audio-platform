@@ -3,44 +3,52 @@
  * List all scenes with optional filters
  */
 
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 import { createClient } from '@/utils/supabase/server';
 import { ScenesStore } from '@total-audio/scenes-engine';
+import { ListScenesQuerySchema } from '@total-audio/scenes-engine/src/api/validation';
+import {
+  successResponse,
+  internalErrorResponse,
+  handleValidationError,
+} from '@total-audio/scenes-engine/src/api/response';
 
 export async function GET(request: NextRequest) {
   try {
+    // Parse and validate query parameters
+    const searchParams = request.nextUrl.searchParams;
+    const queryResult = ListScenesQuerySchema.safeParse({
+      region: searchParams.get('region') || undefined,
+      limit: searchParams.get('limit') || undefined,
+      offset: searchParams.get('offset') || undefined,
+    });
+
+    if (!queryResult.success) {
+      return handleValidationError(queryResult.error);
+    }
+
+    const { region, limit, offset } = queryResult.data;
+
+    // Get scenes with filters
     const supabase = await createClient();
     const scenesStore = new ScenesStore({ supabase });
 
-    // Parse query parameters
-    const searchParams = request.nextUrl.searchParams;
-    const region = searchParams.get('region') || undefined;
-    const country = searchParams.get('country') || undefined;
-    const tag = searchParams.get('tag') || undefined;
-    const microgenre = searchParams.get('microgenre') || undefined;
+    const scenes = await scenesStore.listScenes({ region });
 
-    // Get scenes with filters
-    const scenes = await scenesStore.listScenes({
-      region,
-      country,
-      tag,
-      microgenre,
-    });
+    // Apply pagination
+    const paginatedScenes = scenes.slice(offset, offset + limit);
 
-    return NextResponse.json({
-      success: true,
-      data: scenes,
-      count: scenes.length,
+    return successResponse({
+      scenes: paginatedScenes,
+      pagination: {
+        limit,
+        offset,
+        total: scenes.length,
+        hasMore: offset + limit < scenes.length,
+      },
     });
   } catch (error) {
     console.error('Error fetching scenes:', error);
-    return NextResponse.json(
-      {
-        success: false,
-        error: 'Failed to fetch scenes',
-        message: error instanceof Error ? error.message : 'Unknown error',
-      },
-      { status: 500 }
-    );
+    return internalErrorResponse(error);
   }
 }

@@ -13,6 +13,7 @@ import { RCFAdapter } from '../adapters/RCFAdapter.js';
 import { IdentityKernelAdapter } from '../adapters/IdentityKernelAdapter.js';
 import { calculateMomentumScore, calculateBreakoutScore, calculateRiskScore } from '../utils/scoring.js';
 import { createLogger } from '../utils/logger.js';
+import { getConfig, TalentRadarConfig } from '../config.js';
 
 const logger = createLogger('ArtistSignalsEngine');
 
@@ -49,6 +50,7 @@ export class ArtistSignalsEngine {
   private coverageAdapter: CoverageAdapter;
   private rcfAdapter: RCFAdapter;
   private identityAdapter: IdentityKernelAdapter;
+  private config: TalentRadarConfig;
 
   constructor(private supabase: SupabaseClient) {
     this.migAdapter = new MIGAdapter(supabase);
@@ -58,6 +60,7 @@ export class ArtistSignalsEngine {
     this.coverageAdapter = new CoverageAdapter(supabase);
     this.rcfAdapter = new RCFAdapter(supabase);
     this.identityAdapter = new IdentityKernelAdapter(supabase);
+    this.config = getConfig();
   }
 
   /**
@@ -164,20 +167,31 @@ export class ArtistSignalsEngine {
   }
 
   /**
-   * Batch aggregate signals for multiple artists
+   * Batch aggregate signals for multiple artists with concurrency control
    */
   async batchAggregateSignals(artistSlugs: string[]): Promise<ArtistSignals[]> {
     const results: ArtistSignals[] = [];
+    const batchSize = this.config.batch.maxConcurrency;
+    const limit = Math.min(artistSlugs.length, this.config.limits.maxSignalAggregationBatch);
+    const limitedSlugs = artistSlugs.slice(0, limit);
 
-    for (const slug of artistSlugs) {
-      try {
-        const signals = await this.aggregateArtistSignals(slug);
-        results.push(signals);
-      } catch (error) {
-        logger.error(`Failed to aggregate signals for ${slug}:`, error);
-      }
+    logger.info(`Batch aggregating signals for ${limitedSlugs.length} artists (batch size: ${batchSize})`);
+
+    // Process in batches to control concurrency
+    for (let i = 0; i < limitedSlugs.length; i += batchSize) {
+      const batch = limitedSlugs.slice(i, i + batchSize);
+      const batchPromises = batch.map(slug =>
+        this.aggregateArtistSignals(slug).catch(error => {
+          logger.error(`Failed to aggregate signals for ${slug}:`, error);
+          return null;
+        })
+      );
+
+      const batchResults = await Promise.all(batchPromises);
+      results.push(...batchResults.filter(r => r !== null) as ArtistSignals[]);
     }
 
+    logger.info(`Successfully aggregated signals for ${results.length}/${limitedSlugs.length} artists`);
     return results;
   }
 }

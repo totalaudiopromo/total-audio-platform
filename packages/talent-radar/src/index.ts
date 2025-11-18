@@ -29,3 +29,9 @@ export * from './utils/logger.js';
 export * from './utils/math.js';
 export * from './utils/decay.js';
 export * from './utils/scoring.js';
+export { Cache, TalentRadarCacheKeys } from './utils/cache.js';
+export type { CacheEntry, CacheConfig } from './utils/cache.js';
+
+// Configuration
+export { getConfig, DEFAULT_CONFIG, DEV_CONFIG } from './config.js';
+export type { TalentRadarConfig } from './config.js';

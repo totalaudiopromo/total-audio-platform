@@ -3,7 +3,7 @@
  * Get scene detail with comprehensive information
  */
 
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 import { createClient } from '@/utils/supabase/server';
 import {
   ScenesStore,
@@ -15,13 +15,27 @@ import {
   FusionAdapter,
   CMGAdapter,
 } from '@total-audio/scenes-engine';
+import { SceneSlugSchema } from '@total-audio/scenes-engine/src/api/validation';
+import {
+  successResponse,
+  notFoundResponse,
+  internalErrorResponse,
+  handleValidationError,
+} from '@total-audio/scenes-engine/src/api/response';
 
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
+    // Validate path parameters
     const { slug } = await params;
+    const paramResult = SceneSlugSchema.safeParse({ slug });
+
+    if (!paramResult.success) {
+      return handleValidationError(paramResult.error);
+    }
+
     const supabase = await createClient();
 
     // Initialize stores and engines
@@ -62,53 +76,39 @@ export async function GET(
     // Get scene basic info
     const scene = await scenesStore.getSceneBySlug(slug);
     if (!scene) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'Scene not found',
-        },
-        { status: 404 }
-      );
+      return notFoundResponse('Scene', slug);
     }
 
-    // Get additional data
+    // Get additional data in parallel
     const [
       pulse,
       members,
       relationships,
       microgenres,
     ] = await Promise.all([
-      scenePulse.getScenePulse(slug),
-      membershipEngine.getTopEntitiesForScene(slug, undefined, 20),
-      relationshipEngine.getSceneRelationships(slug),
+      scenePulse.getScenePulse(slug).catch(() => null),
+      membershipEngine.getTopEntitiesForScene(slug, undefined, 20).catch(() => []),
+      relationshipEngine.getSceneRelationships(slug).catch(() => []),
       Promise.all(
-        scene.microgenres.map(mg => scenesStore.getMicrogenreBySlug(mg))
+        scene.microgenres.map(mg =>
+          scenesStore.getMicrogenreBySlug(mg).catch(() => null)
+        )
       ),
     ]);
 
-    return NextResponse.json({
-      success: true,
-      data: {
-        scene,
-        pulse,
-        topMembers: members,
-        relationships: relationships.map(r => ({
-          sceneSlug: r.source_scene_slug === slug ? r.target_scene_slug : r.source_scene_slug,
-          relationType: r.relation_type,
-          weight: r.weight,
-        })),
-        microgenres: microgenres.filter(m => m !== null),
-      },
+    return successResponse({
+      scene,
+      pulse,
+      topMembers: members,
+      relationships: relationships.map(r => ({
+        sceneSlug: r.source_scene_slug === slug ? r.target_scene_slug : r.source_scene_slug,
+        relationType: r.relation_type,
+        weight: r.weight,
+      })),
+      microgenres: microgenres.filter(m => m !== null),
     });
   } catch (error) {
     console.error('Error fetching scene detail:', error);
-    return NextResponse.json(
-      {
-        success: false,
-        error: 'Failed to fetch scene detail',
-        message: error instanceof Error ? error.message : 'Unknown error',
-      },
-      { status: 500 }
-    );
+    return internalErrorResponse(error);
   }
 }

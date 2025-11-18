@@ -36,3 +36,9 @@ export type { RecommendationEngineConfig } from './recommendationEngine.js';
 export { createLogger, Logger } from './utils/logger.js';
 export * from './utils/math.js';
 export * from './utils/time.js';
+export { Cache, ScenesCacheKeys } from './utils/cache.js';
+export type { CacheEntry, CacheConfig } from './utils/cache.js';
+
+// Configuration
+export { getConfig, DEFAULT_CONFIG, DEV_CONFIG } from './config.js';
+export type { ScenesEngineConfig } from './config.js';
