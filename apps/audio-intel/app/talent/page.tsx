@@ -1,217 +1,151 @@
 /**
- * Talent Radar - Global Music Pulse Dashboard
- * A&R-grade intelligence for rising artists and breakout opportunities
+ * /talent - Talent Radar Global Music Pulse
  */
 
-import { Metadata } from 'next';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'Talent Radar - Audio Intel',
-  description: 'A&R-grade intelligence for detecting rising artists, breakout potential, and music industry momentum',
-};
+import React from 'react';
+import { useTalentPulse } from '@/hooks/useTalentPulse';
+import { PageHeader } from '@/components/scenes/PageHeader';
+import { GlobalPulse } from '@/components/talent/GlobalPulse';
+import { ArtistCard } from '@/components/talent/ArtistCard';
+import { LoadingState } from '@/components/ui/LoadingState';
+import { ErrorState } from '@/components/ui/ErrorState';
+import { EmptyState } from '@/components/ui/EmptyState';
 
-export default async function TalentRadarPage() {
+export default function TalentRadarPage() {
+  const { pulse, isLoading, isError, error, mutate } = useTalentPulse({ limit: 20 });
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-[#0A0D12] text-white p-8">
+        <LoadingState message="Loading global pulse..." />
+      </div>
+    );
+  }
+
+  if (isError && error) {
+    return (
+      <div className="min-h-screen bg-[#0A0D12] text-white p-8">
+        <ErrorState
+          title="Failed to load talent pulse"
+          message={error.message}
+          code={error.code}
+          onRetry={() => mutate()}
+        />
+      </div>
+    );
+  }
+
+  if (!pulse) {
+    return (
+      <div className="min-h-screen bg-[#0A0D12] text-white p-8">
+        <EmptyState
+          title="No pulse data available"
+          message="Talent radar data is not available yet."
+        />
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Header */}
-      <div className="border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="flex items-center gap-3 mb-2">
-            <div className="w-3 h-3 bg-cyan-500 rounded-full animate-pulse"></div>
-            <h1 className="text-4xl font-bold text-white" style={{ fontFamily: 'Inter, sans-serif' }}>
-              Talent Radar
-            </h1>
-          </div>
-          <p className="text-slate-400 text-lg">
-            A&R-grade intelligence tracking {' '}
-            <span className="text-cyan-400 font-medium">rising artists</span>, {' '}
-            <span className="text-cyan-400 font-medium">breakout signals</span>, and {' '}
-            <span className="text-cyan-400 font-medium">cultural momentum</span>
-          </p>
-        </div>
-      </div>
+    <div className="min-h-screen bg-[#0A0D12] text-white p-8">
+      <div className="max-w-7xl mx-auto">
+        <PageHeader
+          title="Talent Radar"
+          subtitle="A&R-grade intelligence tracking rising artists, breakout signals, and cultural momentum"
+        />
 
-      {/* Global Pulse Summary */}
-      <div className="border-b border-slate-800 bg-slate-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <h2 className="text-xl font-semibold text-white mb-6" style={{ fontFamily: 'Inter, sans-serif' }}>
-            Global Pulse
-          </h2>
+        <GlobalPulse summary={pulse.summary} />
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {/* Stat Card 1 */}
-            <div className="bg-black border border-slate-800 rounded-2xl p-6">
-              <div className="text-slate-500 text-sm mb-2" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                Artists Tracked
-              </div>
-              <div className="text-3xl font-bold text-white mb-1" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                1,247
-              </div>
-              <div className="text-green-400 text-sm flex items-center gap-1">
-                <span>↑</span>
-                <span style={{ fontFamily: 'JetBrains Mono, monospace' }}>+18%</span>
-              </div>
+        {/* Rising Artists */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-white mb-6">Rising Artists</h2>
+          {pulse.topRisingArtists.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {pulse.topRisingArtists.slice(0, 6).map((artist) => (
+                <ArtistCard
+                  key={artist.artist_slug}
+                  artistSlug={artist.artist_slug}
+                  sceneSlug={artist.scene_slug}
+                  microgenres={artist.microgenres}
+                  momentum={artist.momentum}
+                  breakoutScore={artist.breakout_score}
+                  riskScore={artist.risk_score}
+                  type="rising"
+                />
+              ))}
             </div>
+          ) : (
+            <EmptyState
+              title="No rising artists"
+              message="No artists with high momentum detected yet."
+            />
+          )}
+        </section>
 
-            {/* Stat Card 2 */}
-            <div className="bg-black border border-slate-800 rounded-2xl p-6">
-              <div className="text-slate-500 text-sm mb-2" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                Avg Momentum
-              </div>
-              <div className="text-3xl font-bold text-cyan-400 mb-1" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                67
-              </div>
-              <div className="text-slate-400 text-sm" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                /100
-              </div>
+        {/* Breakout Candidates */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-white mb-6">Breakout Candidates</h2>
+          {pulse.topBreakoutCandidates.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {pulse.topBreakoutCandidates.slice(0, 6).map((artist) => (
+                <ArtistCard
+                  key={artist.artist_slug}
+                  artistSlug={artist.artist_slug}
+                  sceneSlug={artist.scene_slug}
+                  microgenres={artist.microgenres}
+                  momentum={artist.momentum}
+                  breakoutScore={artist.breakout_score}
+                  riskScore={artist.risk_score}
+                  type="breakout"
+                />
+              ))}
             </div>
+          ) : (
+            <EmptyState
+              title="No breakout candidates"
+              message="No artists with high breakout potential detected yet."
+            />
+          )}
+        </section>
 
-            {/* Stat Card 3 */}
-            <div className="bg-black border border-slate-800 rounded-2xl p-6">
-              <div className="text-slate-500 text-sm mb-2" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                Breakout Candidates
-              </div>
-              <div className="text-3xl font-bold text-amber-400 mb-1" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                42
-              </div>
-              <div className="text-slate-400 text-sm">
-                High potential
-              </div>
+        {/* Artists at Risk */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-white mb-6">Artists at Risk</h2>
+          {pulse.artistsAtRisk.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {pulse.artistsAtRisk.slice(0, 6).map((artist) => (
+                <ArtistCard
+                  key={artist.artist_slug}
+                  artistSlug={artist.artist_slug}
+                  sceneSlug={artist.scene_slug}
+                  microgenres={artist.microgenres}
+                  momentum={artist.momentum}
+                  breakoutScore={artist.breakout_score}
+                  riskScore={artist.risk_score}
+                  type="risk"
+                />
+              ))}
             </div>
+          ) : (
+            <EmptyState
+              title="No artists at risk"
+              message="No artists showing risk indicators."
+            />
+          )}
+        </section>
 
-            {/* Stat Card 4 */}
-            <div className="bg-black border border-slate-800 rounded-2xl p-6">
-              <div className="text-slate-500 text-sm mb-2" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                Artists at Risk
-              </div>
-              <div className="text-3xl font-bold text-red-400 mb-1" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                28
-              </div>
-              <div className="text-slate-400 text-sm">
-                Needs attention
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Rising Artists Section */}
-        <div className="mb-12">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold text-white" style={{ fontFamily: 'Inter, sans-serif' }}>
-              Rising Artists
-            </h2>
-            <button className="text-cyan-400 hover:text-cyan-300 transition-colors duration-240">
-              View All →
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Artist Card Example */}
-            <div className="bg-slate-950 border border-slate-800 rounded-2xl p-6 hover:border-cyan-500/50 transition-all duration-240 cursor-pointer">
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <h3 className="text-lg font-semibold text-white mb-1" style={{ fontFamily: 'Inter, sans-serif' }}>
-                    Artist Name
-                  </h3>
-                  <p className="text-slate-400 text-sm">London UK Garage</p>
-                </div>
-                <span className="bg-green-500/10 text-green-400 px-3 py-1 rounded-full text-xs font-medium">
-                  Rising
-                </span>
-              </div>
-
-              {/* Momentum Bar */}
-              <div className="mb-4">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-slate-500 text-xs" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                    Momentum
-                  </span>
-                  <span className="text-cyan-400 text-sm font-medium" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                    87
-                  </span>
-                </div>
-                <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
-                  <div className="h-full bg-cyan-500 rounded-full" style={{ width: '87%' }}></div>
-                </div>
-              </div>
-
-              {/* Breakout Score */}
-              <div className="mb-4">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-slate-500 text-xs" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                    Breakout Score
-                  </span>
-                  <span className="text-amber-400 text-sm font-medium" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                    0.78
-                  </span>
-                </div>
-                <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
-                  <div className="h-full bg-amber-500 rounded-full" style={{ width: '78%' }}></div>
-                </div>
-              </div>
-
-              {/* Signals */}
-              <div className="grid grid-cols-3 gap-2 text-xs">
-                <div className="text-center">
-                  <div className="text-slate-500 mb-1">MIG</div>
-                  <div className="text-green-400 font-medium" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                    0.82
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div className="text-slate-500 mb-1">Press</div>
-                  <div className="text-green-400 font-medium" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                    0.75
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div className="text-slate-500 mb-1">Risk</div>
-                  <div className="text-green-400 font-medium" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                    0.23
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Placeholder Card */}
-            <div className="bg-slate-950 border border-slate-800 border-dashed rounded-2xl p-6 flex flex-col items-center justify-center text-center">
-              <div className="text-slate-500 mb-2">
-                <svg className="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <p className="text-slate-400 text-sm">
-                Connect to API to load live talent data
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Info Panel */}
-        <div className="bg-cyan-500/5 border border-cyan-500/20 rounded-2xl p-6">
-          <h3 className="text-lg font-semibold text-cyan-400 mb-3" style={{ fontFamily: 'Inter, sans-serif' }}>
+        {/* Info Box */}
+        <div className="mt-12 bg-[#3AA9BE]/5 border border-[#3AA9BE]/20 rounded-2xl p-6">
+          <h2 className="text-lg font-semibold text-[#3AA9BE] mb-2" style={{ fontFamily: 'Inter, sans-serif' }}>
             About Talent Radar
-          </h3>
-          <div className="text-slate-300 text-sm leading-relaxed space-y-2">
-            <p>
-              The Talent Radar is an A&R-grade intelligence engine that monitors the entire music ecosystem.
-              It aggregates signals from:
-            </p>
-            <ul className="list-disc list-inside space-y-1 text-slate-400 ml-4">
-              <li>Music Industry Graph (MIG) - network connectivity and influence</li>
-              <li>Scenes Engine - cultural movement and scene positioning</li>
-              <li>Creative Memory Graph (CMG) - artistic evolution and fingerprint</li>
-              <li>Fusion Layer - campaign performance and velocity</li>
-              <li>Coverage Map - press quality and reach</li>
-              <li>Identity Kernel - brand coherence and alignment</li>
-            </ul>
-            <p className="mt-3">
-              Use this dashboard to identify rising talent, breakout opportunities, and strategic timing for A&R decisions.
-            </p>
-          </div>
+          </h2>
+          <p className="text-slate-300 text-sm leading-relaxed">
+            Talent Radar is a global intelligence layer that aggregates signals from MIG, Scenes Engine, CMG, Fusion Layer,
+            Coverage Map, and more. It provides high-level artist radar profiles, detects momentum shifts, predicts breakout
+            potential, and identifies risk signals. This is a pure intelligence layer - it does not trigger actions or manage shortlists.
+          </p>
         </div>
       </div>
     </div>
