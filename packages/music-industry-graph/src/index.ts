@@ -12,6 +12,9 @@
 // Types
 export * from './types';
 
+// Validation schemas (Zod)
+export * from './validation';
+
 // Client operations
 export * from './client';
 
@@ -38,6 +41,16 @@ export * from './microgenreCluster';
 
 // Fusion Layer integration (read-only)
 export * from './fusionAdapter';
+
+// Performance hints (internal use, but exported for advanced users)
+export {
+  nodeCache,
+  edgeCache,
+  neighborCache,
+  createTimeoutGuard,
+  createPerformanceTracker,
+  DEFAULT_QUERY_LIMITS,
+} from './performanceHints';
 
 // Logger
 export { logger, MIGLogger } from './utils/logger';

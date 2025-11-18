@@ -8,7 +8,8 @@
     "build": "tsc",
     "dev": "tsc --watch",
     "clean": "rm -rf dist",
-    "test": "jest",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "typecheck": "tsc --noEmit"
   },
   "keywords": [
@@ -21,13 +22,13 @@
   "author": "Total Audio",
   "license": "MIT",
   "dependencies": {
-    "@supabase/supabase-js": "^2.39.0"
+    "@supabase/supabase-js": "^2.39.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
     "typescript": "^5.3.0",
-    "jest": "^29.7.0",
-    "@types/jest": "^29.5.0"
+    "vitest": "^1.0.4"
   },
   "peerDependencies": {
     "@supabase/supabase-js": "^2.39.0"

@@ -90,58 +90,98 @@ export const MIGFusionAdapter = {
   },
 
   /**
-   * Get scene alignment for an artist
+   * Get scene alignment for an artist (deterministic scoring)
    */
   async getSceneAlignment(
     artistSlug: string,
     workspaceId: string
   ): Promise<MIGSceneAlignment[]> {
+    if (!artistSlug || !workspaceId) {
+      console.warn('Missing required params for scene alignment');
+      return [];
+    }
+
     try {
-      // Check cache
+      // Check cache (24 hour TTL)
+      const oneDayAgo = new Date(Date.now() - 86400000);
       const { data: cached } = await supabase
         .from('mig_scene_alignment')
         .select('*')
         .eq('workspace_id', workspaceId)
-        .eq('artist_slug', artistSlug);
+        .eq('artist_slug', artistSlug)
+        .gte('updated_at', oneDayAgo.toISOString());
 
       if (cached && cached.length > 0) {
-        const recent = cached.filter(
-          (c) => new Date(c.updated_at) > new Date(Date.now() - 86400000)
-        );
-        if (recent.length > 0) {
-          return recent as MIGSceneAlignment[];
-        }
+        return (cached as MIGSceneAlignment[]).sort((a, b) => b.alignment - a.alignment);
       }
 
-      // Compute from MIG
+      // Compute from MIG with deterministic scoring
       const neighbors = await getNeighbors(artistSlug, {
         node_type_filter: ['scene'],
         depth_limit: 2,
       });
 
-      const alignments: MIGSceneAlignment[] = neighbors.map((neighbor) => ({
-        artist_slug: artistSlug,
-        scene_slug: neighbor.neighbor_id,
-        alignment: neighbor.weight / (neighbor.path_length || 1),
-        source: {
-          relationship: neighbor.relationship,
-          path_length: neighbor.path_length,
-          weight: neighbor.weight,
-        },
-        reasoning: `${neighbor.relationship} connection at distance ${neighbor.path_length}`,
-      }));
+      if (neighbors.length === 0) {
+        return [];
+      }
 
-      // Update cache
-      for (const alignment of alignments) {
-        await supabase.from('mig_scene_alignment').upsert({
+      const alignments: MIGSceneAlignment[] = neighbors.map((neighbor) => {
+        // Deterministic alignment score formula:
+        // Base score = edge weight (0-1)
+        // Distance penalty = 1 / (path_length^1.5)
+        // Relationship bonus based on type
+        const pathPenalty = 1 / Math.pow(neighbor.path_length || 1, 1.5);
+        const relationshipBonus =
+          neighbor.relationship === 'part_of' ? 0.3 :
+          neighbor.relationship === 'same_scene' ? 0.2 : 0;
+
+        const alignment = Math.min(
+          1.0,
+          (neighbor.weight * pathPenalty) + relationshipBonus
+        );
+
+        return {
+          artist_slug: artistSlug,
+          scene_slug: neighbor.neighbor_id,
+          alignment: Math.round(alignment * 1000) / 1000, // Round to 3 decimals for consistency
+          source: {
+            relationship: neighbor.relationship,
+            path_length: neighbor.path_length,
+            weight: neighbor.weight,
+            distance_penalty: pathPenalty,
+            relationship_bonus: relationshipBonus,
+          },
+          reasoning: `${neighbor.relationship} at distance ${neighbor.path_length}, weight ${neighbor.weight.toFixed(2)}`,
+        };
+      });
+
+      // Sort by alignment score (deterministic ordering)
+      alignments.sort((a, b) => {
+        if (Math.abs(a.alignment - b.alignment) < 0.001) {
+          // If scores are nearly equal, sort by scene slug alphabetically for consistency
+          return a.scene_slug.localeCompare(b.scene_slug);
+        }
+        return b.alignment - a.alignment;
+      });
+
+      // Update cache with all alignments in a single transaction
+      if (alignments.length > 0) {
+        const upsertData = alignments.map((alignment) => ({
           workspace_id: workspaceId,
-          ...alignment,
-        });
+          artist_slug: alignment.artist_slug,
+          scene_slug: alignment.scene_slug,
+          alignment: alignment.alignment,
+          source: alignment.source,
+          reasoning: alignment.reasoning,
+        }));
+
+        await supabase.from('mig_scene_alignment').upsert(upsertData);
       }
 
       return alignments;
     } catch (error) {
       console.error('Error getting scene alignment:', error);
+      // Return empty array instead of throwing - graceful degradation
       return [];
     }
   },
@@ -274,26 +314,58 @@ export const MIGFusionAdapter = {
   },
 
   /**
-   * Get graph opportunities for an artist
+   * Get graph opportunities for an artist (deterministic ranking)
    */
   async getGraphOpportunities(
     artistSlug: string,
     workspaceId: string
   ): Promise<MIGGraphOpportunity[]> {
-    try {
-      const recommendations = await recommendPitchTargets(artistSlug, { limit: 10 });
+    if (!artistSlug || !workspaceId) {
+      console.warn('Missing required params for graph opportunities');
+      return [];
+    }
 
-      return recommendations.map((rec) => ({
-        type: rec.node.type as any,
-        name: rec.node.name,
-        slug: rec.node.slug,
-        fit_score: rec.score,
-        reasoning: rec.reasoning,
-        path_summary: `${rec.common_connections} common connections`,
-        recommended_action: `Pitch to ${rec.node.name} - ${rec.reasoning}`,
-      }));
+    try {
+      const recommendations = await recommendPitchTargets(artistSlug, { limit: 20 });
+
+      if (recommendations.length === 0) {
+        return [];
+      }
+
+      const opportunities: MIGGraphOpportunity[] = recommendations
+        .filter((rec) =>
+          ['journalist', 'playlist', 'radio_host', 'dj', 'blog'].includes(rec.node.type)
+        )
+        .map((rec) => {
+          // Deterministic fit score (already 0-1 from recommendations)
+          const fitScore = Math.round(rec.score * 1000) / 1000;
+
+          return {
+            type: rec.node.type as any,
+            name: rec.node.name,
+            slug: rec.node.slug,
+            fit_score: fitScore,
+            reasoning: rec.reasoning || `Graph-based recommendation via ${rec.common_connections} connections`,
+            path_summary:
+              rec.common_connections > 1
+                ? `${rec.common_connections} common connections`
+                : '1 connection pathway',
+            recommended_action: `Research and pitch to ${rec.node.name} based on graph proximity`,
+          };
+        })
+        .sort((a, b) => {
+          // Deterministic sorting: by fit score descending, then alphabetically by name
+          if (Math.abs(a.fit_score - b.fit_score) < 0.001) {
+            return a.name.localeCompare(b.name);
+          }
+          return b.fit_score - a.fit_score;
+        })
+        .slice(0, 10); // Return top 10
+
+      return opportunities;
     } catch (error) {
       console.error('Error getting graph opportunities:', error);
+      // Graceful degradation
       return [];
     }
   },

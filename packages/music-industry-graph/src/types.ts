@@ -369,6 +369,7 @@ export interface PathfindingOptions {
   max_depth?: number;
   relationship_weights?: Partial<Record<MIGRelationshipType, number>>;
   avoid_node_types?: MIGNodeType[];
+  timeout_ms?: number; // Maximum operation time in milliseconds
 }
 
 /**

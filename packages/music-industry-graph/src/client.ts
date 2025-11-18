@@ -17,6 +17,17 @@ import type {
   NeighborResult,
 } from './types';
 import { logger } from './utils/logger';
+import {
+  nodeCache,
+  edgeCache,
+  neighborCache,
+  makeNodeCacheKey,
+  makeEdgeCacheKey,
+  makeNeighborCacheKey,
+  chunkArray,
+  deduplicateNodes,
+  deduplicateEdges,
+} from './performanceHints';
 
 // ============================================================================
 // CLIENT INITIALIZATION
@@ -45,6 +56,13 @@ export async function getNodeBySlug(slug: string): Promise<MIGNode | null> {
     return null;
   }
 
+  // Check cache first
+  const cacheKey = `slug:${slug}`;
+  const cached = nodeCache.get(cacheKey);
+  if (cached) {
+    return cached;
+  }
+
   try {
     const { data, error } = await supabase
       .from('migraph_nodes')
@@ -57,7 +75,15 @@ export async function getNodeBySlug(slug: string): Promise<MIGNode | null> {
       return null;
     }
 
-    return data as MIGNode;
+    const node = data as MIGNode;
+
+    // Cache the result (5 minute TTL)
+    if (node) {
+      nodeCache.set(cacheKey, node, 300000);
+      nodeCache.set(makeNodeCacheKey(node.id), node, 300000);
+    }
+
+    return node;
   } catch (err) {
     logger.error('Exception in getNodeBySlug', err);
     return null;
@@ -73,6 +99,13 @@ export async function getNodeById(id: string): Promise<MIGNode | null> {
     return null;
   }
 
+  // Check cache first
+  const cacheKey = makeNodeCacheKey(id);
+  const cached = nodeCache.get(cacheKey);
+  if (cached) {
+    return cached;
+  }
+
   try {
     const { data, error } = await supabase
       .from('migraph_nodes')
@@ -85,7 +118,15 @@ export async function getNodeById(id: string): Promise<MIGNode | null> {
       return null;
     }
 
-    return data as MIGNode;
+    const node = data as MIGNode;
+
+    // Cache the result (5 minute TTL)
+    if (node) {
+      nodeCache.set(cacheKey, node, 300000);
+      nodeCache.set(`slug:${node.slug}`, node, 300000);
+    }
+
+    return node;
   } catch (err) {
     logger.error('Exception in getNodeById', err);
     return null;
@@ -155,6 +196,62 @@ export async function listNodesByType(
   } catch (err) {
     logger.error('Exception in listNodesByType', err);
     return [];
+  }
+}
+
+/**
+ * Bulk fetch nodes by IDs (optimized for large batches)
+ */
+export async function bulkFetchNodes(nodeIds: string[]): Promise<Map<string, MIGNode>> {
+  if (!supabase) {
+    logger.error('Supabase client not initialized');
+    return new Map();
+  }
+
+  const result = new Map<string, MIGNode>();
+  const uncachedIds: string[] = [];
+
+  // Check cache first
+  for (const id of nodeIds) {
+    const cached = nodeCache.get(makeNodeCacheKey(id));
+    if (cached) {
+      result.set(id, cached);
+    } else {
+      uncachedIds.push(id);
+    }
+  }
+
+  if (uncachedIds.length === 0) {
+    return result;
+  }
+
+  try {
+    // Batch fetch uncached nodes in chunks of 100
+    const chunks = chunkArray(uncachedIds, 100);
+
+    for (const chunk of chunks) {
+      const { data, error } = await supabase
+        .from('migraph_nodes')
+        .select('*')
+        .in('id', chunk);
+
+      if (error) {
+        logger.error('Failed to bulk fetch nodes', error);
+        continue;
+      }
+
+      for (const node of (data as MIGNode[]) || []) {
+        result.set(node.id, node);
+        // Cache the fetched nodes
+        nodeCache.set(makeNodeCacheKey(node.id), node, 300000);
+        nodeCache.set(`slug:${node.slug}`, node, 300000);
+      }
+    }
+
+    return result;
+  } catch (err) {
+    logger.error('Exception in bulkFetchNodes', err);
+    return result;
   }
 }
 

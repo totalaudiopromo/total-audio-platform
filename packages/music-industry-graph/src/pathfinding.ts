@@ -5,7 +5,7 @@
  * and influence paths in the music industry graph.
  */
 
-import { getNodeById, getNeighbors, getAllEdges } from './client';
+import { getNodeById, getNeighbors, getAllEdges, bulkFetchNodes } from './client';
 import type {
   MIGNode,
   MIGEdge,
@@ -16,6 +16,12 @@ import type {
   MIGNodeType,
 } from './types';
 import { logger } from './utils/logger';
+import {
+  createTimeoutGuard,
+  checkOperationLimits,
+  DEFAULT_QUERY_LIMITS,
+  createPerformanceTracker,
+} from './performanceHints';
 
 // ============================================================================
 // WEIGHTED BFS
@@ -23,14 +29,20 @@ import { logger } from './utils/logger';
 
 /**
  * Find the shortest path between two nodes using weighted BFS
+ * Now with timeout guards and operation limits
  */
 export async function findShortestPath(
   sourceId: string,
   targetId: string,
   options?: PathfindingOptions
 ): Promise<PathfindingResult | null> {
-  const maxDepth = options?.max_depth || 6;
+  const maxDepth = options?.max_depth || DEFAULT_QUERY_LIMITS.maxDepth;
   const avoidNodeTypes = options?.avoid_node_types || [];
+  const timeoutMs = options?.timeout_ms || DEFAULT_QUERY_LIMITS.timeoutMs;
+
+  // Performance tracking
+  const tracker = createPerformanceTracker('findShortestPath');
+  const timeoutGuard = createTimeoutGuard(timeoutMs);
 
   // BFS with path tracking
   interface QueueItem {
@@ -51,18 +63,44 @@ export async function findShortestPath(
 
   const visited = new Set<string>();
   visited.add(sourceId);
+  let edgesProcessed = 0;
 
   while (queue.length > 0) {
+    // Check timeout
+    if (timeoutGuard.check()) {
+      logger.warn(`Pathfinding timeout after ${timeoutGuard.elapsed()}ms`);
+      tracker.finish();
+      return null;
+    }
+
+    // Check operation limits
+    const limitCheck = checkOperationLimits(
+      queue[0]?.depth || 0,
+      visited.size,
+      edgesProcessed,
+      DEFAULT_QUERY_LIMITS
+    );
+
+    if (!limitCheck.continue) {
+      logger.warn(`Pathfinding limit exceeded: ${limitCheck.reason}`);
+      tracker.finish();
+      return null;
+    }
+
     const current = queue.shift()!;
 
     // Check if we've reached the target
     if (current.nodeId === targetId) {
-      // Reconstruct the full path
+      // Use bulk fetch for better performance
+      const nodeIds = current.path;
+      const nodeMap = await bulkFetchNodes(nodeIds);
       const nodes: MIGNode[] = [];
+
       for (const nodeId of current.path) {
-        const node = await getNodeById(nodeId);
+        const node = nodeMap.get(nodeId);
         if (node) {
           nodes.push(node);
+          tracker.trackNode();
         }
       }
 
@@ -74,6 +112,8 @@ export async function findShortestPath(
       for (const edge of current.edges) {
         relationshipBreakdown[edge.rel] = (relationshipBreakdown[edge.rel] || 0) + 1;
       }
+
+      tracker.finish();
 
       return {
         path: {
@@ -112,6 +152,9 @@ export async function findShortestPath(
 
       // Find the edge
       const edges = await getAllEdges(current.nodeId);
+      edgesProcessed += edges.length;
+      tracker.trackEdge();
+
       const edge = edges.find(
         (e) =>
           (e.source === current.nodeId && e.target === neighbor.neighbor_id) ||
@@ -128,6 +171,8 @@ export async function findShortestPath(
       }
     }
   }
+
+  tracker.finish();
 
   // No path found
   return null;
