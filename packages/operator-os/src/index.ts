@@ -14,6 +14,10 @@ export { OperatorStatusBar } from './components/OperatorStatusBar';
 export { OperatorAppSwitcher } from './components/OperatorAppSwitcher';
 export { OperatorLayoutSwitcher } from './components/OperatorLayoutSwitcher';
 export { OperatorPersonaIndicator } from './components/OperatorPersonaIndicator';
+export { OperatorLayoutManager } from './components/OperatorLayoutManager';
+export { OperatorPersonaPanel } from './components/OperatorPersonaPanel';
+export { OperatorPersonaSuggestionStrip } from './components/OperatorPersonaSuggestionStrip';
+export { AppProfilePopover } from './components/AppProfilePopover';
 
 // Hooks
 export { useOperatorHotkeys } from './hooks/useOperatorHotkeys';

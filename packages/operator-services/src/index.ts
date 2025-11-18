@@ -45,3 +45,18 @@ export {
   getAvailableShortcuts,
   type ContextShortcut,
 } from './contextShortcuts';
+
+// Persona Presets
+export {
+  PERSONA_PRESETS,
+  getPersonaPreset,
+  getAllPersonaPresets,
+  getRecommendedApps,
+  getPrimaryApps,
+  isAppRecommendedForPersona,
+  suggestPersonaForApps,
+  type PersonaPreset,
+} from './personaPresets';
+
+// Hooks
+export { useAppProfiles } from './hooks/useAppProfiles';

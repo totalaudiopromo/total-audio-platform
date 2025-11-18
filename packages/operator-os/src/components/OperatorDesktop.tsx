@@ -5,7 +5,7 @@
 
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { useOperatorStore } from '../state/operatorStore';
 import { useOperatorHotkeys } from '../hooks/useOperatorHotkeys';
@@ -16,12 +16,26 @@ import { OperatorTopBar } from './OperatorTopBar';
 import { OperatorCommandPalette } from './OperatorCommandPalette';
 import { OperatorNotifications } from './OperatorNotifications';
 import { OperatorStatusBar } from './OperatorStatusBar';
+import { OperatorLayoutManager } from './OperatorLayoutManager';
+import { OperatorPersonaPanel } from './OperatorPersonaPanel';
+import { OperatorPersonaSuggestionStrip } from './OperatorPersonaSuggestionStrip';
 
-export function OperatorDesktop() {
+export interface OperatorDesktopProps {
+  userId?: string;
+  workspaceId?: string;
+}
+
+export function OperatorDesktop({
+  userId = 'demo-user',
+  workspaceId = 'demo-workspace',
+}: OperatorDesktopProps = {}) {
   const { activeTheme, windows, focusedWindowId } = useOperatorStore();
+  const [isLayoutManagerOpen, setIsLayoutManagerOpen] = useState(false);
 
-  // Initialize hotkeys
-  useOperatorHotkeys();
+  // Initialize hotkeys with layout manager callback
+  useOperatorHotkeys({
+    onOpenLayoutSwitcher: () => setIsLayoutManagerOpen(true),
+  });
 
   const theme = themes[activeTheme];
 
@@ -63,8 +77,24 @@ export function OperatorDesktop() {
         </AnimatePresence>
       </div>
 
+      {/* Persona Panel - Right Side */}
+      <div className="absolute top-[80px] right-4 z-30">
+        <OperatorPersonaPanel
+          userId={userId}
+          workspaceId={workspaceId}
+          compact={false}
+        />
+      </div>
+
+      {/* Persona Suggestion Strip - Bottom Center */}
+      <div className="absolute bottom-[100px] left-0 right-0 z-20">
+        <OperatorPersonaSuggestionStrip
+          onOpenLayoutManager={() => setIsLayoutManagerOpen(true)}
+        />
+      </div>
+
       {/* Dock */}
-      <OperatorDock />
+      <OperatorDock userId={userId} workspaceId={workspaceId} />
 
       {/* Status Bar */}
       <OperatorStatusBar />
@@ -74,6 +104,14 @@ export function OperatorDesktop() {
 
       {/* Notifications */}
       <OperatorNotifications />
+
+      {/* Layout Manager Modal */}
+      <OperatorLayoutManager
+        userId={userId}
+        workspaceId={workspaceId}
+        isOpen={isLayoutManagerOpen}
+        onClose={() => setIsLayoutManagerOpen(false)}
+      />
     </div>
   );
 }

@@ -15,7 +15,11 @@ import type {
 
 interface OperatorStore extends OperatorState {
   // Window management
-  openApp: (appId: OperatorAppID, route?: string) => void;
+  openApp: (
+    appId: OperatorAppID,
+    route?: string,
+    initialState?: Partial<Pick<OperatorWindow, 'position' | 'size' | 'isMaximised'>>
+  ) => void;
   closeWindow: (windowId: string) => void;
   focusWindow: (windowId: string) => void;
   minimiseWindow: (windowId: string) => void;
@@ -62,7 +66,7 @@ export const useOperatorStore = create<OperatorStore>((set, get) => ({
   focusedWindowId: null,
 
   // Window management
-  openApp: (appId, route) => {
+  openApp: (appId, route, initialState) => {
     const state = get();
 
     // Check if window for this app already exists
@@ -74,16 +78,20 @@ export const useOperatorStore = create<OperatorStore>((set, get) => ({
       return;
     }
 
-    // Create new window
+    // Default window state
+    const defaultPosition = { x: 100 + state.windows.length * 40, y: 80 + state.windows.length * 40 };
+    const defaultSize = { width: 1000, height: 700 };
+
+    // Create new window with optional initial state from app profile
     const newWindow: OperatorWindow = {
       id: `window-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
       appId,
       title: appId.charAt(0).toUpperCase() + appId.slice(1),
-      position: { x: 100 + state.windows.length * 40, y: 80 + state.windows.length * 40 },
-      size: { width: 1000, height: 700 },
+      position: initialState?.position || defaultPosition,
+      size: initialState?.size || defaultSize,
       isFocused: true,
       isMinimised: false,
-      isMaximised: false,
+      isMaximised: initialState?.isMaximised || false,
       zIndex: state.windows.length + 1,
       route,
     };
