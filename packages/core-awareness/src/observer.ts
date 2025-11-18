@@ -386,8 +386,8 @@ export async function createPeriodicSnapshot(
 ): Promise<void> {
   logger.info('Creating periodic snapshot', { userId, workspaceId });
 
-  const integrationData = await aggregateIntegrationData(userId, workspaceId);
-  const recentEvents = await getRecentEvents(workspaceId, userId, '24h');
+  const integrationData = await aggregateIntegrationData(userId, workspaceId ?? null);
+  const recentEvents = await getRecentEvents(workspaceId ?? null, userId, '24h');
 
   const reasoningResult = await reason({
     fusionContext: integrationData.fusionContext,
@@ -467,7 +467,7 @@ export async function createPeriodicSnapshot(
     },
   };
 
-  await createSnapshot(workspaceId, userId, snapshotData);
+  await createSnapshot(workspaceId ?? null, userId, snapshotData);
   logger.info('Snapshot created', { userId, workspaceId });
 }
 
@@ -489,7 +489,9 @@ export function startObserver(
   // Run watchers periodically
   safeTimers.setInterval(
     'watchers',
-    () => runWatchers(userId, workspaceId),
+    async () => {
+      await runWatchers(userId, workspaceId);
+    },
     30 * 60 * 1000 // 30 minutes
   );
 

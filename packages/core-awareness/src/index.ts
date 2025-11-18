@@ -6,6 +6,15 @@
  * CONSTRAINT: NEVER execute - only observe and suggest
  */
 
+import type {
+  AwarenessSnapshot,
+  AwarenessEvent,
+  AwarenessSignal,
+  AwarenessRecommendation,
+  SnapshotData,
+} from './types';
+import type { Alert } from './alerts';
+
 // ============================================================================
 // TYPE EXPORTS
 // ============================================================================
@@ -270,7 +279,7 @@ export async function runAwarenessCycle(
   ];
 
   // 6. Persist alerts as recommendations
-  const alertRecommendations = await persistAlerts(allAlerts, workspaceId, userId);
+  const alertRecommendations = await persistAlerts(allAlerts, workspaceId ?? null, userId);
 
   // 7. Persist recommendations from recommend()
   const allRecommendations = [
@@ -341,7 +350,7 @@ export async function runAwarenessCycle(
     },
   };
 
-  const snapshot = await createSnapshot(workspaceId, userId, snapshotData);
+  const snapshot = await createSnapshot(workspaceId ?? null, userId, snapshotData);
 
   logger.info('Awareness cycle complete', {
     snapshotId: snapshot.id,

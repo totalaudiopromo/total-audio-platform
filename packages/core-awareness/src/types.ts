@@ -295,6 +295,10 @@ export interface MIGCluster {
 export interface IdentityKernelProfile {
   narrativeArcs: string[];
   coreThemes: string[];
+  narrative: {
+    themes: string[];
+    archetype: string;
+  };
   brandPalette: string[];
   voiceTone: string[];
   cohesionScore: number;
@@ -408,10 +412,9 @@ export interface PredictionResult {
 // ============================================================================
 
 export interface RecommendationInput {
-  targetSystem: TargetSystem;
   reasoning: ReasoningResult;
   predictions: PredictionResult;
-  currentSnapshot: SnapshotData;
+  integrationData: IntegrationData;
 }
 
 export interface RecommendationOutput {

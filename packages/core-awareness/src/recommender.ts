@@ -13,50 +13,35 @@ import type {
 import { logger } from './utils/logger';
 
 export async function recommend(input: RecommendationInput): Promise<RecommendationOutput> {
-  logger.info('Generating recommendations', { target: input.targetSystem });
+  logger.info('Generating recommendations for all target systems');
 
   const recommendations: AwarenessRecommendation[] = [];
   const signals: AwarenessSignal[] = [];
 
-  // Generate recommendations based on target system
-  switch (input.targetSystem) {
-    case 'autopilot':
-      recommendations.push(...generateAutopilotRecommendations(input));
-      signals.push(...generateAutopilotSignals(input));
-      break;
+  // Generate recommendations for all target systems
+  recommendations.push(...generateAutopilotRecommendations(input));
+  signals.push(...generateAutopilotSignals(input));
 
-    case 'mal':
-      recommendations.push(...generateMALRecommendations(input));
-      signals.push(...generateMALSignals(input));
-      break;
+  recommendations.push(...generateMALRecommendations(input));
+  signals.push(...generateMALSignals(input));
 
-    case 'dashboard':
-      recommendations.push(...generateDashboardRecommendations(input));
-      signals.push(...generateDashboardSignals(input));
-      break;
+  recommendations.push(...generateDashboardRecommendations(input));
+  signals.push(...generateDashboardSignals(input));
 
-    case 'cis':
-      recommendations.push(...generateCISRecommendations(input));
-      signals.push(...generateCISSignals(input));
-      break;
+  recommendations.push(...generateCISRecommendations(input));
+  signals.push(...generateCISSignals(input));
 
-    case 'identity_kernel':
-      recommendations.push(...generateIdentityKernelRecommendations(input));
-      signals.push(...generateIdentityKernelSignals(input));
-      break;
+  recommendations.push(...generateIdentityKernelRecommendations(input));
+  signals.push(...generateIdentityKernelSignals(input));
 
-    case 'cmg':
-      signals.push(...generateCMGSignals(input));
-      break;
+  signals.push(...generateCMGSignals(input));
+  signals.push(...generateScenesEngineSignals(input));
+  signals.push(...generateMIGSignals(input));
 
-    case 'scenes_engine':
-      signals.push(...generateScenesEngineSignals(input));
-      break;
-
-    case 'mig':
-      signals.push(...generateMIGSignals(input));
-      break;
-  }
+  logger.info('Generated recommendations', {
+    recommendationCount: recommendations.length,
+    signalCount: signals.length,
+  });
 
   return { recommendations, signals };
 }
@@ -178,8 +163,11 @@ function generateDashboardSignals(input: RecommendationInput): AwarenessSignal[]
     targetSystem: 'dashboard',
     signalType: 'snapshot_update',
     payload: {
-      scores: input.currentSnapshot.scores,
-      trajectories: input.currentSnapshot.trajectories,
+      scores: input.predictions.scores,
+      trajectories: {
+        shortTerm: input.predictions.shortTermTrajectory,
+        mediumTerm: input.predictions.mediumTermTrajectory,
+      },
     },
     confidence: 1.0,
     status: 'pending',
@@ -251,12 +239,18 @@ function generateIdentityKernelRecommendations(input: RecommendationInput): Awar
 function generateIdentityKernelSignals(input: RecommendationInput): AwarenessSignal[] {
   const signals: Partial<AwarenessSignal>[] = [];
 
+  // Calculate cohesion and alignment from integration data
+  const cohesionScore = input.integrationData.identityProfile?.cohesionScore || 0.5;
+  const sceneAlignment = input.integrationData.migClusters.length > 0
+    ? input.integrationData.migClusters[0].momentum
+    : 0.5;
+
   signals.push({
     targetSystem: 'identity_kernel',
     signalType: 'cohesion_update',
     payload: {
-      cohesionScore: input.currentSnapshot.scores.identity_cohesion,
-      sceneAlignment: input.currentSnapshot.scores.scene_alignment,
+      cohesionScore,
+      sceneAlignment,
     },
     confidence: 0.85,
     status: 'pending',

@@ -44,17 +44,36 @@ function generateShortTermTrajectory(input: any): Trajectory {
 
   // Detect potential inflection points
   if (input.migClusters.some((c: any) => c.momentum > 0.75)) {
+    const expectedAt = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000);
     inflectionPoints.push({
-      date: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
-      type: 'scene_peak',
+      date: expectedAt,
+      expectedAt,
+      metric: 'scene_momentum',
+      type: 'peak',
       description: 'Scene momentum likely to peak',
       significance: 'medium',
     });
   }
 
+  // Calculate overall direction
+  const avgTrend = Object.values(projections).reduce((sum, p) => {
+    return sum + (p.trend === 'up' ? 1 : p.trend === 'down' ? -1 : 0);
+  }, 0) / Object.keys(projections).length;
+
+  const direction = avgTrend > 0.3 ? 'rising' : avgTrend < -0.3 ? 'declining' : 'stable';
+
+  // Calculate projected metrics
+  const projectedMetrics: Record<string, number> = {};
+  for (const [key, value] of Object.entries(projections)) {
+    projectedMetrics[key] = value.projected;
+  }
+
   return {
     period: '7d',
+    direction,
+    confidence: 0.72,
     projections,
+    projectedMetrics,
     inflectionPoints,
   };
 }
@@ -71,17 +90,36 @@ function generateMediumTermTrajectory(input: any): Trajectory {
 
   // Detect longer-term inflection points
   if (input.cmgFingerprints.length > 0 && input.cmgFingerprints[0].evolution_rate < 0.1) {
+    const expectedAt = new Date(Date.now() + 21 * 24 * 60 * 60 * 1000);
     inflectionPoints.push({
-      date: new Date(Date.now() + 21 * 24 * 60 * 60 * 1000),
-      type: 'creative_plateau',
+      date: expectedAt,
+      expectedAt,
+      metric: 'creative_output',
+      type: 'trough',
       description: 'Creative evolution may plateau without intervention',
       significance: 'high',
     });
   }
 
+  // Calculate overall direction
+  const avgTrend = Object.values(projections).reduce((sum, p) => {
+    return sum + (p.trend === 'up' ? 1 : p.trend === 'down' ? -1 : 0);
+  }, 0) / Object.keys(projections).length;
+
+  const direction = avgTrend > 0.3 ? 'rising' : avgTrend < -0.3 ? 'declining' : 'stable';
+
+  // Calculate projected metrics
+  const projectedMetrics: Record<string, number> = {};
+  for (const [key, value] of Object.entries(projections)) {
+    projectedMetrics[key] = value.projected;
+  }
+
   return {
     period: '30d',
+    direction,
+    confidence: 0.65,
     projections,
+    projectedMetrics,
     inflectionPoints,
   };
 }

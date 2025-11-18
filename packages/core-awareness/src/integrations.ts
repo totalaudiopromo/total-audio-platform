@@ -123,6 +123,10 @@ export async function getIdentityKernelProfile(
   const profile: IdentityKernelProfile = {
     narrativeArcs: ['underground-to-breakthrough', 'diy-ethos', 'community-builder'],
     coreThemes: ['authenticity', 'experimentation', 'vulnerability'],
+    narrative: {
+      themes: ['authenticity', 'experimentation', 'vulnerability'],
+      archetype: 'The Innovator',
+    },
     brandPalette: ['slate-cyan', 'amber-glow', 'deep-noir'],
     voiceTone: ['conversational', 'honest', 'curious'],
     cohesionScore: 0.78,
@@ -153,6 +157,7 @@ export async function getAutopilotMissionStates(
       missionId: 'mission_001',
       phase: 'followup',
       status: 'active',
+      isActive: true,
       progress: 0.65,
       blockers: [],
       outcomes: {

@@ -9,6 +9,7 @@ import type {
   Mismatch,
   AwarenessRecommendation,
   Trajectory,
+  TargetSystem,
 } from './types';
 import { logger } from './utils/logger';
 import { createRecommendation } from './awarenessStore';
@@ -77,7 +78,7 @@ export function generateOpportunityAlerts(opportunities: Opportunity[]): Alert[]
     );
 
     // Calculate expiration based on opportunity window
-    const expiresAt = opportunity.window?.opensAt
+    const expiresAt = opportunity.window?.opensAt && opportunity.window.duration
       ? calculateOpportunityExpiration(opportunity.window.opensAt, opportunity.window.duration)
       : calculateExpirationDate(alertSeverity);
 
@@ -336,9 +337,14 @@ export async function persistAlerts(
  * Helper: Map risk severity + probability to alert severity
  */
 function mapRiskSeverityToAlertSeverity(
-  riskSeverity: 'low' | 'medium' | 'high',
+  riskSeverity: 'low' | 'medium' | 'high' | 'critical',
   probability: number
 ): Alert['severity'] {
+  // Critical risk is always critical
+  if (riskSeverity === 'critical') {
+    return 'critical';
+  }
+
   // High risk + high probability = critical
   if (riskSeverity === 'high' && probability > 0.7) {
     return 'critical';
@@ -447,10 +453,10 @@ function calculateOpportunityExpiration(opensAt: Date, duration: string): Date {
 /**
  * Helper: Determine target system for an alert
  */
-function determineTargetSystem(alert: Alert): string {
+function determineTargetSystem(alert: Alert): TargetSystem {
   // If alert has explicit target systems, use the first one
   if (alert.targetSystems.length > 0) {
-    return alert.targetSystems[0];
+    return alert.targetSystems[0] as TargetSystem;
   }
 
   // Otherwise, route based on alert type
