@@ -15,5 +15,8 @@ export * from './elementStore';
 export * from './aiContextBuilder';
 export * from './cisFusionAdapter';
 
+// Hardware Integration
+export * from './hardwareBridge';
+
 // Utilities
 export { createLogger, logger } from './utils/logger';

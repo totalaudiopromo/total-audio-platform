@@ -9,3 +9,8 @@ export * from './CISCard';
 export * from './CISButton';
 export * from './LayerList';
 export * from './ExportToolbar';
+
+export * from './AutosaveStatusIndicator';
+export * from './ContextSidebar';
+export * from './IdentityHintsPanel';
+export * from './SceneContextPanel';
