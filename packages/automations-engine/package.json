@@ -12,9 +12,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@total-audio/db": "workspace:*",
-    "@total-audio/logger": "workspace:*",
-    "@total-audio/fusion-layer": "workspace:*"
+    "@total-audio/core-db": "workspace:*",
+    "@supabase/supabase-js": "^2.75.0"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",

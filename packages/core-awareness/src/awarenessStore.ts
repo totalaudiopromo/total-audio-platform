@@ -227,7 +227,7 @@ export async function createSignal(
   return mapSignalFromDB(data);
 }
 
-export async function getPendingSignals(
+export async function getPendingSignalsByTarget(
   targetSystem: string,
   workspaceId: string | null,
   userId: string | null
@@ -466,4 +466,130 @@ function parseTimeWindow(window: TimeWindow): number {
     '90d': 90 * 24 * 60 * 60 * 1000,
   };
   return map[window];
+}
+
+// ============================================================================
+// ALIASES FOR INDEX.TS EXPORTS
+// ============================================================================
+
+export const getRecentSnapshots = listSnapshots;
+export const ingest = ingestEvent;
+export const ingestBatch = ingestEvents;
+
+export async function getSignalsByTarget(
+  targetSystem: string,
+  workspaceId: string | null,
+  userId: string | null,
+  limit: number = 50
+): Promise<AwarenessSignal[]> {
+  const client = getClient();
+
+  const query = client
+    .from('awareness_signals')
+    .select('*')
+    .eq('target_system', targetSystem)
+    .order('created_at', { ascending: false })
+    .limit(limit);
+
+  if (workspaceId) {
+    query.eq('workspace_id', workspaceId);
+  } else if (userId) {
+    query.eq('user_id', userId);
+  }
+
+  const { data, error } = await query;
+
+  if (error) throw new Error(`Failed to get signals: ${error.message}`);
+
+  return (data || []).map(mapSignalFromDB);
+}
+
+export async function getPendingSignals(
+  workspaceId: string | null,
+  userId: string | null,
+  limit: number = 50
+): Promise<AwarenessSignal[]> {
+  const client = getClient();
+
+  const query = client
+    .from('awareness_signals')
+    .select('*')
+    .eq('status', 'pending')
+    .order('created_at', { ascending: false })
+    .limit(limit);
+
+  if (workspaceId) {
+    query.eq('workspace_id', workspaceId);
+  } else if (userId) {
+    query.eq('user_id', userId);
+  }
+
+  const { data, error } = await query;
+
+  if (error) throw new Error(`Failed to get pending signals: ${error.message}`);
+
+  return (data || []).map(mapSignalFromDB);
+}
+
+export async function markSignalActioned(signalId: string): Promise<AwarenessSignal> {
+  const client = getClient();
+
+  const { data, error } = await client
+    .from('awareness_signals')
+    .update({
+      status: 'actioned',
+      actioned_at: new Date().toISOString(),
+    })
+    .eq('id', signalId)
+    .select()
+    .single();
+
+  if (error) throw new Error(`Failed to mark signal actioned: ${error.message}`);
+
+  logger.info('Signal marked actioned', { id: signalId });
+  return mapSignalFromDB(data);
+}
+
+export async function getRecommendationsByTarget(
+  targetSystem: string,
+  workspaceId: string | null,
+  userId: string | null,
+  limit: number = 50
+): Promise<AwarenessRecommendation[]> {
+  return listRecommendations(workspaceId, userId, {
+    targetSystem,
+    limit,
+  });
+}
+
+export async function getPendingRecommendations(
+  workspaceId: string | null,
+  userId: string | null,
+  limit: number = 50
+): Promise<AwarenessRecommendation[]> {
+  return listRecommendations(workspaceId, userId, {
+    status: 'pending',
+    limit,
+  });
+}
+
+export async function markRecommendationResolved(
+  recId: string
+): Promise<AwarenessRecommendation> {
+  const client = getClient();
+
+  const { data, error } = await client
+    .from('awareness_recommendations')
+    .update({
+      status: 'resolved',
+      resolved_at: new Date().toISOString(),
+    })
+    .eq('id', recId)
+    .select()
+    .single();
+
+  if (error) throw new Error(`Failed to mark recommendation resolved: ${error.message}`);
+
+  logger.info('Recommendation marked resolved', { id: recId });
+  return mapRecommendationFromDB(data);
 }
