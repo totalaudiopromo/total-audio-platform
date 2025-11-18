@@ -1,18 +1,25 @@
 /**
  * RCF Trends Page
- * Heatmaps, velocity lines, top sources
+ * Comprehensive trends dashboard with heatmap, velocity charts, and trend cards
  */
 
 'use client';
 
 import { useState, useEffect } from 'react';
-import type { TrendSnapshot } from '@total-audio/rcf/trends';
+import type { TrendSnapshot, TrendWindow } from '@total-audio/rcf/trends';
 import Link from 'next/link';
+import { TrendHeatmap } from './components/TrendHeatmap';
+import { TrendListCard } from './components/TrendListCard';
+import { TrendWindowSelector } from './components/TrendWindowSelector';
+
+type ViewMode = 'heatmap' | 'list';
 
 export default function RCFTrendsPage() {
   const [trends, setTrends] = useState<TrendSnapshot[]>([]);
-  const [window, setWindow] = useState<'1h' | '6h' | '24h' | '7d'>('24h');
+  const [window, setWindow] = useState<TrendWindow>('24h');
+  const [viewMode, setViewMode] = useState<ViewMode>('list');
   const [loading, setLoading] = useState(true);
+  const [selectedTrend, setSelectedTrend] = useState<TrendSnapshot | null>(null);
 
   useEffect(() => {
     fetchTrends();
@@ -21,7 +28,7 @@ export default function RCFTrendsPage() {
   async function fetchTrends() {
     try {
       setLoading(true);
-      const response = await fetch(`/api/rcf/trends?window=${window}&limit=20`);
+      const response = await fetch(`/api/rcf/trends?window=${window}&limit=50`);
       const result = await response.json();
 
       if (result.success) {
@@ -36,30 +43,56 @@ export default function RCFTrendsPage() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-slate-100">
-      <header className="border-b border-slate-800 bg-[#0a0a0a]">
+      <header className="sticky top-0 z-10 border-b border-slate-800 bg-[#0a0a0a]/95 backdrop-blur">
         <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
+          <div className="flex items-start justify-between">
             <div>
-              <Link href="/rcf" className="text-sm text-[#3AA9BE] hover:text-[#3AA9BE]/80">
+              <Link
+                href="/rcf"
+                className="text-sm text-[#3AA9BE] hover:text-[#3AA9BE]/80 transition-colors duration-240"
+              >
                 ← Back to Feed
               </Link>
-              <h1 className="mt-2 text-2xl font-bold tracking-tight">Trending</h1>
+              <h1 className="mt-2 text-2xl font-bold tracking-tight">Real-Time Trends</h1>
+              <p className="text-sm text-slate-400 mt-1">
+                {trends.length} trending {trends.length === 1 ? 'entity' : 'entities'} in the last{' '}
+                {window}
+              </p>
             </div>
 
-            <div className="flex space-x-2">
-              {(['1h', '6h', '24h', '7d'] as const).map((w) => (
+            <div className="flex flex-col items-end space-y-3">
+              <TrendWindowSelector selected={window} onChange={setWindow} />
+
+              <div className="flex space-x-2">
                 <button
-                  key={w}
-                  onClick={() => setWindow(w)}
-                  className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
-                    window === w
-                      ? 'bg-[#3AA9BE] text-white'
-                      : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
-                  }`}
+                  onClick={() => setViewMode('list')}
+                  className={`
+                    px-4 py-2 text-sm font-medium font-mono rounded-lg
+                    transition-all duration-240 ease-out
+                    ${
+                      viewMode === 'list'
+                        ? 'bg-[#3AA9BE] text-white'
+                        : 'bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800'
+                    }
+                  `}
                 >
-                  {w}
+                  List View
                 </button>
-              ))}
+                <button
+                  onClick={() => setViewMode('heatmap')}
+                  className={`
+                    px-4 py-2 text-sm font-medium font-mono rounded-lg
+                    transition-all duration-240 ease-out
+                    ${
+                      viewMode === 'heatmap'
+                        ? 'bg-[#3AA9BE] text-white'
+                        : 'bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800'
+                    }
+                  `}
+                >
+                  Heatmap
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -67,60 +100,46 @@ export default function RCFTrendsPage() {
 
       <main className="container mx-auto px-4 py-8">
         {loading ? (
-          <div className="text-center text-slate-400">Loading trends...</div>
+          <div className="text-center py-12">
+            <div className="inline-block animate-pulse text-[#3AA9BE]">Loading trends...</div>
+          </div>
         ) : trends.length === 0 ? (
-          <div className="text-center text-slate-400">No trends data yet</div>
+          <div className="text-center py-12 text-slate-400">
+            <div className="text-lg mb-2">No trend data yet</div>
+            <div className="text-sm">Check back once events start flowing through the RCF system</div>
+          </div>
         ) : (
-          <div className="grid gap-4">
-            {trends.map((trend, idx) => (
-              <div
-                key={`${trend.entity_type}-${trend.entity_slug}-${idx}`}
-                className="rounded-lg border border-slate-800 bg-slate-900/50 p-6"
-              >
-                <div className="flex items-start justify-between">
-                  <div>
-                    <div className="text-sm font-medium text-[#3AA9BE]">
-                      {trend.entity_type.toUpperCase()}
-                    </div>
-                    <div className="mt-1 text-lg font-semibold text-slate-100">
-                      {trend.entity_slug}
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <div className="text-2xl font-bold text-[#3AA9BE]">
-                      {trend.score.toFixed(0)}
-                    </div>
-                    <div className="text-xs text-slate-500">Trend Score</div>
-                  </div>
-                </div>
+          <div className="space-y-8">
+            {viewMode === 'heatmap' && (
+              <TrendHeatmap trends={trends} onSelectTrend={setSelectedTrend} />
+            )}
 
-                <div className="mt-4 grid grid-cols-3 gap-4">
-                  <div>
-                    <div className="text-xs text-slate-500">Velocity</div>
-                    <div className="text-sm font-medium text-slate-200">
-                      {trend.velocity.toFixed(2)} events/hr
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-xs text-slate-500">Events</div>
-                    <div className="text-sm font-medium text-slate-200">
-                      {trend.event_count}
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-xs text-slate-500">Change</div>
-                    <div
-                      className={`text-sm font-medium ${
-                        trend.change > 0 ? 'text-green-400' : 'text-slate-400'
-                      }`}
-                    >
-                      {trend.change > 0 ? '+' : ''}
-                      {trend.change.toFixed(1)}%
-                    </div>
-                  </div>
-                </div>
+            {viewMode === 'list' && (
+              <div className="space-y-4">
+                {trends.map((trend, idx) => (
+                  <TrendListCard
+                    key={`${trend.entity_type}-${trend.entity_slug}-${idx}`}
+                    trend={trend}
+                    rank={idx + 1}
+                  />
+                ))}
               </div>
-            ))}
+            )}
+
+            {selectedTrend && viewMode === 'heatmap' && (
+              <div className="mt-8">
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-lg font-semibold text-slate-200">Selected Trend</h2>
+                  <button
+                    onClick={() => setSelectedTrend(null)}
+                    className="text-sm text-slate-400 hover:text-slate-200 transition-colors"
+                  >
+                    Clear
+                  </button>
+                </div>
+                <TrendListCard trend={selectedTrend} />
+              </div>
+            )}
           </div>
         )}
       </main>
