@@ -12,6 +12,8 @@ export { OperatorCommandPalette } from './components/OperatorCommandPalette';
 export { OperatorNotifications } from './components/OperatorNotifications';
 export { OperatorStatusBar } from './components/OperatorStatusBar';
 export { OperatorAppSwitcher } from './components/OperatorAppSwitcher';
+export { OperatorLayoutSwitcher } from './components/OperatorLayoutSwitcher';
+export { OperatorPersonaIndicator } from './components/OperatorPersonaIndicator';
 
 // Hooks
 export { useOperatorHotkeys } from './hooks/useOperatorHotkeys';
@@ -21,6 +23,40 @@ export { useWindowManager } from './hooks/useWindowManager';
 export { useOperatorStore } from './state/operatorStore';
 export { useLayoutStore } from './state/layoutStore';
 export { useThemeStore } from './state/themeStore';
+
+// Layout Persistence
+export {
+  loadLayout,
+  saveLayout,
+  listLayouts,
+  deleteLayout,
+  applyLayoutToStore,
+  extractLayoutFromStore,
+  exportLayoutToJson,
+  importLayoutFromJson,
+  createDebouncedLayoutSave,
+} from './state/layoutPersistence';
+
+export type {
+  OperatorLayout,
+  OperatorLayoutWindow,
+  OperatorLayoutSummary,
+} from './state/layoutPersistence';
+
+// App Profiles
+export {
+  getAppProfile,
+  setAppProfile,
+  getPinnedApps,
+  resolveInitialWindowState,
+  updateAppProfileWithWindowState,
+  toggleAppPinning,
+} from './state/appProfiles';
+
+export type {
+  AppProfile,
+  LaunchMode,
+} from './state/appProfiles';
 
 // Themes
 export { themes, xpTheme, aquaTheme, dawTheme, asciiTheme, analogueTheme } from './themes';

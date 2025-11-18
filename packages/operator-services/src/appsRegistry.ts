@@ -23,6 +23,8 @@ export type OperatorAppID =
 
 export type OpenBehaviour = 'newWindow' | 'focusExisting';
 
+export type OperatorPersona = 'default' | 'strategist' | 'producer' | 'campaign' | 'dev';
+
 export interface AppMetadata {
   appId: OperatorAppID;
   name: string;
@@ -31,6 +33,8 @@ export interface AppMetadata {
   openBehaviour: OpenBehaviour;
   category: 'core' | 'intelligence' | 'campaign' | 'creative' | 'system';
   iconName: string; // Lucide icon name
+  suggestedLayoutName?: string; // Suggested layout for this app
+  defaultPersona?: OperatorPersona; // Persona hint for this app
 }
 
 /**
@@ -55,6 +59,8 @@ export const APPS_REGISTRY: Record<OperatorAppID, AppMetadata> = {
     openBehaviour: 'focusExisting',
     category: 'intelligence',
     iconName: 'Radio',
+    suggestedLayoutName: 'ops',
+    defaultPersona: 'strategist',
   },
 
   pitch: {
@@ -85,6 +91,8 @@ export const APPS_REGISTRY: Record<OperatorAppID, AppMetadata> = {
     openBehaviour: 'focusExisting',
     category: 'creative',
     iconName: 'Sparkles',
+    suggestedLayoutName: 'creative',
+    defaultPersona: 'producer',
   },
 
   community: {
@@ -105,6 +113,8 @@ export const APPS_REGISTRY: Record<OperatorAppID, AppMetadata> = {
     openBehaviour: 'focusExisting',
     category: 'campaign',
     iconName: 'Zap',
+    suggestedLayoutName: 'ops',
+    defaultPersona: 'campaign',
   },
 
   automations: {
@@ -175,6 +185,7 @@ export const APPS_REGISTRY: Record<OperatorAppID, AppMetadata> = {
     openBehaviour: 'newWindow',
     category: 'system',
     iconName: 'Terminal',
+    defaultPersona: 'dev',
   },
 };
 
