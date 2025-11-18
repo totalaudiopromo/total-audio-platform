@@ -1,453 +1,376 @@
 /**
  * MeshOS Dashboard
- * Main coordination view with Today's Summary panel
+ * Today's Intelligence Summary with Flow State design
  */
 
 'use client';
 
-import { useEffect, useState } from 'react';
-import type { DailySummary, GetSummaryResponse } from '@total-audio/meshos';
+import { useState, useEffect } from 'react';
+import { MeshSection } from '../../components/meshos/MeshSection';
+import { MeshCyanButton } from '../../components/meshos/MeshCyanButton';
+import { TimeAgo } from '../../components/meshos/TimeAgo';
+import { SummarySection } from './components/SummarySection';
+import { InsightList } from './components/InsightList';
+import { OpportunityCard } from './components/OpportunityCard';
+import { RiskCard } from './components/RiskCard';
+import { SystemStatusRow } from './components/SystemStatusRow';
+
+interface DailySummary {
+  date: string;
+  generatedAt: string;
+  opportunities: Array<{
+    id: string;
+    systems: string[];
+    opportunityType: string;
+    impact: 'low' | 'medium' | 'high';
+    description: string;
+    recommendedActions?: string[];
+  }>;
+  conflicts: Array<{
+    id: string;
+    systems: string[];
+    conflictType: string;
+    severity: 'low' | 'medium' | 'high' | 'critical';
+    description: string;
+    resolutionSuggestions?: string[];
+  }>;
+  plans: any;
+  drifts: any[];
+  metrics: {
+    totalOpportunities: number;
+    totalConflicts: number;
+    totalPlans: number;
+    totalDrifts: number;
+    criticalIssues: number;
+  };
+}
+
+const mockSystemStatuses = [
+  { system: 'Autopilot', status: 'warning' as const, trend: 0 as const, lastUpdate: new Date().toISOString() },
+  { system: 'MAL', status: 'healthy' as const, trend: 1 as const, lastUpdate: new Date().toISOString() },
+  { system: 'CoachOS', status: 'warning' as const, trend: -1 as const, lastUpdate: new Date().toISOString() },
+  { system: 'CIS', status: 'healthy' as const, trend: 0 as const, lastUpdate: new Date().toISOString() },
+  { system: 'MIG', status: 'healthy' as const, trend: 1 as const, lastUpdate: new Date().toISOString() },
+  { system: 'Scenes', status: 'healthy' as const, trend: 0 as const, lastUpdate: new Date().toISOString() },
+  { system: 'RCF', status: 'healthy' as const, trend: 1 as const, lastUpdate: new Date().toISOString() },
+];
 
 export default function MeshOSPage() {
   const [summary, setSummary] = useState<DailySummary | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [runningCycle, setRunningCycle] = useState(false);
 
   useEffect(() => {
-    async function fetchSummary() {
-      try {
-        const response = await fetch('/api/meshos/summary/today');
-        const data: GetSummaryResponse = await response.json();
-
-        if (data.success && data.summary) {
-          setSummary(data.summary);
-        } else {
-          setError(data.error || 'Failed to fetch summary');
-        }
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Unknown error');
-      } finally {
-        setLoading(false);
-      }
-    }
-
     fetchSummary();
   }, []);
 
+  async function fetchSummary() {
+    try {
+      const response = await fetch('/api/meshos/summary');
+      const data = await response.json();
+
+      if (data.success && data.summary) {
+        setSummary(data.summary);
+      } else {
+        setError(data.error || 'Failed to fetch summary');
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Unknown error');
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function runReasoningCycle() {
+    setRunningCycle(true);
+    try {
+      const response = await fetch('/api/meshos/reasoning/run', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ mode: 'daily' }),
+      });
+
+      if (response.ok) {
+        // Refresh summary after cycle completes
+        await fetchSummary();
+      }
+    } catch (err) {
+      console.error('Failed to run reasoning cycle:', err);
+    } finally {
+      setRunningCycle(false);
+    }
+  }
+
   if (loading) {
     return (
-      <div className="meshos-container">
-        <h1>MeshOS</h1>
-        <p className="loading-text">Loading coordination data...</p>
+      <div style={{ padding: '2rem', backgroundColor: '#0A0D12', minHeight: '100vh' }}>
+        <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+          <h1 style={{ fontFamily: 'Inter, sans-serif', fontSize: '2rem', color: '#F9FAFB', marginBottom: '1rem' }}>
+            MeshOS
+          </h1>
+          <p style={{ color: '#6B7280' }}>Loading intelligence summary...</p>
+        </div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="meshos-container">
-        <h1>MeshOS</h1>
-        <div className="error-panel">
-          <p>Error: {error}</p>
+      <div style={{ padding: '2rem', backgroundColor: '#0A0D12', minHeight: '100vh' }}>
+        <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+          <h1 style={{ fontFamily: 'Inter, sans-serif', fontSize: '2rem', color: '#F9FAFB', marginBottom: '1rem' }}>
+            MeshOS
+          </h1>
+          <div
+            style={{
+              padding: '1.5rem',
+              backgroundColor: '#14171C',
+              border: '1px solid rgba(217, 106, 106, 0.3)',
+              borderRadius: '8px',
+              color: '#D96A6A',
+            }}
+          >
+            Error: {error}
+          </div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="meshos-container">
-      <header className="meshos-header">
-        <h1>MeshOS</h1>
-        <p className="subtitle">READ-ONLY Meta-Coordination Layer</p>
-      </header>
+    <div style={{ padding: '2rem', backgroundColor: '#0A0D12', minHeight: '100vh' }}>
+      <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+        {/* Header */}
+        <header style={{ marginBottom: '2rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem' }}>
+            <div>
+              <h1
+                style={{
+                  fontFamily: 'Inter, sans-serif',
+                  fontSize: '2.5rem',
+                  fontWeight: 700,
+                  color: '#F9FAFB',
+                  margin: 0,
+                }}
+              >
+                MeshOS
+              </h1>
+              <p
+                style={{
+                  fontFamily: 'Inter, sans-serif',
+                  fontSize: '1rem',
+                  color: '#3AA9BE',
+                  margin: '0.5rem 0 0',
+                }}
+              >
+                Daily Intelligence Digest
+              </p>
+            </div>
+            <MeshCyanButton onClick={runReasoningCycle} loading={runningCycle} disabled={runningCycle}>
+              {runningCycle ? 'Running Cycle...' : 'Run Reasoning Cycle'}
+            </MeshCyanButton>
+          </div>
+          {summary && (
+            <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+              <span
+                style={{
+                  fontFamily: 'JetBrains Mono, monospace',
+                  fontSize: '0.85rem',
+                  color: '#6B7280',
+                }}
+              >
+                {summary.date}
+              </span>
+              <span style={{ color: '#374151' }}>•</span>
+              <span
+                style={{
+                  fontFamily: 'Inter, sans-serif',
+                  fontSize: '0.85rem',
+                  color: '#6B7280',
+                }}
+              >
+                Generated <TimeAgo timestamp={summary.generatedAt} />
+              </span>
+            </div>
+          )}
+        </header>
 
-      {summary && (
-        <div className="meshos-grid">
-          {/* Today's Summary Panel */}
-          <section className="summary-panel">
-            <h2>Today's Summary</h2>
-            <p className="date">{summary.date}</p>
-
-            <div className="metrics-grid">
-              <div className="metric-card">
-                <span className="metric-value">{summary.metrics.totalOpportunities}</span>
-                <span className="metric-label">Opportunities</span>
-              </div>
-              <div className="metric-card">
-                <span className="metric-value">{summary.metrics.totalConflicts}</span>
-                <span className="metric-label">Conflicts</span>
-              </div>
-              <div className="metric-card">
-                <span className="metric-value">{summary.metrics.totalPlans}</span>
-                <span className="metric-label">Plans</span>
-              </div>
-              <div className="metric-card critical">
-                <span className="metric-value">{summary.metrics.criticalIssues}</span>
-                <span className="metric-label">Critical Issues</span>
-              </div>
+        {summary && (
+          <>
+            {/* Metrics Summary */}
+            <div style={{ marginBottom: '2rem' }}>
+              <SummarySection metrics={summary.metrics} lastCycle={summary.generatedAt} />
             </div>
 
-            {summary.metrics.criticalIssues > 0 && (
-              <div className="alert critical">
-                ⚠️ {summary.metrics.criticalIssues} critical issue(s) require attention
+            {/* System Status */}
+            <MeshSection
+              title="System Status"
+              subtitle="Real-time health of MeshOS subsystems"
+            >
+              <div style={{ display: 'grid', gap: '0.5rem' }}>
+                {mockSystemStatuses.map((status) => (
+                  <SystemStatusRow key={status.system} {...status} />
+                ))}
               </div>
-            )}
-          </section>
+            </MeshSection>
 
-          {/* Top Opportunities */}
-          <section className="opportunities-panel">
-            <h3>Top Opportunities</h3>
-            {summary.opportunities.length > 0 ? (
-              <div className="opportunity-list">
+            {/* Opportunities */}
+            <MeshSection
+              title="Cross-System Opportunities"
+              subtitle={`${summary.opportunities.length} opportunities identified`}
+              action={
+                <a
+                  href="/meshos/plans"
+                  style={{
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: '0.875rem',
+                    color: '#3AA9BE',
+                    textDecoration: 'none',
+                    fontWeight: 600,
+                  }}
+                >
+                  View Plans →
+                </a>
+              }
+            >
+              <div style={{ display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))' }}>
                 {summary.opportunities.map((opp) => (
-                  <div key={opp.id} className={`opportunity-card impact-${opp.impact}`}>
-                    <div className="opportunity-header">
-                      <span className="systems">{opp.systems.join(' + ')}</span>
-                      <span className={`badge impact-${opp.impact}`}>{opp.impact}</span>
-                    </div>
-                    <p className="description">{opp.description}</p>
-                    {opp.recommendedActions && opp.recommendedActions.length > 0 && (
-                      <ul className="actions">
-                        {opp.recommendedActions.map((action, idx) => (
-                          <li key={idx}>{action}</li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
+                  <OpportunityCard key={opp.id} {...opp} />
                 ))}
               </div>
-            ) : (
-              <p className="empty-state">No opportunities detected</p>
-            )}
-          </section>
+            </MeshSection>
 
-          {/* Top Conflicts */}
-          <section className="conflicts-panel">
-            <h3>Top Conflicts</h3>
-            {summary.conflicts.length > 0 ? (
-              <div className="conflict-list">
+            {/* Conflicts & Risks */}
+            <MeshSection
+              title="Detected Conflicts & Risks"
+              subtitle={`${summary.conflicts.length} conflicts requiring attention`}
+              action={
+                <a
+                  href="/meshos/contradictions"
+                  style={{
+                    fontFamily: 'Inter, sans-serif',
+                    fontSize: '0.875rem',
+                    color: '#D96A6A',
+                    textDecoration: 'none',
+                    fontWeight: 600,
+                  }}
+                >
+                  View Graph →
+                </a>
+              }
+            >
+              <div style={{ display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))' }}>
                 {summary.conflicts.map((conflict) => (
-                  <div key={conflict.id} className={`conflict-card severity-${conflict.severity}`}>
-                    <div className="conflict-header">
-                      <span className="systems">{conflict.systems.join(' ↔ ')}</span>
-                      <span className={`badge severity-${conflict.severity}`}>{conflict.severity}</span>
-                    </div>
-                    <p className="description">{conflict.description}</p>
-                    {conflict.resolutionSuggestions && conflict.resolutionSuggestions.length > 0 && (
-                      <ul className="suggestions">
-                        {conflict.resolutionSuggestions.map((suggestion, idx) => (
-                          <li key={idx}>{suggestion}</li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
+                  <RiskCard key={conflict.id} {...conflict} />
                 ))}
               </div>
-            ) : (
-              <p className="empty-state">No conflicts detected</p>
+            </MeshSection>
+
+            {/* Key Insights */}
+            {summary.metrics.criticalIssues > 0 && (
+              <MeshSection
+                title="Critical Insights"
+                subtitle="Immediate attention required"
+              >
+                <InsightList
+                  insights={[
+                    `${summary.metrics.criticalIssues} critical issues detected across ${summary.conflicts.filter((c) => c.severity === 'critical').length} systems`,
+                    'Autopilot workload conflicts with CoachOS burnout warnings',
+                    'MAL growth phase pressures conflicting with Identity authenticity',
+                  ]}
+                />
+              </MeshSection>
             )}
-          </section>
 
-          {/* Navigation */}
-          <nav className="meshos-nav">
-            <a href="/meshos/drift" className="nav-card">
-              <h3>Drift & Contradictions</h3>
-              <p>View contradiction graph</p>
-            </a>
-            <a href="/meshos/plans" className="nav-card">
-              <h3>Plans</h3>
-              <p>Active and recent plans</p>
-            </a>
-            <a href="/meshos/negotiations" className="nav-card">
-              <h3>Negotiations</h3>
-              <p>Cross-system negotiations</p>
-            </a>
-          </nav>
-        </div>
-      )}
-
-      <style jsx>{`
-        .meshos-container {
-          padding: 2rem;
-          max-width: 1400px;
-          margin: 0 auto;
-          font-family: system-ui, -apple-system, sans-serif;
-        }
-
-        .meshos-header {
-          margin-bottom: 2rem;
-        }
-
-        .meshos-header h1 {
-          font-size: 2.5rem;
-          font-weight: 700;
-          margin: 0;
-          color: #1a1a1a;
-        }
-
-        .subtitle {
-          color: #666;
-          font-size: 0.9rem;
-          margin: 0.5rem 0 0;
-        }
-
-        .meshos-grid {
-          display: grid;
-          gap: 2rem;
-        }
-
-        .summary-panel {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          padding: 2rem;
-          border-radius: 12px;
-          color: white;
-        }
-
-        .summary-panel h2 {
-          margin: 0 0 0.5rem;
-          font-size: 1.5rem;
-        }
-
-        .date {
-          opacity: 0.9;
-          margin: 0 0 1.5rem;
-        }
-
-        .metrics-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-          gap: 1rem;
-          margin-bottom: 1rem;
-        }
-
-        .metric-card {
-          background: rgba(255, 255, 255, 0.15);
-          padding: 1rem;
-          border-radius: 8px;
-          text-align: center;
-          backdrop-filter: blur(10px);
-        }
-
-        .metric-card.critical {
-          background: rgba(239, 68, 68, 0.25);
-        }
-
-        .metric-value {
-          display: block;
-          font-size: 2rem;
-          font-weight: 700;
-          margin-bottom: 0.25rem;
-        }
-
-        .metric-label {
-          display: block;
-          font-size: 0.85rem;
-          opacity: 0.9;
-        }
-
-        .alert {
-          background: rgba(239, 68, 68, 0.2);
-          border: 2px solid rgba(239, 68, 68, 0.5);
-          padding: 1rem;
-          border-radius: 8px;
-          text-align: center;
-          font-weight: 600;
-        }
-
-        .opportunities-panel,
-        .conflicts-panel {
-          background: white;
-          padding: 2rem;
-          border-radius: 12px;
-          border: 1px solid #e5e7eb;
-        }
-
-        .opportunities-panel h3,
-        .conflicts-panel h3 {
-          margin: 0 0 1.5rem;
-          font-size: 1.25rem;
-          color: #1a1a1a;
-        }
-
-        .opportunity-list,
-        .conflict-list {
-          display: grid;
-          gap: 1rem;
-        }
-
-        .opportunity-card,
-        .conflict-card {
-          padding: 1.5rem;
-          border-radius: 8px;
-          border: 2px solid;
-        }
-
-        .opportunity-card.impact-high {
-          border-color: #10b981;
-          background: #f0fdf4;
-        }
-
-        .opportunity-card.impact-medium {
-          border-color: #f59e0b;
-          background: #fffbeb;
-        }
-
-        .opportunity-card.impact-low {
-          border-color: #6b7280;
-          background: #f9fafb;
-        }
-
-        .conflict-card.severity-critical {
-          border-color: #dc2626;
-          background: #fef2f2;
-        }
-
-        .conflict-card.severity-high {
-          border-color: #f97316;
-          background: #fff7ed;
-        }
-
-        .conflict-card.severity-medium {
-          border-color: #f59e0b;
-          background: #fffbeb;
-        }
-
-        .conflict-card.severity-low {
-          border-color: #6b7280;
-          background: #f9fafb;
-        }
-
-        .opportunity-header,
-        .conflict-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 0.75rem;
-        }
-
-        .systems {
-          font-weight: 600;
-          font-size: 0.9rem;
-          color: #374151;
-        }
-
-        .badge {
-          padding: 0.25rem 0.75rem;
-          border-radius: 12px;
-          font-size: 0.75rem;
-          font-weight: 600;
-          text-transform: uppercase;
-        }
-
-        .badge.impact-high {
-          background: #10b981;
-          color: white;
-        }
-
-        .badge.impact-medium {
-          background: #f59e0b;
-          color: white;
-        }
-
-        .badge.impact-low {
-          background: #6b7280;
-          color: white;
-        }
-
-        .badge.severity-critical {
-          background: #dc2626;
-          color: white;
-        }
-
-        .badge.severity-high {
-          background: #f97316;
-          color: white;
-        }
-
-        .badge.severity-medium {
-          background: #f59e0b;
-          color: white;
-        }
-
-        .badge.severity-low {
-          background: #6b7280;
-          color: white;
-        }
-
-        .description {
-          color: #374151;
-          margin: 0 0 1rem;
-          line-height: 1.6;
-        }
-
-        .actions,
-        .suggestions {
-          margin: 0;
-          padding-left: 1.5rem;
-          color: #6b7280;
-          font-size: 0.9rem;
-        }
-
-        .actions li,
-        .suggestions li {
-          margin-bottom: 0.25rem;
-        }
-
-        .empty-state {
-          color: #9ca3af;
-          font-style: italic;
-          text-align: center;
-          padding: 2rem;
-        }
-
-        .meshos-nav {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 1rem;
-        }
-
-        .nav-card {
-          display: block;
-          padding: 1.5rem;
-          background: white;
-          border: 2px solid #e5e7eb;
-          border-radius: 8px;
-          text-decoration: none;
-          transition: all 0.24s ease-out;
-        }
-
-        .nav-card:hover {
-          border-color: #667eea;
-          transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
-        }
-
-        .nav-card h3 {
-          margin: 0 0 0.5rem;
-          color: #1a1a1a;
-          font-size: 1.1rem;
-        }
-
-        .nav-card p {
-          margin: 0;
-          color: #6b7280;
-          font-size: 0.9rem;
-        }
-
-        .loading-text {
-          color: #6b7280;
-          text-align: center;
-          padding: 3rem;
-        }
-
-        .error-panel {
-          background: #fef2f2;
-          border: 2px solid #dc2626;
-          padding: 1.5rem;
-          border-radius: 8px;
-          color: #991b1b;
-        }
-      `}</style>
+            {/* Navigation */}
+            <div
+              style={{
+                marginTop: '3rem',
+                display: 'grid',
+                gap: '1rem',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              }}
+            >
+              <NavCard
+                title="Contradiction Graph"
+                description="Explore system conflicts and drift patterns"
+                href="/meshos/contradictions"
+                color="#D96A6A"
+              />
+              <NavCard
+                title="Strategic Plans"
+                description="7d / 30d / 90d coordination plans"
+                href="/meshos/plans"
+                color="#8B5CF6"
+              />
+              <NavCard
+                title="Negotiations"
+                description="Inter-system negotiation history"
+                href="/meshos/negotiations"
+                color="#3AA9BE"
+              />
+            </div>
+          </>
+        )}
+      </div>
     </div>
+  );
+}
+
+interface NavCardProps {
+  title: string;
+  description: string;
+  href: string;
+  color: string;
+}
+
+function NavCard({ title, description, href, color }: NavCardProps) {
+  return (
+    <a
+      href={href}
+      style={{
+        display: 'block',
+        padding: '1.5rem',
+        backgroundColor: '#14171C',
+        border: '1px solid rgba(255, 255, 255, 0.05)',
+        borderRadius: '8px',
+        textDecoration: 'none',
+        transition: 'all 220ms ease-out',
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = 'translateY(-2px)';
+        e.currentTarget.style.borderColor = `${color}40`;
+        e.currentTarget.style.boxShadow = `0 8px 24px ${color}20`;
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = 'translateY(0)';
+        e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.05)';
+        e.currentTarget.style.boxShadow = 'none';
+      }}
+    >
+      <h3
+        style={{
+          fontFamily: 'Inter, sans-serif',
+          fontSize: '1.1rem',
+          fontWeight: 600,
+          color,
+          margin: '0 0 0.5rem 0',
+        }}
+      >
+        {title}
+      </h3>
+      <p
+        style={{
+          fontFamily: 'Inter, sans-serif',
+          fontSize: '0.875rem',
+          color: '#9CA3AF',
+          margin: 0,
+          lineHeight: '1.5',
+        }}
+      >
+        {description}
+      </p>
+    </a>
   );
 }
