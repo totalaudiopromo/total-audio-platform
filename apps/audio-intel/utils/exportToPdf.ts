@@ -114,8 +114,8 @@ function getDisplayName(contact: EnrichedContact): string {
 }
 
 // Helper function to get confidence color
-function getConfidenceColor(confidence: string): [number, number, number] {
-  const conf = confidence.toLowerCase();
+function getConfidenceColor(confidence: string | number | undefined): [number, number, number] {
+  const conf = String(confidence || 'Low').toLowerCase();
   if (conf.includes('high') || conf.includes('90') || conf.includes('95')) {
     return DESIGN.successColor;
   } else if (conf.includes('medium') || conf.includes('70') || conf.includes('80')) {
@@ -509,11 +509,11 @@ export function exportContactsToPdf(
 
   // Calculate summary metrics
   const confidenceBreakdown = {
-    High: contacts.filter(c => (c.researchConfidence || 'Low').toLowerCase().includes('high'))
+    High: contacts.filter(c => String(c.researchConfidence || 'Low').toLowerCase().includes('high'))
       .length,
-    Medium: contacts.filter(c => (c.researchConfidence || 'Low').toLowerCase().includes('medium'))
+    Medium: contacts.filter(c => String(c.researchConfidence || 'Low').toLowerCase().includes('medium'))
       .length,
-    Low: contacts.filter(c => (c.researchConfidence || 'Low').toLowerCase().includes('low')).length,
+    Low: contacts.filter(c => String(c.researchConfidence || 'Low').toLowerCase().includes('low')).length,
   };
 
   const platformBreakdown: Record<string, number> = {};

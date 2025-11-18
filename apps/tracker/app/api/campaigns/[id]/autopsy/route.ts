@@ -177,7 +177,7 @@ Use UK spelling, music industry terminology (BBC Radio 1, 6Music, playlisting, d
 
     // Call Claude API
     const message = await anthropic.messages.create({
-      model: 'claude-sonnet-4-20250514',
+      model: 'claude-3-5-sonnet-latest',
       max_tokens: 1500,
       temperature: 0.7,
       messages: [
