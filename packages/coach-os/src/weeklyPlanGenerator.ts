@@ -1,11 +1,14 @@
 /**
- * CoachOS Weekly Plan Generator
+ * CoachOS Weekly Plan Generator (Phase 2 Enhanced)
  * Creates structured weekly coaching plans based on context and goals
+ * Now includes habit integration, routine suggestions, and time estimation
  */
 
 import { createClient } from '@total-audio/core-db/server';
 import { buildCoachContext } from './contextBuilder';
 import { generateWeeklyRecommendations, generateFocusAreaDistribution } from './aiEngine';
+import { getHabitsForUser, type Habit } from './habitEngine';
+import { suggestRoutines, type Routine } from './routineEngine';
 import type {
   WeeklyPlan,
   CoachTask,
@@ -18,20 +21,32 @@ import { getCurrentWeekStart, formatDateISO } from './utils/dates';
 
 export interface GenerateWeeklyPlanOptions {
   userId: string;
+  workspaceId: string;
   weekStart?: string; // ISO date string, defaults to current week
   forceRegenerate?: boolean; // Regenerate even if plan exists
+  focusTheme?: string; // Optional focus theme override
+  includeHabits?: boolean; // Include habits as recurring tasks (default: true)
+  includeRoutineSuggestions?: boolean; // Suggest relevant routines (default: true)
 }
 
 /**
- * Generate a new weekly plan for a user
+ * Generate a new weekly plan for a user (Phase 2 Enhanced)
  */
 export async function generateWeeklyPlan(
   options: GenerateWeeklyPlanOptions
 ): Promise<CoachSession> {
   try {
-    const { userId, weekStart = getCurrentWeekStart(), forceRegenerate = false } = options;
+    const {
+      userId,
+      workspaceId,
+      weekStart = getCurrentWeekStart(),
+      forceRegenerate = false,
+      focusTheme,
+      includeHabits = true,
+      includeRoutineSuggestions = true,
+    } = options;
 
-    logger.info('Generating weekly plan', { userId, weekStart });
+    logger.info('Generating weekly plan (Phase 2)', { userId, weekStart, includeHabits, includeRoutineSuggestions });
 
     // Check if plan already exists for this week
     if (!forceRegenerate) {
@@ -51,36 +66,77 @@ export async function generateWeeklyPlan(
     // 3. Get last week's session for continuity
     const lastWeekSession = await getLastWeekSession(userId, weekStart);
 
-    // 4. Generate AI recommendations
+    // 4. PHASE 2: Get habits for integration
+    let habits: Habit[] = [];
+    if (includeHabits) {
+      try {
+        habits = await getHabitsForUser(userId, workspaceId);
+        logger.info('Loaded habits for weekly plan', { habitCount: habits.length });
+      } catch (error) {
+        logger.warn('Failed to load habits, continuing without them', error);
+      }
+    }
+
+    // 5. PHASE 2: Get routine suggestions
+    let routineSuggestions: any[] = [];
+    if (includeRoutineSuggestions) {
+      try {
+        routineSuggestions = await suggestRoutines(userId, workspaceId, {
+          role: context.coachProfile?.role,
+          experience_level: context.coachProfile?.experience_level,
+        });
+        logger.info('Generated routine suggestions', { suggestionCount: routineSuggestions.length });
+      } catch (error) {
+        logger.warn('Failed to generate routine suggestions', error);
+      }
+    }
+
+    // 6. Generate AI recommendations
     const recommendations = await generateWeeklyRecommendations({
       context,
       existingGoals: goals,
       lastWeekProgress: lastWeekSession || undefined,
     });
 
-    // 5. Build weekly plan
+    // 7. PHASE 2: Integrate habits into tasks
+    const habitTasks = generateHabitTasks(habits);
+    const allTasks = [...recommendations.tasks, ...habitTasks];
+
+    // 8. PHASE 2: Add time estimation to tasks
+    const tasksWithTime = addTimeEstimation(allTasks);
+
+    // 9. PHASE 2: Build enhanced weekly plan
     const plan: WeeklyPlan = {
       week_start: weekStart,
-      focus_theme: recommendations.focusTheme,
-      tasks: recommendations.tasks,
+      focus_theme: focusTheme || recommendations.focusTheme,
+      tasks: tasksWithTime,
       metricsToTrack: generateMetricsToTrack(context, goals),
       recommendations: generateRecommendations(context),
-      estimated_hours: recommendations.estimatedHours,
+      estimated_hours: calculateTotalHours(tasksWithTime),
+      rationale: generatePlanRationale(context, goals, habits, focusTheme || recommendations.focusTheme),
     };
 
-    // 6. Save session to database
+    // 10. Save session to database with enhanced metadata
     const session = await saveWeeklySession({
       userId,
       weekStart,
       plan,
-      tasks: recommendations.tasks,
+      tasks: tasksWithTime,
       insights: recommendations.insights,
+      metadata: {
+        habitCount: habits.length,
+        routineSuggestionsCount: routineSuggestions.length,
+        totalEstimatedHours: calculateTotalHours(tasksWithTime),
+        focusThemeOverride: !!focusTheme,
+      },
     });
 
-    logger.info('Weekly plan generated successfully', {
+    logger.info('Weekly plan generated successfully (Phase 2)', {
       userId,
       weekStart,
-      taskCount: recommendations.tasks.length,
+      taskCount: tasksWithTime.length,
+      habitTaskCount: habitTasks.length,
+      routineSuggestions: routineSuggestions.length,
     });
 
     return session;
@@ -207,6 +263,145 @@ export async function completeSession(sessionId: string): Promise<CoachSession> 
 }
 
 // ============================================================================
+// PHASE 2: HELPER FUNCTIONS (Habit + Routine Integration)
+// ============================================================================
+
+/**
+ * Generate recurring tasks from user habits
+ */
+function generateHabitTasks(habits: Habit[]): CoachTask[] {
+  const habitTasks: CoachTask[] = [];
+
+  habits.forEach((habit) => {
+    // Map habit frequency to recurring task
+    let recurrencePattern: string;
+    switch (habit.frequency) {
+      case 'daily':
+        recurrencePattern = 'Every day';
+        break;
+      case '3x_week':
+        recurrencePattern = 'Mon, Wed, Fri';
+        break;
+      case 'weekly':
+        recurrencePattern = 'Once per week';
+        break;
+      case 'monthly':
+        recurrencePattern = 'Once per month';
+        break;
+      default:
+        recurrencePattern = habit.frequency;
+    }
+
+    habitTasks.push({
+      title: habit.name,
+      description: `🔁 Recurring habit (${recurrencePattern}) - Streak: ${habit.streak}`,
+      category: mapHabitCategory(habit.category),
+      priority: 'medium',
+      estimated_time_minutes: 30, // Default for habits
+      tags: ['habit', habit.frequency],
+      source: 'habit',
+      source_id: habit.id,
+    });
+  });
+
+  return habitTasks;
+}
+
+/**
+ * Map habit category to coach task category
+ */
+function mapHabitCategory(category: string): 'creative' | 'promotional' | 'relationship' | 'career' | 'wellbeing' {
+  const mapping: Record<string, any> = {
+    creative: 'creative',
+    outreach: 'promotional',
+    wellness: 'wellbeing',
+    admin: 'career',
+    learning: 'career',
+  };
+  return mapping[category] || 'wellbeing';
+}
+
+/**
+ * Add time estimation to tasks that don't have it
+ */
+function addTimeEstimation(tasks: CoachTask[]): CoachTask[] {
+  return tasks.map((task) => {
+    if (task.estimated_time_minutes) return task;
+
+    // Estimate based on category and priority
+    let estimatedMinutes = 60; // Default 1 hour
+
+    switch (task.category) {
+      case 'creative':
+        estimatedMinutes = task.priority === 'high' ? 120 : 90;
+        break;
+      case 'promotional':
+        estimatedMinutes = task.priority === 'high' ? 90 : 60;
+        break;
+      case 'relationship':
+        estimatedMinutes = 45;
+        break;
+      case 'career':
+        estimatedMinutes = 60;
+        break;
+      case 'wellbeing':
+        estimatedMinutes = 30;
+        break;
+    }
+
+    return {
+      ...task,
+      estimated_time_minutes: estimatedMinutes,
+    };
+  });
+}
+
+/**
+ * Calculate total estimated hours for a week's tasks
+ */
+function calculateTotalHours(tasks: CoachTask[]): number {
+  const totalMinutes = tasks.reduce((sum, task) => sum + (task.estimated_time_minutes || 0), 0);
+  return Math.round((totalMinutes / 60) * 10) / 10; // Round to 1 decimal
+}
+
+/**
+ * Generate plan rationale explaining the week's focus
+ */
+function generatePlanRationale(
+  context: any,
+  goals: CoachGoal[],
+  habits: Habit[],
+  focusTheme: string
+): string {
+  const parts: string[] = [];
+
+  // Focus theme explanation
+  parts.push(`This week's focus is **${focusTheme}**.`);
+
+  // Goals alignment
+  if (goals.length > 0) {
+    const goalCategories = [...new Set(goals.map(g => g.category))];
+    parts.push(`Your tasks align with your active goals in ${goalCategories.join(', ')}.`);
+  }
+
+  // Habits integration
+  if (habits.length > 0) {
+    parts.push(`${habits.length} recurring ${habits.length === 1 ? 'habit' : 'habits'} integrated into your weekly schedule.`);
+  }
+
+  // Experience-based encouragement
+  if (context.coachProfile) {
+    if (context.coachProfile.experience_level === 'beginner') {
+      parts.push('Remember: progress over perfection. Focus on building consistency.');
+    } else if (context.coachProfile.experience_level === 'advanced') {
+      parts.push('Challenge yourself to refine your processes and share your knowledge.');
+    }
+  }
+
+  return parts.join(' ');
+}
+
+// ============================================================================
 // HELPER FUNCTIONS
 // ============================================================================
 
@@ -266,6 +461,7 @@ async function saveWeeklySession(input: {
   plan: WeeklyPlan;
   tasks: CoachTask[];
   insights: CoachInsight[];
+  metadata?: Record<string, any>;
 }): Promise<CoachSession> {
   try {
     const supabase = createClient();
@@ -277,7 +473,7 @@ async function saveWeeklySession(input: {
       tasks: input.tasks,
       insights: input.insights,
       completed: false,
-      metadata: {},
+      metadata: input.metadata || {},
     };
 
     const { data, error } = await supabase

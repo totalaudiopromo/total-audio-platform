@@ -13,6 +13,9 @@
     "./insights": "./src/insightEngine.ts",
     "./progress": "./src/progressEngine.ts",
     "./profile": "./src/coachProfile.ts",
+    "./habits": "./src/habitEngine.ts",
+    "./routines": "./src/routineEngine.ts",
+    "./calendar": "./src/calendarEngine.ts",
     "./presets": "./src/presets/index.ts",
     "./utils/logger": "./src/utils/logger.ts",
     "./utils/dates": "./src/utils/dates.ts"
