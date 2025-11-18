@@ -26,6 +26,22 @@ export default function MIGDashboard() {
         {/* Quick Actions */}
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           <Link
+            href="/mig/graph"
+            className="p-6 bg-slate-900/50 border border-slate-800 rounded-lg hover:border-cyan-500/50 transition-all duration-240 group relative overflow-hidden"
+          >
+            <div className="absolute top-2 right-2 text-xs font-mono text-cyan-500 bg-cyan-500/10 px-2 py-1 rounded">
+              NEW
+            </div>
+            <div className="text-3xl mb-3">🌐</div>
+            <h3 className="text-lg font-semibold text-cyan-400 mb-2 group-hover:text-cyan-300">
+              Graph Visualization
+            </h3>
+            <p className="text-slate-400 text-sm">
+              Interactive force-directed graph workspace
+            </p>
+          </Link>
+
+          <Link
             href="/mig/search"
             className="p-6 bg-slate-900/50 border border-slate-800 rounded-lg hover:border-cyan-500/50 transition-all duration-240 group"
           >
