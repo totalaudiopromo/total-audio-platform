@@ -109,25 +109,21 @@ export default function PitchGeneratorDemo() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-amber-50">
-      {/* Navigation Header */}
-      <SiteHeader />
-
       {/* Demo Content */}
       <main className="max-w-7xl mx-auto px-4 py-8 sm:py-12">
-        {/* Header */}
+        {/* Header with VoiceGuard™ Badge */}
         <div className="text-center mb-8 sm:mb-12">
           <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-amber-100 border-2 border-amber-600 rounded-full">
-            <span className="text-sm font-bold text-amber-800">DEMO DATA</span>
+            <span className="text-sm font-bold text-amber-800">🛡️ VOICEGUARD™ POWERED</span>
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-4">
-            Pitch Generator in Action
+            Pitch Generator Demo
           </h1>
-          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto mb-6">
-            See how Pitch Generator writes personalised music PR pitches in seconds. No more
-            copy-pasting templates or staring at blank emails.
+          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto mb-4">
+            Authentic, personalised pitches at scale. Every pitch checked by VoiceGuard™ for UK voice compliance and industry authenticity.
           </p>
           <p className="text-sm text-gray-500 mb-6">
-            Click any pitch below to see the full personalised email, or generate a new one
+            Liberty Music PR integration • BBC Radio verified • Real contact data
           </p>
         </div>
 

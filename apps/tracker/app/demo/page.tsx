@@ -336,52 +336,22 @@ export default function DemoPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <nav className="border-b border-gray-200 bg-white sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex items-center">
-              <Link href="/" className="flex items-center gap-3">
-                <span className="text-2xl font-black text-gray-900">
-                  Tracker
-                </span>
-              </Link>
-            </div>
-            <div className="flex items-center gap-4">
-              <Link
-                href="/"
-                className="text-gray-600 hover:text-gray-900 font-semibold text-sm"
-              >
-                Home
-              </Link>
-              <Link
-                href="/signup"
-                className="bg-teal-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-teal-700 transition-colors text-sm"
-              >
-                Try Free
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
-
+    <div className="min-h-screen bg-gradient-to-br from-cyan-50 via-white to-teal-50">
       {/* Demo Content */}
       <main className="max-w-7xl mx-auto px-4 py-8 sm:py-12">
-        {/* Header */}
+        {/* Header with Coveragebook Badge */}
         <div className="text-center mb-8 sm:mb-12">
           <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-teal-100 border-2 border-teal-600 rounded-full">
-            <span className="text-sm font-bold text-teal-800">DEMO DATA</span>
+            <span className="text-sm font-bold text-teal-800">📊 COVERAGEBOOK-COMPATIBLE</span>
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-4">
-            Campaign Tracker in Action
+            Campaign Tracker Demo
           </h1>
-          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto mb-6">
-            See how Tracker helps you manage radio, playlist, and press
-            campaigns with manual logging and intelligent insights.
+          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto mb-4">
+            Professional campaign tracking with Coveragebook CSV export. Stop spending weekends updating spreadsheets.
           </p>
           <p className="text-sm text-gray-500 mb-6">
-            Click any campaign below to see detailed tracking interface
+            Liberty Music PR integration • Real campaign data • One-click CSV export
           </p>
         </div>
 
