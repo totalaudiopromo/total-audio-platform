@@ -53,7 +53,7 @@ Please rewrite this pitch to address ALL the weaknesses and implement ALL the su
 Return ONLY the improved pitch text, with no additional commentary or explanation. The output should be ready to copy-paste into an email.`;
 
     const message = await anthropic.messages.create({
-      model: 'claude-3-5-sonnet-20241022',
+      model: 'claude-3-5-sonnet-latest',
       max_tokens: 2000,
       messages: [
         {

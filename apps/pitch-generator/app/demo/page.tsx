@@ -120,7 +120,8 @@ export default function PitchGeneratorDemo() {
             Pitch Generator Demo
           </h1>
           <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto mb-4">
-            Authentic, personalised pitches at scale. Every pitch checked by VoiceGuard™ for UK voice compliance and industry authenticity.
+            Authentic, personalised pitches at scale. Every pitch checked by VoiceGuard™ for UK
+            voice compliance and industry authenticity.
           </p>
           <p className="text-sm text-gray-500 mb-6">
             Liberty Music PR integration • BBC Radio verified • Real contact data
@@ -196,7 +197,9 @@ export default function PitchGeneratorDemo() {
               </div>
 
               <div className="text-xs text-gray-500 mb-3">
-                <p className="font-medium">Generated: {new Date(pitch.generatedAt).toLocaleDateString()}</p>
+                <p className="font-medium">
+                  Generated: {new Date(pitch.generatedAt).toLocaleDateString()}
+                </p>
               </div>
 
               <div className="flex items-center gap-2 text-xs text-gray-600">
