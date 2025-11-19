@@ -232,6 +232,7 @@ ALTER TABLE public.golden_history ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.testing_results ENABLE ROW LEVEL SECURITY;
 
 -- Policy: Allow service role full access (for ingestion scripts)
+DROP POLICY IF EXISTS service_role_all_golden_history ON public.golden_history;
 CREATE POLICY service_role_all_golden_history
   ON public.golden_history
   FOR ALL
@@ -239,6 +240,7 @@ CREATE POLICY service_role_all_golden_history
   USING (true)
   WITH CHECK (true);
 
+DROP POLICY IF EXISTS service_role_all_testing_results ON public.testing_results;
 CREATE POLICY service_role_all_testing_results
   ON public.testing_results
   FOR ALL
@@ -247,6 +249,7 @@ CREATE POLICY service_role_all_testing_results
   WITH CHECK (true);
 
 -- Policy: Allow authenticated users to view all Golden Verify results
+DROP POLICY IF EXISTS users_view_golden_history ON public.golden_history;
 CREATE POLICY users_view_golden_history
   ON public.golden_history
   FOR SELECT
@@ -254,6 +257,7 @@ CREATE POLICY users_view_golden_history
   USING (true);
 
 -- Policy: Allow authenticated users to view all testing results
+DROP POLICY IF EXISTS users_view_testing_results ON public.testing_results;
 CREATE POLICY users_view_testing_results
   ON public.testing_results
   FOR SELECT
@@ -261,6 +265,7 @@ CREATE POLICY users_view_testing_results
   USING (true);
 
 -- Policy: Admins can insert Golden Verify results (for manual testing)
+DROP POLICY IF EXISTS admins_insert_golden_history ON public.golden_history;
 CREATE POLICY admins_insert_golden_history
   ON public.golden_history
   FOR INSERT
@@ -274,6 +279,7 @@ CREATE POLICY admins_insert_golden_history
   );
 
 -- Policy: Admins can insert testing results (for manual testing)
+DROP POLICY IF EXISTS admins_insert_testing_results ON public.testing_results;
 CREATE POLICY admins_insert_testing_results
   ON public.testing_results
   FOR INSERT

@@ -27,18 +27,18 @@ export async function POST(req: Request) {
       model: 'claude-3-5-sonnet-20241022',
       max_tokens: 1024,
       temperature: 0.3,
-      system: `You are an expert in analyzing writing styles for music industry professionals.
+      system: `You are VoiceGuard™, an expert AI system for analyzing writing styles of music industry professionals.
 You analyze pitch emails, promotional copy, and professional communication to extract the writer's authentic voice.
-You focus on: tone, formality level, sentence structure, opening patterns, credibility markers, and personality.`,
+VoiceGuard™ focuses on: tone, formality level, sentence structure, opening patterns, credibility markers, and personality preservation.`,
       messages: [
         {
           role: 'user',
-          content: `Analyze this music industry pitch/email and extract the writer's voice profile.
+          content: `Analyze this music industry pitch/email using VoiceGuard™ voice preservation technology.
 
 SAMPLE TEXT:
 ${sampleText}
 
-Extract and provide ONLY a JSON object with these exact fields (no markdown, no code blocks):
+VoiceGuard™ will extract and provide ONLY a JSON object with these exact fields (no markdown, no code blocks):
 {
   "voice_background": "Brief summary of their apparent background/experience (1-2 sentences)",
   "voice_style": "Description of their writing style (e.g., 'Direct but friendly', 'Professional with personality')",
