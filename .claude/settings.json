@@ -1,7 +1,8 @@
 {
   "hooks": {
     "pre-tool-use": ".claude/hooks/pre-tool-use.ts",
-    "post-tool-use": ".claude/hooks/post-tool-use.ts"
+    "post-tool-use": ".claude/hooks/post-tool-use.ts",
+    "userPromptSubmitHook": ".claude/hooks/on-prompt-submit.ts"
   },
   "workflow": {
     "context": {
@@ -14,6 +15,19 @@
     "audit": {
       "enabled": true,
       "scrubSensitive": true
+    }
+  },
+  "dropzones": {
+    "enabled": false,
+    "dryRun": true,
+    "paths": {
+      "contacts-to-enrich": ".claude/dropzones/contacts-to-enrich",
+      "test-this": ".claude/dropzones/test-this",
+      "review-this": ".claude/dropzones/review-this",
+      "changelog-from-commits": ".claude/dropzones/changelog-from-commits",
+      "quarantine": ".claude/dropzones/quarantine",
+      "queue": ".claude/dropzones/queue",
+      "errors": ".claude/dropzones/errors"
     }
   }
 }

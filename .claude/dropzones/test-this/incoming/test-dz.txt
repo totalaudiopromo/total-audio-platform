@@ -1,0 +1,6 @@
+TEST FILE FOR DRY RUN — NO EXECUTION
+
+This is a safe test file to verify dropzone infrastructure.
+Created: 2025-11-18
+Purpose: Phase 2.3 verification only
+Status: Should NOT be processed automatically (dropzones.enabled = false)
