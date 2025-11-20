@@ -36,7 +36,7 @@ export default function VoiceSetupPage() {
     {
       field: 'background',
       label: 'Your Background & Role',
-      placeholder: 'Paste your background here...\n\nExample: I run Liberty Music PR, a boutique agency specialising in radio promotion for indie artists. We work with BBC Radio 1, 6 Music, and regional stations across the UK. I've been in the industry for 8 years and value authentic, personal relationships with DJs and producers.',
+      placeholder: 'Paste your background here...\n\nExample: I run Liberty Music PR, a boutique agency specialising in radio promotion for indie artists. We work with BBC Radio 1, 6 Music, and regional stations across the UK. I have been in the industry for 8 years and value authentic, personal relationships with DJs and producers.',
       helper: 'Tell us about your agency, experience, and the types of artists you work with'
     },
     {

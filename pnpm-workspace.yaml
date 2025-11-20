@@ -3,7 +3,7 @@ packages:
   - 'apps/audio-intel'
   - 'apps/pitch-generator'
   - 'apps/tracker'
-  - 'apps/web'
+  # - 'apps/web'  # Removed to simplify deployments
   # Removed apps with build errors, unused, or personal
   # - 'apps/api'  # Has TypeScript errors, not in production
   # - 'apps/mobile'  # Security vulnerabilities
