@@ -286,7 +286,7 @@ describe('Enrichment Retry Logic', () => {
       email: 'ratelimit-msg@example.com',
     };
 
-    const enrichmentFn = vi.fn(async () => {
+    const enrichmentFn = vi.fn(async (_c: any) => {
       throw new Error('API rate limit exceeded, please try again later');
     });
 
@@ -315,7 +315,7 @@ describe('Enrichment Retry Logic', () => {
       email: 'ratelimit-429@example.com',
     };
 
-    const enrichmentFn = vi.fn(async () => {
+    const enrichmentFn = vi.fn(async (_c: any) => {
       const error: any = new Error('Request failed');
       error.status = 429;
       throw error;
