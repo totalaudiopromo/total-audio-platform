@@ -106,6 +106,15 @@ export default function PitchGeneratorDemo() {
     }, 1500);
   };
 
+  const handleRegeneratePitch = () => {
+    if (!selectedPitch) return;
+    setIsGenerating(true);
+    setTimeout(() => {
+      // Simulate regeneration - in real app this would call API
+      setIsGenerating(false);
+    }, 2000);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-amber-50">
       {/* Demo Content */}
@@ -285,9 +294,22 @@ export default function PitchGeneratorDemo() {
                 <Send className="w-5 h-5" />
                 Open in Gmail
               </button>
-              <button className="flex items-center gap-2 bg-white hover:bg-gray-50 text-gray-900 font-black px-6 py-3 rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
-                <FileText className="w-5 h-5" />
-                Regenerate Pitch
+              <button
+                onClick={handleRegeneratePitch}
+                disabled={isGenerating}
+                className="flex items-center gap-2 bg-white hover:bg-gray-50 text-gray-900 font-black px-6 py-3 rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isGenerating ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Regenerating...
+                  </>
+                ) : (
+                  <>
+                    <FileText className="w-5 h-5" />
+                    Regenerate Pitch
+                  </>
+                )}
               </button>
             </div>
           </div>
