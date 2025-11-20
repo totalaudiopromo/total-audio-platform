@@ -14,6 +14,11 @@ export default defineConfig({
 
   testDir: './tests',
 
+  /* Base URL for all tests */
+  use: {
+    baseURL: 'http://localhost:3004',
+  },
+
   /* Pitch Generator specific: mobile tests in separate directory */
   projects: [
     ...ukMarketDevices.map(device => ({

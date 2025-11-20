@@ -13,7 +13,7 @@ const features = [
     description:
       'Automatically filter out fake emails, spam traps, and disposable addresses. Know which contacts are real before you waste time enriching bad data.',
     color: 'green',
-    image: '/assets/loading-states/success-complete.png',
+    image: '/assets/loading-states/success-complete.webp',
   },
   {
     icon: Users,
@@ -21,7 +21,7 @@ const features = [
     description:
       'Turn basic email addresses into detailed music industry profiles. Get submission guidelines, contact preferences, pitch tips, and everything you need to land your music.',
     color: 'blue',
-    image: '/assets/loading-states/analyzing-data.png',
+    image: '/assets/loading-states/analyzing-data.webp',
   },
   {
     icon: Search,
@@ -29,7 +29,7 @@ const features = [
     description:
       'Find new contacts by platform, genre, and role. Discover radio shows, playlists, blogs, and labels that match your sound.',
     color: 'purple',
-    image: '/assets/loading-states/intelligence-complete.png',
+    image: '/assets/loading-states/intelligence-complete.webp',
   },
 ];
 
@@ -104,13 +104,15 @@ export default function HomePage() {
             </div>
             <div className="flex justify-center">
               <Image
-                src="/assets/loading-states/chaos-overwhelmed.png"
+                src="/assets/loading-states/chaos-overwhelmed.webp"
                 alt="Overwhelmed by chaotic contact research"
                 width={300}
                 height={300}
                 className="drop-shadow-2xl"
-                loading="lazy"
+                loading="eager"
+                priority
                 sizes="(max-width: 768px) 70vw, 300px"
+                quality={75}
               />
             </div>
           </div>
@@ -191,6 +193,7 @@ export default function HomePage() {
                     className="drop-shadow-lg"
                     loading="lazy"
                     sizes="(max-width: 1024px) 30vw, 120px"
+                    quality={60}
                   />
                 </div>
                 <div className={`mb-4 inline-flex rounded-full bg-${feature.color}-100 p-3`}>
@@ -261,13 +264,14 @@ export default function HomePage() {
           <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
             <div className="flex justify-center">
               <Image
-                src="/assets/loading-states/vinyl-throw-action.png"
+                src="/assets/loading-states/vinyl-throw-action.webp"
                 alt="Audio Intel in action"
                 width={300}
                 height={300}
                 className="drop-shadow-2xl"
                 loading="lazy"
                 sizes="(max-width: 768px) 70vw, 300px"
+                quality={70}
               />
             </div>
             <div>
@@ -432,6 +436,7 @@ export default function HomePage() {
                 className="rounded-2xl border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
                 loading="lazy"
                 sizes="(max-width: 768px) 50vw, 200px"
+                quality={75}
               />
             </div>
             <div className="flex-1">

@@ -63,12 +63,12 @@ export function SiteFooter({
               <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
                 Product
               </p>
-              <ul className="mt-3 space-y-2">
+              <ul className="mt-3 space-y-1">
                 {productLinks.map(link => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className={`text-sm text-gray-600 transition ${hoverClass}`}
+                      className={`inline-block py-2 text-sm text-gray-600 transition ${hoverClass} min-h-[44px] flex items-center`}
                     >
                       {link.label}
                     </Link>
@@ -81,14 +81,14 @@ export function SiteFooter({
               <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
                 Other Tools
               </p>
-              <ul className="mt-3 space-y-2">
+              <ul className="mt-3 space-y-1">
                 {otherTools.map(tool => (
                   <li key={tool.href}>
                     <a
                       href={tool.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`text-sm text-gray-600 transition ${hoverClass}`}
+                      className={`inline-block py-2 text-sm text-gray-600 transition ${hoverClass} min-h-[44px] flex items-center`}
                     >
                       {tool.label}
                     </a>
@@ -124,25 +124,25 @@ export function SiteFooter({
         <div className="mt-8 border-t-2 border-gray-200 pt-6">
           <div className="flex flex-col gap-4">
             {/* Legal Links */}
-            <div className="flex flex-wrap gap-4 text-xs">
+            <div className="flex flex-wrap gap-2 text-xs">
               <Link
                 href="/privacy"
-                className={`text-gray-600 font-medium transition ${hoverClass}`}
+                className={`inline-flex items-center py-2 px-2 text-gray-600 font-medium transition ${hoverClass} min-h-[44px]`}
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/cookies"
-                className={`text-gray-600 font-medium transition ${hoverClass}`}
+                className={`inline-flex items-center py-2 px-2 text-gray-600 font-medium transition ${hoverClass} min-h-[44px]`}
               >
                 Cookie Policy
               </Link>
-              <Link href="/terms" className={`text-gray-600 font-medium transition ${hoverClass}`}>
+              <Link href="/terms" className={`inline-flex items-center py-2 px-2 text-gray-600 font-medium transition ${hoverClass} min-h-[44px]`}>
                 Terms of Service
               </Link>
               <Link
                 href="/contact"
-                className={`text-gray-600 font-medium transition ${hoverClass}`}
+                className={`inline-flex items-center py-2 px-2 text-gray-600 font-medium transition ${hoverClass} min-h-[44px]`}
               >
                 Contact & Support
               </Link>
