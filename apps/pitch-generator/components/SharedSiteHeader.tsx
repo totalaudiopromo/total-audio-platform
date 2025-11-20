@@ -41,19 +41,19 @@ export function SiteHeader({
         <div className="flex items-center gap-4 min-w-0 flex-shrink-0">
           <button
             type="button"
-            className="rounded-lg border-2 border-black bg-white p-2 text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] sm:hidden"
+            className="rounded-lg border-2 border-black bg-white p-3 text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] sm:hidden min-w-[44px] min-h-[44px]"
             aria-label="Toggle navigation"
             onClick={() => setMobileOpen(prev => !prev)}
           >
             <Menu className="h-5 w-5" />
           </button>
-          <Link href="/" className="flex items-center gap-3 min-w-0">
+          <Link href="/" className="flex items-center gap-3 min-w-0 min-h-[44px] py-1">
             <Image
               src={logoPath}
               alt="Total Audio Promo"
-              width={40}
-              height={40}
-              className="h-10 w-auto flex-shrink-0"
+              width={44}
+              height={44}
+              className="h-11 w-auto flex-shrink-0"
             />
             <div className="flex flex-col min-w-0">
               <span className="text-lg font-bold leading-tight tracking-tight text-black truncate">
@@ -71,7 +71,7 @@ export function SiteHeader({
               <Link
                 key={link.href}
                 href={link.href}
-                className={`rounded-lg px-4 py-2 text-sm font-semibold transition ${
+                className={`rounded-lg px-4 py-3 text-sm font-semibold transition min-h-[44px] inline-flex items-center ${
                   isActive
                     ? 'bg-gray-900 text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
                     : 'text-gray-700 hover:bg-gray-100'

@@ -98,7 +98,7 @@ export default function HomePage() {
             <div className="flex-1">
               <div className="relative">
                 <div className="glass-panel px-8 py-10">
-                  <p className="text-xs font-semibold uppercase tracking-[0.5em] text-gray-500">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
                     The Problem
                   </p>
                   <h2 className="mt-4 text-2xl font-bold">Stop wasting time on pitches</h2>
@@ -213,7 +213,7 @@ export default function HomePage() {
         <section id="how-it-works" className="glass-panel px-6 py-10 sm:px-10">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-center">
             <div className="flex-1 space-y-3">
-              <p className="text-xs font-semibold uppercase tracking-[0.45em] text-gray-500">
+              <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
                 How It Works
               </p>
               <h2 className="text-3xl font-semibold">Three steps to perfect pitches</h2>
@@ -233,7 +233,7 @@ export default function HomePage() {
                       {step.step}
                     </span>
                     <div>
-                      <p className="text-sm font-semibold uppercase tracking-[0.3em] text-gray-500">
+                      <p className="text-sm font-semibold uppercase tracking-wide text-gray-500">
                         {step.title}
                       </p>
                       <p className="mt-1 text-sm text-gray-600">{step.description}</p>
@@ -293,7 +293,7 @@ export default function HomePage() {
         <section className="glass-panel px-6 py-10 sm:px-10">
           <div className="flex flex-col items-center gap-8 text-center lg:flex-row lg:text-left">
             <div className="flex-1">
-              <p className="text-xs font-semibold uppercase tracking-[0.45em] text-gray-500">
+              <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
                 The Real Problem
               </p>
               <h2 className="mt-4 text-3xl font-semibold">
@@ -346,7 +346,7 @@ export default function HomePage() {
               />
             </div>
             <div className="flex-1">
-              <p className="text-xs font-semibold uppercase tracking-[0.5em] text-gray-500">
+              <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
                 Built by someone who actually does this
               </p>
               <h2 className="mt-4 text-2xl font-bold">Why I built Pitch Generator</h2>

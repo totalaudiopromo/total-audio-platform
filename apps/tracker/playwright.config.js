@@ -14,7 +14,7 @@ export default defineConfig({
 
   /* Base URL for all tests */
   use: {
-    baseURL: 'http://localhost:3001',
+    baseURL: 'http://localhost:3004',
   },
 
   /* Tracker specific: mobile tests in separate directory */
@@ -27,11 +27,11 @@ export default defineConfig({
   ],
 
   /* Run local dev server before starting tests */
-  webServer: process.env.TEST_URL
+      webServer: process.env.TEST_URL
     ? undefined
     : {
         command: 'npm run dev',
-        url: 'http://localhost:3001',
+        url: 'http://localhost:3004',
         reuseExistingServer: !process.env.CI,
         timeout: 120 * 1000,
       },

@@ -509,11 +509,21 @@ export function exportContactsToPdf(
 
   // Calculate summary metrics
   const confidenceBreakdown = {
-    High: contacts.filter(c => String(c.researchConfidence || 'Low').toLowerCase().includes('high'))
-      .length,
-    Medium: contacts.filter(c => String(c.researchConfidence || 'Low').toLowerCase().includes('medium'))
-      .length,
-    Low: contacts.filter(c => String(c.researchConfidence || 'Low').toLowerCase().includes('low')).length,
+    High: contacts.filter(c =>
+      String(c.researchConfidence || 'Low')
+        .toLowerCase()
+        .includes('high')
+    ).length,
+    Medium: contacts.filter(c =>
+      String(c.researchConfidence || 'Low')
+        .toLowerCase()
+        .includes('medium')
+    ).length,
+    Low: contacts.filter(c =>
+      String(c.researchConfidence || 'Low')
+        .toLowerCase()
+        .includes('low')
+    ).length,
   };
 
   const platformBreakdown: Record<string, number> = {};

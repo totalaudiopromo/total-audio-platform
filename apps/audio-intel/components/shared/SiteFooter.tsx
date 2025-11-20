@@ -13,7 +13,7 @@ export interface SiteFooterProps {
   description?: string;
   /** Product-specific links (pricing, dashboard, etc.) */
   productLinks?: SiteFooterLink[];
-  /** Accent color for hover effects */
+  /** Accent colour for hover effects */
   accentColor?: 'purple' | 'blue' | 'amber' | 'teal';
 }
 
@@ -107,7 +107,7 @@ export function SiteFooter({
                     href="https://totalaudiopromo.com/newsletter"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`text-sm font-medium transition ${hoverClass}`}
+                    className={`inline-block py-2 text-sm font-medium transition ${hoverClass} min-h-[44px] flex items-center`}
                   >
                     The Unsigned Advantage
                   </a>
@@ -137,7 +137,10 @@ export function SiteFooter({
               >
                 Cookie Policy
               </Link>
-              <Link href="/terms" className={`inline-flex items-center py-2 px-2 text-gray-600 font-medium transition ${hoverClass} min-h-[44px]`}>
+              <Link
+                href="/terms"
+                className={`inline-flex items-center py-2 px-2 text-gray-600 font-medium transition ${hoverClass} min-h-[44px]`}
+              >
                 Terms of Service
               </Link>
               <Link

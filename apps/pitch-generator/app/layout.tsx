@@ -28,7 +28,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} font-sans min-h-screen`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} font-sans min-h-screen overflow-x-hidden`}
+      >
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
@@ -39,9 +41,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           ></iframe>
         </noscript>
         <AuthProvider>
-          <div className="flex min-h-screen flex-col bg-white">
+          <div className="flex min-h-screen flex-col bg-white overflow-x-hidden">
             <SiteHeader />
-            <main className="flex-1 px-4 pb-16 pt-10 sm:px-8 lg:px-12 xl:px-16">{children}</main>
+            <main className="flex-1 px-4 pb-16 pt-10 sm:px-8 lg:px-12 xl:px-16 overflow-x-hidden">
+              {children}
+            </main>
             <SiteFooter />
             <ExitIntentPopup />
             <CookieBanner />

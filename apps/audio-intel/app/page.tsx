@@ -56,7 +56,7 @@ export default function HomePage() {
   return (
     <>
       <MobileCtaBar />
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-10">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 overflow-x-hidden">
         <HeroDemo />
 
         {/* The Problem - with mascot */}

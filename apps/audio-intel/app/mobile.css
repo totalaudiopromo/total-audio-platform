@@ -11,6 +11,22 @@
    1. BASE MOBILE STYLES & LAYOUT
    ============================================================================= */
 
+/* Prevent horizontal scrolling at all breakpoints - CRITICAL FIX */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+@media (max-width: 1024px) {
+  /* Ensure no horizontal scroll at tablet breakpoint */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+  }
+}
+
 @media (max-width: 768px) {
   /* Prevent horizontal scrolling - CRITICAL FIX */
   html, body {

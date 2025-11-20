@@ -17,11 +17,13 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
 
   return (
     <MobileLayout>
-      <div className="flex min-h-screen flex-col bg-white">
+      <div className="flex min-h-screen flex-col bg-white overflow-x-hidden">
         {showGlobalHeader && <SiteHeader />}
         <main
           className={
-            showGlobalHeader ? 'flex-1 px-4 pb-16 pt-10 sm:px-8 lg:px-12 xl:px-16' : 'flex-1'
+            showGlobalHeader
+              ? 'flex-1 px-4 pb-16 pt-10 sm:px-8 lg:px-12 xl:px-16 overflow-x-hidden'
+              : 'flex-1 overflow-x-hidden'
           }
         >
           {children}
