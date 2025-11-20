@@ -19,9 +19,11 @@ function arrayToCsv(data: string[][]): string {
 
   const escape = (val: string | undefined) => {
     if (val == null || val === undefined) return '';
+    // Convert to string to handle numbers and other types safely
+    const strVal = String(val);
     // Escape quotes by doubling them, wrap in quotes if contains comma, quote, or newline
-    const needsQuotes = /[",\n]/.test(val);
-    let out = val.replace(/"/g, '""');
+    const needsQuotes = /[",\n]/.test(strVal);
+    let out = strVal.replace(/"/g, '""');
     if (needsQuotes) out = `"${out}"`;
     return out;
   };
