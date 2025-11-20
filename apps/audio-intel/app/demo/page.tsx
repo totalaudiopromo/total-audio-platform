@@ -37,7 +37,6 @@ import { ProfessionalExportService } from '@/utils/exportService';
 import ContactLoadingState from '../components/ContactLoadingState';
 import BetaTrialStatus from '@/components/BetaTrialStatus';
 import { trackPageView } from '@/utils/analytics';
-import { SiteHeader } from '../components/SiteHeader';
 import { CondensedIntelligenceCard } from '@/components/CondensedIntelligenceCard';
 
 interface Contact {
@@ -355,9 +354,6 @@ export default function SimpleAudioIntelDemo() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation Header */}
-      <SiteHeader />
-
       {/* Liberty Music PR Hero Banner - Pitch-Ready */}
       <div className="bg-gradient-to-r from-blue-50 to-blue-100 border-b-4 border-black px-4 py-6 md:py-8">
         <div className="mx-auto max-w-6xl">

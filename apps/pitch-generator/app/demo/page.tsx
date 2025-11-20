@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { SiteHeader } from '@/components/SiteHeader';
 import { FileText, Copy, Send, Sparkles, Loader2, CheckCircle2 } from 'lucide-react';
 
 interface DemoPitch {
