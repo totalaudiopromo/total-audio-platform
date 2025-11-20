@@ -1,6 +1,0 @@
-2025/08/26-22:19:47.350 2906 Creating DB /Users/chrisschofield/Library/Application Support/Google/Chrome/Default/IndexedDB/https_uk.pinterest.com_0.indexeddb.leveldb since it was missing.
-2025/08/26-22:19:47.354 2906 Reusing MANIFEST /Users/chrisschofield/Library/Application Support/Google/Chrome/Default/IndexedDB/https_uk.pinterest.com_0.indexeddb.leveldb/MANIFEST-000001
-2025/08/26-22:20:39.181 2906 Level-0 table #5: started
-2025/08/26-22:20:39.186 2906 Level-0 table #5: 225882 bytes OK
-2025/08/26-22:20:39.188 2906 Delete type=0 #3
-2025/08/26-22:20:39.188 2906 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

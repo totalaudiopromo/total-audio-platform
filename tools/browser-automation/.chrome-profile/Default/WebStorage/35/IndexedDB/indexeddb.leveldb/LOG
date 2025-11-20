@@ -1,6 +1,0 @@
-2025/08/30-16:48:51.419 1d338a Creating DB /Users/chrisschofield/Library/Application Support/Google/Chrome/Default/WebStorage/35/IndexedDB/indexeddb.leveldb since it was missing.
-2025/08/30-16:48:51.435 1d338a Reusing MANIFEST /Users/chrisschofield/Library/Application Support/Google/Chrome/Default/WebStorage/35/IndexedDB/indexeddb.leveldb/MANIFEST-000001
-2025/08/30-17:30:40.989 1d3380 Level-0 table #5: started
-2025/08/30-17:30:40.999 1d3380 Level-0 table #5: 23764 bytes OK
-2025/08/30-17:30:41.002 1d3380 Delete type=0 #3
-2025/08/30-17:30:41.002 1d3380 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

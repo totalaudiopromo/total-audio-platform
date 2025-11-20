@@ -1,7 +1,0 @@
-2025/10/11-16:22:17.454 1c2d Creating DB /Users/chrisschofield/Library/Application Support/Google/Chrome/Default/IndexedDB/https_outlook.live.com_0.indexeddb.leveldb since it was missing.
-2025/10/11-16:22:17.458 1c2d Reusing MANIFEST /Users/chrisschofield/Library/Application Support/Google/Chrome/Default/IndexedDB/https_outlook.live.com_0.indexeddb.leveldb/MANIFEST-000001
-2025/10/11-16:22:17.461 1fe3 Manual compaction at level-0 from '\x00\x01\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x02\x00\x00\x00' @ 0 : 0; will stop at (end)
-2025/10/11-16:22:18.313 1c2d Level-0 table #5: started
-2025/10/11-16:22:18.315 1c2d Level-0 table #5: 822 bytes OK
-2025/10/11-16:22:18.323 1c2d Delete type=0 #3
-2025/10/11-16:22:18.323 1fe4 Manual compaction at level-0 from '\x00\x02\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x03\x00\x00\x00' @ 0 : 0; will stop at (end)
