@@ -23,7 +23,8 @@ async function calculateMetrics(contacts: any[]): Promise<any> {
   const platformBreakdown: Record<string, number> = {};
 
   contacts.forEach(contact => {
-    const confidence = (contact.researchConfidence || 'Low').toLowerCase();
+    // Ensure confidence is always a string before calling toLowerCase
+    const confidence = String(contact.researchConfidence || 'Low').toLowerCase();
     if (confidence.includes('high')) confidenceBreakdown.high++;
     else if (confidence.includes('medium')) confidenceBreakdown.medium++;
     else confidenceBreakdown.low++;
