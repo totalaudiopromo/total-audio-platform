@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import { TrackerHeader } from '@/components/TrackerHeader';
-import { TrackerFooter } from '@/components/TrackerFooter';
+import { ConditionalTrackerLayout } from '@/components/ConditionalTrackerLayout';
 import { ExitIntentPopup } from '@/components/ExitIntentPopup';
 import { CookieConsent } from '@/components/CookieConsent';
 import { WorkspaceProvider } from '@total-audio/core-db/contexts/workspace-context';
@@ -131,11 +130,7 @@ export default function RootLayout({
         </noscript>
         <WorkspaceProvider>
           <div className="flex min-h-screen flex-col bg-white">
-            <TrackerHeader />
-            <main className="flex-1 px-4 pb-16 pt-10 sm:px-8 lg:px-12 xl:px-16">
-              {children}
-            </main>
-            <TrackerFooter />
+            <ConditionalTrackerLayout>{children}</ConditionalTrackerLayout>
             <ExitIntentPopup />
             <CookieConsent />
           </div>

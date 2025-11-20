@@ -342,16 +342,20 @@ export default function DemoPage() {
         {/* Header with Coveragebook Badge */}
         <div className="text-center mb-8 sm:mb-12">
           <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-teal-100 border-2 border-teal-600 rounded-full">
-            <span className="text-sm font-bold text-teal-800">📊 COVERAGEBOOK-COMPATIBLE</span>
+            <span className="text-sm font-bold text-teal-800">
+              📊 COVERAGEBOOK-COMPATIBLE
+            </span>
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-4">
             Campaign Tracker Demo
           </h1>
           <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto mb-4">
-            Professional campaign tracking with Coveragebook CSV export. Stop spending weekends updating spreadsheets.
+            Professional campaign tracking with Coveragebook CSV export. Stop
+            spending weekends updating spreadsheets.
           </p>
           <p className="text-sm text-gray-500 mb-6">
-            Liberty Music PR integration • Real campaign data • One-click CSV export
+            Liberty Music PR integration • Real campaign data • One-click CSV
+            export
           </p>
         </div>
 

@@ -188,6 +188,41 @@ duplicate-backup-*.json
 # Browser automation sessions
 .notion-session/
 
+# Browser Automation - Chrome Profile (COMPLETE IGNORE)
+# This entire directory should NEVER be in Git
+tools/browser-automation/.chrome-profile/
+tools/browser-automation/.chrome-profile/**
+**/.chrome-profile/
+**/.chrome-profile/**
+
+# Chrome-specific patterns (backup if profile ever moves)
+**/Cache/
+**/Cache_Data/
+**/GrShaderCache/
+**/DawnGraphiteCache/
+**/DawnWebGPUCache/
+**/Safe Browsing/
+**/IndexedDB/
+**/Extensions/
+**/component_crx_cache/
+**/*.leveldb
+**/*.ldb
+**/BrowsingTopicsState
+**/Network Persistent State
+**/TransportSecurity
+**/Preferences
+**/Secure Preferences
+**/Local State
+
+# Browser extensions (should never be tracked)
+**/*_0/  # Version directories like 6.31.1_0
+**/DNR Extension Rules/
+
+# Playwright test artifacts
+**/playwright-diagnostics/
+**/test-results/
+playwright-report/
+
 # Cleanup and old files
 archive/cleanup-temp/
 

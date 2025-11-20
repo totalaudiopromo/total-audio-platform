@@ -4,6 +4,28 @@ _Capture everything here, process into actions weekly_
 
 ## 📅 NOVEMBER 2025
 
+### Week of Nov 20th - Git Repository Cleanup & Demo Fixes
+
+**Git Cleanup Solution for PR Deployment Failures:**
+
+**Problem:** PR #15 failed with 75 files (67 unrelated Chrome/cache files)
+**Root Cause:** 6,454 Chrome profile files tracked in Git (2GB bloat)
+
+**Solution Implemented:**
+1. Updated `.gitignore` with comprehensive browser patterns
+2. Removed Chrome files: `git rm -r --cached tools/browser-automation/.chrome-profile/`
+3. Created pre-commit hook to prevent future contamination
+4. Archived demo files to `archive/data/demo/` and `archive/liberty-demo/`
+5. **Result:** 2GB repository size reduction, clean PRs deploy successfully
+
+**Future Prevention:**
+```bash
+# If Chrome files sneak in again:
+git rm -r --cached tools/browser-automation/.chrome-profile/
+git add .gitignore
+git commit -m "chore: Remove Chrome profile from Git"
+```
+
 ### Week of Nov 9th - Phase 9: Autonomous Revenue Ops & Feedback Loops
 
 **Implementation Complete:**
