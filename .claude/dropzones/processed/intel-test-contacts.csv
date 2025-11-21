@@ -1,0 +1,10 @@
+email,name,outlet,role,country,tags,notes
+john@bbcradio6.co.uk,John Kennedy,BBC Radio 6 Music,Presenter,UK,electronic;indie,Great supporter of new music
+invalid-email,Jane Smith,NME,Music Editor,UK,rock;indie,Invalid email test
+sarah@rinse.fm,Sarah Jones,Rinse FM,DJ,UK,electronic;grime,Plays underground club music
+duplicate@test.com,Duplicate One,Test Outlet 1,Role 1,UK,test,First instance
+john@bbcradio6.co.uk,John Kennedy Duplicate,BBC 6,Presenter,UK,electronic,Duplicate email
+chris@totalaudiopro.com,Chris Schofield,Total Audio,Radio Promoter,UK,all;genres,Test contact
+duplicate@test.com,Duplicate Two,Test Outlet 2,Role 2,UK,test,Second instance
+not-an-email-at-all,Bad Contact,Bad Outlet,Bad Role,UK,test,Should be invalid
+alex@boilerroom.tv,Alex Roberts,Boiler Room,Curator,UK,electronic;techno,Books international artists

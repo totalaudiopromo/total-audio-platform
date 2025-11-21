@@ -1,0 +1,3 @@
+email,name,outlet,role,country,tags,notes
+invalid-email,Jane Smith,NME,Music Editor,UK,rock;indie,Invalid email test
+not-an-email-at-all,Bad Contact,Bad Outlet,Bad Role,UK,test,Should be invalid

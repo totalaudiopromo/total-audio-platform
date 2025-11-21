@@ -1,0 +1,6 @@
+email,name,outlet,role,country,tags,source_file,notes
+john@bbcradio6.co.uk,John Kennedy,BBC Radio 6 Music,Presenter,UK,electronic|indie,intel-test-contacts,Great supporter of new music
+sarah@rinse.fm,Sarah Jones,Rinse FM,DJ,UK,electronic|grime,intel-test-contacts,Plays underground club music
+duplicate@test.com,Duplicate One,Test Outlet 1,Role 1,UK,test,intel-test-contacts,First instance
+chris@totalaudiopro.com,Chris Schofield,Total Audio,Radio Promoter,UK,all|genres,intel-test-contacts,Test contact
+alex@boilerroom.tv,Alex Roberts,Boiler Room,Curator,UK,electronic|techno,intel-test-contacts,Books international artists
