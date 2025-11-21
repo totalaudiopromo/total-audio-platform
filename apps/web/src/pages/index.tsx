@@ -74,6 +74,12 @@ export default function HomePage() {
               >
                 Tracker
               </a>
+              <a
+                href="https://dashboard.totalaudiopromo.com"
+                className="px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-md transition shadow-md"
+              >
+                Dashboard
+              </a>
             </div>
           </div>
         </nav>
