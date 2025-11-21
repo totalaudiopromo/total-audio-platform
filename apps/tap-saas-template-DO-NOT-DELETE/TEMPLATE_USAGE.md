@@ -1,6 +1,6 @@
 # TAP SaaS Template - Usage Guide
 
-## ⚠️ IMPORTANT: This is a Template Directory
+##  IMPORTANT: This is a Template Directory
 
 **DO NOT modify this directory directly when building new tools.**
 
@@ -179,15 +179,15 @@ Your final structure should look like:
 
 ```
 total-audio-platform/
-├── apps/
-│   ├── tap-saas-template/      ← Keep pristine, never deploy
-│   ├── pitch-generator/        ← Deployed to pitch.tap.com
-│   ├── audio-intel/            ← Deployed to intel.tap.com
-│   ├── playlist-pulse/         ← Deployed to pulse.tap.com
-│   └── release-radar/          ← Deployed to radar.tap.com
-├── packages/
-│   └── shared-ui/              (Optional: Shared components)
-└── package.json                (Monorepo root)
+ apps/
+    tap-saas-template/      ← Keep pristine, never deploy
+    pitch-generator/        ← Deployed to pitch.tap.com
+    audio-intel/            ← Deployed to intel.tap.com
+    playlist-pulse/         ← Deployed to pulse.tap.com
+    release-radar/          ← Deployed to radar.tap.com
+ packages/
+    shared-ui/              (Optional: Shared components)
+ package.json                (Monorepo root)
 ```
 
 ---
@@ -214,4 +214,4 @@ Starting a new tool? Use this checklist:
 
 Refer to `DESIGN_SYSTEM.md` for aesthetic standards and component patterns.
 
-**Remember:** This template is your friend. Keep it clean, duplicate freely, and build brilliant tools. 🎵
+**Remember:** This template is your friend. Keep it clean, duplicate freely, and build brilliant tools. 

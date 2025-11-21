@@ -1,47 +1,47 @@
 # Tracker MVP - Deployment Guide
 
-## ✅ What's Complete
+##  What's Complete
 
 ### 1. Design System (Intel Match)
 
-- ✅ Clean white background with professional cards
-- ✅ Blue accent colors (#3B82F6) matching Intel
-- ✅ Intel-style LIVE badges on stat cards
-- ✅ Proper spacing, shadows, and hover effects
-- ✅ Mobile-responsive design
+-  Clean white background with professional cards
+-  Blue accent colors (#3B82F6) matching Intel
+-  Intel-style LIVE badges on stat cards
+-  Proper spacing, shadows, and hover effects
+-  Mobile-responsive design
 
 ### 2. Campaign Schema (Fixed)
 
-- ✅ **Removed**: `notes`, `target_metric`, `actual_metric`
-- ✅ **Added**: `genre`, `target_reach`, `actual_reach`, `status`
-- ✅ Form updated in `components/campaigns/CampaignModal.tsx`
-- ✅ API routes handle correct schema
+-  **Removed**: `notes`, `target_metric`, `actual_metric`
+-  **Added**: `genre`, `target_reach`, `actual_reach`, `status`
+-  Form updated in `components/campaigns/CampaignModal.tsx`
+-  API routes handle correct schema
 
 ### 3. UK Music Industry Data
 
-- ✅ Demo campaigns: BBC Radio 1, NME, Spotify UK, BBC 6Music
-- ✅ Realistic budgets in GBP (£380-£550)
-- ✅ Genre-specific benchmarks (Electronic, Indie)
-- ✅ Real platform values (radio, playlist, blog, pr)
+-  Demo campaigns: BBC Radio 1, NME, Spotify UK, BBC 6Music
+-  Realistic budgets in GBP (£380-£550)
+-  Genre-specific benchmarks (Electronic, Indie)
+-  Real platform values (radio, playlist, blog, pr)
 
 ### 4. Integrations Section
 
-- ✅ Spotify for Artists (stream data import)
-- ✅ Instagram Analytics (engagement tracking)
-- ✅ Bandcamp & SoundCloud (sales monitoring)
-- ✅ Audio Intel cross-reference
-- ✅ CSV import support
-- ✅ Email campaign tracking
+-  Spotify for Artists (stream data import)
+-  Instagram Analytics (engagement tracking)
+-  Bandcamp & SoundCloud (sales monitoring)
+-  Audio Intel cross-reference
+-  CSV import support
+-  Email campaign tracking
 
 ### 5. Intelligence Engine
 
-- ✅ Benchmark comparison algorithm
-- ✅ Pattern recognition across campaigns
-- ✅ ROI calculations (cost per result)
-- ✅ Actionable recommendations
-- ✅ Percentile ranking
+-  Benchmark comparison algorithm
+-  Pattern recognition across campaigns
+-  ROI calculations (cost per result)
+-  Actionable recommendations
+-  Percentile ranking
 
-## 🚀 Deployment Steps (30 mins)
+##  Deployment Steps (30 mins)
 
 ### Step 1: Enable Email Confirmation Bypass (5 mins)
 
@@ -160,7 +160,7 @@ STRIPE_WEBHOOK_SECRET=whsec_...
 4. Copy webhook secret to Vercel env vars
 5. Redeploy on Vercel
 
-## 🎯 Value Proposition (£19/month)
+##  Value Proposition (£19/month)
 
 ### What Artists Get:
 
@@ -184,7 +184,7 @@ STRIPE_WEBHOOK_SECRET=whsec_...
 - Export to CSV
 - Priority support
 
-## 📊 Testing Checklist
+##  Testing Checklist
 
 ### Core Flow:
 
@@ -212,7 +212,7 @@ STRIPE_WEBHOOK_SECRET=whsec_...
 - [ ] CSV import option visible
 - [ ] Audio Intel cross-reference card visible
 
-## 🐛 Known Issues & Fixes
+##  Known Issues & Fixes
 
 ### Issue: Email Confirmation Required
 
@@ -226,7 +226,7 @@ STRIPE_WEBHOOK_SECRET=whsec_...
 
 **Fix**: Ensure benchmark data exists in DB (migration 003 added it)
 
-## 🎉 Ready to Ship!
+##  Ready to Ship!
 
 The product is technically complete and ready for:
 

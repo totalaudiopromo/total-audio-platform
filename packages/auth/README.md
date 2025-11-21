@@ -4,13 +4,13 @@ Shared authentication package for Total Audio Promo platform. Provides unified a
 
 ## Features
 
-- ✅ Single sign-on across all apps
-- ✅ Shared user database with subscription management
-- ✅ App-specific permissions
-- ✅ React hooks for auth state
-- ✅ TypeScript support
-- ✅ Server and client utilities
-- ✅ Middleware for route protection
+-  Single sign-on across all apps
+-  Shared user database with subscription management
+-  App-specific permissions
+-  React hooks for auth state
+-  TypeScript support
+-  Server and client utilities
+-  Middleware for route protection
 
 ## Installation
 
@@ -262,10 +262,10 @@ See the full migration in `UNIFIED_AUTH_IMPLEMENTATION.md`.
 
 | Tier   | Audio Intel | Tracker | Pitch Generator | Command Centre |
 | ------ | ----------- | ------- | --------------- | -------------- |
-| free   | ✅          | ❌      | ❌              | ❌             |
-| pro    | ✅          | ❌      | ❌              | ❌             |
-| agency | ✅          | ❌      | ❌              | ❌             |
-| bundle | ✅          | ✅      | ✅              | ✅             |
+| free   |           |       |               |              |
+| pro    |           |       |               |              |
+| agency |           |       |               |              |
+| bundle |           |       |               |              |
 
 ## TypeScript Types
 

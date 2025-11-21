@@ -53,21 +53,21 @@ To use Apple Music Pitch, partners must:
 
 | Distributor                   | Dolby Atmos | Credits | Lyrics | Motion Art | Analytics |
 | ----------------------------- | ----------- | ------- | ------ | ---------- | --------- |
-| Believe                       | ✓           | ✓       | ✓      | ✓          | ✓         |
-| TuneCore                      | ✓           | ✓       | ✓      | ✗          | ✓         |
-| TuneCore Japan                | ✓           | ✓       | ✓      | ✓          | ✓         |
-| EWWAY                         | ✓           | ✓       | ✓      | ✓          | ✓         |
-| Label Engine                  | ✓           | ✓       | ✓      | ✓          | ✓         |
-| Golden Dynamic                | ✓           | ✓       | ✓      | ✓          | ✓         |
-| AudioSalad                    | ✓           | ✓       | ✓      | ✓          | ✓         |
-| Symphonic                     | ✓           | ✓       | ✓      | ✓          | ✓         |
-| FUGA                          | ✓           | ✓       | ✓      | ✓          | ✓         |
-| Kontor                        | ✓           | ✓       | ✓      | ✓          | ✓         |
-| Rock Mobile                   | ✓           | ✓       | ✓      | ✓          | ✓         |
-| Stem                          | ✓           | ✓       | ✓      | ✓          | ✓         |
-| Metropolitan Groove Merchants | ✓           | ✓       | ✓      | ✓          | ✓         |
-| recordJet                     | ✓           | ✓       | ✓      | ✓          | ✗         |
-| IDOL                          | ✓           | ✓       | ✓      | ✓          | ✓         |
+| Believe                       |            |        |       |           |          |
+| TuneCore                      |            |        |       |           |          |
+| TuneCore Japan                |            |        |       |           |          |
+| EWWAY                         |            |        |       |           |          |
+| Label Engine                  |            |        |       |           |          |
+| Golden Dynamic                |            |        |       |           |          |
+| AudioSalad                    |            |        |       |           |          |
+| Symphonic                     |            |        |       |           |          |
+| FUGA                          |            |        |       |           |          |
+| Kontor                        |            |        |       |           |          |
+| Rock Mobile                   |            |        |       |           |          |
+| Stem                          |            |        |       |           |          |
+| Metropolitan Groove Merchants |            |        |       |           |          |
+| recordJet                     |            |        |       |           |          |
+| IDOL                          |            |        |       |           |          |
 
 **Source**: [Apple Music Preferred Partners](https://artists.apple.com/partners)
 
@@ -461,16 +461,16 @@ Each track must include at least one role from each of three groups:
 
 | Feature                       | Apple Music                   | Spotify                       |
 | ----------------------------- | ----------------------------- | ----------------------------- |
-| **Direct Artist Pitching**    | ❌ No - Distributor only      | ✓ Yes - Spotify for Artists   |
+| **Direct Artist Pitching**    |  No - Distributor only      |  Yes - Spotify for Artists   |
 | **Minimum Lead Time**         | 10 days (via distributor)     | 7 days (artist direct)        |
-| **Public Submission Portal**  | ❌ No                         | ✓ Yes                         |
+| **Public Submission Portal**  |  No                         |  Yes                         |
 | **Editorial Team Access**     | Closed/Private                | Semi-open via portal          |
 | **Playlist Update Frequency** | Daily/Weekly varies           | Weekly (New Music Friday)     |
-| **Feedback on Submissions**   | ❌ None                       | ❌ None                       |
-| **Independent Curators**      | ❌ No user playlists featured | ✓ Yes - large curator network |
+| **Feedback on Submissions**   |  None                       |  None                       |
+| **Independent Curators**      |  No user playlists featured |  Yes - large curator network |
 | **Analytics Dashboard**       | Apple Music for Artists       | Spotify for Artists           |
-| **Lyrics Requirement**        | ✓ Mandatory (Jan 2025)        | Optional but recommended      |
-| **Contributor Credits**       | ✓ Mandatory (Jan 2025)        | Optional but recommended      |
+| **Lyrics Requirement**        |  Mandatory (Jan 2025)        | Optional but recommended      |
+| **Contributor Credits**       |  Mandatory (Jan 2025)        | Optional but recommended      |
 
 **Sources**: Comparison compiled from Apple Music Pitch User Guide and Spotify for Artists documentation
 

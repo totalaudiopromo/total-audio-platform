@@ -1,6 +1,6 @@
-# 🚀 Claude Code Skills - Activation Steps
+# Claude Code Skills - Activation Steps
 
-**Status:** ✅ Skills installed, ⏸️ Not yet enabled
+**Status:** Skills installed, ⏸ Not yet enabled
 
 ---
 
@@ -36,10 +36,10 @@ Open a new chat in Claude Code and ask:
 **Expected Response:**
 Claude should confirm skills are enabled and list:
 
-- ✅ skill-creator (writing-skills)
-- ✅ systematic-debugging
-- ✅ brainstorming
-- ✅ changelog-generator
+- skill-creator (writing-skills)
+- systematic-debugging
+- brainstorming
+- changelog-generator
 
 If Claude doesn't see the skills:
 
@@ -259,8 +259,8 @@ After completing these steps, you should have:
 
 ---
 
-**Current Status:** ✅ Skills installed in both directories
+**Current Status:** Skills installed in both directories
 **Next Step:** Enable skills in Claude Code settings (⌘, → Capabilities → Skills)
 **After Enabling:** Come back and say "Skills enabled! Let's test them."
 
-🚀 You're 2 minutes away from having powerful workflow automation!
+You're 2 minutes away from having powerful workflow automation!

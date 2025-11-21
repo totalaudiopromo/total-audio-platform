@@ -1,4 +1,4 @@
-# 🎵 Music Newsjacker 3000 - Setup Guide
+#  Music Newsjacker 3000 - Setup Guide
 
 ## What You're Getting
 
@@ -6,18 +6,18 @@ A simplified version of Ole's Newsjacker 3000, built specifically for your music
 
 **What it does:**
 
-- ✅ Fetches trending music industry news daily
-- ✅ Uses Ole's exact scoring system (35% recency + 65% importance)
-- ✅ Analyzes news through your authentic voice and expertise
-- ✅ Generates newsletter content automatically
-- ✅ Sends to your ConvertKit subscribers
+-  Fetches trending music industry news daily
+-  Uses Ole's exact scoring system (35% recency + 65% importance)
+-  Analyzes news through your authentic voice and expertise
+-  Generates newsletter content automatically
+-  Sends to your ConvertKit subscribers
 
 **Time to set up:** 5 minutes
 **Cost:** ~$3/month (NewsAPI + Anthropic credits)
 
 ---
 
-## 🚀 Quick Setup (5 minutes)
+##  Quick Setup (5 minutes)
 
 ### Step 1: Get NewsAPI Key (Free)
 
@@ -47,14 +47,14 @@ ANTHROPIC_API_KEY=your_anthropic_key_here
 ### Step 4: Test the System
 
 1. Go to `/newsletter-dashboard`
-2. Click "🎯 Run Newsjacker"
+2. Click " Run Newsjacker"
 3. Watch it fetch music industry news and generate content
 4. Review the generated content
 5. Click "Send to X Subscribers" when ready
 
 ---
 
-## 🎯 How It Works
+##  How It Works
 
 ### Daily Automation
 
@@ -90,7 +90,7 @@ Each run produces:
 
 ---
 
-## 📊 Expected Results
+##  Expected Results
 
 ### News Quality
 
@@ -115,7 +115,7 @@ Each run produces:
 
 ---
 
-## 🛠️ Customization Options
+##  Customization Options
 
 ### Change News Sources
 
@@ -153,7 +153,7 @@ const totalScore = recencyScore * 0.35 + importanceScore * 0.65;
 
 ---
 
-## 🚨 Troubleshooting
+##  Troubleshooting
 
 ### No News Found
 
@@ -175,7 +175,7 @@ const totalScore = recencyScore * 0.35 + importanceScore * 0.65;
 
 ---
 
-## 💡 Pro Tips
+##  Pro Tips
 
 ### Best Times to Run
 
@@ -197,7 +197,7 @@ const totalScore = recencyScore * 0.35 + importanceScore * 0.65;
 
 ---
 
-## 🎉 You're Ready!
+##  You're Ready!
 
 Your Music Newsjacker 3000 is now set up and ready to:
 
@@ -206,11 +206,11 @@ Your Music Newsjacker 3000 is now set up and ready to:
 - Position you as an industry insider
 - Drive more engagement from subscribers
 
-**Next step**: Run your first newsjacker and see the magic happen! 🎵
+**Next step**: Run your first newsjacker and see the magic happen! 
 
 ---
 
-## 📞 Support
+##  Support
 
 If you run into any issues:
 

@@ -1,6 +1,6 @@
 # Mailchimp ↔ Airtable Sync Solution
 
-## 🎯 CONFIRMED FINDINGS
+##  CONFIRMED FINDINGS
 
 ### Mailchimp Account Connected
 
@@ -9,7 +9,7 @@
 - **Total Contacts**: 475
 - **Subscribed**: 453
 - **Unsubscribed**: 22
-- **KYARA Campaign Tag**: ✅ 21 members already added
+- **KYARA Campaign Tag**:  21 members already added
 
 ### Airtable "Unsubscribed" Status Source
 
@@ -17,7 +17,7 @@
 - **NOT from Mailchimp**: The Airtable field is NOT synced from Mailchimp
 - **Current State**: 11 out of 21 KYARA contacts show "Unsubscribed" in Airtable
 
-## 🚨 THE PROBLEM
+##  THE PROBLEM
 
 You have **two separate data sources** with different unsubscribe statuses:
 
@@ -31,7 +31,7 @@ You have **two separate data sources** with different unsubscribe statuses:
 - Mailchimp might have contacts marked unsubscribed that Airtable shows as "Opted-In"
 - You're managing two versions of truth manually
 
-## 💡 THE SOLUTION
+##  THE SOLUTION
 
 ### Option 1: Make Mailchimp the Single Source of Truth (RECOMMENDED)
 
@@ -59,7 +59,7 @@ You have **two separate data sources** with different unsubscribe statuses:
 
 **Problem:** You manually manage two lists and risk sending to unsubscribed contacts
 
-## 🛠️ IMPLEMENTATION: Mailchimp → Airtable Sync
+##  IMPLEMENTATION: Mailchimp → Airtable Sync
 
 I can create a script that:
 
@@ -84,26 +84,26 @@ I can create a script that:
 
 ### Benefits:
 
-- ✅ One source of truth (Mailchimp)
-- ✅ Automatic compliance (won't email unsubscribed contacts)
-- ✅ Enrichment data still in Airtable
-- ✅ Can filter Airtable views by actual subscription status
-- ✅ Run script daily/weekly to stay in sync
+-  One source of truth (Mailchimp)
+-  Automatic compliance (won't email unsubscribed contacts)
+-  Enrichment data still in Airtable
+-  Can filter Airtable views by actual subscription status
+-  Run script daily/weekly to stay in sync
 
-## 📊 CURRENT KYARA CAMPAIGN STATUS
+##  CURRENT KYARA CAMPAIGN STATUS
 
 **Good News:**
 
-- ✅ 21 KYARA contacts already added to Mailchimp
-- ✅ Tagged with "KYARA-Campaign"
-- ✅ Well below contact limits (475/500+ contacts)
+-  21 KYARA contacts already added to Mailchimp
+-  Tagged with "KYARA-Campaign"
+-  Well below contact limits (475/500+ contacts)
 
 **Investigation Needed:**
 
 - Of the 21 added, how many are actually subscribed vs unsubscribed in Mailchimp?
 - Do the 11 "Unsubscribed" in Airtable match the actual Mailchimp status?
 
-## 🎯 RECOMMENDED NEXT STEPS
+##  RECOMMENDED NEXT STEPS
 
 ### Step 1: Verify KYARA Contact Status in Mailchimp
 
@@ -130,7 +130,7 @@ Use cron/scheduler to run sync daily:
 0 9 * * * cd /path/to/scripts && node sync-mailchimp-to-airtable.js
 ```
 
-## 🚨 IMPORTANT: Two Mailchimp Accounts
+##  IMPORTANT: Two Mailchimp Accounts
 
 You mentioned having TWO Mailchimp accounts:
 
@@ -150,7 +150,7 @@ You mentioned having TWO Mailchimp accounts:
 - **Sync Airtable → Liberty Mailchimp** (what we just did with KYARA)
 - **Don't cross-pollinate** the two accounts to avoid confusion
 
-## 💰 CONTACT LIMITS - YOU'RE SAFE
+##  CONTACT LIMITS - YOU'RE SAFE
 
 **Liberty Music PR Mailchimp:**
 
@@ -165,7 +165,7 @@ You mentioned having TWO Mailchimp accounts:
 2. Go to Account → Settings → Billing
 3. Check "Plan details" for exact contact limit
 
-## 🔧 NEXT ACTION: Verify KYARA Contacts
+##  NEXT ACTION: Verify KYARA Contacts
 
 Would you like me to create a script that:
 

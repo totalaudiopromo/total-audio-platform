@@ -9,7 +9,7 @@
 
 ---
 
-## 🎯 RELEASE DAY STRATEGY
+##  RELEASE DAY STRATEGY
 
 ### Why Send Sunday Night GMT / Monday Morning AEST:
 
@@ -27,7 +27,7 @@
 
 ---
 
-## 📧 EMAIL TEMPLATE: RELEASE DAY ANNOUNCEMENT
+##  EMAIL TEMPLATE: RELEASE DAY ANNOUNCEMENT
 
 ### Subject Line Options (A/B Test These):
 
@@ -47,7 +47,7 @@
 
 ---
 
-## 📝 EMAIL BODY TEMPLATE
+##  EMAIL BODY TEMPLATE
 
 ### Template A: WARM CONTACTS (Anika Luna, previous responders)
 
@@ -92,10 +92,10 @@ Hi [NAME],
 Following up - Sydney artist KYARA's "Bloodshot" officially dropped today.
 
 The track's built some solid pre-release momentum:
-✅ Amazing Radio (UK) - confirmed rotation
-✅ 85 plays across 9 countries
-✅ Triple J Home & Hosed history (played "Yearn" in August)
-✅ Self-produced in bedroom studio (Sydney)
+ Amazing Radio (UK) - confirmed rotation
+ 85 plays across 9 countries
+ Triple J Home & Hosed history (played "Yearn" in August)
+ Self-produced in bedroom studio (Sydney)
 
 Listen: [SPOTIFY LINK]
 Download: [WETRANSFER LINK]
@@ -172,7 +172,7 @@ P.S. The response has been great so far - 85 plays across 9 countries pre-releas
 
 ---
 
-## 📋 RECIPIENT LIST BREAKDOWN
+##  RECIPIENT LIST BREAKDOWN
 
 ### WARM Contacts (5-7 recipients) - Template A:
 
@@ -208,7 +208,7 @@ P.S. The response has been great so far - 85 plays across 9 countries pre-releas
 
 ---
 
-## 📤 SENDING STRATEGY
+##  SENDING STRATEGY
 
 ### Timing Breakdown:
 
@@ -229,7 +229,7 @@ P.S. The response has been great so far - 85 plays across 9 countries pre-releas
 
 ---
 
-## 🎯 MAILCHIMP CAMPAIGN SETUP
+##  MAILCHIMP CAMPAIGN SETUP
 
 ### If Using Mailchimp for Bulk Send:
 
@@ -258,7 +258,7 @@ P.S. The response has been great so far - 85 plays across 9 countries pre-releas
 
 ---
 
-## 📊 SUCCESS METRICS TO TRACK
+##  SUCCESS METRICS TO TRACK
 
 ### Email Performance Goals:
 
@@ -283,7 +283,7 @@ P.S. The response has been great so far - 85 plays across 9 countries pre-releas
 
 ---
 
-## 🔥 ASSETS TO INCLUDE
+##  ASSETS TO INCLUDE
 
 ### Links to Provide:
 
@@ -306,7 +306,7 @@ P.S. The response has been great so far - 85 plays across 9 countries pre-releas
 
 ---
 
-## ⚠️ PRE-SEND CHECKLIST
+##  PRE-SEND CHECKLIST
 
 ### Before Hitting Send (Sunday Night):
 
@@ -323,7 +323,7 @@ P.S. The response has been great so far - 85 plays across 9 countries pre-releas
 
 ---
 
-## 📧 GMAIL DRAFT CREATION SCRIPT
+##  GMAIL DRAFT CREATION SCRIPT
 
 ### If Sending via Gmail (Not Mailchimp):
 
@@ -342,17 +342,17 @@ node tools/agents/campaigns/kyara/create-kyara-gmail-drafts-liberty.js
 
 ---
 
-## 🎬 DEMO NOTE FOR DAN (Friday)
+##  DEMO NOTE FOR DAN (Friday)
 
 **When showing this to Dan:**
 
 "So this is the Monday release day blast I've got scheduled. It's going out Sunday night GMT to UK contacts, Monday morning AEST to Australian contacts. The tool:
 
-✅ Auto-schedules send times based on timezone optimisation
-✅ Segments the list (WARM, cold, new contacts)
-✅ Tracks opens, clicks, responses automatically
-✅ Suggests follow-up timing (Tuesday for non-openers)
-✅ Integrates with Mailchimp for bulk send OR Gmail for personal sends
+ Auto-schedules send times based on timezone optimisation
+ Segments the list (WARM, cold, new contacts)
+ Tracks opens, clicks, responses automatically
+ Suggests follow-up timing (Tuesday for non-openers)
+ Integrates with Mailchimp for bulk send OR Gmail for personal sends
 
 This alone saves me 2-3 hours of manual list management and scheduling. The tool does it all."
 

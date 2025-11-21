@@ -6,7 +6,7 @@
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 1. [Overview](#overview)
 2. [Service Level Objectives](#service-level-objectives)
@@ -282,9 +282,9 @@ Success Rate = (2xx + 3xx Responses) / (Total Requests - 4xx) × 100
 
 | Month    | App         | SLO Target | Actual | Error Budget Used | Status     |
 | -------- | ----------- | ---------- | ------ | ----------------- | ---------- |
-| Nov 2025 | Audio Intel | 99.5%      | TBD    | TBD%              | 🟢 Healthy |
-| Nov 2025 | Tracker     | 99.0%      | TBD    | TBD%              | 🟢 Healthy |
-| Nov 2025 | Pitch Gen   | 99.0%      | TBD    | TBD%              | 🟢 Healthy |
+| Nov 2025 | Audio Intel | 99.5%      | TBD    | TBD%              | Healthy |
+| Nov 2025 | Tracker     | 99.0%      | TBD    | TBD%              | Healthy |
+| Nov 2025 | Pitch Gen   | 99.0%      | TBD    | TBD%              | Healthy |
 
 **Update Frequency:** Weekly during customer acquisition phase
 
@@ -335,7 +335,7 @@ Success Rate = (2xx + 3xx Responses) / (Total Requests - 4xx) × 100
 2. **Check Error Budget** (update tracking table)
 3. **Review Incidents** (count P0/P1/P2 incidents from previous week)
 4. **Assess Deployment Velocity** (number of deployments vs. error budget health)
-5. **Update Status** (🟢 Healthy / 🟡 Caution / 🔴 Freeze)
+5. **Update Status** (Healthy / Caution / Freeze)
 
 **Report Format:**
 
@@ -344,10 +344,10 @@ Success Rate = (2xx + 3xx Responses) / (Total Requests - 4xx) × 100
 
 ### Audio Intel
 
-- Availability: [X.X%] (Target: 99.5%) [✅ / ⚠️ / ❌]
-- Latency p95: [X.Xs] (Target: < 3s) [✅ / ⚠️ / ❌]
-- Success Rate: [X.X%] (Target: 99%) [✅ / ⚠️ / ❌]
-- Error Budget: [X%] remaining [🟢 / 🟡 / 🔴]
+- Availability: [X.X%] (Target: 99.5%) [/ / ]
+- Latency p95: [X.Xs] (Target: < 3s) [/ / ]
+- Success Rate: [X.X%] (Target: 99%) [/ / ]
+- Error Budget: [X%] remaining [/ / ]
 
 ### Incidents
 
@@ -485,7 +485,7 @@ Total requests: 100,000
 5xx errors: 500
 4xx errors: 2,000 (excluded)
 
-Success rate = (100,000 - 500) / 100,000 × 100 = 99.5% ✅
+Success rate = (100,000 - 500) / 100,000 × 100 = 99.5% 
 ```
 
 ---

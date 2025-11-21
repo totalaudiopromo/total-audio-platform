@@ -1,6 +1,6 @@
 # Golden Deploy Environment Variables Checklist
 
-## ✅ WHAT I JUST FIXED
+## WHAT I JUST FIXED
 
 **Critical Issue**: The promote step in `.github/workflows/golden-deploy.yml` was **ONLY passing 1 of 5 required Vercel project IDs**.
 
@@ -15,7 +15,7 @@ This is why the promotion step was failing - `golden-promote.ts` needs all 5 pro
 
 ---
 
-## 🎯 EXACT STEPS YOU NEED TO COMPLETE NOW
+## EXACT STEPS YOU NEED TO COMPLETE NOW
 
 ### Step 1: Verify GitHub Secrets (Repository Settings → Secrets and Variables → Actions)
 
@@ -26,28 +26,28 @@ Go to: https://github.com/totalaudiopromo/total-audio-platform/settings/secrets/
 #### Build Secrets (GitHub Actions needs these)
 
 ```
-✓ NEXT_PUBLIC_SUPABASE_URL
-✓ NEXT_PUBLIC_SUPABASE_ANON_KEY
-✓ SUPABASE_SERVICE_ROLE_KEY
+ NEXT_PUBLIC_SUPABASE_URL
+ NEXT_PUBLIC_SUPABASE_ANON_KEY
+ SUPABASE_SERVICE_ROLE_KEY
 ```
 
 #### Vercel Promotion Secrets (golden-promote.ts needs these)
 
 ```
-✓ VERCEL_TOKEN
-✓ VERCEL_ORG_ID
-✓ VERCEL_PROJECT_ID                    # audio-intel
-✓ VERCEL_PROJECT_ID_TRACKER            # tracker
-✓ VERCEL_PROJECT_ID_PITCH_GENERATOR    # pitch-generator
-✓ VERCEL_PROJECT_ID_COMMAND_CENTRE     # command-centre
-✓ VERCEL_PROJECT_ID_WEB                # web
+ VERCEL_TOKEN
+ VERCEL_ORG_ID
+ VERCEL_PROJECT_ID                    # audio-intel
+ VERCEL_PROJECT_ID_TRACKER            # tracker
+ VERCEL_PROJECT_ID_PITCH_GENERATOR    # pitch-generator
+ VERCEL_PROJECT_ID_COMMAND_CENTRE     # command-centre
+ VERCEL_PROJECT_ID_WEB                # web
 ```
 
 #### Notification Secrets (optional)
 
 ```
-✓ TELEGRAM_BOT_TOKEN
-✓ TELEGRAM_CHAT_ID
+ TELEGRAM_BOT_TOKEN
+ TELEGRAM_CHAT_ID
 ```
 
 **Values for the VERCEL*PROJECT_ID*\* secrets:**
@@ -81,19 +81,19 @@ Go to each project's settings:
 ```
 Variable Name: NEXT_PUBLIC_SUPABASE_URL
 Value: https://lbtazcdqirgvmhvtwrbc.supabase.co
-Environments: ✓ Production  ✓ Preview  ✓ Development
+Environments:  Production   Preview   Development
 ```
 
 ```
 Variable Name: NEXT_PUBLIC_SUPABASE_ANON_KEY
 Value: [your-anon-key]
-Environments: ✓ Production  ✓ Preview  ✓ Development
+Environments:  Production   Preview   Development
 ```
 
 ```
 Variable Name: SUPABASE_SERVICE_ROLE_KEY
 Value: [your-service-role-key]
-Environments: ✓ Production  ✓ Preview  ✓ Development
+Environments:  Production   Preview   Development
 ```
 
 **IMPORTANT**: Check **ALL THREE** environment boxes (Production, Preview, Development) for each variable!
@@ -174,15 +174,15 @@ NEXT_PUBLIC_BASE_URL=https://totalaudiopromo.com
 
 ---
 
-## 📋 QUICK VERIFICATION CHECKLIST
+## QUICK VERIFICATION CHECKLIST
 
-### GitHub Secrets ✓
+### GitHub Secrets 
 
 - [ ] All 12 secrets present in repository settings
 - [ ] VERCEL*PROJECT_ID*\* values match the project IDs above
 - [ ] SUPABASE_SERVICE_ROLE_KEY is set (you just added this)
 
-### Vercel: audio-intel ✓
+### Vercel: audio-intel 
 
 - [ ] NEXT_PUBLIC_SUPABASE_URL (Production + Preview + Development)
 - [ ] NEXT_PUBLIC_SUPABASE_ANON_KEY (Production + Preview + Development)
@@ -192,7 +192,7 @@ NEXT_PUBLIC_BASE_URL=https://totalaudiopromo.com
 - [ ] NEXTAUTH_URL
 - [ ] NEXTAUTH_SECRET
 
-### Vercel: tracker ✓
+### Vercel: tracker 
 
 - [ ] NEXT_PUBLIC_SUPABASE_URL (Production + Preview + Development)
 - [ ] NEXT_PUBLIC_SUPABASE_ANON_KEY (Production + Preview + Development)
@@ -200,7 +200,7 @@ NEXT_PUBLIC_BASE_URL=https://totalaudiopromo.com
 - [ ] ANTHROPIC_API_KEY
 - [ ] NEXT_PUBLIC_APP_URL
 
-### Vercel: pitch-generator ✓
+### Vercel: pitch-generator 
 
 - [ ] NEXT_PUBLIC_SUPABASE_URL (Production + Preview + Development)
 - [ ] NEXT_PUBLIC_SUPABASE_ANON_KEY (Production + Preview + Development)
@@ -209,14 +209,14 @@ NEXT_PUBLIC_BASE_URL=https://totalaudiopromo.com
 - [ ] NEXTAUTH_SECRET
 - [ ] NEXTAUTH_URL
 
-### Vercel: command-centre ✓
+### Vercel: command-centre 
 
 - [ ] NEXT_PUBLIC_SUPABASE_URL (Production + Preview + Development)
 - [ ] NEXT_PUBLIC_SUPABASE_ANON_KEY (Production + Preview + Development)
 - [ ] SUPABASE_SERVICE_ROLE_KEY (Production + Preview + Development)
 - [ ] COMMAND_CENTRE_URL
 
-### Vercel: web ✓
+### Vercel: web 
 
 - [ ] NEXT_PUBLIC_SUPABASE_URL (Production + Preview + Development)
 - [ ] NEXT_PUBLIC_SUPABASE_ANON_KEY (Production + Preview + Development)
@@ -225,7 +225,7 @@ NEXT_PUBLIC_BASE_URL=https://totalaudiopromo.com
 
 ---
 
-## 🚀 READY TO DEPLOY?
+## READY TO DEPLOY?
 
 Once you've verified all the above, we can trigger v2.5.4-golden deployment:
 
@@ -236,15 +236,15 @@ git push origin v2.5.4-golden
 
 This will be attempt **#34** - with:
 
-- ✅ All 5 VERCEL*PROJECT_ID*\* vars in workflow (JUST FIXED)
-- ✅ All Supabase env vars in GitHub Secrets
-- ✅ All Supabase env vars in each Vercel project (you're adding now)
-- ✅ Package name mappings for web → total-audio-promo-frontend
-- ✅ All 5 apps in build matrix
+- All 5 VERCEL*PROJECT_ID*\* vars in workflow (JUST FIXED)
+- All Supabase env vars in GitHub Secrets
+- All Supabase env vars in each Vercel project (you're adding now)
+- Package name mappings for web → total-audio-promo-frontend
+- All 5 apps in build matrix
 
 ---
 
-## 📚 REFERENCE DOCUMENTS
+##  REFERENCE DOCUMENTS
 
 - **EXACT_ENV_VARS_NEEDED.md** - Complete environment variable reference
 - **reports/golden/final/verification-summary.md** - Infrastructure verification report
@@ -252,7 +252,7 @@ This will be attempt **#34** - with:
 
 ---
 
-## ❓ COMMON ISSUES
+##  COMMON ISSUES
 
 ### Issue: "Missing VERCEL_PROJECT_ID for tracker"
 

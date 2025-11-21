@@ -5,7 +5,7 @@
 
 ---
 
-## 🎯 What You Need for KYARA Campaign
+##  What You Need for KYARA Campaign
 
 ### 1. **Email Pitch** (Gmail - Plain Text)
 
@@ -89,7 +89,7 @@ For cold contacts or follow-ups
 
 ---
 
-## 📧 Professional Email Structure for KYARA
+##  Professional Email Structure for KYARA
 
 ### For Anika Luna (Warm - Triple J)
 
@@ -136,7 +136,7 @@ chrisschofield@libertymusicpr.com
 
 ---
 
-## 🎨 Creating a Professional EPK
+##  Creating a Professional EPK
 
 ### Quick Method: Google Slides → PDF
 
@@ -184,7 +184,7 @@ chrisschofield@libertymusicpr.com
 
 ---
 
-## 🔗 Streaming Link Strategy
+##  Streaming Link Strategy
 
 **Create these before pitching**:
 
@@ -213,30 +213,30 @@ Offer all 3 options - let them choose their preferred platform
 
 ---
 
-## 📦 File Package Checklist
+##  File Package Checklist
 
 **Before sending pitches, prepare**:
 
-✅ **Audio Files**:
+ **Audio Files**:
 
 - [ ] WAV file (high quality, 24-bit preferred)
 - [ ] MP3 file (320kbps backup)
 - [ ] File naming: `KYARA - [Track Name] (Radio Edit).wav`
 
-✅ **Visual Assets**:
+ **Visual Assets**:
 
 - [ ] Cover art (3000x3000px minimum)
 - [ ] Artist photo (high-res)
 - [ ] Artist photo (web-optimized 1200px)
 
-✅ **Written Materials**:
+ **Written Materials**:
 
 - [ ] Artist bio (short - 100 words)
 - [ ] Artist bio (long - 300 words)
 - [ ] Track description (1 paragraph)
 - [ ] Press quotes (if any)
 
-✅ **Links**:
+ **Links**:
 
 - [ ] Spotify pre-save link
 - [ ] SoundCloud private link
@@ -244,7 +244,7 @@ Offer all 3 options - let them choose their preferred platform
 - [ ] WeTransfer download link
 - [ ] EPK PDF link (Dropbox/Drive)
 
-✅ **Contact Info**:
+ **Contact Info**:
 
 - [ ] Your email: chrisschofield@libertymusicpr.com
 - [ ] KYARA's socials
@@ -252,7 +252,7 @@ Offer all 3 options - let them choose their preferred platform
 
 ---
 
-## 🚀 Recommended Workflow
+##  Recommended Workflow
 
 ### 2 Weeks Before Release:
 
@@ -290,30 +290,30 @@ Offer all 3 options - let them choose their preferred platform
 
 ---
 
-## ⚠️ What NOT to Do
+##  What NOT to Do
 
 **Never**:
 
-- ❌ Send Mailchimp campaign links
-- ❌ Use bit.ly or shortened links
-- ❌ Send huge attachments (>10MB)
-- ❌ Use HTML email templates
-- ❌ CC multiple contacts
-- ❌ Send on Mondays or Fridays
-- ❌ Follow up more than twice
+-  Send Mailchimp campaign links
+-  Use bit.ly or shortened links
+-  Send huge attachments (>10MB)
+-  Use HTML email templates
+-  CC multiple contacts
+-  Send on Mondays or Fridays
+-  Follow up more than twice
 
 **Always**:
 
-- ✅ Personal, plain text emails
-- ✅ Professional file hosting
-- ✅ Clear subject lines
-- ✅ BCC if sending to multiple (but don't!)
-- ✅ Send Tuesday-Thursday 10am-2pm
-- ✅ One follow-up after 5 days
+-  Personal, plain text emails
+-  Professional file hosting
+-  Clear subject lines
+-  BCC if sending to multiple (but don't!)
+-  Send Tuesday-Thursday 10am-2pm
+-  One follow-up after 5 days
 
 ---
 
-## 📊 Tracking & Follow-up
+##  Tracking & Follow-up
 
 **Track in Airtable**:
 
@@ -344,7 +344,7 @@ Chris
 
 ---
 
-## 💡 Pro Tips
+##  Pro Tips
 
 1. **Personalize every email** - even small changes make a difference
 2. **Reference specific shows/times** - shows you've done research
@@ -355,7 +355,7 @@ Chris
 
 ---
 
-## ✅ Summary
+##  Summary
 
 **For KYARA Australian campaign**:
 

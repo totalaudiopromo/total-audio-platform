@@ -1,9 +1,9 @@
-# ⚡ QUICK ACTIVATION GUIDE - 10X YOUR WORKFLOW IN 30 MINUTES
+#  QUICK ACTIVATION GUIDE - 10X YOUR WORKFLOW IN 30 MINUTES
 
 **Goal**: Activate your world-class TDD agents and unified workflow system
 **Time**: 30 minutes for massive workflow improvement
 
-## 🚀 IMMEDIATE ACTIVATION (5 commands, 30 minutes)
+##  IMMEDIATE ACTIVATION (5 commands, 30 minutes)
 
 ### Step 1: Activate TDD Agents (5 minutes)
 
@@ -22,7 +22,7 @@ cp tools/agents/archive/working/total-audio-tdd-orchestrator.js tools/agents/act
 chmod +x tools/agents/active/tdd/*.js
 chmod +x tools/agents/active/total-audio-tdd-orchestrator.js
 
-echo "✅ TDD agents activated!"
+echo " TDD agents activated!"
 ```
 
 ### Step 2: Test Your TDD System (10 minutes)
@@ -38,7 +38,7 @@ node total-audio-tdd-orchestrator.js plan "CSV export" audiointel
 # Check status
 node total-audio-tdd-orchestrator.js status
 
-echo "✅ TDD system tested and working!"
+echo " TDD system tested and working!"
 ```
 
 ### Step 3: Create Unified Launcher (10 minutes)
@@ -85,34 +85,34 @@ const AGENTS = {
 };
 
 function showHelp() {
-  console.log('\n🤖 UNIFIED AGENT LAUNCHER - 10X WORKFLOW');
+  console.log('\n UNIFIED AGENT LAUNCHER - 10X WORKFLOW');
   console.log('=========================================');
   console.log('Usage: node unified-launcher.js <workflow> [args...]');
   console.log('');
-  console.log('🚀 TDD WORKFLOWS (10X Development):');
+  console.log(' TDD WORKFLOWS (10X Development):');
   console.log('  tdd-plan "feature"     Plan feature with TDD methodology');
   console.log('  tdd-build "feature"    Build feature with tests');
   console.log('  tdd-quick "feature"    Quick build without TDD planning');
   console.log('  tdd-status             Show all feature development status');
   console.log('');
-  console.log('📝 TESTING:');
+  console.log(' TESTING:');
   console.log('  test-write "feature"   Generate natural language test scenarios');
   console.log('  test-quick "feature"   Quick test scenarios for rapid development');
   console.log('');
-  console.log('📧 CONTENT & MARKETING:');
+  console.log(' CONTENT & MARKETING:');
   console.log('  newsletter             Automated newsletter generation');
   console.log('  social                 Social media content automation');
   console.log('  news                   Newsjacking content creation');
   console.log('');
-  console.log('📊 BUSINESS:');
+  console.log(' BUSINESS:');
   console.log('  analytics              Business analytics and insights');
   console.log('  marketing              SaaS marketing automation');
   console.log('');
-  console.log('🎵 RADIO PROMOTION:');
+  console.log(' RADIO PROMOTION:');
   console.log('  radio                  Radio promotion workflows');
   console.log('  campaign               Campaign management');
   console.log('');
-  console.log('📧 SETUP:');
+  console.log(' SETUP:');
   console.log('  gmail-setup            Gmail automation setup');
   console.log('');
   console.log('Examples:');
@@ -124,7 +124,7 @@ function showHelp() {
 function runAgent(workflow, args) {
   const agentPath = AGENTS[workflow];
   if (!agentPath) {
-    console.error(`❌ Unknown workflow: ${workflow}`);
+    console.error(` Unknown workflow: ${workflow}`);
     console.log('Run "node unified-launcher.js" to see available workflows');
     process.exit(1);
   }
@@ -132,14 +132,14 @@ function runAgent(workflow, args) {
   const fullPath = path.join(__dirname, agentPath);
   const command = `node ${fullPath} ${args.join(' ')}`;
 
-  console.log(`🚀 Running workflow: ${workflow}`);
-  console.log(`📂 Command: ${command}`);
+  console.log(` Running workflow: ${workflow}`);
+  console.log(` Command: ${command}`);
   console.log('');
 
   try {
     execSync(command, { stdio: 'inherit', cwd: __dirname });
   } catch (error) {
-    console.error(`❌ Workflow failed: ${error.message}`);
+    console.error(` Workflow failed: ${error.message}`);
     process.exit(1);
   }
 }
@@ -156,7 +156,7 @@ runAgent(workflow, args);
 EOF
 
 chmod +x tools/agents/unified-launcher.js
-echo "✅ Unified launcher created!"
+echo " Unified launcher created!"
 ```
 
 ### Step 4: Test Unified System (5 minutes)
@@ -169,7 +169,7 @@ node unified-launcher.js
 # Try a quick TDD workflow
 node unified-launcher.js tdd-plan "mobile optimization" audiointel
 
-echo "✅ Unified system working!"
+echo " Unified system working!"
 ```
 
 ### Step 5: Update Agent OS Integration (5 minutes)
@@ -217,30 +217,30 @@ workflows:
   business_analysis: "analytics → marketing"
 EOF
 
-echo "✅ Agent OS integration enhanced!"
+echo " Agent OS integration enhanced!"
 ```
 
-## 🎯 IMMEDIATE BENEFITS UNLOCKED
+##  IMMEDIATE BENEFITS UNLOCKED
 
-### ⚡ 10X Development Speed
+###  10X Development Speed
 
 - **Before**: Manual feature planning and testing
 - **After**: `node unified-launcher.js tdd-plan "feature name"`
 - **Result**: Automated test scenarios, UI planning, implementation roadmap
 
-### 🎯 Business-Focused Testing
+###  Business-Focused Testing
 
 - **Before**: Technical tests without business context
 - **After**: UK music industry scenarios, £19-99 pricing validation
 - **Result**: Tests that validate actual customer value
 
-### 🔄 Unified Workflow
+###  Unified Workflow
 
 - **Before**: 18+ scattered agents, manual coordination
 - **After**: Single entry point, orchestrated workflows
 - **Result**: Zero cognitive overhead, maximum productivity
 
-## 🚀 NEXT-LEVEL COMMANDS (Available Now!)
+##  NEXT-LEVEL COMMANDS (Available Now!)
 
 ### TDD Workflows
 
@@ -281,7 +281,7 @@ node unified-launcher.js analytics customer-acquisition
 node unified-launcher.js marketing content-strategy
 ```
 
-## 📈 WORKFLOW EXAMPLES
+##  WORKFLOW EXAMPLES
 
 ### Example 1: New Feature Development (TDD)
 
@@ -322,7 +322,7 @@ node unified-launcher.js social generate-weekly
 node unified-launcher.js news newsjacking-opportunities
 ```
 
-## ✅ VERIFICATION CHECKLIST
+##  VERIFICATION CHECKLIST
 
 After running the activation commands, verify:
 
@@ -331,27 +331,27 @@ After running the activation commands, verify:
 - [ ] Test planning works: `node unified-launcher.js tdd-plan "test feature"`
 - [ ] Agent OS integration: Check `.agent-os/config.yml` has total_audio section
 
-## 🎯 WHAT YOU'VE UNLOCKED
+##  WHAT YOU'VE UNLOCKED
 
-### World-Class TDD System ✅
+### World-Class TDD System 
 
 - Natural language test scenarios (not brittle selectors)
 - Mobile-first testing (iPhone SE, 44px touch targets)
 - UK music industry context (BBC Radio 1, £19-99 pricing)
 - Complete workflow orchestration
 
-### Unified Agent Ecosystem ✅
+### Unified Agent Ecosystem 
 
 - Single entry point for all workflows
 - TDD-first development by default
 - Business-focused automation
 - Agent OS professional standards
 
-### 10X Productivity Multiplier ✅
+### 10X Productivity Multiplier 
 
 - Automated feature planning
 - Natural language testing
 - Workflow orchestration
 - Zero cognitive overhead
 
-**You now have a world-class development workflow that rivals the best SaaS companies! 🚀**
+**You now have a world-class development workflow that rivals the best SaaS companies! **

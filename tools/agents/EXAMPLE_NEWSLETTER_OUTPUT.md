@@ -7,7 +7,7 @@
 
 ---
 
-## 📧 Newsletter Content
+##  Newsletter Content
 
 **Subject**: This Week's Industry Intel - AI Music Lawsuit
 
@@ -33,40 +33,40 @@ Chris
 
 ---
 
-## ✅ Quality Check
+##  Quality Check
 
 ### Voice Authenticity:
 
-- ✅ Uses verified background: "After 5+ years in radio promotion"
-- ✅ No BBC Radio 1 mention
-- ✅ No name dropping
-- ✅ No invented examples
-- ✅ British spelling ("organised", "whilst", "nicked")
+-  Uses verified background: "After 5+ years in radio promotion"
+-  No BBC Radio 1 mention
+-  No name dropping
+-  No invented examples
+-  British spelling ("organised", "whilst", "nicked")
 
 ### Content Quality:
 
-- ✅ Conversational opening: "Right, so it's kicking off..."
-- ✅ Clear unsigned advantage: "indies can move fast whilst majors are stuck in meetings"
-- ✅ Specific action: "Take 90 minutes this week to audit..."
-- ✅ Underground perspective: "we've got the advantage of speed"
+-  Conversational opening: "Right, so it's kicking off..."
+-  Clear unsigned advantage: "indies can move fast whilst majors are stuck in meetings"
+-  Specific action: "Take 90 minutes this week to audit..."
+-  Underground perspective: "we've got the advantage of speed"
 
 ### Framework Adherence:
 
-- ✅ HOOK: AI lawsuit news (2 sentences)
-- ✅ UNSIGNED ADVANTAGE: Indies move faster than majors (3 sentences)
-- ✅ ACTION: Audit online presence, screenshot evidence, join communities
-- ✅ No forced Audio Intel mention (not relevant to story)
+-  HOOK: AI lawsuit news (2 sentences)
+-  UNSIGNED ADVANTAGE: Indies move faster than majors (3 sentences)
+-  ACTION: Audit online presence, screenshot evidence, join communities
+-  No forced Audio Intel mention (not relevant to story)
 
 ### Tone:
 
-- ✅ Sounds like messaging a friend in a band
-- ✅ Direct, no BS
-- ✅ Practical and actionable
-- ✅ Industry insider perspective
+-  Sounds like messaging a friend in a band
+-  Direct, no BS
+-  Practical and actionable
+-  Industry insider perspective
 
 ---
 
-## 📊 Expected Performance
+##  Expected Performance
 
 **Open Rate**: 40-45% (indie-focused audience)
 **Click Rate**: 8-12% (strong actionable content)
@@ -74,7 +74,7 @@ Chris
 
 ---
 
-## 🎯 Why This Works
+##  Why This Works
 
 1. **Timely**: AI music lawsuits are massive news for indies
 2. **Relevant**: Directly affects independent artists

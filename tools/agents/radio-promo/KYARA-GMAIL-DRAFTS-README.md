@@ -1,6 +1,6 @@
 # KYARA "Bloodshot" Australian Radio Campaign - Gmail Drafts
 
-## 🇦🇺 Ready-to-Send Email Templates
+##  Ready-to-Send Email Templates
 
 All 5 emails are ready to copy/paste into Gmail drafts. Files created:
 
@@ -10,7 +10,7 @@ All 5 emails are ready to copy/paste into Gmail drafts. Files created:
 4. **KYARA-DRAFT-4-FIRAS-PBS.txt** - Priority 4 (Send today/tomorrow)
 5. **KYARA-DRAFT-5-KIIS.txt** - Priority 5 (Send within 48 hours)
 
-## 📧 How to Create Gmail Drafts
+##  How to Create Gmail Drafts
 
 ### Quick Method (5 minutes):
 
@@ -26,7 +26,7 @@ All 5 emails are ready to copy/paste into Gmail drafts. Files created:
    - Replace `[INSERT WETRANSFER LINK]` with actual link
    - Click "Save Draft"
 
-## 🎯 Send Priority Order
+##  Send Priority Order
 
 ### Priority 1 - Anika Luna (URGENT - WARM CONTACT)
 
@@ -51,13 +51,13 @@ All 5 emails are ready to copy/paste into Gmail drafts. Files created:
 - **When**: Today/tomorrow/within 48 hours
 - **Strategy**: All reference Triple J support
 
-## 📋 Pre-Send Checklist
+##  Pre-Send Checklist
 
 **BEFORE sending any emails, get from Sam/KYARA:**
 
-- ✅ Spotify link (REQUIRED)
-- ✅ WeTransfer link for WAV download
-- ✅ Optional: SoundCloud, YouTube unlisted links
+-  Spotify link (REQUIRED)
+-  WeTransfer link for WAV download
+-  Optional: SoundCloud, YouTube unlisted links
 
 **Release Information:**
 
@@ -67,17 +67,17 @@ All 5 emails are ready to copy/paste into Gmail drafts. Files created:
 - **Genre**: Electro-pop
 - **Story**: Self-produced bedroom pop, empowerment anthem
 
-## 🎵 Key Messaging Points
+##  Key Messaging Points
 
 **Use in ALL emails:**
 
-- ✅ KYARA is Sydney-based (LOCAL to Australia)
-- ✅ Triple J Home & Hosed support ("Yearn" in August)
-- ✅ Self-produced in bedroom studio (independent credibility)
-- ✅ Hypnotic electro-pop sound
-- ✅ Empowerment narrative (choosing yourself over past lover)
+-  KYARA is Sydney-based (LOCAL to Australia)
+-  Triple J Home & Hosed support ("Yearn" in August)
+-  Self-produced in bedroom studio (independent credibility)
+-  Hypnotic electro-pop sound
+-  Empowerment narrative (choosing yourself over past lover)
 
-## 📊 Follow-up Strategy
+##  Follow-up Strategy
 
 **If Anika Luna responds positively:**
 
@@ -110,7 +110,7 @@ Cheers,
 Chris
 ```
 
-## 🎯 Success Metrics
+##  Success Metrics
 
 **Immediate Goals:**
 

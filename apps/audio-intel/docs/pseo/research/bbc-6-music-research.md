@@ -155,19 +155,19 @@
 
 **Must-Haves:**
 
-- ✅ Finished, radio-ready production
-- ✅ Professional recording quality
-- ✅ Final takes only (no demos or rough mixes)
-- ✅ First 30 seconds must be compelling
-- ✅ Complete artist bio with context
+-  Finished, radio-ready production
+-  Professional recording quality
+-  Final takes only (no demos or rough mixes)
+-  First 30 seconds must be compelling
+-  Complete artist bio with context
 
 **Avoid:**
 
-- ❌ Unfinished lyrics or out-of-tune instruments
-- ❌ Poor quality recordings or demos
-- ❌ Submitting before track is ready
-- ❌ Generic or incomplete artist bio
-- ❌ Bold claims like "this will be the next big hit"
+-  Unfinished lyrics or out-of-tune instruments
+-  Poor quality recordings or demos
+-  Submitting before track is ready
+-  Generic or incomplete artist bio
+-  Bold claims like "this will be the next big hit"
 
 ## Common Mistakes Artists Make
 

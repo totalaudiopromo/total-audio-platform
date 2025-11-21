@@ -7,22 +7,22 @@ Professional, pitch-ready demo page for Audio Intel showcasing contact enrichmen
 **Location**: `/apps/audio-intel/app/demo/page.tsx`
 **Build Size**: 12.7 kB (gzipped)
 **Live URL**: https://intel.totalaudiopromo.com/demo
-**Status**: ✅ Production Ready
+**Status**:  Production Ready
 
 ---
 
 ## Feature Breakdown
 
-### 1. Hero Section ✅
+### 1. Hero Section 
 
 ```
-┌──────────────────────────────────────────────────┐
-│  🎯 Liberty Music PR Demo                        │
-│                                                   │
-│  Audio Intel Demo                                │
-│  Transform 15 hours of contact research into    │
-│  15 minutes with AI-powered enrichment          │
-└──────────────────────────────────────────────────┘
+
+   Liberty Music PR Demo                        
+                                                   
+  Audio Intel Demo                                
+  Transform 15 hours of contact research into    
+  15 minutes with AI-powered enrichment          
+
 ```
 
 **Specifications**:
@@ -33,7 +33,7 @@ Professional, pitch-ready demo page for Audio Intel showcasing contact enrichmen
 - Mobile-optimised padding
 - **Design**: Postcraft aesthetic (no gradients on body, solid colours)
 
-### 2. Value Propositions Grid ✅
+### 2. Value Propositions Grid 
 
 Three quick-fact cards at a glance:
 
@@ -50,17 +50,17 @@ Three quick-fact cards at a glance:
 - Icons with brand colours (blue, green, yellow)
 - Lucide icons: Clock, CheckCircle, Zap
 
-### 3. Workflow Tabs ✅
+### 3. Workflow Tabs 
 
 #### Tab 1: Process & Enrich
 
 ```
-🔄 Intelligent Processing Pipeline
+ Intelligent Processing Pipeline
 Upload → Clean → Deduplicate → Enrich → Export
 
 OR
 
-🎯 Load Pre-Enriched Demo Data
+ Load Pre-Enriched Demo Data
 - 5 real BBC Radio 1 & Spotify contacts
 - Real email addresses
 - Full enrichment intelligence
@@ -83,7 +83,7 @@ const libertyDemoContacts: Contact[] = [
     name: 'Jack Saunders',
     email: 'jack.saunders@bbc.co.uk',
     company: 'BBC Radio 1',
-    intelligence: '🎵 BBC Radio 1...',
+    intelligence: ' BBC Radio 1...',
     confidence: 'High',
   },
   // ... 4 more contacts
@@ -93,19 +93,19 @@ const libertyDemoContacts: Contact[] = [
 #### Tab 2: Analytics & Export
 
 ```
-📊 Contact Intelligence Analytics
-├─ 5 Total Contacts
-├─ 4 High Confidence
-├─ 1 Medium Confidence
-└─ 0 Requires Research
+ Contact Intelligence Analytics
+ 5 Total Contacts
+ 4 High Confidence
+ 1 Medium Confidence
+ 0 Requires Research
 
-📥 Professional Export Options
-├─ CSV (Universal format)
-├─ Excel (Multi-sheet workbook)
-└─ PDF (Branded client deliverable)
+ Professional Export Options
+ CSV (Universal format)
+ Excel (Multi-sheet workbook)
+ PDF (Branded client deliverable)
 
-🚀 Tool Integration
-└─ Send to Campaign Tracker
+ Tool Integration
+ Send to Campaign Tracker
 ```
 
 **Features**:
@@ -131,7 +131,7 @@ new ProfessionalExportService({
 });
 ```
 
-### 4. Contact Results Display ✅
+### 4. Contact Results Display 
 
 **Confidence-Based Organisation**:
 
@@ -142,18 +142,18 @@ new ProfessionalExportService({
 **Per-Contact Card**:
 
 ```
-┌────────────────────────────────────────┐
-│ Jack Saunders                 [High]   │
-│ jack.saunders@bbc.co.uk               │
-│ BBC Radio 1                            │
-│                                        │
-│ 🎵 BBC Radio 1 - UK broadcaster      │
-│ 📻 Presenter of "New Music" show      │
-│ 🎧 Genres: Alternative, Indie, Rock  │
-│ ⭐ Breaking new artists tastemaker    │
-│                                        │
-│ [→ Pitch Generator Button]             │
-└────────────────────────────────────────┘
+
+ Jack Saunders                 [High]   
+ jack.saunders@bbc.co.uk               
+ BBC Radio 1                            
+                                        
+  BBC Radio 1 - UK broadcaster      
+  Presenter of "New Music" show      
+  Genres: Alternative, Indie, Rock  
+  Breaking new artists tastemaker    
+                                        
+ [→ Pitch Generator Button]             
+
 ```
 
 **Features**:
@@ -163,7 +163,7 @@ new ProfessionalExportService({
 - Colour-coded confidence badges
 - Responsive grid layout
 
-### 5. Responsiveness & Accessibility ✅
+### 5. Responsiveness & Accessibility 
 
 **Mobile-First Design**:
 
@@ -181,12 +181,12 @@ lg: 1024px  - Full desktop
 
 **Accessibility Features**:
 
-- ✓ ARIA roles on interactive elements
-- ✓ Keyboard navigation throughout
-- ✓ Focus indicators (black borders)
-- ✓ Colour contrast 4.5:1+ (WCAG AA)
-- ✓ Semantic HTML structure
-- ✓ Touch target sizing
+-  ARIA roles on interactive elements
+-  Keyboard navigation throughout
+-  Focus indicators (black borders)
+-  Colour contrast 4.5:1+ (WCAG AA)
+-  Semantic HTML structure
+-  Touch target sizing
 
 **Tested On**:
 
@@ -195,18 +195,18 @@ lg: 1024px  - Full desktop
 - iPad Pro Safari (tablet)
 - Chrome/Firefox/Safari (desktop)
 
-### 6. Design System Compliance ✅
+### 6. Design System Compliance 
 
 **Postcraft Aesthetic**:
 
 ```
-✅ Bold black borders (border-4)
-✅ Hard offset shadows (shadow-[8px_8px_0px_0px_rgba(0,0,0,1)])
-✅ Clean white backgrounds (bg-white)
-✅ No gradients (solid colours only)
-✅ No glassmorphism or blur
-✅ Electric Blue accents (#2563EB)
-✅ High contrast text (black/gray on white)
+ Bold black borders (border-4)
+ Hard offset shadows (shadow-[8px_8px_0px_0px_rgba(0,0,0,1)])
+ Clean white backgrounds (bg-white)
+ No gradients (solid colours only)
+ No glassmorphism or blur
+ Electric Blue accents (#2563EB)
+ High contrast text (black/gray on white)
 ```
 
 **Typography**:
@@ -389,7 +389,7 @@ const libertyDemoContacts: Contact[] = [
 
 ### Update Messaging
 
-- Change badge: `🎯 Liberty Music PR Demo` → client name
+- Change badge: ` Liberty Music PR Demo` → client name
 - Update subtitle: Tailor to specific campaign
 - Modify value propositions: Industry-specific metrics
 
@@ -432,11 +432,11 @@ const libertyDemoContacts: Contact[] = [
 
 ### Performance Metrics
 
-- Build Size: ✓ 12.7 kB (gzipped)
-- First Load: ✓ < 2 seconds
-- Time to Interactive: ✓ < 3 seconds
-- Lighthouse: ✓ 90+ score
-- Mobile Performance: ✓ Responsive
+- Build Size:  12.7 kB (gzipped)
+- First Load:  < 2 seconds
+- Time to Interactive:  < 3 seconds
+- Lighthouse:  90+ score
+- Mobile Performance:  Responsive
 
 ---
 
@@ -460,5 +460,5 @@ const libertyDemoContacts: Contact[] = [
 ---
 
 _Last Updated: November 2025_
-_Status: Production Ready ✅_
+_Status: Production Ready _
 _Optimised for: Liberty Music PR Pitch_

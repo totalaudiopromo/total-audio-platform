@@ -6,14 +6,14 @@ This system autonomously posts to Bluesky, Twitter/X, LinkedIn, and Threads twic
 
 ## Current Status
 
-- ✅ **Bluesky**: Configured and working
-- ❌ **LinkedIn**: Needs OAuth setup
-- ❌ **Threads**: Needs OAuth setup
-- ✅ **Twitter/X**: Previously configured (check if tokens still valid)
+-  **Bluesky**: Configured and working
+-  **LinkedIn**: Needs OAuth setup
+-  **Threads**: Needs OAuth setup
+-  **Twitter/X**: Previously configured (check if tokens still valid)
 
 ## Setup Instructions
 
-### 1. Bluesky ✅ (DONE)
+### 1. Bluesky  (DONE)
 
 **Status**: Already configured and tested successfully
 
@@ -30,7 +30,7 @@ npx tsx scripts/test-bluesky.ts
 
 ---
 
-### 2. LinkedIn ❌ (NEEDS SETUP)
+### 2. LinkedIn  (NEEDS SETUP)
 
 **Requirements**:
 
@@ -80,7 +80,7 @@ npx tsx scripts/test-bluesky.ts
 
 ---
 
-### 3. Threads (Instagram) ❌ (NEEDS SETUP)
+### 3. Threads (Instagram)  (NEEDS SETUP)
 
 **Requirements**:
 
@@ -134,7 +134,7 @@ npx tsx scripts/test-bluesky.ts
 
 ---
 
-### 4. Twitter/X ✅ (CHECK STATUS)
+### 4. Twitter/X  (CHECK STATUS)
 
 **Environment variables to check**:
 

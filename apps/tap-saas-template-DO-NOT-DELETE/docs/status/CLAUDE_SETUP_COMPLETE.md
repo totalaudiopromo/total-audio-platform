@@ -1,18 +1,18 @@
-# ✅ Pitch Generator - Ready to Run!
+#  Pitch Generator - Ready to Run!
 
-## 🎉 Setup Complete with Claude/Anthropic
+##  Setup Complete with Claude/Anthropic
 
 Your Pitch Generator is now configured to use **Claude 3.5 Sonnet** instead of OpenAI GPT-4!
 
-### What's Configured ✅
+### What's Configured 
 
-1. **✅ Anthropic API** - Already set up with your key
-2. **✅ Supabase** - Connected to your existing database
-3. **✅ Google OAuth** - Sign-in ready
-4. **✅ Stripe** - Payment processing configured
-5. **✅ All dependencies** - Installed and ready
+1. ** Anthropic API** - Already set up with your key
+2. ** Supabase** - Connected to your existing database
+3. ** Google OAuth** - Sign-in ready
+4. ** Stripe** - Payment processing configured
+5. ** All dependencies** - Installed and ready
 
-### Only 1 Thing Left! ⚠️
+### Only 1 Thing Left! 
 
 **You need to add your Supabase Service Role Key:**
 
@@ -51,15 +51,15 @@ Open http://localhost:3000
 
 ---
 
-## 🎯 Why Claude Instead of OpenAI?
+##  Why Claude Instead of OpenAI?
 
 **Claude 3.5 Sonnet is actually perfect for this:**
 
-1. ✅ **More natural writing** - Claude tends to write in a more conversational, human style
-2. ✅ **Better instruction following** - Excellent at matching tone and style requests
-3. ✅ **You already have it** - No need to sign up for another API
-4. ✅ **Cheaper** - $3 per million input tokens vs GPT-4's $30
-5. ✅ **Faster** - Claude is typically faster than GPT-4
+1.  **More natural writing** - Claude tends to write in a more conversational, human style
+2.  **Better instruction following** - Excellent at matching tone and style requests
+3.  **You already have it** - No need to sign up for another API
+4.  **Cheaper** - $3 per million input tokens vs GPT-4's $30
+5.  **Faster** - Claude is typically faster than GPT-4
 
 ### Cost Comparison
 
@@ -79,22 +79,22 @@ Open http://localhost:3000
 
 ---
 
-## 🧪 Test the AI Quality
+##  Test the AI Quality
 
 Once running, generate a few test pitches and check:
 
-- ✅ Natural, conversational tone
-- ✅ Personalization with contact data
-- ✅ No robotic/corporate speak
-- ✅ Genre-appropriate language
-- ✅ Under 150 words
-- ✅ Subject lines feel personal
+-  Natural, conversational tone
+-  Personalization with contact data
+-  No robotic/corporate speak
+-  Genre-appropriate language
+-  Under 150 words
+-  Subject lines feel personal
 
 Claude is excellent at all of these. You might find the quality is actually _better_ than GPT-4 for this use case.
 
 ---
 
-## 📊 What's Using Claude
+##  What's Using Claude
 
 All pitch generation happens in `lib/openai.ts` (kept the name for simplicity):
 
@@ -108,7 +108,7 @@ model: 'claude-3-5-sonnet-20241022';
 
 ---
 
-## 🚀 Ready to Launch!
+##  Ready to Launch!
 
 **Total setup time:** ~5 minutes
 
@@ -117,11 +117,11 @@ model: 'claude-3-5-sonnet-20241022';
 3. Start the app (30 seconds)
 4. Test by generating a pitch (1 min)
 
-**You're basically done!** 🎉
+**You're basically done!** 
 
 ---
 
-## 💰 Expected Costs
+##  Expected Costs
 
 **For 100 users generating 15 pitches/month:**
 
@@ -135,7 +135,7 @@ Compare to OpenAI version: ~$68/month
 
 ---
 
-## 🔧 If You Want to Switch Back to OpenAI Later
+##  If You Want to Switch Back to OpenAI Later
 
 Just:
 

@@ -7,7 +7,7 @@ priority: high
 
 # Browser Automation (Stagehand)
 
-**🚀 PRIMARY WEB AUTOMATION TOOL - Use this for ALL web browsing tasks!**
+**PRIMARY WEB AUTOMATION TOOL - Use this for ALL web browsing tasks!**
 
 Automate browser interactions using Stagehand CLI with Claude. This skill provides natural language control over a Chrome browser through command-line tools for navigation, interaction, data extraction, and screenshots.
 
@@ -77,10 +77,10 @@ browser navigate https://example.com
 
 ### Prerequisites Summary
 
-- ✅ Google Chrome installed on your system
-- ✅ Node.js dependencies installed and TypeScript built (`npm install` runs build automatically)
-- ✅ Browser command globally available (`npm link` creates the global symlink)
-- ✅ Anthropic API key configured (exported as `ANTHROPIC_API_KEY` environment variable or in `.env` file)
+- Google Chrome installed on your system
+- Node.js dependencies installed and TypeScript built (`npm install` runs build automatically)
+- Browser command globally available (`npm link` creates the global symlink)
+- Anthropic API key configured (exported as `ANTHROPIC_API_KEY` environment variable or in `.env` file)
 
 **DO NOT attempt to use browser commands if `setupComplete: false` in setup.json. Guide the user through setup first.**
 
@@ -199,7 +199,7 @@ browser close
 ## Best Practices
 
 1. **Always navigate first**: Before interacting with a page, navigate to the URL
-2. **📸 Always view screenshots**: After each command (navigate, act, extract, observe), use the Read tool to view the screenshot and verify the command worked correctly
+2. ** Always view screenshots**: After each command (navigate, act, extract, observe), use the Read tool to view the screenshot and verify the command worked correctly
 3. **Use natural language**: Describe actions as you would instruct a human
 4. **Extract with clear schemas**: Define field names and types explicitly in JSON
 5. **Handle errors gracefully**: Check the `success` field in JSON output; if an action fails, view the screenshot and try using `observe` to understand the page better

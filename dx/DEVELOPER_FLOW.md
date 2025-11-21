@@ -160,34 +160,34 @@ chore: update dependencies to latest versions
 
 ```
 apps/
-├── audio-intel/         # Contact enrichment (primary revenue)
-├── tracker/             # Campaign tracking CRM
-├── pitch-generator/     # Pitch generation tool
-└── web/                 # Marketing website
+ audio-intel/         # Contact enrichment (primary revenue)
+ tracker/             # Campaign tracking CRM
+ pitch-generator/     # Pitch generation tool
+ web/                 # Marketing website
 ```
 
 **Packages** (shared code):
 
 ```
 packages/
-├── ui/                  # Shared UI components
-├── testing/             # Shared testing utilities
-└── config/              # Shared configuration
+ ui/                  # Shared UI components
+ testing/             # Shared testing utilities
+ config/              # Shared configuration
 ```
 
 **Important Rules**:
 
-- ❌ Apps MUST NOT import from other apps
-- ✅ Apps CAN import from packages
-- ✅ Shared code goes in packages
+-  Apps MUST NOT import from other apps
+-  Apps CAN import from packages
+-  Shared code goes in packages
 
 **Example**:
 
 ```typescript
-// ❌ WRONG - cross-app import
+//  WRONG - cross-app import
 import { UserProfile } from '../../../tracker/components/UserProfile';
 
-// ✅ CORRECT - use shared package
+//  CORRECT - use shared package
 import { UserProfile } from '@total-audio/ui';
 ```
 
@@ -257,19 +257,19 @@ After creating PR:
 1. PR Created
    ↓
 2. CodeRabbit Reviews (automatic)
-   ├─ Architecture validation
-   ├─ Security scanning
-   ├─ Code quality checks
-   └─ Auto-approve (if no issues) OR Request changes
+    Architecture validation
+    Security scanning
+    Code quality checks
+    Auto-approve (if no issues) OR Request changes
    ↓
 3. CI Runs (automatic)
-   ├─ Lint
-   ├─ Typecheck
-   ├─ Test
-   └─ Build
+    Lint
+    Typecheck
+    Test
+    Build
    ↓
 4. Security Scan (automatic)
-   └─ Dependency audit
+    Dependency audit
    ↓
 5. Auto-Merge (if all pass)
    ↓
@@ -278,10 +278,10 @@ After creating PR:
 7. Vercel Auto-Deploy (all 3 apps)
    ↓
 8. Golden Verify (post-deployment)
-   └─ Health checks for all apps
+    Health checks for all apps
    ↓
 9. Command Centre Ingestion
-   └─ Metrics to dashboard
+    Metrics to dashboard
    ↓
 10. Telegram Notification (failures only)
 ```
@@ -308,11 +308,11 @@ Developer Push → CI (Validate) → Vercel (Deploy) → Golden Verify (Check)
 
 **What it does**:
 
-- ✅ Lint all packages
-- ✅ Typecheck all packages
-- ✅ Run all tests
-- ✅ Build all apps (to verify they compile)
-- ❌ Does NOT deploy (that's Vercel's job)
+-  Lint all packages
+-  Typecheck all packages
+-  Run all tests
+-  Build all apps (to verify they compile)
+-  Does NOT deploy (that's Vercel's job)
 
 **Triggers**:
 
@@ -338,10 +338,10 @@ Developer Push → CI (Validate) → Vercel (Deploy) → Golden Verify (Check)
 
 **What it does**:
 
-- ✅ Health checks for all 3 apps
-- ✅ Validates deployments succeeded
-- ✅ Ingests metrics to Command Centre dashboard
-- ✅ Sends Telegram notifications (failures only)
+-  Health checks for all 3 apps
+-  Validates deployments succeeded
+-  Ingests metrics to Command Centre dashboard
+-  Sends Telegram notifications (failures only)
 
 **Triggers**:
 
@@ -391,10 +391,10 @@ vercel --prod
 
 **Notification triggers** (failures only):
 
-- ❌ Golden Verify health check failed
-- ❌ CI workflow failed
-- ❌ Revenue audit failed
-- ❌ Agent health check failed
+-  Golden Verify health check failed
+-  CI workflow failed
+-  Revenue audit failed
+-  Agent health check failed
 
 **No spam**: Successes are silent (check Command Centre for details).
 
@@ -745,11 +745,11 @@ git push
 1. **Use Next.js Image component**
 
    ```typescript
-   // ✅ Correct
+   //  Correct
    import Image from 'next/image';
    <Image src="/logo.png" width={100} height={100} alt="Logo" />
 
-   // ❌ Wrong
+   //  Wrong
    <img src="/logo.png" alt="Logo" />
    ```
 
@@ -789,17 +789,17 @@ git push
 
 **The system handles**:
 
-- ✅ Code review (CodeRabbit)
-- ✅ Validation (CI)
-- ✅ Deployment (Vercel)
-- ✅ Verification (Golden Verify)
-- ✅ Monitoring (Command Centre)
+-  Code review (CodeRabbit)
+-  Validation (CI)
+-  Deployment (Vercel)
+-  Verification (Golden Verify)
+-  Monitoring (Command Centre)
 
 **You only act when**:
 
-- ❌ CodeRabbit finds issues
-- ❌ CI checks fail
-- ❌ Telegram alerts you
+-  CodeRabbit finds issues
+-  CI checks fail
+-  Telegram alerts you
 
 **This is frictionless development** - focus on coding, let automation handle the rest.
 

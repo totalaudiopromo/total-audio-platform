@@ -1,16 +1,16 @@
 ---
-title: '🚀 RADIO PROMO AGENT - DAY-IN-THE-LIFE WORKFLOW'
+title: ' RADIO PROMO AGENT - DAY-IN-THE-LIFE WORKFLOW'
 notion_url: https://www.notion.so/RADIO-PROMO-AGENT-DAY-IN-THE-LIFE-WORKFLOW-2650a35b21ed81b49218c694f47a406f
 exported_at: 2025-09-26T14:33:12.701Z
 ---
 
-# 🚀 RADIO PROMO AGENT - DAY-IN-THE-LIFE WORKFLOW
+#  RADIO PROMO AGENT - DAY-IN-THE-LIFE WORKFLOW
 
 _How Chris 10x's his radio promotion efficiency with complete automation_
 
 ---
 
-## 🌅 BEFORE: Your Current Liberty Workflow (4-6 Hours Per Campaign)
+##  BEFORE: Your Current Liberty Workflow (4-6 Hours Per Campaign)
 
 ### **Monday Morning - New Artist Campaign:**
 
@@ -56,22 +56,22 @@ _How Chris 10x's his radio promotion efficiency with complete automation_
 
 ---
 
-## ⚡ AFTER: Radio Promo Agent Workflow (45 Minutes + Monitoring)
+##  AFTER: Radio Promo Agent Workflow (45 Minutes + Monitoring)
 
 ### **Monday Morning - New Artist Campaign:**
 
 **9:00am: Artist Video Call (Google Meet)**
 
 ```javascript
-✅ Artist explains track, goals, budget
-✅ Google Meet records with Gemini transcript
-✅ You focus on relationship building, not note-taking
+ Artist explains track, goals, budget
+ Google Meet records with Gemini transcript
+ You focus on relationship building, not note-taking
 ```
 
 **9:30am: Campaign Auto-Generation (2 minutes)**
 
 ```javascript
-✅ AI extracts campaign brief from call transcript:
+ AI extracts campaign brief from call transcript:
    - Artist: Sarah Jones
    - Track: "Electric Dreams" (Indie Pop)
    - Budget: £150
@@ -79,7 +79,7 @@ _How Chris 10x's his radio promotion efficiency with complete automation_
    - Target: UK indie stations + Amazing Radio
    - Special notes: "No early morning shows"
 
-✅ System auto-creates Monday.com campaign:
+ System auto-creates Monday.com campaign:
    - All tasks pre-populated with deadlines
    - Contact list filtered by indie pop genre
    - Warmusic tracking URL generated
@@ -89,33 +89,33 @@ _How Chris 10x's his radio promotion efficiency with complete automation_
 **9:35am: AI Press Release (30 seconds)**
 
 ```javascript
-✅ AI generates personalized press release:
+ AI generates personalized press release:
    "Hi [Station Name],
    Hope you're well! I've got an exciting indie pop track from Sarah Jones
    that's perfect for your evening rotation. 'Electric Dreams' has that
    dreamy 80s-influenced sound that your listeners love..."
 
-✅ Press release automatically customized for each station type
-✅ Your personal tone and style maintained
+ Press release automatically customized for each station type
+ Your personal tone and style maintained
 ```
 
 **9:36am: Campaign Launch (30 seconds)**
 
 ```javascript
-✅ Mailchimp campaign auto-created with:
+ Mailchimp campaign auto-created with:
    - Personalized subject lines for each station
    - Track embedded with streaming links
    - Professional formatting matching your brand
    - Scheduled send for optimal timing (Tuesday 2pm)
 
-✅ Campaign sent to 73 pre-qualified indie stations
-✅ Open/click tracking automatically enabled
+ Campaign sent to 73 pre-qualified indie stations
+ Open/click tracking automatically enabled
 ```
 
 **9:37am: Client Onboarding (2 minutes)**
 
 ```javascript
-✅ Artist automatically receives:
+ Artist automatically receives:
    - Login credentials for real-time dashboard
    - Campaign overview email: "Here's what we're doing..."
    - Expected timeline and milestones
@@ -125,74 +125,74 @@ _How Chris 10x's his radio promotion efficiency with complete automation_
 **9:40am: System Monitoring Setup (1 minute)**
 
 ```javascript
-✅ Warmusic API monitoring activated
-✅ Monday.com integrations connected
-✅ Client dashboard goes live
-✅ Success threshold alerts configured
+ Warmusic API monitoring activated
+ Monday.com integrations connected
+ Client dashboard goes live
+ Success threshold alerts configured
 ```
 
 **CAMPAIGN SETUP COMPLETE: 40 minutes vs 6+ hours**
 
 ---
 
-## 📱 REAL-TIME AUTOMATION (Zero Manual Work)
+##  REAL-TIME AUTOMATION (Zero Manual Work)
 
 ### **Tuesday 2:15pm: Campaign Goes Live**
 
 ```javascript
-📧 73 emails sent automatically
-📊 Client dashboard shows: "Campaign launched to 73 stations"
-🔔 You get notification: "Sarah Jones campaign: 73 emails sent"
+ 73 emails sent automatically
+ Client dashboard shows: "Campaign launched to 73 stations"
+ You get notification: "Sarah Jones campaign: 73 emails sent"
 ```
 
 ### **Tuesday 4:30pm: First Opens**
 
 ```javascript
-📊 Dashboard updates: "23 stations opened email (31% open rate)"
-📱 Sarah gets push notification: "Great start - 23 stations engaged!"
-🎯 You see: "Above average engagement - campaign performing well"
+ Dashboard updates: "23 stations opened email (31% open rate)"
+ Sarah gets push notification: "Great start - 23 stations engaged!"
+ You see: "Above average engagement - campaign performing well"
 ```
 
 ### **Wednesday 11:45am: First Play Detected**
 
 ```javascript
-🎵 Warmusic API detects: Amazing Radio played "Electric Dreams"
-📊 Monday.com auto-updates: "Amazing Radio - CONFIRMED PLAY"
-📱 Sarah's dashboard: "🎉 First play confirmed - Amazing Radio!"
-🔔 You get instant notification with station details
+ Warmusic API detects: Amazing Radio played "Electric Dreams"
+ Monday.com auto-updates: "Amazing Radio - CONFIRMED PLAY"
+ Sarah's dashboard: " First play confirmed - Amazing Radio!"
+ You get instant notification with station details
 
 AUTO-FOLLOW-UP TRIGGERED:
-📧 System sends to similar stations: "This track just went live on Amazing Radio - perfect for your indie rotation too"
+ System sends to similar stations: "This track just went live on Amazing Radio - perfect for your indie rotation too"
 ```
 
 ### **Thursday 3:20pm: Momentum Building**
 
 ```javascript
-🎵 BBC Radio 6 Music plays track
-📊 Dashboard: "2 major stations confirmed - momentum building!"
-📧 Auto-email to artist: "Campaign accelerating - BBC Radio 6 now supporting!"
-🚀 System automatically pitches to BBC regional stations
+ BBC Radio 6 Music plays track
+ Dashboard: "2 major stations confirmed - momentum building!"
+ Auto-email to artist: "Campaign accelerating - BBC Radio 6 now supporting!"
+ System automatically pitches to BBC regional stations
 ```
 
 ### **Friday 5:00pm: Weekly Report Auto-Generated**
 
 ```javascript
-📊 System compiles:
+ System compiles:
    - 47 emails sent, 31 opened (66% open rate)
    - 8 stations clicked through to track
    - 2 confirmed plays (Amazing Radio, BBC Radio 6)
    - 347 people reached via radio plays
    - Campaign trending upward
 
-📧 Professional report sent to Sarah:
+ Professional report sent to Sarah:
    "Week 1 Results: Excellent start with 2 major station adds..."
 
-📱 Your summary: "Sarah campaign: 2 plays, trending well, continue"
+ Your summary: "Sarah campaign: 2 plays, trending well, continue"
 ```
 
 ---
 
-## 🎯 YOUR NEW DAILY ROUTINE
+##  YOUR NEW DAILY ROUTINE
 
 ### **Monday: Campaign Planning (30 minutes)**
 
@@ -226,7 +226,7 @@ AUTO-FOLLOW-UP TRIGGERED:
 
 ---
 
-## 💰 THE 10X MULTIPLIER EFFECT
+##  THE 10X MULTIPLIER EFFECT
 
 ### **Capacity Transformation:**
 
@@ -269,7 +269,7 @@ AFTER: Industry leader with proprietary technology
 
 ---
 
-## 🎮 THE SYSTEM IN ACTION - REAL EXAMPLES
+##  THE SYSTEM IN ACTION - REAL EXAMPLES
 
 ### **Sarah's Indie Pop Campaign:**
 
@@ -303,7 +303,7 @@ Result: 6 BBC stations support within 48 hours
 
 ---
 
-## 🔮 ADVANCED FEATURES (Month 2+)
+##  ADVANCED FEATURES (Month 2+)
 
 ### **Predictive Campaign Intelligence:**
 
@@ -331,23 +331,23 @@ Result: 6 BBC stations support within 48 hours
 
 ---
 
-## 🎯 THE BOTTOM LINE
+##  THE BOTTOM LINE
 
 **Instead of being a radio promoter doing admin work...**
 
 **You become a strategic campaign consultant with AI superpowers.**
 
-✅ **10x capacity** (5 campaigns → 50 campaigns monthly)
+ **10x capacity** (5 campaigns → 50 campaigns monthly)
 
-✅ **Premium pricing** (£75 → £150+ per campaign)
+ **Premium pricing** (£75 → £150+ per campaign)
 
-✅ **Better results** (data-driven optimization)
+ **Better results** (data-driven optimization)
 
-✅ **Professional differentiation** (only UK promoter with this system)
+ **Professional differentiation** (only UK promoter with this system)
 
-✅ **Client retention** (real-time transparency)
+ **Client retention** (real-time transparency)
 
-✅ **Personal freedom** (system works while you sleep)
+ **Personal freedom** (system works while you sleep)
 
 **The Radio Promo Agent doesn't replace your expertise - it amplifies it.**
 

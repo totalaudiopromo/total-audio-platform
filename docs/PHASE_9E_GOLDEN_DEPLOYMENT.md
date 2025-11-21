@@ -20,14 +20,14 @@ The Golden Deployment Pipeline provides a unified, monitored, and rollback-safe 
 
 ```
 Golden Deployment Workflow
-├── Build & Test (Parallel)
-│   ├── Build each app
-│   ├── Run golden-check.ts
-│   ├── Run Lighthouse audit
-│   └── Send Telegram notification
-└── Promote (Sequential)
-    ├── Promote preview deployments
-    └── Send final notification
+ Build & Test (Parallel)
+    Build each app
+    Run golden-check.ts
+    Run Lighthouse audit
+    Send Telegram notification
+ Promote (Sequential)
+     Promote preview deployments
+     Send final notification
 ```
 
 ## Trigger Instructions
@@ -54,22 +54,22 @@ The `golden-check.ts` script verifies:
 
 ### Database Checks
 
-- ✅ Supabase connectivity
-- ✅ `agent_events` table exists and accessible
-- ✅ `feedback_events` table exists and accessible
-- ✅ `conversion_events` table exists and accessible
-- ✅ `get_agent_metrics` RPC function (optional)
+- Supabase connectivity
+- `agent_events` table exists and accessible
+- `feedback_events` table exists and accessible
+- `conversion_events` table exists and accessible
+- `get_agent_metrics` RPC function (optional)
 
 ### API Endpoint Checks
 
-- ✅ `/api/health` responds with 200
-- ✅ `/api/ops-console/agents` (Command Centre only)
-- ✅ `/api/ops-console/feedback` (Command Centre only)
+- `/api/health` responds with 200
+- `/api/ops-console/agents` (Command Centre only)
+- `/api/ops-console/feedback` (Command Centre only)
 
 ### External Service Checks
 
-- ✅ Telegram Bot API reachable
-- ✅ Plausible Analytics reachable
+- Telegram Bot API reachable
+- Plausible Analytics reachable
 
 ## Lighthouse Budget
 
@@ -139,24 +139,24 @@ Golden check for command-centre completed with status success
 ### During Promotion
 
 ```
-✅ audio-intel: Promoted to production (audio-intel-abc123.vercel.app)
-✅ tracker: Promoted to production (tracker-def456.vercel.app)
-✅ pitch-generator: Promoted to production (pitch-generator-ghi789.vercel.app)
-✅ command-centre: Promoted to production (command-centre-jkl012.vercel.app)
+audio-intel: Promoted to production (audio-intel-abc123.vercel.app)
+tracker: Promoted to production (tracker-def456.vercel.app)
+pitch-generator: Promoted to production (pitch-generator-ghi789.vercel.app)
+command-centre: Promoted to production (command-centre-jkl012.vercel.app)
 ```
 
 ### Final Success
 
 ```
-✅ Golden Deployment successful and promoted to production!
+Golden Deployment successful and promoted to production!
 ```
 
 ### Failure Examples
 
 ```
-❌ audio-intel: Lighthouse score below threshold (Performance: 85)
-❌ tracker: Health check failed - Database connectivity error
-❌ Golden Deployment: Some apps failed to promote
+ audio-intel: Lighthouse score below threshold (Performance: 85)
+ tracker: Health check failed - Database connectivity error
+ Golden Deployment: Some apps failed to promote
 ```
 
 ## Rollback Instructions
@@ -426,4 +426,4 @@ promote:
 
 **Last Updated**: November 2025
 **Maintained By**: Total Audio Platform Team
-**Status**: Production Ready ✅
+**Status**: Production Ready 

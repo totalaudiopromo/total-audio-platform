@@ -1,11 +1,11 @@
 # TAP SaaS Template
 
-## ⚠️ THIS IS A TEMPLATE - DO NOT MODIFY DIRECTLY
+##  THIS IS A TEMPLATE - DO NOT MODIFY DIRECTLY
 
 This is your clean, reusable starting point for all TAP mini-tools. **Duplicate this directory for each new tool** - never modify the template directly.
 
-👉 **Read first:** [`TEMPLATE_USAGE.md`](./TEMPLATE_USAGE.md) - Complete duplication workflow  
-🎨 **Design standards:** [`DESIGN_SYSTEM.md`](./DESIGN_SYSTEM.md) - Postcraft aesthetic guide
+ **Read first:** [`TEMPLATE_USAGE.md`](./TEMPLATE_USAGE.md) - Complete duplication workflow  
+ **Design standards:** [`DESIGN_SYSTEM.md`](./DESIGN_SYSTEM.md) - Postcraft aesthetic guide
 
 ---
 

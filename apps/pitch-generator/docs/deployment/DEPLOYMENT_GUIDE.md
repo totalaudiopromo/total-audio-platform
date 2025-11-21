@@ -1,6 +1,6 @@
 # Pitch Generator - Production Deployment Guide
 
-## ✅ Pre-Deployment Checklist
+##  Pre-Deployment Checklist
 
 ### 1. Database Setup (Supabase)
 
@@ -21,7 +21,7 @@
 - [x] Anthropic API key configured
 - [ ] Production API key with higher rate limits
 
-## 🚀 Vercel Deployment Steps
+##  Vercel Deployment Steps
 
 ### Step 1: Connect Repository
 
@@ -90,7 +90,7 @@ NODE_ENV=production
 2. Wait for build to complete
 3. Test the deployment
 
-## 🔒 Supabase Row Level Security (RLS)
+##  Supabase Row Level Security (RLS)
 
 Run these SQL commands in Supabase SQL Editor to secure your tables:
 
@@ -159,7 +159,7 @@ CREATE POLICY "Users can update own settings" ON user_pitch_settings
   FOR UPDATE USING (auth.uid()::text = user_id OR user_id = current_user);
 ```
 
-## 🎯 Stripe Webhook Setup
+##  Stripe Webhook Setup
 
 ### 1. Create Webhook Endpoint in Stripe
 
@@ -190,7 +190,7 @@ Follow the same process as test mode:
 - Price: £49/month recurring
 - Copy the price ID to `STRIPE_PRICE_AGENCY_MONTHLY`
 
-## 🧪 Post-Deployment Testing
+##  Post-Deployment Testing
 
 Test these user flows:
 
@@ -224,7 +224,7 @@ Test these user flows:
    - [ ] View recent pitches
    - [ ] Navigation works correctly
 
-## 📊 Monitoring
+##  Monitoring
 
 ### Vercel Analytics
 
@@ -240,7 +240,7 @@ Test these user flows:
 - Monitor payments at https://dashboard.stripe.com/payments
 - Track subscriptions at https://dashboard.stripe.com/subscriptions
 
-## 🔧 Common Issues
+##  Common Issues
 
 ### Issue: "Invalid Stripe configuration"
 
@@ -266,17 +266,17 @@ Test these user flows:
 2. Check webhook secret matches Vercel environment variable
 3. Test webhook with Stripe CLI: `stripe trigger checkout.session.completed`
 
-## 🎉 Launch Ready
+##  Launch Ready
 
 Once all checklist items are complete:
 
-1. ✅ Update DNS to point to Vercel deployment
-2. ✅ Enable custom domain in Vercel
-3. ✅ Test all flows with real card (Stripe test mode)
-4. ✅ Switch to live Stripe keys
-5. ✅ Announce launch! 🚀
+1.  Update DNS to point to Vercel deployment
+2.  Enable custom domain in Vercel
+3.  Test all flows with real card (Stripe test mode)
+4.  Switch to live Stripe keys
+5.  Announce launch! 
 
-## 📝 Production Stripe Products
+##  Production Stripe Products
 
 You'll need to create these in live mode (same as test):
 

@@ -8,7 +8,7 @@
 
 ---
 
-## 🔥 Priority #1: Anika Luna (Triple J Home & Hosed)
+##  Priority #1: Anika Luna (Triple J Home & Hosed)
 
 **Email**: luna.anika@abc.net.au
 **Relationship**: WARM - Triple J played "Yearn" in August 2024
@@ -57,7 +57,7 @@ chrisschofield@libertymusicpr.com
 
 ---
 
-## 🎯 Priority #2: Claire Mooney (Triple J Music Director)
+##  Priority #2: Claire Mooney (Triple J Music Director)
 
 **Email**: mooney.claire@abc.net.au
 **Relationship**: COLD (but Triple J has supported KYARA before)
@@ -106,7 +106,7 @@ chrisschofield@libertymusicpr.com
 
 ---
 
-## 🇦🇺 Priority #3: Triple R Melbourne (simonw@rrr.org.au)
+##  Priority #3: Triple R Melbourne (simonw@rrr.org.au)
 
 **Relationship**: COLD
 **Angle**: Australian artist with Triple J support
@@ -147,7 +147,7 @@ chrisschofield@libertymusicpr.com
 
 ---
 
-## 🎵 Priority #4: PBS FM Melbourne (Firas@pbsfm.org.au)
+##  Priority #4: PBS FM Melbourne (Firas@pbsfm.org.au)
 
 **Relationship**: COLD
 **Angle**: Sydney bedroom producer, Triple J support
@@ -181,7 +181,7 @@ chrisschofield@libertymusicpr.com
 
 ---
 
-## 💎 Priority #5: KIIS 106.5 (music@kiis1065.com.au)
+##  Priority #5: KIIS 106.5 (music@kiis1065.com.au)
 
 **Relationship**: COLD
 **Angle**: Crossover pop potential, Sydney local
@@ -217,7 +217,7 @@ chrisschofield@libertymusicpr.com
 
 ---
 
-## 📋 Action Checklist
+##  Action Checklist
 
 **Before sending (URGENT - release is TODAY)**:
 
@@ -237,15 +237,15 @@ chrisschofield@libertymusicpr.com
 
 ---
 
-## 🎯 Key Messaging Points
+##  Key Messaging Points
 
 **Use in ALL Australian pitches**:
 
-- ✅ Sydney-based artist (LOCAL!)
-- ✅ Triple J Home & Hosed support ("Yearn" in August)
-- ✅ Self-produced in bedroom studio (independent credibility)
-- ✅ Hypnotic electro-pop sound
-- ✅ Empowerment narrative (relatable story)
+-  Sydney-based artist (LOCAL!)
+-  Triple J Home & Hosed support ("Yearn" in August)
+-  Self-produced in bedroom studio (independent credibility)
+-  Hypnotic electro-pop sound
+-  Empowerment narrative (relatable story)
 
 **Press Release Quotes to Reference**:
 
@@ -255,7 +255,7 @@ chrisschofield@libertymusicpr.com
 
 ---
 
-## 📧 Follow-up Strategy
+##  Follow-up Strategy
 
 **If Anika Luna responds positively**:
 
@@ -290,7 +290,7 @@ Chris
 
 ---
 
-## 💡 Strategic Notes
+##  Strategic Notes
 
 **Why This Campaign Is Strong**:
 

@@ -5,23 +5,23 @@
 
 ---
 
-## 🎯 New Strategy: Automated Self-Serve
+##  New Strategy: Automated Self-Serve
 
 ### Old Way (85% conversion but requires YOUR time)
 
-❌ Cold email → Demo call → Close → Onboarding
-❌ 42 demo calls = 84 hours of YOUR time
-❌ Doesn't scale for solopreneur with day job
+ Cold email → Demo call → Close → Onboarding
+ 42 demo calls = 84 hours of YOUR time
+ Doesn't scale for solopreneur with day job
 
 ### New Way (30% conversion but ZERO time required)
 
-✅ Cold email → Free trial signup → Product sells itself → Auto-payment
-✅ 0 hours of YOUR time (fully automated)
-✅ Scales infinitely while you're at Postman
+ Cold email → Free trial signup → Product sells itself → Auto-payment
+ 0 hours of YOUR time (fully automated)
+ Scales infinitely while you're at Postman
 
 ---
 
-## 💰 The Math (Self-Serve vs Demos)
+##  The Math (Self-Serve vs Demos)
 
 ### With Demos (Current)
 
@@ -45,7 +45,7 @@
 
 ---
 
-## 🚀 What You Need to Build
+##  What You Need to Build
 
 ### 1. Loom Video Demo (Record Once, Use Forever)
 
@@ -139,10 +139,10 @@ Haven't had a chance to try Audio Intel yet?
 Upload just ONE contact - takes 10 seconds.
 
 Here's what you'll get:
-✅ Verified email
-✅ Social profiles
-✅ Phone number (if available)
-✅ Full professional context
+ Verified email
+ Social profiles
+ Phone number (if available)
+ Full professional context
 
 Try it: intel.totalaudiopromo.com/dashboard
 
@@ -219,7 +219,7 @@ PAYMENT (Stripe) → Instant PRO access
 
 ---
 
-## 🛠️ Technical Implementation
+##  Technical Implementation
 
 ### Step 1: Record Loom Video (15 mins)
 
@@ -264,7 +264,7 @@ PAYMENT (Stripe) → Instant PRO access
 
 ---
 
-## 📊 Updated Conversion Funnel
+##  Updated Conversion Funnel
 
 ### Realistic Self-Serve Conversions
 
@@ -280,7 +280,7 @@ PAYMENT (Stripe) → Instant PRO access
 
 ---
 
-## 💡 Why This Works Better for You
+##  Why This Works Better for You
 
 ### Time Comparison
 
@@ -302,7 +302,7 @@ PAYMENT (Stripe) → Instant PRO access
 
 ---
 
-## 🎯 Implementation Plan (Total: 2 hours)
+##  Implementation Plan (Total: 2 hours)
 
 ### Today (30 mins)
 
@@ -327,7 +327,7 @@ PAYMENT (Stripe) → Instant PRO access
 
 ---
 
-## 🔥 New Cold Email Templates (Self-Serve)
+##  New Cold Email Templates (Self-Serve)
 
 ### Template 1: Video Demo (Best for Self-Serve)
 
@@ -405,7 +405,7 @@ Chris
 
 ---
 
-## 📈 Expected Results (Self-Serve)
+##  Expected Results (Self-Serve)
 
 ### Month 1 (50 emails)
 
@@ -439,7 +439,7 @@ Chris
 
 ---
 
-## ✅ Action Items (This Weekend)
+##  Action Items (This Weekend)
 
 1. **Record Loom video** (15 mins)
    - Show real BBC Radio 1 enrichment
@@ -463,16 +463,16 @@ Chris
 
 ---
 
-## 🚨 Critical Success Factors
+##  Critical Success Factors
 
-### ✅ DO THIS:
+###  DO THIS:
 
 - Loom video MUST show REAL enrichment (not fake demo)
 - Free tier MUST work perfectly (10 enrichments is enough to prove value)
 - Upgrade prompt in product (after 8th enrichment: "2 left this month, upgrade?")
 - Email drip MUST be value-first (not salesy)
 
-### ❌ DON'T DO THIS:
+###  DON'T DO THIS:
 
 - Don't require demo calls (kills self-serve)
 - Don't ask for card for free tier (reduces signups)
@@ -481,7 +481,7 @@ Chris
 
 ---
 
-## 💰 Bottom Line
+##  Bottom Line
 
 **Old way (demos):**
 
@@ -505,7 +505,7 @@ Chris
 
 ---
 
-## 🎯 Next Steps
+##  Next Steps
 
 1. Record Loom video TODAY (15 mins)
 2. Set up ConvertKit drip TOMORROW (30 mins)

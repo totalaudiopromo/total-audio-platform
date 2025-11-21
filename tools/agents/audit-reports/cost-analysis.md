@@ -355,7 +355,7 @@ Savings: $6 + 35 minutes time savings
 
 **With Streaming**:
 
-- Real-time progress: "Finding social profiles... ✅"
+- Real-time progress: "Finding social profiles... "
 - Demo calls: Engagement maintained, excitement builds
 - Conversion impact: Estimated +10-15% demo → paid conversion
 
@@ -496,7 +496,7 @@ As agents become more capable, usage will increase:
 
 - Monthly savings vs non-upgraded: £58.50-88.50
 - Implementation cost: £4,400
-- Break-even: 4.8-7.5 months ✅
+- Break-even: 4.8-7.5 months 
 
 **Aggressive Scenario** (3x usage growth):
 
@@ -504,7 +504,7 @@ As agents become more capable, usage will increase:
 - Additional revenue (streaming UX): £120/month
 - Total monthly value: £240-270
 - Implementation cost: £4,400
-- Break-even: 1.6-1.8 months ✅✅✅
+- Break-even: 1.6-1.8 months 
 
 ---
 
@@ -589,7 +589,7 @@ Cumulative 3-Year Cost: £4,400 (one-time)
 
 ## RECOMMENDATION
 
-### Proceed with Upgrade ✅
+### Proceed with Upgrade 
 
 **Reasons**:
 
@@ -616,11 +616,11 @@ Cumulative 3-Year Cost: £4,400 (one-time)
 
 ## NEXT STEPS
 
-1. ✅ Approve cost analysis and ROI projection
-2. ✅ Set up baseline cost tracking (before upgrade)
-3. ✅ Begin Phase 1 implementation
-4. ✅ Track metrics weekly during rollout
-5. ✅ Adjust strategy based on measured results
+1.  Approve cost analysis and ROI projection
+2.  Set up baseline cost tracking (before upgrade)
+3.  Begin Phase 1 implementation
+4.  Track metrics weekly during rollout
+5.  Adjust strategy based on measured results
 
 ---
 

@@ -1,4 +1,4 @@
-# 🚨 CRITICAL: Notion Integration Recovery & Prevention Plan
+#  CRITICAL: Notion Integration Recovery & Prevention Plan
 
 ## Current Issue Analysis
 
@@ -8,7 +8,7 @@
 
 ---
 
-## 🔧 IMMEDIATE FIX PROTOCOL
+##  IMMEDIATE FIX PROTOCOL
 
 ### Step 1: Verify Integration in Notion
 
@@ -16,11 +16,11 @@
 2. Find "Claude Code Integration"
 3. **Copy the EXACT token** (starts with `ntn_`)
 4. Verify it has these permissions:
-   - ✅ Read content
-   - ✅ Update content
-   - ✅ Insert content
-   - ✅ Read comments
-   - ✅ Insert comments
+   -  Read content
+   -  Update content
+   -  Insert content
+   -  Read comments
+   -  Insert comments
 
 ### Step 2: Fresh MCP Configuration
 
@@ -54,7 +54,7 @@ claude mcp list
 
 ---
 
-## 🛡️ PREVENTION SYSTEM
+##  PREVENTION SYSTEM
 
 ### 1. Daily Integration Health Check
 
@@ -73,13 +73,13 @@ async function checkNotionHealth() {
     });
 
     const response = await notion.users.me();
-    console.log('✅ Notion integration: HEALTHY');
+    console.log(' Notion integration: HEALTHY');
     console.log('User:', response.name);
     return true;
   } catch (error) {
-    console.error('❌ Notion integration: FAILED');
+    console.error(' Notion integration: FAILED');
     console.error('Error:', error.message);
-    console.log('🔧 Run the recovery protocol immediately');
+    console.log(' Run the recovery protocol immediately');
     return false;
   }
 }
@@ -103,20 +103,20 @@ checkNotionHealth();
 echo "Checking MCP server status..."
 
 # Test Notion connection
-if claude mcp list | grep -q "notion.*✓"; then
-    echo "✅ Notion MCP server: CONNECTED"
+if claude mcp list | grep -q "notion.*"; then
+    echo " Notion MCP server: CONNECTED"
 else
-    echo "❌ Notion MCP server: DISCONNECTED"
-    echo "🔧 Running auto-recovery..."
+    echo " Notion MCP server: DISCONNECTED"
+    echo " Running auto-recovery..."
 
     # Auto-recovery attempt
     claude mcp remove notion 2>/dev/null
     claude mcp add notion npx -- @notionhq/notion-mcp-server --api-key=$NOTION_API_KEY_BACKUP
 
-    if claude mcp list | grep -q "notion.*✓"; then
-        echo "✅ Auto-recovery: SUCCESS"
+    if claude mcp list | grep -q "notion.*"; then
+        echo " Auto-recovery: SUCCESS"
     else
-        echo "❌ Auto-recovery: FAILED - Manual intervention required"
+        echo " Auto-recovery: FAILED - Manual intervention required"
     fi
 fi
 ```
@@ -132,7 +132,7 @@ fi
 
 ---
 
-## 🚀 WORKFLOW INTEGRATION
+##  WORKFLOW INTEGRATION
 
 ### Morning Startup Routine
 
@@ -149,7 +149,7 @@ fi
 
 ---
 
-## 🎯 ALTERNATIVE SOLUTIONS
+##  ALTERNATIVE SOLUTIONS
 
 ### Backup System 1: Local-First with Notion Sync
 
@@ -172,7 +172,7 @@ fi
 
 ---
 
-## 📋 RECOVERY CHECKLIST
+##  RECOVERY CHECKLIST
 
 When Notion breaks (again):
 
@@ -186,7 +186,7 @@ When Notion breaks (again):
 
 ---
 
-## 🎪 THE NUCLEAR OPTION
+##  THE NUCLEAR OPTION
 
 **If integration keeps breaking weekly:**
 
@@ -198,14 +198,14 @@ When Notion breaks (again):
 
 ### Benefits:
 
-- ✅ Never blocked by integration issues
-- ✅ Full version control of all tracking
-- ✅ Works offline
-- ✅ Can still use Notion for collaboration when it works
+-  Never blocked by integration issues
+-  Full version control of all tracking
+-  Works offline
+-  Can still use Notion for collaboration when it works
 
 ---
 
-## 💡 LESSONS LEARNED
+##  LESSONS LEARNED
 
 1. **Never rely 100%** on external integrations for critical workflows
 2. **Always have local backup** of important data
@@ -214,7 +214,7 @@ When Notion breaks (again):
 
 ---
 
-## 📞 EMERGENCY CONTACTS
+##  EMERGENCY CONTACTS
 
 **When all else fails:**
 

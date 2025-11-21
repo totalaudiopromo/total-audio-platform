@@ -1,6 +1,6 @@
 # Environment Variables Setup - Status Report
 
-## ✅ What's Working
+##  What's Working
 
 1. **`.env.local` file exists** at `/apps/tracker/.env.local`
 2. **Credentials are present**:
@@ -9,7 +9,7 @@
 3. **Server-side rendering works** - Landing page loads successfully
 4. **Environment variables are readable** - Node.js can read them from the file
 
-## ❌ Current Issue
+##  Current Issue
 
 **Problem:** Client-side components (like `AuthButton`, `TrackerHeader`) cannot access environment variables, causing a ZodError.
 
@@ -22,7 +22,7 @@
 **Root Cause:**
 The `@total-audio/core-db` package is trying to access `process.env` directly in client-side code, but Next.js needs environment variables to be explicitly exposed. The package might need to be updated to handle Next.js environment variable exposure correctly.
 
-## 🔧 Solutions to Try
+##  Solutions to Try
 
 ### Option 1: Verify Next.js is exposing env vars (Quick Check)
 
@@ -58,7 +58,7 @@ The `core-db` package might need to be updated to handle Next.js environment var
 
 If the above doesn't work, might need to use `publicRuntimeConfig` in `next.config.ts`.
 
-## 📋 Current Environment Variables
+##  Current Environment Variables
 
 All variables are set in `.env.local`:
 
@@ -91,14 +91,14 @@ NEXT_PUBLIC_BASE_URL=http://localhost:3004
 NEXT_PUBLIC_APP_URL=http://localhost:3004
 ```
 
-## 🎯 Next Steps
+##  Next Steps
 
 1. **Try Option 2 first** - Update `next.config.ts` to explicitly expose env vars
 2. **Restart dev server** after making changes
 3. **Clear browser cache** - Hard refresh (Cmd+Shift+R)
 4. **Test again** - Navigate to http://localhost:3004/dashboard
 
-## 📝 Notes
+##  Notes
 
 - The dev server is running on **port 3004** (correct port for Tracker)
 - Landing page works because it's server-rendered

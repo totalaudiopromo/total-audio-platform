@@ -1,6 +1,6 @@
 # Google Gemini API Setup Guide - Liberty Music PR
 
-## 🎯 **What This Does**
+##  **What This Does**
 
 Google Gemini integration processes your Google Meet transcripts to extract campaign information automatically. It uses AI to understand your conversations and pull out:
 
@@ -13,7 +13,7 @@ Google Gemini integration processes your Google Meet transcripts to extract camp
 - Priority levels
 - Deadlines
 
-## 🔧 **Setup Steps**
+##  **Setup Steps**
 
 ### 1. **Get Google Gemini API Key**
 
@@ -39,7 +39,7 @@ cd /Users/chrisschofield/workspace/active/total-audio-platform/tools/agents/radi
 node test-gemini.js
 ```
 
-## 🚀 **Usage**
+##  **Usage**
 
 ### **Process Gemini Transcript**
 
@@ -59,7 +59,7 @@ node radio-promo-agent.js personal-workflow gemini:transcript-id-123
 4. **Press Release**: Generates Liberty-style press release
 5. **Team Intelligence**: Gathers insights from Google Chat
 
-## 📊 **How It Works**
+##  **How It Works**
 
 ### **Transcript Analysis**
 
@@ -77,7 +77,7 @@ Gemini uses natural language processing to understand:
 - Learns from your conversation patterns
 - Improves accuracy over time
 
-## 🔍 **Testing**
+##  **Testing**
 
 ### **Test API Connection**
 
@@ -92,7 +92,7 @@ node test-gemini.js
 node radio-promo-agent.js process-transcript gemini:test-transcript-123
 ```
 
-## 📝 **Example Workflow**
+##  **Example Workflow**
 
 1. **Record Google Meet** with artist
 2. **Get transcript** from Google Meet
@@ -106,7 +106,7 @@ node radio-promo-agent.js process-transcript gemini:test-transcript-123
 5. **Approve Monday.com campaign** creation
 6. **Generate press release** automatically
 
-## 🎯 **Benefits**
+##  **Benefits**
 
 - **Faster Processing**: No manual data entry
 - **Better Accuracy**: AI understands context
@@ -114,7 +114,7 @@ node radio-promo-agent.js process-transcript gemini:test-transcript-123
 - **Time Saving**: Automates the boring stuff
 - **Learning**: Gets better with each transcript
 
-## 🔧 **Troubleshooting**
+##  **Troubleshooting**
 
 ### **API Key Issues**
 
@@ -134,13 +134,13 @@ node radio-promo-agent.js process-transcript gemini:test-transcript-123
 - Review the conversation content
 - Ensure campaign details are mentioned clearly
 
-## 📚 **API Limits**
+##  **API Limits**
 
 - **Free Tier**: 15 requests per minute
 - **Paid Tier**: Higher limits available
 - **Rate Limiting**: Built into the integration
 
-## 🎉 **Ready to Go!**
+##  **Ready to Go!**
 
 Once you have your Gemini API key set up:
 

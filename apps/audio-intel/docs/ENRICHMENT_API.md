@@ -12,14 +12,14 @@ The enrichment API endpoint provides production-ready contact enrichment using I
 
 ## Features
 
-- ✅ Production-ready error handling
-- ✅ Request/response timing metrics
-- ✅ Cost tracking per request
-- ✅ Rate limiting protection (100 requests/minute)
-- ✅ CORS support for demo pages
-- ✅ Batch and single contact processing
-- ✅ Automatic fallback for failures
-- ✅ Detailed logging and debugging
+-  Production-ready error handling
+-  Request/response timing metrics
+-  Cost tracking per request
+-  Rate limiting protection (100 requests/minute)
+-  CORS support for demo pages
+-  Batch and single contact processing
+-  Automatic fallback for failures
+-  Detailed logging and debugging
 
 ---
 

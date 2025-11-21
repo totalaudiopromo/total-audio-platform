@@ -1,4 +1,4 @@
-# ⚠️ MOVED TO SHARED PACKAGE
+#  MOVED TO SHARED PACKAGE
 
 The shared utilities previously in this directory have been moved to:
 
@@ -8,10 +8,10 @@ This makes them available across the entire Total Audio Promo platform, not just
 
 ## What Moved
 
-- ❌ ~~`lib/agent-logger.js`~~ → ✅ `packages/shared-utils/agent-logger.js`
-- ❌ ~~`lib/cost-tracker.js`~~ → ✅ `packages/shared-utils/cost-tracker.js`
-- ❌ ~~`lib/retry-wrapper.js`~~ → ✅ `packages/shared-utils/retry-wrapper.js`
-- ❌ ~~`lib/email-alerts.js`~~ → ✅ `packages/shared-utils/email-alerts.js`
+-  ~~`lib/agent-logger.js`~~ →  `packages/shared-utils/agent-logger.js`
+-  ~~`lib/cost-tracker.js`~~ →  `packages/shared-utils/cost-tracker.js`
+-  ~~`lib/retry-wrapper.js`~~ →  `packages/shared-utils/retry-wrapper.js`
+-  ~~`lib/email-alerts.js`~~ →  `packages/shared-utils/email-alerts.js`
 
 ## New Import Paths
 

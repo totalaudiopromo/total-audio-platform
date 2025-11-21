@@ -2,7 +2,7 @@
 
 All documentation for the TAP SaaS template, organised by category.
 
-## 📁 Documentation Structure
+##  Documentation Structure
 
 ### `/setup/` - Setup & Configuration
 
@@ -31,7 +31,7 @@ Historical status updates and completion reports:
 
 ---
 
-## 🎯 Quick Start
+##  Quick Start
 
 For getting started, see the root-level documentation:
 
@@ -42,7 +42,7 @@ For getting started, see the root-level documentation:
 
 ---
 
-## 📝 Documentation Standards
+##  Documentation Standards
 
 When adding new documentation:
 
@@ -68,7 +68,7 @@ When adding new documentation:
 
 ---
 
-## 🎨 Design System
+##  Design System
 
 The complete design system (Postcraft aesthetic) is documented at the root:
 

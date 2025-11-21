@@ -1,6 +1,6 @@
 # Integrations Quick Start Guide
 
-## 🚀 Get Your First Integration Working in 10 Minutes
+##  Get Your First Integration Working in 10 Minutes
 
 ### Prerequisites
 
@@ -116,7 +116,7 @@ http://localhost:3000/dashboard/integrations
 
 You should see:
 
-- ✅ Green checkmark on Google Sheets card
+-  Green checkmark on Google Sheets card
 - "Connected" status
 - "Last synced: Just now"
 
@@ -174,15 +174,15 @@ curl -X POST http://localhost:3000/api/integrations/google-sheets/sync \
 
 Your campaign should appear in the spreadsheet!
 
-## 🎉 Success!
+##  Success!
 
 You now have:
 
-- ✅ OAuth authentication working
-- ✅ Google Sheets connection active
-- ✅ Campaigns syncing to spreadsheet
-- ✅ Database migration applied
-- ✅ Background worker ready (runs every 15 min)
+-  OAuth authentication working
+-  Google Sheets connection active
+-  Campaigns syncing to spreadsheet
+-  Database migration applied
+-  Background worker ready (runs every 15 min)
 
 ## Next Steps
 

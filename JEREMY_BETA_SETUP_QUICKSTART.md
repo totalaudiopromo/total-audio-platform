@@ -2,7 +2,7 @@
 
 Quick reference for setting up Jeremy's beta access to Total Audio Promo.
 
-## 🚀 Quick Setup (3 Steps)
+## Quick Setup (3 Steps)
 
 ### 1. Create Account
 
@@ -24,7 +24,7 @@ npx ts-node scripts/send-welcome-email.ts info@streamer.co.uk
 - Email: `info@streamer.co.uk`
 - Tags: `beta-user`, `artist`, `streamer-band`
 
-## 📋 Account Details
+## Account Details
 
 | Field       | Value                   |
 | ----------- | ----------------------- |
@@ -34,13 +34,13 @@ npx ts-node scripts/send-welcome-email.ts info@streamer.co.uk
 | Beta Period | 60 days                 |
 | Cost        | £0/month                |
 
-## 🔗 App URLs
+## App URLs
 
-- **Audio Intel:** https://intel.totalaudiopromo.com ✅ LIVE
-- **Campaign Tracker:** https://tracker.totalaudiopromo.com ⏳ Coming soon
-- **Pitch Generator:** https://pitch.totalaudiopromo.com ⏳ Coming soon
+- **Audio Intel:** https://intel.totalaudiopromo.com LIVE
+- **Campaign Tracker:** https://tracker.totalaudiopromo.com Coming soon
+- **Pitch Generator:** https://pitch.totalaudiopromo.com Coming soon
 
-## ✅ Verification
+## Verification
 
 After setup, verify login works:
 
@@ -52,7 +52,7 @@ curl -X POST http://localhost:3000/api/auth/login \
 
 Should return JWT token and user data with subscription info.
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 **User exists?** Script handles it - safe to re-run.
 

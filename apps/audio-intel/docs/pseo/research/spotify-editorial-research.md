@@ -177,12 +177,12 @@ Comprehensive research into Spotify's editorial playlist submission process, foc
 
 ### What NOT to Do
 
-- ❌ Don't write full biographies or list every award
-- ❌ Don't make bold claims like "next big hit"
-- ❌ Don't choose multiple genres to "game the system"
-- ❌ Don't leave any submission fields blank
-- ❌ Don't submit compilations or featured artist tracks (not eligible)
-- ❌ Don't expect feedback or confirmation
+-  Don't write full biographies or list every award
+-  Don't make bold claims like "next big hit"
+-  Don't choose multiple genres to "game the system"
+-  Don't leave any submission fields blank
+-  Don't submit compilations or featured artist tracks (not eligible)
+-  Don't expect feedback or confirmation
 
 ---
 

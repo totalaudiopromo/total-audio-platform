@@ -31,7 +31,7 @@ export function createAgent(): PostingAgent;
 | **Posting Method**  | Single-step       | Two-step (create + publish)         |
 | **Rate Limiting**   | 1s delay          | 2s delay                            |
 | **Health Check**    | Login test        | API access test                     |
-| **Insights**        | ❌ Not available  | ✅ Views, likes, replies, followers |
+| **Insights**        |  Not available  |  Views, likes, replies, followers |
 | **Content Mapping** | 8 posts           | 10 posts                            |
 | **Dependencies**    | @atproto/api      | axios (existing)                    |
 
@@ -187,7 +187,7 @@ FACEBOOK_APP_SECRET=abc123
 1. Create account on bsky.app
 2. Generate app password
 3. Add credentials to .env
-4. Done! ✅
+4. Done! 
 
 **Time**: 5 minutes
 

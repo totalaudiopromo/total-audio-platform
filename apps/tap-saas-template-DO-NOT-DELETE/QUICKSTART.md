@@ -1,8 +1,8 @@
 # Pitch Generator - Quick Start Guide
 
-## 🚀 Get Up and Running in 5 Minutes
+##  Get Up and Running in 5 Minutes
 
-### Step 1: Install Dependencies ✅
+### Step 1: Install Dependencies 
 
 Already done! Dependencies installed.
 
@@ -61,9 +61,9 @@ Open http://localhost:3000
 
 ---
 
-## 📋 What Was Built
+##  What Was Built
 
-### ✅ Core Features
+###  Core Features
 
 - **Dashboard** - Stats, recent pitches, quick actions
 - **Pitch Generator** - AI-powered pitch creation with GPT-4
@@ -73,7 +73,7 @@ Open http://localhost:3000
 - **Template Library** - 5 genre-specific templates pre-loaded
 - **Batch Mode** - Placeholder for future batch generation
 
-### ✅ Pages Created
+###  Pages Created
 
 - `/` - Landing page (Pitch Generator marketing)
 - `/dashboard` - Main dashboard (auth required)
@@ -84,11 +84,11 @@ Open http://localhost:3000
 - `/pitch/templates` - View template library
 - `/pitch/batch` - Coming soon placeholder
 
-### ✅ API Routes
+###  API Routes
 
 - `/api/pitch/generate` - Generate pitch with OpenAI GPT-4
 
-### ✅ Database Schema
+###  Database Schema
 
 - `contacts` - Media contacts with genres, notes, preferences
 - `pitches` - Generated pitches with status tracking
@@ -97,7 +97,7 @@ Open http://localhost:3000
 
 ---
 
-## 🎯 Next Steps for Production
+##  Next Steps for Production
 
 ### Before Launch Checklist
 
@@ -130,7 +130,7 @@ Open http://localhost:3000
 
 ---
 
-## 💡 Pro Tips
+##  Pro Tips
 
 ### Getting Better AI Results
 
@@ -156,7 +156,7 @@ The AI quality depends heavily on:
 
 ---
 
-## 🐛 Common Issues
+##  Common Issues
 
 ### "Failed to generate pitch"
 
@@ -178,7 +178,7 @@ The AI quality depends heavily on:
 
 ---
 
-## 📚 Architecture Overview
+##  Architecture Overview
 
 ```
 User Flow:
@@ -195,7 +195,7 @@ User Flow:
 
 ---
 
-## 🎨 Brand Alignment
+##  Brand Alignment
 
 This build follows TAP brand guidelines:
 
@@ -206,7 +206,7 @@ This build follows TAP brand guidelines:
 
 ---
 
-## 📞 Need Help?
+##  Need Help?
 
 - Read the full `PITCH_GENERATOR_README.md`
 - Check the PRD for feature specs
@@ -214,7 +214,7 @@ This build follows TAP brand guidelines:
 
 ---
 
-**Built in record time using the TAP SaaS template!** 🚀
+**Built in record time using the TAP SaaS template!** 
 
 Total build time: ~2 hours
 Lines of code: ~3,000

@@ -1,13 +1,13 @@
 # Google Calendar & Chat MCP Setup
 
-## ✅ INSTALLED
+##  INSTALLED
 
 Both MCPs are now added to your Claude Desktop configuration:
 
 - **google-calendar**: Campaign scheduling and milestone tracking
 - **google-chat**: Read-only access to Liberty channels (training data)
 
-## 🔐 AUTHENTICATION SETUP
+##  AUTHENTICATION SETUP
 
 ### 1. Create OAuth Credentials (One-Time)
 
@@ -67,7 +67,7 @@ When the browser opens:
 2. Grant calendar/chat permissions
 3. Token will be saved to `~/.google-calendar-mcp/token.json` and `~/.google-chat-mcp/token.json`
 
-## 📋 AVAILABLE TOOLS
+##  AVAILABLE TOOLS
 
 ### Google Calendar MCP
 
@@ -83,7 +83,7 @@ When the browser opens:
 - `chat_get_space` - Get channel details
 - `chat_search_messages` - Search across channels
 
-## 💡 USE CASES
+##  USE CASES
 
 ### Campaign Scheduling
 
@@ -103,7 +103,7 @@ Search for "Senior Dunce" across all Liberty channels
 Extract workflow patterns from #team-updates
 ```
 
-## ⚠️ IMPORTANT NOTES
+##  IMPORTANT NOTES
 
 1. **Google Chat API** requires Workspace admin approval for production use
 2. **Calendar** works immediately after OAuth consent
@@ -111,7 +111,7 @@ Extract workflow patterns from #team-updates
 4. Credentials are stored in `~/.google-*-mcp/` directories
 5. Tokens auto-refresh when expired
 
-## 🔧 TROUBLESHOOTING
+##  TROUBLESHOOTING
 
 **"Error: ENOENT: no such file or directory, open '~/.google-calendar-mcp/credentials.json'"**
 
@@ -128,7 +128,7 @@ Extract workflow patterns from #team-updates
 - Add required scopes to OAuth consent screen
 - May need Workspace admin approval
 
-## 📚 NEXT STEPS
+##  NEXT STEPS
 
 1. Download OAuth credentials from Google Cloud Console
 2. Save to `~/.google-calendar-mcp/credentials.json` and `~/.google-chat-mcp/credentials.json`
@@ -142,4 +142,4 @@ Extract workflow patterns from #team-updates
 - Calendar: `/Users/chrisschofield/workspace/active/total-audio-platform/tools/mcp-servers/google-calendar-mcp.js`
 - Chat: `/Users/chrisschofield/workspace/active/total-audio-platform/tools/mcp-servers/google-chat-mcp.js`
 
-**Status:** ✅ Installed, awaiting OAuth credentials
+**Status:**  Installed, awaiting OAuth credentials

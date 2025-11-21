@@ -14,7 +14,7 @@ Multiple specialist subagents working parallel = fast.
 
 ## When to Orchestrate
 
-### ✅ USE Task Tool When:
+### USE Task Tool When:
 
 - Task requires 3+ distinct skills/expertise areas
 - Multiple independent subtasks can run parallel
@@ -23,7 +23,7 @@ Multiple specialist subagents working parallel = fast.
 - Multiple files/areas need simultaneous updates
 - Quality checks can run independently (typecheck + tests + lint)
 
-### ❌ DON'T Use Task Tool When:
+###  DON'T Use Task Tool When:
 
 - Simple single-skill task (<15 minutes)
 - Sequential dependencies (must finish A before starting B)
@@ -46,7 +46,7 @@ Can task be split into 2+ independent subtasks?
 
 ## Parallel Execution Pattern
 
-### ✅ CORRECT: Multiple Tasks in Single Message
+### CORRECT: Multiple Tasks in Single Message
 
 ```xml
 <function_calls>
@@ -86,7 +86,7 @@ Return doc structure.
 
 **Result**: All 3 tasks run simultaneously. Total time = slowest task (not sum of all).
 
-### ❌ WRONG: Sequential Messages
+###  WRONG: Sequential Messages
 
 ```xml
 <!-- Don't do this - runs serially -->
@@ -183,7 +183,7 @@ Return doc structure.
 
 ## Subagent Prompt Best Practices
 
-### ✅ Good Prompts
+### Good Prompts
 
 - Clear objective stated first
 - Bullet list of specific tasks
@@ -213,7 +213,7 @@ Return:
 - Verification that typecheck passes
 ```
 
-### ❌ Bad Prompts
+###  Bad Prompts
 
 - Vague objectives ("fix stuff")
 - No specific tasks listed
@@ -235,19 +235,19 @@ Fix TypeScript errors
 
 Use Task tool for:
 
-- ✅ Bug fixes (doesn't block customer work)
-- ✅ Quality checks (TypeScript, tests, mobile UX)
-- ✅ Build/deployment validation
-- ✅ Documentation generation
+- Bug fixes (doesn't block customer work)
+- Quality checks (TypeScript, tests, mobile UX)
+- Build/deployment validation
+- Documentation generation
 
 ### Keep Customer Work in Main Agent
 
 Handle directly:
 
-- ❌ Customer outreach scripts (needs your judgment)
-- ❌ Demo preparation (customer-specific context)
-- ❌ Case study creation (authentic voice required)
-- ❌ Revenue metric tracking (business decisions)
+-  Customer outreach scripts (needs your judgment)
+-  Demo preparation (customer-specific context)
+-  Case study creation (authentic voice required)
+-  Revenue metric tracking (business decisions)
 
 ### Example: Prepare for Liberty Music PR Demo
 

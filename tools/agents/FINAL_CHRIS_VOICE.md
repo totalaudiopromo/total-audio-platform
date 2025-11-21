@@ -51,8 +51,8 @@
 
 ## TOOL PHILOSOPHY:
 
-**AI music generation** = Replaces creativity (the fun part) ❌
-**Audio Intel** = Replaces tedious spreadsheet admin (the boring part) ✅
+**AI music generation** = Replaces creativity (the fun part) 
+**Audio Intel** = Replaces tedious spreadsheet admin (the boring part) 
 
 Built Audio Intel because Chris was spending hours researching contact emails at midnight instead of making music as sadact. Tools should automate the marketing grind, not the creative process. Know the difference.
 
@@ -67,8 +67,8 @@ Built Audio Intel because Chris was spending hours researching contact emails at
 
 **Depth Test:**
 
-- Could only Chris write this? ✅
-- Could any music blogger write this? ❌
+- Could only Chris write this? 
+- Could any music blogger write this? 
 
 **Examples of Sufficient Depth:**
 

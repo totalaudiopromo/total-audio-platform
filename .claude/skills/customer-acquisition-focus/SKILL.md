@@ -35,7 +35,7 @@ Use this skill when working on:
 **Project**: Total Audio Platform (Audio Intel SaaS)
 **Phase**: Customer Acquisition (0 → £500/month)
 **Target**: First paying customer by November 2025
-**Foundation Status**: ✅ Complete (mobile UX fixed, enrichment working, payment integrated)
+**Foundation Status**: Complete (mobile UX fixed, enrichment working, payment integrated)
 
 **Conversion Rates (Validated)**:
 
@@ -53,7 +53,7 @@ If you can't explain how this task helps acquire first paying customer, STOP and
 
 ## Decision Framework
 
-### ✅ DO (Customer Acquisition Tasks)
+### DO (Customer Acquisition Tasks)
 
 **Customer Communication:**
 
@@ -86,7 +86,7 @@ If you can't explain how this task helps acquire first paying customer, STOP and
 - Add usage analytics
 - Make first-time experience smooth
 
-### ❌ DON'T (Technical Perfection)
+###  DON'T (Technical Perfection)
 
 **Premature Optimization:**
 

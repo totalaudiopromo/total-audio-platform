@@ -137,11 +137,11 @@ Transform that 23+ hour process into 5 minutes:
 
 **Agency-specific benefits:**
 
-✓ Multi-client support (process multiple campaigns simultaneously)
-✓ White-label reports (share intelligence with clients)
-✓ Bulk processing (100+ contacts in single upload)
-✓ Team collaboration (shared contact database)
-✓ Quality control (94% accuracy vs ~60% manual)
+ Multi-client support (process multiple campaigns simultaneously)
+ White-label reports (share intelligence with clients)
+ Bulk processing (100+ contacts in single upload)
+ Team collaboration (shared contact database)
+ Quality control (94% accuracy vs ~60% manual)
 
 **Real ROI calculation:**
 
@@ -212,12 +212,12 @@ Audio Intel workflow:
 
 **Agency-scale features:**
 
-✓ Unlimited team members
-✓ Multi-campaign processing
-✓ White-label client reports
-✓ API integration for workflow automation
-✓ Dedicated account manager
-✓ Custom enrichment rules
+ Unlimited team members
+ Multi-campaign processing
+ White-label client reports
+ API integration for workflow automation
+ Dedicated account manager
+ Custom enrichment rules
 
 **Real case study:**
 

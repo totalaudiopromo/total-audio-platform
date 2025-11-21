@@ -20,16 +20,16 @@ This document explains how to configure GitHub branch protection rules and auto-
 #### Basic Settings
 
 - **Branch name pattern**: `main`
-- **Require a pull request before merging**: ✅ Enabled
+- **Require a pull request before merging**:  Enabled
   - **Require approvals**: 0 (CodeRabbit auto-approves)
-  - **Dismiss stale pull request approvals when new commits are pushed**: ✅ Enabled
-  - **Require review from Code Owners**: ❌ Disabled (optional - enable if you create CODEOWNERS file)
-  - **Require approval of the most recent reviewable push**: ✅ Enabled
+  - **Dismiss stale pull request approvals when new commits are pushed**:  Enabled
+  - **Require review from Code Owners**:  Disabled (optional - enable if you create CODEOWNERS file)
+  - **Require approval of the most recent reviewable push**:  Enabled
 
 #### Status Checks
 
-- **Require status checks to pass before merging**: ✅ Enabled
-  - **Require branches to be up to date before merging**: ✅ Enabled
+- **Require status checks to pass before merging**:  Enabled
+  - **Require branches to be up to date before merging**:  Enabled
 
   **Required status checks** (add these):
   - `ci` - Main CI workflow (lint, typecheck, test, build)
@@ -38,27 +38,27 @@ This document explains how to configure GitHub branch protection rules and auto-
 
 #### Additional Settings
 
-- **Require conversation resolution before merging**: ✅ Enabled
+- **Require conversation resolution before merging**:  Enabled
   - Ensures all CodeRabbit comments are addressed
 
-- **Require signed commits**: ❌ Disabled (optional - enable for higher security)
+- **Require signed commits**:  Disabled (optional - enable for higher security)
 
-- **Require linear history**: ❌ Disabled (allow merge commits)
+- **Require linear history**:  Disabled (allow merge commits)
 
-- **Require merge queue**: ❌ Disabled (not needed for solo builder workflow)
+- **Require merge queue**:  Disabled (not needed for solo builder workflow)
 
-- **Require deployments to succeed before merging**: ❌ Disabled
+- **Require deployments to succeed before merging**:  Disabled
   - Important: Vercel deploys AFTER merge, not before
 
-- **Lock branch**: ❌ Disabled (need to push to main)
+- **Lock branch**:  Disabled (need to push to main)
 
-- **Do not allow bypassing the above settings**: ✅ Enabled
+- **Do not allow bypassing the above settings**:  Enabled
   - Prevents accidental direct pushes to main
 
-- **Allow force pushes**: ❌ Disabled
+- **Allow force pushes**:  Disabled
   - Prevents history rewriting on main
 
-- **Allow deletions**: ❌ Disabled
+- **Allow deletions**:  Disabled
   - Prevents accidental branch deletion
 
 ### Auto-Merge Configuration
@@ -68,8 +68,8 @@ This document explains how to configure GitHub branch protection rules and auto-
 1. Navigate to: `https://github.com/totalaudiopromo/total-audio-platform/settings`
 2. Scroll to "Pull Requests" section
 3. Enable:
-   - ✅ **Allow auto-merge**
-   - ✅ **Automatically delete head branches**
+   -  **Allow auto-merge**
+   -  **Automatically delete head branches**
 
 #### How Auto-Merge Works
 
@@ -89,9 +89,9 @@ When all pass: 4. **CodeRabbit auto-approves** (if configured to do so) 5. **PR 
 2. Click "Install" or "Configure"
 3. Select `totalaudiopromo/total-audio-platform` repository
 4. Grant required permissions:
-   - ✅ Read access to code
-   - ✅ Read and write access to pull requests
-   - ✅ Read access to workflows
+   -  Read access to code
+   -  Read and write access to pull requests
+   -  Read access to workflows
 
 ### CodeRabbit Configuration
 
@@ -118,7 +118,7 @@ Vercel integration should already be configured. Verify:
 2. For each project, verify Git settings:
    - **Production Branch**: `main`
    - **Ignored Build Step**: (default, should be empty)
-   - **Auto-deploy**: ✅ Enabled
+   - **Auto-deploy**:  Enabled
 
 ### Important Notes
 
@@ -215,14 +215,14 @@ In the PR page:
 
 Check that:
 
-1. ✅ CodeRabbit comments appear (or auto-approves if no issues)
-2. ✅ CI workflow runs and passes
-3. ✅ Security scan runs and passes
-4. ✅ PR auto-merges when all checks pass
-5. ✅ Branch auto-deletes after merge
-6. ✅ Vercel auto-deploys to production
-7. ✅ Golden Verify runs post-deployment checks
-8. ✅ Telegram notification sent (failures only)
+1.  CodeRabbit comments appear (or auto-approves if no issues)
+2.  CI workflow runs and passes
+3.  Security scan runs and passes
+4.  PR auto-merges when all checks pass
+5.  Branch auto-deletes after merge
+6.  Vercel auto-deploys to production
+7.  Golden Verify runs post-deployment checks
+8.  Telegram notification sent (failures only)
 
 ### 4. Verify Branch Protection
 
@@ -236,7 +236,7 @@ git commit -m "test: direct push"
 git push origin main
 ```
 
-**Expected result**: ❌ Push rejected with message about branch protection.
+**Expected result**:  Push rejected with message about branch protection.
 
 ## Troubleshooting
 
@@ -302,10 +302,10 @@ git push origin main
 
 **Proper setup enables**:
 
-- ✅ Frictionless PRs (code → review → merge → deploy)
-- ✅ Automated quality gates (CodeRabbit + CI)
-- ✅ Protection from accidents (branch protection)
-- ✅ Zero deployment failures (Golden Verify)
+-  Frictionless PRs (code → review → merge → deploy)
+-  Automated quality gates (CodeRabbit + CI)
+-  Protection from accidents (branch protection)
+-  Zero deployment failures (Golden Verify)
 
 **Expected behavior**:
 

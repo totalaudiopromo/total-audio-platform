@@ -1,12 +1,12 @@
 # Liberty Music PR Radio Promo Agent - Setup Guide
 
-## 🚨 CRITICAL SAFETY NOTICE
+##  CRITICAL SAFETY NOTICE
 
 **ONLY EDIT: <https://liberty-music.monday.com/boards/2443582331>**
 
 This is a shared workspace used by the entire Liberty team. The agent is configured to ONLY work with this specific board ID for safety.
 
-## 🔧 API Setup Required
+##  API Setup Required
 
 ### 1. Monday.com API Key
 
@@ -15,7 +15,7 @@ This is a shared workspace used by the entire Liberty team. The agent is configu
 3. Get your API key
 4. **CRITICAL**: Verify the board ID is `2443582331`
 
-### 2. Google Chat Integration (READ-ONLY MODE) ✅ CONFIGURED
+### 2. Google Chat Integration (READ-ONLY MODE)  CONFIGURED
 
 - **Mode**: Read-only intelligence gathering
 - **No notifications sent** to anyone
@@ -39,7 +39,7 @@ This is a shared workspace used by the entire Liberty team. The agent is configu
 3. Get your API key
 4. Note: You'll need access to your Typeform account
 
-### 5. Mailchimp API Key ✅ CONFIGURED
+### 5. Mailchimp API Key  CONFIGURED
 
 - **API Key**: `b0f629921e6d1f85c4549c63dee5b9b2-us13`
 - **Server Prefix**: `us13`
@@ -52,7 +52,7 @@ This is a shared workspace used by the entire Liberty team. The agent is configu
 2. Get API key and base URL
 3. Configure play tracking
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### 1. Install Dependencies
 
@@ -86,7 +86,7 @@ chat.testConnection().then(console.log);
 "
 ```
 
-## 📋 Usage Examples
+##  Usage Examples
 
 ### Process Otter.ai Transcript
 
@@ -106,7 +106,7 @@ node radio-promo-agent.js process-transcript typeform:FORM_ID:RESPONSE_ID
 node radio-promo-agent.js personal-workflow otter:TRANSCRIPT_ID
 ```
 
-## 🔍 Safety Features
+##  Safety Features
 
 ### Board Protection
 
@@ -126,7 +126,7 @@ node radio-promo-agent.js personal-workflow otter:TRANSCRIPT_ID
 - 2 seconds between Otter.ai calls
 - 1 second between Google Chat calls
 
-## 📊 What Gets Created
+##  What Gets Created
 
 ### Monday.com Board Items
 
@@ -148,7 +148,7 @@ node radio-promo-agent.js personal-workflow otter:TRANSCRIPT_ID
 - Press releases: `./press-releases/*.txt`
 - Workflow logs: `./campaigns/workflow_*.json`
 
-## 🚨 Error Handling
+##  Error Handling
 
 ### Monday.com Errors
 
@@ -168,7 +168,7 @@ node radio-promo-agent.js personal-workflow otter:TRANSCRIPT_ID
 - Permission verification
 - Operation confirmation
 
-## 🔧 Troubleshooting
+##  Troubleshooting
 
 ### Common Issues
 
@@ -199,7 +199,7 @@ node radio-promo-agent.js personal-workflow otter:TRANSCRIPT_ID
 LOG_LEVEL=debug node radio-promo-agent.js [command]
 ```
 
-## 📞 Support
+##  Support
 
 If you encounter issues:
 
@@ -208,7 +208,7 @@ If you encounter issues:
 3. Test individual integrations
 4. Contact Chris for Liberty-specific issues
 
-## 🎯 Next Steps
+##  Next Steps
 
 1. **Set up API keys** (priority order):
    - Monday.com (critical)

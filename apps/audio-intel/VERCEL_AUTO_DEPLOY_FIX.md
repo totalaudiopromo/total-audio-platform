@@ -46,6 +46,6 @@ npx vercel --prod --yes
 
 ## Expected Behavior After Fix
 
-- ✅ Every push to `main` → Automatic Vercel deployment
-- ✅ Every PR → Automatic preview deployment
-- ✅ GitHub shows deployment status in commits/PRs
+-  Every push to `main` → Automatic Vercel deployment
+-  Every PR → Automatic preview deployment
+-  GitHub shows deployment status in commits/PRs

@@ -1,13 +1,13 @@
-# 🚀 Audio Intel - Vercel Deployment Guide
+#  Audio Intel - Vercel Deployment Guide
 
 **Last Updated**: November 11, 2025
 **Status**: Fixed and ready for deployment
 
-## 📋 Quick Summary
+##  Quick Summary
 
 Audio Intel is part of a **pnpm monorepo** at `total-audio-platform`. Vercel needs special configuration to handle monorepo deployments correctly.
 
-## ✅ Configuration Applied (November 11, 2025)
+##  Configuration Applied (November 11, 2025)
 
 ### Files Updated
 
@@ -15,7 +15,7 @@ Audio Intel is part of a **pnpm monorepo** at `total-audio-platform`. Vercel nee
 2. **`.vercelignore`** - Added to exclude unnecessary files
 3. **Configuration documented** - This guide created
 
-## 🔧 Vercel Dashboard Setup (REQUIRED)
+##  Vercel Dashboard Setup (REQUIRED)
 
 ### Step 1: Access Project Settings
 
@@ -30,7 +30,7 @@ Set these values:
 | Setting                        | Value                            | Why                                |
 | ------------------------------ | -------------------------------- | ---------------------------------- |
 | **Root Directory**             | `apps/audio-intel`               | Deploy only this app from monorepo |
-| **Include files outside root** | ✅ **ENABLED**                   | Critical for pnpm workspace access |
+| **Include files outside root** |  **ENABLED**                   | Critical for pnpm workspace access |
 | **Framework Preset**           | Next.js                          | Auto-detected                      |
 | **Build Command**              | `pnpm build`                     | From vercel.json                   |
 | **Install Command**            | `pnpm install --frozen-lockfile` | From vercel.json                   |
@@ -73,25 +73,25 @@ Ensure these are set in **Environment Variables** section:
 4. Click **Redeploy**
 5. Monitor the build logs
 
-## 🧪 Verification Checklist
+##  Verification Checklist
 
 After deployment completes:
 
 ### 1. Check Build Logs
 
 ```
-✓ Installing dependencies
+ Installing dependencies
   Running "pnpm install --frozen-lockfile"
   Lockfile is up to date, resolution step is skipped
   Progress: resolved 1234, reused 1234, downloaded 0, added 0
 
-✓ Building
+ Building
   Running "pnpm build"
   Checking brand colours...
   Creating optimized production build
   Compiled successfully in X seconds
 
-✓ Build completed
+ Build completed
 ```
 
 **Expected build time**: 55-90 seconds (NOT 13-14 minutes)
@@ -120,7 +120,7 @@ curl -I https://intel.totalaudiopromo.com/api/health
 - Login should work
 - Demo should load and function
 
-## 🚨 Troubleshooting
+##  Troubleshooting
 
 ### Build Fails with "Module not found: @total-audio/ui"
 
@@ -151,7 +151,7 @@ curl -I https://intel.totalaudiopromo.com/api/health
 **Status**: Should be auto-detected from `pnpm-lock.yaml` at monorepo root
 **Fix**: Verify "Include files outside root" is enabled
 
-## 📊 Expected Build Output
+##  Expected Build Output
 
 ```
 Vercel Build Process:
@@ -165,7 +165,7 @@ Vercel Build Process:
 Total: ~55-90 seconds
 ```
 
-## 🔄 Redeployment Process
+##  Redeployment Process
 
 For code changes:
 
@@ -189,17 +189,17 @@ For manual redeploy (no code changes):
 2. Click "..." on any deployment
 3. Click "Redeploy"
 
-## 🎯 Success Indicators
+##  Success Indicators
 
-✅ Build completes in 55-90 seconds
-✅ No "Module not found" errors
-✅ Site loads at https://intel.totalaudiopromo.com
-✅ Authentication works
-✅ Demo functionality works
-✅ API routes respond
-✅ Mobile experience is smooth
+ Build completes in 55-90 seconds
+ No "Module not found" errors
+ Site loads at https://intel.totalaudiopromo.com
+ Authentication works
+ Demo functionality works
+ API routes respond
+ Mobile experience is smooth
 
-## 📝 Additional Notes
+##  Additional Notes
 
 ### Why These Settings?
 
@@ -212,18 +212,18 @@ For manual redeploy (no code changes):
 
 ```
 total-audio-platform/          ← Repository root
-├── pnpm-workspace.yaml        ← Defines monorepo packages
-├── pnpm-lock.yaml             ← Lock file
-├── packages/
-│   ├── ui/                    ← Shared UI components
-│   └── ...
-└── apps/
-    ├── audio-intel/           ← Root Directory in Vercel
-    │   ├── vercel.json        ← Deployment config
-    │   ├── .vercelignore      ← Files to exclude
-    │   ├── package.json
-    │   └── app/               ← Next.js app
-    └── ...
+ pnpm-workspace.yaml        ← Defines monorepo packages
+ pnpm-lock.yaml             ← Lock file
+ packages/
+    ui/                    ← Shared UI components
+    ...
+ apps/
+     audio-intel/           ← Root Directory in Vercel
+        vercel.json        ← Deployment config
+        .vercelignore      ← Files to exclude
+        package.json
+        app/               ← Next.js app
+     ...
 ```
 
 ### Alternative: CLI Deployment

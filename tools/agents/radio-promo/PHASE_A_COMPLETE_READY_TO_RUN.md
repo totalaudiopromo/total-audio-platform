@@ -1,8 +1,8 @@
-# Phase A: Quick Wins - READY TO RUN ✅
+# Phase A: Quick Wins - READY TO RUN 
 
-## 🎯 WHAT'S BEEN CREATED
+##  WHAT'S BEEN CREATED
 
-### 1. Station Name Extraction Script ✅
+### 1. Station Name Extraction Script 
 
 **File**: `extract-stations-from-enrichment.js`
 
@@ -23,7 +23,7 @@ node extract-stations-from-enrichment.js
 
 ---
 
-### 2. Genre Auto-Tagging Script ✅
+### 2. Genre Auto-Tagging Script 
 
 **File**: `auto-tag-genres.js`
 
@@ -44,7 +44,7 @@ node auto-tag-genres.js
 
 ---
 
-### 3. KYARA Priority List Generator ✅
+### 3. KYARA Priority List Generator 
 
 **File**: `generate-kyara-priority-list.js`
 
@@ -72,7 +72,7 @@ node generate-kyara-priority-list.js
 
 ---
 
-## 📊 CURRENT STATUS
+##  CURRENT STATUS
 
 ### Enrichment Progress
 
@@ -92,7 +92,7 @@ node generate-kyara-priority-list.js
 
 ---
 
-## 🚀 EXECUTION SEQUENCE (When Enrichment Completes)
+##  EXECUTION SEQUENCE (When Enrichment Completes)
 
 ### Step 1: Extract Station Names (2 minutes)
 
@@ -104,7 +104,7 @@ node extract-stations-from-enrichment.js
 **Expected Output**:
 
 ```
-✅ Stations extracted: ~60
+ Stations extracted: ~60
    "Unknown" → "BBC Radio 6 Music"
    "Unknown" → "Marlow FM"
    etc.
@@ -121,7 +121,7 @@ node auto-tag-genres.js
 **Expected Output**:
 
 ```
-✅ Genres added: ~409 contacts
+ Genres added: ~409 contacts
    Indie: 200+ contacts
    Alternative: 180+ contacts
    Rock: 150+ contacts
@@ -139,11 +139,11 @@ node generate-kyara-priority-list.js
 **Expected Output**:
 
 ```
-📋 PRIORITY TIERS:
-   🔥 Tier 1 (TOP PRIORITY): ~30 contacts
-   ⭐ Tier 2 (HIGH): ~50 contacts
-   🌟 Tier 3 (MEDIUM): ~80 contacts
-   ✨ Tier 4 (LOWER): ~40 contacts
+ PRIORITY TIERS:
+    Tier 1 (TOP PRIORITY): ~30 contacts
+    Tier 2 (HIGH): ~50 contacts
+    Tier 3 (MEDIUM): ~80 contacts
+    Tier 4 (LOWER): ~40 contacts
 
 Files created:
    - KYARA_PRIORITY_LIST.md
@@ -152,7 +152,7 @@ Files created:
 
 ---
 
-## 📋 WHAT YOU'LL GET FOR KYARA CAMPAIGN
+##  WHAT YOU'LL GET FOR KYARA CAMPAIGN
 
 ### Tier 1: TOP PRIORITY (Estimated ~30 contacts)
 
@@ -194,7 +194,7 @@ Files created:
 
 ---
 
-## 🎯 KYARA CAMPAIGN WEEK-BY-WEEK PLAN
+##  KYARA CAMPAIGN WEEK-BY-WEEK PLAN
 
 ### Week 1: Tier 1 Blitz
 
@@ -216,7 +216,7 @@ Files created:
 
 ---
 
-## 💡 AIRTABLE VIEWS YOU SHOULD CREATE
+##  AIRTABLE VIEWS YOU SHOULD CREATE
 
 Once the scripts run, create these views in Airtable UI:
 
@@ -286,7 +286,7 @@ Once the scripts run, create these views in Airtable UI:
 
 ---
 
-## 📊 WHAT YOU ASKED FOR VS WHAT YOU'LL GET
+##  WHAT YOU ASKED FOR VS WHAT YOU'LL GET
 
 ### You Asked For:
 
@@ -294,17 +294,17 @@ Once the scripts run, create these views in Airtable UI:
 
 ### You'll Get:
 
-✅ Prioritized list of ~200 Indie/Alternative contacts
-✅ Tier 1: Top 30 BBC, triple j, high-quality indie specialists
-✅ Tier 2: 50 established regional/community stations
-✅ Tier 3-4: 120+ broader indie-friendly contacts
-✅ Each contact with station name, quality rating, genres, pitch strategy
-✅ Markdown report for easy reading
-✅ JSON export for importing elsewhere
+ Prioritized list of ~200 Indie/Alternative contacts
+ Tier 1: Top 30 BBC, triple j, high-quality indie specialists
+ Tier 2: 50 established regional/community stations
+ Tier 3-4: 120+ broader indie-friendly contacts
+ Each contact with station name, quality rating, genres, pitch strategy
+ Markdown report for easy reading
+ JSON export for importing elsewhere
 
 ---
 
-## 🎉 BOTTOM LINE
+##  BOTTOM LINE
 
 **In ~10 minutes, you'll have**:
 

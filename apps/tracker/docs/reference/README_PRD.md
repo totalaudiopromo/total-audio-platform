@@ -2,7 +2,7 @@
 
 **Intelligent Campaign Tracking System** - Built from PRD
 
-## ✅ What's Been Built
+##  What's Been Built
 
 ### 1. Database Schema (`010_tracker_prd_schema.sql`)
 
@@ -55,7 +55,7 @@
 - **CampaignCardWithIntel**: Intel-matching design with performance metrics
 - **Dashboard**: Complete intelligent dashboard
 
-## 🚀 Deployment Steps
+##  Deployment Steps
 
 ### Step 1: Run Database Migration
 
@@ -134,7 +134,7 @@ PORT=3001 npm run dev
 
 5. **Create 3+ Campaigns** to unlock pattern recognition
 
-## 📊 Expected Behavior
+##  Expected Behavior
 
 ### Dashboard Shows:
 
@@ -160,7 +160,7 @@ PORT=3001 npm run dev
 - Optimal budget range
 - Overall success trends
 
-## 🎯 Key Features
+##  Key Features
 
 ### 1. Benchmarking
 
@@ -190,7 +190,7 @@ Every campaign compares to industry data:
 'Your optimal budget range is £300-£500 based on your most efficient campaigns';
 ```
 
-## 🔧 Troubleshooting
+##  Troubleshooting
 
 ### Migration Issues
 
@@ -221,7 +221,7 @@ SELECT tgname FROM pg_trigger WHERE tgrelid = 'campaigns'::regclass;
 **Problem**: No benchmarks
 **Solution**: Run benchmark INSERT statements from migration
 
-## 📝 Phase 1 Checklist
+##  Phase 1 Checklist
 
 - [x] Database schema with intelligence fields
 - [x] Auto-calculation triggers
@@ -236,7 +236,7 @@ SELECT tgname FROM pg_trigger WHERE tgrelid = 'campaigns'::regclass;
 - [x] Campaign cards with insights
 - [x] Mobile-responsive layout
 
-## 🎨 Design Principles
+##  Design Principles
 
 **Matches intel.totalaudiopromo.com:**
 
@@ -248,20 +248,20 @@ SELECT tgname FROM pg_trigger WHERE tgrelid = 'campaigns'::regclass;
 - Consistent spacing
 - Card-based layout
 
-## 💰 Value Proposition
+##  Value Proposition
 
 Users get:
 
-- ✅ Campaign tracking (£5 value)
-- ✅ Success benchmarking (£20 value)
-- ✅ Pattern insights (£15 value)
-- ✅ Smart recommendations (£10 value)
-- ✅ Performance scoring (£10 value)
-- ✅ Real-time intelligence (£15 value)
+-  Campaign tracking (£5 value)
+-  Success benchmarking (£20 value)
+-  Pattern insights (£15 value)
+-  Smart recommendations (£10 value)
+-  Performance scoring (£10 value)
+-  Real-time intelligence (£15 value)
 
 **Total value: £75/month for £19/month price**
 
-## 🚀 Next Steps (Phase 2)
+##  Next Steps (Phase 2)
 
 1. **Real-time Activity Feed**
 2. **Platform Integrations** (Spotify, Instagram, YouTube)
@@ -269,7 +269,7 @@ Users get:
 4. **Predictive Insights** before campaign starts
 5. **Export/Reporting**
 
-## 📧 Support
+##  Support
 
 Issues? Check:
 

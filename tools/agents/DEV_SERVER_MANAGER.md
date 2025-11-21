@@ -1,11 +1,11 @@
-# 🔧 DEVELOPMENT SERVER MANAGER
+#  DEVELOPMENT SERVER MANAGER
 
 **Problem**: Database and server startup slowing you down
 **Solution**: Simple serverless approach for your solopreneur workflow
 
 ---
 
-## 🎯 YOUR SITUATION
+##  YOUR SITUATION
 
 You're currently configured to use:
 
@@ -17,18 +17,18 @@ You're currently configured to use:
 
 ---
 
-## ✅ RECOMMENDED SOLUTION: VERCEL POSTGRES (SERVERLESS)
+##  RECOMMENDED SOLUTION: VERCEL POSTGRES (SERVERLESS)
 
 ### Why Serverless for You?
 
 **Perfect for Solopreneurs**:
 
-- ✅ No local database to manage
-- ✅ No "is the server running?" questions
-- ✅ Works anywhere (home, postman office, travelling)
-- ✅ Automatic backups
-- ✅ Free tier (10k rows, 256MB)
-- ✅ Production-ready from day 1
+-  No local database to manage
+-  No "is the server running?" questions
+-  Works anywhere (home, postman office, travelling)
+-  Automatic backups
+-  Free tier (10k rows, 256MB)
+-  Production-ready from day 1
 
 **Your Current Phase**:
 
@@ -39,7 +39,7 @@ You're currently configured to use:
 
 ---
 
-## 🚀 QUICK SETUP (5 Minutes)
+##  QUICK SETUP (5 Minutes)
 
 ### Option 1: Vercel Postgres (RECOMMENDED)
 
@@ -92,7 +92,7 @@ npx prisma generate
 
 ---
 
-## 🛠️ IF YOU WANT LOCAL DATABASE (NOT RECOMMENDED)
+##  IF YOU WANT LOCAL DATABASE (NOT RECOMMENDED)
 
 ### Install PostgreSQL Locally
 
@@ -121,29 +121,29 @@ npx prisma db push
 
 **Why This is Slower**:
 
-- ❌ Must remember to start service
-- ❌ Must manage updates
-- ❌ Only works on one machine
-- ❌ Must handle backups manually
-- ❌ "Is the server running?" every session
+-  Must remember to start service
+-  Must manage updates
+-  Only works on one machine
+-  Must handle backups manually
+-  "Is the server running?" every session
 
 ---
 
-## 📊 COMPARISON
+##  COMPARISON
 
 | Feature               | Vercel Postgres | Supabase     | Local PostgreSQL    |
 | --------------------- | --------------- | ------------ | ------------------- |
 | **Setup Time**        | 5 minutes       | 10 minutes   | 30 minutes          |
 | **Maintenance**       | Zero            | Zero         | Weekly              |
-| **Works Everywhere**  | ✅ Yes          | ✅ Yes       | ❌ One machine only |
-| **Backup**            | ✅ Automatic    | ✅ Automatic | ❌ Manual           |
-| **Cost (your scale)** | ✅ FREE         | ✅ FREE      | ✅ FREE             |
-| **Slows You Down**    | ❌ Never        | ❌ Never     | ✅ Often            |
-| **Production Ready**  | ✅ Yes          | ✅ Yes       | ❌ Need to migrate  |
+| **Works Everywhere**  |  Yes          |  Yes       |  One machine only |
+| **Backup**            |  Automatic    |  Automatic |  Manual           |
+| **Cost (your scale)** |  FREE         |  FREE      |  FREE             |
+| **Slows You Down**    |  Never        |  Never     |  Often            |
+| **Production Ready**  |  Yes          |  Yes       |  Need to migrate  |
 
 ---
 
-## 🎯 MY RECOMMENDATION FOR YOU
+##  MY RECOMMENDATION FOR YOU
 
 ### Go Serverless with Vercel Postgres
 
@@ -187,7 +187,7 @@ npm run dev
 
 ---
 
-## 🔥 QUICK WINS FOR YOUR WORKFLOW
+##  QUICK WINS FOR YOUR WORKFLOW
 
 ### 1. Database Connection Helper
 
@@ -207,10 +207,10 @@ node unified-launcher.js health
 
 Shows:
 
-- ✅ Database: Connected (Vercel Postgres)
-- ✅ Audio Intel: Ready
-- ✅ API: Ready
-- ✅ Agents: 14 operational
+-  Database: Connected (Vercel Postgres)
+-  Audio Intel: Ready
+-  API: Ready
+-  Agents: 14 operational
 
 ### 3. One-Command Startup
 
@@ -234,7 +234,7 @@ Then: `bash ~/start-audio-intel.sh`
 
 ---
 
-## 📝 UPDATE YOUR .ENV FILES
+##  UPDATE YOUR .ENV FILES
 
 ### Current Issue
 
@@ -264,7 +264,7 @@ DATABASE_URL="postgresql://[USER]:[PASSWORD]@db.[PROJECT].supabase.co:5432/postg
 
 ---
 
-## 🚨 TROUBLESHOOTING
+##  TROUBLESHOOTING
 
 ### "Please make sure your database server is running"
 
@@ -301,7 +301,7 @@ npx prisma db push
 
 ---
 
-## 🎓 BEST PRACTICE FOR SOLOPRENEURS
+##  BEST PRACTICE FOR SOLOPRENEURS
 
 ### Rule of Thumb
 
@@ -318,7 +318,7 @@ npx prisma db push
 
 ---
 
-## ✅ ACTION PLAN (15 MINUTES)
+##  ACTION PLAN (15 MINUTES)
 
 ### Right Now
 
@@ -352,21 +352,21 @@ node unified-launcher.js health
 
 **Never Again**:
 
-- ❌ "Is the database running?"
-- ❌ "Why is my connection slow?"
-- ❌ "How do I start PostgreSQL?"
-- ❌ "Did I remember to back up?"
+-  "Is the database running?"
+-  "Why is my connection slow?"
+-  "How do I start PostgreSQL?"
+-  "Did I remember to back up?"
 
 **Always**:
 
-- ✅ Works everywhere
-- ✅ Automatic backups
-- ✅ Fast and reliable
-- ✅ Focus on customers
+-  Works everywhere
+-  Automatic backups
+-  Fast and reliable
+-  Focus on customers
 
 ---
 
-## 🎯 BOTTOM LINE
+##  BOTTOM LINE
 
 **Your Time is Precious**:
 

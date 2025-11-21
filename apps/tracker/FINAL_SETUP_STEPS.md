@@ -1,13 +1,13 @@
-# 🎯 Final Setup Steps - 3 Minutes to Complete
+#  Final Setup Steps - 3 Minutes to Complete
 
-## ✅ Already Done
+##  Already Done
 
-1. ✅ **Database Migration SQL** - Copied to clipboard
-2. ✅ **Cron Secret** - Generated and added to .env.local
-3. ✅ **Google OAuth Credentials** - Found and added to .env.local
-4. ✅ **Dependencies** - Installed (googleapis, nanoid)
+1.  **Database Migration SQL** - Copied to clipboard
+2.  **Cron Secret** - Generated and added to .env.local
+3.  **Google OAuth Credentials** - Found and added to .env.local
+4.  **Dependencies** - Installed (googleapis, nanoid)
 
-## 🚀 3 Steps Remaining
+##  3 Steps Remaining
 
 ### Step 1: Apply Database Migration (1 minute)
 
@@ -55,9 +55,9 @@ Click **"Connect Google Sheets"**:
 1. Google OAuth screen appears
 2. Select your account
 3. Click "Allow"
-4. Redirects back to Tracker with success ✅
+4. Redirects back to Tracker with success 
 
-## 🎉 That's It!
+##  That's It!
 
 Your integrations system is now live. You can:
 
@@ -74,7 +74,7 @@ Your integrations system is now live. You can:
 - Campaign status updates
 - Never miss a follow-up
 
-## 📊 Verify It Worked
+##  Verify It Worked
 
 After connecting Google Sheets, check your Supabase database:
 
@@ -85,7 +85,7 @@ After connecting Google Sheets, check your Supabase database:
    - `status`: "active"
    - `credentials`: (encrypted OAuth tokens)
 
-## 🚨 Troubleshooting
+##  Troubleshooting
 
 ### Error: "redirect_uri_mismatch"
 
@@ -104,7 +104,7 @@ After connecting Google Sheets, check your Supabase database:
 - Check you enabled Gmail API in Cloud Console
 - Go to: https://console.cloud.google.com/apis/library
 
-## 🎯 Next Steps (After Basic Setup Works)
+##  Next Steps (After Basic Setup Works)
 
 1. **Create a test campaign** in Tracker
 2. **Configure Google Sheet** (set which spreadsheet to sync to)

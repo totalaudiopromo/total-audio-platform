@@ -1,8 +1,8 @@
 # Pitch Generator V1 - Testing Checklist
 
-## 🧪 Local Testing (Before Deployment)
+##  Local Testing (Before Deployment)
 
-### 1. Authentication Flow ✓
+### 1. Authentication Flow 
 
 - [ ] Visit http://localhost:3001
 - [ ] Click "Sign In"
@@ -10,14 +10,14 @@
 - [ ] Verify redirect to dashboard
 - [ ] Check session persists on page refresh
 
-### 2. Dashboard ✓
+### 2. Dashboard 
 
 - [ ] View dashboard at http://localhost:3001/dashboard
 - [ ] Stats cards show correct data
 - [ ] Recent pitches table loads
 - [ ] All navigation links work
 
-### 3. Contact Management ✓
+### 3. Contact Management 
 
 - [ ] Navigate to "Contacts" (http://localhost:3001/pitch/contacts)
 - [ ] Click "Add Contact"
@@ -35,7 +35,7 @@
 - [ ] Delete the test contact
 - [ ] Verify contact removed from list
 
-### 4. Pitch Generation (CRITICAL) ✓
+### 4. Pitch Generation (CRITICAL) 
 
 - [ ] Navigate to "Generate Pitch" (http://localhost:3001/pitch/generate)
 - [ ] Fill in pitch form:
@@ -53,7 +53,7 @@
 - [ ] Check AI respects UK garage genre (should NOT mention Aphex Twin)
 - [ ] Click "Review & Edit"
 
-### 5. Pitch Review & Edit ✓
+### 5. Pitch Review & Edit 
 
 - [ ] Verify pitch loads on review page
 - [ ] Click "Edit Pitch Body"
@@ -65,7 +65,7 @@
 - [ ] Verify copied notification appears
 - [ ] Paste in text editor to verify full pitch copied
 
-### 6. Pitch History ✓
+### 6. Pitch History 
 
 - [ ] Navigate to "History" (http://localhost:3001/pitch/history)
 - [ ] Verify all generated pitches appear
@@ -73,7 +73,7 @@
 - [ ] Verify pitch details load correctly
 - [ ] Test search/filter (if implemented)
 
-### 7. Pricing Page ✓
+### 7. Pricing Page 
 
 - [ ] Navigate to "Pricing" (http://localhost:3001/pricing)
 - [ ] Verify 3 tiers show: FREE (£0), PRO (£14), AGENCY (£49)
@@ -87,14 +87,14 @@
 - [ ] Complete test payment
 - [ ] Verify redirect to success page
 
-### 8. Settings/Profile (if implemented) ✓
+### 8. Settings/Profile (if implemented) 
 
 - [ ] Navigate to settings
 - [ ] Update profile information
 - [ ] Save changes
 - [ ] Verify changes persist
 
-## 🎯 Critical User Flows
+##  Critical User Flows
 
 ### Flow 1: First-Time User Journey
 
@@ -122,7 +122,7 @@
 5. Verify unlimited access
    **Expected Result**: Seamless upgrade without losing data
 
-## 🐛 Bug Testing
+##  Bug Testing
 
 ### Genre Matching Test
 
@@ -148,7 +148,7 @@ Generate pitches with these Key Hooks and verify AI respects genre:
 - [ ] Try generating 10 pitches in a row
 - [ ] Test with slow internet connection
 
-## 📊 Performance Checks
+##  Performance Checks
 
 - [ ] Dashboard loads in < 2 seconds
 - [ ] Pitch generation completes in < 7 seconds
@@ -156,14 +156,14 @@ Generate pitches with these Key Hooks and verify AI respects genre:
 - [ ] No 500 errors in server logs
 - [ ] Mobile responsive (test on phone or use browser dev tools)
 
-## 🔐 Security Checks
+##  Security Checks
 
 - [ ] Cannot access other users' pitches (try manipulating URL IDs)
 - [ ] Cannot access dashboard without authentication
 - [ ] API routes return 401 when not authenticated
 - [ ] Stripe checkout uses correct test keys (not live keys!)
 
-## ✅ Pre-Deployment Final Checks
+##  Pre-Deployment Final Checks
 
 Before deploying to production:
 
@@ -178,7 +178,7 @@ Before deploying to production:
 9. [ ] Webhook endpoints configured
 10. [ ] Domain/SSL configured
 
-## 🚀 Post-Deployment Smoke Test
+##  Post-Deployment Smoke Test
 
 After deploying to Vercel:
 

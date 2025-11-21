@@ -93,12 +93,12 @@ If your app doesn't have a `docs/` directory, the script creates:
 
 ```
 your-app/
-└── docs/
-    ├── README.md        # Generated index
-    ├── setup/           # Configuration & deployment
-    ├── guides/          # Tutorials & how-tos
-    ├── reference/       # Technical specs
-    └── status/          # Historical reports (archive)
+ docs/
+     README.md        # Generated index
+     setup/           # Configuration & deployment
+     guides/          # Tutorials & how-tos
+     reference/       # Technical specs
+     status/          # Historical reports (archive)
 ```
 
 ### 4. Documentation Index
@@ -158,48 +158,48 @@ Add to your GitHub Actions workflow:
 
 ```
 tracker/
-├── AUTH_IMPLEMENTATION_COMPLETE.md
-├── AUTH_SETUP_GUIDE.md
-├── BUILD_COMPLETE.md
-├── DEPLOYMENT_GUIDE.md
-├── MIGRATION_INSTRUCTIONS.md
-├── PSEO_BATCH_1_COMPLETE.md
-├── PSEO_STRATEGY_TRACKER.md
-├── QUICK_DEPLOY.md
-├── README.md
-├── README_PRD.md
-├── RUN_MIGRATION.md
-├── TAILWIND_V4_README.md
-├── TRACKER_MVP_COMPLETE.md
-├── app/
-└── components/
+ AUTH_IMPLEMENTATION_COMPLETE.md
+ AUTH_SETUP_GUIDE.md
+ BUILD_COMPLETE.md
+ DEPLOYMENT_GUIDE.md
+ MIGRATION_INSTRUCTIONS.md
+ PSEO_BATCH_1_COMPLETE.md
+ PSEO_STRATEGY_TRACKER.md
+ QUICK_DEPLOY.md
+ README.md
+ README_PRD.md
+ RUN_MIGRATION.md
+ TAILWIND_V4_README.md
+ TRACKER_MVP_COMPLETE.md
+ app/
+ components/
 ```
 
 ### After
 
 ```
 tracker/
-├── README.md
-├── QUICKSTART.md
-├── app/
-├── components/
-└── docs/
-    ├── README.md                           # Generated index
-    ├── setup/
-    │   ├── DEPLOYMENT_GUIDE.md
-    │   ├── MIGRATION_INSTRUCTIONS.md
-    │   ├── QUICK_DEPLOY.md
-    │   └── RUN_MIGRATION.md
-    ├── reference/
-    │   ├── PSEO_STRATEGY_TRACKER.md
-    │   ├── README_PRD.md
-    │   └── TAILWIND_V4_README.md
-    └── status/
-        ├── AUTH_IMPLEMENTATION_COMPLETE.md
-        ├── AUTH_SETUP_GUIDE.md
-        ├── BUILD_COMPLETE.md
-        ├── PSEO_BATCH_1_COMPLETE.md
-        └── TRACKER_MVP_COMPLETE.md
+ README.md
+ QUICKSTART.md
+ app/
+ components/
+ docs/
+     README.md                           # Generated index
+     setup/
+        DEPLOYMENT_GUIDE.md
+        MIGRATION_INSTRUCTIONS.md
+        QUICK_DEPLOY.md
+        RUN_MIGRATION.md
+     reference/
+        PSEO_STRATEGY_TRACKER.md
+        README_PRD.md
+        TAILWIND_V4_README.md
+     status/
+         AUTH_IMPLEMENTATION_COMPLETE.md
+         AUTH_SETUP_GUIDE.md
+         BUILD_COMPLETE.md
+         PSEO_BATCH_1_COMPLETE.md
+         TRACKER_MVP_COMPLETE.md
 ```
 
 ---
@@ -219,7 +219,7 @@ If a file doesn't get categorized:
 If target already exists, the script skips it with a message:
 
 ```
-⏭️  Skipped: AUTH_SETUP.md (already exists in docs/setup/)
+⏭  Skipped: AUTH_SETUP.md (already exists in docs/setup/)
 ```
 
 ### Wrong Category
@@ -236,21 +236,21 @@ If a file goes to the wrong category:
 
 ### For Solo Developers
 
-- ✅ Quick cleanup of cluttered directories
-- ✅ Easy to find documentation later
-- ✅ Professional project structure
+-  Quick cleanup of cluttered directories
+-  Easy to find documentation later
+-  Professional project structure
 
 ### For Teams
 
-- ✅ Consistent organization across all apps
-- ✅ New developers can navigate easily
-- ✅ Standards enforced automatically
+-  Consistent organization across all apps
+-  New developers can navigate easily
+-  Standards enforced automatically
 
 ### For Open Source
 
-- ✅ Contributors know where to add docs
-- ✅ Clear structure for documentation
-- ✅ Professional appearance
+-  Contributors know where to add docs
+-  Clear structure for documentation
+-  Professional appearance
 
 ---
 
@@ -273,9 +273,9 @@ git commit -m "docs: organize documentation"
 
 Good names help with auto-categorization:
 
-- ✅ `STRIPE_SETUP_GUIDE.md` → moves to `setup/`
-- ✅ `USER_AUTH_COMPLETE.md` → moves to `status/`
-- ❌ `NOTES.md` → goes to `reference/` (too vague)
+-  `STRIPE_SETUP_GUIDE.md` → moves to `setup/`
+-  `USER_AUTH_COMPLETE.md` → moves to `status/`
+-  `NOTES.md` → goes to `reference/` (too vague)
 
 ### 3. Archive Historical Docs
 
@@ -317,11 +317,11 @@ const CATEGORIES = {
 
 ## Summary
 
-- 🤖 **Automated:** One command organizes everything
-- 🛡️ **Safe:** Dry-run mode previews changes
-- 📊 **Smart:** Categorizes based on filenames
-- 🎯 **Consistent:** Same structure across all apps
-- ⚡ **Fast:** Organizes entire monorepo in seconds
+-  **Automated:** One command organizes everything
+-  **Safe:** Dry-run mode previews changes
+-  **Smart:** Categorizes based on filenames
+-  **Consistent:** Same structure across all apps
+-  **Fast:** Organizes entire monorepo in seconds
 
 Keep your docs organized. Your future self will thank you.
 

@@ -158,7 +158,7 @@ Verify installation completeness and provide clear next steps for the user to st
 
 <summary_template>
 
-## ✅ Agent OS Successfully Installed
+##  Agent OS Successfully Installed
 
 I've analyzed your [PRODUCT_TYPE] codebase and set up Agent OS with documentation that reflects your actual implementation.
 
@@ -171,9 +171,9 @@ I've analyzed your [PRODUCT_TYPE] codebase and set up Agent OS with documentatio
 
 ### What Was Created
 
-- ✓ Product documentation in `.agent-os/product/`
-- ✓ Roadmap with completed work in Phase 0
-- ✓ Tech stack reflecting actual dependencies
+-  Product documentation in `.agent-os/product/`
+-  Roadmap with completed work in Phase 0
+-  Tech stack reflecting actual dependencies
 
 ### Next Steps
 
@@ -185,7 +185,7 @@ I've analyzed your [PRODUCT_TYPE] codebase and set up Agent OS with documentatio
    @.agent-os/instructions/core/create-spec.md
    ```
 
-Your codebase is now Agent OS-enabled! 🚀
+Your codebase is now Agent OS-enabled! 
 </summary_template>
 
 </step>

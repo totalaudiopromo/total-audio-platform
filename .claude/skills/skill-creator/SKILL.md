@@ -167,19 +167,19 @@ Concrete results
 - Write in third person (injected into system prompt)
 
 ```yaml
-# ❌ BAD: Too abstract, vague, doesn't include when to use
+#  BAD: Too abstract, vague, doesn't include when to use
 description: For async testing
 
-# ❌ BAD: First person
+#  BAD: First person
 description: I can help you with async tests when they're flaky
 
-# ❌ BAD: Mentions technology but skill isn't specific to it
+#  BAD: Mentions technology but skill isn't specific to it
 description: Use when tests use setTimeout/sleep and are flaky
 
-# ✅ GOOD: Starts with "Use when", describes problem, then what it does
+# GOOD: Starts with "Use when", describes problem, then what it does
 description: Use when tests have race conditions, timing dependencies, or pass/fail inconsistently - replaces arbitrary timeouts with condition polling for reliable async tests
 
-# ✅ GOOD: Technology-specific skill with explicit trigger
+# GOOD: Technology-specific skill with explicit trigger
 description: Use when using React Router and handling authentication redirects - provides patterns for protected routes and auth state management
 ```
 
@@ -196,8 +196,8 @@ Use words Claude would search for:
 
 **Use active voice, verb-first:**
 
-- ✅ `creating-skills` not `skill-creation`
-- ✅ `testing-skills-with-subagents` not `subagent-skill-testing`
+- `creating-skills` not `skill-creation`
+- `testing-skills-with-subagents` not `subagent-skill-testing`
 
 ### 4. Token Efficiency (Critical)
 
@@ -214,22 +214,22 @@ Use words Claude would search for:
 **Move details to tool help:**
 
 ```bash
-# ❌ BAD: Document all flags in SKILL.md
+#  BAD: Document all flags in SKILL.md
 search-conversations supports --text, --both, --after DATE, --before DATE, --limit N
 
-# ✅ GOOD: Reference --help
+# GOOD: Reference --help
 search-conversations supports multiple modes and filters. Run --help for details.
 ```
 
 **Use cross-references:**
 
 ```markdown
-# ❌ BAD: Repeat workflow details
+#  BAD: Repeat workflow details
 
 When searching, dispatch subagent with template...
 [20 lines of repeated instructions]
 
-# ✅ GOOD: Reference other skill
+# GOOD: Reference other skill
 
 Always use subagents (50-100x context savings). REQUIRED: Use [other-skill-name] for workflow.
 ```
@@ -237,13 +237,13 @@ Always use subagents (50-100x context savings). REQUIRED: Use [other-skill-name]
 **Compress examples:**
 
 ```markdown
-# ❌ BAD: Verbose example (42 words)
+#  BAD: Verbose example (42 words)
 
 your human partner: "How did we handle authentication errors in React Router before?"
 You: I'll search past conversations for React Router authentication patterns.
 [Dispatch subagent with search query: "React Router authentication error handling 401"]
 
-# ✅ GOOD: Minimal example (20 words)
+# GOOD: Minimal example (20 words)
 
 Partner: "How did we handle auth errors in React Router?"
 You: Searching...
@@ -266,10 +266,10 @@ wc -w skills/path/SKILL.md
 
 **Name by what you DO or core insight:**
 
-- ✅ `condition-based-waiting` > `async-test-helpers`
-- ✅ `using-skills` not `skill-usage`
-- ✅ `flatten-with-flags` > `data-structure-refactoring`
-- ✅ `root-cause-tracing` > `debugging-techniques`
+- `condition-based-waiting` > `async-test-helpers`
+- `using-skills` not `skill-usage`
+- `flatten-with-flags` > `data-structure-refactoring`
+- `root-cause-tracing` > `debugging-techniques`
 
 **Gerunds (-ing) work well for processes:**
 
@@ -282,10 +282,10 @@ wc -w skills/path/SKILL.md
 
 Use skill name only, with explicit requirement markers:
 
-- ✅ Good: `**REQUIRED SUB-SKILL:** Use superpowers:test-driven-development`
-- ✅ Good: `**REQUIRED BACKGROUND:** You MUST understand superpowers:systematic-debugging`
-- ❌ Bad: `See skills/testing/test-driven-development` (unclear if required)
-- ❌ Bad: `@skills/testing/test-driven-development/SKILL.md` (force-loads, burns context)
+- Good: `**REQUIRED SUB-SKILL:** Use superpowers:test-driven-development`
+- Good: `**REQUIRED BACKGROUND:** You MUST understand superpowers:systematic-debugging`
+-  Bad: `See skills/testing/test-driven-development` (unclear if required)
+-  Bad: `@skills/testing/test-driven-development/SKILL.md` (force-loads, burns context)
 
 **Why no @ links:** `@` syntax force-loads files immediately, consuming 200k+ context before you need them.
 
@@ -577,17 +577,17 @@ Agent found new rationalization? Add explicit counter. Re-test until bulletproof
 
 ## Anti-Patterns
 
-### ❌ Narrative Example
+###  Narrative Example
 
 "In session 2025-10-03, we found empty projectDir caused..."
 **Why bad:** Too specific, not reusable
 
-### ❌ Multi-Language Dilution
+###  Multi-Language Dilution
 
 example-js.js, example-py.py, example-go.go
 **Why bad:** Mediocre quality, maintenance burden
 
-### ❌ Code in Flowcharts
+###  Code in Flowcharts
 
 ```dot
 step1 [label="import fs"];
@@ -596,7 +596,7 @@ step2 [label="read file"];
 
 **Why bad:** Can't copy-paste, hard to read
 
-### ❌ Generic Labels
+###  Generic Labels
 
 helper1, helper2, step3, pattern4
 **Why bad:** Labels should have semantic meaning

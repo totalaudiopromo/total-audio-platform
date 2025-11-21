@@ -14,23 +14,23 @@ The Fusion Layer is the single source of truth for aggregating data from across 
 ## Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                    FUSION LAYER                             │
-│  buildFusionContext() → Aggregates all system data          │
-└─────────────────────────────────────────────────────────────┘
-         │                                    │
-         ▼                                    ▼
-┌──────────────────────┐          ┌──────────────────────┐
-│  Data Loaders        │          │  Type Definitions    │
-│  - Intel             │          │  - FusionContext     │
-│  - Pitch             │          │  - IntelContext      │
-│  - Tracker           │          │  - TrackerContext    │
-│  - Assets            │          │  - ...               │
-│  - Email             │          └──────────────────────┘
-│  - Intelligence      │
-│  - Discovery         │
-│  - Analytics         │
-└──────────────────────┘
+
+                    FUSION LAYER                             
+  buildFusionContext() → Aggregates all system data          
+
+                                             
+                                             
+          
+  Data Loaders                    Type Definitions    
+  - Intel                         - FusionContext     
+  - Pitch                         - IntelContext      
+  - Tracker                       - TrackerContext    
+  - Assets                        - ...               
+  - Email                       
+  - Intelligence      
+  - Discovery         
+  - Analytics         
+
 ```
 
 ## Usage

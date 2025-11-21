@@ -1,28 +1,28 @@
-# 🎯 PITCH GENERATOR - COMPLETE CONTEXT
+# PITCH GENERATOR - COMPLETE CONTEXT
 
 _Everything you need to know about the Pitch Generator tool_
 
-## 📊 KEY NUMBERS
+## KEY NUMBERS
 
 - **Status**: Supporting tool (complements Audio Intel customer acquisition)
 - **Live Site**: <https://pitch.totalaudiopromo.com>
 - **Port**: 3004 (development)
 - **Purpose**: AI-powered personalised pitch generation at scale
 
-## 🎯 CURRENT ROLE
+## CURRENT ROLE
 
 **Supporting Audio Intel** - Helps convert enriched contacts into personalised outreach, not primary revenue driver
 
-## 🚀 WHAT'S PROVEN & WORKING
+## WHAT'S PROVEN & WORKING
 
-- ✅ **AI Pitch Generation**: Anthropic Claude integration for personalised pitches
-- ✅ **Template System**: Pre-built templates for different contact types
-- ✅ **Voice Consistency**: Maintains authentic tone across pitches
-- ✅ **Batch Processing**: Generate pitches for entire campaigns at once
-- ✅ **Mobile Responsive**: Professional UX across all devices
-- ✅ **Supabase Integration**: Real-time data sync and storage
+- **AI Pitch Generation**: Anthropic Claude integration for personalised pitches
+- **Template System**: Pre-built templates for different contact types
+- **Voice Consistency**: Maintains authentic tone across pitches
+- **Batch Processing**: Generate pitches for entire campaigns at once
+- **Mobile Responsive**: Professional UX across all devices
+- **Supabase Integration**: Real-time data sync and storage
 
-## 🎵 PRIMARY USE CASES
+## PRIMARY USE CASES
 
 ### 1. Radio Promoter Pitch Automation
 
@@ -45,7 +45,7 @@ _Everything you need to know about the Pitch Generator tool_
 - **Integration**: Import contacts from Audio Intel, generate pitches
 - **Value**: "Sound professional, save time"
 
-## 🛠️ TECHNICAL STATUS
+## TECHNICAL STATUS
 
 - **Framework**: Next.js 15, TypeScript, Tailwind CSS
 - **AI**: Anthropic Claude 3.5 Sonnet for pitch generation
@@ -67,7 +67,7 @@ npm run db:migrate             # Run migrations
 npm run db:seed                # Seed demo data
 ```
 
-## 📈 KEY FEATURES
+## KEY FEATURES
 
 ### AI Pitch Generation
 
@@ -96,14 +96,14 @@ npm run db:seed                # Seed demo data
 - Realistic radio promotion pitch examples
 - Ready to show personalisation at scale
 
-## 🔧 DEVELOPMENT PRIORITIES (Customer-Driven Only)
+## DEVELOPMENT PRIORITIES (Customer-Driven Only)
 
 - **Liberty Demo Readiness**: Ensure pitch examples are polished for November 19th
 - **Audio Intel Integration**: Seamless contact import workflow
 - **Voice Guard**: Prevent generic AI tone, maintain authenticity
 - **Response Tracking**: Link pitches to Tracker for follow-up management
 
-## 💡 INTEGRATION WITH AUDIO INTEL
+## INTEGRATION WITH AUDIO INTEL
 
 **Workflow**:
 
@@ -115,13 +115,13 @@ npm run db:seed                # Seed demo data
 
 **Value Proposition**: "Enrich once, pitch perfectly, track forever"
 
-## 🚨 CURRENT FOCUS
+## CURRENT FOCUS
 
 - **Liberty Demo**: Ensure Pitch Generator shows well in November 19th demo
 - **Supporting Revenue**: Increase Audio Intel conversion by showing full workflow
 - **Differentiation**: Authentic British tone vs generic AI pitch tools
 
-## 📞 LIBERTY DEMO (November 19, 2025)
+## LIBERTY DEMO (November 19, 2025)
 
 **Demo Focus**:
 
@@ -134,7 +134,7 @@ npm run db:seed                # Seed demo data
 
 **Documentation**: `LIBERTY_DEMO_READINESS_AUDIT.md`, `apps/pitch-generator/docs/DEMO_GUIDE.md`
 
-## 🎯 COMPETITIVE ADVANTAGE
+## COMPETITIVE ADVANTAGE
 
 ### Against Generic AI Tools
 

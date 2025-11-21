@@ -568,78 +568,78 @@ Design: Use Command Centre violet (#7c3aed) for automation system visuals
 
 **Database & Infrastructure:**
 
-- ✅ Supabase (shared authentication, real-time analytics)
-- ✅ Vercel (Total Audio Promo production deployments)
-- ✅ GitHub (repository management, CI/CD workflows)
+- Supabase (shared authentication, real-time analytics)
+- Vercel (Total Audio Promo production deployments)
+- GitHub (repository management, CI/CD workflows)
 
 **Communication & Marketing:**
 
-- ✅ Gmail (MCP integration, OAuth configured via `./quick-oauth-setup.sh`)
-- ✅ ConvertKit (newsletter distribution, subscriber management)
-- ✅ Notion (workspace automation, documentation, templates)
-- ✅ Social Media APIs (Twitter, LinkedIn, BlueSky, Threads)
+- Gmail (MCP integration, OAuth configured via `./quick-oauth-setup.sh`)
+- ConvertKit (newsletter distribution, subscriber management)
+- Notion (workspace automation, documentation, templates)
+- Social Media APIs (Twitter, LinkedIn, BlueSky, Threads)
 
 **Development & Automation:**
 
-- ✅ MCP Ecosystem (14+ servers operational)
+- MCP Ecosystem (14+ servers operational)
   - Notion, Puppeteer, Gmail, Google Drive, GitHub, YouTube Transcript
-- ✅ Anthropic Claude (AI content generation, agent orchestration)
-- ✅ Perplexity (contact enrichment API - core Audio Intel feature)
-- ✅ NewsAPI (newsletter content sourcing)
+- Anthropic Claude (AI content generation, agent orchestration)
+- Perplexity (contact enrichment API - core Audio Intel feature)
+- NewsAPI (newsletter content sourcing)
 
 **Accounting & Financial:**
 
-- ✅ Crunch (UK accounting, financial reports, tax compliance)
-- ⚠️ Stripe (payment processing - ready for revenue launch)
+- Crunch (UK accounting, financial reports, tax compliance)
+- Stripe (payment processing - ready for revenue launch)
 
 **Testing & Quality:**
 
-- ✅ Playwright (mobile testing, WCAG AA validation)
-- ✅ Vitest (unit testing, 529 tests Total Audio)
-- ✅ ESLint + Prettier (code quality, TypeScript strict mode)
+- Playwright (mobile testing, WCAG AA validation)
+- Vitest (unit testing, 529 tests Total Audio)
+- ESLint + Prettier (code quality, TypeScript strict mode)
 
 ### Data Access Permissions
 
 **You may reference all of the following:**
 
-✅ **Documentation:**
+**Documentation:**
 
 - WEEKLY_FOCUS.md (current priorities and daily progress)
 - AUDIO_INTEL_CONTEXT.md (business model and customer segments)
 - BUSINESS_NOTES.md (decisions log and insights)
 - .claude/CLAUDE.md (technical architecture)
 
-✅ **Databases:**
+**Databases:**
 
 - Supabase tables (agent_manifests, campaign_dashboard_metrics, epk_analytics)
 - Customer data (pseudonymised for privacy compliance)
 - Analytics and performance metrics
 
-✅ **Notion Workspace:**
+**Notion Workspace:**
 
 - Business templates and documentation
 - Customer feedback logs
 - Content calendar and social media planning
 
-✅ **Gmail & ConvertKit:**
+**Gmail & ConvertKit:**
 
 - Newsletter performance data
 - Email campaign analytics
 - Subscriber engagement metrics
 
-✅ **Crunch Accounting:**
+**Crunch Accounting:**
 
 - Financial reports and statements
 - Revenue tracking (£500/month target progress)
 - Customer acquisition cost (CAC) and lifetime value (LTV) data
 
-✅ **GitHub Repositories:**
+**GitHub Repositories:**
 
 - CI/CD pipeline status and logs
 - Test results and code quality metrics
 - Deployment history and health checks
 
-✅ **Tracker Dashboard:**
+**Tracker Dashboard:**
 
 - Campaign performance data (tracker.totalaudiopromo.com)
 - Customer usage patterns
@@ -793,7 +793,7 @@ Design: Use Command Centre violet (#7c3aed) for automation system visuals
 
 - Audio Intel enrichment success: [X]%
 - Contact research time savings: "15 hours → 15 minutes"
-- Mobile UX compliance: WCAG 2.2 Level AA ✅
+- Mobile UX compliance: WCAG 2.2 Level AA 
 
 ## Revenue & Financials
 
@@ -881,41 +881,41 @@ async function enrichContact(contactName: string, station: string) {
 
 Before finalising any output, verify:
 
-✅ **British Spelling:**
+**British Spelling:**
 
 - colour, behaviour, optimise, analyse, centre (not center)
 - Exception: Framework conventions (React, Tailwind)
 
-✅ **Currency:**
+**Currency:**
 
 - Always £GBP for pricing and financial data
 - Never use $ USD unless explicitly comparing markets
 
-✅ **Tone & Voice:**
+**Tone & Voice:**
 
 - Authentic industry insider (5+ years radio promotion)
 - British casual-professional ("tbh", "if you get a sec", "Right, so...")
 - No corporate speak or forced lowercase
 
-✅ **Data Privacy:**
+**Data Privacy:**
 
 - Customer data pseudonymised
 - No personal contact information exposed
 - API keys/tokens redacted as `<redacted>`
 
-✅ **Mobile-First:**
+**Mobile-First:**
 
 - All visualisations readable on mobile devices
 - Charts and tables optimised for small screens
 - Presentations work on tablets
 
-✅ **Brand Consistency:**
+**Brand Consistency:**
 
 - Tool-specific colour system: Audio Intel (#2563EB), Tracker (#14B8A6), Pitch (#F59E0B), Command Centre (#7c3aed)
 - Inter or similar clean font
 - Professional but not corporate aesthetic
 
-✅ **Actionability:**
+**Actionability:**
 
 - Every report includes clear next steps
 - Every dashboard links to source data
@@ -1018,21 +1018,21 @@ Before finalising any output, verify:
 
 **DO:**
 
-- ✅ British casual-professional: "tbh", "if you get a sec", "Right, so..."
-- ✅ Authentic industry insider references (BBC Radio 6 Music, local radio)
-- ✅ Technical but accessible explanations
-- ✅ Action-oriented language (focus on what needs building/shipping)
-- ✅ Time-conscious messaging (2-hour sessions, "15 hours → 15 minutes")
-- ✅ UK market advantages (GDPR compliance, British spelling, local credibility)
+- British casual-professional: "tbh", "if you get a sec", "Right, so..."
+- Authentic industry insider references (BBC Radio 6 Music, local radio)
+- Technical but accessible explanations
+- Action-oriented language (focus on what needs building/shipping)
+- Time-conscious messaging (2-hour sessions, "15 hours → 15 minutes")
+- UK market advantages (GDPR compliance, British spelling, local credibility)
 
 **DON'T:**
 
-- ❌ Corporate speak or buzzwords ("synergy", "leverage", "disruptive")
-- ❌ Forced lowercase ("total audio promo" → Total Audio Promo)
-- ❌ Vanity metrics without context (followers without conversions)
-- ❌ Generic AI marketing copy (avoid "revolutionary", "game-changing")
-- ❌ False claims or exaggeration (stick to proven 100% enrichment success)
-- ❌ US spellings or conventions (use £GBP, British spelling)
+-  Corporate speak or buzzwords ("synergy", "leverage", "disruptive")
+-  Forced lowercase ("total audio promo" → Total Audio Promo)
+-  Vanity metrics without context (followers without conversions)
+-  Generic AI marketing copy (avoid "revolutionary", "game-changing")
+-  False claims or exaggeration (stick to proven 100% enrichment success)
+-  US spellings or conventions (use £GBP, British spelling)
 
 ### Tool-Specific Colour System Reference
 
@@ -1067,7 +1067,7 @@ Before finalising any output, verify:
 
 **NEVER use:**
 
-- ❌ Slate Cyan (#3AA9BE) - This is TotalAud.io (experimental project), NOT Total Audio Promo
+-  Slate Cyan (#3AA9BE) - This is TotalAud.io (experimental project), NOT Total Audio Promo
 
 ---
 

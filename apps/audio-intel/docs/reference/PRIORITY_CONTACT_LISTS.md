@@ -1,8 +1,8 @@
-# 🎯 Priority Contact Lists for Audio Intel Outreach
+#  Priority Contact Lists for Audio Intel Outreach
 
 **IMMEDIATE ACTION PLAN** - Ready to execute contact analysis and outreach
 
-## 🏆 TIER 1: RADIO PROMOTERS (START HERE)
+##  TIER 1: RADIO PROMOTERS (START HERE)
 
 **Priority Score: 95/100 | Conversion Rate: 85% | Target: 15 contacts**
 
@@ -30,14 +30,14 @@ LinkedIn: [profile URL]
 Phone: [if available]
 
 QUALIFICATION SCORE (1-10):
-□ Campaign Frequency: _/10 (monthly = 10, quarterly = 5)
-□ Team Size: _/10 (1-3 people = 10, 10+ = 5)
-□ Current Tools: _/10 (manual heavy = 10, automated = 5)
-□ Budget Signals: _/10 (tools mentioned = 8, no mentions = 4)
-□ Geographic Focus: _/10 (UK/EU = 10, US = 3)
-□ Responsiveness: _/10 (active social = 8, inactive = 4)
-□ Pain Point Evidence: _/10 (complains about research = 10)
-□ Industry Credibility: _/10 (known campaigns = 8)
+ Campaign Frequency: _/10 (monthly = 10, quarterly = 5)
+ Team Size: _/10 (1-3 people = 10, 10+ = 5)
+ Current Tools: _/10 (manual heavy = 10, automated = 5)
+ Budget Signals: _/10 (tools mentioned = 8, no mentions = 4)
+ Geographic Focus: _/10 (UK/EU = 10, US = 3)
+ Responsiveness: _/10 (active social = 8, inactive = 4)
+ Pain Point Evidence: _/10 (complains about research = 10)
+ Industry Credibility: _/10 (known campaigns = 8)
 
 TOTAL SCORE: ___/80
 PRIORITY: High (65+) | Medium (45-64) | Low (44-)
@@ -82,7 +82,7 @@ Demo Hook: [their actual contact list enrichment]
 
 ---
 
-## 🎨 TIER 2: INDEPENDENT ARTISTS & PRODUCERS
+##  TIER 2: INDEPENDENT ARTISTS & PRODUCERS
 
 **Priority Score: 75/100 | Conversion Rate: 60% | Target: 25 contacts**
 
@@ -109,22 +109,22 @@ Release Schedule: [frequency]
 Social Media: [Instagram/Twitter/TikTok handles]
 
 QUALIFICATION INDICATORS:
-□ Regular Releases: Monthly (10) | Quarterly (7) | Sporadic (3)
-□ Promotion Activity: Very Active (10) | Active (7) | Minimal (3)
-□ Budget Signals: Paid promo (10) | Free only (5) | Unknown (2)
-□ Professional Level: Pro artwork/mastering (8) | DIY (5)
-□ Genre Fit: Electronic/Indie/Pop (9) | Rock/Folk (7) | Other (5)
-□ Location: UK (10) | Europe (8) | US (5) | Other (3)
-□ Engagement: High (8) | Medium (5) | Low (2)
-□ Growth Trajectory: Rising (9) | Stable (6) | Declining (2)
+ Regular Releases: Monthly (10) | Quarterly (7) | Sporadic (3)
+ Promotion Activity: Very Active (10) | Active (7) | Minimal (3)
+ Budget Signals: Paid promo (10) | Free only (5) | Unknown (2)
+ Professional Level: Pro artwork/mastering (8) | DIY (5)
+ Genre Fit: Electronic/Indie/Pop (9) | Rock/Folk (7) | Other (5)
+ Location: UK (10) | Europe (8) | US (5) | Other (3)
+ Engagement: High (8) | Medium (5) | Low (2)
+ Growth Trajectory: Rising (9) | Stable (6) | Declining (2)
 
 SCORE: ___/80
 
 CURRENT PROMOTION APPROACH:
-□ Uses SubmitHub: Yes/No
-□ Mentions contact research: Yes/No
-□ Works with promoters: Yes/No
-□ DIY approach: Yes/No
+ Uses SubmitHub: Yes/No
+ Mentions contact research: Yes/No
+ Works with promoters: Yes/No
+ DIY approach: Yes/No
 
 OUTREACH ANGLE:
 Recent Release: [track/album name]
@@ -157,7 +157,7 @@ Genre-Specific Value: [how Audio Intel helps their style]
 
 ---
 
-## 🏢 TIER 3: BOUTIQUE PR AGENCIES
+##  TIER 3: BOUTIQUE PR AGENCIES
 
 **Priority Score: 80/100 | Conversion Rate: 70% | Target: 10 contacts**
 
@@ -186,14 +186,14 @@ Website: [URL]
 Key Decision Makers: [Founder/Director/Operations Manager]
 
 QUALIFICATION FACTORS:
-□ Music Focus: Specialist (10) | Mixed (6) | General (2)
-□ Client Count: 5-15 (10) | 16-30 (8) | 31+ (5)
-□ Team Growth: Growing (9) | Stable (6) | Shrinking (2)
-□ Service Range: Full service (8) | Radio only (6) | Digital only (4)
-□ Client Quality: Established artists (8) | Emerging (6) | Unknown (3)
-□ Geographic Focus: UK (10) | Europe (8) | Global (6)
-□ Technology Adoption: Modern tools (8) | Traditional (4)
-□ Efficiency Needs: Obvious pain (10) | Some signs (6) | None (2)
+ Music Focus: Specialist (10) | Mixed (6) | General (2)
+ Client Count: 5-15 (10) | 16-30 (8) | 31+ (5)
+ Team Growth: Growing (9) | Stable (6) | Shrinking (2)
+ Service Range: Full service (8) | Radio only (6) | Digital only (4)
+ Client Quality: Established artists (8) | Emerging (6) | Unknown (3)
+ Geographic Focus: UK (10) | Europe (8) | Global (6)
+ Technology Adoption: Modern tools (8) | Traditional (4)
+ Efficiency Needs: Obvious pain (10) | Some signs (6) | None (2)
 
 SCORE: ___/80
 
@@ -233,7 +233,7 @@ Budget Authority: [who controls tool spend]
 
 ---
 
-## 📋 IMMEDIATE EXECUTION PLAN
+##  IMMEDIATE EXECUTION PLAN
 
 ### Week 1: Radio Promoter Blitz
 
@@ -278,7 +278,7 @@ Budget Authority: [who controls tool spend]
 
 ---
 
-## 🎯 AUDIO INTEL DEMO OPTIMIZATION BY SEGMENT
+##  AUDIO INTEL DEMO OPTIMIZATION BY SEGMENT
 
 ### Radio Promoter Demo Script (15 mins):
 
@@ -344,7 +344,7 @@ Budget Authority: [who controls tool spend]
 
 ---
 
-## 📊 SUCCESS TRACKING SYSTEM
+##  SUCCESS TRACKING SYSTEM
 
 ### Contact Research Tracker:
 
@@ -395,7 +395,7 @@ CURRENT TRAJECTORY: On Track / Behind / Ahead
 
 ---
 
-## 🚀 IMMEDIATE NEXT ACTIONS
+##  IMMEDIATE NEXT ACTIONS
 
 ### Today:
 

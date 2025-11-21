@@ -1,6 +1,6 @@
 # Security Guide - Quick Reference
 
-## ✅ Security Commands
+## Security Commands
 
 Run these from the **root directory** of the project:
 
@@ -15,7 +15,7 @@ npm run security:audit
 npm run security:scan
 ```
 
-## 🛡️ What's Protected
+##  What's Protected
 
 ### Git-Secrets (Pre-commit Hooks)
 
@@ -30,7 +30,7 @@ npm run security:scan
 - Use `npm audit fix` for safe fixes
 - Use `npm audit fix --force` for breaking changes (review first!)
 
-## 🚨 Current Vulnerabilities
+## Current Vulnerabilities
 
 Your project has some dependency vulnerabilities (normal for active projects):
 
@@ -48,7 +48,7 @@ npm audit fix
 npm audit fix --force
 ```
 
-## 🔐 Best Practices
+## Best Practices
 
 1. **Before Committing**: Run `npm run security:scan`
 2. **Weekly**: Run `npm run security:check`
@@ -62,7 +62,7 @@ npm audit fix --force
    - Local: `.env.local` (gitignored)
    - Production: Vercel Dashboard → Environment Variables
 
-## 📋 If Security Check Fails
+## If Security Check Fails
 
 1. **Git-Secrets Error**: You tried to commit a secret
    - Remove the secret from your files
@@ -74,7 +74,7 @@ npm audit fix --force
    - Update dependencies when safe
    - Monitor for patches if no fix available
 
-## 🎯 Remember
+## Remember
 
 - Security is ongoing, not one-time
 - Run checks before important commits
@@ -84,4 +84,4 @@ npm audit fix --force
 ---
 
 **Last Updated**: January 2025  
-**Security Status**: Protected ✅
+**Security Status**: Protected 

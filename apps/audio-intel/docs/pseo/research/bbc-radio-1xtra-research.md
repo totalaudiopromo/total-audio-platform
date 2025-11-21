@@ -368,27 +368,27 @@ BBC Radio 1Xtra is the UK's primary national radio station for urban music, broa
 
 ### Verified Information
 
-✅ Kenny Allstar hosts Rap Show (Fridays/Saturdays) - verified multiple sources
-✅ Chuckie replaced DJ Ace on R&B Show (January 2024) - verified RadioToday
-✅ Eddie Kadi hosts Official UK Afrobeats Chart (Sundays 3pm) - verified multiple sources
-✅ BBC Introducing Uploader is only official submission route - verified BBC sources
-✅ No explicit content policy - verified BBC Introducing guides
-✅ 2 tracks per month upload limit - verified BBC sources
-✅ DJ Target hosts Monday-Thursday & Saturday shows - verified multiple sources
-✅ Remi Burgz hosts drivetime - verified schedule sources
+ Kenny Allstar hosts Rap Show (Fridays/Saturdays) - verified multiple sources
+ Chuckie replaced DJ Ace on R&B Show (January 2024) - verified RadioToday
+ Eddie Kadi hosts Official UK Afrobeats Chart (Sundays 3pm) - verified multiple sources
+ BBC Introducing Uploader is only official submission route - verified BBC sources
+ No explicit content policy - verified BBC Introducing guides
+ 2 tracks per month upload limit - verified BBC sources
+ DJ Target hosts Monday-Thursday & Saturday shows - verified multiple sources
+ Remi Burgz hosts drivetime - verified schedule sources
 
 ### Needs Verification
 
-⚠️ Exact timeslots for some shows (Nadia Jae breakfast, Kaylee afternoon, Chuckie R&B)
-⚠️ Seani B current schedule for October 2025 (last confirmed mid-2024)
-⚠️ Some weekend programming details
-⚠️ Tiffany Calver's current show (launched multi-genre Friday show June 2023, current status NEEDS VERIFICATION)
+ Exact timeslots for some shows (Nadia Jae breakfast, Kaylee afternoon, Chuckie R&B)
+ Seani B current schedule for October 2025 (last confirmed mid-2024)
+ Some weekend programming details
+ Tiffany Calver's current show (launched multi-genre Friday show June 2023, current status NEEDS VERIFICATION)
 
 ### Information Gaps
 
-❌ BBC website blocking automated scraping - cannot directly verify official schedule
-❌ Most recent information from mid-2024 - some October 2025 gaps
-❌ Exact presenter contact emails (not publicly available, intentionally - use BBC Introducing only)
+ BBC website blocking automated scraping - cannot directly verify official schedule
+ Most recent information from mid-2024 - some October 2025 gaps
+ Exact presenter contact emails (not publicly available, intentionally - use BBC Introducing only)
 
 ---
 

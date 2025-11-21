@@ -1,32 +1,32 @@
-# 🎉 WARM API Setup Complete - Liberty Radio Promo Agent
+#  WARM API Setup Complete - Liberty Radio Promo Agent
 
-## ✅ **Status: FULLY WORKING**
+##  **Status: FULLY WORKING**
 
 The WARM API integration is now fully functional with token-based authentication!
 
-## 🔧 **What's Working**
+##  **What's Working**
 
 ### **Authentication**
 
-- ✅ Token-based authentication (no email/password needed)
-- ✅ Automatic token expiry detection
-- ✅ Fallback to email/password if needed
+-  Token-based authentication (no email/password needed)
+-  Automatic token expiry detection
+-  Fallback to email/password if needed
 
 ### **API Endpoints**
 
-- ✅ **UK Radio Stations**: 1,367 stations available
-- ✅ **Play Data**: Real-time play tracking
-- ✅ **Campaign Analytics**: Performance summaries
-- ✅ **Health Checks**: System monitoring
+-  **UK Radio Stations**: 1,367 stations available
+-  **Play Data**: Real-time play tracking
+-  **Campaign Analytics**: Performance summaries
+-  **Health Checks**: System monitoring
 
 ### **Integration Features**
 
-- ✅ **Liberty Radio Promo Agent**: Fully integrated
-- ✅ **Real-time Monitoring**: Track plays across UK radio
-- ✅ **CSV Reports**: Generate weekly performance reports
-- ✅ **Google Drive**: Auto-save reports to campaign folders
+-  **Liberty Radio Promo Agent**: Fully integrated
+-  **Real-time Monitoring**: Track plays across UK radio
+-  **CSV Reports**: Generate weekly performance reports
+-  **Google Drive**: Auto-save reports to campaign folders
 
-## 🎯 **How to Use**
+##  **How to Use**
 
 ### **1. Add Token to Environment**
 
@@ -55,7 +55,7 @@ node radio-promo-agent.js health
 node radio-promo-agent.js campaign "Track Title" "Artist Name" "Genre"
 ```
 
-## 🎵 **Available Features**
+##  **Available Features**
 
 ### **Real-time Play Tracking**
 
@@ -100,25 +100,25 @@ The integration automatically:
 - Warns when token is about to expire
 - Falls back to email/password if needed
 
-## 🚀 **Next Steps**
+##  **Next Steps**
 
 1. **Add token to `.env`** file
 2. **Test with real campaigns** using the liberty radio promo agent
 3. **Set up monitoring** for your artists' tracks
 4. **Generate reports** for clients
 
-## 📞 **Support**
+##  **Support**
 
 - **WARM Support**: Gustav Morgensol (<gustav@warmmusic.net>)
 - **API Documentation**: Check WARM dashboard
 - **Integration Issues**: Check logs in `./logs/` directory
 
-## 🎯 **Success Metrics**
+##  **Success Metrics**
 
-- ✅ **1,367 UK Radio Stations** available
-- ✅ **Real-time Play Tracking** working
-- ✅ **Token Authentication** successful
-- ✅ **Liberty Radio Promo Agent** integrated
-- ✅ **All API Endpoints** functional
+-  **1,367 UK Radio Stations** available
+-  **Real-time Play Tracking** working
+-  **Token Authentication** successful
+-  **Liberty Radio Promo Agent** integrated
+-  **All API Endpoints** functional
 
-**The WARM API integration is now ready for production use!** 🎉
+**The WARM API integration is now ready for production use!** 

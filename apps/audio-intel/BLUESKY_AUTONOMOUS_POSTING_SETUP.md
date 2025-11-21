@@ -1,12 +1,12 @@
 # Bluesky Autonomous Posting Setup
 
-**Status**: ✅ Code Complete - Ready for Credentials
+**Status**:  Code Complete - Ready for Credentials
 
 Your autonomous Bluesky posting agent is built and configured. You just need to add your Bluesky credentials to make it live.
 
 ---
 
-## 🎯 What This Does
+##  What This Does
 
 - **Posts twice daily** at 9am and 5pm UK time (peak engagement)
 - **Fully autonomous** - reads from your content calendar
@@ -15,7 +15,7 @@ Your autonomous Bluesky posting agent is built and configured. You just need to 
 
 ---
 
-## 🔑 Setup Steps (5 minutes)
+##  Setup Steps (5 minutes)
 
 ### Step 1: Create Bluesky App Password
 
@@ -72,7 +72,7 @@ Vercel will automatically redeploy with the new cron job.
 
 ---
 
-## 🧪 Testing Your Agent
+##  Testing Your Agent
 
 ### Manual Test (Development)
 
@@ -104,7 +104,7 @@ Replace `YOUR_CRON_SECRET` with the secret you set in Step 2.
 
 ---
 
-## 📅 Posting Schedule
+##  Posting Schedule
 
 **Time:** 9am and 5pm UK time (every day)
 **Platform:** Bluesky
@@ -125,7 +125,7 @@ These are **peak UK social media engagement times** for B2B audiences (radio pro
 
 ---
 
-## 🔍 Monitoring
+##  Monitoring
 
 ### Vercel Logs
 
@@ -134,19 +134,19 @@ https://vercel.com/chris-projects-6ffe0e29/audio-intel/logs
 
 Look for:
 
-- `[CRON] 🤖 Autonomous social posting triggered`
-- `[BLUESKY] ✅ Posted successfully`
+- `[CRON]  Autonomous social posting triggered`
+- `[BLUESKY]  Posted successfully`
 
 ### Expected Output
 
 ```
-[CRON] 🤖 Autonomous social posting triggered
+[CRON]  Autonomous social posting triggered
 [CRON] ⏰ Time: 2025-01-17T09:00:00.000Z
-[CRON] ✅ Bluesky health check passed
+[CRON]  Bluesky health check passed
 [BLUESKY] Found 1 Bluesky posts in calendar
-[BLUESKY] 📤 Posting: The Time Problem
-[BLUESKY] ✅ Posted successfully: at://did:plc:xxx/app.bsky.feed.post/xxx
-[CRON] 📊 Posting results:
+[BLUESKY]  Posting: The Time Problem
+[BLUESKY]  Posted successfully: at://did:plc:xxx/app.bsky.feed.post/xxx
+[CRON]  Posting results:
        Posted: 1
        Skipped: 0
        Failed: 0
@@ -154,7 +154,7 @@ Look for:
 
 ---
 
-## 🎨 Content Calendar
+##  Content Calendar
 
 Your posts are loaded from:
 `apps/audio-intel/social-content/CONTENT_CALENDAR.json`
@@ -178,7 +178,7 @@ The agent automatically:
 
 ---
 
-## 🛠️ Troubleshooting
+##  Troubleshooting
 
 ### "Authentication failed"
 
@@ -206,7 +206,7 @@ The agent automatically:
 
 ---
 
-## 📈 What's Next?
+##  What's Next?
 
 Once Bluesky is working, you can add:
 
@@ -218,7 +218,7 @@ Same architecture, just add more agents to the cron endpoint.
 
 ---
 
-## 🔐 Security Notes
+##  Security Notes
 
 - **Never commit** your app password to git
 - **Use environment variables** for all credentials
@@ -227,7 +227,7 @@ Same architecture, just add more agents to the cron endpoint.
 
 ---
 
-## 📞 Support
+##  Support
 
 If something's not working:
 
@@ -239,5 +239,5 @@ If something's not working:
 ---
 
 **Built:** January 2025
-**Status:** Production Ready ✅
+**Status:** Production Ready 
 **Cost:** £0 (Vercel free tier)

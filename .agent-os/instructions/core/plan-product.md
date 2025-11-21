@@ -50,11 +50,11 @@ Use the file-creator subagent to create the following file_structure with valida
 
 <file_structure>
 .agent-os/
-└── product/
-├── mission.md # Product vision and purpose
-├── mission-lite.md # Condensed mission for AI context
-├── tech-stack.md # Technical architecture
-└── roadmap.md # Development phases
+ product/
+ mission.md # Product vision and purpose
+ mission-lite.md # Condensed mission for AI context
+ tech-stack.md # Technical architecture
+ roadmap.md # Development phases
 </file_structure>
 
 </step>

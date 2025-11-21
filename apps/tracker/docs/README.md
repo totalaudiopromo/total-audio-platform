@@ -2,7 +2,7 @@
 
 All documentation for the Campaign Tracker app, organised by category.
 
-## 📁 Documentation Structure
+##  Documentation Structure
 
 ### `/setup/` - Setup & Configuration
 
@@ -35,7 +35,7 @@ Historical completion reports:
 
 ---
 
-## 🎯 Quick Start
+##  Quick Start
 
 For getting started, see the root-level documentation:
 
@@ -44,31 +44,31 @@ For getting started, see the root-level documentation:
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 Campaign Tracker follows the TAP SaaS template structure:
 
 ```
 tracker/
-├── app/                    # Next.js App Router
-│   ├── (auth)/            # Auth pages (login, signup)
-│   ├── api/               # API routes
-│   ├── blog/              # PSEO blog pages
-│   ├── dashboard/         # Main dashboard
-│   └── demo/              # Demo page
-├── components/            # React components
-│   ├── analytics/        # Analytics components
-│   ├── auth/             # Auth components
-│   ├── campaigns/        # Campaign management
-│   └── ui/               # Reusable UI components
-├── lib/                   # Utilities and helpers
-├── supabase/              # Database migrations
-└── docs/                  # This documentation
+ app/                    # Next.js App Router
+    (auth)/            # Auth pages (login, signup)
+    api/               # API routes
+    blog/              # PSEO blog pages
+    dashboard/         # Main dashboard
+    demo/              # Demo page
+ components/            # React components
+    analytics/        # Analytics components
+    auth/             # Auth components
+    campaigns/        # Campaign management
+    ui/               # Reusable UI components
+ lib/                   # Utilities and helpers
+ supabase/              # Database migrations
+ docs/                  # This documentation
 ```
 
 ---
 
-## 📝 Documentation Standards
+##  Documentation Standards
 
 When adding new documentation:
 
@@ -94,7 +94,7 @@ When adding new documentation:
 
 ---
 
-## 🚀 Development Workflow
+##  Development Workflow
 
 1. **Local development:**
 
@@ -110,7 +110,7 @@ When adding new documentation:
 
 ---
 
-## 🎨 Design System
+##  Design System
 
 Tracker inherits the Postcraft aesthetic from the TAP SaaS template:
 

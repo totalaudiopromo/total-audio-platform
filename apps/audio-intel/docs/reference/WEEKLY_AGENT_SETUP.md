@@ -1,10 +1,10 @@
-# 🤖 Weekly Music Intelligence Agent Setup
+#  Weekly Music Intelligence Agent Setup
 
 ## Overview
 
 The Weekly Music Intelligence Agent automatically analyzes underground music news and creates ConvertKit newsletter drafts every Sunday at 9 AM.
 
-## ✅ What's Built
+##  What's Built
 
 ### **1. Weekly Music Agent**
 
@@ -32,7 +32,7 @@ The Weekly Music Intelligence Agent automatically analyzes underground music new
 - Runs every Sunday at 9 AM
 - Configurable timing and behavior
 
-## 🔧 Setup Required
+##  Setup Required
 
 ### **1. ConvertKit API Credentials**
 
@@ -67,15 +67,15 @@ To enable automatic weekly scheduling:
 0 9 * * 0 curl -X GET "https://your-domain.vercel.app/api/cron/weekly-newsletter?week=1&createDraft=true&autoSend=false"
 ```
 
-## 🚀 How to Use
+##  How to Use
 
 ### **Manual Workflow:**
 
 1. **Go to Dashboard**: `/newsletter-dashboard`
-2. **Click "🤖 Generate Weekly Intelligence"** - Analyzes underground music news
-3. **Click "📧 Create ConvertKit Draft"** - Creates draft in ConvertKit
+2. **Click " Generate Weekly Intelligence"** - Analyzes underground music news
+3. **Click " Create ConvertKit Draft"** - Creates draft in ConvertKit
 4. **Review in ConvertKit** - Check the draft in your ConvertKit dashboard
-5. **Click "📤 Send Draft"** - Sends to all subscribers
+5. **Click " Send Draft"** - Sends to all subscribers
 
 ### **Automatic Workflow:**
 
@@ -84,7 +84,7 @@ To enable automatic weekly scheduling:
 3. **Wake up to ready newsletter** - Draft created automatically
 4. **Review and send** - One click to send to subscribers
 
-## 📊 Dashboard Features
+##  Dashboard Features
 
 ### **Intelligence Metrics:**
 
@@ -106,7 +106,7 @@ To enable automatic weekly scheduling:
 - Edit content manually if needed
 - Test different approaches
 
-## 🎯 Agent Capabilities
+##  Agent Capabilities
 
 ### **News Analysis:**
 
@@ -129,7 +129,7 @@ To enable automatic weekly scheduling:
 - **Campaign Tracking**: Monitor open rates, clicks, unsubscribes
 - **Performance Analytics**: Detailed campaign statistics
 
-## 🔄 Weekly Schedule
+##  Weekly Schedule
 
 **Sunday 9 AM GMT:**
 
@@ -139,7 +139,7 @@ To enable automatic weekly scheduling:
 4. Sends notification (if configured)
 5. You review and send when ready
 
-## 🛠️ Troubleshooting
+##  Troubleshooting
 
 ### **ConvertKit API Error:**
 
@@ -159,7 +159,7 @@ To enable automatic weekly scheduling:
 - Check Vercel function logs
 - Test manual cron endpoint
 
-## 📈 Next Steps
+##  Next Steps
 
 1. **Add ConvertKit credentials** to `.env.local`
 2. **Test the dashboard** - Generate intelligence and create draft
@@ -167,7 +167,7 @@ To enable automatic weekly scheduling:
 4. **Monitor performance** - Check subscriber growth and engagement
 5. **Optimize content** - Adjust AI prompts based on performance
 
-## 🎵 Success Metrics
+##  Success Metrics
 
 - **Subscriber Growth**: Track newsletter signups
 - **Open Rates**: Monitor engagement with content
@@ -175,4 +175,4 @@ To enable automatic weekly scheduling:
 - **Community Engagement**: Track replies to community questions
 - **Time Saved**: Hours of manual research automated
 
-The agent is designed to save you 5-10 hours per week while delivering valuable, authentic content to your subscribers! 🚀
+The agent is designed to save you 5-10 hours per week while delivering valuable, authentic content to your subscribers! 

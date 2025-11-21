@@ -36,12 +36,12 @@ Liberty Music PR
 
 ## WHY THIS WORKS:
 
-✅ **References original connection** - "Yearn" played by Jaimee Taylor-Neilsen
-✅ **Shows momentum** - 85 plays, 9 countries, Amazing Radio support
-✅ **Highlights Triple J credibility** - Home & Hosed history
-✅ **Sydney artist** - Local content priority
-✅ **Bedroom-produced** - Fits Home & Hosed ethos
-✅ **Brief** - Respects her time
+ **References original connection** - "Yearn" played by Jaimee Taylor-Neilsen
+ **Shows momentum** - 85 plays, 9 countries, Amazing Radio support
+ **Highlights Triple J credibility** - Home & Hosed history
+ **Sydney artist** - Local content priority
+ **Bedroom-produced** - Fits Home & Hosed ethos
+ **Brief** - Respects her time
 
 ---
 

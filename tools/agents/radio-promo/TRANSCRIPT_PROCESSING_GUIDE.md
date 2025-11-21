@@ -1,6 +1,6 @@
 # Transcript Processing Guide - Liberty Music PR
 
-## 🎯 **Quick Start**
+##  **Quick Start**
 
 ### 1. **Scan Your Downloads Folder**
 
@@ -25,7 +25,7 @@ node radio-promo-agent.js process-transcript downloads:your-file-name.txt
 node radio-promo-agent.js personal-workflow downloads:your-file-name.txt
 ```
 
-## 📁 **Supported Transcript Sources**
+##  **Supported Transcript Sources**
 
 ### **Otter.ai Downloads** (Your Current Files)
 
@@ -75,7 +75,7 @@ typeform:form-id:response-id
 - Google Meet exports
 - Other transcript sources
 
-## 🔧 **Usage Examples**
+##  **Usage Examples**
 
 ### **Process Single File**
 
@@ -101,7 +101,7 @@ node radio-promo-agent.js personal-workflow downloads:artist-meeting.txt
 node radio-promo-agent.js scan-downloads
 ```
 
-## 📊 **What Gets Extracted**
+##  **What Gets Extracted**
 
 The agent looks for:
 
@@ -114,7 +114,7 @@ The agent looks for:
 - **Priority**: "This is high priority" or "Urgent"
 - **Deadline**: "Deadline is..." or "Need by..."
 
-## 🎯 **Training Data**
+##  **Training Data**
 
 When you run `scan-downloads`, it creates:
 
@@ -123,7 +123,7 @@ When you run `scan-downloads`, it creates:
 - Shows extraction confidence scores
 - Lists any processing errors
 
-## 🚀 **Next Steps**
+##  **Next Steps**
 
 1. **Run the scan**: `node test-otter-downloads.js`
 2. **Review results**: Check the training data file
@@ -131,7 +131,7 @@ When you run `scan-downloads`, it creates:
 4. **Set up Gemini**: For future Google Meet transcripts
 5. **Create campaigns**: Use `personal-workflow` command
 
-## 🔍 **Troubleshooting**
+##  **Troubleshooting**
 
 ### **File Not Found**
 
@@ -151,7 +151,7 @@ When you run `scan-downloads`, it creates:
 - Verify file permissions
 - Check for special characters in filename
 
-## 📝 **File Naming Tips**
+##  **File Naming Tips**
 
 For best results, name your Otter.ai files:
 
@@ -165,7 +165,7 @@ The agent will find files containing:
 - "transcript"
 - Any .txt files
 
-## 🎉 **Ready to Go!**
+##  **Ready to Go!**
 
 Your Otter.ai files are ready to be processed for training. The agent will learn from your existing transcripts and help create better campaigns in the future.
 

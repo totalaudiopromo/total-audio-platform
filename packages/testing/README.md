@@ -4,11 +4,11 @@ Shared testing utilities for Total Audio Platform - provides validators, configu
 
 ## Features
 
-- ✅ **Touch Target Validation**: WCAG 2.2 Level AA compliance (44px minimum)
-- ✅ **Responsive Testing**: Breakpoint validation across mobile/tablet/desktop
-- ✅ **Accessibility Validation**: ARIA, contrast, keyboard navigation
-- ✅ **Performance Metrics**: Core Web Vitals (CLS, LCP, FID, TTI)
-- ✅ **Shared Configurations**: UK market mobile devices (iPhone 13, Galaxy S9+, iPad Pro)
+-  **Touch Target Validation**: WCAG 2.2 Level AA compliance (44px minimum)
+-  **Responsive Testing**: Breakpoint validation across mobile/tablet/desktop
+-  **Accessibility Validation**: ARIA, contrast, keyboard navigation
+-  **Performance Metrics**: Core Web Vitals (CLS, LCP, FID, TTI)
+-  **Shared Configurations**: UK market mobile devices (iPhone 13, Galaxy S9+, iPad Pro)
 
 ## Installation
 

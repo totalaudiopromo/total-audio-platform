@@ -6,7 +6,7 @@ Based on Google Meet discussion 7 November 2025
 
 ---
 
-## 📋 CAMPAIGN SUMMARY
+##  CAMPAIGN SUMMARY
 
 ### Key Details from Our Call
 
@@ -27,15 +27,15 @@ Based on Google Meet discussion 7 November 2025
 
 **What Concerta Needs to Send**:
 
-- ✅ MP3 file of "Consumption"
-- ✅ WAV file of "Consumption"
-- ✅ Spotify link (confirm URL)
-- ✅ Apple Music link
-- ✅ Social media handles (Instagram, etc.)
+-  MP3 file of "Consumption"
+-  WAV file of "Consumption"
+-  Spotify link (confirm URL)
+-  Apple Music link
+-  Social media handles (Instagram, etc.)
 
 ---
 
-## 🎯 TARGET STRATEGY (From Our Discussion)
+##  TARGET STRATEGY (From Our Discussion)
 
 ### 1. International Underground Electronic Stations
 
@@ -59,7 +59,7 @@ Based on Google Meet discussion 7 November 2025
 
 ---
 
-## 📧 CAMPAIGN DETAILS
+##  CAMPAIGN DETAILS
 
 ### Target Contacts
 
@@ -104,11 +104,11 @@ This track represents an exciting bridge between Asian and European dance cultur
 
 I think your audience would really appreciate this fresh take on electronic music.
 
-🎧 Listen now:
+ Listen now:
 [SPOTIFY LINK - NEEDED]
 [APPLE MUSIC LINK - NEEDED]
 
-📸 High-res assets & press materials available on request
+ High-res assets & press materials available on request
 
 Would you like to feature "Consumption" on your show?
 
@@ -121,7 +121,7 @@ www.libertymusicpr.com
 
 ---
 
-## 📅 TIMELINE & EXECUTION
+##  TIMELINE & EXECUTION
 
 ### This Weekend (Friday-Sunday)
 
@@ -165,7 +165,7 @@ www.libertymusicpr.com
 
 ---
 
-## 📊 CAMPAIGN EXPECTATIONS
+##  CAMPAIGN EXPECTATIONS
 
 ### From Our Discussion
 
@@ -188,11 +188,11 @@ www.libertymusicpr.com
 
 ---
 
-## 📦 CAMPAIGN ASSETS (All Verified)
+##  CAMPAIGN ASSETS (All Verified)
 
 **Location**: ~/Downloads/Liberty_0831/
 
-### Available Now ✅
+### Available Now 
 
 1. **Profile Images** (4 high-res variants)
    - CONCERTA_High-res_1.jpg
@@ -213,7 +213,7 @@ www.libertymusicpr.com
    - Logo files
    - Instagram icon
 
-### Still Needed ⚠️
+### Still Needed 
 
 - [ ] MP3 file of "Consumption" track
 - [ ] WAV file of "Consumption" track
@@ -222,7 +222,7 @@ www.libertymusicpr.com
 
 ---
 
-## 🎯 KEY MESSAGING (Cross-Cultural Fusion)
+##  KEY MESSAGING (Cross-Cultural Fusion)
 
 **Primary Hook**:
 "South Korean electronic artist bringing fresh Asian influence to European dance scene"
@@ -243,7 +243,7 @@ www.libertymusicpr.com
 
 ---
 
-## 📞 WHAT CONCERTA CAN EXPECT
+##  WHAT CONCERTA CAN EXPECT
 
 ### Week 1 (11-15 November)
 
@@ -271,7 +271,7 @@ www.libertymusicpr.com
 
 ---
 
-## 🎵 CHRIS'S COMMITMENTS (From Call)
+##  CHRIS'S COMMITMENTS (From Call)
 
 **Guaranteed**:
 
@@ -298,7 +298,7 @@ www.libertymusicpr.com
 
 ---
 
-## ✅ PRE-LAUNCH CHECKLIST
+##  PRE-LAUNCH CHECKLIST
 
 ### Concerta's Approval Needed
 
@@ -328,7 +328,7 @@ www.libertymusicpr.com
 
 ---
 
-## 🚀 NEXT STEPS
+##  NEXT STEPS
 
 ### By Sunday Evening (Concerta)
 
@@ -356,7 +356,7 @@ Email Chris with:
 
 ---
 
-## 📁 CAMPAIGN FILES
+##  CAMPAIGN FILES
 
 All files located in:
 `/Users/chrisschofield/workspace/active/total-audio-platform/tools/agents/campaigns/concerta/`
@@ -375,7 +375,7 @@ Location: `~/Downloads/Liberty_0831/`
 
 ---
 
-## 💬 NOTES FROM GOOGLE MEET
+##  NOTES FROM GOOGLE MEET
 
 ### Key Quotes from Concerta:
 
@@ -402,7 +402,7 @@ Location: `~/Downloads/Liberty_0831/`
 
 ---
 
-## 📧 CONTACT
+##  CONTACT
 
 **Any questions or changes this weekend?**
 
@@ -414,6 +414,6 @@ Campaign Manager: Chris Schofield, Liberty Music PR
 
 ---
 
-**This is your first radio campaign. Let's make it count! 🎵**
+**This is your first radio campaign. Let's make it count! **
 
 Liberty Music PR | 6-Week Campaign | 100+ Plays Guaranteed | Weekly Reports

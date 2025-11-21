@@ -1,6 +1,6 @@
 # Minor Issues Fixed
 
-## Issue 1: Favicon 500 Error ✅ FIXED
+## Issue 1: Favicon 500 Error  FIXED
 
 **Problem:** Browser console showed `Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3004/favicon.ico`
 
@@ -18,7 +18,7 @@
 
 ---
 
-## Issue 2: Campaign Names Not Displaying ✅ FIXED
+## Issue 2: Campaign Names Not Displaying  FIXED
 
 **Problem:** Campaign cards showed empty headings when `campaign.name` was null or undefined.
 
@@ -42,7 +42,7 @@
 
 Both fixes are non-breaking and improve user experience:
 
-- ✅ Favicon now loads without errors
-- ✅ Campaign cards always show a name (never blank)
-- ✅ No linter errors introduced
-- ✅ All components handle empty names gracefully
+-  Favicon now loads without errors
+-  Campaign cards always show a name (never blank)
+-  No linter errors introduced
+-  All components handle empty names gracefully

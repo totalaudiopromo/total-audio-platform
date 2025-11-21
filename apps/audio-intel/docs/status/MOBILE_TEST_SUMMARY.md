@@ -347,7 +347,7 @@ Add to your CI pipeline (e.g., GitHub Actions):
 
 ---
 
-**Test Infrastructure Status**: ✅ Ready for use
+**Test Infrastructure Status**:  Ready for use
 **Test Count**: 18 tests across 3 mobile devices
 **Coverage**: Homepage → Upload → Results → Export journey
 **Chat Widget**: Validated with flexible selectors

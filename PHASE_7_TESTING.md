@@ -6,7 +6,7 @@
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 1. [Prerequisites](#prerequisites)
 2. [Stripe Webhook Local Testing](#stripe-webhook-local-testing)
@@ -190,14 +190,14 @@ open http://localhost:3000/admin/metrics
 
 Check that the following metrics load:
 
-- ✅ Monthly Recurring Revenue (MRR)
-- ✅ Annual Recurring Revenue (ARR)
-- ✅ Active Subscriptions
-- ✅ Total/New/Active Users
-- ✅ DAU/WAU/MAU
-- ✅ Enrichment statistics
-- ✅ Top users table
-- ✅ Recent payments table
+- Monthly Recurring Revenue (MRR)
+- Annual Recurring Revenue (ARR)
+- Active Subscriptions
+- Total/New/Active Users
+- DAU/WAU/MAU
+- Enrichment statistics
+- Top users table
+- Recent payments table
 
 ### 3. Test Period Selector
 
@@ -235,13 +235,13 @@ npx tsx scripts/growth-report.ts --days 7 --output test-report.md
 
 Check that report includes:
 
-- ✅ Revenue metrics (MRR, ARR, subscriptions)
-- ✅ User growth metrics
-- ✅ Engagement metrics (DAU/WAU/MAU)
-- ✅ Product metrics (enrichments, success rate)
-- ✅ Conversion funnel
-- ✅ Key insights
-- ✅ Recommended actions
+- Revenue metrics (MRR, ARR, subscriptions)
+- User growth metrics
+- Engagement metrics (DAU/WAU/MAU)
+- Product metrics (enrichments, success rate)
+- Conversion funnel
+- Key insights
+- Recommended actions
 
 ### 3. Test GitHub Actions Workflow (Manual Trigger)
 
@@ -277,27 +277,27 @@ npx tsx scripts/backfill-stripe.ts --days 30 --dry-run
 Expected output:
 
 ```
-🔄 Starting Stripe payment backfill...
-📅 Period: Last 30 days
-🧪 Dry run: YES
+Starting Stripe payment backfill...
+Period: Last 30 days
+Dry run: YES
 
-📡 Fetching payment intents from Stripe...
-✅ Found X payment intents
+ Fetching payment intents from Stripe...
+Found X payment intents
 
-📡 Fetching invoices from Stripe...
-✅ Found Y invoices
+ Fetching invoices from Stripe...
+Found Y invoices
 
-💳 Processing payment intents...
-🧪 Would insert: pi_xxxx for user@example.com (£19.00)
+ Processing payment intents...
+Would insert: pi_xxxx for user@example.com (£19.00)
 ...
 
-📊 BACKFILL SUMMARY
-✅ Successfully processed: X
-⏭️  Skipped (already exists): Y
-❌ Errors: 0
-📦 Total records: Z
+BACKFILL SUMMARY
+Successfully processed: X
+⏭  Skipped (already exists): Y
+ Errors: 0
+Total records: Z
 
-🧪 DRY RUN - No data was actually inserted
+DRY RUN - No data was actually inserted
 ```
 
 ### 2. Real Backfill (Last 7 Days)
@@ -439,13 +439,13 @@ console.log('Events count:', data, error);
 
 Once all tests pass:
 
-1. ✅ Commit Phase 7 changes
-2. ✅ Create git tag `v2.2.0-phase7-growth-telemetry`
-3. ✅ Deploy to production
-4. ✅ Configure Stripe production webhooks
-5. ✅ Run backfill script for production data
-6. ✅ Enable GitHub Actions weekly report
-7. ✅ Set up admin dashboard authentication
+1. Commit Phase 7 changes
+2. Create git tag `v2.2.0-phase7-growth-telemetry`
+3. Deploy to production
+4. Configure Stripe production webhooks
+5. Run backfill script for production data
+6. Enable GitHub Actions weekly report
+7. Set up admin dashboard authentication
 
 ---
 

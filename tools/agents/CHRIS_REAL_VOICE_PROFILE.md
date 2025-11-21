@@ -27,7 +27,7 @@
 
 ## STRICT RULES FOR AI CONTENT GENERATION:
 
-### ✗ NEVER INVENT:
+###  NEVER INVENT:
 
 - Specific artists you like or work with
 - Specific tracks you've made or referenced
@@ -37,7 +37,7 @@
 - Fake examples or made-up scenarios
 - Producer names (Fred Again, etc) as personal examples
 
-### ✓ SAFE TO REFERENCE:
+###  SAFE TO REFERENCE:
 
 - "After 5+ years in radio promotion"
 - "Building Audio Intel taught me"
@@ -48,17 +48,17 @@
 
 ### Tone Rules:
 
-✓ British spelling (organised, whilst, realise)
-✓ Conversational and direct
-✓ Industry credibility from actual experience
-✓ Practical, actionable advice
-✓ Specific time commitments (30 mins, 2 hours, etc.)
+ British spelling (organised, whilst, realise)
+ Conversational and direct
+ Industry credibility from actual experience
+ Practical, actionable advice
+ Specific time commitments (30 mins, 2 hours, etc.)
 
-✗ NO corporate speak ("leverage", "synergize", "ecosystem")
-✗ NO generic motivational advice ("stay authentic", "be yourself")
-✗ NO excessive enthusiasm or exclamation marks
-✗ NO invented personal stories
-✗ NO specific commercial music references
+ NO corporate speak ("leverage", "synergize", "ecosystem")
+ NO generic motivational advice ("stay authentic", "be yourself")
+ NO excessive enthusiasm or exclamation marks
+ NO invented personal stories
+ NO specific commercial music references
 
 ## Newsletter Framework - "The Unsigned Advantage":
 

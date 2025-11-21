@@ -1,56 +1,56 @@
 # Liberty Gmail - Current Campaign Setup
 
-## 🎯 YOUR ACTIVE CAMPAIGNS (Front & Center)
+##  YOUR ACTIVE CAMPAIGNS (Front & Center)
 
-**🎵 Kiara - Bloodshot** (50 emails)
+** Kiara - Bloodshot** (50 emails)
 
 - Automatically routes all emails with "Kiara", "Bloodshot", or "KYARA"
 - Stays in inbox if mentions "Chris"
 - Color: Red
 
-**🎵 Senior Dunce - Bestial** (44 emails)
+** Senior Dunce - Bestial** (44 emails)
 
 - Automatically routes all emails with "Senior Dunce" or "Bestial"
 - Stays in inbox if mentions "Chris"
 - Color: Pink
 
-**📅 Weekly Releases** (100 emails)
+** Weekly Releases** (100 emails)
 
 - Sam's weekly releases emails
 - Always stays in inbox (marked important)
 - Auto-updates when Sam sends new releases
 - Color: Yellow
 
-## 📋 Complete Structure
+##  Complete Structure
 
 ```
-🎵 Kiara - Bloodshot (50)        ← CURRENT CAMPAIGN
-🎵 Senior Dunce - Bestial (44)   ← CURRENT CAMPAIGN
-📅 Weekly Releases (100)         ← REGULAR UPDATES
+ Kiara - Bloodshot (50)        ← CURRENT CAMPAIGN
+ Senior Dunce - Bestial (44)   ← CURRENT CAMPAIGN
+ Weekly Releases (100)         ← REGULAR UPDATES
 
 Liberty/
-  ├── Station Feedback           ← Responses from stations
-  ├── Needs Action              ← Requires your response
-  ├── Internal                  ← Team communication
-  └── Archive (43)              ← Old campaigns
+   Station Feedback           ← Responses from stations
+   Needs Action              ← Requires your response
+   Internal                  ← Team communication
+   Archive (43)              ← Old campaigns
 
 Personal/
-  ├── Otter AI (35)             ← Call transcripts
-  └── Gemini (3)                ← AI transcripts
+   Otter AI (35)             ← Call transcripts
+   Gemini (3)                ← AI transcripts
 
 Junk/
-  └── Marketing                 ← Spam (archived)
+   Marketing                 ← Spam (archived)
 ```
 
-## 🔧 How It Works
+##  How It Works
 
 ### Automatic Routing (11 filters active)
 
 **Current Campaigns:**
 
-- Kiara/Bloodshot emails → 🎵 Kiara - Bloodshot
-- Senior Dunce/Bestial emails → 🎵 Senior Dunce - Bestial
-- Weekly releases from Sam → 📅 Weekly Releases (always in inbox)
+- Kiara/Bloodshot emails →  Kiara - Bloodshot
+- Senior Dunce/Bestial emails →  Senior Dunce - Bestial
+- Weekly releases from Sam →  Weekly Releases (always in inbox)
 
 **Station Feedback:**
 
@@ -70,9 +70,9 @@ Junk/
 
 **STAYS IN INBOX:**
 
-- 🎵 Kiara - Bloodshot (if mentions "Chris")
-- 🎵 Senior Dunce - Bestial (if mentions "Chris")
-- 📅 Weekly Releases (always)
+-  Kiara - Bloodshot (if mentions "Chris")
+-  Senior Dunce - Bestial (if mentions "Chris")
+-  Weekly Releases (always)
 - Liberty/Station Feedback (if mentions "Chris")
 - Liberty/Internal (team emails)
 
@@ -85,7 +85,7 @@ Junk/
 - All marketing spam
 - Auto-responses
 
-## 🚁 Autopilot Maintenance
+##  Autopilot Maintenance
 
 **Status:** Running every hour (next runs at top of each hour)
 
@@ -105,10 +105,10 @@ tail -f autopilot.log
 
 **Recent runs:**
 
-- 17:00 - ✅ Inbox clean
-- 21:00 - ✅ Inbox clean
+- 17:00 -  Inbox clean
+- 21:00 -  Inbox clean
 
-## 📝 Adding New Campaigns
+##  Adding New Campaigns
 
 When you start a new campaign, tell me:
 
@@ -122,33 +122,33 @@ I'll:
 3. Move existing emails to the label
 4. Archive old campaign to Liberty/Archive
 
-## 🎨 Label Colors
+##  Label Colors
 
-- 🎵 **Red** - Kiara Bloodshot
-- 🎵 **Pink** - Senior Dunce Bestial
-- 📅 **Yellow** - Weekly Releases
+-  **Red** - Kiara Bloodshot
+-  **Pink** - Senior Dunce Bestial
+-  **Yellow** - Weekly Releases
 - No color - Everything else
 
-## ✅ What's Working
+##  What's Working
 
-- ✅ 2 active campaigns front and center
-- ✅ Weekly releases always visible
-- ✅ Auto-routing to correct campaigns
-- ✅ Only emails mentioning "Chris" stay in inbox
-- ✅ Old campaigns archived (43 emails)
-- ✅ Personal tools organized
-- ✅ Marketing spam filtered
-- ✅ Hourly autopilot maintaining everything
+-  2 active campaigns front and center
+-  Weekly releases always visible
+-  Auto-routing to correct campaigns
+-  Only emails mentioning "Chris" stay in inbox
+-  Old campaigns archived (43 emails)
+-  Personal tools organized
+-  Marketing spam filtered
+-  Hourly autopilot maintaining everything
 
-## 💡 Quick Access
+##  Quick Access
 
 **Check Kiara campaign:**
-Click "🎵 Kiara - Bloodshot" in sidebar
+Click " Kiara - Bloodshot" in sidebar
 
 **Check Senior Dunce campaign:**
-Click "🎵 Senior Dunce - Bestial" in sidebar
+Click " Senior Dunce - Bestial" in sidebar
 
 **Check Weekly Releases:**
-Click "📅 Weekly Releases" in sidebar
+Click " Weekly Releases" in sidebar
 
 **All campaigns organized, front and center, auto-maintained!**

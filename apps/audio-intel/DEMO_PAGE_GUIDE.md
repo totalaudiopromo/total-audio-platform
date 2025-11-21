@@ -22,11 +22,11 @@ The `/demo` page is a professional, pitch-ready showcase of Audio Intel's contac
 Three quick-fact cards demonstrating core benefits:
 
 ```
-┌─────────────────────────────────────────┐
-│ 📍 15 Hours → 15 Minutes | Time savings │
-│ ✓ 100% Enrichment Success | Verified    │
-│ ⚡ Live Industry Data | BBC + Spotify   │
-└─────────────────────────────────────────┘
+
+  15 Hours → 15 Minutes | Time savings 
+  100% Enrichment Success | Verified    
+  Live Industry Data | BBC + Spotify   
+
 ```
 
 **Design**: Neobrutalist cards with:
@@ -113,11 +113,11 @@ Pre-loaded contacts represent real industry outlets:
 
 ### NO Design Anti-Patterns
 
-- ❌ No gradients on backgrounds
-- ❌ No glassmorphism or backdrop blur
-- ❌ No soft shadows
-- ❌ No rounded corners > 16px
-- ❌ No transparency on backgrounds
+-  No gradients on backgrounds
+-  No glassmorphism or backdrop blur
+-  No soft shadows
+-  No rounded corners > 16px
+-  No transparency on backgrounds
 
 ---
 
@@ -140,11 +140,11 @@ Pre-loaded contacts represent real industry outlets:
 
 ### WCAG 2.2 Level AA Compliance
 
-- ✓ Touch targets: 44px × 44px minimum
-- ✓ Colour contrast: 4.5:1 or 3:1 for large text
-- ✓ Keyboard navigation: All buttons focusable
-- ✓ Focus indicators: Black borders + shadow
-- ✓ Text sizing: Responsive scales without truncation
+-  Touch targets: 44px × 44px minimum
+-  Colour contrast: 4.5:1 or 3:1 for large text
+-  Keyboard navigation: All buttons focusable
+-  Focus indicators: Black borders + shadow
+-  Text sizing: Responsive scales without truncation
 
 ---
 

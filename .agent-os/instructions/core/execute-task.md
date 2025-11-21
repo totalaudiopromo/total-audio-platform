@@ -191,20 +191,20 @@ IMPORTANT: In the tasks.md file, mark this task and its sub-tasks complete by up
 <completed>- [x] Task description</completed>
 <incomplete>- [ ] Task description</incomplete>
 <blocked> - [ ] Task description
-⚠️ Blocking issue: [DESCRIPTION]
+ Blocking issue: [DESCRIPTION]
 </blocked>
 </update_format>
 
 <blocking_criteria>
 <attempts>maximum 3 different approaches</attempts>
 <action>document blocking issue</action>
-<emoji>⚠️</emoji>
+<emoji></emoji>
 </blocking_criteria>
 
 <instructions>
   ACTION: Update tasks.md after each task completion
   MARK: [x] for completed items immediately
-  DOCUMENT: Blocking issues with ⚠️ emoji
+  DOCUMENT: Blocking issues with  emoji
   LIMIT: 3 attempts before marking as blocked
 </instructions>
 

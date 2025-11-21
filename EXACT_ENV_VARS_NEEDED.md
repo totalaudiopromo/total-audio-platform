@@ -9,7 +9,7 @@ Current state (WRONG):
 ```yaml
 env:
   VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }} # ❌ ONLY audio-intel!
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }} #  ONLY audio-intel!
   TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
   TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
 ```
@@ -226,7 +226,7 @@ NEXT_PUBLIC_BASE_URL=https://totalaudiopromo.com
 
 ## Quick Checklist
 
-### GitHub Secrets ✅
+### GitHub Secrets 
 
 - [ ] NEXT_PUBLIC_SUPABASE_URL
 - [ ] NEXT_PUBLIC_SUPABASE_ANON_KEY
@@ -241,7 +241,7 @@ NEXT_PUBLIC_BASE_URL=https://totalaudiopromo.com
 - [ ] TELEGRAM_BOT_TOKEN (optional)
 - [ ] TELEGRAM_CHAT_ID (optional)
 
-### Vercel: audio-intel ✅
+### Vercel: audio-intel 
 
 - [ ] NEXT_PUBLIC_SUPABASE_URL (all 3 environments)
 - [ ] NEXT_PUBLIC_SUPABASE_ANON_KEY (all 3 environments)
@@ -252,7 +252,7 @@ NEXT_PUBLIC_BASE_URL=https://totalaudiopromo.com
 - [ ] NEXTAUTH_SECRET
 - [ ] NEXT_PUBLIC_BASE_URL
 
-### Vercel: tracker ✅
+### Vercel: tracker 
 
 - [ ] NEXT_PUBLIC_SUPABASE_URL (all 3 environments)
 - [ ] NEXT_PUBLIC_SUPABASE_ANON_KEY (all 3 environments)
@@ -261,7 +261,7 @@ NEXT_PUBLIC_BASE_URL=https://totalaudiopromo.com
 - [ ] NEXT_PUBLIC_APP_URL
 - [ ] Google OAuth vars (if using integrations)
 
-### Vercel: pitch-generator ✅
+### Vercel: pitch-generator 
 
 - [ ] NEXT_PUBLIC_SUPABASE_URL (all 3 environments)
 - [ ] NEXT_PUBLIC_SUPABASE_ANON_KEY (all 3 environments)
@@ -271,14 +271,14 @@ NEXT_PUBLIC_BASE_URL=https://totalaudiopromo.com
 - [ ] NEXTAUTH_URL
 - [ ] NEXT_PUBLIC_BASE_URL
 
-### Vercel: command-centre ✅
+### Vercel: command-centre 
 
 - [ ] NEXT_PUBLIC_SUPABASE_URL (all 3 environments)
 - [ ] NEXT_PUBLIC_SUPABASE_ANON_KEY (all 3 environments)
 - [ ] SUPABASE_SERVICE_ROLE_KEY (all 3 environments)
 - [ ] Social media API tokens (BlueSky, LinkedIn, etc.)
 
-### Vercel: web ✅
+### Vercel: web 
 
 - [ ] NEXT_PUBLIC_SUPABASE_URL (all 3 environments)
 - [ ] NEXT_PUBLIC_SUPABASE_ANON_KEY (all 3 environments)
@@ -289,17 +289,17 @@ NEXT_PUBLIC_BASE_URL=https://totalaudiopromo.com
 
 ## Common Mistakes to Avoid
 
-1. ❌ **Only setting env vars in audio-intel Vercel project**
-   - ✅ Set Supabase vars in ALL 5 Vercel projects
+1.  **Only setting env vars in audio-intel Vercel project**
+   - Set Supabase vars in ALL 5 Vercel projects
 
-2. ❌ **Only checking "Production" environment in Vercel**
-   - ✅ Check Production, Preview, AND Development for all Supabase vars
+2.  **Only checking "Production" environment in Vercel**
+   - Check Production, Preview, AND Development for all Supabase vars
 
-3. ❌ **Missing VERCEL*PROJECT_ID*\* secrets in GitHub**
-   - ✅ Add all 5 project IDs to GitHub Secrets
+3.  **Missing VERCEL*PROJECT_ID*\* secrets in GitHub**
+   - Add all 5 project IDs to GitHub Secrets
 
-4. ❌ **Forgetting to update golden-deploy.yml promote step**
-   - ✅ Pass all 5 VERCEL*PROJECT_ID*\* vars to promotion script
+4.  **Forgetting to update golden-deploy.yml promote step**
+   - Pass all 5 VERCEL*PROJECT_ID*\* vars to promotion script
 
 ---
 

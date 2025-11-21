@@ -2,13 +2,13 @@
 
 ## Everything You Need - Read This First
 
-**Status:** ✅ Tracker running on port 3004
+**Status:**  Tracker running on port 3004
 **Browser:** Should now be open at http://localhost:3004/dashboard
 **Time to complete:** 5 minutes to add campaign, 30 min to prep demo
 
 ---
 
-## 🎯 YOUR IMMEDIATE TODO LIST
+##  YOUR IMMEDIATE TODO LIST
 
 ### RIGHT NOW (Next 10 Minutes):
 
@@ -32,7 +32,7 @@
 - Refresh dashboard
 - See KYARA campaign
 - Click into it, see timeline
-- ✅ Done!
+-  Done!
 
 ---
 
@@ -63,24 +63,24 @@
 
 ---
 
-## 📁 ALL FILES CREATED (In Priority Order)
+##  ALL FILES CREATED (In Priority Order)
 
-### 🔥 **MUST READ:**
+###  **MUST READ:**
 
 1. **[`START_HERE.md`](./START_HERE.md)** ← You are here
    - This summary document
 
-2. **[`QUICK_START_NOW.md`](./QUICK_START_NOW.md)** ⭐ **READ NEXT**
+2. **[`QUICK_START_NOW.md`](./QUICK_START_NOW.md)**  **READ NEXT**
    - 5-minute guide to add KYARA campaign to tracker
    - Step-by-step with copy/paste data
    - Troubleshooting tips
 
-3. **[`FRIDAY_DEMO_PREP_COMPLETE.md`](./FRIDAY_DEMO_PREP_COMPLETE.md)** ⭐ **READ TONIGHT**
+3. **[`FRIDAY_DEMO_PREP_COMPLETE.md`](./FRIDAY_DEMO_PREP_COMPLETE.md)**  **READ TONIGHT**
    - Complete prep guide for Dan demo
    - Business case (£3,900 savings, 49:1 ROI)
    - Demo checklist and expected outcomes
 
-### 📋 **FOR DEMO:**
+###  **FOR DEMO:**
 
 4. **[`KYARA_CAMPAIGN_SHOWCASE_FOR_DAN_DEMO.md`](./KYARA_CAMPAIGN_SHOWCASE_FOR_DAN_DEMO.md)**
    - Detailed 7-minute demo script
@@ -93,7 +93,7 @@
    - Campaign data to copy/paste
    - Activity timeline details
 
-### 📧 **FOR KYARA CAMPAIGN:**
+###  **FOR KYARA CAMPAIGN:**
 
 6. **[`KYARA_MONDAY_RELEASE_BLAST.md`](./KYARA_MONDAY_RELEASE_BLAST.md)**
    - Monday release day email templates
@@ -113,7 +113,7 @@
 
 ---
 
-## 🎯 WHAT EACH FILE DOES
+##  WHAT EACH FILE DOES
 
 ### Demo Prep Files:
 
@@ -135,7 +135,7 @@
 
 ---
 
-## ⚡ QUICK DECISION TREE
+##  QUICK DECISION TREE
 
 ### "I want to add campaign to tracker NOW"
 
@@ -164,7 +164,7 @@
 
 ---
 
-## 💼 THE BIG PICTURE
+##  THE BIG PICTURE
 
 ### What You're Doing:
 
@@ -200,11 +200,11 @@
 
 ---
 
-## 🚀 YOUR PATH FORWARD
+##  YOUR PATH FORWARD
 
 ### TODAY (Thursday):
 
-1. ✅ Files created (9 documents ready)
+1.  Files created (9 documents ready)
 2. [ ] Add KYARA campaign to tracker (5 min) ← **DO THIS NOW**
 3. [ ] Take screenshots (2 min)
 4. [ ] Review demo prep files (30 min tonight)
@@ -229,7 +229,7 @@
 
 ---
 
-## 📊 SUCCESS METRICS
+##  SUCCESS METRICS
 
 ### For KYARA Campaign:
 
@@ -254,7 +254,7 @@
 
 ---
 
-## ✅ FINAL CHECKLIST
+##  FINAL CHECKLIST
 
 ### TONIGHT (Before Bed):
 
@@ -283,16 +283,16 @@
 
 ---
 
-## 🎉 YOU'RE SET!
+##  YOU'RE SET!
 
 **What You Have:**
-✅ Tracker running (port 3004)
-✅ 9 comprehensive documents
-✅ Complete demo strategy
-✅ Real campaign data ready
-✅ Follow-up emails prepared
-✅ 30 new contacts identified
-✅ Monday release blast ready
+ Tracker running (port 3004)
+ 9 comprehensive documents
+ Complete demo strategy
+ Real campaign data ready
+ Follow-up emails prepared
+ 30 new contacts identified
+ Monday release blast ready
 
 **What You Need:**
 
@@ -311,6 +311,6 @@
 
 **BOTTOM LINE:**
 
-Everything is ready. Just add the campaign to the tracker (5 min), review the demo prep tonight (30 min), and show Dan tomorrow (7 min). You're going to crush this! 🚀
+Everything is ready. Just add the campaign to the tracker (5 min), review the demo prep tonight (30 min), and show Dan tomorrow (7 min). You're going to crush this! 
 
-**NOW GO ADD THAT CAMPAIGN! ⚡**
+**NOW GO ADD THAT CAMPAIGN! **

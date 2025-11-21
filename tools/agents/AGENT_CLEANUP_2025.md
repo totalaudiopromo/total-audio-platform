@@ -6,7 +6,7 @@
 
 ---
 
-## 🎯 The Problem
+##  The Problem
 
 The `/tools/agents/` directory had **225 JavaScript files**, creating the illusion of a massive agent system. In reality, most files were:
 
@@ -23,7 +23,7 @@ This made it impossible to:
 
 ---
 
-## ✅ The Solution
+##  The Solution
 
 ### 1. **Archived Utility Scripts** (53 files)
 
@@ -60,13 +60,13 @@ Found apparent duplicates that are actually **different agents**:
 **orchestrator.js** (2 files):
 
 - `archive/working/orchestrator.js` (629 lines) - Old version
-- `radio-promo/orchestrator.js` (1,149 lines) - **Current production version** ✓
+- `radio-promo/orchestrator.js` (1,149 lines) - **Current production version** 
 
 **analytics-agent.js** (2 files):
 
 - `core-agents/business/analytics-agent.js` (839 lines) - Database analytics
 - `radio-promo/agents/analytics-agent.js` (308 lines) - WARM API tracking
-- These serve **different purposes** and are both valid ✓
+- These serve **different purposes** and are both valid 
 
 ### 4. **Created Agent Registry** (agent-registry.json)
 
@@ -82,7 +82,7 @@ Comprehensive catalogue of **22 real production agents**:
 
 ---
 
-## 📊 Real Agent Count: 22
+##  Real Agent Count: 22
 
 ### **CORE OPERATIONS** (4 agents)
 
@@ -128,43 +128,43 @@ System health and cost tracking:
 
 ---
 
-## 🗂️ New Directory Structure
+##  New Directory Structure
 
 ```
 /tools/agents/
-├── agent-registry.json           # 📋 Central registry of 22 real agents
-├── check-all-agents.js           # Health monitoring (to be updated)
-├── unified-launcher.js           # CLI access to agents
-├── agent-os-dashboard.js         # Dashboard system
-│
-├── radio-promo/
-│   ├── orchestrator.js           # 🎯 Main Liberty campaign orchestrator (1,149 lines)
-│   ├── agents/                   # 7 Liberty campaign agents
-│   ├── integrations/             # 28 API wrapper libraries
-│   └── config/                   # Configuration files
-│
-├── core-agents/
-│   ├── business/                 # Business logic agents
-│   ├── content/                  # Content generation agents
-│   ├── technical/                # Database, contact management
-│   └── radio-promo/              # Radio promotion agent
-│
-├── gmail-setup/                  # Gmail automation (13 files)
-│
-├── campaigns/                    # 🗄️ Campaign-specific tools
-│   ├── kyara/                    # 12 files
-│   ├── bestial/                  # 7 files
-│   ├── liberty/                  # 2 files
-│   └── senior-dunce/             # 4 files
-│
-└── archive/
-    ├── utilities/                # 🗄️ 53 test/debug/utility scripts
-    └── working/                  # Old orchestrator versions
+ agent-registry.json           #  Central registry of 22 real agents
+ check-all-agents.js           # Health monitoring (to be updated)
+ unified-launcher.js           # CLI access to agents
+ agent-os-dashboard.js         # Dashboard system
+
+ radio-promo/
+    orchestrator.js           #  Main Liberty campaign orchestrator (1,149 lines)
+    agents/                   # 7 Liberty campaign agents
+    integrations/             # 28 API wrapper libraries
+    config/                   # Configuration files
+
+ core-agents/
+    business/                 # Business logic agents
+    content/                  # Content generation agents
+    technical/                # Database, contact management
+    radio-promo/              # Radio promotion agent
+
+ gmail-setup/                  # Gmail automation (13 files)
+
+ campaigns/                    #  Campaign-specific tools
+    kyara/                    # 12 files
+    bestial/                  # 7 files
+    liberty/                  # 2 files
+    senior-dunce/             # 4 files
+
+ archive/
+     utilities/                #  53 test/debug/utility scripts
+     working/                  # Old orchestrator versions
 ```
 
 ---
 
-## 🎨 Dashboard Integration
+##  Dashboard Integration
 
 The agent registry includes **visual system metadata** for Command Centre:
 
@@ -183,17 +183,17 @@ The agent registry includes **visual system metadata** for Command Centre:
 
 ```json
 {
-  "running": { "emoji": "⚡", "bg": "bg-yellow-500", "text": "text-black", "pulse": true },
-  "success": { "emoji": "✅", "bg": "bg-green-500", "text": "text-white" },
-  "failed": { "emoji": "❌", "bg": "bg-red-500", "text": "text-white", "pulse": true },
-  "idle": { "emoji": "⏸️", "bg": "bg-slate-600", "text": "text-white" },
-  "queued": { "emoji": "⏳", "bg": "bg-blue-500", "text": "text-white" }
+  "running": { "emoji": "", "bg": "bg-yellow-500", "text": "text-black", "pulse": true },
+  "success": { "emoji": "", "bg": "bg-green-500", "text": "text-white" },
+  "failed": { "emoji": "", "bg": "bg-red-500", "text": "text-white", "pulse": true },
+  "idle": { "emoji": "⏸", "bg": "bg-slate-600", "text": "text-white" },
+  "queued": { "emoji": "", "bg": "bg-blue-500", "text": "text-white" }
 }
 ```
 
 ---
 
-## 🚀 Next Steps
+##  Next Steps
 
 ### Immediate (Week 1)
 
@@ -222,7 +222,7 @@ The agent registry includes **visual system metadata** for Command Centre:
 
 ---
 
-## 💰 Time & Cost Savings
+##  Time & Cost Savings
 
 **Total Time Saved (per week)**: ~50 hours
 
@@ -241,26 +241,26 @@ The agent registry includes **visual system metadata** for Command Centre:
 
 ---
 
-## 📝 Maintenance Notes
+##  Maintenance Notes
 
 **What NOT to do**:
 
-- ❌ Don't create new test/debug scripts in root - use `archive/utilities/`
-- ❌ Don't create campaign-specific tools in root - use `campaigns/[name]/`
-- ❌ Don't add agents without updating `agent-registry.json`
-- ❌ Don't delete archived files - they may be needed for reference
+-  Don't create new test/debug scripts in root - use `archive/utilities/`
+-  Don't create campaign-specific tools in root - use `campaigns/[name]/`
+-  Don't add agents without updating `agent-registry.json`
+-  Don't delete archived files - they may be needed for reference
 
 **What TO do**:
 
-- ✅ Add new production agents to `agent-registry.json`
-- ✅ Put campaign tools in `campaigns/` subfolder
-- ✅ Archive test scripts immediately after use
-- ✅ Keep registry updated with schedules and costs
-- ✅ Review archived utilities quarterly - delete if truly obsolete
+-  Add new production agents to `agent-registry.json`
+-  Put campaign tools in `campaigns/` subfolder
+-  Archive test scripts immediately after use
+-  Keep registry updated with schedules and costs
+-  Review archived utilities quarterly - delete if truly obsolete
 
 ---
 
-## 🎯 Key Takeaways
+##  Key Takeaways
 
 1. **225 files ≠ 225 agents** - Most were utilities, tests, and campaign tools
 2. **22 real production agents** is a manageable, professional ecosystem
@@ -271,5 +271,5 @@ The agent registry includes **visual system metadata** for Command Centre:
 ---
 
 **Last Updated**: 9th October 2025
-**Status**: Cleanup complete ✅
+**Status**: Cleanup complete 
 **Next**: Dashboard integration with category badges

@@ -2,7 +2,7 @@
 
 ## Quick Setup (5 minutes)
 
-### ✅ Step 1: Apply Migration
+###  Step 1: Apply Migration
 
 1. Open: https://supabase.com/dashboard/project/mjfhegawkusjlkcgfevp/sql
 2. Copy contents of `supabase/migrations/018_subscription_enforcement.sql`
@@ -15,7 +15,7 @@
    ```
    **Expected**: 4 rows returned
 
-### ✅ Step 2: Mark Yourself as Beta User
+###  Step 2: Mark Yourself as Beta User
 
 1. Find your user ID:
    ```sql
@@ -31,7 +31,7 @@
    ```
    **Expected**: `true`
 
-### ✅ Step 3: Test Beta User Can Create Unlimited Campaigns
+###  Step 3: Test Beta User Can Create Unlimited Campaigns
 
 1. Sign in to: https://tracker.totalaudiopromo.com
 2. Create 5+ campaigns (should all succeed)
@@ -55,15 +55,15 @@
 
 **Test Steps:**
 
-1. ✅ Create Campaign #1 → **Success**
-2. ✅ Create Campaign #2 → **Success**
-3. ✅ Create Campaign #3 → **Success**
-4. ❌ Create Campaign #4 → **Should FAIL with error:**
+1.  Create Campaign #1 → **Success**
+2.  Create Campaign #2 → **Success**
+3.  Create Campaign #3 → **Success**
+4.  Create Campaign #4 → **Should FAIL with error:**
    ```
    Campaign limit reached
    You've reached your campaign limit of 3. Upgrade your plan to create more campaigns.
    ```
-5. ✅ Visit `/billing` → Should show upgrade options
+5.  Visit `/billing` → Should show upgrade options
 
 **Verify in Database:**
 
@@ -85,9 +85,9 @@ WHERE id = 'TEST_USER_UUID';
 
 **Test Steps:**
 
-1. ✅ Create 10+ campaigns → All succeed
-2. ✅ Visit `/billing` → Beta badge shown
-3. ✅ No limit warnings or upgrade prompts
+1.  Create 10+ campaigns → All succeed
+2.  Visit `/billing` → Beta badge shown
+3.  No limit warnings or upgrade prompts
 
 **Verify in Database:**
 
@@ -107,19 +107,19 @@ SELECT can_create_campaign('YOUR_UUID') as can_create;  -- Should return true
 
 **Test Steps:**
 
-1. ✅ Sign in as free test user (3 campaigns already created)
-2. ✅ Visit `/billing`
-3. ✅ Click **"Upgrade to Pro"**
-4. ✅ Redirected to Stripe Checkout
-5. ✅ Use test card: `4242 4242 4242 4242`
+1.  Sign in as free test user (3 campaigns already created)
+2.  Visit `/billing`
+3.  Click **"Upgrade to Pro"**
+4.  Redirected to Stripe Checkout
+5.  Use test card: `4242 4242 4242 4242`
    - Expiry: Any future date
    - CVC: Any 3 digits
    - ZIP: Any 5 digits
-6. ✅ Complete payment
-7. ✅ Redirected to `/billing?success=true`
-8. ✅ Page shows "Pro Plan" as active
-9. ✅ Create Campaign #4 → **Should succeed now**
-10. ✅ Create 10 more campaigns → All succeed
+6.  Complete payment
+7.  Redirected to `/billing?success=true`
+8.  Page shows "Pro Plan" as active
+9.  Create Campaign #4 → **Should succeed now**
+10.  Create 10 more campaigns → All succeed
 
 **Verify in Database:**
 
@@ -140,13 +140,13 @@ FROM user_profiles WHERE id = 'TEST_USER_UUID';
 
 **Test Steps:**
 
-1. ✅ Sign in as paid user (from Test C)
-2. ✅ Visit `/billing`
-3. ✅ Click **"Manage Billing in Stripe"**
-4. ✅ Opens Stripe Customer Portal
-5. ✅ View subscription details
-6. ✅ (Optional) Cancel subscription
-7. ✅ If cancelled, verify downgrade:
+1.  Sign in as paid user (from Test C)
+2.  Visit `/billing`
+3.  Click **"Manage Billing in Stripe"**
+4.  Opens Stripe Customer Portal
+5.  View subscription details
+6.  (Optional) Cancel subscription
+7.  If cancelled, verify downgrade:
    ```sql
    SELECT subscription_status, subscription_tier, campaigns_limit
    FROM user_profiles WHERE id = 'TEST_USER_UUID';
@@ -193,7 +193,7 @@ SELECT * FROM get_user_subscription_details('USER_UUID');
 
 ## Common Issues & Solutions
 
-### ❌ Issue: Campaign creation still allows unlimited for free users
+###  Issue: Campaign creation still allows unlimited for free users
 
 **Check:**
 
@@ -207,7 +207,7 @@ SELECT COUNT(*) FROM campaigns WHERE user_id = 'USER_UUID' AND deleted_at IS NUL
 
 **Solution:** Ensure migration applied and app restarted
 
-### ❌ Issue: Beta user seeing limits
+###  Issue: Beta user seeing limits
 
 **Check:**
 
@@ -217,7 +217,7 @@ SELECT is_beta_user FROM user_profiles WHERE id = 'USER_UUID';
 
 **Solution:** Run the UPDATE query to set `is_beta_user = true`
 
-### ❌ Issue: Stripe checkout not working
+###  Issue: Stripe checkout not working
 
 **Check:**
 
@@ -255,7 +255,7 @@ DELETE FROM subscriptions WHERE user_id = 'USER_UUID';
 
 ---
 
-## Success Criteria ✅
+## Success Criteria 
 
 Your subscription system is working correctly when:
 
@@ -298,6 +298,6 @@ Your subscription system is working correctly when:
 
 ---
 
-**Ready to Launch!** 🚀
+**Ready to Launch!** 
 
 Once all tests pass, your subscription enforcement is production-ready.

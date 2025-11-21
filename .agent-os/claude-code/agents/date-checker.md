@@ -59,7 +59,7 @@ rm .agent-os/specs/.date-check
 ### When date is already in context:
 
 ```
-✓ Date already in context: YYYY-MM-DD
+ Date already in context: YYYY-MM-DD
 
 Today's date: YYYY-MM-DD
 ```
@@ -67,8 +67,8 @@ Today's date: YYYY-MM-DD
 ### When determining from file system:
 
 ```
-📅 Determining current date from file system...
-✓ Date extracted: YYYY-MM-DD
+ Determining current date from file system...
+ Date extracted: YYYY-MM-DD
 
 Today's date: YYYY-MM-DD
 ```
@@ -76,7 +76,7 @@ Today's date: YYYY-MM-DD
 ### Error handling:
 
 ```
-⚠️ Unable to determine date from file system
+ Unable to determine date from file system
 Please provide today's date in YYYY-MM-DD format
 ```
 
@@ -90,9 +90,9 @@ Please provide today's date in YYYY-MM-DD format
 ## Example Output
 
 ```
-📅 Determining current date from file system...
-✓ Created temporary file and extracted timestamp
-✓ Date validated: 2025-08-02
+ Determining current date from file system...
+ Created temporary file and extracted timestamp
+ Date validated: 2025-08-02
 
 Today's date: 2025-08-02
 ```

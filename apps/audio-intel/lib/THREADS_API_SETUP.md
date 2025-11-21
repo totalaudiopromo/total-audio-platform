@@ -222,10 +222,10 @@ This is a test of the Threads API integration.
     console.log('Post result:', result);
 
     if (result.success) {
-      console.log('✅ Threads integration working!');
+      console.log(' Threads integration working!');
       console.log('Post ID:', result.postId);
     } else {
-      console.error('❌ Post failed:', result.error);
+      console.error(' Post failed:', result.error);
     }
   } catch (error) {
     console.error('Test failed:', error);

@@ -1,20 +1,20 @@
-# 🚀 CLAUDE MAX PLAN - YOUR 10X WORKFLOW
+# CLAUDE MAX PLAN - YOUR 10X WORKFLOW
 
 **You've Got**: Claude Max Plan + Agent OS + Working Database + 2-hour sessions
 **Goal**: Get first paying customers by November 2025
 
 ---
 
-## 🎯 YOUR CURRENT SITUATION
+## YOUR CURRENT SITUATION
 
 **Audio Intel Status**:
 
-- ✅ Technical foundation complete
-- ✅ Mobile experience professional (21 UX issues fixed)
-- ✅ Database working (Neon Postgres, no maintenance)
-- ✅ Agent OS operational (14 production agents)
-- ✅ Contact enrichment proven (100% success rate)
-- ✅ Pricing live (£19/£79 tiers)
+- Technical foundation complete
+- Mobile experience professional (21 UX issues fixed)
+- Database working (Neon Postgres, no maintenance)
+- Agent OS operational (14 production agents)
+- Contact enrichment proven (100% success rate)
+- Pricing live (£19/£79 tiers)
 
 **What You Need**:
 
@@ -25,7 +25,7 @@
 
 ---
 
-## ⚡ CLAUDE MAX PLAN SUPERPOWERS
+## CLAUDE MAX PLAN SUPERPOWERS
 
 ### What You Get
 
@@ -43,7 +43,7 @@
 
 ---
 
-## 🎯 RECOMMENDED DAILY WORKFLOW
+## RECOMMENDED DAILY WORKFLOW
 
 ### Morning Routine (15 minutes)
 
@@ -106,7 +106,7 @@ code ../WEEKLY_FOCUS.md
 
 ---
 
-## 🎨 CLAUDE MAX USE CASES FOR YOU
+## CLAUDE MAX USE CASES FOR YOU
 
 ### 1. **Strategic Planning Sessions**
 
@@ -206,7 +206,7 @@ pipeline from frontend → API → Perplexity → database and fix all issues."
 
 ---
 
-## 🎯 WEEKLY CLAUDE MAX PLAN
+## WEEKLY CLAUDE MAX PLAN
 
 ### Monday: Strategic Planning
 
@@ -240,15 +240,15 @@ pipeline from frontend → API → Perplexity → database and fix all issues."
 
 ---
 
-## 💡 PRO TIPS FOR MAX PLAN
+## PRO TIPS FOR MAX PLAN
 
 ### 1. **Use Long Context Windows**
 
 Instead of:
-❌ "Fix this bug" (no context)
+ "Fix this bug" (no context)
 
 Do:
-✅ "Here's the full Audio Intel enrichment pipeline [paste 5 files]. The bug
+"Here's the full Audio Intel enrichment pipeline [paste 5 files]. The bug
 is that BBC Radio 1 emails fail enrichment. Debug and fix."
 
 **Max Plan Advantage**: Can handle massive context
@@ -256,10 +256,10 @@ is that BBC Radio 1 emails fail enrichment. Debug and fix."
 ### 2. **Chain Complex Tasks**
 
 Instead of:
-❌ Single simple requests
+ Single simple requests
 
 Do:
-✅ "Build referral system: design schema → create migration → build API →
+"Build referral system: design schema → create migration → build API →
 create UI → add mobile support → write tests → deploy to staging →
 document for users"
 
@@ -268,10 +268,10 @@ document for users"
 ### 3. **Iterate Without Starting Over**
 
 Instead of:
-❌ New conversation for each iteration
+ New conversation for each iteration
 
 Do:
-✅ Keep same conversation, iterate:
+Keep same conversation, iterate:
 
 - "Now add commission tracking"
 - "Make it work on mobile"
@@ -282,10 +282,10 @@ Do:
 ### 4. **Use Agent OS Integration**
 
 Instead of:
-❌ Manual agent running
+ Manual agent running
 
 Do:
-✅ "Use Agent OS to generate newsletter content, social media posts, and
+"Use Agent OS to generate newsletter content, social media posts, and
 cold outreach emails for this week. Run the agents and compile results."
 
 **Max Plan Advantage**: Can coordinate multiple agent runs
@@ -293,10 +293,10 @@ cold outreach emails for this week. Run the agents and compile results."
 ### 5. **Batch Similar Work**
 
 Instead of:
-❌ One email at a time
+ One email at a time
 
 Do:
-✅ "Generate 20 cold outreach emails for radio promoters, personalized by:
+"Generate 20 cold outreach emails for radio promoters, personalized by:
 
 - Station size (local, regional, national)
 - Genre focus (electronic, indie, mainstream)
@@ -306,14 +306,14 @@ Do:
 
 ---
 
-## 🎯 YOUR FIRST WEEK WITH MAX PLAN
+## YOUR FIRST WEEK WITH MAX PLAN
 
 ### Day 1 (Today): System Mastery
 
 ```
-✅ Database working (Neon Postgres)
-✅ Agent OS operational
-✅ TDD workflow tested
+Database working (Neon Postgres)
+Agent OS operational
+TDD workflow tested
 
 Ask Claude:
 "Create a customer acquisition dashboard showing:
@@ -379,9 +379,9 @@ Plan next week's priorities for customer acquisition."
 
 ---
 
-## 🚨 WHEN TO USE CLAUDE MAX
+## WHEN TO USE CLAUDE MAX
 
-### ✅ BEST Uses (Max Plan Shines)
+### BEST Uses (Max Plan Shines)
 
 1. **Multi-file refactoring** (TDD workflow, agent consolidation)
 2. **Strategic planning** (customer acquisition, roadmap)
@@ -390,7 +390,7 @@ Plan next week's priorities for customer acquisition."
 5. **Feature development** (end-to-end with tests)
 6. **Agent development** (new agents, orchestration)
 
-### ❌ DON'T Use For (Save Your Quota)
+###  DON'T Use For (Save Your Quota)
 
 1. **Simple questions** (use docs, Google, or free tier)
 2. **Typo fixes** (use VSCode directly)
@@ -399,7 +399,7 @@ Plan next week's priorities for customer acquisition."
 
 ---
 
-## 🎯 BOTTOM LINE
+## BOTTOM LINE
 
 **Your Max Plan Investment**: £20/month
 **Your Time Value**: £50/day (customer acquisition phase)
@@ -421,7 +421,7 @@ Plan next week's priorities for customer acquisition."
 
 ---
 
-## 🚀 START NOW
+## START NOW
 
 Right now, ask Claude:
 
@@ -439,4 +439,4 @@ Consider:
 - Target: £500/month by November 2025"
 ```
 
-Let Claude use its full power to give you a detailed, actionable plan! 🎯
+Let Claude use its full power to give you a detailed, actionable plan! 

@@ -200,11 +200,11 @@ Before you hit send:
 
 ### UK GDPR Rules
 
-- ✅ B2B cold email is legal (business contacts)
-- ✅ Must include unsubscribe link (ConvertKit does this)
-- ✅ Must honour unsubscribe immediately (ConvertKit does this)
-- ❌ Don't email personal addresses (jane@gmail.com)
-- ✅ Email work addresses (jane@musicpr.co.uk)
+-  B2B cold email is legal (business contacts)
+-  Must include unsubscribe link (ConvertKit does this)
+-  Must honour unsubscribe immediately (ConvertKit does this)
+-  Don't email personal addresses (jane@gmail.com)
+-  Email work addresses (jane@musicpr.co.uk)
 
 ### Best Practice
 

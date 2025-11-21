@@ -2,7 +2,7 @@
 
 ## Demo Duration: 10-12 minutes
 
-### 🎯 Demo Goals
+###  Demo Goals
 
 1. Show real AI-powered campaign analysis (NOT just maths)
 2. Demonstrate CSV import saving hours of manual data entry
@@ -166,11 +166,11 @@
 ## CLOSING: Value Proposition (1 min)
 
 **Recap:**
-✅ **CSV Import**: 2+ hours saved per campaign setup
-✅ **AI Autopsy**: Genuine Claude AI analysis, not just maths
-✅ **UK Benchmarks**: BBC Radio, playlists, blogs - real industry data
-✅ **Pattern Recognition**: Learn what works across your campaigns
-✅ **Copy & Share**: Every insight copyable for client reports
+ **CSV Import**: 2+ hours saved per campaign setup
+ **AI Autopsy**: Genuine Claude AI analysis, not just maths
+ **UK Benchmarks**: BBC Radio, playlists, blogs - real industry data
+ **Pattern Recognition**: Learn what works across your campaigns
+ **Copy & Share**: Every insight copyable for client reports
 
 **Pricing Reminder:**
 
@@ -184,7 +184,7 @@
 
 ---
 
-## 🎯 KEY DEMO TIPS
+##  KEY DEMO TIPS
 
 ### Before the Demo
 
@@ -226,7 +226,7 @@
 
 ---
 
-## 📊 SUCCESS METRICS
+##  SUCCESS METRICS
 
 **Demo Success = At Least 2 of These:**
 

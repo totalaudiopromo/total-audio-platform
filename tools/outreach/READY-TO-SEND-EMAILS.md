@@ -215,11 +215,11 @@ P.S. If you've got questions, just reply. I actually read these.
 
 ## What NOT to Do
 
-❌ Send all 3 emails in one day
-❌ Buy email lists (terrible quality)
-❌ Use merge tags wrong ({{first_name}} must match CSV column)
-❌ Send from noreply@ address (kills replies)
-❌ Make it about you (make it about their problem)
+ Send all 3 emails in one day
+ Buy email lists (terrible quality)
+ Use merge tags wrong ({{first_name}} must match CSV column)
+ Send from noreply@ address (kills replies)
+ Make it about you (make it about their problem)
 
 ---
 

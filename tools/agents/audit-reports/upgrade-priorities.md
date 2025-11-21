@@ -7,31 +7,31 @@
 
 ### Priority Levels
 
-- 🔴 **CRITICAL**: Revenue-impacting, customer-facing, system-critical
-- 🟠 **HIGH**: Customer acquisition, content generation, active workflows
-- 🟡 **MEDIUM**: Supporting features, automation enhancements
-- 🟢 **LOW**: Nice-to-have, experimental, archived agents
+-  **CRITICAL**: Revenue-impacting, customer-facing, system-critical
+-  **HIGH**: Customer acquisition, content generation, active workflows
+-  **MEDIUM**: Supporting features, automation enhancements
+-  **LOW**: Nice-to-have, experimental, archived agents
 
 ### Upgrade Flags
 
-- ❌ **CRITICAL**: Not using SDK streaming for long operations
-- ❌ **HIGH**: No prompt caching despite repeated context
-- ❌ **MEDIUM**: Manual tool orchestration instead of agentic loop
-- ⚠️ **LOW**: Missing extended thinking for complex decisions
-- ℹ️ **INFO**: Could benefit from batch processing
+-  **CRITICAL**: Not using SDK streaming for long operations
+-  **HIGH**: No prompt caching despite repeated context
+-  **MEDIUM**: Manual tool orchestration instead of agentic loop
+-  **LOW**: Missing extended thinking for complex decisions
+- ℹ **INFO**: Could benefit from batch processing
 
 ---
 
-## 🔴 CRITICAL PRIORITY AGENTS
+##  CRITICAL PRIORITY AGENTS
 
 ### 1. Contact Agent (`core-agents/technical/contact-agent.js`)
 
 **Current Status**:
 
-- ❌ **CRITICAL**: No streaming for enrichment progress
-- ❌ **HIGH**: No caching for UK contacts context (515 contacts)
-- ❌ **MEDIUM**: Manual enrichment flow instead of agentic loops
-- ℹ️ **INFO**: Perfect candidate for batch processing
+-  **CRITICAL**: No streaming for enrichment progress
+-  **HIGH**: No caching for UK contacts context (515 contacts)
+-  **MEDIUM**: Manual enrichment flow instead of agentic loops
+- ℹ **INFO**: Perfect candidate for batch processing
 
 **Why Critical**:
 
@@ -105,10 +105,10 @@ class ContactEnrichmentAgent extends StreamingAgent {
 
 **Current Status**:
 
-- ❌ **CRITICAL**: No SDK health monitoring
-- ❌ **HIGH**: No cost tracking or cache hit rate visibility
-- ❌ **MEDIUM**: No centralized event system for agents
-- ⚠️ **LOW**: No performance benchmarking
+-  **CRITICAL**: No SDK health monitoring
+-  **HIGH**: No cost tracking or cache hit rate visibility
+-  **MEDIUM**: No centralized event system for agents
+-  **LOW**: No performance benchmarking
 
 **Why Critical**:
 
@@ -191,10 +191,10 @@ class AgentManager {
 
 **Current Status**:
 
-- ❌ **CRITICAL**: No streaming for campaign planning
-- ❌ **HIGH**: No caching for music industry context
-- ⚠️ **LOW**: Missing extended thinking for strategy
-- ❌ **MEDIUM**: Manual campaign workflow orchestration
+-  **CRITICAL**: No streaming for campaign planning
+-  **HIGH**: No caching for music industry context
+-  **LOW**: Missing extended thinking for strategy
+-  **MEDIUM**: Manual campaign workflow orchestration
 
 **Why Critical**:
 
@@ -266,15 +266,15 @@ class CampaignAgent extends StreamingAgent {
 
 ---
 
-## 🟠 HIGH PRIORITY AGENTS
+##  HIGH PRIORITY AGENTS
 
 ### 4. Content Generation Agent (`core-agents/content/content-generation-agent.js`)
 
 **Upgrade Flags**:
 
-- ❌ **CRITICAL**: No streaming for long-form content
-- ❌ **HIGH**: No brand voice caching
-- ⚠️ **LOW**: Could benefit from thinking mode for creative strategy
+-  **CRITICAL**: No streaming for long-form content
+-  **HIGH**: No brand voice caching
+-  **LOW**: Could benefit from thinking mode for creative strategy
 
 **Why High Priority**:
 
@@ -298,9 +298,9 @@ class CampaignAgent extends StreamingAgent {
 
 **Upgrade Flags**:
 
-- ❌ **CRITICAL**: No streaming for newsletter generation
-- ❌ **HIGH**: No caching for "The Unsigned Advantage" format
-- ❌ **MEDIUM**: Manual content assembly vs agentic generation
+-  **CRITICAL**: No streaming for newsletter generation
+-  **HIGH**: No caching for "The Unsigned Advantage" format
+-  **MEDIUM**: Manual content assembly vs agentic generation
 
 **Why High Priority**:
 
@@ -324,9 +324,9 @@ class CampaignAgent extends StreamingAgent {
 
 **Upgrade Flags**:
 
-- ❌ **CRITICAL**: No streaming
-- ❌ **HIGH**: No product context caching
-- ⚠️ **LOW**: Needs thinking mode for positioning
+-  **CRITICAL**: No streaming
+-  **HIGH**: No product context caching
+-  **LOW**: Needs thinking mode for positioning
 
 **Why High Priority**:
 
@@ -349,9 +349,9 @@ class CampaignAgent extends StreamingAgent {
 
 **Upgrade Flags**:
 
-- ❌ **HIGH**: No caching for customer acquisition strategies
-- ⚠️ **LOW**: Needs extended thinking for market analysis
-- ❌ **MEDIUM**: Manual campaign orchestration
+-  **HIGH**: No caching for customer acquisition strategies
+-  **LOW**: Needs extended thinking for market analysis
+-  **MEDIUM**: Manual campaign orchestration
 
 **Why High Priority**:
 
@@ -370,7 +370,7 @@ class CampaignAgent extends StreamingAgent {
 
 ---
 
-## 🟡 MEDIUM PRIORITY AGENTS
+##  MEDIUM PRIORITY AGENTS
 
 ### 8. Social Media Agent (`core-agents/content/social-media-agent.js`)
 
@@ -399,7 +399,7 @@ class CampaignAgent extends StreamingAgent {
 
 ---
 
-## 🟢 LOW PRIORITY AGENTS
+##  LOW PRIORITY AGENTS
 
 ### Radio Promo Sub-Agents (7 agents)
 
@@ -432,11 +432,11 @@ class CampaignAgent extends StreamingAgent {
 
 ### Week 1: Critical Foundation
 
-1. ✅ Create `BaseStreamingAgent` class (Day 1-2)
-2. ✅ Create `CachedContextManager` (Day 1-2)
-3. ✅ Upgrade Contact Agent (Day 2-4)
-4. ✅ Upgrade Agent Manager (Day 2-4)
-5. ✅ Create test suite (Day 5)
+1.  Create `BaseStreamingAgent` class (Day 1-2)
+2.  Create `CachedContextManager` (Day 1-2)
+3.  Upgrade Contact Agent (Day 2-4)
+4.  Upgrade Agent Manager (Day 2-4)
+5.  Create test suite (Day 5)
 
 **Milestone**: Revenue-critical agents upgraded, system monitoring operational
 
@@ -444,10 +444,10 @@ class CampaignAgent extends StreamingAgent {
 
 ### Week 2: Campaign Intelligence
 
-1. ✅ Upgrade Campaign Agent (Day 1-3)
-2. ✅ Create `BatchContactProcessor` (Day 2-3)
-3. ✅ Integration testing (Day 4)
-4. ✅ Deploy to production with rollback (Day 5)
+1.  Upgrade Campaign Agent (Day 1-3)
+2.  Create `BatchContactProcessor` (Day 2-3)
+3.  Integration testing (Day 4)
+4.  Deploy to production with rollback (Day 5)
 
 **Milestone**: Full Audio Intel + Campaign workflow upgraded
 
@@ -455,11 +455,11 @@ class CampaignAgent extends StreamingAgent {
 
 ### Week 3-4: Content Automation
 
-1. ✅ Upgrade Content Generation Agent (Week 3, Day 1-2)
-2. ✅ Upgrade Newsletter Automation Agent (Week 3, Day 3-4)
-3. ✅ Upgrade Audio Intel Content Agent (Week 4, Day 1-2)
-4. ✅ Upgrade SaaS Marketing Agent (Week 4, Day 3-4)
-5. ✅ Testing and refinement (Week 4, Day 5)
+1.  Upgrade Content Generation Agent (Week 3, Day 1-2)
+2.  Upgrade Newsletter Automation Agent (Week 3, Day 3-4)
+3.  Upgrade Audio Intel Content Agent (Week 4, Day 1-2)
+4.  Upgrade SaaS Marketing Agent (Week 4, Day 3-4)
+5.  Testing and refinement (Week 4, Day 5)
 
 **Milestone**: Customer acquisition content pipeline fully optimised
 
@@ -467,10 +467,10 @@ class CampaignAgent extends StreamingAgent {
 
 ### Week 5: Integration & Monitoring
 
-1. ✅ Build Command Centre dashboard integration (Day 1-3)
-2. ✅ Implement cost monitoring UI (Day 2-3)
-3. ✅ Add real-time agent activity stream (Day 4)
-4. ✅ Create performance benchmarking dashboard (Day 5)
+1.  Build Command Centre dashboard integration (Day 1-3)
+2.  Implement cost monitoring UI (Day 2-3)
+3.  Add real-time agent activity stream (Day 4)
+4.  Create performance benchmarking dashboard (Day 5)
 
 **Milestone**: Full system observability and cost control
 
@@ -478,10 +478,10 @@ class CampaignAgent extends StreamingAgent {
 
 ### Week 6+: Remaining Agents
 
-1. ✅ Upgrade medium priority agents (Week 6)
-2. ✅ Upgrade low priority agents as needed (Week 7-8)
-3. ✅ Documentation and training (Week 8)
-4. ✅ Create upgrade guide for future agents (Week 8)
+1.  Upgrade medium priority agents (Week 6)
+2.  Upgrade low priority agents as needed (Week 7-8)
+3.  Documentation and training (Week 8)
+4.  Create upgrade guide for future agents (Week 8)
 
 **Milestone**: Complete agent ecosystem modernised
 
@@ -491,29 +491,29 @@ class CampaignAgent extends StreamingAgent {
 
 ### Performance Metrics
 
-- ✅ 40-60% faster perceived performance (streaming)
-- ✅ <2s response time for cached queries
-- ✅ Real-time progress visibility in Command Centre
+-  40-60% faster perceived performance (streaming)
+-  <2s response time for cached queries
+-  Real-time progress visibility in Command Centre
 
 ### Cost Metrics
 
-- ✅ 70-85% cost reduction on Contact Agent (prompt caching)
-- ✅ 50-80% overall cost reduction across all agents
-- ✅ 80%+ cache hit rate for repeated context
-- ✅ 50% batch processing savings
+-  70-85% cost reduction on Contact Agent (prompt caching)
+-  50-80% overall cost reduction across all agents
+-  80%+ cache hit rate for repeated context
+-  50% batch processing savings
 
 ### Quality Metrics
 
-- ✅ 30-50% better campaign strategies (extended thinking)
-- ✅ Autonomous multi-step workflows (agentic loops)
-- ✅ Higher quality enrichment data
+-  30-50% better campaign strategies (extended thinking)
+-  Autonomous multi-step workflows (agentic loops)
+-  Higher quality enrichment data
 
 ### Business Metrics
 
-- ✅ Better demo conversion rates (real-time enrichment)
-- ✅ Faster content production (customer acquisition)
-- ✅ Lower operational costs (API savings)
-- ✅ Better customer experience (Command Centre visibility)
+-  Better demo conversion rates (real-time enrichment)
+-  Faster content production (customer acquisition)
+-  Lower operational costs (API savings)
+-  Better customer experience (Command Centre visibility)
 
 ---
 
@@ -567,22 +567,22 @@ class CampaignAgent extends StreamingAgent {
 
 ### Mitigation Strategies
 
-1. ✅ Comprehensive test suite for each agent
-2. ✅ Staging environment testing (48 hours minimum)
-3. ✅ Gradual rollout with feature flags
-4. ✅ Real-time monitoring and alerts
-5. ✅ Quick rollback capability (<5 minutes)
-6. ✅ Customer communication plan for beta users
+1.  Comprehensive test suite for each agent
+2.  Staging environment testing (48 hours minimum)
+3.  Gradual rollout with feature flags
+4.  Real-time monitoring and alerts
+5.  Quick rollback capability (<5 minutes)
+6.  Customer communication plan for beta users
 
 ---
 
 ## NEXT ACTIONS
 
-1. ✅ Review this priorities document
-2. ✅ Approve Week 1 implementation plan
-3. ✅ Set up baseline metrics (current costs, performance)
-4. ✅ Create development branch: `feature/sdk-upgrade`
-5. ✅ Begin Phase 1: BaseStreamingAgent implementation
+1.  Review this priorities document
+2.  Approve Week 1 implementation plan
+3.  Set up baseline metrics (current costs, performance)
+4.  Create development branch: `feature/sdk-upgrade`
+5.  Begin Phase 1: BaseStreamingAgent implementation
 
 ---
 

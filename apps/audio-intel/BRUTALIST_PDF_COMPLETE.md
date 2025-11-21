@@ -1,6 +1,6 @@
 # Brutalist PDF Export - Implementation Complete
 
-## ✅ What's Been Implemented
+##  What's Been Implemented
 
 ### 1. Brutalist PDF Template (`lib/pdf-brutalist-template.tsx`)
 
@@ -35,9 +35,9 @@
 - Progress tracking during PDF generation
 - Automatic download trigger
 
-## 🎨 Design Features
+##  Design Features
 
-✅ **Brutalist Design Elements:**
+ **Brutalist Design Elements:**
 
 - Bold 4px black borders throughout
 - Offset shadows (8px x 8px) on all cards
@@ -45,7 +45,7 @@
 - Cyan/teal accents for confidence levels
 - Professional spacing and layout
 
-✅ **Visual Hierarchy:**
+ **Visual Hierarchy:**
 
 - Header with logo/branding
 - Summary metrics prominently displayed
@@ -53,14 +53,14 @@
 - Individual contact cards
 - Footer with generation timestamp
 
-✅ **Professional Quality:**
+ **Professional Quality:**
 
 - Agency-ready report format
 - Matches Audio Intel design system
 - Suitable for client presentations
 - Clean, modern brutalist aesthetic
 
-## 🚀 Setup Instructions
+##  Setup Instructions
 
 ### 1. Install Playwright Browsers (Required)
 
@@ -85,7 +85,7 @@ If deploying to Vercel or similar serverless platforms, you may need to:
 4. Click export button
 5. PDF should download with brutalist design
 
-## 📋 Usage Example
+##  Usage Example
 
 The export service automatically uses the brutalist PDF when PDF format is selected:
 
@@ -101,20 +101,20 @@ const result = await exportService.exportContacts(contacts, {
 });
 ```
 
-## 🎯 Success Criteria Met
+##  Success Criteria Met
 
-✅ Matches Audio Intel's brutalist design exactly
-✅ Bold black borders throughout (4px)
-✅ Offset shadows on cards
-✅ Same typography as platform (font-black headings)
-✅ Contacts displayed in brutalist cards
-✅ Professional header with branding
-✅ Clear visual hierarchy
-✅ Looks like an agency report, not a database dump
-✅ Suitable for Liberty Music PR presentation
-✅ Represents quality of intelligence data
+ Matches Audio Intel's brutalist design exactly
+ Bold black borders throughout (4px)
+ Offset shadows on cards
+ Same typography as platform (font-black headings)
+ Contacts displayed in brutalist cards
+ Professional header with branding
+ Clear visual hierarchy
+ Looks like an agency report, not a database dump
+ Suitable for Liberty Music PR presentation
+ Represents quality of intelligence data
 
-## 🔧 Technical Notes
+##  Technical Notes
 
 - **Playwright**: Used for server-side PDF generation
 - **React SSR**: Uses `renderToStaticMarkup` for HTML generation
@@ -122,7 +122,7 @@ const result = await exportService.exportContacts(contacts, {
 - **Error Handling**: Falls back to old PDF export if brutalist fails
 - **Page Breaks**: Contact cards won't split across pages
 
-## 📝 Next Steps (Optional)
+##  Next Steps (Optional)
 
 1. **Performance**: Consider caching PDFs for frequently exported contacts
 2. **Customisation**: Add more white-label options (fonts, colors)
@@ -130,7 +130,7 @@ const result = await exportService.exportContacts(contacts, {
 4. **Email Delivery**: Support PDF attachment in email exports
 5. **Batch Processing**: Optimize for large contact lists (100+ contacts)
 
-## 🐛 Troubleshooting
+##  Troubleshooting
 
 **Issue**: "Playwright browser not available"
 **Solution**: Run `npx playwright install chromium`
@@ -146,6 +146,6 @@ const result = await exportService.exportContacts(contacts, {
 
 ---
 
-**Status**: ✅ Ready for Liberty Music PR presentation
+**Status**:  Ready for Liberty Music PR presentation
 **Quality**: Agency-grade professional PDF export
 **Design**: Matches Audio Intel brutalist design system perfectly

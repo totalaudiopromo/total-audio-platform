@@ -76,7 +76,7 @@ Replace the old token in `.env.local` with the new one.
 npx tsx scripts/test-linkedin-simple.ts
 ```
 
-Should now show: `✅ LinkedIn agent working correctly!`
+Should now show: ` LinkedIn agent working correctly!`
 
 ---
 
@@ -84,8 +84,8 @@ Should now show: `✅ LinkedIn agent working correctly!`
 
 LinkedIn has a two-step permission model:
 
-1. **OAuth Scopes** (what you request in the authorization URL) ✓ Done
-2. **App Products** (what LinkedIn approves for your app) ❌ Missing
+1. **OAuth Scopes** (what you request in the authorization URL)  Done
+2. **App Products** (what LinkedIn approves for your app)  Missing
 
 We requested the right scopes (`w_member_social`), but your app doesn't have a Product that grants those scopes.
 
@@ -107,7 +107,7 @@ If you don't want to request new products, check what you already have:
 
 Once you get a valid token:
 
-1. LinkedIn autonomous posting will work ✅
+1. LinkedIn autonomous posting will work 
 2. Add credentials to Vercel
 3. System will post twice daily automatically
 

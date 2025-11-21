@@ -1,4 +1,4 @@
-# 🚀 TRACKER - SHIPPING CHECKLIST
+#  TRACKER - SHIPPING CHECKLIST
 
 **Target**: Ship to production tonight
 **Timeline**: 2-3 hours total
@@ -6,7 +6,7 @@
 
 ---
 
-## ✅ COMPLETED TONIGHT
+##  COMPLETED TONIGHT
 
 - [x] **Stripe keys added** to .env.local (LIVE keys ready)
 - [x] **Export button** added to dashboard
@@ -16,7 +16,7 @@
 
 ---
 
-## 🔥 CRITICAL PATH (Must do before deploy)
+##  CRITICAL PATH (Must do before deploy)
 
 ### 1. Database Setup (30 minutes)
 
@@ -110,7 +110,7 @@ cd /Users/chrisschofield/workspace/active/total-audio-platform/apps/tracker
 npm run build
 
 # Should complete with no errors
-# Look for: "✓ Compiled successfully"
+# Look for: " Compiled successfully"
 ```
 
 **Common build issues to watch for**:
@@ -159,7 +159,7 @@ git commit -m "feat: Tracker ready for production deployment
 - Loading states on all forms
 - Professional brutalist design matching Audio Intel
 
-Ship status: READY FOR PRODUCTION 🚀"
+Ship status: READY FOR PRODUCTION "
 
 git push origin main
 ```
@@ -240,14 +240,14 @@ Add "Try Tracker" link to Audio Intel:
 Tweet/Post:
 
 ```
-🎵 NEW: Tracker by Total Audio Promo
+ NEW: Tracker by Total Audio Promo
 
 Stop wasting 15 hours/week tracking campaigns in spreadsheets.
 
-✨ AI-powered intelligence
-📊 Industry benchmarks (BBC, Spotify, etc.)
-💡 Pattern recognition
-🇬🇧 Built for UK artists & promoters
+ AI-powered intelligence
+ Industry benchmarks (BBC, Spotify, etc.)
+ Pattern recognition
+ Built for UK artists & promoters
 
 FREE to start, £19/month for unlimited.
 
@@ -256,7 +256,7 @@ tracker.totalaudiopromo.com
 
 ---
 
-## 📋 FINAL CHECKLIST SUMMARY
+##  FINAL CHECKLIST SUMMARY
 
 **Before deploying**:
 
@@ -286,26 +286,26 @@ tracker.totalaudiopromo.com
 
 ---
 
-## 🎯 SUCCESS CRITERIA
+##  SUCCESS CRITERIA
 
 **READY TO SHIP when**:
-✅ Local testing passes all flows
-✅ Production build completes without errors
-✅ Deployed to tracker.totalaudiopromo.com
-✅ Can create account and campaign
-✅ Intelligence shows benchmark comparisons
-✅ Export CSV works
-✅ Stripe checkout redirects (payment can be tested with first customer)
+ Local testing passes all flows
+ Production build completes without errors
+ Deployed to tracker.totalaudiopromo.com
+ Can create account and campaign
+ Intelligence shows benchmark comparisons
+ Export CSV works
+ Stripe checkout redirects (payment can be tested with first customer)
 
 **READY FOR CUSTOMERS when**:
-✅ All above + Stripe webhook configured
-✅ Cross-linking with Audio Intel complete
-✅ Social announcement posted
-✅ Demo campaigns seeded for new users to explore
+ All above + Stripe webhook configured
+ Cross-linking with Audio Intel complete
+ Social announcement posted
+ Demo campaigns seeded for new users to explore
 
 ---
 
-## 🚨 ROLLBACK PLAN
+##  ROLLBACK PLAN
 
 If something breaks in production:
 
@@ -317,7 +317,7 @@ Vercel keeps all previous deployments, can rollback instantly.
 
 ---
 
-## 🎉 POST-LAUNCH
+##  POST-LAUNCH
 
 **Week 1**:
 
@@ -338,7 +338,7 @@ Vercel keeps all previous deployments, can rollback instantly.
 ---
 
 **Built by**: Chris + Claude
-**Status**: READY TO SHIP 🚀
+**Status**: READY TO SHIP 
 **Time to production**: ~3 hours if following this checklist
 
-Let's go! 🎵
+Let's go! 

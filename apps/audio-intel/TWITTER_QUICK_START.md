@@ -1,6 +1,6 @@
 # Twitter Agent Quick Start Guide
 
-## 🚀 Get Started in 5 Minutes
+##  Get Started in 5 Minutes
 
 ### Step 1: Get Twitter API Credentials (5 minutes)
 
@@ -39,15 +39,15 @@ npx tsx scripts/verify-twitter-setup.ts
 You should see:
 
 ```
-✅ Twitter API Package
-✅ Agent File
-✅ Content File
-✅ Content Calendar
-✅ Environment Variables
-✅ Example File
-✅ Documentation
+ Twitter API Package
+ Agent File
+ Content File
+ Content Calendar
+ Environment Variables
+ Example File
+ Documentation
 
-🎉 All checks passed!
+ All checks passed!
 ```
 
 ### Step 4: Test with Example (1 minute)
@@ -60,7 +60,7 @@ This will list available content. To test posting, edit the example file and unc
 
 ---
 
-## 💡 Quick Usage Examples
+##  Quick Usage Examples
 
 ### Post a Thread
 
@@ -98,12 +98,12 @@ console.log(`Posted: ${results.posted}, Skipped: ${results.skipped}`);
 const agent = createTwitterAgent();
 const health = await agent.healthCheck();
 
-console.log(health.healthy ? '✅ Ready' : '❌ Not ready');
+console.log(health.healthy ? ' Ready' : ' Not ready');
 ```
 
 ---
 
-## 📅 Scheduled Posts in Calendar
+##  Scheduled Posts in Calendar
 
 The agent will automatically post these threads when scheduled:
 
@@ -118,7 +118,7 @@ Run `processScheduledPosts()` hourly to catch posts within their scheduled time 
 
 ---
 
-## 🔧 Quick Deploy to Production
+##  Quick Deploy to Production
 
 ### Option A: Vercel Cron (Easiest)
 
@@ -164,7 +164,7 @@ Add to crontab:
 
 ---
 
-## 📊 Available Content
+##  Available Content
 
 All content pre-configured and ready to post:
 
@@ -179,7 +179,7 @@ All content pre-configured and ready to post:
 
 ---
 
-## ⚠️ Important Notes
+##  Important Notes
 
 1. **Free tier limit**: 50 tweets/day (1,500/month)
 2. **Thread counts**: Each thread is 7-8 tweets
@@ -189,7 +189,7 @@ All content pre-configured and ready to post:
 
 ---
 
-## 🐛 Troubleshooting
+##  Troubleshooting
 
 **"Authentication failed"**
 
@@ -209,7 +209,7 @@ All content pre-configured and ready to post:
 
 ---
 
-## 📚 Full Documentation
+##  Full Documentation
 
 For complete details, see:
 
@@ -219,7 +219,7 @@ For complete details, see:
 
 ---
 
-## ✅ Checklist
+##  Checklist
 
 - [ ] Twitter developer account created
 - [ ] App created with "Read and Write" permissions

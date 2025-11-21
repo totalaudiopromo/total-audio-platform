@@ -83,10 +83,10 @@ npx tsx scripts/test-threads-agent.ts
 Expected output:
 
 ```
-✅ Environment variables configured
-✅ Agent created successfully
-✅ Health check passed - API is accessible
-✅ All tests completed successfully!
+ Environment variables configured
+ Agent created successfully
+ Health check passed - API is accessible
+ All tests completed successfully!
 ```
 
 ## Production Deployment (10 min)
@@ -209,16 +209,16 @@ if (insights.success) {
 
 All content pre-mapped from `BLUESKY_THREADS_CONTENT.md`:
 
-1. ✅ The Real Problem
-2. ✅ BBC Radio 1 Success
-3. ✅ Regional Radio Strategy
-4. ✅ The Pricing Problem
-5. ✅ Response Rate Data
-6. ✅ The Brighton Producer Story
-7. ✅ Submission Window Problem
-8. ✅ The Spreadsheet Chaos
-9. ✅ Real ROI Calculation
-10. ✅ Industry Truth
+1.  The Real Problem
+2.  BBC Radio 1 Success
+3.  Regional Radio Strategy
+4.  The Pricing Problem
+5.  Response Rate Data
+6.  The Brighton Producer Story
+7.  Submission Window Problem
+8.  The Spreadsheet Chaos
+9.  Real ROI Calculation
+10.  Industry Truth
 
 Each post includes:
 
@@ -318,7 +318,7 @@ Update Vercel environment variables with new token.
 
 ---
 
-**Ready to Deploy**: Yes ✅
+**Ready to Deploy**: Yes 
 **Time to Production**: 30 minutes
 **Maintainer**: Chris Schofield / Total Audio
 **Last Updated**: October 2025

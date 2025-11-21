@@ -1,10 +1,10 @@
 # Liberty Music PR CoverageBook Integration Guide
 
-## 🎯 How to Use Liberty's Actual CoverageBook Data
+##  How to Use Liberty's Actual CoverageBook Data
 
 Since CoverageBook doesn't have a public API, we'll export your actual campaign data and import it into your Radio Promo Agent for comprehensive analysis.
 
-## 📊 Step 1: Export Data from CoverageBook
+##  Step 1: Export Data from CoverageBook
 
 ### Option A: Export All Campaign Data
 
@@ -23,7 +23,7 @@ Since CoverageBook doesn't have a public API, we'll export your actual campaign 
 4. **Choose CSV format**
 5. **Save with campaign name** (e.g., `reigns_made_for_coverage.csv`)
 
-## 📋 Step 2: Prepare CSV Data
+##  Step 2: Prepare CSV Data
 
 ### CoverageBook CSV Format
 
@@ -42,7 +42,7 @@ The agent can handle variations like:
 - `Publication` or `Source` instead of `Media Outlet`
 - `Date` or `Published` instead of `Publication Date`
 
-## 🚀 Step 3: Import into Your Agent
+##  Step 3: Import into Your Agent
 
 ### Import All Liberty Campaigns
 
@@ -63,7 +63,7 @@ node ../radio-promo-agent.js coveragebook-import "./artist2_single_coverage.csv"
 node ../radio-promo-agent.js coveragebook-status
 ```
 
-## 📈 Step 4: Analyze Your Data
+##  Step 4: Analyze Your Data
 
 ### Get Campaign Summaries
 
@@ -89,7 +89,7 @@ node ../radio-promo-agent.js coveragebook-find "NME"
 node ../radio-promo-agent.js coveragebook-find "Guardian"
 ```
 
-## 🎯 Step 5: Advanced Analysis
+##  Step 5: Advanced Analysis
 
 ### Campaign Performance Comparison
 
@@ -110,7 +110,7 @@ node ../radio-promo-agent.js coveragebook-find "Clash"
 node ../radio-promo-agent.js coveragebook-find "DIY"
 ```
 
-## 📊 What You'll Get
+##  What You'll Get
 
 ### Campaign Insights
 
@@ -129,7 +129,7 @@ node ../radio-promo-agent.js coveragebook-find "DIY"
 - **Media relationships** that drive results
 - **ROI insights** for future campaigns
 
-## 🔄 Step 6: Regular Updates
+##  Step 6: Regular Updates
 
 ### Monthly Data Refresh
 
@@ -154,7 +154,7 @@ node ../radio-promo-agent.js coveragebook-import "./updated_reigns_coverage.csv"
 node ../radio-promo-agent.js coveragebook-report
 ```
 
-## 💡 Pro Tips
+##  Pro Tips
 
 ### Data Organization
 
@@ -179,7 +179,7 @@ node ../radio-promo-agent.js research-radio "Successful Artist" "Hit Track" "gen
 node ../radio-promo-agent.js coveragebook-find "BBC Radio 6 Music"
 ```
 
-## 🎉 Expected Results
+##  Expected Results
 
 Once you import Liberty's actual CoverageBook data, you'll have:
 
@@ -197,4 +197,4 @@ This gives you a powerful combination of:
 - **Campaign automation** (Monday.com, Typeform, Mailchimp)
 - **Play tracking** (WARM API)
 
-Your Liberty Radio Promo Agent will become a comprehensive PR intelligence and automation system! 🚀
+Your Liberty Radio Promo Agent will become a comprehensive PR intelligence and automation system! 

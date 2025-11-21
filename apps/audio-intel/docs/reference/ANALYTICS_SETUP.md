@@ -3,27 +3,27 @@
 **Last Updated**: October 4, 2025
 **Purpose**: Track PSEO organic traffic and conversions via Command Centre
 
-## ✅ CURRENT SETUP
+##  CURRENT SETUP
 
 ### Google Tag Manager
 
 - **GTM ID**: `GTM-WZNJWDKH`
 - **Location**: `/apps/audio-intel/app/layout.tsx` (lines 123-143)
-- **Status**: ✅ Installed and active
+- **Status**:  Installed and active
 
 ### Internal Analytics API
 
 - **Location**: `/apps/audio-intel/app/api/analytics/route.ts`
 - **Tracking Functions**: `/apps/audio-intel/utils/analytics.ts`
-- **Status**: ✅ Built but needs database connection
+- **Status**:  Built but needs database connection
 
 ### Command Centre Integration
 
 - **Dashboard**: `https://command.totalaudiopromo.com/analytics`
 - **API Endpoint**: `/apps/command-centre/app/api/audio-intel-metrics/route.ts`
-- **Status**: ⚠️ Configured for localhost:3001 (needs production URL)
+- **Status**:  Configured for localhost:3001 (needs production URL)
 
-## 🔧 FIXES NEEDED
+##  FIXES NEEDED
 
 ### 1. Update Command Centre to Pull from Production
 
@@ -55,7 +55,7 @@ The `/api/analytics` endpoint exists but needs to store data. Current flow:
 - Events sent to `/api/analytics` (POST)
 - Data should be stored in database or sent to external service
 
-## 📊 WHAT WE'RE TRACKING
+##  WHAT WE'RE TRACKING
 
 ### Page-Level Tracking (via GTM)
 
@@ -83,7 +83,7 @@ The `/api/analytics` endpoint exists but needs to store data. Current flow:
 4. **Step 4**: Account creation
 5. **Step 5**: Payment (conversion)
 
-## 🎯 COMMAND CENTRE DASHBOARD METRICS
+##  COMMAND CENTRE DASHBOARD METRICS
 
 **Currently displays** (from `/apps/command-centre/app/analytics/page.tsx`):
 
@@ -104,7 +104,7 @@ The `/api/analytics` endpoint exists but needs to store data. Current flow:
 - Search keywords bringing traffic
 - Geographic distribution of PSEO traffic
 
-## 📈 PSEO-SPECIFIC TRACKING SETUP
+##  PSEO-SPECIFIC TRACKING SETUP
 
 ### Track Organic Traffic Sources
 
@@ -156,7 +156,7 @@ onClick={() => {
 }}
 ```
 
-## 🔄 COMPLETE ANALYTICS FLOW
+##  COMPLETE ANALYTICS FLOW
 
 ```
 User finds PSEO page on Google
@@ -172,7 +172,7 @@ Command Centre dashboard displays real-time metrics
 You view on mobile at command.totalaudiopromo.com
 ```
 
-## ⚡ IMMEDIATE ACTIONS REQUIRED
+##  IMMEDIATE ACTIONS REQUIRED
 
 1. **Fix Command Centre API URL** (5 minutes)
    - Update `audioIntelBaseUrl` to production URL
@@ -199,7 +199,7 @@ You view on mobile at command.totalaudiopromo.com
    - Show traffic by page, conversions, top keywords
    - Mobile-optimized for on-the-go viewing
 
-## 📱 MOBILE COMMAND CENTRE PRIORITY
+##  MOBILE COMMAND CENTRE PRIORITY
 
 Since you need to track "on the go", prioritize:
 
@@ -208,7 +208,7 @@ Since you need to track "on the go", prioritize:
 3. Push notifications for key events (optional)
 4. Quick metric cards (traffic today, conversions this week)
 
-## 🎯 SUCCESS METRICS TO TRACK
+##  SUCCESS METRICS TO TRACK
 
 ### Week 1 (Baseline)
 
@@ -233,6 +233,6 @@ Since you need to track "on the go", prioritize:
 
 ---
 
-## 🚀 NEXT STEP: FIX COMMAND CENTRE CONNECTION
+##  NEXT STEP: FIX COMMAND CENTRE CONNECTION
 
 Ready to update the Command Centre API to pull from Audio Intel production URL?

@@ -9,7 +9,7 @@
 
 ---
 
-## 🎯 DEMO STRATEGY
+##  DEMO STRATEGY
 
 **The Hook:**
 "Dan, this is the KYARA 'Bloodshot' campaign I'm running right now through Liberty. Let me show you how I'm tracking it in real-time using my new tool..."
@@ -23,7 +23,7 @@
 
 ---
 
-## 📊 CAMPAIGN DATA TO SHOWCASE
+##  CAMPAIGN DATA TO SHOWCASE
 
 ### Current Stats (As of Friday 11th Oct):
 
@@ -40,12 +40,12 @@ Budget: £2,500 (Liberty standard radio campaign)
 ### Pre-Release Momentum (For Dashboard):
 
 ```
-✅ 85 plays across 9 countries (WARM data)
-✅ Amazing Radio (UK) confirmed support
-✅ Triple J Home & Hosed history ("Yearn" played Aug 2024)
-✅ 15 radio contacts pitched (initial wave)
-✅ 5 Gmail drafts created for Australian radio
-✅ Release week email blast ready
+ 85 plays across 9 countries (WARM data)
+ Amazing Radio (UK) confirmed support
+ Triple J Home & Hosed history ("Yearn" played Aug 2024)
+ 15 radio contacts pitched (initial wave)
+ 5 Gmail drafts created for Australian radio
+ Release week email blast ready
 ```
 
 ### Key Contacts Pitched:
@@ -68,7 +68,7 @@ UK TARGETS:
 
 ---
 
-## 🖥️ TRACKER DASHBOARD SETUP
+##  TRACKER DASHBOARD SETUP
 
 ### What to Show Dan:
 
@@ -109,11 +109,11 @@ Week 4-6: Sustained campaign + reporting [PLANNED]
 #### 3. **Integration Status** (Key Value Prop)
 
 ```
-✅ Gmail: 5 drafts auto-created, sent from Liberty inbox
-✅ Mailchimp: UK contact list synced, campaign scheduled
-✅ WARM API: Real-time play tracking (85 plays logged)
-✅ Google Sheets: Contact list auto-updated
-⏳ CoverageBook: Campaign report pending release week
+ Gmail: 5 drafts auto-created, sent from Liberty inbox
+ Mailchimp: UK contact list synced, campaign scheduled
+ WARM API: Real-time play tracking (85 plays logged)
+ Google Sheets: Contact list auto-updated
+CoverageBook: Campaign report pending release week
 ```
 
 #### 4. **Performance Metrics** (Real Numbers)
@@ -136,24 +136,24 @@ Radio Momentum:
 #### 5. **Next Actions** (AI-Powered Suggestions)
 
 ```
-🎯 HIGH PRIORITY (This Weekend):
+ HIGH PRIORITY (This Weekend):
 - Follow up with Anika Luna (WARM contact, Triple J)
 - Send Amazing Radio thank-you + request social post
 - Prep Monday release day blast (30+ contacts)
 
-📧 MONDAY ACTIONS:
+ MONDAY ACTIONS:
 - Send release day blast (7am AEST / 10pm GMT Sunday)
 - Pull WARM report (first 24 hours post-release)
 - Update Dan on release week momentum
 
-📊 REPORTING:
+ REPORTING:
 - Weekly report due: Friday 18th October
 - Client update: Mid-campaign review (Oct 21st)
 ```
 
 ---
 
-## 🎬 DEMO SCRIPT FOR DAN
+##  DEMO SCRIPT FOR DAN
 
 ### Opening (1 minute):
 
@@ -194,7 +194,7 @@ Radio Momentum:
 
 ---
 
-## 💼 BUSINESS CASE FOR DAN
+##  BUSINESS CASE FOR DAN
 
 ### Liberty Music PR's Current Pain Points:
 
@@ -258,7 +258,7 @@ Radio Momentum:
 
 ---
 
-## 📸 VISUAL DEMO SCREENSHOTS TO PREPARE
+##  VISUAL DEMO SCREENSHOTS TO PREPARE
 
 ### Before Friday, Take Screenshots of:
 
@@ -289,7 +289,7 @@ Radio Momentum:
 
 ---
 
-## 🔥 KILLER DEMO MOMENTS
+##  KILLER DEMO MOMENTS
 
 ### Moment 1: Real-Time WARM Data
 
@@ -309,7 +309,7 @@ Radio Momentum:
 
 ---
 
-## ⚠️ POTENTIAL OBJECTIONS & RESPONSES
+##  POTENTIAL OBJECTIONS & RESPONSES
 
 ### "We already track campaigns in Monday.com"
 
@@ -329,7 +329,7 @@ Radio Momentum:
 
 ---
 
-## 📋 PREPARATION CHECKLIST (Before Friday)
+##  PREPARATION CHECKLIST (Before Friday)
 
 ### Thursday Night / Friday Morning:
 

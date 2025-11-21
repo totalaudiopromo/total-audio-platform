@@ -5,7 +5,7 @@
 
 ---
 
-## 🚀 Step 1: Enable Skills (5 minutes)
+## Step 1: Enable Skills (5 minutes)
 
 1. Open Claude Code settings:
    - Press `⌘,` (Command + Comma)
@@ -24,7 +24,7 @@
 
 ---
 
-## 🎯 Step 2: Install Core Skills (20 minutes)
+## Step 2: Install Core Skills (20 minutes)
 
 ### Option A: Plugin Marketplace (Recommended)
 
@@ -79,7 +79,7 @@ ls -la
 
 ---
 
-## ✅ Step 3: Test Skills (5 minutes)
+## Step 3: Test Skills (5 minutes)
 
 ### Test 1: Skill Creator
 
@@ -109,18 +109,18 @@ Expected: Claude follows 4-phase framework (root cause, patterns, hypothesis, im
 
 ---
 
-## 🎉 You're Done!
+##  You're Done!
 
 **What You Have Now:**
 
-- ✅ Skills enabled in Claude Code
-- ✅ 3 core skills installed and tested
-- ✅ Foundation for creating custom skills
-- ✅ Ready to improve workflow immediately
+- Skills enabled in Claude Code
+- 3 core skills installed and tested
+- Foundation for creating custom skills
+- Ready to improve workflow immediately
 
 ---
 
-## 🔄 Next Steps (After Quick Start)
+## Next Steps (After Quick Start)
 
 ### Today (Optional)
 
@@ -144,7 +144,7 @@ Expected: Claude follows 4-phase framework (root cause, patterns, hypothesis, im
 
 ---
 
-## 🚨 Troubleshooting
+## Troubleshooting
 
 ### Skills Not Showing Up
 
@@ -179,7 +179,7 @@ ls -la ~/.claude/skills/
 
 ---
 
-## 📚 Full Documentation
+##  Full Documentation
 
 - [SKILLS_AUDIT_SUMMARY.md](../SKILLS_AUDIT_SUMMARY.md) - Why skills are worth it for your projects
 - [SKILLS_SETUP_GUIDE.md](../SKILLS_SETUP_GUIDE.md) - Comprehensive setup and usage instructions
@@ -188,7 +188,7 @@ ls -la ~/.claude/skills/
 
 ---
 
-## 💡 Quick Tips
+## Quick Tips
 
 1. **Start Small:** Just install these 3 core skills today
 2. **Test Immediately:** Use skills with real work to see value

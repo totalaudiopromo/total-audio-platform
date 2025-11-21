@@ -1,12 +1,12 @@
 # Airtable Field Cleanup Plan
 
-## 🎯 GOAL
+##  GOAL
 
 Tidy up your Airtable fields to create a clean, organized, single source of truth for 517 radio contacts before enriching the full database.
 
-## 📊 CURRENT FIELD STRUCTURE (27 Fields)
+##  CURRENT FIELD STRUCTURE (27 Fields)
 
-### ✅ KEEP - Core Contact Information (8 fields)
+###  KEEP - Core Contact Information (8 fields)
 
 1. **Email** (email) - Primary identifier
 2. **First Name** (singleLineText)
@@ -17,52 +17,52 @@ Tidy up your Airtable fields to create a clean, organized, single source of trut
 7. **Region / Country** (singleLineText)
 8. **Created At** (createdTime) - System field
 
-### ✅ KEEP - Genre & Programming (1 field)
+###  KEEP - Genre & Programming (1 field)
 
 9. **Genres** (multipleSelects) - Critical for campaign targeting
 
-### ✅ KEEP - Relationship Status (3 fields - NEED CLEANUP)
+###  KEEP - Relationship Status (3 fields - NEED CLEANUP)
 
 10. **Status** (singleSelect) - **UPDATE FROM MAILCHIMP** (currently inaccurate)
 11. **Opt-in Source** (multilineText) - Shows where contact came from
 12. **Last Email Date** (date)
 
-### ✅ KEEP - Engagement Tracking (3 fields)
+###  KEEP - Engagement Tracking (3 fields)
 
 13. **Last Engagement** (singleSelect)
 14. **Reply Status** (singleSelect) - Replied, Ignored, etc.
 15. **Response Quality** (singleSelect)
 
-### ✅ KEEP - Campaign Management (3 fields)
+###  KEEP - Campaign Management (3 fields)
 
 16. **Campaigns** (multipleRecordLinks) - Links to campaign records
 17. **Campaigns Contacted** (singleLineText)
 18. **Assigned Freelancer** (singleSelect)
 
-### ✅ KEEP - AI Enrichment (3 fields - JUST ADDED)
+###  KEEP - AI Enrichment (3 fields - JUST ADDED)
 
 19. **Enrichment Quality** (singleSelect) - High/Medium/Low
 20. **Enrichment Notes** (multilineText) - All AI insights
 21. **Last Enriched** (date)
 
-### ⚠️ CONSOLIDATE/CLEANUP (3 fields)
+###  CONSOLIDATE/CLEANUP (3 fields)
 
 22. **Reply Notes** (singleLineText) - **MERGE INTO Notes field**
 23. **Notes** (multilineText) - General notes field
 24. **Description** (multilineText) - **MERGE INTO Notes field**
 
-### 🔧 KEEP BUT VERIFY (2 fields)
+###  KEEP BUT VERIFY (2 fields)
 
 25. **MC TAGS** (multilineText) - Mailchimp tags (useful for segmentation)
 26. **Interactions** (multipleRecordLinks) - System field
 
-### ❓ EVALUATE (1 field)
+###  EVALUATE (1 field)
 
 27. **Test Mode** (checkbox) - Used for testing? Can remove after cleanup
 
-## 🛠️ CLEANUP ACTIONS
+##  CLEANUP ACTIONS
 
-### Action 1: Sync Status from Mailchimp ✅
+### Action 1: Sync Status from Mailchimp 
 
 **Problem**: Status field shows "Unsubscribed" for 11 contacts who are actually subscribed in Mailchimp
 
@@ -160,7 +160,7 @@ Tidy up your Airtable fields to create a clean, organized, single source of trut
 3. Update Genre field with standardized values
 ```
 
-## 📋 RECOMMENDED FIELD STRUCTURE (After Cleanup)
+##  RECOMMENDED FIELD STRUCTURE (After Cleanup)
 
 ### Essential Fields (17 total)
 
@@ -192,37 +192,37 @@ Tidy up your Airtable fields to create a clean, organized, single source of trut
 - **Campaigns Contacted** (redundant with Campaigns linked records)
 - **Assigned Freelancer** (if not using)
 
-## 🎯 CLEANUP EXECUTION PLAN
+##  CLEANUP EXECUTION PLAN
 
 ### Phase 1: Backup & Preview (Day 1)
 
-1. ✅ Export full Airtable to JSON backup
-2. ✅ Run preview scripts showing what would change
-3. ✅ Review changes with you before committing
+1.  Export full Airtable to JSON backup
+2.  Run preview scripts showing what would change
+3.  Review changes with you before committing
 
 ### Phase 2: Core Data Cleanup (Day 1-2)
 
-4. 🔄 Sync Status from Mailchimp (all 517 contacts)
-5. 🔄 Consolidate Notes fields (merge Reply Notes + Description → Notes)
-6. 🔄 Populate Station names from Enrichment Notes
+4.  Sync Status from Mailchimp (all 517 contacts)
+5.  Consolidate Notes fields (merge Reply Notes + Description → Notes)
+6.  Populate Station names from Enrichment Notes
 
 ### Phase 3: Data Quality (Day 2)
 
-7. 🔄 Flag invalid/test contacts with Test Mode checkbox
-8. 🔄 Standardize Genre formatting
-9. 🔄 Verify MC TAGS accuracy against Mailchimp
+7.  Flag invalid/test contacts with Test Mode checkbox
+8.  Standardize Genre formatting
+9.  Verify MC TAGS accuracy against Mailchimp
 
 ### Phase 4: Field Optimization (Day 3)
 
-10. 🔄 Archive/hide unused fields (Reply Notes, Description)
-11. 🔄 Create filtered views:
+10.  Archive/hide unused fields (Reply Notes, Description)
+11.  Create filtered views:
     - "Subscribed Only" (Status = Subscribed)
     - "High Quality" (Enrichment Quality = High)
     - "Needs Enrichment" (Last Enriched = empty)
     - "BBC Contacts" (Station contains "BBC")
     - "Test/Invalid" (Test Mode = checked)
 
-## 🚀 IMMEDIATE NEXT STEPS
+##  IMMEDIATE NEXT STEPS
 
 **Step 1: Create Backup**
 
@@ -242,33 +242,33 @@ node preview-cleanup-changes.js
 node execute-airtable-cleanup.js
 ```
 
-## ⚠️ IMPORTANT SAFEGUARDS
+##  IMPORTANT SAFEGUARDS
 
 Before making ANY changes:
 
-1. ✅ **Full Airtable export to JSON** (already have for KYARA 21)
-2. ✅ **Preview all changes** before committing
-3. ✅ **Batch updates** (not individual API calls - more efficient)
-4. ✅ **Preserve all data** in consolidated fields (no data loss)
-5. ✅ **Test on 10 contacts first** before running on all 517
+1.  **Full Airtable export to JSON** (already have for KYARA 21)
+2.  **Preview all changes** before committing
+3.  **Batch updates** (not individual API calls - more efficient)
+4.  **Preserve all data** in consolidated fields (no data loss)
+5.  **Test on 10 contacts first** before running on all 517
 
-## 📊 EXPECTED RESULTS
+##  EXPECTED RESULTS
 
 **After Cleanup**:
 
-- ✅ Accurate subscription status for all 517 contacts (synced from Mailchimp)
-- ✅ Clean, consolidated Notes field (no more scattered info)
-- ✅ Populated Station names (from AI enrichment)
-- ✅ Invalid contacts flagged for review
-- ✅ Standardized genre tags
-- ✅ Ready for full AI enrichment of remaining 496 contacts
+-  Accurate subscription status for all 517 contacts (synced from Mailchimp)
+-  Clean, consolidated Notes field (no more scattered info)
+-  Populated Station names (from AI enrichment)
+-  Invalid contacts flagged for review
+-  Standardized genre tags
+-  Ready for full AI enrichment of remaining 496 contacts
 
 **Data Integrity**:
 
-- ✅ Zero data loss (all info preserved in consolidated fields)
-- ✅ Mailchimp as single source of truth for subscription status
-- ✅ AI enrichment preserved in dedicated fields
-- ✅ Historical data maintained (Created At, Last Engagement, etc.)
+-  Zero data loss (all info preserved in consolidated fields)
+-  Mailchimp as single source of truth for subscription status
+-  AI enrichment preserved in dedicated fields
+-  Historical data maintained (Created At, Last Engagement, etc.)
 
 ---
 

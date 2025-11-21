@@ -1,6 +1,6 @@
 # Command Centre - Design & Performance Updates
 
-## 🎨 Design System Overhaul
+##  Design System Overhaul
 
 ### Neobrutalist Design Implementation
 
@@ -31,26 +31,26 @@ Created `NeoBrutalistUI.tsx` with reusable components:
 
 ### Pages Updated (18 total):
 
-1. ✅ Dashboard (homepage)
-2. ✅ Agent Dashboard
-3. ✅ Agent Demo
-4. ✅ Agents
-5. ✅ Analytics
-6. ✅ Beta Management
-7. ✅ Business Dashboard
-8. ✅ Marketing
-9. ✅ Newsjacking
-10. ✅ Predictive Revenue
-11. ✅ Radio Promo
-12. ✅ Reports
-13. ✅ Revenue Intelligence
-14. ✅ Social Media Hub
-15. ✅ Social Posting
-16. ✅ Social Scheduler
-17. ✅ System Status
-18. ✅ Users
+1.  Dashboard (homepage)
+2.  Agent Dashboard
+3.  Agent Demo
+4.  Agents
+5.  Analytics
+6.  Beta Management
+7.  Business Dashboard
+8.  Marketing
+9.  Newsjacking
+10.  Predictive Revenue
+11.  Radio Promo
+12.  Reports
+13.  Revenue Intelligence
+14.  Social Media Hub
+15.  Social Posting
+16.  Social Scheduler
+17.  System Status
+18.  Users
 
-## ⚡ Performance Optimizations
+##  Performance Optimizations
 
 ### 1. Next.js Configuration (`next.config.js`)
 
@@ -101,7 +101,7 @@ Created `NeoBrutalistUI.tsx` with reusable components:
 - Reduced JavaScript execution time
 - Improved Time to Interactive (TTI)
 
-## 📈 Performance Metrics (Expected)
+##  Performance Metrics (Expected)
 
 ### Before Optimization:
 
@@ -112,12 +112,12 @@ Created `NeoBrutalistUI.tsx` with reusable components:
 
 ### After Optimization:
 
-- First Contentful Paint: ~1.1s ✅ (-39%)
-- Time to Interactive: ~2.2s ✅ (-37%)
-- Largest Contentful Paint: ~1.8s ✅ (-36%)
-- Bundle Size: ~620KB ✅ (-27%)
+- First Contentful Paint: ~1.1s  (-39%)
+- Time to Interactive: ~2.2s  (-37%)
+- Largest Contentful Paint: ~1.8s  (-36%)
+- Bundle Size: ~620KB  (-27%)
 
-## 🔧 Implementation Details
+##  Implementation Details
 
 ### Batch Update Script
 
@@ -136,7 +136,7 @@ scripts/update-pages-design.sh
 - Thin borders → 4px bold borders
 - Subtle shadows → Bold offset shadows
 
-## 🚀 Usage
+##  Usage
 
 ### Development Server:
 
@@ -174,7 +174,7 @@ import { NeoCard, NeoMetricCard, NeoButton } from '@/components/NeoBrutalistUI';
 </NeoButton>
 ```
 
-## 📝 Notes
+##  Notes
 
 ### Design Consistency:
 
@@ -197,7 +197,7 @@ import { NeoCard, NeoMetricCard, NeoButton } from '@/components/NeoBrutalistUI';
 - Progressive enhancement for older browsers
 - Fallbacks for WebP/AVIF images
 
-## 🎯 Next Steps
+##  Next Steps
 
 1. Monitor real-world performance metrics
 2. A/B test design changes with users

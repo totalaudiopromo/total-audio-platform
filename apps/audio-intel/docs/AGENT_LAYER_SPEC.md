@@ -7,26 +7,26 @@ The Total Audio Agent Layer is a modular, production-ready system that handles b
 ## Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                       API Layer                             │
-│     /api/agents?name=<agent> | /api/agents/health          │
-└─────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────┐
-│                    Agent Registry                           │
-│        Discovery, Management, Health Checks                 │
-└─────────────────────────────────────────────────────────────┘
-                              │
-                ┌─────────────┼─────────────┐
-                ▼             ▼             ▼
-         ┌──────────┐  ┌──────────┐  ┌──────────┐
-         │  Intel   │  │  Pitch   │  │ Tracker  │
-         │  Agent   │  │  Agent   │  │  Agent   │
-         └──────────┘  └──────────┘  └──────────┘
-                │             │             │
-         ┌──────┴──────┐ ┌───┴────┐ ┌──────┴──────┐
-         ▼      ▼      ▼ ▼   ▼    ▼ ▼      ▼      ▼
+
+                       API Layer                             
+     /api/agents?name=<agent> | /api/agents/health          
+
+                              
+                              
+
+                    Agent Registry                           
+        Discovery, Management, Health Checks                 
+
+                              
+                
+                                          
+             
+           Intel       Pitch      Tracker  
+           Agent       Agent       Agent   
+             
+                                          
+           
+                                          
     [Contact] [Label] [Validator] [Pitch] [Tone] [FollowUp]
     [Finder]  [Match]           [Format] [Check] [Writer]
 ```
@@ -448,19 +448,19 @@ it('should execute IntelAgent successfully', async () => {
 
 ```
 IntelAgent
-  ├─ ContactFinder → Supabase, Perplexity API
-  ├─ LabelMatcher → Supabase
-  └─ EnrichmentValidator
+   ContactFinder → Supabase, Perplexity API
+   LabelMatcher → Supabase
+   EnrichmentValidator
 
 PitchAgent
-  ├─ PitchFormatter
-  ├─ ToneChecker
-  └─ FollowUpWriter
+   PitchFormatter
+   ToneChecker
+   FollowUpWriter
 
 TrackerAgent
-  ├─ SubmissionLogger → Supabase
-  ├─ AnalyticsSummariser → Supabase
-  └─ ReminderAgent → Supabase
+   SubmissionLogger → Supabase
+   AnalyticsSummariser → Supabase
+   ReminderAgent → Supabase
 
 InsightAgent → Supabase
 
@@ -477,11 +477,11 @@ VoiceGuardAgent (no dependencies)
 
 ```bash
 agents/
-└── myagent/
-    ├── MyAgent.ts
-    ├── manifest.json
-    └── subagents/
-        └── SubAgent.ts
+ myagent/
+     MyAgent.ts
+     manifest.json
+     subagents/
+         SubAgent.ts
 ```
 
 2. **Extend BaseAgent**:
@@ -615,13 +615,13 @@ limit 50;
 
 ### Completed
 
-✅ Core agent framework (BaseAgent, AgentRegistry)
-✅ All 5 production agents (Intel, Pitch, Tracker, Insight, VoiceGuard)
-✅ Sub-agent architecture
-✅ API endpoints
-✅ Supabase logging
-✅ Test suite
-✅ Documentation
+ Core agent framework (BaseAgent, AgentRegistry)
+ All 5 production agents (Intel, Pitch, Tracker, Insight, VoiceGuard)
+ Sub-agent architecture
+ API endpoints
+ Supabase logging
+ Test suite
+ Documentation
 
 ### Next Steps
 

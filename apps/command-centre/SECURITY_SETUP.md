@@ -1,6 +1,6 @@
 # Command Centre Security Setup
 
-## 🔒 Password Protection Implemented
+##  Password Protection Implemented
 
 Your Command Centre is now protected with password authentication. No one can access it without the correct password.
 
@@ -48,7 +48,7 @@ The `.env.local` file has been created with a temporary password:
 
 - **Password:** `CommandCentre2025!SecureAccess`
 
-**⚠️ IMPORTANT:** Change this password in both `.env.local` and Vercel before deploying!
+** IMPORTANT:** Change this password in both `.env.local` and Vercel before deploying!
 
 ## How It Works
 
@@ -60,12 +60,12 @@ The `.env.local` file has been created with a temporary password:
 
 ## Security Features
 
-- ✅ HTTP-only cookies (can't be accessed by JavaScript)
-- ✅ Secure cookies in production (HTTPS only)
-- ✅ 30-day session timeout
-- ✅ No password recovery (by design - maximum security)
-- ✅ Server-side password verification
-- ✅ All routes protected except login and static assets
+-  HTTP-only cookies (can't be accessed by JavaScript)
+-  Secure cookies in production (HTTPS only)
+-  30-day session timeout
+-  No password recovery (by design - maximum security)
+-  Server-side password verification
+-  All routes protected except login and static assets
 
 ## Quick Commands
 
@@ -104,14 +104,14 @@ If you need to temporarily disable protection:
    vercel --prod
    ```
 
-**⚠️ WARNING:** Only do this temporarily! Your personal data will be exposed.
+** WARNING:** Only do this temporarily! Your personal data will be exposed.
 
 ## Password Best Practices
 
-✅ Use a mix of uppercase, lowercase, numbers, and symbols
-✅ Make it at least 16 characters
-✅ Don't use common words or patterns
-✅ Store it securely (password manager recommended)
-✅ Don't share it with anyone
+ Use a mix of uppercase, lowercase, numbers, and symbols
+ Make it at least 16 characters
+ Don't use common words or patterns
+ Store it securely (password manager recommended)
+ Don't share it with anyone
 
 Example strong password: `Cmd!Centre#2025$Secure@Access`

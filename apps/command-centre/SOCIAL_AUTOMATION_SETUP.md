@@ -1,8 +1,8 @@
-# 🚀 Social Media Automation Setup Guide
+#  Social Media Automation Setup Guide
 
 Complete automation system with content verification and duplicate detection.
 
-## 🎯 What You Get
+##  What You Get
 
 - **Automated posting** to Twitter/X, LinkedIn, BlueSky, Facebook
 - **Content verification** before posting
@@ -10,7 +10,7 @@ Complete automation system with content verification and duplicate detection.
 - **Manual approval workflow** for quality control
 - **Zero Twitter API costs** using Puppeteer automation
 
-## ⚡ Quick Start (5 Minutes)
+##  Quick Start (5 Minutes)
 
 ### 1. Environment Setup
 
@@ -45,7 +45,7 @@ node scripts/social-automation-verified.js daily --dry-run
 node scripts/social-automation-verified.js verify
 ```
 
-## 🔧 Platform Setup Details
+##  Platform Setup Details
 
 ### BlueSky (FREE - Start Here!)
 
@@ -75,31 +75,31 @@ node scripts/social-automation-verified.js verify
 - **Setup**: Manual login required
 - **Works**: Posts automatically after login
 
-## 📋 Content Verification Features
+##  Content Verification Features
 
 ### Pre-Post Checks
 
-✅ Character limits per platform
-✅ Audio Intel branding verification
-✅ Hashtag format validation
-✅ Professional tone check (LinkedIn)
-✅ Engagement optimization (Facebook)
+ Character limits per platform
+ Audio Intel branding verification
+ Hashtag format validation
+ Professional tone check (LinkedIn)
+ Engagement optimization (Facebook)
 
 ### Duplicate Detection
 
-✅ Content hash tracking
-✅ Cross-platform duplicate prevention
-✅ Recent post history checking
-✅ Intelligent content rotation
+ Content hash tracking
+ Cross-platform duplicate prevention
+ Recent post history checking
+ Intelligent content rotation
 
 ### Manual Approval Workflow
 
-✅ Quality control review
-✅ Platform-specific warnings
-✅ Content preview with verification results
-✅ Approval queue management
+ Quality control review
+ Platform-specific warnings
+ Content preview with verification results
+ Approval queue management
 
-## 🤖 Automation Commands
+##  Automation Commands
 
 ### Daily Automation
 
@@ -135,7 +135,7 @@ crontab -e
 0 9 * * * cd /path/to/command-centre && node scripts/social-automation-verified.js daily
 ```
 
-## 📊 Your Audio Intel Content
+##  Your Audio Intel Content
 
 Ready-to-post templates include:
 
@@ -146,7 +146,7 @@ Ready-to-post templates include:
 - **Industry insight** posts
 - **Professional credibility** content
 
-## 🔍 Verification Process
+##  Verification Process
 
 Before any post goes live:
 
@@ -170,7 +170,7 @@ Before any post goes live:
    - Full audit trail maintained
    - Easy rollback if needed
 
-## 📈 Expected Results
+##  Expected Results
 
 ### Week 1
 
@@ -190,23 +190,23 @@ Before any post goes live:
 - Industry credibility establishment
 - Lead generation pipeline
 
-## 🚨 Safety Features
+##  Safety Features
 
 ### Never Posts
 
-❌ Duplicate content
-❌ Unverified content
-❌ Content exceeding character limits
-❌ Content without Audio Intel context
+ Duplicate content
+ Unverified content
+ Content exceeding character limits
+ Content without Audio Intel context
 
 ### Always Verifies
 
-✅ Platform-specific requirements
-✅ Content quality standards
-✅ Brand consistency
-✅ Professional tone
+ Platform-specific requirements
+ Content quality standards
+ Brand consistency
+ Professional tone
 
-## 🛠️ Troubleshooting
+##  Troubleshooting
 
 ### Common Issues
 
@@ -234,7 +234,7 @@ Before any post goes live:
 - Content history in `data/content-history.json`
 - Verification results logged for debugging
 
-## 🎯 Next Steps
+##  Next Steps
 
 1. **Start with BlueSky** (free, easy setup)
 2. **Test with dry runs** until comfortable

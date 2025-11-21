@@ -1,10 +1,10 @@
-# 📧 Email Tracking Setup Guide
+#  Email Tracking Setup Guide
 
 ## Simple Email Open & Click Tracking (No Mailchimp Required!)
 
 Right, so I've built you a simple email tracking system that works with **any** email service - Gmail, Outlook, Mailchimp, whatever you want to use. No need to commit to Mailchimp or pay for expensive tracking services.
 
-## 🚀 **How It Works**
+##  **How It Works**
 
 ### **1. Tracking Pixels (Email Opens)**
 
@@ -25,7 +25,7 @@ Right, so I've built you a simple email tracking system that works with **any** 
 - Campaign performance tracking
 - Automated recommendations
 
-## 🛠️ **Setup (5 Minutes)**
+##  **Setup (5 Minutes)**
 
 ### **Step 1: Deploy Tracking Server**
 
@@ -73,7 +73,7 @@ cd tools/agents/radio-promo
 node test-email-tracking.js
 ```
 
-## 📧 **How to Use with Different Email Systems**
+##  **How to Use with Different Email Systems**
 
 ### **Gmail (Manual)**
 
@@ -127,7 +127,7 @@ const campaign = {
 - Just use the tracked content in whatever system you prefer
 - Tracking works automatically once deployed
 
-## 📊 **What You Get**
+##  **What You Get**
 
 ### **Real-time Analytics**
 
@@ -157,7 +157,7 @@ const campaign = {
 - **Contact lists** with engagement scores
 - **Performance metrics** for analysis
 
-## 🎯 **Example Workflow**
+##  **Example Workflow**
 
 ### **1. Prepare Campaign Email**
 
@@ -207,7 +207,7 @@ console.log(`Engagement Score: ${engagement.engagementScore}/100`);
 - Improve content based on click rates
 - Follow recommendations for better results
 
-## 💰 **Cost Comparison**
+##  **Cost Comparison**
 
 | Service              | Monthly Cost | Features                                            |
 | -------------------- | ------------ | --------------------------------------------------- |
@@ -215,7 +215,7 @@ console.log(`Engagement Score: ${engagement.engagementScore}/100`);
 | **Constant Contact** | £15-45+      | Email marketing, basic analytics                    |
 | **Our System**       | **£0**       | Full tracking, unlimited contacts, custom analytics |
 
-## 🚀 **Advanced Features**
+##  **Advanced Features**
 
 ### **A/B Testing**
 
@@ -241,7 +241,7 @@ console.log(`Engagement Score: ${engagement.engagementScore}/100`);
 - Track high-value contact engagement
 - Monitor campaign performance
 
-## 🎉 **Ready to Use!**
+##  **Ready to Use!**
 
 Your email tracking system is ready to go! It will:
 
@@ -253,4 +253,4 @@ Your email tracking system is ready to go! It will:
 
 **Bottom line**: You now have professional email tracking that works with any email system, costs nothing to run, and gives you better insights than most paid services!
 
-Want to test it? Just run the test script and see it in action! 🎯
+Want to test it? Just run the test script and see it in action! 

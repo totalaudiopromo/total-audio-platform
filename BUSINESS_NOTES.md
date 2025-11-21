@@ -1,8 +1,8 @@
-# 📝 BUSINESS NOTES - RUNNING LOG
+# BUSINESS NOTES - RUNNING LOG
 
 _Capture everything here, process into actions weekly_
 
-## 📅 NOVEMBER 2025
+## NOVEMBER 2025
 
 ### Week of Nov 20th - Git Repository Cleanup & Demo Fixes
 
@@ -30,14 +30,14 @@ git commit -m "chore: Remove Chrome profile from Git"
 
 **Implementation Complete:**
 
-- ✅ Database migration: `20251109_agent_observability.sql` (3 tables, 3 views, 6 RLS policies)
-- ✅ Agent observability script: `scripts/agent-observability.ts` (nightly health checks)
-- ✅ Growth reflex script: `scripts/growth-reflex.ts` (weekly revenue correlation analysis)
-- ✅ Feedback digest script: `scripts/feedback-digest.ts` (weekly AI-powered feedback analysis)
-- ✅ GitHub Actions: 3 automated workflows (agent-health.yml, growth-reflex.yml, feedback-digest.yml)
-- ✅ FeedbackButton component: `packages/ui/src/components/FeedbackButton.tsx` (thumbs up/down UI)
-- ✅ Feedback API: `apps/audio-intel/app/api/feedback/route.ts` (POST/GET endpoints)
-- ✅ Environment validation: Added Phase 9 feature flags to `packages/core-db/src/utils/env.ts`
+- Database migration: `20251109_agent_observability.sql` (3 tables, 3 views, 6 RLS policies)
+- Agent observability script: `scripts/agent-observability.ts` (nightly health checks)
+- Growth reflex script: `scripts/growth-reflex.ts` (weekly revenue correlation analysis)
+- Feedback digest script: `scripts/feedback-digest.ts` (weekly AI-powered feedback analysis)
+- GitHub Actions: 3 automated workflows (agent-health.yml, growth-reflex.yml, feedback-digest.yml)
+- FeedbackButton component: `packages/ui/src/components/FeedbackButton.tsx` (thumbs up/down UI)
+- Feedback API: `apps/audio-intel/app/api/feedback/route.ts` (POST/GET endpoints)
+- Environment validation: Added Phase 9 feature flags to `packages/core-db/src/utils/env.ts`
 
 **Technical Architecture:**
 
@@ -86,26 +86,26 @@ git commit -m "chore: Remove Chrome profile from Git"
 
 **Next Actions:**
 
-1. ⏳ Run dry-run tests for all three monitoring scripts
-2. ⏳ Deploy database migration to production Supabase
-3. ⏳ Enable GitHub Actions workflows with secrets
-4. ⏳ Test FeedbackButton component in Audio Intel app
-5. ⏳ Monitor first week of automated reports
-6. ⏳ Create git tag `v2.4.0-phase9-autonomous-ops`
+1. Run dry-run tests for all three monitoring scripts
+2. Deploy database migration to production Supabase
+3. Enable GitHub Actions workflows with secrets
+4. Test FeedbackButton component in Audio Intel app
+5. Monitor first week of automated reports
+6. Create git tag `v2.4.0-phase9-autonomous-ops`
 
 ---
 
-## 📅 OCTOBER 2025
+## OCTOBER 2025
 
 ### Week of Oct 21st - SEO & LLM Visibility Improvements
 
 **SEO Infrastructure Complete:**
 
-- ✅ Created comprehensive SEO asset generator (`scripts/generate-seo-assets.js`)
-- ✅ Generated favicons for all apps (16x16, 32x32, ico, apple-touch-icon)
-- ✅ Generated OG images for all apps (1200x630 with mascot logos)
-- ✅ Updated Tracker layout.tsx with complete SEO meta tags
-- ✅ Added robots.txt with LLM crawler permissions to all apps
+- Created comprehensive SEO asset generator (`scripts/generate-seo-assets.js`)
+- Generated favicons for all apps (16x16, 32x32, ico, apple-touch-icon)
+- Generated OG images for all apps (1200x630 with mascot logos)
+- Updated Tracker layout.tsx with complete SEO meta tags
+- Added robots.txt with LLM crawler permissions to all apps
 
 **Assets Generated:**
 
@@ -127,13 +127,13 @@ git commit -m "chore: Remove Chrome profile from Git"
 
 **Google Search Console Setup Complete (Oct 23):**
 
-- ✅ All three domains verified via Google Tag Manager
-- ✅ Sitemaps submitted for all domains:
+- All three domains verified via Google Tag Manager
+- Sitemaps submitted for all domains:
   - intel.totalaudiopromo.com/sitemap.xml (22+ pages including blog)
   - pitch.totalaudiopromo.com/sitemap.xml (public pages only - gated app)
   - tracker.totalaudiopromo.com/sitemap.xml (public pages only - gated app)
-- ✅ Page indexing monitoring enabled
-- ✅ Search performance tracking active
+- Page indexing monitoring enabled
+- Search performance tracking active
 
 **Indexing Status:**
 
@@ -149,32 +149,32 @@ git commit -m "chore: Remove Chrome profile from Git"
 
 **Remaining Actions:**
 
-1. ❌ User to handle V0 session privacy (delete or contact Vercel support)
-2. ⏳ Wait 2-3 days for initial GSC data to populate (Oct 25-26)
-3. 📊 Check Pages report to ensure key pages indexed
-4. 🎯 Request indexing for most important landing pages
-5. 📈 Monitor LLM visibility monthly (ChatGPT/Claude/Perplexity searches)
-6. 📝 Consider adding public blog content to Pitch Generator and Tracker for better SEO
-7. 🚀 Implement LLM-friendly content strategy (see earlier conversation)
+1.  User to handle V0 session privacy (delete or contact Vercel support)
+2. Wait 2-3 days for initial GSC data to populate (Oct 25-26)
+3. Check Pages report to ensure key pages indexed
+4. Request indexing for most important landing pages
+5. Monitor LLM visibility monthly (ChatGPT/Claude/Perplexity searches)
+6. Consider adding public blog content to Pitch Generator and Tracker for better SEO
+7. Implement LLM-friendly content strategy (see earlier conversation)
 
 ---
 
-## 📅 SEPTEMBER 2025
+## SEPTEMBER 2025
 
 ### Week of Sept 30th - Major Consolidation Session
 
 **Technical Completed:**
 
-- ✅ Liberty training data processed: 39,883 messages, 4,560 campaign patterns
-- ✅ MCP infrastructure cleanup: Removed broken Calendar/Chat MCPs
-- ✅ Confirmed working MCPs: Gmail, Drive, Notion, Puppeteer, GitHub, YouTube
+- Liberty training data processed: 39,883 messages, 4,560 campaign patterns
+- MCP infrastructure cleanup: Removed broken Calendar/Chat MCPs
+- Confirmed working MCPs: Gmail, Drive, Notion, Puppeteer, GitHub, YouTube
 
 **Content Strategy Fixed:**
 
-- ✅ Removed all false BBC Radio 1 placement claims (no actual Radio 1 plays)
-- ✅ Removed weak metrics (33 plays across low-quality stations not marketing material)
-- ✅ Reframed to process benefits: time savings (15hrs→3min), accuracy (60%→94%), response rates (8%→35%)
-- ✅ 43 content pieces updated with authentic positioning
+- Removed all false BBC Radio 1 placement claims (no actual Radio 1 plays)
+- Removed weak metrics (33 plays across low-quality stations not marketing material)
+- Reframed to process benefits: time savings (15hrs→3min), accuracy (60%→94%), response rates (8%→35%)
+- 43 content pieces updated with authentic positioning
 
 **Key Decisions:**
 
@@ -204,9 +204,9 @@ git commit -m "chore: Remove Chrome profile from Git"
 **Content Ideas:**
 
 - ~~BBC Radio 1 case study content~~ (FALSE CLAIM - REMOVED)
-- ✅ Process benefits messaging (time savings, accuracy, response rates)
-- ✅ "15 hours → 15 minutes" value prop validated
-- ✅ Founder authenticity (Brighton producer, 5+ years real experience)
+- Process benefits messaging (time savings, accuracy, response rates)
+- "15 hours → 15 minutes" value prop validated
+- Founder authenticity (Brighton producer, 5+ years real experience)
 
 **Outreach Insights:**
 
@@ -220,7 +220,7 @@ git commit -m "chore: Remove Chrome profile from Git"
 
 ---
 
-## 🔄 PROCESS WEEKLY
+## PROCESS WEEKLY
 
 _Move important items to WEEKLY_FOCUS.md or AUDIO_INTEL_CONTEXT.md_
 
@@ -234,7 +234,7 @@ _Move important items to WEEKLY_FOCUS.md or AUDIO_INTEL_CONTEXT.md_
 
 ---
 
-## 📊 CONVERSION DATA LOG
+## CONVERSION DATA LOG
 
 _Track real conversion rates and feedback_
 
@@ -259,7 +259,7 @@ _Track real conversion rates and feedback_
 
 ---
 
-## 💡 FUTURE IDEAS PARKING LOT
+## FUTURE IDEAS PARKING LOT
 
 _Good ideas that aren't immediate priorities_
 
@@ -271,12 +271,12 @@ _Good ideas that aren't immediate priorities_
 
 ---
 
-## 📅 NOVEMBER 2025 - Week of Nov 11th
+## NOVEMBER 2025 - Week of Nov 11th
 
-### ✅ PHASE 11: UNIFIED INTELLIGENCE - COMPLETE (2025-11-11)
+### PHASE 11: UNIFIED INTELLIGENCE - COMPLETE (2025-11-11)
 
 **Integration**: Golden Verify health checks + @total-audio/testing results → Command Centre Ops Console
-**Status**: ✅ Implementation complete, ready for production deployment
+**Status**: Implementation complete, ready for production deployment
 **Completion Date**: Monday, November 11, 2025
 
 **What Was Accomplished:**
@@ -311,48 +311,48 @@ _Good ideas that aren't immediate priorities_
 **Architecture:**
 
 ```
-┌─────────────────────────────────────┐
-│  Golden Verify Workflow (GitHub)    │
-│  - Runs post-deployment checks      │
-│  - Generates test-deployment-*.md   │
-└─────────────┬───────────────────────┘
+
+  Golden Verify Workflow (GitHub)    
+  - Runs post-deployment checks      
+  - Generates test-deployment-*.md   
+
               ↓
-┌─────────────────────────────────────┐
-│  golden-intelligence.ts (Script)    │
-│  - Reads deployment reports         │
-│  - Parses health + testing data     │
-│  - Writes to Supabase               │
-└─────────────┬───────────────────────┘
+
+  golden-intelligence.ts (Script)    
+  - Reads deployment reports         
+  - Parses health + testing data     
+  - Writes to Supabase               
+
               ↓
-┌─────────────────────────────────────┐
-│  Supabase Database                  │
-│  - golden_history table             │
-│  - testing_results table            │
-│  - Summary views                    │
-└─────────────┬───────────────────────┘
+
+  Supabase Database                  
+  - golden_history table             
+  - testing_results table            
+  - Summary views                    
+
               ↓
-┌─────────────────────────────────────┐
-│  Command Centre API Routes          │
-│  - /api/ops-console/golden          │
-│  - /api/ops-console/testing         │
-└─────────────┬───────────────────────┘
+
+  Command Centre API Routes          
+  - /api/ops-console/golden          
+  - /api/ops-console/testing         
+
               ↓
-┌─────────────────────────────────────┐
-│  Command Centre Dashboard UI        │
-│  - Real-time ops data               │
-│  - Historical trends                │
-│  - Pass rate tracking               │
-└─────────────────────────────────────┘
+
+  Command Centre Dashboard UI        
+  - Real-time ops data               
+  - Historical trends                
+  - Pass rate tracking               
+
 ```
 
 **Local Verification Results:**
 
-- ✅ Database migration applied successfully
-- ✅ Sample data inserted and queryable
-- ✅ Ingestion script runs without errors
-- ✅ API routes return valid JSON
-- ✅ Dashboard UI displays data correctly
-- ✅ No TypeScript errors or build failures
+- Database migration applied successfully
+- Sample data inserted and queryable
+- Ingestion script runs without errors
+- API routes return valid JSON
+- Dashboard UI displays data correctly
+- No TypeScript errors or build failures
 
 **Ready for Production:**
 
@@ -374,13 +374,13 @@ All components tested locally and working. Next steps:
 
 ---
 
-### 🚀 DEPLOYMENT CHECKLIST: Golden Verify + Testing Integration (ARCHIVED)
+### DEPLOYMENT CHECKLIST: Golden Verify + Testing Integration (ARCHIVED)
 
 **Note**: This checklist is now complete and archived below for reference.
 
 ---
 
-#### 📋 OVERVIEW
+#### OVERVIEW
 
 **What This Does:**
 
@@ -393,20 +393,20 @@ All components tested locally and working. Next steps:
 
 ```
 Main Repo (Monorepo)
-  ├── .github/workflows/golden-verify.yml (triggers ingestion)
-  ├── scripts/golden-intelligence.ts (ingestion script)
-  ├── supabase/migrations/20251111_golden_verify_integration.sql (database schema)
-  └── test-deployment-*.md files (source data)
+   .github/workflows/golden-verify.yml (triggers ingestion)
+   scripts/golden-intelligence.ts (ingestion script)
+   supabase/migrations/20251111_golden_verify_integration.sql (database schema)
+   test-deployment-*.md files (source data)
 
 Command Centre (Standalone App)
-  ├── app/api/ops-console/golden/route.ts (Golden Verify API)
-  ├── app/api/ops-console/testing/route.ts (Testing API)
-  └── Dashboard UI (displays data)
+   app/api/ops-console/golden/route.ts (Golden Verify API)
+   app/api/ops-console/testing/route.ts (Testing API)
+   Dashboard UI (displays data)
 ```
 
 ---
 
-#### 🗄️ PART 1: DATABASE SETUP
+#### PART 1: DATABASE SETUP
 
 **Location**: Main repository Supabase instance
 **Migration File**: `/supabase/migrations/20251111_golden_verify_integration.sql`
@@ -430,7 +430,7 @@ supabase db push --file supabase/migrations/20251111_golden_verify_integration.s
 # 1. Go to https://supabase.com/dashboard/project/[project-id]/sql/new
 # 2. Copy contents of 20251111_golden_verify_integration.sql
 # 3. Click "Run"
-# 4. Verify success message: "✅ Golden Verify + Testing integration migration complete"
+# 4. Verify success message: "Golden Verify + Testing integration migration complete"
 
 # Verification Query (run in Supabase SQL Editor):
 SELECT
@@ -451,7 +451,7 @@ SELECT
 
 ---
 
-#### 🔐 PART 2: ENVIRONMENT VARIABLES
+#### PART 2: ENVIRONMENT VARIABLES
 
 **GitHub Actions Secrets (Main Repo):**
 
@@ -494,12 +494,12 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=[anon-key]
 SUPABASE_SERVICE_ROLE_KEY=[service-role-key]
 
 # Environment: Production
-# ⚠️ CRITICAL: Must redeploy Command Centre after adding/updating env vars
+# CRITICAL: Must redeploy Command Centre after adding/updating env vars
 ```
 
 ---
 
-#### 🚢 PART 3: COMMAND CENTRE DEPLOYMENT
+#### PART 3: COMMAND CENTRE DEPLOYMENT
 
 **Location**: Standalone Next.js app at `apps/command-centre/`
 **Deployment**: Vercel (https://command.totalaudiopromo.com)
@@ -554,7 +554,7 @@ vercel --prod
 
 ---
 
-#### ✅ PART 4: VERIFICATION STEPS
+#### PART 4: VERIFICATION STEPS
 
 **1. Database Verification:**
 
@@ -593,7 +593,7 @@ export SUPABASE_SERVICE_ROLE_KEY="[service-role-key]"
 pnpm tsx scripts/golden-intelligence.ts
 
 # Expected output:
-# ✅ Golden Intelligence: Ingestion complete
+# Golden Intelligence: Ingestion complete
 #    - Golden Verify: X records inserted
 #    - Testing: Y records inserted
 #    - Latest test-deployment-*.md file processed
@@ -608,7 +608,7 @@ pnpm tsx scripts/golden-intelligence.ts
 # Visit: https://command.totalaudiopromo.com/ops-console
 # Or locally: http://localhost:3005/ops-console
 
-# ✅ Checklist:
+# Checklist:
 # [ ] Page loads without errors
 # [ ] Golden Verify card displays:
 #     - Latest deployment status (healthy/degraded/down)
@@ -629,7 +629,7 @@ pnpm tsx scripts/golden-intelligence.ts
 # Trigger workflow manually or wait for next deployment
 # Visit: https://github.com/[your-org]/total-audio-platform/actions
 
-# ✅ Checklist for golden-verify.yml workflow:
+# Checklist for golden-verify.yml workflow:
 # [ ] Workflow runs without errors
 # [ ] "Ingest Golden Verify + Testing Results" step succeeds
 # [ ] Supabase receives new records (check Table Editor)
@@ -658,7 +658,7 @@ curl http://localhost:3005/api/ops-console/testing | jq
 
 ---
 
-#### 🚨 TROUBLESHOOTING TIPS
+#### TROUBLESHOOTING TIPS
 
 **Problem: No data appears in Command Centre dashboard**
 
@@ -688,9 +688,9 @@ SELECT COUNT(*) FROM testing_results;
 
 ```bash
 # Check workflow logs for:
-# ❌ Missing Supabase credentials
-# ❌ No test-deployment-*.md files found
-# ❌ Database connection errors
+#  Missing Supabase credentials
+#  No test-deployment-*.md files found
+#  Database connection errors
 
 # Fix:
 # 1. Verify GitHub secrets exist:
@@ -715,7 +715,7 @@ WHERE tablename IN ('golden_history', 'testing_results');
 # Temporary bypass (testing only):
 ALTER TABLE golden_history DISABLE ROW LEVEL SECURITY;
 ALTER TABLE testing_results DISABLE ROW LEVEL SECURITY;
-# ⚠️ Re-enable after testing!
+# Re-enable after testing!
 ```
 
 **Problem: Command Centre API routes timeout**
@@ -755,7 +755,7 @@ SELECT * FROM testing_results WHERE component IN ('HeroDemo', 'DashboardCard');
 
 ---
 
-#### ⏱️ ESTIMATED DEPLOYMENT TIME
+#### ESTIMATED DEPLOYMENT TIME
 
 **Total Time: 15-20 minutes**
 
@@ -772,17 +772,17 @@ SELECT * FROM testing_results WHERE component IN ('HeroDemo', 'DashboardCard');
 
 ---
 
-#### 🎯 SUCCESS CRITERIA
+#### SUCCESS CRITERIA
 
 **Deployment is successful when:**
 
-- ✅ Database tables exist with sample data (4 golden + 5 testing records)
-- ✅ Ingestion script runs without errors (test manually first)
-- ✅ Command Centre dashboard displays Golden Verify and Testing cards
-- ✅ API routes return valid JSON responses
-- ✅ GitHub Actions workflow completes successfully
-- ✅ No errors in Vercel deployment logs
-- ✅ Telegram notifications working (if configured)
+- Database tables exist with sample data (4 golden + 5 testing records)
+- Ingestion script runs without errors (test manually first)
+- Command Centre dashboard displays Golden Verify and Testing cards
+- API routes return valid JSON responses
+- GitHub Actions workflow completes successfully
+- No errors in Vercel deployment logs
+- Telegram notifications working (if configured)
 
 **Next Steps After Deployment:**
 
@@ -794,7 +794,7 @@ SELECT * FROM testing_results WHERE component IN ('HeroDemo', 'DashboardCard');
 
 ---
 
-#### 📝 CRITICAL GOTCHAS
+#### CRITICAL GOTCHAS
 
 1. **Command Centre is NOT in the monorepo** - It's a standalone app at `apps/command-centre/` with its own `package.json` and Vercel deployment
 2. **Two Supabase connections**: Main repo ingestion script uses `SUPABASE_SERVICE_ROLE_KEY`, Command Centre API uses both `ANON_KEY` (client) and `SERVICE_ROLE_KEY` (server)
@@ -806,7 +806,7 @@ SELECT * FROM testing_results WHERE component IN ('HeroDemo', 'DashboardCard');
 
 ---
 
-#### 🔗 USEFUL URLS
+#### USEFUL URLS
 
 **Production:**
 
@@ -831,6 +831,6 @@ SELECT * FROM testing_results WHERE component IN ('HeroDemo', 'DashboardCard');
 
 ---
 
-**Deployment Completed**: ⏳ Pending
+**Deployment Completed**: Pending
 **Last Updated**: 2025-11-11
 **Next Review**: After first production deployment

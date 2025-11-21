@@ -66,7 +66,7 @@ guidelines from CHANGELOG_STYLE.md
 ```markdown
 # Updates - Week of March 10, 2024
 
-## ✨ New Features
+##  New Features
 
 - **Team Workspaces**: Create separate workspaces for different
   projects. Invite team members and keep everything organized.
@@ -74,12 +74,12 @@ guidelines from CHANGELOG_STYLE.md
 - **Keyboard Shortcuts**: Press ? to see all available shortcuts.
   Navigate faster without touching your mouse.
 
-## 🔧 Improvements
+## Improvements
 
 - **Faster Sync**: Files now sync 2x faster across devices
 - **Better Search**: Search now includes file contents, not just titles
 
-## 🐛 Fixes
+##  Fixes
 
 - Fixed issue where large images wouldn't upload
 - Resolved timezone confusion in scheduled posts

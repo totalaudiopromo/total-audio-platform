@@ -1,10 +1,10 @@
-# 🎯 RADIO PROMOTER OUTREACH LIST - October 2025
+# RADIO PROMOTER OUTREACH LIST - October 2025
 
 _UK Music PR Agencies - Priority Targets for Audio Intel_
 
 ---
 
-## 🎵 OUTREACH STRATEGY
+## OUTREACH STRATEGY
 
 **Value Prop**: "15 hours → 3 minutes" contact research time savings
 **Demo Format**: Loom video (3 minutes, record once, use everywhere)
@@ -20,7 +20,7 @@ _UK Music PR Agencies - Priority Targets for Audio Intel_
 
 ---
 
-## 🥇 PRIORITY #1: SHY CAT PR (Personal Connection)
+##  PRIORITY #1: SHY CAT PR (Personal Connection)
 
 **Contact**: Simon Russell
 **Website**: https://shycatpr.com
@@ -70,7 +70,7 @@ Brighton
 
 ---
 
-## 🥈 PRIORITY #2: DECENT MUSIC PR (User Specified)
+##  PRIORITY #2: DECENT MUSIC PR (User Specified)
 
 **Website**: https://decentmusicpr.com
 **Services**: Radio promotion for independent artists
@@ -119,7 +119,7 @@ Brighton, UK
 
 ---
 
-## 🥉 PRIORITY #3: PRESCRIPTION PR
+##  PRIORITY #3: PRESCRIPTION PR
 
 **Website**: https://prescriptionpr.co.uk
 **Locations**: London, Cambridge, Manchester
@@ -167,7 +167,7 @@ Brighton, UK
 
 ---
 
-## 🎯 PRIORITY #4: LANDER PR
+## PRIORITY #4: LANDER PR
 
 **Website**: [Research needed from search results]
 **Services**: Radio promotion for independent artists
@@ -211,7 +211,7 @@ Brighton, UK
 
 ---
 
-## 🎯 PRIORITY #5: LIBERTY MUSIC PR
+## PRIORITY #5: LIBERTY MUSIC PR
 
 **Services**: Radio promotion campaigns
 **Location**: UK-based
@@ -257,7 +257,7 @@ Brighton, UK
 
 ---
 
-## 🎯 PRIORITY #6: STOKED PR
+## PRIORITY #6: STOKED PR
 
 **Website**: [Research needed from search results]
 **Services**: Music PR and radio promotion
@@ -294,7 +294,7 @@ Brighton, UK
 
 ---
 
-## 🎯 PRIORITY #7: CHUFF MEDIA
+## PRIORITY #7: CHUFF MEDIA
 
 **Website**: [Research needed from search results]
 **Services**: Music PR and promotion
@@ -331,7 +331,7 @@ Brighton, UK
 
 ---
 
-## 🎯 PRIORITY #8-10: ADDITIONAL PROSPECTS (Research Needed)
+## PRIORITY #8-10: ADDITIONAL PROSPECTS (Research Needed)
 
 **To Research**:
 
@@ -349,7 +349,7 @@ Brighton, UK
 
 ---
 
-## 📧 EMAIL SEQUENCE (If No Response to Initial Outreach)
+## EMAIL SEQUENCE (If No Response to Initial Outreach)
 
 ### Follow-up 1 (3 days later):
 
@@ -387,7 +387,7 @@ Brighton, UK
 
 ---
 
-## 🎬 LOOM VIDEO SCRIPT (3 Minutes)
+## LOOM VIDEO SCRIPT (3 Minutes)
 
 **To Record When Ready**:
 
@@ -412,7 +412,7 @@ Brighton, UK
 
 ---
 
-## 📊 SUCCESS TRACKING
+## SUCCESS TRACKING
 
 **Outreach Metrics**:
 
@@ -433,7 +433,7 @@ Brighton, UK
 
 ---
 
-## 🎯 KEY MESSAGING POINTS (Use in All Outreach)
+## KEY MESSAGING POINTS (Use in All Outreach)
 
 **Lead With**:
 
@@ -458,11 +458,11 @@ Brighton, UK
 
 **Next Actions**:
 
-1. ✅ Outreach list complete
-2. ⏳ Schedule Loom video recording time
-3. ⏳ Research contact details for each agency
-4. ⏳ Send Shy Cat PR outreach (Priority #1)
-5. ⏳ Deploy first social content piece
+1. Outreach list complete
+2. Schedule Loom video recording time
+3. Research contact details for each agency
+4. Send Shy Cat PR outreach (Priority #1)
+5. Deploy first social content piece
 
 ---
 

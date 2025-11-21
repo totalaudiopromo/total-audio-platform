@@ -29,29 +29,29 @@ const voiceCheck = await Agents.voiceguard.execute({
 
 ## Available Agents
 
-### 🎯 IntelAgent
+###  IntelAgent
 
 Contact enrichment and validation
 
 - ContactFinder, LabelMatcher, EnrichmentValidator
 
-### ✉️ PitchAgent
+###  PitchAgent
 
 Pitch drafting and tone validation
 
 - PitchFormatter, ToneChecker, FollowUpWriter
 
-### 📊 TrackerAgent
+###  TrackerAgent
 
 Campaign tracking and analytics
 
 - SubmissionLogger, AnalyticsSummariser, ReminderAgent
 
-### 💡 InsightAgent
+###  InsightAgent
 
 Performance insights and recommendations
 
-### 🛡️ VoiceGuardAgent
+###  VoiceGuardAgent
 
 Brand voice enforcement ("honest maker" tone)
 
@@ -74,18 +74,18 @@ GET  /api/agents/stats    # Agent statistics
 
 ```
 agents/
-├── core/
-│   ├── BaseAgent.ts       # Core agent framework
-│   ├── AgentRegistry.ts   # Agent management
-│   └── AgentTypes.ts      # Type definitions
-│
-├── intel/                 # Contact enrichment
-├── pitch/                 # Pitch generation
-├── tracker/               # Campaign tracking
-├── insight/               # Performance insights
-├── voiceguard/            # Brand voice enforcement
-│
-└── index.ts               # Main exports
+ core/
+    BaseAgent.ts       # Core agent framework
+    AgentRegistry.ts   # Agent management
+    AgentTypes.ts      # Type definitions
+
+ intel/                 # Contact enrichment
+ pitch/                 # Pitch generation
+ tracker/               # Campaign tracking
+ insight/               # Performance insights
+ voiceguard/            # Brand voice enforcement
+
+ index.ts               # Main exports
 ```
 
 ## Testing

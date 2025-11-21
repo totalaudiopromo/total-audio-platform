@@ -4,7 +4,7 @@
 
 ---
 
-## 🏠 Public Pages (No Auth Required)
+##  Public Pages (No Auth Required)
 
 ### Landing & Marketing
 
@@ -25,7 +25,7 @@
 
 ---
 
-## 🔐 Authentication Pages
+##  Authentication Pages
 
 - **Sign In:** `http://localhost:3010/auth/signin`
 - **Auth Callback:** `http://localhost:3010/auth/callback`
@@ -33,7 +33,7 @@
 
 ---
 
-## 📊 Dashboard & Main App (Auth Required)
+##  Dashboard & Main App (Auth Required)
 
 ### Dashboard
 
@@ -51,7 +51,7 @@
 
 ---
 
-## ⚙️ Settings & Profile (Auth Required)
+##  Settings & Profile (Auth Required)
 
 - **Profile:** `http://localhost:3010/profile`
 - **Voice Profile:** `http://localhost:3010/profile/voice`
@@ -59,7 +59,7 @@
 
 ---
 
-## ✅ Success & Error Pages
+##  Success & Error Pages
 
 - **Success:** `http://localhost:3010/success`
 - **Not Found (404):** `http://localhost:3010/not-found` (or any invalid route)
@@ -68,7 +68,7 @@
 
 ---
 
-## 🎯 Demo Flow Pages (Recommended Order)
+##  Demo Flow Pages (Recommended Order)
 
 ### For Liberty Music PR Demo:
 
@@ -82,34 +82,34 @@
    - Overview of pitches and stats
 
 4. **Generate Pitch:** `http://localhost:3010/pitch/generate`
-   - Main pitch generation form (brutalist styling ✅)
+   - Main pitch generation form (brutalist styling )
 
 5. **Pitch Review:** `http://localhost:3010/pitch/review/[id]`
-   - Review generated pitch (brutalist styling ✅)
+   - Review generated pitch (brutalist styling )
 
 6. **Templates:** `http://localhost:3010/pitch/templates`
-   - Browse template library (brutalist styling ✅)
+   - Browse template library (brutalist styling )
 
 7. **Batch Generate:** `http://localhost:3010/pitch/batch`
-   - Generate multiple pitches at once (brutalist styling ✅)
+   - Generate multiple pitches at once (brutalist styling )
 
 8. **Contacts:** `http://localhost:3010/pitch/contacts`
-   - Manage contacts (brutalist styling ✅)
+   - Manage contacts (brutalist styling )
 
 9. **History:** `http://localhost:3010/pitch/history`
-   - View all past pitches (brutalist styling ✅)
+   - View all past pitches (brutalist styling )
 
 ---
 
-## 🔍 Quick Test Links
+##  Quick Test Links
 
 ### Test Brutalist Design Consistency:
 
-- **Generate Form:** `http://localhost:3010/pitch/generate` ✅
-- **Template Cards:** `http://localhost:3010/pitch/templates` ✅
-- **Batch Cards:** `http://localhost:3010/pitch/batch` ✅
-- **Dashboard Cards:** `http://localhost:3010/dashboard` ✅
-- **Contact Cards:** `http://localhost:3010/pitch/contacts` ✅
+- **Generate Form:** `http://localhost:3010/pitch/generate` 
+- **Template Cards:** `http://localhost:3010/pitch/templates` 
+- **Batch Cards:** `http://localhost:3010/pitch/batch` 
+- **Dashboard Cards:** `http://localhost:3010/dashboard` 
+- **Contact Cards:** `http://localhost:3010/pitch/contacts` 
 
 ### Test Integration Flow:
 
@@ -125,7 +125,7 @@
 
 ---
 
-## 📝 Notes
+##  Notes
 
 - **Port:** Default is `3010` (check your terminal output when running `npm run dev`)
 - **Dynamic Routes:** Replace `[id]` with actual IDs from your database
@@ -133,7 +133,7 @@
 
 ---
 
-## 🚀 Start Dev Server
+##  Start Dev Server
 
 ```bash
 cd apps/pitch-generator

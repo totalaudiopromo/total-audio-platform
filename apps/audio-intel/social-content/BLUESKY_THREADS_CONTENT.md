@@ -176,10 +176,10 @@ Most of that time was wasted on outdated information.
 I built Audio Intel to solve this properly.
 
 What actually works:
-✓ Real-time data (not static databases)
-✓ AI-powered enrichment (2 minutes vs 15 hours)
-✓ Submission guidelines and preferences
-✓ Genre focus and coverage data
+ Real-time data (not static databases)
+ AI-powered enrichment (2 minutes vs 15 hours)
+ Submission guidelines and preferences
+ Genre focus and coverage data
 
 The music industry needs better tools.
 
@@ -194,11 +194,11 @@ https://intel.totalaudiopromo.com?utm_source=threads&utm_medium=social&utm_campa
 I just tested Audio Intel on 5 real BBC Radio 1 contacts.
 
 Results:
-✓ Current show info and schedules
-✓ Submission guidelines (100% accurate)
-✓ Genre preferences per presenter
-✓ Preferred submission formats
-✓ Strategic pitching tips
+ Current show info and schedules
+ Submission guidelines (100% accurate)
+ Genre preferences per presenter
+ Preferred submission formats
+ Strategic pitching tips
 
 Processing time: Under 2 minutes
 Manual research saved: 12+ hours
@@ -226,11 +226,11 @@ More accessible for emerging artists
 But research complexity prevents most promoters from executing regional campaigns properly.
 
 Audio Intel solution:
-✓ 45 stations enriched in 3 minutes
-✓ Coverage areas and demographics
-✓ Submission preferences per station
-✓ Genre compatibility scoring
-✓ Strategic timing recommendations
+ 45 stations enriched in 3 minutes
+ Coverage areas and demographics
+ Submission preferences per station
+ Genre compatibility scoring
+ Strategic timing recommendations
 
 I executed a 45-station campaign last month:
 • 35% response rate
@@ -260,11 +260,11 @@ Audio Intel:
 • Agency: £79/month
 
 Same intelligence:
-✓ Real-time contact enrichment
-✓ Submission guidelines
-✓ Genre preferences
-✓ Coverage data
-✓ Strategic tips
+ Real-time contact enrichment
+ Submission guidelines
+ Genre preferences
+ Coverage data
+ Strategic tips
 
 Built by someone who actually does radio promotion daily, not by an enterprise software company optimising for corporate contracts.
 
@@ -293,11 +293,11 @@ Difference: 300% better response rate, 400% better placement rate
 Why? Radio presenters receive 200+ generic pitches weekly. Personalisation stands out.
 
 Audio Intel intelligence:
-✓ Recent playlist additions
-✓ Show format and preferences
-✓ Coverage and demographics
-✓ Submission guidelines
-✓ Strategic timing
+ Recent playlist additions
+ Show format and preferences
+ Coverage and demographics
+ Submission guidelines
+ Strategic timing
 
 All in 2 minutes instead of 15+ hours of manual research.
 
@@ -357,9 +357,9 @@ This happens constantly:
 By the time you've manually researched everything, the window is closed.
 
 Audio Intel timeline:
-✓ 30 seconds: Upload contact
-✓ 2 minutes: Review enriched data
-✓ Same day: Pitch sent
+ 30 seconds: Upload contact
+ 2 minutes: Review enriched data
+ Same day: Pitch sent
 
 Speed advantage wins opportunities.
 
@@ -371,11 +371,11 @@ https://intel.totalaudiopromo.com?utm_source=threads&utm_medium=social&utm_campa
 
 Managing radio contacts like this:
 
-❌ 5+ different Excel spreadsheets
-❌ Contacts in email threads
-❌ Notes in iPhone reminders
-❌ Post-its on desk
-❌ "I'll remember this" (you won't)
+ 5+ different Excel spreadsheets
+ Contacts in email threads
+ Notes in iPhone reminders
+ Post-its on desk
+ "I'll remember this" (you won't)
 
 Result: Can't find contacts, duplicate outreach, missed deadlines, wasted hours searching.
 
@@ -383,11 +383,11 @@ I lived this chaos for 5+ years. Absolutely maddening.
 
 Audio Intel solution:
 
-✓ Unified database (all contacts one place)
-✓ Automatic enrichment
-✓ Searchable by genre/location/reach
-✓ Relationship history tracked
-✓ Submission deadlines monitored
+ Unified database (all contacts one place)
+ Automatic enrichment
+ Searchable by genre/location/reach
+ Relationship history tracked
+ Submission deadlines monitored
 
 Before: "I know I have that BBC producer's email somewhere..."
 After: Search "BBC electronic music" → instant results
@@ -421,9 +421,9 @@ ROI:
 • ROI: 3,700% - 15,700%
 
 Plus improved results:
-✓ 300% better response rates
-✓ 94% contact accuracy
-✓ Faster opportunity turnarounds
+ 300% better response rates
+ 94% contact accuracy
+ Faster opportunity turnarounds
 
 One successful placement pays for years of Audio Intel.
 
@@ -447,9 +447,9 @@ Time you could spend:
 Instead: Wrestling with spreadsheets and outdated databases.
 
 Audio Intel automates this in 2 minutes:
-✓ Upload contact list
-✓ AI enriches with intelligence
-✓ Review and pitch
+ Upload contact list
+ AI enriches with intelligence
+ Review and pitch
 
 Focus on what actually moves your career forward.
 

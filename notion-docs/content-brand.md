@@ -1,18 +1,18 @@
 ---
-title: '📝 CONTENT & BRAND'
+title: ' CONTENT & BRAND'
 notion_url: https://www.notion.so/CONTENT-BRAND-2660a35b21ed8162baeaf8afbf100b2e
 exported_at: 2025-09-26T14:34:06.774Z
 ---
 
-# 📝 CONTENT & BRAND
+#  CONTENT & BRAND
 
 _Brand voice, content creation, and marketing materials_
 
 ---
 
-## 🎨 **BRAND STRATEGY**
+##  **BRAND STRATEGY**
 
-### **🎯 Brand Positioning:**
+### ** Brand Positioning:**
 
 - **UK Music Industry Focus** - British alternative to US tools
 
@@ -22,7 +22,7 @@ _Brand voice, content creation, and marketing materials_
 
 - **Personal Story** - Bedroom to professional journey
 
-### **🗺️ Brand Voice:**
+### ** Brand Voice:**
 
 - **Authentic British** - UK spelling and tone
 
@@ -34,9 +34,9 @@ _Brand voice, content creation, and marketing materials_
 
 ---
 
-## 📝 **CONTENT CREATION**
+##  **CONTENT CREATION**
 
-### **📱 Social Media Content:**
+### ** Social Media Content:**
 
 - **LinkedIn Updates** - Professional industry insights
 
@@ -46,7 +46,7 @@ _Brand voice, content creation, and marketing materials_
 
 - **YouTube Content** - Product demos and tutorials
 
-### **📰 Marketing Materials:**
+### ** Marketing Materials:**
 
 - **Landing Page Copy** - Value proposition and benefits
 
@@ -56,7 +56,7 @@ _Brand voice, content creation, and marketing materials_
 
 - **Case Studies** - Customer success stories
 
-### **📧 Customer Communication:**
+### ** Customer Communication:**
 
 - **Onboarding Emails** - Welcome series and setup
 
@@ -68,9 +68,9 @@ _Brand voice, content creation, and marketing materials_
 
 ---
 
-## 🎨 **VISUAL IDENTITY**
+##  **VISUAL IDENTITY**
 
-### **🎨 Design Assets:**
+### ** Design Assets:**
 
 - **Logo Variations** - Different formats and sizes
 
@@ -80,7 +80,7 @@ _Brand voice, content creation, and marketing materials_
 
 - **Image Style** - Photography and graphics style
 
-### **📱 Platform Assets:**
+### ** Platform Assets:**
 
 - **Social Media Templates** - Consistent visual style
 
@@ -92,9 +92,9 @@ _Brand voice, content creation, and marketing materials_
 
 ---
 
-## 🎯 **CURRENT CONTENT PRIORITIES**
+##  **CURRENT CONTENT PRIORITIES**
 
-### **🔥 This Week:**
+### ** This Week:**
 
 1. **Landing page copy update** - Clearer value proposition
 
@@ -102,7 +102,7 @@ _Brand voice, content creation, and marketing materials_
 
 1. **Customer outreach templates** - Personalised messages
 
-### **📈 Next Sprint:**
+### ** Next Sprint:**
 
 1. **Video content** - Product demo creation
 
@@ -158,7 +158,7 @@ _Your brand and content command centre_
 
 <!-- unhandled child_page -->
 
-🎵 MUSIC INDUSTRY INSIGHT MONDAY 🎵
+ MUSIC INDUSTRY INSIGHT MONDAY 
 
 Stop wasting your weekends researching radio contacts.
 
@@ -185,7 +185,7 @@ Get 94% accurate contact intelligence
 Stop wasting your time
 Focus on what matters: your music
 
-Comment BETA for free access 👇
+Comment BETA for free access 
 
 #MusicTech #IndieMusic #MusicIndustry
 
@@ -193,19 +193,19 @@ Comment BETA for free access 👇
 
 _Updated August 2025 - Freemium strategy with refined competitive positioning_
 
-## 🎯 STRATEGIC SHIFT: REAL COMPETITOR ANALYSIS
+##  STRATEGIC SHIFT: REAL COMPETITOR ANALYSIS
 
 ### WRONG Positioning (Out of Touch):
 
-❌ "UK alternative to Muck Rack and Cision"
-❌ "75% cheaper than enterprise tools"
-❌ Focus on tools indie artists don't actually use
+ "UK alternative to Muck Rack and Cision"
+ "75% cheaper than enterprise tools"
+ Focus on tools indie artists don't actually use
 
 ### CORRECT Positioning (Real World):
 
-✅ "Audio Intel vs SubmitHub: Verified contacts, not playlist gatekeepers"
-✅ "Groover alternative: Direct contact intelligence, skip the submission fees"
-✅ "What Spotify for Artists and YouTube for Artists don't tell you: who to actually pitch"
+ "Audio Intel vs SubmitHub: Verified contacts, not playlist gatekeepers"
+ "Groover alternative: Direct contact intelligence, skip the submission fees"
+ "What Spotify for Artists and YouTube for Artists don't tell you: who to actually pitch"
 
 ### Actual Competitor Landscape:
 
@@ -220,7 +220,7 @@ _Updated August 2025 - Freemium strategy with refined competitive positioning_
 
 **"Stop paying €3-15 per submission. Get verified contacts directly."**
 
-## 🎨 UPDATED COLOUR PALETTE
+##  UPDATED COLOUR PALETTE
 
 ### Foundation: Grayscale + Texture Base
 
@@ -280,7 +280,7 @@ _Updated August 2025 - Freemium strategy with refined competitive positioning_
 --color-echo-600: #0e7490; /* Hover */
 ```
 
-## 🖼️ DRS TEXTURE INTEGRATION STRATEGY
+##  DRS TEXTURE INTEGRATION STRATEGY
 
 ### Background Compatibility System
 
@@ -330,7 +330,7 @@ _Updated August 2025 - Freemium strategy with refined competitive positioning_
 - Lazy loading for texture assets
 - Fallback solid colours for slow connections
 
-## 🌓 DARK MODE STRATEGY
+##  DARK MODE STRATEGY
 
 ### Dark Mode Colour Adjustments
 
@@ -359,7 +359,7 @@ _Updated August 2025 - Freemium strategy with refined competitive positioning_
 - **Adjust blend modes** (screen/overlay vs multiply)
 - **Maintain brand colour recognition** across light/dark
 
-## 📱 IMPLEMENTATION GUIDELINES
+##  IMPLEMENTATION GUIDELINES
 
 ### CSS Custom Properties Setup
 
@@ -403,7 +403,7 @@ _Updated August 2025 - Freemium strategy with refined competitive positioning_
 }
 ```
 
-## 🎯 COMPETITIVE POSITIONING UPDATES
+##  COMPETITIVE POSITIONING UPDATES
 
 ### New Messaging Framework
 
@@ -421,17 +421,17 @@ _Updated August 2025 - Freemium strategy with refined competitive positioning_
 ### Website Copy Updates Needed
 
 **Homepage Hero:**
-❌ "Professional PR tools for 75% less than Muck Rack"
-✅ "Stop paying €3-15 per submission. Get verified contacts directly."
+ "Professional PR tools for 75% less than Muck Rack"
+ "Stop paying €3-15 per submission. Get verified contacts directly."
 **Competitor Page:**
 
 - Audio Intel vs Groover comparison
 - Audio Intel vs SubmitHub breakdown
 - Audio Intel vs Playlist Push ROI analysis
   **Pricing Page:**
-  ✅ "€348/year for Groover submissions vs £228/year for unlimited contact intelligence"
+   "€348/year for Groover submissions vs £228/year for unlimited contact intelligence"
 
-## 🚀 NEXT STEPS
+##  NEXT STEPS
 
 ### Immediate Updates (This Week)
 
@@ -854,21 +854,21 @@ AND Log timestamp
 
 ## **This Week's Priority Posts**
 
-### 🔥 **Monday Launch**
+###  **Monday Launch**
 
 **Platform**: LinkedIn + Twitter
 **Content**: 94% Automation Thread
 **Status**: Ready to post
 **Goal**: Establish thought leadership
 
-### 📖 **Wednesday Personal**
+###  **Wednesday Personal**
 
 **Platform**: LinkedIn
 **Content**: Building Audio Intel story
 **Status**: Ready to post
 **Goal**: Build personal connection
 
-### 📊 **Friday Demo**
+###  **Friday Demo**
 
 **Platform**: Twitter + Blue Sky
 **Content**: Radio submission tips
@@ -1005,26 +1005,26 @@ const RETRY_DELAYS = [5000, 15000, 60000]; // 5s, 15s, 1min
 
 ```javascript
 social-automation/
-├── src/
-│   ├── config/
-│   │   ├── platforms.ts
-│   │   ├── timing.ts
-│   │   └── notion.ts
-│   ├── services/
-│   │   ├── notion.service.ts
-│   │   ├── twitter.service.ts
-│   │   ├── linkedin.service.ts
-│   │   ├── bluesky.service.ts
-│   │   └── threads.service.ts
-│   ├── utils/
-│   │   ├── content-processor.ts
-│   │   ├── uk-spelling.ts
-│   │   └── utm-tracker.ts
-│   ├── types/
-│   │   └── social-post.types.ts
-│   └── app.ts
-├── package.json
-└── README.md
+ src/
+    config/
+       platforms.ts
+       timing.ts
+       notion.ts
+    services/
+       notion.service.ts
+       twitter.service.ts
+       linkedin.service.ts
+       bluesky.service.ts
+       threads.service.ts
+    utils/
+       content-processor.ts
+       uk-spelling.ts
+       utm-tracker.ts
+    types/
+       social-post.types.ts
+    app.ts
+ package.json
+ README.md
 ```
 
 ### **Environment Variables Required**
@@ -1201,7 +1201,7 @@ async function testConnection() {
       },
     });
 
-    console.log('✅ Notion connection successful!');
+    console.log(' Notion connection successful!');
     console.log(`Found ${response.results.length} posts ready to post`);
 
     // Show sample post
@@ -1216,7 +1216,7 @@ async function testConnection() {
       });
     }
   } catch (error) {
-    console.error('❌ Notion connection failed:', error);
+    console.error(' Notion connection failed:', error);
   }
 }
 
@@ -1468,17 +1468,17 @@ Your database has these posts ready:
 
 ```javascript
 social-automation/
-├── content/
-│   ├── ready-posts.csv
-│   └── templates/
-├── logs/
-│   ├── post-status.csv
-│   └── errors.log
-├── platforms/
-│   ├── twitter.ts
-│   ├── linkedin.ts
-│   └── bluesky.ts
-└── main.ts
+ content/
+    ready-posts.csv
+    templates/
+ logs/
+    post-status.csv
+    errors.log
+ platforms/
+    twitter.ts
+    linkedin.ts
+    bluesky.ts
+ main.ts
 ```
 
 This sidesteps all the Notion integration problems and gets you automated posting much faster. Want to try this approach instead?

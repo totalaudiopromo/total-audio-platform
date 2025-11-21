@@ -1,4 +1,4 @@
-# 🎵 Airtable Setup Guide for Radio Promo Agent
+#  Airtable Setup Guide for Radio Promo Agent
 
 ## Quick Start Checklist
 
@@ -197,12 +197,12 @@ base('Radio Contacts')
   })
   .eachPage(
     function page(records, fetchNextPage) {
-      console.log('✅ Airtable connection successful!');
+      console.log(' Airtable connection successful!');
       console.log('Sample record:', records[0].fields);
     },
     function done(err) {
       if (err) {
-        console.error('❌ Airtable connection failed:', err);
+        console.error(' Airtable connection failed:', err);
       }
     }
   );
@@ -245,7 +245,7 @@ const response = await fetch(`${process.env.AUDIO_INTEL_BASE_URL}/enrich`, {
 });
 
 const result = await response.json();
-console.log('✅ Audio Intel connection successful!');
+console.log(' Audio Intel connection successful!');
 ```
 
 ### 9. Set Up Radio Promo Agent Integration
@@ -284,7 +284,7 @@ console.log('✅ Audio Intel connection successful!');
 - [ ] Refine scoring algorithm
 - [ ] Export performance reports
 
-## 🎯 Success Metrics
+##  Success Metrics
 
 ### Target KPIs:
 
@@ -301,7 +301,7 @@ console.log('✅ Audio Intel connection successful!');
 - Campaign performance trends
 - Time saved per campaign
 
-## 🚀 Next Steps
+##  Next Steps
 
 1. **Set up Airtable base** using this guide
 2. **Import existing contacts** and clean up data
