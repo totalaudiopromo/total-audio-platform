@@ -1,0 +1,16 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "cd ../.. && pnpm --filter @total-audio/tap-dashboard build",
+  "installCommand": "cd ../.. && pnpm install --frozen-lockfile",
+  "env": {
+    "NEXT_PUBLIC_BASE_URL": "https://totalaudiopromo.com",
+    "NEXT_PUBLIC_SUPABASE_URL": "@supabase_url",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "@supabase_anon_key"
+  },
+  "functions": {
+    "app/api/**": {
+      "maxDuration": 30
+    }
+  },
+  "regions": ["lhr1"]
+}
