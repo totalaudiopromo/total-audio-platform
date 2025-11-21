@@ -639,15 +639,15 @@ Developer Push to main
 
 ### Verification Checklist (How to Test Pipeline is Working)
 
-1. **Check GitHub Actions**: https://github.com/totalaudiopromo/total-audio-platform/actions
+1. **Check GitHub Actions**: [Total Audio Platform Actions](https://github.com/totalaudiopromo/total-audio-platform/actions)
    - Should see ONLY "CI" and "Golden Verification Pipeline" workflows
-   - CI workflow should pass (green checkmark) 
+   - CI workflow should pass (green checkmark)
    - NO "CI/CD Pipeline" or "Release" workflows running
 
 2. **Check Vercel Deployments**:
-   - Audio Intel: https://vercel.com/chris-projects-6ffe0e29/audio-intel
-   - Tracker: https://vercel.com/chris-projects-6ffe0e29/tracker-fresh
-   - Pitch Generator: https://vercel.com/chris-projects-6ffe0e29/pitch-generator
+   - Audio Intel: [Audio Intel on Vercel](https://vercel.com/chris-projects-6ffe0e29/audio-intel)
+   - Tracker: [Tracker on Vercel](https://vercel.com/chris-projects-6ffe0e29/tracker-fresh)
+   - Pitch Generator: [Pitch Generator on Vercel](https://vercel.com/chris-projects-6ffe0e29/pitch-generator)
    - All should auto-deploy on `main` push 
 
 3. **Test with small commit**:
@@ -927,7 +927,7 @@ When providing advice or strategies, always:
 
 ### Active Development
 
-```
+```text
 /Users/chrisschofield/workspace/active/total-audio-platform/
  apps/audio-intel/          # PRIMARY: Revenue validation focus
     app/newsletter-dashboard/  # Newsletter management
@@ -944,7 +944,7 @@ When providing advice or strategies, always:
 
 ### Future Architecture (Post-Revenue)
 
-```
+```text
 /Users/chrisschofield/workspace/active/total-audio-platform/
  packages/agent-layer/      # Shared agent orchestration
     registry/              # Skill Registry implementation

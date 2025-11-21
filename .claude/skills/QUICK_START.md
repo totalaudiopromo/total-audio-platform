@@ -33,7 +33,7 @@
 /plugin
 
 # Follow prompts:
-1. Add marketplace: https://github.com/anthropics/anthropic-skills
+1. Add marketplace: [Anthropic Skills Repository](https://github.com/anthropics/anthropic-skills)
 2. Browse available skills
 3. Install: Skill Creator
 4. Install: Changelog Generator

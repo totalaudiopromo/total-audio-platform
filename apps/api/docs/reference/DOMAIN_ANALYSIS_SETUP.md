@@ -40,9 +40,10 @@ process.env.AIRTABLE_CONTACTS_TABLE_ID = 'your-actual-contacts-table-id-here';
 ##  Example Configuration
 
 ```javascript
-process.env.AIRTABLE_API_KEY = 'key1234567890abcdef';
-process.env.AIRTABLE_BASE_ID = 'app1234567890abcdef';
-process.env.AIRTABLE_CONTACTS_TABLE_ID = 'tbl1234567890abcdef';
+// Example placeholder values only - replace with your actual credentials
+process.env.AIRTABLE_API_KEY = 'key1234567890abcdef'; // Not a real API key
+process.env.AIRTABLE_BASE_ID = 'app1234567890abcdef'; // Example base ID
+process.env.AIRTABLE_CONTACTS_TABLE_ID = 'tbl1234567890abcdef'; // Example table ID
 ```
 
 ##  What the Analysis Will Do

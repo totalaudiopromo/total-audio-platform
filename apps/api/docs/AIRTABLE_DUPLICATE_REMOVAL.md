@@ -4,16 +4,16 @@
 
 The Airtable Duplicate Removal System is a comprehensive tool designed to safely identify and remove duplicate contacts from your Airtable base. It prioritizes data safety with dry-run mode, automatic backups, and detailed logging.
 
-##  Features
+## Features
 
 ### Core Functionality
 
-- ** Duplicate Detection**: Identifies contacts with identical email addresses
-- ** Smart Selection**: Keeps the most complete record, or most recent if equally complete
-- ** Safety First**: Dry-run mode shows what would be deleted before actual removal
-- ** Automatic Backup**: Creates backup files with all deleted records
-- ** Detailed Logging**: Comprehensive logs of all actions taken
-- ** Batch Processing**: Efficiently processes large datasets in batches
+- **Duplicate Detection**: Identifies contacts with identical email addresses
+- **Smart Selection**: Keeps the most complete record, or most recent if equally complete
+- **Safety First**: Dry-run mode shows what would be deleted before actual removal
+- **Automatic Backup**: Creates backup files with all deleted records
+- **Detailed Logging**: Comprehensive logs of all actions taken
+- **Batch Processing**: Efficiently processes large datasets in batches
 
 ### Safety Measures
 
@@ -23,7 +23,7 @@ The Airtable Duplicate Removal System is a comprehensive tool designed to safely
 - **Error Handling**: Graceful error handling with detailed error messages
 - **Rollback Capability**: Backup files allow restoration if needed
 
-##  Requirements
+## Requirements
 
 ### Environment Variables
 
@@ -39,7 +39,7 @@ AIRTABLE_CONTACTS_TABLE_ID=your-contacts-table-id
 - TypeScript compilation
 - Node.js environment
 
-##  Usage
+## Usage
 
 ### 1. Dry Run (Recommended First Step)
 
@@ -98,7 +98,7 @@ Are you sure you want to proceed with LIVE deletion? (yes/no): yes
 Type "DELETE" to confirm permanent deletion: DELETE
 ```
 
-##  How It Works
+## How It Works
 
 ### Duplicate Detection Algorithm
 
@@ -131,7 +131,7 @@ const importantFields = [
 // Score = (filled fields / total fields) * 100
 ```
 
-##  Backup System
+## Backup System
 
 ### Backup File Format
 
@@ -174,7 +174,7 @@ backupData.forEach(async record => {
 });
 ```
 
-##  API Endpoints
+## API Endpoints
 
 ### Dry Run
 
@@ -241,7 +241,7 @@ GET /api/airtable-duplicate-removal/status
 }
 ```
 
-##  Important Notes
+## Important Notes
 
 ### Before Running
 
@@ -262,7 +262,7 @@ GET /api/airtable-duplicate-removal/status
 2. **Save Backup**: Keep backup file in safe location
 3. **Review Logs**: Check logs for any issues
 
-##  Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -293,7 +293,7 @@ GET /api/airtable-duplicate-removal/status
 3. **Verify Permissions**: Ensure API key has proper access
 4. **Contact Support**: If issues persist, check logs for specific errors
 
-##  Performance
+## Performance
 
 ### Batch Processing
 
@@ -307,7 +307,7 @@ GET /api/airtable-duplicate-removal/status
 - Streaming processing for backup files
 - Minimal memory footprint
 
-##  Security
+## Security
 
 ### Data Protection
 
@@ -321,7 +321,7 @@ GET /api/airtable-duplicate-removal/status
 - User-specific service instances
 - Audit logging for all operations
 
-##  Support
+## Support
 
 For issues or questions:
 

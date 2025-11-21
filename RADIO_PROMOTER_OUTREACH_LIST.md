@@ -20,7 +20,7 @@ _UK Music PR Agencies - Priority Targets for Audio Intel_
 
 ---
 
-##  PRIORITY #1: SHY CAT PR (Personal Connection)
+## PRIORITY #1: SHY CAT PR (Personal Connection)
 
 **Contact**: Simon Russell
 **Website**: https://shycatpr.com
@@ -70,7 +70,7 @@ Brighton
 
 ---
 
-##  PRIORITY #2: DECENT MUSIC PR (User Specified)
+## PRIORITY #2: DECENT MUSIC PR (User Specified)
 
 **Website**: https://decentmusicpr.com
 **Services**: Radio promotion for independent artists
@@ -119,7 +119,7 @@ Brighton, UK
 
 ---
 
-##  PRIORITY #3: PRESCRIPTION PR
+## PRIORITY #3: PRESCRIPTION PR
 
 **Website**: https://prescriptionpr.co.uk
 **Locations**: London, Cambridge, Manchester

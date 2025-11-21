@@ -181,7 +181,7 @@ Audio Intel's contact enrichment system has been completely rebuilt with product
 - [x] Demo contacts seeded (sadact + BBC/Spotify)
 - [x] Batch generation working
 - [x] Audio Intel integration via clipboard
-- [x] Production-ready at https://pitch.totalaudiopromo.com
+- [x] Production-ready at [Pitch Generator](https://pitch.totalaudiopromo.com)
 
 ### Campaign Tracker
 

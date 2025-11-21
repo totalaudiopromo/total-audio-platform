@@ -250,7 +250,7 @@ export async function middleware(request: NextRequest) {
 
 ## Package Structure (Post-Migration)
 
-```
+```text
 packages/core-db/
  src/
     index.ts              # Main exports

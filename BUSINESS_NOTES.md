@@ -1,6 +1,6 @@
 # BUSINESS NOTES - RUNNING LOG
 
-_Capture everything here, process into actions weekly_
+## Capture everything here, process into actions weekly
 
 ## NOVEMBER 2025
 

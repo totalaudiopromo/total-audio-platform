@@ -37,19 +37,19 @@ pnpm test:demo           # 5-7 min - Full Liberty workflow
 
 ### Smoke Test: PASSING
 
-**Audio Intel** (http://localhost:3000):
+**Audio Intel** ([localhost:3000](http://localhost:3000)):
 
 - App loads
 - Demo page accessible
 - No crashes
 
-**Pitch Generator** (http://localhost:3001):
+**Pitch Generator** ([localhost:3001](http://localhost:3001)):
 
 - App loads
 - Demo page accessible
 - Auth working
 
-**Campaign Tracker** (http://localhost:3004):
+**Campaign Tracker** ([localhost:3004](http://localhost:3004)):
 
 - App loads
 - Dashboard accessible

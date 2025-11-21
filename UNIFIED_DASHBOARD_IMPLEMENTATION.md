@@ -222,7 +222,7 @@ packages/ai-skills/
 
 ### Database Migrations
 
-```
+```text
 packages/core-db/supabase/migrations/
  20251117000001_unified_dashboard_ecosystem.sql (955 lines)
      26 new tables
@@ -233,7 +233,7 @@ packages/core-db/supabase/migrations/
 
 ### Fusion Layer Package
 
-```
+```text
 packages/fusion-layer/
  package.json
  tsconfig.json
@@ -259,7 +259,7 @@ packages/fusion-layer/
 
 ### AI Skills Package
 
-```
+```text
 packages/ai-skills/
  package.json
  tsconfig.json

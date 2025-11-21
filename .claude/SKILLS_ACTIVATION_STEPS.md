@@ -1,6 +1,6 @@
 # Claude Code Skills - Activation Steps
 
-**Status:** Skills installed, ⏸ Not yet enabled
+**Status:** Skills installed, not yet enabled
 
 ---
 

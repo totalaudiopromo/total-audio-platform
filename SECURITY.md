@@ -15,7 +15,7 @@ npm run security:audit
 npm run security:scan
 ```
 
-##  What's Protected
+## What's Protected
 
 ### Git-Secrets (Pre-commit Hooks)
 

@@ -1,6 +1,6 @@
 # PITCH GENERATOR - COMPLETE CONTEXT
 
-_Everything you need to know about the Pitch Generator tool_
+## Everything you need to know about the Pitch Generator tool
 
 ## KEY NUMBERS
 

@@ -25,7 +25,7 @@ Go to: https://github.com/totalaudiopromo/total-audio-platform/settings/secrets/
 
 #### Build Secrets (GitHub Actions needs these)
 
-```
+```text
  NEXT_PUBLIC_SUPABASE_URL
  NEXT_PUBLIC_SUPABASE_ANON_KEY
  SUPABASE_SERVICE_ROLE_KEY
@@ -33,7 +33,7 @@ Go to: https://github.com/totalaudiopromo/total-audio-platform/settings/secrets/
 
 #### Vercel Promotion Secrets (golden-promote.ts needs these)
 
-```
+```text
  VERCEL_TOKEN
  VERCEL_ORG_ID
  VERCEL_PROJECT_ID                    # audio-intel
@@ -45,14 +45,14 @@ Go to: https://github.com/totalaudiopromo/total-audio-platform/settings/secrets/
 
 #### Notification Secrets (optional)
 
-```
+```text
  TELEGRAM_BOT_TOKEN
  TELEGRAM_CHAT_ID
 ```
 
 **Values for the VERCEL*PROJECT_ID*\* secrets:**
 
-```
+```bash
 VERCEL_PROJECT_ID=prj_3rSBMs1gaZj8uSg2XyCW31tzeF60
 VERCEL_PROJECT_ID_TRACKER=prj_uiEWXtOUY3d9ly8JureSAcSXaoRd
 VERCEL_PROJECT_ID_PITCH_GENERATOR=prj_3EJMQY0EfED1fFosCyOmJwmH4Unf
@@ -78,19 +78,19 @@ Go to each project's settings:
 
 **Add these 3 core variables to EACH project:**
 
-```
+```text
 Variable Name: NEXT_PUBLIC_SUPABASE_URL
 Value: https://lbtazcdqirgvmhvtwrbc.supabase.co
 Environments:  Production   Preview   Development
 ```
 
-```
+```text
 Variable Name: NEXT_PUBLIC_SUPABASE_ANON_KEY
 Value: [your-anon-key]
 Environments:  Production   Preview   Development
 ```
 
-```
+```text
 Variable Name: SUPABASE_SERVICE_ROLE_KEY
 Value: [your-service-role-key]
 Environments:  Production   Preview   Development

@@ -9,7 +9,7 @@
 
 ---
 
-##  What's Been Installed
+## What's Been Installed
 
 ### Core Skills (4 Installed)
 
@@ -109,7 +109,7 @@
 
 ---
 
-##  Directory Structure
+## Directory Structure
 
 ```
 ~/.claude/
@@ -411,7 +411,7 @@ Session End:
 
 ---
 
-##  Documentation Reference
+## Documentation Reference
 
 | Document                                                                                                      | Purpose                          | When to Read          |
 | ------------------------------------------------------------------------------------------------------------- | -------------------------------- | --------------------- |

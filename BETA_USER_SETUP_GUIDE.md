@@ -293,7 +293,7 @@ npm install bcryptjs @types/bcryptjs
 2. Check Supabase project is active
 3. For admin operations, ensure `SUPABASE_SERVICE_ROLE_KEY` is configured
 
-##  Security Considerations
+## Security Considerations
 
 1. **Password Security**
    - Passwords are hashed using bcrypt (10 rounds)
