@@ -1,19 +1,19 @@
-# 🧭 Audio Intel Migration Validation Checklist
+# Audio Intel Migration Validation Checklist
 
 **Purpose**: Confirm `@total-audio/core-db` integration works in both local and staging environments before migrating Tracker + Pitch Generator.
 
 ---
 
-## ⚙️ Local Verification (15 min)
+## Local Verification (15 min)
 
-### 1️⃣ Environment
+### 1⃣ Environment
 
 ```bash
 cd apps/audio-intel
 cat .env.local | grep SUPABASE
 ```
 
-**✅ Confirm these exist and match your Supabase project:**
+**Confirm these exist and match your Supabase project:**
 
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
@@ -27,13 +27,13 @@ vercel env pull .env.local --cwd apps/audio-intel
 
 ---
 
-### 2️⃣ Start Dev Server
+### 2⃣ Start Dev Server
 
 ```bash
 pnpm --filter audio-intel dev
 ```
 
-**✅ Checklist:**
+**Checklist:**
 
 - [ ] Server starts with no import/type errors
 - [ ] Logs show "Next.js 15 ready in x s"
@@ -46,25 +46,25 @@ pnpm --filter audio-intel dev
 
 **Check browser console + network tab:**
 
-- [ ] ❌ No 401/403 RLS errors
-- [ ] ❌ No `supabase: unauthorized` messages
+- [ ]  No 401/403 RLS errors
+- [ ]  No `supabase: unauthorized` messages
 
 ---
 
-### 3️⃣ API Sanity
+### 3⃣ API Sanity
 
 ```bash
 curl -I http://localhost:3000/api/usage
 ```
 
-**✅ Checklist:**
+**Checklist:**
 
 - [ ] Returns 200 and small JSON body
 - [ ] Supabase dashboard logs show matching API call
 
 ---
 
-### 4️⃣ Database Validation
+### 4⃣ Database Validation
 
 ```bash
 pnpm --filter @total-audio/core-db migrate
@@ -72,7 +72,7 @@ pnpm --filter @total-audio/core-db generate:types
 supabase db diff
 ```
 
-**✅ Checklist:**
+**Checklist:**
 
 - [ ] No pending migrations
 - [ ] Types generated successfully
@@ -80,13 +80,13 @@ supabase db diff
 
 ---
 
-### 5️⃣ Production Build Check
+### 5⃣ Production Build Check
 
 ```bash
 pnpm --filter audio-intel build
 ```
 
-**✅ Checklist:**
+**Checklist:**
 
 - [ ] Build completes < 10 s
 - [ ] 108 routes generated
@@ -94,7 +94,7 @@ pnpm --filter audio-intel build
 
 ---
 
-## ☁️ Staging Deploy (10 min)
+## Staging Deploy (10 min)
 
 _(Optional but recommended before Tracker/Pitch)_
 
@@ -110,20 +110,20 @@ vercel --cwd apps/audio-intel --prod --scope totalaudiopromo-staging
 
 ---
 
-## 🧪 Pass Criteria
+## Pass Criteria
 
 | Test                | Result                |
 | ------------------- | --------------------- |
-| Dev server runs     | ⬜                    |
-| Auth flows work     | ⬜                    |
-| API routes work     | ⬜                    |
-| RLS errors = 0      | ⬜                    |
-| Build passes        | ✅ (Already verified) |
-| Staging deploy runs | ⬜                    |
+| Dev server runs     |                     |
+| Auth flows work     |                     |
+| API routes work     |                     |
+| RLS errors = 0      |                     |
+| Build passes        | (Already verified) |
+| Staging deploy runs |                     |
 
 ---
 
-## 🏁 If All Green
+## If All Green
 
 Tag and push the validated milestone:
 
@@ -138,7 +138,7 @@ git push origin main --tags
 
 ---
 
-## 📝 Migration Summary (for reference)
+## Migration Summary (for reference)
 
 ### Files Modified (15 total):
 
@@ -158,7 +158,7 @@ git push origin main --tags
 14. Dashboard/component files - Migrated imports
 15. Auth component files - Migrated imports
 
-### Migration Pattern Established ✅
+### Migration Pattern Established 
 
 ```typescript
 // Server routes/actions

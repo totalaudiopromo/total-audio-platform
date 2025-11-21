@@ -1,10 +1,10 @@
 ---
-title: '🎯 RADIO PROMO AGENT - SYSTEM ARCHITECTURE'
+title: ' RADIO PROMO AGENT - SYSTEM ARCHITECTURE'
 notion_url: https://www.notion.so/RADIO-PROMO-AGENT-SYSTEM-ARCHITECTURE-2620a35b21ed819cbffef018e480bcb5
 exported_at: 2025-09-26T14:33:14.119Z
 ---
 
-# 🎯 RADIO PROMO AGENT - SYSTEM ARCHITECTURE
+#  RADIO PROMO AGENT - SYSTEM ARCHITECTURE
 
 _Automated radio promotion workflow for Liberty Music PR integration with Total Audio ecosystem_
 
@@ -72,7 +72,7 @@ _Automated radio promotion workflow for Liberty Music PR integration with Total 
 
 ## API Research Results
 
-### ❌ **Limited API Access**
+###  **Limited API Access**
 
 - [**Warmusic.net**](http://warmusic.net/): No public API (uses ACRCloud internally)
 
@@ -82,7 +82,7 @@ _Automated radio promotion workflow for Liberty Music PR integration with Total 
 
 - **Wigwam Radio**: No public API identified
 
-### ✅ **Available Integrations**
+###  **Available Integrations**
 
 - **Mailchimp API**: Full campaign automation
 
@@ -133,27 +133,27 @@ _Automated radio promotion workflow for Liberty Music PR integration with Total 
 ```javascript
 Artist Submits Form → Webhook → Database Entry → Automation Triggers:
 
-✅ Instant (0-2 mins):
+ Instant (0-2 mins):
 - Artist data captured and validated
 - Campaign ID generated
 - Client portal access created
 
-✅ 5 Minutes:
+ 5 Minutes:
 - AI press release generated from artist data
 - Mailchimp campaign created with personalised content
 - Radio station list filtered by genre/preferences
 
-✅ 15 Minutes:
+ 15 Minutes:
 - Email campaign scheduled and sent
 - Client receives campaign launch notification
 - PR agency dashboard updated with new campaign
 
-✅ 30 Minutes:
+ 30 Minutes:
 - European Indie Music Network £10 package automated purchase
 - Amazing Radio upload queued (manual review required)
 - Warmusic.net tracking setup initiated
 
-✅ Weekly:
+ Weekly:
 - Automated play tracking data collection
 - Client progress reports generated and sent
 - Campaign performance analytics updated

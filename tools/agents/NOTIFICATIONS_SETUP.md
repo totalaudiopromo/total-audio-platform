@@ -1,17 +1,17 @@
-# Newsletter Draft Notifications - Setup Complete ✅
+# Newsletter Draft Notifications - Setup Complete 
 
 ## What You Get
 
 When the automated newsletter runs every Monday at 9:00 AM, you'll receive:
 
-### 1. ✅ macOS Desktop Notification (Always Works)
+### 1.  macOS Desktop Notification (Always Works)
 
 - Pop-up notification on your Mac
 - Sound alert ("Glass" sound)
-- Message: "Newsletter Draft Ready! 📧"
+- Message: "Newsletter Draft Ready! "
 - Shows newsletter title
 
-### 2. 📧 Email Notification (If Mail.app Configured)
+### 2.  Email Notification (If Mail.app Configured)
 
 - Sent to: promo@totalaudiopromo.com
 - Subject: "Newsletter Draft Ready: [Newsletter Title]"
@@ -65,7 +65,7 @@ The email notification requires macOS Mail.app to be configured with an SMTP acc
 **Desktop notification:**
 
 ```
-Newsletter Draft Ready! 📧
+Newsletter Draft Ready! 
 "The Unsigned Advantage - 14 October 2025" is ready for review in ConvertKit
 ```
 
@@ -74,24 +74,24 @@ Newsletter Draft Ready! 📧
 ```
 Hi Chris,
 
-Your newsletter draft is ready for review! 📧
+Your newsletter draft is ready for review! 
 
 Newsletter: "The Unsigned Advantage - 14 October 2025"
 Draft ID: 12345678
 
-✅ What's included:
+ What's included:
 - 3 news stories with your expertise connection
 - sadact authenticity details
 - Tool Philosophy footer
 - Specific tactical actions
 
-🎯 Review and approve:
+ Review and approve:
 https://app.convertkit.com/broadcasts
 
 This should take about 15 minutes. Once reviewed, schedule for Tuesday 9 AM.
 
 Cheers,
-The Unsigned Advantage Bot 🤖
+The Unsigned Advantage Bot 
 ```
 
 ## Testing Notifications
@@ -148,7 +148,7 @@ tail -f ~/workspace/active/total-audio-platform/tools/agents/logs/newsletter-$(d
 **Frequency:** Every Monday 9:00 AM
 **Your action:** Review draft within 30 minutes
 
-You won't forget to review the newsletter - you'll get a notification on your Mac every Monday morning! 🎉
+You won't forget to review the newsletter - you'll get a notification on your Mac every Monday morning! 
 
 ---
 

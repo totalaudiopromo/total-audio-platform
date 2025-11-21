@@ -1,10 +1,10 @@
 ---
-title: '🔧 GitHub Workflow Fixes - Contact Scraper'
+title: ' GitHub Workflow Fixes - Contact Scraper'
 notion_url: https://www.notion.so/GitHub-Workflow-Fixes-Contact-Scraper-25b0a35b21ed816ead6bff4fb481cc72
 exported_at: 2025-09-26T14:33:07.079Z
 ---
 
-# 🔧 GitHub Workflow Fixes - Contact Scraper
+#  GitHub Workflow Fixes - Contact Scraper
 
 ## Issue: Contact Scraper Failure
 

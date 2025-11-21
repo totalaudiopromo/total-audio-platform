@@ -137,18 +137,18 @@ build "enhanced contact search" audiointel
 
 ```javascript
 /Users/chrisschofield/audio-intel/tools/agents/
-├── tdd-ui-planner.js
-├── tdd-component-selector.js
-├── tdd-test-writer.js
-├── tdd-implementation-planner.js
-├── tdd-helper.sh
-├── specs/
-│   ├── ui-wireframes/
-│   ├── components/
-│   ├── tests/
-│   ├── checklists/
-│   └── status.json
-└── TDD-README.md
+ tdd-ui-planner.js
+ tdd-component-selector.js
+ tdd-test-writer.js
+ tdd-implementation-planner.js
+ tdd-helper.sh
+ specs/
+    ui-wireframes/
+    components/
+    tests/
+    checklists/
+    status.json
+ TDD-README.md
 ```
 
 ## Example Usage

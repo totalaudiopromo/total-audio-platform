@@ -6,11 +6,11 @@
 
 ---
 
-## 🎯 The Truth About Costs
+## The Truth About Costs
 
 You're right to question the costs. Here's what **actually** costs money vs what's free:
 
-### 💰 COSTS MONEY (All Disabled by Default)
+###  COSTS MONEY (All Disabled by Default)
 
 **Contact Enrichment** - £3 per enrichment
 
@@ -32,7 +32,7 @@ You're right to question the costs. Here's what **actually** costs money vs what
 - **DISABLED** in registry (`enabled: false`)
 - Only run when Liberty pays you for campaign work
 
-### ✅ 100% FREE (Already Working)
+###  100% FREE (Already Working)
 
 **Social Media Scheduler** - £0/month
 
@@ -72,50 +72,50 @@ You're right to question the costs. Here's what **actually** costs money vs what
 
 ---
 
-## 📊 FREE Automation That Works Right Now
+## FREE Automation That Works Right Now
 
 ### CORE OPERATIONS (100% Free)
 
 | Agent               | Cost | Time Saved | Schedule   | Status    |
 | ------------------- | ---- | ---------- | ---------- | --------- |
-| Database Operations | £0   | -          | Always on  | ✅ Active |
-| Agent Manager       | £0   | -          | Always on  | ✅ Active |
-| Data Cleanup        | £0   | 2h/week    | Sunday 2am | ✅ Active |
+| Database Operations | £0   | -          | Always on  |  Active |
+| Agent Manager       | £0   | -          | Always on  |  Active |
+| Data Cleanup        | £0   | 2h/week    | Sunday 2am |  Active |
 
 ### MARKETING & CONTENT (Free Options)
 
 | Agent                  | Cost      | Time Saved | Schedule    | Status                    |
 | ---------------------- | --------- | ---------- | ----------- | ------------------------- |
-| Social Media Scheduler | £0        | 8h/week    | Sunday 8pm  | ✅ Active                 |
-| Business Analytics     | £0        | 4h/week    | Monday 10am | ✅ Active                 |
-| **Newsletter**         | £0.50/run | 8h/week    | Manual      | ❌ Disabled (costs money) |
-| **Newsjacking**        | £0.20/run | 4h/week    | Manual      | ❌ Disabled (costs money) |
-| **Content Generation** | £0.30/run | 3h/week    | Manual      | ❌ Disabled (costs money) |
+| Social Media Scheduler | £0        | 8h/week    | Sunday 8pm  |  Active                 |
+| Business Analytics     | £0        | 4h/week    | Monday 10am |  Active                 |
+| **Newsletter**         | £0.50/run | 8h/week    | Manual      |  Disabled (costs money) |
+| **Newsjacking**        | £0.20/run | 4h/week    | Manual      |  Disabled (costs money) |
+| **Content Generation** | £0.30/run | 3h/week    | Manual      |  Disabled (costs money) |
 
 ### MONITORING (100% Free)
 
 | Agent           | Cost | Time Saved | Schedule      | Status    |
 | --------------- | ---- | ---------- | ------------- | --------- |
-| Gmail Autopilot | £0   | 42h/week   | Every 2 hours | ✅ Active |
-| Health Check    | £0   | -          | Every 30 min  | ✅ Active |
-| Agent Dashboard | £0   | -          | Real-time     | ✅ Active |
-| Cost Tracker    | £0   | -          | Real-time     | ✅ Active |
+| Gmail Autopilot | £0   | 42h/week   | Every 2 hours |  Active |
+| Health Check    | £0   | -          | Every 30 min  |  Active |
+| Agent Dashboard | £0   | -          | Real-time     |  Active |
+| Cost Tracker    | £0   | -          | Real-time     |  Active |
 
 ### CLIENT DELIVERY (Free Except AI Processing)
 
 | Agent                | Cost      | Notes                   | Status                     |
 | -------------------- | --------- | ----------------------- | -------------------------- |
-| Liberty Intelligence | £0.50/run | Only for paying clients | ❌ Disabled                |
-| Liberty Project      | £0        | Monday.com automation   | ✅ Active (manual trigger) |
-| Liberty Email        | £0        | Mailchimp integration   | ✅ Active (manual trigger) |
-| Liberty Radio        | £0        | Station submissions     | ✅ Active (manual trigger) |
-| Liberty Analytics    | £0        | WARM API tracking       | ✅ Active (manual trigger) |
-| Liberty Coverage     | £0        | Report generation       | ✅ Active (manual trigger) |
-| Liberty Followup     | £0        | Automated follow-ups    | ✅ Active (manual trigger) |
+| Liberty Intelligence | £0.50/run | Only for paying clients |  Disabled                |
+| Liberty Project      | £0        | Monday.com automation   |  Active (manual trigger) |
+| Liberty Email        | £0        | Mailchimp integration   |  Active (manual trigger) |
+| Liberty Radio        | £0        | Station submissions     |  Active (manual trigger) |
+| Liberty Analytics    | £0        | WARM API tracking       |  Active (manual trigger) |
+| Liberty Coverage     | £0        | Report generation       |  Active (manual trigger) |
+| Liberty Followup     | £0        | Automated follow-ups    |  Active (manual trigger) |
 
 ---
 
-## 💡 FREE Alternatives to Paid AI Agents
+## FREE Alternatives to Paid AI Agents
 
 ### Instead of AI Newsletter Generation (£0.50/run):
 
@@ -172,7 +172,7 @@ You're right to question the costs. Here's what **actually** costs money vs what
 
 ---
 
-## 🚀 Recommended FREE Setup (£0/month)
+## Recommended FREE Setup (£0/month)
 
 ### Week 1: Core Free Automation
 
@@ -225,7 +225,7 @@ You're right to question the costs. Here's what **actually** costs money vs what
 
 ---
 
-## 📈 ROI Breakdown (Free vs Paid)
+## ROI Breakdown (Free vs Paid)
 
 ### Current FREE Setup
 
@@ -247,7 +247,7 @@ You're right to question the costs. Here's what **actually** costs money vs what
 
 ---
 
-## 🎯 Action Plan: Start FREE Today
+## Action Plan: Start FREE Today
 
 ### Step 1: Verify Free Agents (5 minutes)
 
@@ -258,17 +258,17 @@ node check-all-agents.js
 
 Check that only FREE agents are enabled:
 
-- ✅ Database Operations
-- ✅ Agent Manager
-- ✅ Data Cleanup
-- ✅ Social Media Scheduler
-- ✅ Gmail Autopilot
-- ✅ Health Check
-- ✅ Business Analytics
-- ❌ Newsletter (DISABLED)
-- ❌ Newsjacking (DISABLED)
-- ❌ Audio Intel Content (DISABLED)
-- ❌ Liberty Intelligence (DISABLED)
+-  Database Operations
+-  Agent Manager
+-  Data Cleanup
+-  Social Media Scheduler
+-  Gmail Autopilot
+-  Health Check
+-  Business Analytics
+-  Newsletter (DISABLED)
+-  Newsjacking (DISABLED)
+-  Audio Intel Content (DISABLED)
+-  Liberty Intelligence (DISABLED)
 
 ### Step 2: Set Up Free Automation (30 minutes)
 
@@ -347,7 +347,7 @@ Total: 2.5h/week, £0 cost
 
 ---
 
-## ⚠️ Cost Control Safeguards
+## Cost Control Safeguards
 
 ### Registry Protection
 
@@ -365,9 +365,9 @@ All paid agents have:
 
 Command Centre shows:
 
-- 🔴 **DISABLED** badge for paid agents
-- 💰 Cost estimate on hover
-- ⚠️ "Enable at your own risk" warning
+-  **DISABLED** badge for paid agents
+-  Cost estimate on hover
+-  "Enable at your own risk" warning
 
 ### Manual Trigger Only
 
@@ -381,13 +381,13 @@ Paid agents require:
 
 ```bash
 node core-agents/content/newsletter-automation-agent.js generate
-# ⚠️ WARNING: This will cost ~£0.50
+#  WARNING: This will cost ~£0.50
 # Type 'confirm' to proceed: _
 ```
 
 ---
 
-## 🎯 Summary: Your Free Automation Setup
+## Summary: Your Free Automation Setup
 
 **ACTIVE FREE AGENTS (10 agents)**:
 

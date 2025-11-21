@@ -1,6 +1,6 @@
-# 🚀 Integrations Setup In Progress
+#  Integrations Setup In Progress
 
-## ✅ Completed
+## Completed
 
 1. **Database Migration** - SQL copied to clipboard
    - Paste and run in: https://app.supabase.com/project/ucncbighzqudaszewjrv/sql/new
@@ -13,7 +13,7 @@
    - googleapis@^144.0.0
    - nanoid@^5.0.9
 
-## 🔧 Next Steps (Google OAuth Setup)
+## Next Steps (Google OAuth Setup)
 
 ### Step 1: Create Google Cloud Project
 
@@ -115,23 +115,23 @@ Visit: http://localhost:3004/dashboard/integrations
    git push
    ```
 
-## 📊 What You'll Be Able To Do
+## What You'll Be Able To Do
 
 ### Google Sheets Integration
 
-- ✅ One-click OAuth connection
-- ✅ Automatic sync every 15 minutes
-- ✅ Edit campaigns in Tracker or Sheet - syncs both ways
-- ✅ Share campaign progress with clients/team
+-  One-click OAuth connection
+-  Automatic sync every 15 minutes
+-  Edit campaigns in Tracker or Sheet - syncs both ways
+-  Share campaign progress with clients/team
 
 ### Gmail Integration
 
-- ✅ Automatic reply detection
-- ✅ Campaign status updates when contacts respond
-- ✅ Reply snippets in campaign notes
-- ✅ Never miss a follow-up
+-  Automatic reply detection
+-  Campaign status updates when contacts respond
+-  Reply snippets in campaign notes
+-  Never miss a follow-up
 
-## 🎯 Current Status
+## Current Status
 
 - [x] Code complete
 - [x] Dependencies installed
@@ -142,7 +142,7 @@ Visit: http://localhost:3004/dashboard/integrations
 - [ ] Local testing
 - [ ] Production deployment
 
-## ⏱️ Estimated Time Remaining: 5-7 minutes
+## ⏱ Estimated Time Remaining: 5-7 minutes
 
 ---
 

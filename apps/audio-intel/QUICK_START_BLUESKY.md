@@ -1,6 +1,6 @@
-# 🚀 Bluesky Autonomous Posting - Quick Start
+#  Bluesky Autonomous Posting - Quick Start
 
-**⏱️ Time to Deploy: 5 minutes**
+**⏱ Time to Deploy: 5 minutes**
 
 ---
 
@@ -41,7 +41,7 @@ Vercel automatically deploys.
 
 ---
 
-## ✅ Done!
+## Done!
 
 Your agent now posts **twice daily** at:
 
@@ -54,7 +54,7 @@ Your agent now posts **twice daily** at:
 
 ---
 
-## 🔍 Check It's Working
+## Check It's Working
 
 After next 9am or 5pm, check:
 
@@ -64,8 +64,8 @@ https://vercel.com/chris-projects-6ffe0e29/audio-intel/logs
 Look for:
 
 ```
-[CRON] 🤖 Autonomous social posting triggered
-[BLUESKY] ✅ Posted successfully
+[CRON]  Autonomous social posting triggered
+[BLUESKY]  Posted successfully
 ```
 
 **Your Bluesky Profile:**
@@ -73,7 +73,7 @@ Check your posts appeared correctly
 
 ---
 
-## 📖 Need More Info?
+## Need More Info?
 
 - **Full docs:** `BLUESKY_AUTONOMOUS_POSTING_SETUP.md`
 - **Complete summary:** `BLUESKY_AUTONOMOUS_AGENT_COMPLETE.md`
@@ -81,12 +81,12 @@ Check your posts appeared correctly
 
 ---
 
-## 🎯 What You Get
+## What You Get
 
-✅ Fully autonomous posting (no manual work)
-✅ Peak UK engagement times
-✅ Pre-written authentic content
-✅ Zero ongoing costs
-✅ Easy monitoring via Vercel logs
+ Fully autonomous posting (no manual work)
+ Peak UK engagement times
+ Pre-written authentic content
+ Zero ongoing costs
+ Easy monitoring via Vercel logs
 
-**That's it - your Bluesky agent is live!** 🎉
+**That's it - your Bluesky agent is live!** 

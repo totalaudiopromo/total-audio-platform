@@ -10,11 +10,11 @@ Phase 10A adds **Golden Intelligence** — an automated post-deployment validati
 
 ### Key Features
 
-- ✅ **Post-Deployment Health Checks**: Validates all production health endpoints
-- ✅ **Lighthouse Budget Validation**: Ensures performance thresholds are met
-- ✅ **Automatic Rollback**: Reverts to previous deployment if checks fail
-- ✅ **Telegram Notifications**: Real-time alerts for post-check and rollback status
-- ✅ **Comprehensive Reporting**: JSON reports saved for audit trail
+- **Post-Deployment Health Checks**: Validates all production health endpoints
+- **Lighthouse Budget Validation**: Ensures performance thresholds are met
+- **Automatic Rollback**: Reverts to previous deployment if checks fail
+- **Telegram Notifications**: Real-time alerts for post-check and rollback status
+- **Comprehensive Reporting**: JSON reports saved for audit trail
 
 ---
 
@@ -22,19 +22,19 @@ Phase 10A adds **Golden Intelligence** — an automated post-deployment validati
 
 ```
 Golden Deployment Pipeline
-├── Build & Test (golden-deploy.yml)
-│   └── [Deploys to production]
-│
-└── Golden Intelligence (golden-intelligence.yml)
-    ├── Post-Check (golden-postcheck.ts)
-    │   ├── Health endpoint validation
-    │   ├── Lighthouse budget validation
-    │   └── Generate report
-    │
-    └── Auto-Rollback (golden-rollback.ts) [if post-check fails]
-        ├── Find previous production deployment
-        ├── Promote previous deployment
-        └── Generate rollback report
+ Build & Test (golden-deploy.yml)
+    [Deploys to production]
+
+ Golden Intelligence (golden-intelligence.yml)
+     Post-Check (golden-postcheck.ts)
+        Health endpoint validation
+        Lighthouse budget validation
+        Generate report
+    
+     Auto-Rollback (golden-rollback.ts) [if post-check fails]
+         Find previous production deployment
+         Promote previous deployment
+         Generate rollback report
 ```
 
 ---
@@ -67,10 +67,10 @@ pnpm tsx scripts/golden-postcheck.ts --app audio-intel
 
 The post-check script validates these production endpoints:
 
-- ✅ `https://intel.totalaudiopromo.com/api/health` (audio-intel)
-- ✅ `https://tracker.totalaudiopromo.com/api/health`
-- ✅ `https://pitch.totalaudiopromo.com/api/health` (pitch-generator)
-- ✅ `https://totalaudiopromo.com/api/health` (web)
+- `https://intel.totalaudiopromo.com/api/health` (audio-intel)
+- `https://tracker.totalaudiopromo.com/api/health`
+- `https://pitch.totalaudiopromo.com/api/health` (pitch-generator)
+- `https://totalaudiopromo.com/api/health` (web)
 
 **Requirements**:
 
@@ -122,7 +122,7 @@ If post-check fails, the rollback script:
 ### Post-Check Success
 
 ```
-✅ Golden Post-Check PASSED
+Golden Post-Check PASSED
 
 Apps checked: 4
 Duration: 2.3s
@@ -132,7 +132,7 @@ All health endpoints responding correctly.
 ### Post-Check Failure
 
 ```
-❌ Golden Post-Check FAILED
+ Golden Post-Check FAILED
 
 Failed apps: audio-intel, tracker
 Duration: 5.1s
@@ -142,7 +142,7 @@ Rollback will be triggered automatically.
 ### Rollback Success
 
 ```
-✅ Golden Deploy Rollback Complete
+Golden Deploy Rollback Complete
 
 Version: v2.6.0-phase10a-intelligence → v2.5.9-phase10a-intelligence
 Apps rolled back: 4/4
@@ -152,7 +152,7 @@ Duration: 12.4s
 ### Rollback Failure
 
 ```
-❌ Golden Deploy Rollback Failed
+ Golden Deploy Rollback Failed
 
 All rollbacks failed.
 Manual intervention required.
@@ -340,7 +340,7 @@ pnpm tsx scripts/golden-postcheck.ts --app audio-intel
 
 ### Test Rollback (Dry Run)
 
-⚠️ **Warning**: Rollback script will actually promote deployments. Use with caution.
+ **Warning**: Rollback script will actually promote deployments. Use with caution.
 
 ```bash
 # Set environment variables first

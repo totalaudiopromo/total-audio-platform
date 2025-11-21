@@ -1,6 +1,6 @@
 # Airtable Optimization Plan - Liberty Music PR Contacts
 
-## 🎯 CURRENT PROBLEMS
+## CURRENT PROBLEMS
 
 Based on your feedback that "Airtable is still a real mess":
 
@@ -29,13 +29,13 @@ Based on your feedback that "Airtable is still a real mess":
 - Now used for Liberty Music PR (radio promotion)
 - Confused data model
 
-## 🔧 OPTIMIZATION STRATEGY
+## OPTIMIZATION STRATEGY
 
 ### Phase 1: Simplify Field Structure (IMMEDIATE)
 
 **Keep Only Essential Fields:**
 
-#### Core Contact Info (8 fields) ✅
+#### Core Contact Info (8 fields) 
 
 1. **Email** - Primary identifier
 2. **First Name** - Contact first name
@@ -46,23 +46,23 @@ Based on your feedback that "Airtable is still a real mess":
 7. **Region / Country** - Location
 8. **Created At** - Auto timestamp
 
-#### Subscription & Status (3 fields) ✅
+#### Subscription & Status (3 fields) 
 
 9. **Status** - Opted-In/Unsubscribed (synced from Mailchimp Liberty)
 10. **Opt-in Source** - Where they subscribed (Mailchimp Landing Page, etc.)
 11. **Last Email Date** - When last contacted
 
-#### Genre & Targeting (1 field) ✅
+#### Genre & Targeting (1 field) 
 
 12. **Genres** - Multiple select (Indie, Rock, Electronic, etc.)
 
-#### AI Enrichment (3 fields) ✅
+#### AI Enrichment (3 fields) 
 
 13. **Enrichment Quality** - High/Medium/Low (AI-powered)
 14. **Enrichment Notes** - Station analysis, pitch strategy
 15. **Last Enriched** - Enrichment timestamp
 
-#### Notes & Context (1 field) ✅
+#### Notes & Context (1 field) 
 
 16. **Notes** - All contact intelligence (consolidated)
 
@@ -72,17 +72,17 @@ Based on your feedback that "Airtable is still a real mess":
 
 ### Fields to ARCHIVE/HIDE:
 
-❌ **MC TAGS** - Old Mailchimp tags, not actively used
-❌ **Reply Status** - Broken integration
-❌ **Last Engagement** - Broken integration
-❌ **Response Quality** - Not being tracked
-❌ **Campaigns Contacted** - Redundant with Campaigns link
-❌ **Assigned Freelancer** - Not using
-❌ **Interactions** - Empty linked records
-❌ **Campaigns** - Empty linked records
-❌ **Test Mode** - Only 2 contacts, can delete
-❌ **Description** - Already merged into Notes
-❌ **Reply Notes** - Already merged into Notes
+ **MC TAGS** - Old Mailchimp tags, not actively used
+ **Reply Status** - Broken integration
+ **Last Engagement** - Broken integration
+ **Response Quality** - Not being tracked
+ **Campaigns Contacted** - Redundant with Campaigns link
+ **Assigned Freelancer** - Not using
+ **Interactions** - Empty linked records
+ **Campaigns** - Empty linked records
+ **Test Mode** - Only 2 contacts, can delete
+ **Description** - Already merged into Notes
+ **Reply Notes** - Already merged into Notes
 
 **Hide these 11 fields** → Clean, focused interface
 
@@ -198,7 +198,7 @@ Based on your feedback that "Airtable is still a real mess":
 
 ## Phase 3: Fix Mailchimp Integration (DECISION NEEDED)
 
-### Option 1: Connect to Liberty Music PR Mailchimp ✅ (RECOMMENDED)
+### Option 1: Connect to Liberty Music PR Mailchimp  (RECOMMENDED)
 
 **Why**: This Airtable is clearly for radio promotion work, not Audio Intel product marketing
 
@@ -310,7 +310,7 @@ If you want to track campaigns in Airtable:
 
 ---
 
-## 🚀 IMMEDIATE ACTIONS (Post-Enrichment)
+## IMMEDIATE ACTIONS (Post-Enrichment)
 
 ### Step 1: Hide Unused Fields (5 minutes)
 
@@ -382,33 +382,33 @@ node auto-tag-genres-from-enrichment.js
 
 ---
 
-## 📊 EXPECTED RESULT
+## EXPECTED RESULT
 
 ### Before Optimization:
 
-- ❌ 27 fields (overwhelming interface)
-- ❌ No views (hard to find contacts)
-- ❌ Broken Mailchimp integration
-- ❌ Mixed Total Audio Promo / Liberty data
-- ❌ Missing station names and genres
-- ❌ Hard to navigate
+-  27 fields (overwhelming interface)
+-  No views (hard to find contacts)
+-  Broken Mailchimp integration
+-  Mixed Total Audio Promo / Liberty data
+-  Missing station names and genres
+-  Hard to navigate
 
 ### After Optimization:
 
-- ✅ 16 visible fields (clean, focused)
-- ✅ 8 strategic views for different use cases
-- ✅ Synced to Liberty Mailchimp (clear purpose)
-- ✅ Pure Liberty Music PR contact database
-- ✅ Populated station names and genres
-- ✅ Easy to find BBC contacts, filter by genre, etc.
+-  16 visible fields (clean, focused)
+-  8 strategic views for different use cases
+-  Synced to Liberty Mailchimp (clear purpose)
+-  Pure Liberty Music PR contact database
+-  Populated station names and genres
+-  Easy to find BBC contacts, filter by genre, etc.
 
 ---
 
-## 💡 RECOMMENDATION: Two-Phase Approach
+## RECOMMENDATION: Two-Phase Approach
 
 ### Phase A: Quick Wins (TODAY - 20 minutes)
 
-1. ✅ Finish AI enrichment (running now)
+1.  Finish AI enrichment (running now)
 2. Hide 11 unused fields
 3. Create 8 strategic views
 4. Run station name extraction script
@@ -429,7 +429,7 @@ node auto-tag-genres-from-enrichment.js
 
 ---
 
-## 🎯 MY RECOMMENDATION
+## MY RECOMMENDATION
 
 **Start with Phase A (Quick Wins)**:
 

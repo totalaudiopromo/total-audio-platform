@@ -254,10 +254,10 @@ Company: BBC
 
 This ensures:
 
-- ✅ No data loss during transfer
-- ✅ Campaign managers can reference intelligence
-- ✅ Follow-up context always available
-- ✅ Audit trail of enrichment quality
+- No data loss during transfer
+- Campaign managers can reference intelligence
+- Follow-up context always available
+- Audit trail of enrichment quality
 
 ### What Gets Mapped
 
@@ -396,10 +396,10 @@ To analyze tool effectiveness:
 
 ### Integration Roadmap
 
-1. ✅ **Phase 3 (Current)**: CSV workflow with deep linking
-2. 🔲 **Phase 4**: Unified authentication (SSO)
-3. 🔲 **Phase 5**: Real-time sync via webhooks
-4. 🔲 **Phase 6**: Shared database architecture
+1. **Phase 3 (Current)**: CSV workflow with deep linking
+2.  **Phase 4**: Unified authentication (SSO)
+3.  **Phase 5**: Real-time sync via webhooks
+4.  **Phase 6**: Shared database architecture
 
 ## Support & Feedback
 

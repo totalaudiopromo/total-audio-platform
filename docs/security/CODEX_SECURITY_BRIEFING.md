@@ -1,6 +1,6 @@
 # CODEX SECURITY BRIEFING - RADIO PROMO AGENT CONTEXT
 
-## 🔐 SECURITY INCIDENT RESOLVED (28/09/2025)
+## SECURITY INCIDENT RESOLVED (28/09/2025)
 
 ### What Happened:
 
@@ -15,38 +15,38 @@
 3. **Production environment secured** (`apps/audio-intel/.env.local`)
 4. **Compromised keys replaced** with fresh credentials
 
-## 🏗️ NEW CREDENTIAL ARCHITECTURE
+## NEW CREDENTIAL ARCHITECTURE
 
 ### Master Vault Structure (`.env.vault`):
 
 ```
-🎵 TOTAL AUDIO PROMO (TAP_* prefix)
-├── AI Services (Anthropic, OpenAI, Perplexity)
-├── Payment (Stripe production keys)
-├── Data Management (Airtable, Notion)
-├── Email Marketing (ConvertKit V4)
-├── Social Media (LinkedIn, Discord, BlueSky)
-├── Content & Research (Firecrawl, News API)
-└── Development (GitHub, Vercel)
+TOTAL AUDIO PROMO (TAP_* prefix)
+ AI Services (Anthropic, OpenAI, Perplexity)
+ Payment (Stripe production keys)
+ Data Management (Airtable, Notion)
+ Email Marketing (ConvertKit V4)
+ Social Media (LinkedIn, Discord, BlueSky)
+ Content & Research (Firecrawl, News API)
+ Development (GitHub, Vercel)
 
-🎭 LIBERTY MUSIC PR (LIBERTY_* prefix)
-├── Google Services (OAuth, Gemini)
-├── Email Marketing (MailChimp)
-├── Project Management (Monday.com, Typeform)
-├── Radio Platforms (Amazing Radio, Wigwam)
-└── Notion Workspace
+ LIBERTY MUSIC PR (LIBERTY_* prefix)
+ Google Services (OAuth, Gemini)
+ Email Marketing (MailChimp)
+ Project Management (Monday.com, Typeform)
+ Radio Platforms (Amazing Radio, Wigwam)
+ Notion Workspace
 
-💰 AI INVESTMENT ADVISOR (AI_ADVISOR_* prefix)
-├── AI Services (Anthropic, OpenAI)
-├── Financial APIs (Alpha Vantage, FMP, FRED)
-└── Database (Supabase)
+ AI INVESTMENT ADVISOR (AI_ADVISOR_* prefix)
+ AI Services (Anthropic, OpenAI)
+ Financial APIs (Alpha Vantage, FMP, FRED)
+ Database (Supabase)
 
-🔧 SHARED INFRASTRUCTURE (SHARED_* prefix)
-├── Communication (WhatsApp Business)
-└── Development Tools (Make.com)
+SHARED INFRASTRUCTURE (SHARED_* prefix)
+ Communication (WhatsApp Business)
+ Development Tools (Make.com)
 ```
 
-## 🎯 FOR RADIO PROMO AGENT DEVELOPMENT
+## FOR RADIO PROMO AGENT DEVELOPMENT
 
 ### Fresh Credentials Available:
 
@@ -71,9 +71,9 @@
 4. **Copy to `.env.local`** only keys needed for specific agent
 5. **Test with placeholder values** during development
 
-## 🚀 OPERATIONAL STATUS
+## OPERATIONAL STATUS
 
-### ✅ FULLY FUNCTIONAL:
+### FULLY FUNCTIONAL:
 
 - Audio Intel SaaS platform (customer acquisition ready)
 - Newsletter system ("The Unsigned Advantage")
@@ -81,7 +81,7 @@
 - Payment processing (Stripe integration)
 - Mobile experience (21 UX issues resolved)
 
-### ✅ SECURITY HARDENED:
+### SECURITY HARDENED:
 
 - No secrets visible in codebase
 - Git history exposure contained
@@ -89,7 +89,7 @@
 - Business separation implemented
 - Fresh keys rotated for compromised services
 
-### 🎯 RADIO AGENT IMPLICATIONS:
+### RADIO AGENT IMPLICATIONS:
 
 - **Full API access** available with secure credentials
 - **Multi-business support** ready (TAP vs Liberty campaigns)
@@ -97,7 +97,7 @@
 - **Email automation** ready with fresh ConvertKit V4
 - **Project tracking** available via fresh Monday.com integration
 
-## 📋 FOR IMMEDIATE RADIO AGENT DEVELOPMENT:
+## FOR IMMEDIATE RADIO AGENT DEVELOPMENT:
 
 1. **Copy needed credentials** from `.env.vault` to agent's `.env.local`
 2. **Use LIBERTY\_\* prefixed keys** for client work

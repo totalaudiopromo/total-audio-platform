@@ -1,17 +1,17 @@
-# 🚨 URGENT: Fix Build Matrix in ci-cd.yml
+# URGENT: Fix Build Matrix in ci-cd.yml
 
 ## Problem
 
 You only added 3 apps to the build matrix when there should be 5.
 
-## Current State (WRONG) ❌
+## Current State (WRONG) 
 
 ```yaml
 matrix:
   app: [audio-intel, web, api]
 ```
 
-## Required State (CORRECT) ✅
+## Required State (CORRECT) 
 
 ```yaml
 matrix:
@@ -32,13 +32,13 @@ matrix:
 
 **Find and replace ALL THREE occurrences:**
 
-❌ **REMOVE:**
+ **REMOVE:**
 
 ```yaml
 app: [audio-intel, web, api]
 ```
 
-✅ **REPLACE WITH:**
+**REPLACE WITH:**
 
 ```yaml
 app: [audio-intel, tracker, pitch-generator, command-centre, web]
@@ -70,17 +70,17 @@ Expected output (3 lines, all identical):
 
 **Include these 5 apps:**
 
-1. ✅ audio-intel (Vercel project: prj_3rSBMs1gaZj8uSg2XyCW31tzeF60)
-2. ✅ tracker (Vercel project: prj_uiEWXtOUY3d9ly8JureSAcSXaoRd)
-3. ✅ pitch-generator (Vercel project: prj_3EJMQY0EfED1fFosCyOmJwmH4Unf)
-4. ✅ command-centre (Vercel project: prj_wFn8qksUxQ4zxJ0ATudZiqI62Ej9)
-5. ✅ web (Vercel project: prj_ZlaEHqJPwOJ8XnQmW7FAUL9OiL7C)
+1. audio-intel (Vercel project: prj_3rSBMs1gaZj8uSg2XyCW31tzeF60)
+2. tracker (Vercel project: prj_uiEWXtOUY3d9ly8JureSAcSXaoRd)
+3. pitch-generator (Vercel project: prj_3EJMQY0EfED1fFosCyOmJwmH4Unf)
+4. command-centre (Vercel project: prj_wFn8qksUxQ4zxJ0ATudZiqI62Ej9)
+5. web (Vercel project: prj_ZlaEHqJPwOJ8XnQmW7FAUL9OiL7C)
 
 **Exclude these apps:**
 
-- ❌ api (backend service, not deployed via Vercel)
-- ❌ playlist-pulse (explicitly excluded)
-- ❌ mobile, seo-tool, voice-echo (experimental/archived)
+-  api (backend service, not deployed via Vercel)
+-  playlist-pulse (explicitly excluded)
+-  mobile, seo-tool, voice-echo (experimental/archived)
 
 ## Commit Message After Fix
 

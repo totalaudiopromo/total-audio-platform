@@ -1,8 +1,8 @@
-# 🚀 AGENT OS QUICK REFERENCE CARD
+# AGENT OS QUICK REFERENCE CARD
 
 _Keep this handy - your go-to Agent OS commands and workflows_
 
-## ⚡ ESSENTIAL COMMANDS
+## ESSENTIAL COMMANDS
 
 ```bash
 /analyze-product    # Analyze your current Audio Intel state
@@ -11,7 +11,7 @@ _Keep this handy - your go-to Agent OS commands and workflows_
 /plan-product       # Plan product roadmap and strategy
 ```
 
-## 🎯 QUICK START (First Time)
+## QUICK START (First Time)
 
 **1. Understand your current state**
 
@@ -37,7 +37,7 @@ _Tell it what you want to improve (e.g., "demo booking process")_
 
 _Agent OS builds following best practices and mobile-first_
 
-## 🔄 DAILY WORKFLOW
+## DAILY WORKFLOW
 
 ### Morning Routine
 
@@ -52,7 +52,7 @@ _Agent OS builds following best practices and mobile-first_
 - Use `/execute-tasks` for systematic development
 - Always ask: "Will this help get first paying customer?"
 
-## 🎵 AUDIO INTEL EXAMPLES
+## AUDIO INTEL EXAMPLES
 
 ### Example 1: Improve Demo Experience
 
@@ -89,7 +89,7 @@ _Agent OS builds following best practices and mobile-first_
 # Optimizes mobile UX with proper testing
 ```
 
-## ✅ AGENT OS SUCCESS CHECKLIST
+## AGENT OS SUCCESS CHECKLIST
 
 ### Before Any Development
 
@@ -112,7 +112,7 @@ _Agent OS builds following best practices and mobile-first_
 - [ ] Proper testing included
 - [ ] Business metrics tracked
 
-## 🚨 REMEMBER
+## REMEMBER
 
 **Agent OS knows your business:**
 

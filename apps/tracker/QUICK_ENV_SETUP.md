@@ -101,9 +101,9 @@ If you want Liberty demo data for testing:
 ## Step 5: Verify Everything Works
 
 1. **Test Landing Page:**
-   - ✅ No error overlay
-   - ✅ Page loads completely
-   - ✅ Console has no red errors
+   -  No error overlay
+   -  Page loads completely
+   -  Console has no red errors
 
 2. **Test Authentication:**
    - Visit: http://localhost:3000/login
@@ -162,12 +162,12 @@ If you want Liberty demo data for testing:
 
 Once environment variables are configured:
 
-1. ✅ Run full browser test suite (see `BROWSER_TEST_REPORT.md`)
-2. ✅ Seed Liberty demo data
-3. ✅ Test all dashboard features
-4. ✅ Verify campaign detail pages work
-5. ✅ Test integration buttons (Pitch Generator, Audio Intel)
-6. ✅ Run through demo script
+1.  Run full browser test suite (see `BROWSER_TEST_REPORT.md`)
+2.  Seed Liberty demo data
+3.  Test all dashboard features
+4.  Verify campaign detail pages work
+5.  Test integration buttons (Pitch Generator, Audio Intel)
+6.  Run through demo script
 
 ---
 

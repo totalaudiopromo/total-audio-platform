@@ -4,7 +4,7 @@
 
 ---
 
-## 📧 Email Campaign Details
+## Email Campaign Details
 
 **Campaign Name**: Concerta - Consumption (Electronic/Dance Radio Campaign)
 **Send Date**: Monday, 11 November 2025
@@ -13,7 +13,7 @@
 
 ---
 
-## 📝 MAIN EMAIL TEMPLATE
+## MAIN EMAIL TEMPLATE
 
 ### Subject Line
 
@@ -36,12 +36,12 @@ This track represents an exciting bridge between Asian and European dance cultur
 
 I think your audience would really appreciate this fresh take on electronic music.
 
-🎧 Listen now:
+ Listen now:
 [Spotify Link]
 [Apple Music Link]
 [SoundCloud Link]
 
-📸 High-res assets & press materials available on request
+ High-res assets & press materials available on request
 
 Would you like to feature "Consumption" on your show?
 
@@ -54,7 +54,7 @@ www.libertymusicpr.com
 
 ---
 
-## 🎯 Target Audience (132 Contacts)
+## Target Audience (132 Contacts)
 
 ### Confirmed Electronic/Dance Stations Include:
 
@@ -78,7 +78,7 @@ www.libertymusicpr.com
 
 ---
 
-## 📦 Assets to Include/Attach
+## Assets to Include/Attach
 
 ### Required Links
 
@@ -90,11 +90,11 @@ www.libertymusicpr.com
 
 ### Available Assets (Location: ~/Downloads/Liberty_0831/)
 
-- ✅ 4 high-res profile images
-- ✅ Anime-inspired artwork (multiple variants)
-- ✅ Futuristic city artwork
-- ✅ Music video (CONCERTA_city_03.mp4)
-- ✅ SYLQ label assets
+-  4 high-res profile images
+-  Anime-inspired artwork (multiple variants)
+-  Futuristic city artwork
+-  Music video (CONCERTA_city_03.mp4)
+-  SYLQ label assets
 
 ### Recommended Mailchimp Attachments
 
@@ -104,25 +104,25 @@ www.libertymusicpr.com
 
 ---
 
-## 🎨 Key Messaging Points
+## Key Messaging Points
 
 **DO Include:**
 
-- ✅ South Korean artist (unique angle)
-- ✅ Cross-cultural electronic fusion
-- ✅ Anime-inspired visuals (strong identity)
-- ✅ Available NOW on all platforms
-- ✅ Fresh perspective on dance music
+-  South Korean artist (unique angle)
+-  Cross-cultural electronic fusion
+-  Anime-inspired visuals (strong identity)
+-  Available NOW on all platforms
+-  Fresh perspective on dance music
 
 **DON'T Include:**
 
-- ❌ Overly technical production details
-- ❌ Too much Seoul scene context (keep concise)
-- ❌ Comparison to other K-pop/K-electronic (let it stand alone)
+-  Overly technical production details
+-  Too much Seoul scene context (keep concise)
+-  Comparison to other K-pop/K-electronic (let it stand alone)
 
 ---
 
-## 📅 Send Schedule
+## Send Schedule
 
 **Monday, 11 November 2025**
 
@@ -138,7 +138,7 @@ www.libertymusicpr.com
 
 ---
 
-## ✅ Pre-Send Checklist
+## Pre-Send Checklist
 
 ### Information Needed from Concerta:
 
@@ -165,7 +165,7 @@ www.libertymusicpr.com
 
 ---
 
-## 📊 Expected Results
+## Expected Results
 
 Based on 132 contact database:
 
@@ -183,7 +183,7 @@ Based on 132 contact database:
 
 ---
 
-## 🔄 Follow-Up Strategy
+## Follow-Up Strategy
 
 ### Week 1 (11-15 November)
 
@@ -205,7 +205,7 @@ Based on 132 contact database:
 
 ---
 
-## 📧 Alternative Subject Lines (A/B Testing Options)
+## Alternative Subject Lines (A/B Testing Options)
 
 If we want to test different approaches:
 
@@ -218,7 +218,7 @@ If we want to test different approaches:
 
 ---
 
-## 🎯 Personalization Variables
+## Personalization Variables
 
 For Mailchimp merge tags:
 
@@ -234,18 +234,18 @@ Hi *|FNAME|* at *|STATION|*,
 
 ---
 
-## 📱 Social Media Support
+## Social Media Support
 
 Suggested posts to coordinate with email send:
 
 **Instagram Post (Monday AM)**
 
 ```
-📻 Radio campaign for "Consumption" goes live today!
+ Radio campaign for "Consumption" goes live today!
 
-Huge thanks to @libertymusicpr for supporting this track across electronic/dance stations worldwide 🌍
+Huge thanks to @libertymusicpr for supporting this track across electronic/dance stations worldwide 
 
-South Korea → Europe → the world 🎧
+South Korea → Europe → the world 
 
 [Link in bio]
 
@@ -260,7 +260,7 @@ South Korea → Europe → the world 🎧
 
 ---
 
-## ⚠️ Important Notes for Concerta
+## Important Notes for Concerta
 
 ### What to Expect:
 
@@ -284,22 +284,22 @@ South Korea → Europe → the world 🎧
 
 ---
 
-## 📝 FINAL APPROVAL NEEDED
+## FINAL APPROVAL NEEDED
 
 **Please review and confirm by Sunday 10 November:**
 
-1. ✅ Email copy approved (or suggest changes)
-2. ✅ Subject line approved
-3. ✅ Provide all streaming links
-4. ✅ Confirm artist socials
-5. ✅ Approve Monday send date
-6. ✅ Share any additional materials (press release, etc.)
+1.  Email copy approved (or suggest changes)
+2.  Subject line approved
+3.  Provide all streaming links
+4.  Confirm artist socials
+5.  Approve Monday send date
+6.  Share any additional materials (press release, etc.)
 
 **Once approved, campaign goes live Monday 9:00 AM GMT**
 
 ---
 
-## 🎵 Additional Campaign Information
+## Additional Campaign Information
 
 **Liberty will also:**
 

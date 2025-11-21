@@ -1,4 +1,4 @@
-# 🎯 Golden Deploy Final Fix - Root Cause Analysis
+# Golden Deploy Final Fix - Root Cause Analysis
 
 ## Critical Finding: Package Name Mismatch
 
@@ -6,11 +6,11 @@
 
 ```bash
 # Actual package names from `pnpm -r list`:
-audio-intel@0.1.0                    ✅ matches matrix name
-tracker@0.1.0                         ✅ matches matrix name
-pitch-generator@0.1.0                 ✅ matches matrix name
-command-centre@0.1.0                  ✅ matches matrix name
-total-audio-promo-frontend@1.0.0      ❌ matrix calls it "web"
+audio-intel@0.1.0                    matches matrix name
+tracker@0.1.0                         matches matrix name
+pitch-generator@0.1.0                 matches matrix name
+command-centre@0.1.0                  matches matrix name
+total-audio-promo-frontend@1.0.0       matrix calls it "web"
 ```
 
 ## Why This Breaks Everything
@@ -112,7 +112,7 @@ const APP_PROJECTS: Record<string, string> = {
 // Validate all project IDs are present
 for (const [app, projectId] of Object.entries(APP_PROJECTS)) {
   if (!projectId || projectId === 'undefined') {
-    console.error(`❌ Missing VERCEL_PROJECT_ID for ${app}`);
+    console.error(` Missing VERCEL_PROJECT_ID for ${app}`);
     process.exit(1);
   }
 }
@@ -196,12 +196,12 @@ pnpm --filter total-audio-promo-frontend build  # ← This is "web"
 
 ## Expected Outcome After Fixes
 
-1. ✅ Build matrix correctly filters packages
-2. ✅ Golden check accepts all 5 apps
-3. ✅ Promote script has all 5 project IDs
-4. ✅ Lint/typecheck won't block (temporarily)
-5. ✅ Builds succeed for all 5 apps
-6. ✅ ALL GREEN TICKS on GitHub Actions
+1. Build matrix correctly filters packages
+2. Golden check accepts all 5 apps
+3. Promote script has all 5 project IDs
+4. Lint/typecheck won't block (temporarily)
+5. Builds succeed for all 5 apps
+6. ALL GREEN TICKS on GitHub Actions
 
 ## Commit Message Template
 

@@ -6,14 +6,14 @@ This directory contains Claude Code skills for the Total Audio projects.
 
 ### Installed Skills
 
-- [x] **Skill Creator** (writing-skills) - obra/superpowers ✅
-- [x] **Changelog Generator** - ComposioHQ/awesome-claude-skills ✅
-- [x] **Systematic Debugging** - obra/superpowers ✅
-- [x] **Brainstorming** - obra/superpowers ✅
+- [x] **Skill Creator** (writing-skills) - obra/superpowers 
+- [x] **Changelog Generator** - ComposioHQ/awesome-claude-skills 
+- [x] **Systematic Debugging** - obra/superpowers 
+- [x] **Brainstorming** - obra/superpowers 
 - [ ] Simplification Cascades (deferred until post-customer acquisition)
 
 **Installation Date:** October 22, 2025
-**Status:** ✅ All core skills installed and ready to use
+**Status:** All core skills installed and ready to use
 
 ## Skill Sources
 

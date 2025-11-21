@@ -4,13 +4,13 @@ Autonomous posting agent for Audio Intel social media automation on Twitter/X.
 
 ## Features
 
-- ✅ **Single Tweet Posting**: Post individual tweets (280 character limit)
-- 🧵 **Thread Posting**: Automatically split long content into threads (5-7 tweets)
-- 📅 **Scheduled Posts**: Process posts from content calendar
-- 🎯 **Content Mapping**: Pre-configured content from `TWITTER_X_THREADS_RADIO_PROMOTERS.md`
-- 🔐 **Authentication**: OAuth 1.0a authentication with Twitter API v2
-- ⚡ **Rate Limiting**: Built-in delays to respect Twitter API limits
-- 🩺 **Health Checks**: Verify credentials and connection status
+-  **Single Tweet Posting**: Post individual tweets (280 character limit)
+-  **Thread Posting**: Automatically split long content into threads (5-7 tweets)
+-  **Scheduled Posts**: Process posts from content calendar
+-  **Content Mapping**: Pre-configured content from `TWITTER_X_THREADS_RADIO_PROMOTERS.md`
+-  **Authentication**: OAuth 1.0a authentication with Twitter API v2
+-  **Rate Limiting**: Built-in delays to respect Twitter API limits
+-  **Health Checks**: Verify credentials and connection status
 
 ## Installation
 
@@ -121,9 +121,9 @@ const agent = createTwitterAgent();
 const health = await agent.healthCheck();
 
 if (health.healthy) {
-  console.log('✅ Twitter agent ready');
+  console.log(' Twitter agent ready');
 } else {
-  console.error('❌ Health check failed:', health.error);
+  console.error(' Health check failed:', health.error);
 }
 ```
 
@@ -296,13 +296,13 @@ npx ts-node lib/examples/twitter-agent-example.ts
 
 ```
 twitter-posting-agent.ts          # Main agent class
-├── TwitterPostingAgent            # Core agent
-├── TwitterCredentials             # Type definitions
-├── TwitterPost                    # Post type
-└── createTwitterAgent()           # Factory function
+ TwitterPostingAgent            # Core agent
+ TwitterCredentials             # Type definitions
+ TwitterPost                    # Post type
+ createTwitterAgent()           # Factory function
 
 twitter-agent-example.ts           # Usage examples
-└── 5 example functions
+ 5 example functions
 
 .env.twitter.example               # Environment template
 TWITTER_AGENT_README.md            # This file

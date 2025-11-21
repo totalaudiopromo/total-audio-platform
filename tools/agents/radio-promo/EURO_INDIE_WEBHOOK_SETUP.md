@@ -127,13 +127,13 @@ You should receive an embedded message in your approval channel.
 
 ## Feature Summary
 
-✅ **Deprecation Warning Fixed**: Changed from `ready` to `clientReady` event
-✅ **Amazing Radio Integration**: Automated browser submission with Puppeteer
-✅ **Wigwam Integration**: Automated browser submission with Puppeteer
-✅ **Euro Indie Webhook**: Purchase approval workflow via Discord
-✅ **Monday.com Security**: Hardcoded to Chris Schofield board only (`2443582331`)
-✅ **Thread Conversations**: No need to @mention bot repeatedly
-✅ **Cost Transparency**: ~$0.003 per message displayed in startup
+ **Deprecation Warning Fixed**: Changed from `ready` to `clientReady` event
+ **Amazing Radio Integration**: Automated browser submission with Puppeteer
+ **Wigwam Integration**: Automated browser submission with Puppeteer
+ **Euro Indie Webhook**: Purchase approval workflow via Discord
+ **Monday.com Security**: Hardcoded to Chris Schofield board only (`2443582331`)
+ **Thread Conversations**: No need to @mention bot repeatedly
+ **Cost Transparency**: ~$0.003 per message displayed in startup
 
 ## Next Steps
 

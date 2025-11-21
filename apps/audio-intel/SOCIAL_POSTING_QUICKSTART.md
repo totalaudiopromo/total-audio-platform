@@ -2,7 +2,7 @@
 
 ## TL;DR - What You Need to Do
 
-**Right now**: Bluesky is working ✅
+**Right now**: Bluesky is working 
 **Next 15 mins**: Set up LinkedIn
 **Later (optional)**: Set up Threads (requires Facebook app approval)
 
@@ -12,10 +12,10 @@
 
 | Platform      | Status            | Time to Setup | Complexity |
 | ------------- | ----------------- | ------------- | ---------- |
-| **Bluesky**   | ✅ Working        | Done          | Easy       |
-| **LinkedIn**  | ⚠️ Needs token    | 10 minutes    | Medium     |
-| **Threads**   | ❌ Not configured | 30+ minutes   | Hard       |
-| **Twitter/X** | ❓ Unknown        | Need to check | Medium     |
+| **Bluesky**   |  Working        | Done          | Easy       |
+| **LinkedIn**  |  Needs token    | 10 minutes    | Medium     |
+| **Threads**   |  Not configured | 30+ minutes   | Hard       |
+| **Twitter/X** |  Unknown        | Need to check | Medium     |
 
 ---
 
@@ -59,10 +59,10 @@ Threads requires:
 
 The autonomous posting system is smart - it will:
 
-- ✅ Post to configured platforms (Bluesky, LinkedIn)
-- ⏭️ Skip platforms without credentials (Threads, Twitter)
-- 📊 Report which platforms succeeded/failed
-- 🔄 Continue working even if one platform fails
+-  Post to configured platforms (Bluesky, LinkedIn)
+- ⏭ Skip platforms without credentials (Threads, Twitter)
+-  Report which platforms succeeded/failed
+-  Continue working even if one platform fails
 
 **So you can launch with just Bluesky + LinkedIn and add others later!**
 
@@ -209,7 +209,7 @@ Scripts:
 
 **Right now**:
 
-1. Bluesky works ✅
+1. Bluesky works 
 2. LinkedIn needs 10 minutes of OAuth setup
 3. Threads is optional (can add later)
 
@@ -220,4 +220,4 @@ Scripts:
 - Using the content you've already written
 - Zero manual work required
 
-**Get LinkedIn working first, then enjoy automated social posting! 🚀**
+**Get LinkedIn working first, then enjoy automated social posting! **

@@ -150,7 +150,7 @@ NEXT_PUBLIC_APP_URL=https://totalaud.io
 
 ## Code Import Safety
 
-### ❌ NEVER Do This (Cross-Project Imports)
+###  NEVER Do This (Cross-Project Imports)
 
 ```typescript
 // totalaud.io importing from production
@@ -161,7 +161,7 @@ import { ContactSchema } from '@total-audio-platform/core/schemas';
 // If you change production, experiments break (and vice versa)
 ```
 
-### ✅ DO This (Copy or Rewrite)
+### DO This (Copy or Rewrite)
 
 ```typescript
 // totalaud.io with independent code
@@ -276,7 +276,7 @@ If you catch yourself:
 ```typescript
 // totalaud.io: Testing multi-agent spawning
 const manifest = await supabase
-  .from('totalaud_agent_manifests') // ✅ Experimental table
+  .from('totalaud_agent_manifests') // Experimental table
   .insert({ name, role, personality });
 
 // Experiments with themes, onboarding, AI agents

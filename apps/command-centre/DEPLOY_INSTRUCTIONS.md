@@ -1,8 +1,8 @@
-# 🚀 DEPLOY MOBILE FIXES TO PRODUCTION
+#  DEPLOY MOBILE FIXES TO PRODUCTION
 
 Your mobile sidebar fixes are ready but not yet live. Here's how to deploy them:
 
-## 🛠️ First: Fix Vercel Git Author Access
+## First: Fix Vercel Git Author Access
 
 Vercel is blocking auto-deploys because the commits are authored by `chris@totalaudiopromo.com`, which is not a user on the project team.
 
@@ -23,25 +23,25 @@ Vercel is blocking auto-deploys because the commits are authored by `chris@total
 3. **Confirm the webhook delivery**  
    GitHub → Repo → Settings → Webhooks → Vercel hook → “Recent Deliveries” — look for a `200` response on the latest push. Re-deliver if needed.
 
-## ✅ Changes Ready to Deploy (Commit: 43282db)
+## Changes Ready to Deploy (Commit: 43282db)
 
 ### Mobile Sidebar Fixes:
 
-- ✅ Fixed z-index: overlay at z-40, sidebar at z-50
-- ✅ Dark overlay (no more light grey blocking screen!)
-- ✅ Proper stacking order (overlay → sidebar)
-- ✅ Full height sidebar on mobile (h-screen)
-- ✅ 44px touch targets on all nav items
-- ✅ Active touch states for feedback
+-  Fixed z-index: overlay at z-40, sidebar at z-50
+-  Dark overlay (no more light grey blocking screen!)
+-  Proper stacking order (overlay → sidebar)
+-  Full height sidebar on mobile (h-screen)
+-  44px touch targets on all nav items
+-  Active touch states for feedback
 
 ### Dashboard Mobile Optimizations:
 
-- ✅ Responsive grids (1→2→3/4 columns)
-- ✅ 10-second API timeout with error handling
-- ✅ Skeleton loading states
-- ✅ Error recovery with retry button
+-  Responsive grids (1→2→3/4 columns)
+-  10-second API timeout with error handling
+-  Skeleton loading states
+-  Error recovery with retry button
 
-## 🔧 OPTION 1: Manual Deploy via Vercel Dashboard (EASIEST)
+## OPTION 1: Manual Deploy via Vercel Dashboard (EASIEST)
 
 1. **Go to**: https://vercel.com/chris-projects-6ffe0e29/command-centre
 2. **Click**: "Deployments" tab
@@ -49,7 +49,7 @@ Vercel is blocking auto-deploys because the commits are authored by `chris@total
 4. **Wait**: ~1-2 minutes for build
 5. **Test**: https://command.totalaudiopromo.com on mobile
 
-## 🔧 OPTION 2: Setup Git Remote & Auto-Deploy
+## OPTION 2: Setup Git Remote & Auto-Deploy
 
 ```bash
 # 1. Create GitHub repo (if you haven't already)
@@ -67,7 +67,7 @@ git push -u origin main
 
 Once connected, Vercel will auto-deploy on every push!
 
-## 🔧 OPTION 3: Re-authenticate Vercel CLI
+## OPTION 3: Re-authenticate Vercel CLI
 
 ```bash
 # Logout and re-login with team permissions
@@ -76,7 +76,7 @@ vercel login
 vercel --prod
 ```
 
-## 📱 After Deployment: Test on Mobile
+## After Deployment: Test on Mobile
 
 1. **Open**: https://command.totalaudiopromo.com on mobile
 2. **Hard refresh**:

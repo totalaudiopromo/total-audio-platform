@@ -2,11 +2,11 @@
 
 ## 5-Minute Setup (Do This Right Now!)
 
-**Your tracker is RUNNING:** Port 3004 is active ✅
+**Your tracker is RUNNING:** Port 3004 is active 
 
 ---
 
-## 🚀 RIGHT NOW (5 Minutes Total)
+## RIGHT NOW (5 Minutes Total)
 
 ### Step 1: Open Tracker (30 seconds)
 
@@ -116,7 +116,7 @@ MONDAY 14th: Release blast ready (30 contacts)
 
 ---
 
-## ✅ DONE! (Verify)
+## DONE! (Verify)
 
 **You should now see:**
 
@@ -128,7 +128,7 @@ MONDAY 14th: Release blast ready (30 contacts)
 
 ---
 
-## 📸 TAKE SCREENSHOTS (1 minute)
+## TAKE SCREENSHOTS (1 minute)
 
 **For Friday demo backup:**
 
@@ -142,14 +142,14 @@ MONDAY 14th: Release blast ready (30 contacts)
 
 ---
 
-## 🎯 NOW USE IT FOR REAL KYARA CAMPAIGN
+## NOW USE IT FOR REAL KYARA CAMPAIGN
 
 ### Dog-Fooding the Tracker:
 
 **Today (Thursday):**
 
-- ✅ Campaign created
-- ✅ Timeline populated
+-  Campaign created
+-  Timeline populated
 - [ ] Use tracker to track actual emails sent today
 - [ ] Log any responses you get
 - [ ] Update stats as they come in
@@ -177,7 +177,7 @@ MONDAY 14th: Release blast ready (30 contacts)
 
 ---
 
-## 💼 DEMO PREP (Thursday Night)
+## DEMO PREP (Thursday Night)
 
 **After adding campaign:**
 
@@ -201,7 +201,7 @@ MONDAY 14th: Release blast ready (30 contacts)
 
 ---
 
-## 🚨 TROUBLESHOOTING
+## TROUBLESHOOTING
 
 ### "Tracker won't load at localhost:3004"
 
@@ -252,14 +252,14 @@ PORT=3004 npm run dev -- apps/tracker
 
 ---
 
-## 🎉 YOU'RE READY!
+## YOU'RE READY!
 
 **What You Have Now:**
-✅ Tracker running (port 3004)
-✅ Campaign creation guide (5 minutes)
-✅ Timeline activities prepared (6 events)
-✅ Demo screenshots plan
-✅ Dog-fooding strategy (use it for real!)
+ Tracker running (port 3004)
+ Campaign creation guide (5 minutes)
+ Timeline activities prepared (6 events)
+ Demo screenshots plan
+ Dog-fooding strategy (use it for real!)
 
 **What To Do:**
 
@@ -281,4 +281,4 @@ PORT=3004 npm run dev -- apps/tracker
 
 Stop reading. Go create the campaign. Takes 5 minutes. You'll have real data to show Dan tomorrow and you'll be using your own tool for the actual KYARA campaign. Perfect!
 
-**LET'S GO! 🚀**
+**LET'S GO! **

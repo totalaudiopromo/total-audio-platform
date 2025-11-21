@@ -28,10 +28,10 @@ CodeRabbit acts as an automated senior reviewer for the Total Audio Platform. Th
 
 **What CodeRabbit checks**:
 
-- ❌ No `vercel deploy` commands in `.github/workflows/ci.yml`
-- ✅ `ci.yml` only runs: lint, typecheck, test, build
-- ✅ `golden-verify.yml` includes all 3 apps: audio-intel, tracker, pitch-generator
-- ✅ Health endpoints exist for all apps
+-  No `vercel deploy` commands in `.github/workflows/ci.yml`
+-  `ci.yml` only runs: lint, typecheck, test, build
+-  `golden-verify.yml` includes all 3 apps: audio-intel, tracker, pitch-generator
+-  Health endpoints exist for all apps
 
 **Why**: Prevents duplicate deployments and maintains clean separation of concerns.
 
@@ -41,9 +41,9 @@ CodeRabbit acts as an automated senior reviewer for the Total Audio Platform. Th
 
 **What CodeRabbit checks**:
 
-- ❌ No `import { X } from '../../../apps/other-app'`
-- ✅ Apps can import from `packages/ui`, `packages/testing`, etc.
-- ✅ Shared logic lives in `packages/` directory
+-  No `import { X } from '../../../apps/other-app'`
+-  Apps can import from `packages/ui`, `packages/testing`, etc.
+-  Shared logic lives in `packages/` directory
 
 **Why**: Prevents circular dependencies and maintains app independence.
 
@@ -53,9 +53,9 @@ CodeRabbit acts as an automated senior reviewer for the Total Audio Platform. Th
 
 **What CodeRabbit checks**:
 
-- ❌ No hardcoded `sk_live_*`, `sk_test_*`, connection strings
-- ✅ Secrets accessed via `process.env.SECRET_NAME`
-- ✅ Environment variables documented in `.env.example`
+-  No hardcoded `sk_live_*`, `sk_test_*`, connection strings
+-  Secrets accessed via `process.env.SECRET_NAME`
+-  Environment variables documented in `.env.example`
 
 **Why**: Prevents credential leaks and enables proper secret rotation.
 
@@ -65,9 +65,9 @@ CodeRabbit acts as an automated senior reviewer for the Total Audio Platform. Th
 
 **What CodeRabbit checks**:
 
-- ✅ Migration files follow naming convention: `YYYYMMDDHHMMSS_description.sql`
-- ✅ Migrations are idempotent (safe to run multiple times)
-- ✅ Breaking changes include rollback strategy
+-  Migration files follow naming convention: `YYYYMMDDHHMMSS_description.sql`
+-  Migrations are idempotent (safe to run multiple times)
+-  Breaking changes include rollback strategy
 
 **Why**: Ensures database changes are tracked, reviewable, and reversible.
 
@@ -87,9 +87,9 @@ CodeRabbit scans for:
 
 CodeRabbit validates:
 
-- ✅ API routes check authentication
-- ✅ Row Level Security (RLS) enabled for Supabase tables
-- ✅ User input is validated/sanitized
+-  API routes check authentication
+-  Row Level Security (RLS) enabled for Supabase tables
+-  User input is validated/sanitized
 
 **Why**: Prevents unauthorized access and data breaches.
 
@@ -99,9 +99,9 @@ CodeRabbit validates:
 
 CodeRabbit checks for:
 
-- ❌ Unhandled promise rejections
-- ❌ Missing `await` keywords
-- ❌ Blocking synchronous operations in API routes
+-  Unhandled promise rejections
+-  Missing `await` keywords
+-  Blocking synchronous operations in API routes
 
 **Why**: Prevents memory leaks and degraded performance.
 
@@ -109,9 +109,9 @@ CodeRabbit checks for:
 
 CodeRabbit validates:
 
-- ✅ Next.js `<Image>` component used instead of `<img>`
-- ✅ Images have proper width/height attributes
-- ✅ Large images are optimized
+-  Next.js `<Image>` component used instead of `<img>`
+-  Images have proper width/height attributes
+-  Large images are optimized
 
 **Why**: Improves Core Web Vitals and user experience.
 
@@ -119,9 +119,9 @@ CodeRabbit validates:
 
 CodeRabbit enforces:
 
-- ✅ Strict mode enabled
-- ✅ No `any` types (use `unknown` or proper types)
-- ✅ Explicit return types for exported functions
+-  Strict mode enabled
+-  No `any` types (use `unknown` or proper types)
+-  Explicit return types for exported functions
 
 **Why**: Catches bugs at compile time, improves maintainability.
 
@@ -132,11 +132,11 @@ CodeRabbit enforces:
 **Recommendation**: Use `@total-audio/testing` validators for consistency.
 
 ```typescript
-// ✅ Preferred
+//  Preferred
 import { validateAllTouchTargets } from '@total-audio/testing';
 await validateAllTouchTargets(page);
 
-// ⚠️ Not recommended
+//  Not recommended
 expect(await element.boundingBox().height).toBeGreaterThanOrEqual(44);
 ```
 
@@ -180,8 +180,8 @@ export async function GET() {
 
 **What CodeRabbit checks**:
 
-- ❌ `pnpm-lock.yaml` changed without corresponding `package.json` change
-- ✅ Both lockfile and `package.json` updated together
+-  `pnpm-lock.yaml` changed without corresponding `package.json` change
+-  Both lockfile and `package.json` updated together
 
 **Fix**: Run `pnpm install` to regenerate lockfile.
 
@@ -191,19 +191,19 @@ export async function GET() {
 
 CodeRabbit will auto-approve PRs when:
 
-1. ✅ All CI checks pass (lint, typecheck, test, build)
-2. ✅ No critical issues detected
-3. ✅ No security vulnerabilities found
-4. ✅ All architecture rules satisfied
+1.  All CI checks pass (lint, typecheck, test, build)
+2.  No critical issues detected
+3.  No security vulnerabilities found
+4.  All architecture rules satisfied
 
 ## When CodeRabbit Requests Changes
 
 CodeRabbit will block merging when:
 
-1. ❌ Critical architecture rule violated
-2. ❌ Security vulnerability introduced
-3. ❌ Required health endpoints missing
-4. ❌ Breaking changes without migration strategy
+1.  Critical architecture rule violated
+2.  Security vulnerability introduced
+3.  Required health endpoints missing
+4.  Breaking changes without migration strategy
 
 ## Workflow Integration
 
@@ -215,7 +215,7 @@ Developer → PR → CodeRabbit Review → CI Checks → Auto-Merge (if approved
                  Comments          Validate Code
                  (if issues)       (lint/test/build)
                      ↓                   ↓
-               Developer fixes      ✅ All pass
+               Developer fixes       All pass
                      ↓                   ↓
               Auto-approve        Vercel Auto-Deploy
                                         ↓
@@ -352,12 +352,12 @@ checks:
 
 **CodeRabbit is your automated senior reviewer:**
 
-- ✅ Enforces critical architecture rules
-- ✅ Catches security vulnerabilities
-- ✅ Validates monorepo boundaries
-- ✅ Maintains Golden Verify integrity
-- ❌ Doesn't nitpick style
-- ❌ Doesn't block on minor issues
-- ❌ Doesn't require perfect code
+-  Enforces critical architecture rules
+-  Catches security vulnerabilities
+-  Validates monorepo boundaries
+-  Maintains Golden Verify integrity
+-  Doesn't nitpick style
+-  Doesn't block on minor issues
+-  Doesn't require perfect code
 
 **Goal**: Catch substantive issues early, let humans focus on creative problem-solving.

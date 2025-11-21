@@ -1,6 +1,6 @@
 # Subscription Setup & Testing Guide
 
-## 🚀 Step 1: Apply Migration
+## Step 1: Apply Migration
 
 ### Option A: Supabase Dashboard (Recommended)
 
@@ -52,13 +52,13 @@ ORDER BY trigger_name;
 
 **Expected Results:**
 
-- ✅ 4 columns added to user_profiles
-- ✅ 4 functions created
-- ✅ 2 triggers created
+-  4 columns added to user_profiles
+-  4 functions created
+-  2 triggers created
 
 ---
 
-## 🔧 Step 2: Configure Stripe Price IDs
+## Step 2: Configure Stripe Price IDs
 
 ### 2.1 Create Stripe Products (Test Mode)
 
@@ -144,7 +144,7 @@ ORDER BY user_type, price_monthly;
 
 ---
 
-## 👤 Step 3: Mark Beta Users
+## Step 3: Mark Beta Users
 
 ### Get Your User ID
 
@@ -179,7 +179,7 @@ WHERE is_beta_user = true;
 
 ---
 
-## ✅ Step 4: Testing Checklist
+## Step 4: Testing Checklist
 
 ### Test 1: Free User Limits
 
@@ -207,16 +207,16 @@ WHERE id = 'NEW_USER_UUID_FROM_AUTH';
 
 **Test Steps:**
 
-1. ✅ Sign up with test account
-2. ✅ Create campaign 1 → Should succeed
-3. ✅ Create campaign 2 → Should succeed
-4. ✅ Create campaign 3 → Should succeed
-5. ✅ Try to create campaign 4 → Should see error:
+1.  Sign up with test account
+2.  Create campaign 1 → Should succeed
+3.  Create campaign 2 → Should succeed
+4.  Create campaign 3 → Should succeed
+5.  Try to create campaign 4 → Should see error:
    ```
    Error: Campaign limit reached
    Message: You've reached your campaign limit of 3. Upgrade your plan to create more campaigns.
    ```
-6. ✅ Visit `/billing` → Should see upgrade options
+6.  Visit `/billing` → Should see upgrade options
 
 ### Test 2: Beta User Unlimited Access
 
@@ -237,10 +237,10 @@ SELECT can_create_campaign('YOUR_USER_UUID');  -- Should return true
 
 **Test Steps:**
 
-1. ✅ Sign in as beta user
-2. ✅ Create 10+ campaigns → All should succeed
-3. ✅ Visit `/billing` → Should see beta user badge
-4. ✅ No upgrade prompts shown
+1.  Sign in as beta user
+2.  Create 10+ campaigns → All should succeed
+3.  Visit `/billing` → Should see beta user badge
+4.  No upgrade prompts shown
 
 ### Test 3: Subscription Upgrade Flow
 
@@ -248,15 +248,15 @@ Using your free test account:
 
 **Test Steps:**
 
-1. ✅ Visit `/billing` as free user
-2. ✅ Click "Upgrade to Pro"
-3. ✅ Should redirect to Stripe Checkout
-4. ✅ Use test card: **4242 4242 4242 4242**
+1.  Visit `/billing` as free user
+2.  Click "Upgrade to Pro"
+3.  Should redirect to Stripe Checkout
+4.  Use test card: **4242 4242 4242 4242**
    - Any future expiry date
    - Any 3-digit CVC
    - Any 5-digit postal code
-5. ✅ Complete checkout
-6. ✅ Should redirect back to `/billing?success=true`
+5.  Complete checkout
+6.  Should redirect back to `/billing?success=true`
 
 **Verify in Database:**
 
@@ -283,19 +283,19 @@ FROM user_profiles
 WHERE id = 'TEST_USER_UUID';
 ```
 
-7. ✅ Try creating campaigns → Should be unlimited
-8. ✅ Visit `/billing` → Should show "Pro Plan" as current
+7.  Try creating campaigns → Should be unlimited
+8.  Visit `/billing` → Should show "Pro Plan" as current
 
 ### Test 4: Stripe Billing Portal
 
 **Test Steps:**
 
-1. ✅ Visit `/billing` as paid user
-2. ✅ Click "Manage Billing in Stripe"
-3. ✅ Should open Stripe Customer Portal
-4. ✅ View subscription details
-5. ✅ Try cancelling subscription
-6. ✅ After webhook processes, verify:
+1.  Visit `/billing` as paid user
+2.  Click "Manage Billing in Stripe"
+3.  Should open Stripe Customer Portal
+4.  View subscription details
+5.  Try cancelling subscription
+6.  After webhook processes, verify:
 
 ```sql
 SELECT
@@ -308,7 +308,7 @@ WHERE id = 'TEST_USER_UUID';
 
 ---
 
-## 🔍 Debugging Queries
+## Debugging Queries
 
 ### Check All Users' Subscription Status
 
@@ -380,7 +380,7 @@ WHERE user_id = 'USER_UUID_HERE';
 
 ---
 
-## 🎯 Quick Reference
+## Quick Reference
 
 ### Beta User Management
 
@@ -416,7 +416,7 @@ SELECT id, email FROM auth.users WHERE id IN (
 
 ---
 
-## 🚨 Troubleshooting
+## Troubleshooting
 
 ### Issue: Migration fails with "column already exists"
 
@@ -469,7 +469,7 @@ WHERE routine_name = 'can_create_campaign';
 
 ---
 
-## 📝 Next Steps After Setup
+## Next Steps After Setup
 
 1. **Test in Production**: Follow test checklist with real money (small amount)
 2. **Monitor Webhooks**: Watch Stripe Dashboard for webhook deliveries
@@ -479,6 +479,6 @@ WHERE routine_name = 'can_create_campaign';
 
 ---
 
-**Setup Complete!** 🎉
+**Setup Complete!** 
 
 Your subscription enforcement is now ready to use. Users will be limited by their tier, and you can mark trusted users as beta testers for unlimited access.

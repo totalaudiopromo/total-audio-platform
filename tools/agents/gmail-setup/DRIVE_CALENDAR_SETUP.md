@@ -1,6 +1,6 @@
 # Google Drive & Calendar Setup - Manual Guide
 
-## ✅ Gmail Complete
+## Gmail Complete
 
 Gmail is now fully organized with:
 
@@ -9,7 +9,7 @@ Gmail is now fully organized with:
 - Hourly autopilot running
 - All Otter AI, Gemini, WARM in correct locations
 
-## 📁 Google Drive Setup (Manual)
+## Google Drive Setup (Manual)
 
 Since OAuth needs Drive scopes, here's how to create the folders manually with color coding:
 
@@ -42,23 +42,23 @@ Right-click each folder → "Change color":
 
 **Liberty Music PR subfolders:**
 
-- **Active Campaigns** → 🟢 Green
-- **Station Feedback & Assets** → 🟠 Orange
-- **Needs Action** → 🔵 Blue
-- **Completed** → 🟡 Yellow
-- **Archive** → 🔴 Red
+- **Active Campaigns** →  Green
+- **Station Feedback & Assets** →  Orange
+- **Needs Action** →  Blue
+- **Completed** →  Yellow
+- **Archive** →  Red
 - **Internal Team** → Light blue
 
 **Main folders:**
 
-- **Personal Tools** → 🟣 Purple
-- **Marketing Archive** → ⚫ Grey
+- **Personal Tools** →  Purple
+- **Marketing Archive** →  Grey
 
 ### 4. Done!
 
 Your Drive now matches your Gmail label system.
 
-## 📅 Google Calendar Setup (Manual)
+## Google Calendar Setup (Manual)
 
 ### 1. Create Calendars
 
@@ -84,16 +84,16 @@ Create these 4 calendars:
 
 For each calendar, click the 3 dots → Settings → Color:
 
-- **Campaign Deadlines** → 🔴 Tomato (red)
-- **Station Follow-ups** → 🟠 Tangerine (orange)
-- **Action Items** → 🔵 Blueberry (blue)
-- **Team Meetings** → 🟣 Grape (purple)
+- **Campaign Deadlines** →  Tomato (red)
+- **Station Follow-ups** →  Tangerine (orange)
+- **Action Items** →  Blueberry (blue)
+- **Team Meetings** →  Grape (purple)
 
 ### 3. Done!
 
 Your calendars now match Gmail and Drive.
 
-## 🤖 Future: Automated Setup
+## Future: Automated Setup
 
 If you want the scripts to work (create folders/calendars automatically):
 
@@ -113,31 +113,31 @@ If you want the scripts to work (create folders/calendars automatically):
 5. Run: `node liberty-drive-sync.js setup`
 6. Run: `node liberty-calendar-sync.js setup`
 
-## 💡 Why Manual is Fine
+## Why Manual is Fine
 
 **Manual setup takes ~5 minutes and you only do it once.**
 
 The critical automated parts are working:
 
-- ✅ Gmail filters (9 active)
-- ✅ Gmail bulk fix (114 emails cleaned)
-- ✅ Hourly autopilot (maintaining forever)
+-  Gmail filters (9 active)
+-  Gmail bulk fix (114 emails cleaned)
+-  Hourly autopilot (maintaining forever)
 
 Drive and Calendar are just visual organization that you set once and forget.
 
-## 🎯 Current Status
+## Current Status
 
 **AUTOMATED & WORKING:**
 
-- ✅ Gmail organization (complete)
-- ✅ Email routing (9 filters)
-- ✅ Hourly maintenance (autopilot)
-- ✅ 114 emails fixed
+-  Gmail organization (complete)
+-  Email routing (9 filters)
+-  Hourly maintenance (autopilot)
+-  114 emails fixed
 
 **MANUAL (5 minutes):**
 
-- ⏳ Drive folders + colors
-- ⏳ Calendar setup + colors
+- Drive folders + colors
+- Calendar setup + colors
 
 **You now have perfectly organized Gmail that maintains itself. Drive/Calendar are just bonus visual organization.**
 

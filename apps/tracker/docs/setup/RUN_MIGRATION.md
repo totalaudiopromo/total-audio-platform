@@ -12,13 +12,13 @@ Copy the **ENTIRE** contents of this file and paste into Supabase SQL Editor, th
 
 ## What Will Happen:
 
-1. ✅ Adds intelligence fields to campaigns table (success_rate, cost_per_result, performance_score, etc.)
-2. ✅ Relaxes constraints for flexible campaign creation
-3. ✅ Creates benchmarks table with 30+ industry data points
-4. ✅ Creates campaign_activities table for real-time tracking
-5. ✅ Creates campaign_insights table for AI recommendations
-6. ✅ Adds auto-calculation trigger (performance metrics update automatically)
-7. ✅ Refreshes PostgREST schema cache
+1.  Adds intelligence fields to campaigns table (success_rate, cost_per_result, performance_score, etc.)
+2.  Relaxes constraints for flexible campaign creation
+3.  Creates benchmarks table with 30+ industry data points
+4.  Creates campaign_activities table for real-time tracking
+5.  Creates campaign_insights table for AI recommendations
+6.  Adds auto-calculation trigger (performance metrics update automatically)
+7.  Refreshes PostgREST schema cache
 
 ## After Running:
 

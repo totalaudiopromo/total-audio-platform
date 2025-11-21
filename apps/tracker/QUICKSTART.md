@@ -1,6 +1,6 @@
 # Total Audio Tracker - Quick Start Guide
 
-## 🎯 You're Almost Ready!
+## You're Almost Ready!
 
 I've built your intelligent campaign tracker based on the PRD. Everything is ready except one step: **running the database migration**.
 
@@ -20,10 +20,10 @@ I've built your intelligent campaign tracker based on the PRD. Everything is rea
 
 ### What This Does:
 
-- ✅ Adds intelligence fields to campaigns table
-- ✅ Pre-populates 30+ industry benchmarks
-- ✅ Creates auto-calculation triggers
-- ✅ Sets up activities and insights tables
+-  Adds intelligence fields to campaigns table
+-  Pre-populates 30+ industry benchmarks
+-  Creates auto-calculation triggers
+-  Sets up activities and insights tables
 
 ## Step 2: Start Development Server
 
@@ -51,10 +51,10 @@ npm run dev
 
 ### You Should See:
 
-- ✨ **Success Rate**: 30% (calculated automatically)
-- 💰 **Cost Per Result**: £66.67
-- 📊 **Performance Score**: vs 26% industry average
-- 🎯 **Insight**: "Good work! Your campaign beat industry average by 15%"
+-  **Success Rate**: 30% (calculated automatically)
+-  **Cost Per Result**: £66.67
+-  **Performance Score**: vs 26% industry average
+-  **Insight**: "Good work! Your campaign beat industry average by 15%"
 
 ### Unlock Pattern Recognition:
 
@@ -64,7 +64,7 @@ Create 3+ campaigns with different platforms/genres to see:
 - "Playlists campaigns show 45% success rate - your most effective platform"
 - "Your optimal budget range is £300-£500"
 
-## 🎨 What's Different From Before
+## What's Different From Before
 
 ### Old Tracker:
 
@@ -75,13 +75,13 @@ Create 3+ campaigns with different platforms/genres to see:
 
 ### New Intelligent Tracker:
 
-- ✅ **Automatic Performance Scoring** (0-100)
-- ✅ **Industry Benchmarking** (30+ platforms/genres)
-- ✅ **Pattern Recognition** (learns what works for you)
-- ✅ **Smart Recommendations** (actionable insights)
-- ✅ **Predictive Intelligence** (forecast before launch)
+-  **Automatic Performance Scoring** (0-100)
+-  **Industry Benchmarking** (30+ platforms/genres)
+-  **Pattern Recognition** (learns what works for you)
+-  **Smart Recommendations** (actionable insights)
+-  **Predictive Intelligence** (forecast before launch)
 
-## 💰 Value Delivered
+## Value Delivered
 
 Each campaign now shows:
 
@@ -90,9 +90,9 @@ Each campaign now shows:
 - What's working best for you
 - Where to focus next
 
-**This is worth £19/month** ✅
+**This is worth £19/month** 
 
-## 🔍 Verify It's Working
+## Verify It's Working
 
 ### Check Benchmarks Loaded:
 
@@ -118,7 +118,7 @@ LIMIT 5;
 -- Should show calculated intelligence fields
 ```
 
-## 🚨 Common Issues
+## Common Issues
 
 ### "Column does not exist"
 
@@ -136,7 +136,7 @@ LIMIT 5;
 
 **Fix**: Check `.env.local` has correct Supabase credentials
 
-## 🎉 You're Ready!
+## You're Ready!
 
 Once migration is run:
 

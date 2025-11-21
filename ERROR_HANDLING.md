@@ -15,27 +15,27 @@ The error handling system provides:
 ## Architecture
 
 ```
-┌──────────────────────────────────────────────────────────┐
-│                   Error Handling Layer                   │
-├──────────────────────────────────────────────────────────┤
-│                                                          │
-│  ErrorLogger          ErrorBoundary       ToastContainer │
-│  (Centralised         (React error        (Notifications)│
-│   logging)            catching)                          │
-│                                                          │
-│  ↓ Integration        ↓ Component         ↓ Hook         │
-│                       errors              (useToast)     │
-│                                                          │
-└──────────────────────────────────────────────────────────┘
+
+                   Error Handling Layer                   
+
+                                                          
+  ErrorLogger          ErrorBoundary       ToastContainer 
+  (Centralised         (React error        (Notifications)
+   logging)            catching)                          
+                                                          
+  ↓ Integration        ↓ Component         ↓ Hook         
+                       errors              (useToast)     
+                                                          
+
          ↓                    ↓                 ↓
-┌──────────────────────────────────────────────────────────┐
-│              Application & Service Layer                 │
-├──────────────────────────────────────────────────────────┤
-│                                                          │
-│  BaseIntegrationSync    API Routes         Components    │
-│  (with error logging)   (try/catch)        (with toast)  │
-│                                                          │
-└──────────────────────────────────────────────────────────┘
+
+              Application & Service Layer                 
+
+                                                          
+  BaseIntegrationSync    API Routes         Components    
+  (with error logging)   (try/catch)        (with toast)  
+                                                          
+
 ```
 
 ## Components
@@ -319,45 +319,45 @@ class CustomSync extends BaseIntegrationSync {
 
 All error UI components follow the **Postcraft aesthetic**:
 
-- ✅ Bold black borders (`border-2 border-black`)
-- ✅ Hard offset shadows (`shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`)
-- ✅ UK English messaging throughout
-- ✅ Solid colours (no gradients, no glassmorphism)
-- ✅ High contrast text (black on white/coloured backgrounds)
-- ❌ No soft shadows
-- ❌ No transparency effects
-- ❌ No rounded corners >16px
+- Bold black borders (`border-2 border-black`)
+- Hard offset shadows (`shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`)
+- UK English messaging throughout
+- Solid colours (no gradients, no glassmorphism)
+- High contrast text (black on white/coloured backgrounds)
+-  No soft shadows
+-  No transparency effects
+-  No rounded corners >16px
 
 ## File Structure
 
 ```
 packages/
-├── core-db/
-│   └── src/
-│       ├── utils/
-│       │   ├── error-logger.ts          # Centralised error logging
-│       │   └── index.ts                 # Exports error logger
-│       └── integrations/
-│           └── BaseIntegrationSync.ts   # With error handling
-│
-└── ui/
-    ├── src/
-    │   ├── components/
-    │   │   ├── ErrorBoundary.tsx        # React error boundary
-    │   │   ├── Toast.tsx                # Toast notification
-    │   │   └── ToastContainer.tsx       # Toast container
-    │   ├── hooks/
-    │   │   └── useToast.ts              # useToast hook
-    │   └── lib/
-    │       └── utils.ts                 # cn() utility
-    └── index.ts                         # Exports all components
+ core-db/
+    src/
+        utils/
+           error-logger.ts          # Centralised error logging
+           index.ts                 # Exports error logger
+        integrations/
+            BaseIntegrationSync.ts   # With error handling
+
+ ui/
+     src/
+        components/
+           ErrorBoundary.tsx        # React error boundary
+           Toast.tsx                # Toast notification
+           ToastContainer.tsx       # Toast container
+        hooks/
+           useToast.ts              # useToast hook
+        lib/
+            utils.ts                 # cn() utility
+     index.ts                         # Exports all components
 
 apps/
-├── audio-intel/
-│   └── app/
-│       ├── layout.tsx                   # Add ToastContainer
-│       └── [page]/
-│           └── page.tsx                 # Use ErrorBoundary + useToast
+ audio-intel/
+    app/
+        layout.tsx                   # Add ToastContainer
+        [page]/
+            page.tsx                 # Use ErrorBoundary + useToast
 ```
 
 ## Rollout Checklist

@@ -1,30 +1,30 @@
 ---
-title: '🎨 UPDATED Total Audio Brand Guidelines - Command Centre Era'
+title: ' UPDATED Total Audio Brand Guidelines - Command Centre Era'
 notion_url: https://www.notion.so/UPDATED-Total-Audio-Brand-Guidelines-Command-Centre-Era-25d0a35b21ed818981c0f93f53909ee6
 exported_at: 2025-09-26T14:33:11.022Z
 ---
 
-# 🎨 UPDATED Total Audio Brand Guidelines - Command Centre Era
+#  UPDATED Total Audio Brand Guidelines - Command Centre Era
 
 _Updated August 2025 - Freemium strategy with refined competitive positioning_
 
-## 🎯 STRATEGIC SHIFT: REAL COMPETITOR ANALYSIS
+## STRATEGIC SHIFT: REAL COMPETITOR ANALYSIS
 
 ### WRONG Positioning (Out of Touch):
 
-❌ "UK alternative to Muck Rack and Cision"
+ "UK alternative to Muck Rack and Cision"
 
-❌ "75% cheaper than enterprise tools"
+ "75% cheaper than enterprise tools"
 
-❌ Focus on tools indie artists don't actually use
+ Focus on tools indie artists don't actually use
 
 ### CORRECT Positioning (Real World):
 
-✅ "Audio Intel vs SubmitHub: Verified contacts, not playlist gatekeepers"
+ "Audio Intel vs SubmitHub: Verified contacts, not playlist gatekeepers"
 
-✅ "Groover alternative: Direct contact intelligence, skip the submission fees"
+ "Groover alternative: Direct contact intelligence, skip the submission fees"
 
-✅ "What Spotify for Artists and YouTube for Artists don't tell you: who to actually pitch"
+ "What Spotify for Artists and YouTube for Artists don't tell you: who to actually pitch"
 
 ### Actual Competitor Landscape:
 
@@ -44,7 +44,7 @@ _Updated August 2025 - Freemium strategy with refined competitive positioning_
 
 **"Stop paying €3-15 per submission. Get verified contacts directly."**
 
-## 🎨 UPDATED COLOUR PALETTE
+## UPDATED COLOUR PALETTE
 
 ### Foundation: Grayscale + Texture Base
 
@@ -104,7 +104,7 @@ _Updated August 2025 - Freemium strategy with refined competitive positioning_
 --color-echo-600: #0e7490; /* Hover */
 ```
 
-## 🖼️ DRS TEXTURE INTEGRATION STRATEGY
+## DRS TEXTURE INTEGRATION STRATEGY
 
 ### Background Compatibility System
 
@@ -161,7 +161,7 @@ _Updated August 2025 - Freemium strategy with refined competitive positioning_
 
 - Fallback solid colours for slow connections
 
-## 🌓 DARK MODE STRATEGY
+## DARK MODE STRATEGY
 
 ### Dark Mode Colour Adjustments
 
@@ -193,7 +193,7 @@ _Updated August 2025 - Freemium strategy with refined competitive positioning_
 
 - **Maintain brand colour recognition** across light/dark
 
-## 📱 IMPLEMENTATION GUIDELINES
+## IMPLEMENTATION GUIDELINES
 
 ### CSS Custom Properties Setup
 
@@ -237,7 +237,7 @@ _Updated August 2025 - Freemium strategy with refined competitive positioning_
 }
 ```
 
-## 🎯 COMPETITIVE POSITIONING UPDATES
+## COMPETITIVE POSITIONING UPDATES
 
 ### New Messaging Framework
 
@@ -263,9 +263,9 @@ _Updated August 2025 - Freemium strategy with refined competitive positioning_
 
 **Homepage Hero:**
 
-❌ "Professional PR tools for 75% less than Muck Rack"
+ "Professional PR tools for 75% less than Muck Rack"
 
-✅ "Stop paying €3-15 per submission. Get verified contacts directly."
+ "Stop paying €3-15 per submission. Get verified contacts directly."
 
 **Competitor Page:**
 
@@ -277,9 +277,9 @@ _Updated August 2025 - Freemium strategy with refined competitive positioning_
 
 **Pricing Page:**
 
-✅ "€348/year for Groover submissions vs £228/year for unlimited contact intelligence"
+ "€348/year for Groover submissions vs £228/year for unlimited contact intelligence"
 
-## 🚀 NEXT STEPS
+## NEXT STEPS
 
 ### Immediate Updates (This Week)
 

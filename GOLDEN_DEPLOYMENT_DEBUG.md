@@ -53,10 +53,10 @@ Attempting to deploy Phase 9E Golden Deployment Pipeline via git tag `v2.5.1-gol
 
 **Files Verified Clean**:
 
-- ✅ tsconfig.base.json committed and in git
-- ✅ No @total-audio/core-db in apps/command-centre/package.json
-- ✅ pnpm-lock.yaml synced (no core-db references for command-centre)
-- ✅ Workflow only triggers on tags (no race condition)
+- tsconfig.base.json committed and in git
+- No @total-audio/core-db in apps/command-centre/package.json
+- pnpm-lock.yaml synced (no core-db references for command-centre)
+- Workflow only triggers on tags (no race condition)
 
 ## Critical Questions for Codex
 

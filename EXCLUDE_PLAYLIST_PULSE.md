@@ -6,15 +6,15 @@ The CI/CD pipeline is checking for `playlist-pulse` but this app should be **EXC
 
 ## Apps to Include (ONLY THESE)
 
-- ✅ audio-intel
-- ✅ tracker
-- ✅ pitch-generator
-- ✅ command-centre
-- ✅ web
+- audio-intel
+- tracker
+- pitch-generator
+- command-centre
+- web
 
 ## Apps to Exclude
 
-- ❌ playlist-pulse (DO NOT BUILD, TEST, OR DEPLOY)
+-  playlist-pulse (DO NOT BUILD, TEST, OR DEPLOY)
 
 ## Files That May Reference playlist-pulse
 

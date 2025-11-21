@@ -6,7 +6,7 @@ Automated system to keep your Total Audio Platform documentation organised and t
 
 ## Structure
 
-### ✅ Root Level (Only These 5 Files)
+### Root Level (Only These 5 Files)
 
 - **README.md** - Project overview
 - **SECURITY.md** - Security policies
@@ -14,16 +14,16 @@ Automated system to keep your Total Audio Platform documentation organised and t
 - **WEEKLY_FOCUS.md** - Current week priorities (frequently referenced)
 - **BUSINESS_NOTES.md** - Running business log (frequently referenced)
 
-### 📁 Organised Directories
+### Organised Directories
 
 ```
 docs/
-├── business/          # Business strategy, context, notes
-├── reports/           # Audits, analysis, completion reports
-├── guides/            # Setup guides, quick references, checklists
-├── security/          # Security docs (except main SECURITY.md)
-├── technical/         # Technical workflows, Agent OS docs
-└── misc/              # Other documentation
+ business/          # Business strategy, context, notes
+ reports/           # Audits, analysis, completion reports
+ guides/            # Setup guides, quick references, checklists
+ security/          # Security docs (except main SECURITY.md)
+ technical/         # Technical workflows, Agent OS docs
+ misc/              # Other documentation
 ```
 
 ## Automatic Organisation Rules
@@ -66,11 +66,11 @@ Edit `.claude/auto-organise-docs.sh` and add to `DOC_RULES` array:
 
 ## Benefits
 
-✅ **Clean Root** - Only 5 essential files visible
-✅ **Find Docs Faster** - Organised by category
-✅ **No Manual Work** - Run one command to tidy up
-✅ **Flexible** - Easy to customise rules
-✅ **Safe** - Never touches critical files (README, SECURITY, business docs)
+**Clean Root** - Only 5 essential files visible
+**Find Docs Faster** - Organised by category
+**No Manual Work** - Run one command to tidy up
+**Flexible** - Easy to customise rules
+**Safe** - Never touches critical files (README, SECURITY, business docs)
 
 ## When to Run
 
@@ -100,15 +100,15 @@ README.md  SECURITY.md
 # 5 files in root, rest organised in docs/
 $ tree docs/
 docs/
-├── business/
-├── reports/
-│   ├── CODE_EFFICIENCY_AUDIT.md
-│   ├── CONSOLIDATION_REPORT.md
-│   └── CLEANUP_COMPLETE.md
-├── guides/
-│   └── QUICK_DATABASE_SETUP.md
-└── technical/
-    └── AGENT_OS_QUICK_REFERENCE.md
+ business/
+ reports/
+    CODE_EFFICIENCY_AUDIT.md
+    CONSOLIDATION_REPORT.md
+    CLEANUP_COMPLETE.md
+ guides/
+    QUICK_DATABASE_SETUP.md
+ technical/
+     AGENT_OS_QUICK_REFERENCE.md
 ```
 
 ## Philosophy

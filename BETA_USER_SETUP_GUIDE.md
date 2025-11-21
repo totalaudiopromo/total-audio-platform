@@ -2,7 +2,7 @@
 
 Complete guide for setting up beta user access to Total Audio Promo platform.
 
-## 📋 Overview
+## Overview
 
 This guide covers the complete setup process for granting beta access to users, including:
 
@@ -11,7 +11,7 @@ This guide covers the complete setup process for granting beta access to users, 
 - Welcome email delivery
 - Single sign-on (SSO) setup across all apps
 
-## 🎯 Beta User Configuration
+## Beta User Configuration
 
 ### Jeremy's Access Details
 
@@ -29,15 +29,15 @@ This guide covers the complete setup process for granting beta access to users, 
 
 | App                  | URL                         | Status         | Features                                  |
 | -------------------- | --------------------------- | -------------- | ----------------------------------------- |
-| **Audio Intel**      | intel.totalaudiopromo.com   | ✅ LIVE NOW    | Contact enrichment, CSV export, AI search |
-| **Campaign Tracker** | tracker.totalaudiopromo.com | ⏳ Coming soon | Campaign management, analytics            |
-| **Pitch Generator**  | pitch.totalaudiopromo.com   | ⏳ Coming soon | AI pitch writing, templates               |
+| **Audio Intel**      | intel.totalaudiopromo.com   | LIVE NOW    | Contact enrichment, CSV export, AI search |
+| **Campaign Tracker** | tracker.totalaudiopromo.com | Coming soon | Campaign management, analytics            |
+| **Pitch Generator**  | pitch.totalaudiopromo.com   | Coming soon | AI pitch writing, templates               |
 
-## 🚀 Setup Process
+## Setup Process
 
 ### Prerequisites
 
-1. **Supabase Access** ✅ Already Configured
+1. **Supabase Access** Already Configured
    - Supabase project: `ucncbighzqudaszewjrv.supabase.co`
    - `NEXT_PUBLIC_SUPABASE_URL` configured in all apps
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY` configured in all apps
@@ -71,31 +71,31 @@ npx tsx scripts/setup-jeremy-supabase.ts
 **Expected Output:**
 
 ```
-🚀 Setting up beta user account...
+Setting up beta user account...
 
-🔐 Hashing password...
-📝 Creating user: info@streamer.co.uk...
-✅ User created: clxxx...
+Hashing password...
+Creating user: info@streamer.co.uk...
+User created: clxxx...
 
-💳 Creating beta subscription...
-✅ Subscription created:
+ Creating beta subscription...
+Subscription created:
    Tier: ARTIST
    Monthly Price: £0
    Status: ACTIVE
    Period End: 2025-XX-XXTXX:XX:XX.XXXZ
 
-✅ Beta user setup complete!
+Beta user setup complete!
 
-📋 Account Details:
+Account Details:
    Email: info@streamer.co.uk
    Password: Streamer2024!BetaAccess
    Role: ARTIST
    Beta Period: 60 days
    Cost: £0/month
 
-⚠️  IMPORTANT: User must change password on first login!
+ IMPORTANT: User must change password on first login!
 
-🎉 Setup complete!
+Setup complete!
 ```
 
 ### Step 2: Send Welcome Email
@@ -141,7 +141,7 @@ For email marketing and beta user tracking:
    - `artist`
    - `streamer-band`
 
-## 🔐 Authentication Flow
+## Authentication Flow
 
 ### Database Authentication
 
@@ -203,7 +203,7 @@ Jeremy's credentials work across all three apps:
 
 All apps authenticate against the same database using JWT tokens.
 
-## 📁 Files Created
+## Files Created
 
 ### Scripts
 
@@ -241,7 +241,7 @@ All apps authenticate against the same database using JWT tokens.
    - Added subscription data to responses
    - Proper error handling
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### User Already Exists
 
@@ -293,7 +293,7 @@ npm install bcryptjs @types/bcryptjs
 2. Check Supabase project is active
 3. For admin operations, ensure `SUPABASE_SERVICE_ROLE_KEY` is configured
 
-## 🔒 Security Considerations
+## Security Considerations
 
 1. **Password Security**
    - Passwords are hashed using bcrypt (10 rounds)
@@ -315,7 +315,7 @@ npm install bcryptjs @types/bcryptjs
    - Use secure email service (Resend)
    - Verify email domain ownership
 
-## 📊 Subscription Management
+## Subscription Management
 
 ### Beta Subscription Details
 
@@ -355,7 +355,7 @@ await prisma.subscription.update({
 });
 ```
 
-## ✅ Verification Checklist
+## Verification Checklist
 
 After setup, verify:
 
@@ -369,7 +369,7 @@ After setup, verify:
 - [ ] Subscription data included in login response
 - [ ] User added to ConvertKit (if applicable)
 
-## 🎯 Next Steps
+## Next Steps
 
 1. **Test Login**
    - Log in to Audio Intel with beta credentials
@@ -386,7 +386,7 @@ After setup, verify:
    - Set up Pitch Generator authentication
    - Plan beta-to-paid conversion flow
 
-## 📞 Support
+## Support
 
 If you encounter issues:
 
@@ -396,7 +396,7 @@ If you encounter issues:
 4. Check Resend API status
 5. Review Prisma schema migrations
 
-## 📝 Notes
+## Notes
 
 - Beta users get full access to all features
 - No credit card required during beta

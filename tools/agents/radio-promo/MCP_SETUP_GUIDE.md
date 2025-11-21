@@ -1,22 +1,22 @@
-# 🚀 **MCP Setup Guide for Liberty Music PR**
+#  **MCP Setup Guide for Liberty Music PR**
 
 ## **Why MCPs are Better Than Custom APIs**
 
-✅ **Standardized Interface**: MCPs provide a consistent way for AI agents to interact with external services  
-✅ **Better Error Handling**: Built-in retry logic and error management  
-✅ **Easier Maintenance**: No need to maintain custom API integration code  
-✅ **Security**: OAuth flows handled properly with token refresh  
-✅ **Scalability**: Can easily add more Google services
+ **Standardized Interface**: MCPs provide a consistent way for AI agents to interact with external services  
+ **Better Error Handling**: Built-in retry logic and error management  
+ **Easier Maintenance**: No need to maintain custom API integration code  
+ **Security**: OAuth flows handled properly with token refresh  
+ **Scalability**: Can easily add more Google services
 
 ## **Current MCP Status**
 
-### ✅ **Working MCPs**
+###  **Working MCPs**
 
 - **Puppeteer MCP** - Web automation
 - **Notion MCP** - Project management
 - **Google Services MCP** - Gmail, Drive, Calendar (custom)
 
-### ❌ **Failed MCPs**
+###  **Failed MCPs**
 
 - **GitHub MCP** - Connection failed
 
@@ -148,10 +148,10 @@ await mcp.callTool('gmail_search_emails', {
 
 ## **Security Notes**
 
-✅ **Read-Only Access**: Gmail and Drive are read-only by default  
-✅ **Token Security**: Tokens are stored locally and not shared  
-✅ **Scope Limitation**: Only requests necessary permissions  
-✅ **No Data Storage**: MCP server doesn't store your data
+ **Read-Only Access**: Gmail and Drive are read-only by default  
+ **Token Security**: Tokens are stored locally and not shared  
+ **Scope Limitation**: Only requests necessary permissions  
+ **No Data Storage**: MCP server doesn't store your data
 
 ---
 

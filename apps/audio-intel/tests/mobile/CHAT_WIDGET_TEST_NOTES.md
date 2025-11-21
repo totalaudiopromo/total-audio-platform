@@ -25,9 +25,9 @@ useEffect(() => {
 
 **Test Coverage**:
 
-- ✅ Validated by touch interaction tests
-- ✅ Checks scroll behavior doesn't conflict with tap gestures
-- ✅ Verifies body scroll is locked when chat is open on mobile
+-  Validated by touch interaction tests
+-  Checks scroll behavior doesn't conflict with tap gestures
+-  Verifies body scroll is locked when chat is open on mobile
 
 ### 2. Chat Widget Button Accessibility
 
@@ -78,9 +78,9 @@ const chatButton = page.locator('[aria-label*="chat"], [title*="chat"]').first()
 
 **Test Validation**:
 
-- ✅ Mobile menu overlays chat widget when open
-- ✅ Chat widget visible above page content
-- ✅ No z-index conflicts causing hidden elements
+-  Mobile menu overlays chat widget when open
+-  Chat widget visible above page content
+-  No z-index conflicts causing hidden elements
 
 ### 4. Chat Window Mobile Layout
 
@@ -270,7 +270,7 @@ test.describe('Chat Widget Mobile Experience', () => {
 
 ## Current Test Coverage Status
 
-### ✅ Validated
+###  Validated
 
 - Touch target sizes (all buttons including chat widget)
 - Scroll behavior conflicts
@@ -278,12 +278,12 @@ test.describe('Chat Widget Mobile Experience', () => {
 - Body scroll lock mechanism
 - General mobile accessibility
 
-### ⚠️ Partial Coverage
+###  Partial Coverage
 
 - Chat widget button visibility (covered by general button tests)
 - Z-index hierarchy (validated indirectly)
 
-### ❌ Not Yet Tested
+###  Not Yet Tested
 
 - Chat opening/closing flow
 - Message sending functionality
@@ -298,13 +298,13 @@ test.describe('Chat Widget Mobile Experience', () => {
 ### Current Test Files
 
 1. **`mobile-user-journey.test.js`**
-   - ✅ Tests touch target sizes (includes chat widget button)
-   - ✅ Tests gesture conflicts
-   - ✅ Validates scroll behavior
+   -  Tests touch target sizes (includes chat widget button)
+   -  Tests gesture conflicts
+   -  Validates scroll behavior
 
 2. **`quick-mobile-check.test.js`**
-   - ✅ Tests CTA button accessibility (pattern applies to chat widget)
-   - ✅ Tests for JavaScript errors (would catch chat widget issues)
+   -  Tests CTA button accessibility (pattern applies to chat widget)
+   -  Tests for JavaScript errors (would catch chat widget issues)
 
 ### Recommended Test Addition
 
@@ -379,6 +379,6 @@ npm run test:mobile:headed
 
 ---
 
-**Current Status**: ✅ Basic chat widget mobile testing covered by existing tests
+**Current Status**:  Basic chat widget mobile testing covered by existing tests
 **Recommended**: Add dedicated chat widget test file if chat is critical feature
 **Priority**: Low (unless seeing specific chat widget mobile issues)

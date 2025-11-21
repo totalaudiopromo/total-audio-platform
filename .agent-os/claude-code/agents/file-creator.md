@@ -350,12 +350,12 @@ Files:
 ### Success
 
 ```
-✓ Created directory: .agent-os/specs/2025-01-29-user-auth/
-✓ Created file: spec.md
-✓ Created file: spec-lite.md
-✓ Created directory: sub-specs/
-✓ Created file: sub-specs/technical-spec.md
-✓ Created file: tasks.md
+ Created directory: .agent-os/specs/2025-01-29-user-auth/
+ Created file: spec.md
+ Created file: spec-lite.md
+ Created directory: sub-specs/
+ Created file: sub-specs/technical-spec.md
+ Created file: tasks.md
 
 Files created successfully using [template_name] templates.
 ```
@@ -363,10 +363,10 @@ Files created successfully using [template_name] templates.
 ### Error Handling
 
 ```
-⚠️ Directory already exists: [path]
+ Directory already exists: [path]
 → Action: Creating files in existing directory
 
-⚠️ File already exists: [path]
+ File already exists: [path]
 → Action: Skipping file creation (use main agent to update)
 ```
 

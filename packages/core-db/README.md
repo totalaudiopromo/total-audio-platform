@@ -45,7 +45,7 @@ const { data } = await supabase.from('campaigns').select('*');
 import { createAdminClient } from '@total-audio/core-db/server';
 import { cookies } from 'next/headers';
 
-// ⚠️ WARNING: This bypasses RLS and should ONLY be used in secure server contexts
+//  WARNING: This bypasses RLS and should ONLY be used in secure server contexts
 const supabase = createAdminClient(cookies());
 const { data } = await supabase.from('users').select('*'); // Bypasses RLS
 ```
@@ -133,25 +133,25 @@ pnpm --filter @total-audio/core-db migrate
 
 ```
 packages/core-db/
-├── src/
-│   ├── client.ts           # Browser client
-│   ├── server.ts           # Server client (regular & admin)
-│   ├── middleware.ts       # Next.js middleware helper
-│   ├── index.ts            # Main exports
-│   ├── types/
-│   │   ├── database.ts     # Generated types from Supabase schema
-│   │   └── index.ts        # Type exports
-│   └── utils/
-│       ├── env.ts          # Environment validation (Zod)
-│       ├── permissions.ts  # RLS helper functions
-│       └── index.ts        # Utility exports
-├── supabase/
-│   └── migrations/         # Database migrations (chronological)
-├── scripts/
-│   ├── generate-types.sh   # Type generation script
-│   └── migrate.sh          # Migration script
-├── package.json
-└── README.md
+ src/
+    client.ts           # Browser client
+    server.ts           # Server client (regular & admin)
+    middleware.ts       # Next.js middleware helper
+    index.ts            # Main exports
+    types/
+       database.ts     # Generated types from Supabase schema
+       index.ts        # Type exports
+    utils/
+        env.ts          # Environment validation (Zod)
+        permissions.ts  # RLS helper functions
+        index.ts        # Utility exports
+ supabase/
+    migrations/         # Database migrations (chronological)
+ scripts/
+    generate-types.sh   # Type generation script
+    migrate.sh          # Migration script
+ package.json
+ README.md
 ```
 
 ## Migration Strategy

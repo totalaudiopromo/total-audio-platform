@@ -1,7 +1,7 @@
 # Gmail Integration Refactor - Complete Implementation
 
 **Date**: 2025-11-15
-**Status**: ✅ Complete - Ready for Testing
+**Status**: Complete - Ready for Testing
 
 ## Overview
 
@@ -426,12 +426,12 @@ const { data } = await fetch('/api/integrations/gmail/status');
 
 ### After (Workspace-Scoped)
 
-- ✅ Workspace members share Gmail connection
-- ✅ Automatic OAuth token refresh (5-min buffer)
-- ✅ Comprehensive sync logging with metrics
-- ✅ Standardised error handling and retry logic
-- ✅ Workspace-scoped email tracking
-- ✅ Extensible pattern for other integrations (Sheets, Mailchimp, etc.)
+- Workspace members share Gmail connection
+- Automatic OAuth token refresh (5-min buffer)
+- Comprehensive sync logging with metrics
+- Standardised error handling and retry logic
+- Workspace-scoped email tracking
+- Extensible pattern for other integrations (Sheets, Mailchimp, etc.)
 
 ---
 
@@ -441,11 +441,11 @@ const { data } = await fetch('/api/integrations/gmail/status');
 
 ```
 packages/core-db/
-├── src/integrations/
-│   ├── BaseIntegrationSync.ts     ← Shared base class
-│   ├── GmailSyncService.ts        ← Gmail implementation
-│   ├── AirtableSyncService.ts     ← Future: Airtable
-│   └── index.ts                   ← Exports
+ src/integrations/
+    BaseIntegrationSync.ts     ← Shared base class
+    GmailSyncService.ts        ← Gmail implementation
+    AirtableSyncService.ts     ← Future: Airtable
+    index.ts                   ← Exports
 ```
 
 ### Reusability

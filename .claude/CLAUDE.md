@@ -1,6 +1,6 @@
 # TOTAL AUDIO - CLAUDE INSTRUCTIONS (October 2025)
 
-## 🎯 BUSINESS CONTEXT & DUAL REALITY
+## BUSINESS CONTEXT & DUAL REALITY
 
 You are the strategic development assistant for **Total Audio**, a UK music promotion technology company operating across two parallel realities:
 
@@ -35,7 +35,7 @@ You are not building new architecture yet — your work should directly support 
 
 ---
 
-## 📁 SIMPLIFIED BUSINESS DOCUMENTATION (CHECK FIRST)
+## SIMPLIFIED BUSINESS DOCUMENTATION (CHECK FIRST)
 
 **CRITICAL**: Always reference the simplified local documentation system:
 
@@ -52,7 +52,7 @@ You are not building new architecture yet — your work should directly support 
 
 ---
 
-## 🚫 DOCUMENTATION MANAGEMENT RULES (PREVENT .MD SPRAWL)
+## DOCUMENTATION MANAGEMENT RULES (PREVENT .MD SPRAWL)
 
 ### Single Source of Truth Principle
 
@@ -147,7 +147,7 @@ Only create new .md files with explicit permission for:
 
 ---
 
-## 🇬🇧 UK MARKET FOCUS & COMMUNICATION
+## UK MARKET FOCUS & COMMUNICATION
 
 ### Current Market Position (Audio Intel)
 
@@ -168,7 +168,7 @@ Only create new .md files with explicit permission for:
 
 ---
 
-## 🏗️ DUAL-DOMAIN ARCHITECTURE (Future Vision)
+## DUAL-DOMAIN ARCHITECTURE (Future Vision)
 
 ### Product Stack Evolution
 
@@ -181,19 +181,19 @@ Only create new .md files with explicit permission for:
 **Future Architecture (After Revenue Validation):**
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                    SHARED AGENT LAYER                       │
-│  (Supabase + Vercel + Node/TypeScript + Skill Registry)    │
-└─────────────────────────────────────────────────────────────┘
-         │                                    │
-         ▼                                    ▼
-┌──────────────────────┐          ┌──────────────────────┐
-│ TotalAudioPromo.com  │          │   TotalAud.io        │
-│  Stable Production   │          │   Creative Studio    │
-│  - Audio Intel       │          │   - Agent Canvas     │
-│  - Pitch Generator   │          │   - Command Palette  │
-│  - Campaign Tracker  │          │   - Flow-State UX    │
-└──────────────────────┘          └──────────────────────┘
+
+                    SHARED AGENT LAYER                       
+  (Supabase + Vercel + Node/TypeScript + Skill Registry)    
+
+                                             
+                                             
+          
+ TotalAudioPromo.com               TotalAud.io        
+  Stable Production                Creative Studio    
+  - Audio Intel                    - Agent Canvas     
+  - Pitch Generator                - Command Palette  
+  - Campaign Tracker               - Flow-State UX    
+          
 ```
 
 ### Agentic System Vision (Post-Revenue Phase)
@@ -228,7 +228,7 @@ DB / Queue / LLM Provider (Claude or OpenAI)
 Result → stored + streamed back (SSE or WS)
 ```
 
-### 🔗 Shared Layer Directive
+### Shared Layer Directive
 
 All apps — Intel, Pitch, and Tracker — must share:
 
@@ -240,7 +240,7 @@ This keeps every subdomain consistent and prevents redundant code.
 
 ---
 
-## 🎯 CURRENT BUSINESS PRIORITIES (October 2025)
+## CURRENT BUSINESS PRIORITIES (October 2025)
 
 ### 1. Customer Acquisition & Revenue Focus (IMMEDIATE)
 
@@ -275,7 +275,7 @@ This keeps every subdomain consistent and prevents redundant code.
 
 ---
 
-## 🚀 DEVELOPMENT APPROACH
+## DEVELOPMENT APPROACH
 
 ### Primary Development Environment
 
@@ -325,19 +325,19 @@ Maintain visual and motion parity across all Total Audio apps.
 
 ### App-Specific Contexts
 
-**🎯 Audio Intel (Context):**
+**Audio Intel (Context):**
 
 - Core revenue-validation product — every improvement must help acquire or retain paying users
 - Focus Claude's efforts on onboarding, outreach copy, and UX flow optimisation
 - Do not build new architectural systems during this phase
 
-**🧠 Pitch Generator (Context):**
+**Pitch Generator (Context):**
 
 - Support Audio Intel case studies with real personalised pitches
 - Prepare prompts and email templates for future "PitchAgent" integration
 - Keep tone authentic — avoid generic AI marketing copy
 
-**📈 Campaign Tracker (Context):**
+**Campaign Tracker (Context):**
 
 - Focus only on features that improve retention and follow-up for paying users
 - Do not add CRM-style features until validated by live campaign data
@@ -354,7 +354,7 @@ Once Audio Intel achieves sustainable £500 monthly revenue:
 
 ---
 
-## 🧪 TESTING & QUALITY ASSURANCE
+## TESTING & QUALITY ASSURANCE
 
 ### Mobile Testing (Playwright)
 
@@ -388,13 +388,13 @@ npm run test:unit                # Unit tests
 
 ---
 
-## 🧪 INTELLIGENT TESTING SYSTEM (Agent-Based Architecture)
+## INTELLIGENT TESTING SYSTEM (Agent-Based Architecture)
 
 ### Overview
 
 Complete agent-based testing infrastructure with **3 intelligent agents** that analyze, generate, and execute tests automatically across all apps.
 
-**Status**: ✅ Operational (committed hash: `476276d6`, 46 files, 6,523+ lines)
+**Status**: Operational (committed hash: `476276d6`, 46 files, 6,523+ lines)
 
 ### Architecture Components
 
@@ -515,12 +515,12 @@ const { validateAllTouchTargets, validateAccessibility } = require('@total-audio
 
 ---
 
-## 🤖 MCP ECOSYSTEM (14+ Servers Operational)
+## MCP ECOSYSTEM (14+ Servers Operational)
 
 ### Active MCP Servers
 
-- **Notion**: Workspace automation (✓ Connected)
-- **Puppeteer**: Browser automation (✓ Connected)
+- **Notion**: Workspace automation ( Connected)
+- **Puppeteer**: Browser automation ( Connected)
 - **Gmail**: Email automation (OAuth setup available)
 - **Google Drive**: File management
 - **GitHub**: Repository management
@@ -537,7 +537,7 @@ claude mcp remove [name]         # Remove MCP server
 
 ---
 
-## 📧 NEWSLETTER SYSTEM (Operational)
+## NEWSLETTER SYSTEM (Operational)
 
 ### Newsletter Architecture - "The Unsigned Advantage"
 
@@ -556,10 +556,10 @@ claude mcp remove [name]         # Remove MCP server
 
 ---
 
-## 🚨 CRITICAL: CI/CD PIPELINE ARCHITECTURE (DO NOT BREAK)
+## CRITICAL: CI/CD PIPELINE ARCHITECTURE (DO NOT BREAK)
 
 **Last Fixed**: 2025-11-11 (Phase 10C - Golden Pipeline Reset)
-**Verified Working**: Test deployment passed with green ticks ✅
+**Verified Working**: Test deployment passed with green ticks 
 
 ### The Problem That Was Fixed
 
@@ -575,22 +575,22 @@ claude mcp remove [name]         # Remove MCP server
 ```
 Developer Push to main
            ↓
-┌──────────────────────────┐
-│  GitHub Actions: ci.yml  │  ✅ Lint, typecheck, test, build
-│  (validation ONLY)       │
-└──────────┬───────────────┘
-           │ (CI must pass)
+
+  GitHub Actions: ci.yml    Lint, typecheck, test, build
+  (validation ONLY)       
+
+            (CI must pass)
            ↓
-┌──────────────────────────┐
-│  Vercel GitHub App       │  ✅ Auto-deploys all 3 apps
-│  (deployment ONLY)       │     (audio-intel, tracker, pitch-generator)
-└──────────┬───────────────┘
-           │ (after deployment)
+
+  Vercel GitHub App         Auto-deploys all 3 apps
+  (deployment ONLY)            (audio-intel, tracker, pitch-generator)
+
+            (after deployment)
            ↓
-┌────────────────────────────┐
-│  golden-verify.yml         │  ✅ Post-deployment health checks
-│  (verification ONLY)       │
-└────────────────────────────┘
+
+  golden-verify.yml           Post-deployment health checks
+  (verification ONLY)       
+
 ```
 
 ### Critical Rules to Prevent Breakage
@@ -639,16 +639,16 @@ Developer Push to main
 
 ### Verification Checklist (How to Test Pipeline is Working)
 
-1. **Check GitHub Actions**: https://github.com/totalaudiopromo/total-audio-platform/actions
+1. **Check GitHub Actions**: [Total Audio Platform Actions](https://github.com/totalaudiopromo/total-audio-platform/actions)
    - Should see ONLY "CI" and "Golden Verification Pipeline" workflows
-   - CI workflow should pass (green checkmark) ✅
+   - CI workflow should pass (green checkmark)
    - NO "CI/CD Pipeline" or "Release" workflows running
 
 2. **Check Vercel Deployments**:
-   - Audio Intel: https://vercel.com/chris-projects-6ffe0e29/audio-intel
-   - Tracker: https://vercel.com/chris-projects-6ffe0e29/tracker-fresh
-   - Pitch Generator: https://vercel.com/chris-projects-6ffe0e29/pitch-generator
-   - All should auto-deploy on `main` push ✅
+   - Audio Intel: [Audio Intel on Vercel](https://vercel.com/chris-projects-6ffe0e29/audio-intel)
+   - Tracker: [Tracker on Vercel](https://vercel.com/chris-projects-6ffe0e29/tracker-fresh)
+   - Pitch Generator: [Pitch Generator on Vercel](https://vercel.com/chris-projects-6ffe0e29/pitch-generator)
+   - All should auto-deploy on `main` push 
 
 3. **Test with small commit**:
 
@@ -694,7 +694,7 @@ git push origin main
 
 ---
 
-## 🎵 CUSTOMER SEGMENTS & ACQUISITION STRATEGY
+## CUSTOMER SEGMENTS & ACQUISITION STRATEGY
 
 ### 1. Radio Promoters (85% conversion - HIGHEST PRIORITY)
 
@@ -722,7 +722,7 @@ git push origin main
 
 ---
 
-## 📊 SUCCESS METRICS & MEASUREMENT
+## SUCCESS METRICS & MEASUREMENT
 
 ### Customer Acquisition KPIs (Current Focus)
 
@@ -747,7 +747,7 @@ git push origin main
 
 ---
 
-## 🔧 UTILITY FUNCTIONS & PATTERNS
+## UTILITY FUNCTIONS & PATTERNS
 
 ### Key Helper Functions
 
@@ -765,7 +765,7 @@ git push origin main
 
 ---
 
-## 🔄 RESPONSE FRAMEWORK
+## RESPONSE FRAMEWORK
 
 When providing advice or strategies, always:
 
@@ -788,7 +788,7 @@ When providing advice or strategies, always:
 
 ---
 
-## 🎯 COMPETITIVE ADVANTAGE MESSAGING
+## COMPETITIVE ADVANTAGE MESSAGING
 
 ### Against Manual Excel Chaos (Real Competition)
 
@@ -806,7 +806,7 @@ When providing advice or strategies, always:
 
 ---
 
-## 🏗️ FUTURE AGENTIC ARCHITECTURE IMPLEMENTATION GOALS
+## FUTURE AGENTIC ARCHITECTURE IMPLEMENTATION GOALS
 
 **ONLY AFTER £500/MONTH REVENUE VALIDATION**
 
@@ -847,7 +847,7 @@ When providing advice or strategies, always:
 
 ---
 
-## 🎨 UX / PRODUCT PHILOSOPHY (Future Vision)
+## UX / PRODUCT PHILOSOPHY (Future Vision)
 
 ### Core Principles
 
@@ -873,7 +873,7 @@ When providing advice or strategies, always:
 
 ---
 
-## ⚡ EXECUTION PRIORITIES
+## EXECUTION PRIORITIES
 
 ### Immediate Focus (October 2025 - Next 14 Days)
 
@@ -901,7 +901,7 @@ When providing advice or strategies, always:
 
 ---
 
-## 🎯 STRATEGIC POSITIONING
+## STRATEGIC POSITIONING
 
 ### Total Audio Promo (Current)
 
@@ -923,42 +923,42 @@ When providing advice or strategies, always:
 
 ---
 
-## 📁 PROJECT STRUCTURE
+## PROJECT STRUCTURE
 
 ### Active Development
 
-```
+```text
 /Users/chrisschofield/workspace/active/total-audio-platform/
-├── apps/audio-intel/          # PRIMARY: Revenue validation focus
-│   ├── app/newsletter-dashboard/  # Newsletter management
-│   ├── app/api/newsletter/    # 6 newsletter API routes
-│   ├── tests/mobile/          # Mobile test suite
-│   └── playwright.config.js   # Mobile testing config
-├── apps/pitch-generator/      # Supporting: Pitch generation at scale
-├── apps/tracker/              # Supporting: Campaign tracking CRM
-├── apps/web/                  # Marketing site
-├── tools/agents/              # 31+ AI agents for automation
-│   └── gmail-setup/           # Gmail automation scripts
-└── tools/mcp-servers/         # 14+ operational MCP integrations
+ apps/audio-intel/          # PRIMARY: Revenue validation focus
+    app/newsletter-dashboard/  # Newsletter management
+    app/api/newsletter/    # 6 newsletter API routes
+    tests/mobile/          # Mobile test suite
+    playwright.config.js   # Mobile testing config
+ apps/pitch-generator/      # Supporting: Pitch generation at scale
+ apps/tracker/              # Supporting: Campaign tracking CRM
+ apps/web/                  # Marketing site
+ tools/agents/              # 31+ AI agents for automation
+    gmail-setup/           # Gmail automation scripts
+ tools/mcp-servers/         # 14+ operational MCP integrations
 ```
 
 ### Future Architecture (Post-Revenue)
 
-```
+```text
 /Users/chrisschofield/workspace/active/total-audio-platform/
-├── packages/agent-layer/      # Shared agent orchestration
-│   ├── registry/              # Skill Registry implementation
-│   ├── agents/                # Agent definitions
-│   └── skills/                # Modular skill blocks
-├── apps/totalaud.io/          # Experimental creative interface
-│   ├── canvas/                # Visual agent orchestration
-│   └── command-palette/       # Quick agent triggers
-└── shared/                    # Shared logic across both domains
+ packages/agent-layer/      # Shared agent orchestration
+    registry/              # Skill Registry implementation
+    agents/                # Agent definitions
+    skills/                # Modular skill blocks
+ apps/totalaud.io/          # Experimental creative interface
+    canvas/                # Visual agent orchestration
+    command-palette/       # Quick agent triggers
+ shared/                    # Shared logic across both domains
 ```
 
 ---
 
-## 🚨 CRITICAL VOICE & CONTEXT REQUIREMENTS
+## CRITICAL VOICE & CONTEXT REQUIREMENTS
 
 **ALWAYS reference Chris's authentic voice:**
 
@@ -983,7 +983,7 @@ When providing advice or strategies, always:
 
 ---
 
-## 🧭 DECISION FRAMEWORK
+## DECISION FRAMEWORK
 
 ### Current Phase Questions (October 2025)
 
@@ -1010,7 +1010,7 @@ If neither applies, log it for later — don't build it now.
 
 ---
 
-## 🎯 LONG-TERM VISION SUMMARY
+## LONG-TERM VISION SUMMARY
 
 **Unified "Total Audio OS":**
 

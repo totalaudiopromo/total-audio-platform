@@ -1,6 +1,6 @@
 # BBC Radio 1 Cold Email Template (85% Conversion Rate)
 
-## 🎯 Target: UK Radio Promoters (Proven 85% conversion)
+## Target: UK Radio Promoters (Proven 85% conversion)
 
 ---
 
@@ -104,10 +104,10 @@ I did. Every campaign = 15+ hours of:
 Then I built Audio Intel to automate it.
 
 Results:
-✅ BBC Radio 1: 15 hours → 15 minutes
-✅ 100% contact enrichment success rate
-✅ Works on mobile (not just desktop)
-✅ £19/month (saves 12+ hours per campaign)
+ BBC Radio 1: 15 hours → 15 minutes
+ 100% contact enrichment success rate
+ Works on mobile (not just desktop)
+ £19/month (saves 12+ hours per campaign)
 
 **Free demo:** Upload your contacts, see it work instantly.
 
@@ -150,7 +150,7 @@ sadact / Audio Intel founder
 
 ---
 
-## 📊 A/B Testing Notes
+## A/B Testing Notes
 
 **Highest conversion rates:**
 
@@ -172,7 +172,7 @@ sadact / Audio Intel founder
 
 ---
 
-## 🎯 Personalisation Variables
+## Personalisation Variables
 
 ```javascript
 {
@@ -185,7 +185,7 @@ sadact / Audio Intel founder
 
 ---
 
-## 📧 Follow-up Sequence (If No Reply)
+## Follow-up Sequence (If No Reply)
 
 **Day 3:** Quick nudge
 
@@ -236,7 +236,7 @@ sadact / totalaudiopromo.com
 
 ---
 
-## ✅ Pre-Send Checklist
+## Pre-Send Checklist
 
 - [ ] Personalised first name (no "Hi there")
 - [ ] Company name mentioned (shows you researched)
@@ -249,19 +249,19 @@ sadact / totalaudiopromo.com
 
 ---
 
-## 🚨 What NOT to Do
+## What NOT to Do
 
-❌ "I hope this email finds you well" - Delete this
-❌ "I wanted to reach out" - Weak opener
-❌ "We're a leading provider of..." - Corporate BS
-❌ 500-word essays - Keep it under 150 words
-❌ Multiple CTAs - One clear demo link only
-❌ Spelling errors with music terms - You're in the industry
-❌ Generic templates - Personalise every email
+ "I hope this email finds you well" - Delete this
+ "I wanted to reach out" - Weak opener
+ "We're a leading provider of..." - Corporate BS
+ 500-word essays - Keep it under 150 words
+ Multiple CTAs - One clear demo link only
+ Spelling errors with music terms - You're in the industry
+ Generic templates - Personalise every email
 
 ---
 
-## 💰 Expected Results (50 emails sent)
+## Expected Results (50 emails sent)
 
 **Open rate:** 65% (32 opens)
 **Click rate:** 45% (22 clicks)
@@ -275,7 +275,7 @@ sadact / totalaudiopromo.com
 
 ---
 
-## 🎯 Next Steps
+## Next Steps
 
 1. Scrape 50 radio promoter contacts (Google Maps)
 2. Find emails (Hunter.io free: 25, Snov.io free: 25)
@@ -292,4 +292,4 @@ sadact / totalaudiopromo.com
 **Expected revenue:** £76/month from first 50 emails
 **Time to first customer:** 7-14 days
 
-Let's go! 🚀
+Let's go! 

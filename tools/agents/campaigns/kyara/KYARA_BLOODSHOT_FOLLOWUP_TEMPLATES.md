@@ -54,10 +54,10 @@ Hi Claire,
 Following up on KYARA's "Bloodshot" - wanted to share some quick momentum updates since I last reached out.
 
 The track's first week has been strong:
-✅ Amazing Radio (UK) confirmed support
-✅ 85 plays across 9 countries
-✅ Home & Hosed history (Jaimee played "Yearn" in August)
-✅ All self-produced in Sydney bedroom studio
+ Amazing Radio (UK) confirmed support
+ 85 plays across 9 countries
+ Home & Hosed history (Jaimee played "Yearn" in August)
+ All self-produced in Sydney bedroom studio
 
 Listen: [SPOTIFY LINK]
 
@@ -179,11 +179,11 @@ chrisschofield@libertymusicpr.com
 
 ### Momentum Metrics:
 
-✅ **85 plays** across **9 countries** pre-release
-✅ **Amazing Radio** (UK) confirmed support
-✅ **Triple J** history (Home & Hosed - "Yearn")
-✅ **Sydney-based** independent artist
-✅ **Self-produced** (bedroom studio credibility)
+ **85 plays** across **9 countries** pre-release
+ **Amazing Radio** (UK) confirmed support
+ **Triple J** history (Home & Hosed - "Yearn")
+ **Sydney-based** independent artist
+ **Self-produced** (bedroom studio credibility)
 
 ### Production Quality:
 
@@ -249,7 +249,7 @@ Create a simple spreadsheet to track:
 
 ## Red Flags to Avoid:
 
-❌ **Don't:**
+ **Don't:**
 
 - Send generic "blast" emails (personalise each one)
 - Follow up more than twice (once is enough, twice max)
@@ -257,7 +257,7 @@ Create a simple spreadsheet to track:
 - Oversell ("going to be huge")
 - Spam with daily updates
 
-✅ **Do:**
+ **Do:**
 
 - Reference specific previous support (if applicable)
 - Use momentum metrics authentically

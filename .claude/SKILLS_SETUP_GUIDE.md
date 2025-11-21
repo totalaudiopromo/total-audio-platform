@@ -82,7 +82,7 @@ Close and reopen Claude Code to load new skills.
 
 ## Priority Skills for Total Audio Projects
 
-### 🔥 Install First (This Week)
+###  Install First (This Week)
 
 #### 1. Skill Creator
 
@@ -122,7 +122,7 @@ Close and reopen Claude Code to load new skills.
 
 ---
 
-### ✅ Install Later (After First Customer)
+### Install Later (After First Customer)
 
 #### 4. Brainstorming
 
@@ -138,7 +138,7 @@ Close and reopen Claude Code to load new skills.
 
 ---
 
-### ⏸️ Defer (After £500/month)
+### ⏸ Defer (After £500/month)
 
 #### 5. Simplification Cascades
 

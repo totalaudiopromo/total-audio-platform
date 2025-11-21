@@ -4,25 +4,25 @@ This directory contains agents that are **dormant** - complete implementations t
 
 ## Parked Agents
 
-### 🎵 Music Industry Specialists
+###  Music Industry Specialists
 
 - **`music-marketing-mastermind.js`** - Advanced music marketing strategies
 - **`music-industry-strategist.js`** - Industry strategy and positioning
 - **`growth-hacking-optimizer.js`** - Growth optimization and scaling
 - **`viral-content-automation.js`** - Viral content strategies
 
-### 👥 User Acquisition
+###  User Acquisition
 
 - **`beta-user-acquisition-agent.js`** - Beta user acquisition workflows
 
-## Status: INACTIVE ⏸️
+## Status: INACTIVE ⏸
 
 These agents are:
 
-- ✅ **Complete implementations** - Fully functional code
-- ❌ **Not orchestrator-integrated** - Not called by main workflows
-- ❌ **No system references** - Not used by other agents
-- 🔒 **Available for reactivation** - Can be moved back to active when needed
+-  **Complete implementations** - Fully functional code
+-  **Not orchestrator-integrated** - Not called by main workflows
+-  **No system references** - Not used by other agents
+-  **Available for reactivation** - Can be moved back to active when needed
 
 ## Reactivation Process
 

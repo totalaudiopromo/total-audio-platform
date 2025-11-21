@@ -231,7 +231,7 @@ pnpm build
 
 ## Status
 
-✅ **Phase 1 Complete**: Foundation implemented
+**Phase 1 Complete**: Foundation implemented
 
 - @total-audio/testing package built and ready
 - Testing Orchestrator skill created

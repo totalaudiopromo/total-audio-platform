@@ -8,11 +8,11 @@ The Total Audio Platform uses a unified Telegram bot (@TotalAudioBot) to send wo
 
 - **Unified Signal Feed**: One bot handles both `total-audio-platform` and `totalaud.io` repositories
 - **Repository Identification**: Messages are prefixed with emoji indicators:
-  - 🎧 `[Platform]` - total-audio-platform notifications
-  - 🌌 `[Totalaud.io]` - totalaud.io notifications
+  -  `[Platform]` - total-audio-platform notifications
+  -  `[Totalaud.io]` - totalaud.io notifications
 - **Automated Notifications**:
-  - Daily revenue audit results (✅ PASS / ⚠️ WARNING / 🚨 FAIL)
-  - Weekly growth insights reports (📈)
+  - Daily revenue audit results (PASS /  WARNING / FAIL)
+  - Weekly growth insights reports ()
   - Workflow failures and errors
   - Deployment status updates
 
@@ -68,7 +68,7 @@ Add these secrets to **both** repositories:
 4. Enter test message: `Testing from total-audio-platform`
 5. Within 3-5 seconds, check Telegram for:
    ```
-   🎧 [Platform] Testing from total-audio-platform
+    [Platform] Testing from total-audio-platform
    ```
 
 #### Test in `totalaud.io`:
@@ -76,7 +76,7 @@ Add these secrets to **both** repositories:
 1. Repeat the same steps in the totalaud.io repository
 2. Expected message format:
    ```
-   🌌 [Totalaud.io] Testing from totalaud.io
+    [Totalaud.io] Testing from totalaud.io
    ```
 
 ## Notification Types
@@ -86,7 +86,7 @@ Add these secrets to **both** repositories:
 **Success (Daily at midnight UTC)**:
 
 ```
-🎧 [Platform] ✅ Revenue Audit Passed - 2025-11
+ [Platform] Revenue Audit Passed - 2025-11
 
 All revenue data in sync.
 [View Run](https://github.com/...)
@@ -95,7 +95,7 @@ All revenue data in sync.
 **Warning**:
 
 ```
-🎧 [Platform] ⚠️ Revenue Audit Warning - 2025-11
+ [Platform]  Revenue Audit Warning - 2025-11
 
 Minor discrepancies detected. Review recommended.
 [View Run](https://github.com/...)
@@ -104,7 +104,7 @@ Minor discrepancies detected. Review recommended.
 **Failure**:
 
 ```
-🎧 [Platform] 🚨 Revenue Audit Failed - 2025-11
+ [Platform] Revenue Audit Failed - 2025-11
 
 Critical revenue discrepancy detected. Review required.
 [View Run](https://github.com/...)
@@ -115,7 +115,7 @@ Critical revenue discrepancy detected. Review required.
 **Success (Weekly on Sundays at 9am UTC)**:
 
 ```
-🎧 [Platform] 📈 Weekly Growth Insights Ready
+ [Platform] Weekly Growth Insights Ready
 
 Analyzed 4 weeks of growth data.
 [View Report](https://github.com/...)
@@ -124,7 +124,7 @@ Analyzed 4 weeks of growth data.
 **Failure**:
 
 ```
-🎧 [Platform] ⚠️ Growth Insights Generation Failed
+ [Platform]  Growth Insights Generation Failed
 
 Check workflow logs for details.
 [View Run](https://github.com/...)
@@ -162,11 +162,11 @@ The script automatically detects which repository it's running in:
 REPO_NAME="${GITHUB_REPOSITORY##*/}"
 
 if [[ "$REPO_NAME" == "total-audio-platform" ]]; then
-  PREFIX="🎧 [Platform]"
+  PREFIX=" [Platform]"
 elif [[ "$REPO_NAME" == "totalaud.io" ]]; then
-  PREFIX="🌌 [Totalaud.io]"
+  PREFIX=" [Totalaud.io]"
 else
-  PREFIX="💡 [${REPO_NAME}]"
+  PREFIX="[${REPO_NAME}]"
 fi
 ```
 
@@ -195,8 +195,8 @@ fi
 
 This is expected! The unified bot handles both:
 
-- `total-audio-platform` (🎧)
-- `totalaud.io` (🌌)
+- `total-audio-platform` ()
+- `totalaud.io` ()
 
 Use the emoji prefixes to identify which system sent the notification.
 

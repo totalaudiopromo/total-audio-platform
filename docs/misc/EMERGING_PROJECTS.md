@@ -1,10 +1,10 @@
-# 🌱 Emerging Projects Portfolio
+#  Emerging Projects Portfolio
 
 _Reference summary for initiatives developing alongside the core Audio Intel product._
 
 ---
 
-## 🎛️ Radio Promo Agent System
+## Radio Promo Agent System
 
 **Snapshot**
 
@@ -39,7 +39,7 @@ _Reference summary for initiatives developing alongside the core Audio Intel pro
 
 ---
 
-## 💹 Investment AI Project – “DIV”
+## Investment AI Project – “DIV”
 
 **Concept Overview**
 
@@ -79,7 +79,7 @@ _Reference summary for initiatives developing alongside the core Audio Intel pro
 
 ---
 
-## 🔁 Brand Evolution Initiatives
+## Brand Evolution Initiatives
 
 **Strategic Direction**
 
@@ -111,7 +111,7 @@ _Reference summary for initiatives developing alongside the core Audio Intel pro
 
 ---
 
-## 🚀 Validation & Growth Experiments
+## Validation & Growth Experiments
 
 **Active Experiments**
 
@@ -151,7 +151,7 @@ _Reference summary for initiatives developing alongside the core Audio Intel pro
 
 ---
 
-## 🧪 Technical Prototyping & Sandbox Projects
+## Technical Prototyping & Sandbox Projects
 
 **Scope**
 

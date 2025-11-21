@@ -36,7 +36,7 @@ REQUIRED TONE SHIFT ACROSS ALL SLIDES:
 ## SLIDE-BY-SLIDE REVISIONS
 
 ### Slide 1: Title Slide
-✅ **Already good** - "Live Demo for Liberty Music PR Radio Team" is friendly and specific
+**Already good** - "Live Demo for Liberty Music PR Radio Team" is friendly and specific
 
 **Keep**:
 - Clear, specific audience targeting
@@ -56,7 +56,7 @@ REQUIRED TONE SHIFT ACROSS ALL SLIDES:
 
 **Visual changes**:
 - Reduce heading size from all-caps aggressive to Title Case friendly
-- Change red warning icons (⚠️) to softer amber colour (#F59E0B)
+- Change red warning icons () to softer amber colour (#F59E0B)
 - Add rounded corners (0.75rem) to problem/solution boxes
 - Soften shadows from harsh black to rgba(0,0,0,0.1)
 
@@ -185,7 +185,7 @@ REQUIRED TONE SHIFT ACROSS ALL SLIDES:
 - Lighten shadows: 4px 4px 0px rgba(0,0,0,0.1)
 
 **Tone changes**:
-- Keep "3× YES? ✓ ✓ ✓ → GO" (this is actually charming and honest)
+- Keep "3× YES?    → GO" (this is actually charming and honest)
 - Keep "If any NO → Walk away, no payment" (builds trust)
 - Add: "If 2/3 YES, we'll discuss custom solution that addresses the remaining concern" (shows flexibility)
 
@@ -212,7 +212,7 @@ REQUIRED TONE SHIFT ACROSS ALL SLIDES:
 ---
 
 ### Slide 10: Timeline
-✅ **Already good tone** - "FROM DEMO TO RADIO TEAM PILOT" is clear and friendly
+**Already good tone** - "FROM DEMO TO RADIO TEAM PILOT" is clear and friendly
 
 **Visual changes**:
 - Ensure rounded corners (0.75rem) on timeline boxes
@@ -295,4 +295,4 @@ British casual-professional, not American corporate. Consultative, not accusator
 
 ---
 
-**This prompt ensures the entire deck matches your authentic British casual-professional voice and production site aesthetic.** 🎯
+**This prompt ensures the entire deck matches your authentic British casual-professional voice and production site aesthetic.** 

@@ -93,14 +93,14 @@ Generate authentic UK music industry social media posts for Total Audio Promo's 
 - **Tone**: Conversational, direct, engaging
 - **Content**: Quick tips, threads, industry insights
 - **Hashtags**: #MusicTech #IndieMusic #MusicIndustry
-- **CTA**: "Comment 'BETA' for free access 👇"
+- **CTA**: "Comment 'BETA' for free access "
 
 ### **Blue Sky**
 
 - **Length**: 300 characters
 - **Tone**: Tech-savvy but professional
 - **Content**: Innovation focus, efficiency tips
-- **CTA**: "What's your biggest time-waster in music promotion? 👇"
+- **CTA**: "What's your biggest time-waster in music promotion? "
 
 ### **Threads**
 
@@ -164,8 +164,8 @@ Always include: `?utm_source=social_automation&utm_medium=social&utm_campaign=au
 
 - "Ready to try it? Get free beta access: intel.totalaudiopromo.com"
 - "Would appreciate your thoughts: intel.totalaudiopromo.com"
-- "Comment 'BETA' for free access 👇"
-- "What's your biggest time-waster in music promotion? 👇"
+- "Comment 'BETA' for free access "
+- "What's your biggest time-waster in music promotion? "
 
 ### **Secondary CTAs**
 

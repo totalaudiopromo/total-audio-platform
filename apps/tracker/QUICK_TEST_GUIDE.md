@@ -16,14 +16,14 @@ npm run dev:tracker
 open http://localhost:3000/pricing
 ```
 
-**✅ PASS if**:
+** PASS if**:
 
 - Page loads WITHOUT login redirect
 - Shows 3 pricing tiers (Free, £19, £79)
 - FAQ section visible
 - Footer links to Privacy/Terms work
 
-**❌ FAIL if**:
+** FAIL if**:
 
 - Redirects to /login
 - Shows 404 error
@@ -38,7 +38,7 @@ open http://localhost:3000/pricing
 open http://localhost:3000
 ```
 
-**✅ PASS if**:
+** PASS if**:
 
 - Banner appears at bottom after 1 second
 - "Accept All Cookies" button works
@@ -55,7 +55,7 @@ localStorage.getItem('cookieConsent');
 // Should return: "accepted" or "declined"
 ```
 
-**❌ FAIL if**:
+** FAIL if**:
 
 - Banner never appears
 - Buttons don't respond
@@ -74,7 +74,7 @@ open http://localhost:3000/privacy
 open http://localhost:3000/terms
 ```
 
-**✅ PASS if**:
+** PASS if**:
 
 - Both pages load without login
 - Pages have 10+ sections of content
@@ -83,7 +83,7 @@ open http://localhost:3000/terms
 - UK GDPR language present
 - ICO information visible
 
-**❌ FAIL if**:
+** FAIL if**:
 
 - Pages require login
 - Content is missing
@@ -102,7 +102,7 @@ open http://localhost:3000/terms
 open http://localhost:3000/dashboard
 ```
 
-**✅ PASS if** (unverified user):
+** PASS if** (unverified user):
 
 - Orange/amber banner shows at top
 - Shows user's email address
@@ -110,7 +110,7 @@ open http://localhost:3000/dashboard
 - Clicking resend shows success message
 - Banner is dismissible with X button
 
-**✅ PASS if** (verified user):
+** PASS if** (verified user):
 
 - No banner shows
 
@@ -124,7 +124,7 @@ open http://localhost:3000/verify-email
 open http://localhost:3000/verify-success
 ```
 
-**✅ PASS if**:
+** PASS if**:
 
 - `/verify-email` shows:
   - Email icon
@@ -138,7 +138,7 @@ open http://localhost:3000/verify-success
   - 3-step onboarding preview
   - "Go to Dashboard" button
 
-**❌ FAIL if**:
+** FAIL if**:
 
 - Pages show 404 errors
 - Content is missing
@@ -168,7 +168,7 @@ curl -X POST http://localhost:3000/api/auth/resend-verification \
 open http://localhost:3000/dashboard
 ```
 
-**✅ PASS if** (new user, 0 campaigns):
+** PASS if** (new user, 0 campaigns):
 
 - Purple/blue checklist shows at top
 - Shows "0/3" or "0% Complete"
@@ -180,18 +180,18 @@ open http://localhost:3000/dashboard
 - Action buttons clickable
 - Dismissible with X button
 
-**✅ PASS if** (user with campaigns):
+** PASS if** (user with campaigns):
 
 - Checklist shows "1/3" or "33% Complete"
 - First item has green checkmark + strikethrough
 - Progress bar fills to 33%
 - Encouragement message: "Great start!"
 
-**✅ PASS if** (completed user):
+** PASS if** (completed user):
 
 - Checklist automatically hidden
 
-**❌ FAIL if**:
+** FAIL if**:
 
 - Checklist doesn't appear for new users
 - Progress doesn't update
@@ -215,7 +215,7 @@ open http://localhost:3000/dashboard
 open http://localhost:3000/pricing
 ```
 
-**✅ PASS if**:
+** PASS if**:
 
 - Brutalist design intact (4px black borders, shadow-brutal)
 - Purple brand color (#9333ea) consistent
@@ -224,7 +224,7 @@ open http://localhost:3000/pricing
 - No layout shifts or broken styles
 - All components aligned properly
 
-**❌ FAIL if**:
+** FAIL if**:
 
 - Styling looks broken
 - Colors changed unexpectedly
@@ -242,7 +242,7 @@ open http://localhost:3000/pricing
 # Test widths: 375px, 768px, 1024px, 1920px
 ```
 
-**✅ PASS if**:
+** PASS if**:
 
 - Cookie consent banner readable on mobile
 - Onboarding checklist stacks vertically
@@ -251,7 +251,7 @@ open http://localhost:3000/pricing
 - Text legible at all sizes
 - No horizontal scrolling
 
-**❌ FAIL if**:
+** FAIL if**:
 
 - Text too small to read
 - Buttons too close together
@@ -272,7 +272,7 @@ open http://localhost:3000/pricing
 - Click footer "Contact" email link
 ```
 
-**✅ PASS if**:
+** PASS if**:
 
 - All links go to correct pages
 - No 404 errors
@@ -354,7 +354,7 @@ npm run build:tracker
 # Look for warnings about large bundles (>500KB)
 ```
 
-**✅ PASS if**:
+** PASS if**:
 
 - All pages load in <3 seconds
 - No console errors
@@ -367,11 +367,11 @@ npm run build:tracker
 
 Test in these browsers (minimum):
 
-- ✅ Chrome (latest)
-- ✅ Safari (latest)
-- ✅ Firefox (latest)
-- ✅ Mobile Safari (iOS)
-- ✅ Mobile Chrome (Android)
+-  Chrome (latest)
+-  Safari (latest)
+-  Firefox (latest)
+-  Mobile Safari (iOS)
+-  Mobile Chrome (Android)
 
 **Common issues to watch**:
 

@@ -8,7 +8,7 @@ This document defines the visual design system for all TAP mini-tools. The aesth
 
 ## Core Principles
 
-### ❌ **NEVER Use:**
+###  **NEVER Use:**
 
 - Gradients (background or text)
 - Glassmorphism effects
@@ -18,7 +18,7 @@ This document defines the visual design system for all TAP mini-tools. The aesth
 - Transparency/opacity on backgrounds (except for colored accent backgrounds like `bg-blue-500/20`)
 - American spelling (use UK English throughout)
 
-### ✅ **ALWAYS Use:**
+###  **ALWAYS Use:**
 
 - Solid colors (white, black, and brand colours)
 - Bold black borders (`border-2`, `border-4`)
@@ -302,11 +302,11 @@ Each tool gets its own app directory in the monorepo:
 
 ```
 apps/
-  ├── tap-saas-template/        (NEVER modify - your clean template)
-  ├── pitch-generator/          (Duplicate of template, customised for Pitch Generator)
-  ├── audio-intel/              (Duplicate of template, customised for Audio Intel)
-  ├── playlist-pulse/           (Duplicate of template, customised for Playlist Pulse)
-  └── release-radar/            (Duplicate of template, customised for Release Radar)
+   tap-saas-template/        (NEVER modify - your clean template)
+   pitch-generator/          (Duplicate of template, customised for Pitch Generator)
+   audio-intel/              (Duplicate of template, customised for Audio Intel)
+   playlist-pulse/           (Duplicate of template, customised for Playlist Pulse)
+   release-radar/            (Duplicate of template, customised for Release Radar)
 ```
 
 **Steps to create a new tool:**
@@ -328,12 +328,12 @@ Keep all tools in one app but use clear routing:
 
 ```
 app/
-  ├── globals.css
-  ├── layout.tsx
-  ├── pitch-generator/    (Pitch Generator tool pages)
-  ├── audio-intel/        (Audio Intel tool pages)
-  ├── playlist-pulse/     (Playlist Pulse tool pages)
-  └── shared/             (Shared components across tools)
+   globals.css
+   layout.tsx
+   pitch-generator/    (Pitch Generator tool pages)
+   audio-intel/        (Audio Intel tool pages)
+   playlist-pulse/     (Playlist Pulse tool pages)
+   shared/             (Shared components across tools)
 ```
 
 **We recommend Option 1** - each tool as its own deployable app gives you:
@@ -351,16 +351,16 @@ To keep your design system clear, organise components like this:
 
 ```
 app/
-  ├── globals.css           (Design system components)
-  ├── layout.tsx           (Root layout with white bg)
-  └── [tool-name]/         (Each mini-tool gets its own directory)
+   globals.css           (Design system components)
+   layout.tsx           (Root layout with white bg)
+   [tool-name]/         (Each mini-tool gets its own directory)
 
 components/
-  ├── ui/                  (Reusable UI primitives)
-  │   ├── Button.tsx
-  │   ├── Card.tsx
-  │   └── Badge.tsx
-  └── [shared]/           (Tool-agnostic shared components)
+   ui/                  (Reusable UI primitives)
+      Button.tsx
+      Card.tsx
+      Badge.tsx
+   [shared]/           (Tool-agnostic shared components)
 ```
 
 ---

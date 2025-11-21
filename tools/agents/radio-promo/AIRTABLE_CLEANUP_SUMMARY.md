@@ -1,6 +1,6 @@
 # Airtable Cleanup Summary & Recommendations
 
-## ✅ BACKUP COMPLETE
+## BACKUP COMPLETE
 
 **Backup File**: `AIRTABLE_FULL_BACKUP_2025-10-03.json`
 
@@ -8,7 +8,7 @@
 - **Export Date**: 2025-10-03
 - **File Size**: Complete backup with all fields and relationships
 
-## 📊 KEY FINDINGS
+## KEY FINDINGS
 
 ### Critical Issues to Address:
 
@@ -36,32 +36,32 @@
 
 **Well-Populated Fields** (>90%):
 
-- ✅ Email (99.8%)
-- ✅ Contact Type (98.3%)
-- ✅ Status (93.2%) - _but needs accuracy fix_
-- ✅ First Name (90.3%)
-- ✅ Station (88.4%)
-- ✅ Created At (100% - system field)
+-  Email (99.8%)
+-  Contact Type (98.3%)
+-  Status (93.2%) - _but needs accuracy fix_
+-  First Name (90.3%)
+-  Station (88.4%)
+-  Created At (100% - system field)
 
 **Partially-Populated Fields** (70-90%):
 
-- ⚠️ Last Engagement (76.2%)
-- ⚠️ Reply Status (74.7%)
-- ⚠️ MC TAGS (74.1%)
-- ⚠️ Reply Notes (69.1%)
+-  Last Engagement (76.2%)
+-  Reply Status (74.7%)
+-  MC TAGS (74.1%)
+-  Reply Notes (69.1%)
 
 **Low-Populated Fields** (<20%):
 
-- ❌ Genres (20.9%) - **CRITICAL TO FIX**
-- ❌ Notes (2.7%)
-- ❌ Enrichment Fields (1.9%) - _just started enriching_
-- ❌ Test Mode (0.4%)
+-  Genres (20.9%) - **CRITICAL TO FIX**
+-  Notes (2.7%)
+-  Enrichment Fields (1.9%) - _just started enriching_
+-  Test Mode (0.4%)
 
-## 🎯 RECOMMENDED CLEANUP STRATEGY
+## RECOMMENDED CLEANUP STRATEGY
 
 ### Phase 1: Data Quality & Accuracy (PRIORITY 1)
 
-#### 1.1 Sync Status from Mailchimp ✅
+#### 1.1 Sync Status from Mailchimp 
 
 **Why**: 62% of KYARA contacts had wrong status (subscribed in Mailchimp but marked "Unsubscribed" in Airtable)
 
@@ -201,7 +201,7 @@ node standardize-genre-values.js
 4. **"BBC & National"** - Station contains "BBC" or quality = High
 5. **"Invalid/Test"** - Test Mode = true (cleanup review)
 
-## 🚀 EXECUTION PLAN
+## EXECUTION PLAN
 
 ### Quick Win (30 minutes)
 
@@ -248,7 +248,7 @@ node standardize-genre-values.js
 
 **Result**: Production-ready contact database for campaigns
 
-## 💡 SMART APPROACH: Sample Test First
+## SMART APPROACH: Sample Test First
 
 Before enriching all 507 contacts, **test on a sample of 50**:
 
@@ -266,37 +266,37 @@ node enrich-sample-50-contacts.js
 
 **Cost**: 50 × $0.003 = $0.15 (vs $1.52 for all 507)
 
-## 📋 WHAT I'LL CREATE FOR YOU
+## WHAT I'LL CREATE FOR YOU
 
 ### Immediate Scripts (Phase 1):
 
-1. ✅ `export-airtable-backup.js` - **DONE** (backup created)
-2. 🔄 `sync-status-from-mailchimp.js` - Sync subscription status
-3. 🔄 `consolidate-notes-fields.js` - Merge Reply Notes → Notes
-4. 🔄 `delete-invalid-contacts.js` - Remove gibberish email
+1.  `export-airtable-backup.js` - **DONE** (backup created)
+2.  `sync-status-from-mailchimp.js` - Sync subscription status
+3.  `consolidate-notes-fields.js` - Merge Reply Notes → Notes
+4.  `delete-invalid-contacts.js` - Remove gibberish email
 
 ### Enrichment Scripts (Phase 2):
 
-5. 🔄 `enrich-sample-50-contacts.js` - Test enrichment on sample
-6. 🔄 `enrich-all-contacts-batch.js` - Full enrichment (507 contacts)
-7. 🔄 `extract-stations-from-enrichment.js` - Populate station names
-8. 🔄 `auto-tag-genres-from-enrichment.js` - Auto-classify genres
+5.  `enrich-sample-50-contacts.js` - Test enrichment on sample
+6.  `enrich-all-contacts-batch.js` - Full enrichment (507 contacts)
+7.  `extract-stations-from-enrichment.js` - Populate station names
+8.  `auto-tag-genres-from-enrichment.js` - Auto-classify genres
 
 ### Optimization Scripts (Phase 3):
 
-9. 🔄 `standardize-genre-values.js` - Clean up genre formatting
+9.  `standardize-genre-values.js` - Clean up genre formatting
 
-## ⚠️ SAFEGUARDS IN PLACE
+## SAFEGUARDS IN PLACE
 
 **Before ANY changes**:
 
-1. ✅ **Full backup created** (AIRTABLE_FULL_BACKUP_2025-10-03.json)
-2. ✅ **Preview mode** for all scripts (see changes before applying)
-3. ✅ **Batch updates** (efficient API usage)
-4. ✅ **Rate limiting** (avoid API throttling)
-5. ✅ **Error handling** (graceful failures, rollback capability)
+1.  **Full backup created** (AIRTABLE_FULL_BACKUP_2025-10-03.json)
+2.  **Preview mode** for all scripts (see changes before applying)
+3.  **Batch updates** (efficient API usage)
+4.  **Rate limiting** (avoid API throttling)
+5.  **Error handling** (graceful failures, rollback capability)
 
-## 🎯 RECOMMENDED NEXT STEP
+## RECOMMENDED NEXT STEP
 
 **Start with Quick Win (30 min)**:
 

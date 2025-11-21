@@ -380,13 +380,13 @@ curl -X POST .../api/integrations/airtable/sync \
 
 ## Success Criteria (Verification)
 
-✅ **Airtable SDK installed** to `@total-audio/core-db` package  
-✅ **AirtableSyncService class created** extending BaseIntegrationSync  
-✅ **API routes created** for Audio Intel (connect, sync, status)  
-✅ **Field mapping implemented** with genre_tags array support  
-⚠️ **TypeScript compilation** - Minor errors remain (non-blocking)  
-🔲 **Tests written** - None yet (next phase)  
-🔲 **UI integration** - Not yet (customer acquisition focus)
+**Airtable SDK installed** to `@total-audio/core-db` package  
+**AirtableSyncService class created** extending BaseIntegrationSync  
+**API routes created** for Audio Intel (connect, sync, status)  
+**Field mapping implemented** with genre_tags array support  
+**TypeScript compilation** - Minor errors remain (non-blocking)  
+ **Tests written** - None yet (next phase)  
+ **UI integration** - Not yet (customer acquisition focus)
 
 ---
 

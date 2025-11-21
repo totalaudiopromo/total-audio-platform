@@ -1,11 +1,11 @@
-# ⚡ QUICK DATABASE SETUP (5 MINUTES)
+# QUICK DATABASE SETUP (5 MINUTES)
 
 **Problem**: "Database server not running at localhost:5432"
 **Solution**: Use Vercel Postgres (serverless, no maintenance)
 
 ---
 
-## 🚀 OPTION 1: VERCEL POSTGRES VIA WEB (EASIEST - 3 MINUTES)
+## OPTION 1: VERCEL POSTGRES VIA WEB (EASIEST - 3 MINUTES)
 
 ### Step 1: Go to Vercel Dashboard
 
@@ -39,7 +39,7 @@ vercel env pull .env.local
 You'll see:
 
 ```
-✓ Created .env.local file (.env.local)
+ Created .env.local file (.env.local)
 ```
 
 ### Step 5: Update Database Schema
@@ -57,11 +57,11 @@ cd ../audio-intel
 npm run dev
 ```
 
-**✅ DONE!** No more "database server not running" errors.
+**DONE!** No more "database server not running" errors.
 
 ---
 
-## 🚀 OPTION 2: SUPABASE (ALTERNATIVE - 5 MINUTES)
+## OPTION 2: SUPABASE (ALTERNATIVE - 5 MINUTES)
 
 ### Step 1: Create Supabase Account
 
@@ -111,11 +111,11 @@ cd ../audio-intel
 npm run dev
 ```
 
-**✅ DONE!** Database is live and accessible everywhere.
+**DONE!** Database is live and accessible everywhere.
 
 ---
 
-## 📊 WHICH ONE SHOULD YOU USE?
+## WHICH ONE SHOULD YOU USE?
 
 | Feature         | Vercel Postgres           | Supabase                 |
 | --------------- | ------------------------- | ------------------------ |
@@ -135,26 +135,26 @@ npm run dev
 
 ---
 
-## 🎯 WHAT YOU GET
+## WHAT YOU GET
 
 ### Before
 
-❌ Must start local PostgreSQL server every time
-❌ "Database server not running" errors
-❌ Only works on one machine
-❌ Manual backups
+ Must start local PostgreSQL server every time
+ "Database server not running" errors
+ Only works on one machine
+ Manual backups
 
 ### After
 
-✅ Works everywhere (home, Postman office, travelling)
-✅ Zero maintenance
-✅ Automatic backups
-✅ Production-ready
-✅ FREE at your scale
+Works everywhere (home, Postman office, travelling)
+Zero maintenance
+Automatic backups
+Production-ready
+FREE at your scale
 
 ---
 
-## 🔧 TROUBLESHOOTING
+## TROUBLESHOOTING
 
 ### After Setup: "Prisma Client not found"
 
@@ -190,7 +190,7 @@ vercel env pull .env.local
 
 ---
 
-## ✅ VERIFICATION CHECKLIST
+## VERIFICATION CHECKLIST
 
 After setup, run these commands:
 
@@ -214,15 +214,15 @@ npm run dev
 You should see:
 
 ```
-✓ Ready in 2.3s
-✓ Local: http://localhost:3000
+ Ready in 2.3s
+ Local: http://localhost:3000
 ```
 
 No more database errors!
 
 ---
 
-## 🎓 BONUS: ADD TO AGENT OS
+## BONUS: ADD TO AGENT OS
 
 Once working, add database health check to Agent OS:
 
@@ -234,14 +234,14 @@ node unified-launcher.js health
 Will show:
 
 ```
-✅ Database: Connected (Vercel Postgres)
-✅ TDD System: Operational
-✅ Total Agents: 14
+Database: Connected (Vercel Postgres)
+TDD System: Operational
+Total Agents: 14
 ```
 
 ---
 
-## 💡 PRO TIP: CREATE STARTUP SCRIPT
+## PRO TIP: CREATE STARTUP SCRIPT
 
 Save this as `~/start-dev.sh`:
 
@@ -251,18 +251,18 @@ Save this as `~/start-dev.sh`:
 cd /Users/chrisschofield/workspace/active/total-audio-platform
 
 # Check Agent OS health
-echo "🔍 Checking system health..."
+echo " Checking system health..."
 node tools/agents/unified-launcher.js health
 
 # Check database connection
 echo ""
-echo "🗄️  Checking database..."
+echo " Checking database..."
 cd apps/api
-npx prisma db pull --preview-feature >/dev/null 2>&1 && echo "✅ Database: Connected" || echo "❌ Database: Not connected"
+npx prisma db pull --preview-feature >/dev/null 2>&1 && echo "Database: Connected" || echo " Database: Not connected"
 
 # Start Audio Intel
 echo ""
-echo "🚀 Starting Audio Intel..."
+echo "Starting Audio Intel..."
 cd ../audio-intel
 npm run dev
 ```
@@ -276,17 +276,17 @@ bash ~/start-dev.sh
 
 ---
 
-## 🎯 BOTTOM LINE
+## BOTTOM LINE
 
 **Option 1 (Vercel)**: 3 minutes via web dashboard
 **Option 2 (Supabase)**: 5 minutes with connection string
 
 Both are:
 
-- ✅ FREE at your scale
-- ✅ Zero maintenance
-- ✅ Work everywhere
-- ✅ Production-ready
+- FREE at your scale
+- Zero maintenance
+- Work everywhere
+- Production-ready
 
 **Pick one and you'll never see "database server not running" again.**
 

@@ -1,21 +1,21 @@
 # Claude Code Skills - Quick Reference
 
-## 🚀 Daily Usage Patterns
+## Daily Usage Patterns
 
 ### Before Starting Work (Audio Intel)
 
 ```
-✓ Check: Two-hour session scope fits today's goal
-✓ Invoke: Systematic Debugging if fixing bugs
-✓ Track: Customer acquisition metrics updated
+ Check: Two-hour session scope fits today's goal
+ Invoke: Systematic Debugging if fixing bugs
+ Track: Customer acquisition metrics updated
 ```
 
 ### Before Starting Work (totalaud.io)
 
 ```
-✓ Check: Experimental sandbox guard active
-✓ Document: What you're learning/testing
-✓ Ensure: No production dependencies
+ Check: Experimental sandbox guard active
+ Document: What you're learning/testing
+ Ensure: No production dependencies
 ```
 
 ### Before Committing Code
@@ -36,7 +36,7 @@
 
 ---
 
-## 🎯 When to Use Each Skill
+## When to Use Each Skill
 
 ### Skill Creator
 
@@ -129,7 +129,7 @@
 
 ---
 
-## 🎨 Custom Skills (To Be Created)
+## Custom Skills (To Be Created)
 
 ### audio-intel-mobile-validator
 
@@ -180,7 +180,7 @@
 
 ---
 
-## ⚡ Quick Commands
+## Quick Commands
 
 ### Manual Skill Invocation
 
@@ -195,48 +195,48 @@ Examples:
 
 ---
 
-## 🎯 Decision Tree: Which Skill?
+## Decision Tree: Which Skill?
 
 ```
 Is it a BUG?
-├─ Yes → Systematic Debugging
-└─ No ↓
+ Yes → Systematic Debugging
+ No ↓
 
 Is it about CUSTOMER ACQUISITION?
-├─ Yes → Customer Acquisition Tracker
-└─ No ↓
+ Yes → Customer Acquisition Tracker
+ No ↓
 
 Is it a NEW FEATURE idea?
-├─ Yes → Brainstorming
-└─ No ↓
+ Yes → Brainstorming
+ No ↓
 
 Is it about CODE QUALITY?
-├─ During customer acquisition → Skip (defer)
-└─ Post-£500/month → Simplification Cascades
+ During customer acquisition → Skip (defer)
+ Post-£500/month → Simplification Cascades
 
 Is it a NEW WORKFLOW PATTERN?
-└─ Yes → Skill Creator
+ Yes → Skill Creator
 ```
 
 ---
 
-## 🚨 Red Flags (When to Stop & Use Skills)
+## Red Flags (When to Stop & Use Skills)
 
-### 🔴 Use Systematic Debugging If:
+###  Use Systematic Debugging If:
 
 - "I've tried 3 different approaches and none work"
 - "This error message doesn't make sense"
 - "It works locally but fails in production"
 - "I've been debugging for >30 minutes"
 
-### 🔴 Use Two-Hour Session Validator If:
+###  Use Two-Hour Session Validator If:
 
 - "This is taking longer than expected"
 - "I've gone down a rabbit hole"
 - "This optimization isn't customer-facing"
 - "I'm refactoring instead of shipping"
 
-### 🔴 Use Brainstorming If:
+###  Use Brainstorming If:
 
 - "I'm not sure how to approach this feature"
 - "Multiple solutions seem equally valid"
@@ -245,7 +245,7 @@ Is it a NEW WORKFLOW PATTERN?
 
 ---
 
-## 📊 Measuring Skill Effectiveness
+## Measuring Skill Effectiveness
 
 ### Weekly Review Questions
 
@@ -263,7 +263,7 @@ Is it a NEW WORKFLOW PATTERN?
 
 ---
 
-## 🎪 Integration with Existing Tools
+## Integration with Existing Tools
 
 ### Skills + MCP Servers
 
@@ -304,7 +304,7 @@ Session End:
 
 ---
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### "Skill Not Activating"
 
@@ -338,7 +338,7 @@ Priority order:
 
 ---
 
-## 📝 Notes Section
+## Notes Section
 
 ### Skill Creator Notes
 

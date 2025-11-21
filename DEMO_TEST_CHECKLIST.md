@@ -14,7 +14,7 @@ npm run dev
 
 ---
 
-## ✅ Critical Path Tests (30 mins)
+## Critical Path Tests (30 mins)
 
 ### Test 1: Demo Data Loading
 
@@ -23,33 +23,33 @@ npm run dev
 - [ ] **Expected:** 5 contacts appear in ~1.5 seconds
 - [ ] **Expected:** Auto-switches to "Analytics & Export" tab
 - [ ] **Expected:** Shows High Confidence badges for BBC contacts
-- [ ] ❌ **If fails:** Document error in console (F12)
+- [ ]  **If fails:** Document error in console (F12)
 
 ### Test 2: Contact Intelligence Display
 
 - [ ] Verify Jack Saunders contact shows:
-  - `🎵 BBC Radio 1`
-  - `📻 Presenter of "Jack Saunders New Music" show`
-  - `🎧 Genres: Alternative, Indie, Rock, Electronic`
+  - `BBC Radio 1`
+  - `Presenter of "Jack Saunders New Music" show`
+  - `Genres: Alternative, Indie, Rock, Electronic`
 - [ ] Verify all 5 contacts have intelligence text
-- [ ] ❌ **If missing:** Check browser console for errors
+- [ ]  **If missing:** Check browser console for errors
 
 ### Test 3: Export Functions
 
 - [ ] Click "Export CSV" button
 - [ ] **Expected:** File downloads as `audio-intel-contacts-YYYY-MM-DD.csv`
 - [ ] Open CSV - verify 5 contacts with intelligence data
-- [ ] ❌ **If fails:** Check console error, try again
+- [ ]  **If fails:** Check console error, try again
 
 - [ ] Click "Export Excel" button
 - [ ] **Expected:** File downloads as `.xlsx`
 - [ ] Open Excel - verify multiple sheets if applicable
-- [ ] ❌ **If fails:** Note error message
+- [ ]  **If fails:** Note error message
 
 - [ ] Click "Export PDF" button
 - [ ] **Expected:** File downloads as `.pdf`
 - [ ] Open PDF - verify professional formatting
-- [ ] ❌ **If fails:** Note error message
+- [ ]  **If fails:** Note error message
 
 ### Test 4: Pitch Generator Integration
 
@@ -58,18 +58,18 @@ npm run dev
 - [ ] **Expected:** New tab opens to https://pitch.totalaudiopromo.com/pitch/generate?import=clipboard
 - [ ] **Expected:** Pitch Generator loads (may show empty state - that's OK)
 - [ ] Close Pitch tab
-- [ ] ❌ **If fails:** Check clipboard contents, verify URL
+- [ ]  **If fails:** Check clipboard contents, verify URL
 
 ### Test 5: Send to Tracker (Don't actually click - just verify button exists)
 
 - [ ] Scroll to "Send to Tracker" section
 - [ ] **Expected:** Button visible with count "Send 5 Contacts to Tracker"
 - [ ] **Don't click during demo** - just verify it's there
-- [ ] ✅ **Visual confirmation only**
+- [ ] **Visual confirmation only**
 
 ---
 
-## ✅ Production Tests (15 mins)
+## Production Tests (15 mins)
 
 ### Test 6: Production Deployment
 
@@ -77,7 +77,7 @@ npm run dev
 - [ ] Click "Load Demo Data"
 - [ ] **Expected:** Same behavior as localhost
 - [ ] Try one export (CSV)
-- [ ] ❌ **If production broken:** Demo from localhost tomorrow
+- [ ]  **If production broken:** Demo from localhost tomorrow
 
 ### Test 7: Case Studies Page
 
@@ -87,7 +87,7 @@ npm run dev
   - Spotify Editorial
   - Liberty Music PR hypothetical
 - [ ] Verify numbers match demo script (15 hours → 15 minutes)
-- [ ] ❌ **If missing:** Check for 404 or broken page
+- [ ]  **If missing:** Check for 404 or broken page
 
 ### Test 8: Homepage
 
@@ -95,11 +95,11 @@ npm run dev
 - [ ] Scroll to live demo section
 - [ ] **Expected:** Hero section with value proposition
 - [ ] **Expected:** "Try it free" CTA visible
-- [ ] ❌ **If broken layout:** Note which section
+- [ ]  **If broken layout:** Note which section
 
 ---
 
-## ✅ Error Prevention (10 mins)
+## Error Prevention (10 mins)
 
 ### Test 9: Clean Browser State
 
@@ -108,7 +108,7 @@ npm run dev
 - [ ] Run Test 1 again (Load Demo Data)
 - [ ] **Expected:** No "trial expired" messages
 - [ ] **Expected:** No auth errors
-- [ ] ❌ **If see trial/auth issues:** Use incognito for demo tomorrow
+- [ ]  **If see trial/auth issues:** Use incognito for demo tomorrow
 
 ### Test 10: Console Errors
 
@@ -116,52 +116,52 @@ npm run dev
 - [ ] Click "Console" tab
 - [ ] Look for RED error messages
 - [ ] **Expected:** No critical errors (warnings OK)
-- [ ] ❌ **If see errors:** Screenshot and document
+- [ ]  **If see errors:** Screenshot and document
 
 ---
 
-## 🎯 Test Results Summary
+## Test Results Summary
 
-### ✅ PASS (Everything works)
+### PASS (Everything works)
 
 **Action:** Sleep well, run quick test tomorrow morning, demo with confidence
 
-### ⚠️ PARTIAL (Some exports fail or minor issues)
+### PARTIAL (Some exports fail or minor issues)
 
 **Action:** Note which features work, avoid broken ones in demo
 
-### ❌ FAIL (Demo data doesn't load or major breakage)
+###  FAIL (Demo data doesn't load or major breakage)
 
 **Action:** Run fixes from next section, or pivot to homepage demo only
 
 ---
 
-## 📊 Test Scorecard
+## Test Scorecard
 
 | Test                    | Pass/Fail | Notes |
 | ----------------------- | --------- | ----- |
-| 1. Demo Data Loading    | ☐         |       |
-| 2. Intelligence Display | ☐         |       |
-| 3a. CSV Export          | ☐         |       |
-| 3b. Excel Export        | ☐         |       |
-| 3c. PDF Export          | ☐         |       |
-| 4. Pitch Integration    | ☐         |       |
-| 5. Tracker Button       | ☐         |       |
-| 6. Production Demo      | ☐         |       |
-| 7. Case Studies         | ☐         |       |
-| 8. Homepage             | ☐         |       |
-| 9. Clean Browser        | ☐         |       |
-| 10. Console Errors      | ☐         |       |
+| 1. Demo Data Loading    |          |       |
+| 2. Intelligence Display |          |       |
+| 3a. CSV Export          |          |       |
+| 3b. Excel Export        |          |       |
+| 3c. PDF Export          |          |       |
+| 4. Pitch Integration    |          |       |
+| 5. Tracker Button       |          |       |
+| 6. Production Demo      |          |       |
+| 7. Case Studies         |          |       |
+| 8. Homepage             |          |       |
+| 9. Clean Browser        |          |       |
+| 10. Console Errors      |          |       |
 
 **Total Score: \_\_ / 10**
 
-- **10/10:** Demo ready, no changes needed ✅
-- **8-9/10:** Demo ready, minor notes ⚠️
-- **<8/10:** Identify critical fixes needed 🔧
+- **10/10:** Demo ready, no changes needed 
+- **8-9/10:** Demo ready, minor notes 
+- **<8/10:** Identify critical fixes needed 
 
 ---
 
-## 🚨 If You Find Issues
+## If You Find Issues
 
 **Don't panic.** Document:
 

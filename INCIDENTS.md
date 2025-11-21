@@ -6,7 +6,7 @@
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 1. [Incident Classification](#incident-classification)
 2. [Response Procedures](#response-procedures)
@@ -89,7 +89,7 @@
 ```bash
 # Immediately acknowledge in incident channel
 # Post template:
-🚨 P0 INCIDENT DETECTED
+P0 INCIDENT DETECTED
 
 App: [Audio Intel / Tracker / Pitch Generator / All]
 Impact: [Description of user impact]
@@ -166,7 +166,7 @@ vercel --prod
 **5. Communication Update**
 
 ```bash
-✅ P0 INCIDENT RESOLVED
+P0 INCIDENT RESOLVED
 
 App: [Audio Intel / Tracker / Pitch Generator / All]
 Root Cause: [Brief description]
@@ -218,7 +218,7 @@ Post-Mortem: To be published within 24 hours
 **Slack/Discord Template:**
 
 ```markdown
-🚨 [P0/P1/P2] INCIDENT DETECTED
+[P0/P1/P2] INCIDENT DETECTED
 
 **App**: [Audio Intel / Tracker / Pitch Generator]
 **Impact**: [User-facing description]

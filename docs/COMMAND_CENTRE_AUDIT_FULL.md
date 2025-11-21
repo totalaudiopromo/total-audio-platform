@@ -59,11 +59,11 @@
 
 ### Current Issues
 
-- ❌ No CSP headers configured
-- ❌ Missing HSTS enforcement
-- ❌ API keys in some client-side code
-- ❌ No env variable validation with Zod
-- ⚠️ Authentication uses custom JWT (migrate to Supabase Auth?)
+-  No CSP headers configured
+-  Missing HSTS enforcement
+-  API keys in some client-side code
+-  No env variable validation with Zod
+-  Authentication uses custom JWT (migrate to Supabase Auth?)
 
 ### Required Changes
 
@@ -112,11 +112,11 @@
 
 ### Current State
 
-- ❌ No sitemap.xml
-- ❌ No robots.txt
-- ❌ Missing meta tags
-- ❌ No analytics integration
-- ❌ No Open Graph tags
+-  No sitemap.xml
+-  No robots.txt
+-  Missing meta tags
+-  No analytics integration
+-  No Open Graph tags
 
 ### Required Implementation
 
@@ -189,7 +189,7 @@
 
 ### Phase 1: Foundation (Week 1)
 
-1. Create audit summary document ✅
+1. Create audit summary document 
 2. Set up `/ops-console/` route structure
 3. Import `@total-audio/ui` components
 4. Configure security headers
@@ -221,16 +221,16 @@
 
 ## Success Criteria
 
-- ✅ Clean build with zero TypeScript errors
-- ✅ All Phase 9B tables connected
-- ✅ Working social integrations (X + LinkedIn active)
-- ✅ Agent monitoring dashboard operational
-- ✅ Telegram notifications live
-- ✅ Security headers implemented
-- ✅ SEO assets generated
-- ✅ Lighthouse score >90
-- ✅ Documentation complete
-- ✅ Release tagged: v2.4.0-phase9d-ops-console-revival
+- Clean build with zero TypeScript errors
+- All Phase 9B tables connected
+- Working social integrations (X + LinkedIn active)
+- Agent monitoring dashboard operational
+- Telegram notifications live
+- Security headers implemented
+- SEO assets generated
+- Lighthouse score >90
+- Documentation complete
+- Release tagged: v2.4.0-phase9d-ops-console-revival
 
 ## Appendix: File Structure Mapping
 
@@ -238,30 +238,30 @@
 
 ```
 apps/command-centre/app/
-├── agents/                    → ops-console/agents/
-├── social-scheduler/          → ops-console/social/
-├── social-media-hub/          → ops-console/social/ (merged)
-├── newsjacking/               → ops-console/newsjacker/
-├── beta-management/           → ops-console/admin/beta/
-├── users/                     → ops-console/admin/users/
-├── revenue-intelligence/      → RETIRE (use Audio Intel)
-├── predictive-revenue/        → RETIRE (use cohorts)
-└── radio-promo/               → RETIRE (use Audio Intel)
+ agents/                    → ops-console/agents/
+ social-scheduler/          → ops-console/social/
+ social-media-hub/          → ops-console/social/ (merged)
+ newsjacking/               → ops-console/newsjacker/
+ beta-management/           → ops-console/admin/beta/
+ users/                     → ops-console/admin/users/
+ revenue-intelligence/      → RETIRE (use Audio Intel)
+ predictive-revenue/        → RETIRE (use cohorts)
+ radio-promo/               → RETIRE (use Audio Intel)
 ```
 
 ### New Routes (Phase 9D)
 
 ```
 apps/command-centre/app/(dashboard)/ops-console/
-├── overview/                  # System status + metrics
-├── agents/                    # Agent health dashboard
-├── social/                    # Social posting hub
-├── feedback/                  # Sentiment digest
-├── growth/                    # Growth reflex summaries
-├── admin/
-│   ├── beta/                  # Beta management
-│   └── users/                 # User management
-└── settings/                  # Configuration
+ overview/                  # System status + metrics
+ agents/                    # Agent health dashboard
+ social/                    # Social posting hub
+ feedback/                  # Sentiment digest
+ growth/                    # Growth reflex summaries
+ admin/
+    beta/                  # Beta management
+    users/                 # User management
+ settings/                  # Configuration
 ```
 
 ---

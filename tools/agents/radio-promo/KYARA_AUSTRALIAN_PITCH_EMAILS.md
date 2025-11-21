@@ -7,7 +7,7 @@
 
 ---
 
-## 🎯 Priority #1: Anika Luna (Triple J Home & Hosed)
+## Priority #1: Anika Luna (Triple J Home & Hosed)
 
 **Email**: luna.anika@abc.net.au
 **Relationship**: WARM - Triple J played KYARA's "Yearn" in August 2024
@@ -44,7 +44,7 @@ chrisschofield@libertymusicpr.com
 
 ---
 
-## 🎯 Priority #2: Claire Mooney (Triple J Music Director)
+## Priority #2: Claire Mooney (Triple J Music Director)
 
 **Email**: mooney.claire@abc.net.au
 **Relationship**: COLD (but Triple J has supported KYARA before)
@@ -77,7 +77,7 @@ chrisschofield@libertymusicpr.com
 
 ---
 
-## 🎯 Priority #3: Other Australian Contacts (Cold Pitch)
+## Priority #3: Other Australian Contacts (Cold Pitch)
 
 **Remaining Australian contacts**:
 
@@ -115,7 +115,7 @@ chrisschofield@libertymusicpr.com
 
 ---
 
-## 📋 Pitch Order & Strategy
+## Pitch Order & Strategy
 
 ### Week 1: Warm Contact (Triple J)
 
@@ -149,25 +149,25 @@ chrisschofield@libertymusicpr.com
 
 ---
 
-## 🎯 Key Messaging Points
+## Key Messaging Points
 
 ### For ALL Australian pitches:
 
-- ✅ Triple J Home & Hosed support (August 2024)
-- ✅ Electro-pop sound (fits Australian indie scene)
-- ✅ UK radio support (BBC validation)
-- ✅ Independent artist championing new music
+-  Triple J Home & Hosed support (August 2024)
+-  Electro-pop sound (fits Australian indie scene)
+-  UK radio support (BBC validation)
+-  Independent artist championing new music
 
 ### What NOT to say:
 
-- ❌ Don't oversell or hype
-- ❌ Don't mention other Australian stations in pitches
-- ❌ Don't send generic "blast" emails
-- ❌ Don't pitch without release date confirmed
+-  Don't oversell or hype
+-  Don't mention other Australian stations in pitches
+-  Don't send generic "blast" emails
+-  Don't pitch without release date confirmed
 
 ---
 
-## 📧 Follow-up Strategy
+## Follow-up Strategy
 
 **If no response after 5 days**:
 
@@ -188,7 +188,7 @@ chrisschofield@libertymusicpr.com
 
 ---
 
-## ✅ Action Checklist
+## Action Checklist
 
 Before sending:
 

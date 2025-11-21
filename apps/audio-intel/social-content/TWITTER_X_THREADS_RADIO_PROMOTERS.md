@@ -91,13 +91,13 @@ Here's what the tool provides:
 
 **For every contact, Audio Intel finds:**
 
-✅ Current presenter/DJ information
-✅ Show format and programming style
-✅ Genre focus and artist preferences
-✅ Submission guidelines and timing
-✅ Response patterns and follow-up protocol
-✅ Coverage area and demographics
-✅ Recent playlist patterns
+ Current presenter/DJ information
+ Show format and programming style
+ Genre focus and artist preferences
+ Submission guidelines and timing
+ Response patterns and follow-up protocol
+ Coverage area and demographics
+ Recent playlist patterns
 
 **Processing time**: Under 30 seconds per contact
 

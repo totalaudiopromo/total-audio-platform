@@ -2,7 +2,7 @@
 
 Copy these variable names and add them to Vercel with values from your vault.
 
-## 🔐 Required for Core Functionality
+## Required for Core Functionality
 
 ### Authentication (NextAuth)
 
@@ -37,7 +37,7 @@ NEXT_PUBLIC_BASE_URL
 
 ---
 
-## 🎯 Optional but Recommended
+## Optional but Recommended
 
 ### Google OAuth (for Google sign-in)
 
@@ -70,7 +70,7 @@ STRIPE_PRICE_AGENCY_ANNUAL
 
 ---
 
-## 📋 Copy-Paste Format for Vercel CLI
+## Copy-Paste Format for Vercel CLI
 
 If you want to use Vercel CLI to add them all at once:
 
@@ -98,16 +98,16 @@ STRIPE_PRICE_AGENCY_ANNUAL=<from-vault>
 
 ---
 
-## 🎯 Priority Order
+## Priority Order
 
 **Add these first (site won't work without them):**
 
-1. ⭐ `ANTHROPIC_API_KEY` - For AI pitch generation
-2. ⭐ `NEXT_PUBLIC_SUPABASE_URL`
-3. ⭐ `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-4. ⭐ `SUPABASE_SERVICE_ROLE_KEY`
-5. ⭐ `NEXTAUTH_SECRET`
-6. ⭐ `NEXTAUTH_URL` = `https://pitch.totalaudiopromo.com`
+1.  `ANTHROPIC_API_KEY` - For AI pitch generation
+2.  `NEXT_PUBLIC_SUPABASE_URL`
+3.  `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+4.  `SUPABASE_SERVICE_ROLE_KEY`
+5.  `NEXTAUTH_SECRET`
+6.  `NEXTAUTH_URL` = `https://pitch.totalaudiopromo.com`
 
 **Add these second (for full functionality):** 7. `GOOGLE_CLIENT_ID` + `GOOGLE_CLIENT_SECRET` (Google OAuth) 8. `DEMO_USER_EMAIL` + `DEMO_USER_PASSWORD` (Demo login) 9. `NEXT_PUBLIC_BASE_URL` = `https://pitch.totalaudiopromo.com`
 
@@ -115,7 +115,7 @@ STRIPE_PRICE_AGENCY_ANNUAL=<from-vault>
 
 ---
 
-## 📝 How to Add in Vercel Dashboard
+## How to Add in Vercel Dashboard
 
 1. Go to: https://vercel.com/dashboard
 2. Select your `pitch-generator` project
@@ -130,7 +130,7 @@ STRIPE_PRICE_AGENCY_ANNUAL=<from-vault>
 
 ---
 
-## 🔍 Check Your Vault For These Keys
+## Check Your Vault For These Keys
 
 Look for entries named like:
 
@@ -149,7 +149,7 @@ Look for entries named like:
 
 ---
 
-## ✅ After Adding
+## After Adding
 
 1. **Redeploy** in Vercel (required for changes to take effect)
 2. Test the site: https://pitch.totalaudiopromo.com
