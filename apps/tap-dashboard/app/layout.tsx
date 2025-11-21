@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="flex min-h-screen bg-tap-black">
+        <div className="flex min-h-screen bg-postcraft-gray-50">
           <Sidebar />
           <div className="flex-1 ml-64">
             <TopBar />

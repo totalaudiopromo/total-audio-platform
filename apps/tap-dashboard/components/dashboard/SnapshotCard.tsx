@@ -13,27 +13,27 @@ interface SnapshotCardProps {
 export function SnapshotCard({ data }: SnapshotCardProps) {
   return (
     <Card>
-      <h3 className="text-lg font-semibold text-tap-white lowercase mb-6">
-        snapshot
+      <h3 className="text-lg font-bold text-postcraft-black mb-6">
+        Snapshot
       </h3>
       <div className="grid grid-cols-2 gap-6">
         <Metric
-          label="active campaigns"
+          label="Active Campaigns"
           value={data.activeCampaigns}
           format="number"
         />
         <Metric
-          label="total contacts"
+          label="Total Contacts"
           value={data.totalContacts}
           format="number"
         />
         <Metric
-          label="coverage events"
+          label="Coverage Events"
           value={data.coverageEvents}
           format="number"
         />
         <Metric
-          label="avg reply rate"
+          label="Avg Reply Rate"
           value={(data.avgReplyRate * 100).toFixed(1)}
           format="percentage"
         />

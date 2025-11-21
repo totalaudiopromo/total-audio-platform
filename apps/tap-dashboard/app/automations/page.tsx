@@ -72,8 +72,8 @@ export default function AutomationsPage() {
   return (
     <PageContainer>
       <SectionHeader
-        title="automations drawer"
-        description="ai-powered quick actions for your campaigns"
+        title="Automations Drawer"
+        description="AI-powered quick actions for your campaigns"
       />
 
       <div className="space-y-6">

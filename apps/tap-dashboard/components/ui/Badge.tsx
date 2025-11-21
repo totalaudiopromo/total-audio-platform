@@ -10,15 +10,15 @@ export function Badge({ children, variant = 'default', size = 'md' }: BadgeProps
   return (
     <span
       className={clsx(
-        'inline-flex items-center rounded-full font-mono lowercase',
+        'postcraft-badge',
         {
-          'px-2 py-0.5 text-xs': size === 'sm',
-          'px-3 py-1 text-sm': size === 'md',
-          'bg-tap-panel text-tap-white': variant === 'default',
-          'bg-green-500/20 text-green-400': variant === 'success',
-          'bg-yellow-500/20 text-yellow-400': variant === 'warning',
-          'bg-red-500/20 text-red-400': variant === 'error',
-          'bg-tap-cyan/20 text-tap-cyan': variant === 'info',
+          'px-2 py-1 text-xs': size === 'sm',
+          'px-3.5 py-1.5 text-sm': size === 'md',
+          'bg-postcraft-gray-100 text-postcraft-gray-900': variant === 'default',
+          'bg-green-100 text-green-800': variant === 'success',
+          'bg-yellow-100 text-yellow-900': variant === 'warning',
+          'bg-red-100 text-red-800': variant === 'error',
+          'bg-blue-100 text-blue-800': variant === 'info',
         }
       )}
     >

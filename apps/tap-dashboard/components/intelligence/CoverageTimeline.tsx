@@ -28,23 +28,23 @@ export function CoverageTimeline({ events, geographicClusters }: CoverageTimelin
     <div className="space-y-6">
       {/* Geographic Clusters */}
       <Card>
-        <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">
-          geographic distribution
+        <h3 className="text-lg font-bold text-postcraft-black mb-4">
+          Geographic Distribution
         </h3>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {geographicClusters.slice(0, 6).map((cluster) => (
             <div
               key={cluster.country}
-              className="p-4 bg-tap-black/30 rounded-lg border border-tap-panel/30"
+              className="p-4 bg-postcraft-gray-50 rounded-lg border-2 border-postcraft-gray-200"
             >
-              <p className="text-xs text-tap-grey uppercase tracking-wider mb-1">
+              <p className="text-xs text-postcraft-gray-700 uppercase tracking-wider mb-1 font-bold">
                 {cluster.country}
               </p>
-              <p className="text-2xl font-mono font-semibold text-tap-white">
+              <p className="text-2xl font-black text-postcraft-black">
                 {cluster.eventCount}
               </p>
-              <p className="text-xs text-tap-grey lowercase">
-                events
+              <p className="text-xs text-postcraft-gray-600">
+                Events
               </p>
             </div>
           ))}
@@ -53,21 +53,21 @@ export function CoverageTimeline({ events, geographicClusters }: CoverageTimelin
 
       {/* Timeline */}
       <Card>
-        <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">
-          coverage timeline
+        <h3 className="text-lg font-bold text-postcraft-black mb-4">
+          Coverage Timeline
         </h3>
         <div className="space-y-3">
           {events.map((event) => (
             <div
               key={event.id}
-              className="flex items-start gap-3 p-3 bg-tap-black/30 rounded-lg border border-tap-panel/30"
+              className="flex items-start gap-3 p-3 bg-postcraft-gray-50 rounded-lg border-2 border-postcraft-gray-200"
             >
-              <div className="flex-shrink-0 w-20 text-xs text-tap-grey font-mono">
+              <div className="flex-shrink-0 w-20 text-xs text-postcraft-gray-700 font-bold">
                 {format(event.date, 'MMM dd')}
               </div>
               <div className="flex-1">
                 <div className="flex items-start justify-between gap-2 mb-1">
-                  <p className="text-sm text-tap-white lowercase">
+                  <p className="text-sm text-postcraft-gray-900 font-medium">
                     {event.title}
                   </p>
                   <Badge
@@ -78,7 +78,7 @@ export function CoverageTimeline({ events, geographicClusters }: CoverageTimelin
                   </Badge>
                 </div>
                 {event.location.city && (
-                  <p className="text-xs text-tap-grey lowercase">
+                  <p className="text-xs text-postcraft-gray-600">
                     {event.location.city}, {event.location.country}
                   </p>
                 )}

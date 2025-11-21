@@ -2,17 +2,173 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Postcraft Neobrutalist Design System */
+:root {
+  --postcraft-blue: #3b82f6;
+  --postcraft-purple: #8b5cf6;
+  --postcraft-green: #10b981;
+  --postcraft-orange: #f59e0b;
+  --postcraft-red: #ef4444;
+  --postcraft-yellow: #eab308;
+  --postcraft-cyan: #06b6d4;
+  --postcraft-pink: #ec4899;
+  --postcraft-gray-50: #f9fafb;
+  --postcraft-gray-100: #f3f4f6;
+  --postcraft-gray-200: #e5e7eb;
+  --postcraft-gray-300: #d1d5db;
+  --postcraft-gray-400: #9ca3af;
+  --postcraft-gray-500: #6b7280;
+  --postcraft-gray-600: #4b5563;
+  --postcraft-gray-700: #374151;
+  --postcraft-gray-800: #1f2937;
+  --postcraft-gray-900: #111827;
+  --postcraft-black: #000000;
+  --postcraft-white: #ffffff;
+
+  /* Neobrutalist Shadows */
+  --shadow-brutal-sm: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+  --shadow-brutal: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+  --shadow-brutal-lg: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+  --shadow-brutal-xl: 8px 8px 0px 0px rgba(0, 0, 0, 1);
+
+  /* Border Widths */
+  --border-2: 2px;
+  --border-3: 3px;
+  --border-4: 4px;
+}
+
 @layer base {
   * {
-    @apply border-tap-panel;
+    box-sizing: border-box;
   }
 
   body {
-    @apply bg-tap-black text-tap-white font-sans antialiased;
+    @apply bg-postcraft-gray-50 text-postcraft-gray-900 font-sans antialiased;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-sans lowercase;
+    @apply font-sans font-black text-postcraft-black;
+    letter-spacing: -0.025em;
+  }
+
+  h1 {
+    @apply text-4xl;
+  }
+
+  h2 {
+    @apply text-3xl;
+  }
+
+  h3 {
+    @apply text-2xl;
+  }
+}
+
+@layer components {
+  /* Postcraft Card */
+  .postcraft-card {
+    @apply bg-postcraft-white rounded-2xl p-8 border-3 border-postcraft-black transition-all duration-200;
+    box-shadow: var(--shadow-brutal);
+  }
+
+  .postcraft-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-brutal-lg);
+  }
+
+  /* Postcraft Button */
+  .postcraft-button {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-postcraft-white text-postcraft-black border-3 border-postcraft-black rounded-xl text-sm font-extrabold cursor-pointer transition-all duration-150;
+    box-shadow: var(--shadow-brutal-sm);
+    min-height: 44px;
+  }
+
+  .postcraft-button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-brutal);
+  }
+
+  .postcraft-button:active {
+    transform: translate(0, 0);
+    box-shadow: none;
+  }
+
+  .postcraft-button-primary {
+    @apply bg-postcraft-blue text-postcraft-white;
+  }
+
+  .postcraft-button-success {
+    @apply bg-postcraft-green text-postcraft-white;
+  }
+
+  .postcraft-button-danger {
+    @apply bg-postcraft-red text-postcraft-white;
+  }
+
+  /* Postcraft Metrics */
+  .postcraft-metric-card {
+    @apply bg-postcraft-white rounded-xl p-6 border-3 border-postcraft-black transition-all duration-200 flex flex-col gap-4;
+    box-shadow: var(--shadow-brutal);
+  }
+
+  .postcraft-metric-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-brutal-lg);
+  }
+
+  .postcraft-metric-icon {
+    @apply w-12 h-12 rounded-xl flex items-center justify-center border-2 border-postcraft-black;
+    box-shadow: var(--shadow-brutal-sm);
+  }
+
+  .postcraft-metric-value {
+    @apply text-4xl font-black text-postcraft-black leading-none;
+    letter-spacing: -0.025em;
+  }
+
+  .postcraft-metric-label {
+    @apply text-sm font-extrabold text-postcraft-gray-600 uppercase tracking-wider;
+  }
+
+  /* Postcraft Badge */
+  .postcraft-badge {
+    @apply inline-flex items-center px-3.5 py-1.5 rounded-lg text-xs font-extrabold border-2 border-postcraft-black;
+    box-shadow: var(--shadow-brutal-sm);
+  }
+
+  /* Postcraft Input */
+  .postcraft-input {
+    @apply w-full px-4 py-3.5 border-3 border-postcraft-black rounded-xl text-sm font-semibold bg-postcraft-white transition-all duration-150;
+    box-shadow: var(--shadow-brutal-sm);
+  }
+
+  .postcraft-input:focus {
+    @apply outline-none;
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-brutal);
+  }
+
+  /* Typography */
+  .postcraft-title {
+    @apply text-5xl font-black text-postcraft-black mb-4;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+  }
+
+  .postcraft-section-title {
+    @apply text-3xl font-black text-postcraft-black mb-4;
+    letter-spacing: -0.025em;
+  }
+
+  .postcraft-label {
+    @apply text-lg font-extrabold text-postcraft-gray-900;
+  }
+
+  .postcraft-text {
+    @apply text-sm text-postcraft-gray-600 font-semibold leading-relaxed;
   }
 }
 

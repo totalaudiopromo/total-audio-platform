@@ -20,28 +20,28 @@ interface IdentitySummaryProps {
 export function IdentitySummary({ identity }: IdentitySummaryProps) {
   return (
     <Card>
-      <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">
-        identity profile
+      <h3 className="text-lg font-bold text-postcraft-black mb-4">
+        Identity Profile
       </h3>
 
       <div className="space-y-4">
         <div>
-          <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">
-            brand voice
+          <p className="text-xs text-postcraft-gray-700 uppercase tracking-wider mb-2 font-bold">
+            Brand Voice
           </p>
-          <p className="text-sm text-tap-white lowercase">{identity.brandVoice.tone}</p>
+          <p className="text-sm text-postcraft-gray-900">{identity.brandVoice.tone}</p>
         </div>
 
         <div>
-          <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">
-            primary scene
+          <p className="text-xs text-postcraft-gray-700 uppercase tracking-wider mb-2 font-bold">
+            Primary Scene
           </p>
           <Badge variant="info">{identity.sceneIdentity.primaryScene}</Badge>
         </div>
 
         <div>
-          <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">
-            microgenres
+          <p className="text-xs text-postcraft-gray-700 uppercase tracking-wider mb-2 font-bold">
+            Microgenres
           </p>
           <div className="flex flex-wrap gap-2">
             <Badge variant="default">{identity.microgenreMap.primary}</Badge>
@@ -53,12 +53,12 @@ export function IdentitySummary({ identity }: IdentitySummaryProps) {
           </div>
         </div>
 
-        <div className="pt-4 border-t border-tap-panel/30">
+        <div className="pt-4 border-t-2 border-postcraft-gray-200">
           <a
             href="/identity"
-            className="text-xs text-tap-cyan hover:text-tap-cyan/80 lowercase transition-colors duration-180"
+            className="text-xs text-postcraft-blue hover:text-postcraft-blue/80 font-bold transition-colors duration-150"
           >
-            view full identity profile →
+            View full identity profile →
           </a>
         </div>
       </div>

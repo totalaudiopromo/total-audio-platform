@@ -20,16 +20,16 @@ const MODES: { id: DashboardMode; label: string; icon: string }[] = [
 
 export function ModeSwitch({ currentMode, onModeChange }: ModeSwitchProps) {
   return (
-    <div className="flex gap-2 bg-tap-black/50 p-2 rounded-tap">
+    <div className="flex gap-2 bg-postcraft-gray-50 p-2 rounded-xl border-3 border-postcraft-black shadow-brutal">
       {MODES.map((mode) => (
         <button
           key={mode.id}
           onClick={() => onModeChange(mode.id)}
           className={clsx(
-            'px-4 py-2 rounded-lg text-sm font-medium lowercase transition-all duration-180',
+            'px-4 py-2.5 rounded-lg text-sm font-bold transition-all duration-150 border-2',
             {
-              'bg-tap-cyan text-tap-black': currentMode === mode.id,
-              'text-tap-grey hover:text-tap-white hover:bg-tap-panel': currentMode !== mode.id,
+              'bg-postcraft-blue text-postcraft-white border-postcraft-black shadow-brutal-sm': currentMode === mode.id,
+              'text-postcraft-gray-700 hover:text-postcraft-black hover:bg-postcraft-white border-postcraft-gray-200': currentMode !== mode.id,
             }
           )}
         >

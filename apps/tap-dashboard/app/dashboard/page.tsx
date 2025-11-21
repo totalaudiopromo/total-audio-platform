@@ -117,8 +117,8 @@ export default async function DashboardPage() {
   return (
     <PageContainer>
       <SectionHeader
-        title="unified dashboard"
-        description="comprehensive overview of your campaigns, contacts, and intelligence"
+        title="Unified Dashboard"
+        description="Comprehensive overview of your campaigns, contacts, and intelligence"
       />
 
       <div className="space-y-6">

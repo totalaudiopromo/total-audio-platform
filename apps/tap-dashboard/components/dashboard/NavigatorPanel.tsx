@@ -26,14 +26,14 @@ export function NavigatorPanel() {
   };
 
   return (
-    <Card className="bg-gradient-to-br from-tap-panel to-tap-black/50">
+    <Card className="bg-gradient-to-br from-postcraft-blue/10 to-postcraft-white">
       <div className="flex items-start gap-4">
-        <div className="flex-shrink-0 w-10 h-10 bg-tap-cyan/20 rounded-lg flex items-center justify-center">
-          <SparklesIcon className="w-6 h-6 text-tap-cyan" />
+        <div className="flex-shrink-0 w-10 h-10 bg-postcraft-blue rounded-lg flex items-center justify-center border-2 border-postcraft-black">
+          <SparklesIcon className="w-6 h-6 text-postcraft-white" />
         </div>
         <div className="flex-1">
-          <h3 className="text-lg font-semibold text-tap-white lowercase mb-2">
-            ai navigator
+          <h3 className="text-lg font-bold text-postcraft-black mb-2">
+            AI Navigator
           </h3>
           <div className="flex gap-2 mb-4">
             <input
@@ -41,33 +41,33 @@ export function NavigatorPanel() {
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleAsk()}
-              placeholder="ask the navigator anything..."
-              className="flex-1 bg-tap-black border border-tap-panel/50 rounded-lg px-4 py-2 text-sm text-tap-white placeholder:text-tap-grey lowercase focus:outline-none focus:ring-2 focus:ring-tap-cyan/50"
+              placeholder="Ask the Navigator anything..."
+              className="postcraft-input flex-1"
               disabled={loading}
             />
             <button
               onClick={handleAsk}
               disabled={loading || !question.trim()}
-              className="px-6 py-2 bg-tap-cyan text-tap-black rounded-lg text-sm font-medium lowercase hover:bg-tap-cyan/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-180"
+              className="px-6 py-2.5 bg-postcraft-blue text-postcraft-white rounded-lg text-sm font-bold border-2 border-postcraft-black shadow-brutal-sm hover:shadow-brutal hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-150"
             >
-              {loading ? 'thinking...' : 'ask'}
+              {loading ? 'Thinking...' : 'Ask'}
             </button>
           </div>
 
           {answer && (
             <div className="space-y-3">
-              <p className="text-sm text-tap-white leading-relaxed">
+              <p className="text-sm text-postcraft-gray-900 leading-relaxed">
                 {answer.answer}
               </p>
               {answer.recommendedActions && answer.recommendedActions.length > 0 && (
-                <div className="pt-3 border-t border-tap-panel/30">
-                  <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">
-                    recommended actions
+                <div className="pt-3 border-t-2 border-postcraft-gray-200">
+                  <p className="text-xs text-postcraft-gray-700 uppercase tracking-wider mb-2 font-bold">
+                    Recommended Actions
                   </p>
                   <ul className="space-y-1">
                     {answer.recommendedActions.map((action: string, i: number) => (
-                      <li key={i} className="text-xs text-tap-white flex items-start gap-2">
-                        <span className="text-tap-cyan">→</span>
+                      <li key={i} className="text-xs text-postcraft-gray-900 flex items-start gap-2 font-medium">
+                        <span className="text-postcraft-blue font-bold">→</span>
                         <span>{action}</span>
                       </li>
                     ))}

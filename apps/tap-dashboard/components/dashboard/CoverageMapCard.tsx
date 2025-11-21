@@ -14,8 +14,8 @@ export function CoverageMapCard({ coverage }: CoverageMapCardProps) {
   return (
     <Card>
       <div className="flex items-start justify-between mb-4">
-        <h3 className="text-lg font-semibold text-tap-white lowercase">
-          coverage footprint
+        <h3 className="text-lg font-bold text-postcraft-black">
+          Coverage Footprint
         </h3>
         <Badge variant="info">
           {coverage.coverageScore.toFixed(0)} score
@@ -24,34 +24,34 @@ export function CoverageMapCard({ coverage }: CoverageMapCardProps) {
 
       <div className="grid grid-cols-3 gap-4 mb-4">
         <div>
-          <p className="text-xs text-tap-grey uppercase tracking-wider mb-1">
-            total events
+          <p className="text-xs text-postcraft-gray-700 uppercase tracking-wider mb-1 font-bold">
+            Total Events
           </p>
-          <p className="text-2xl font-mono font-semibold text-tap-white">
+          <p className="text-2xl font-black text-postcraft-black">
             {coverage.totalEvents}
           </p>
         </div>
         <div>
-          <p className="text-xs text-tap-grey uppercase tracking-wider mb-1">
-            countries
+          <p className="text-xs text-postcraft-gray-700 uppercase tracking-wider mb-1 font-bold">
+            Countries
           </p>
-          <p className="text-2xl font-mono font-semibold text-tap-white">
+          <p className="text-2xl font-black text-postcraft-black">
             {coverage.countriesReached}
           </p>
         </div>
         <div>
-          <p className="text-xs text-tap-grey uppercase tracking-wider mb-1">
-            cities
+          <p className="text-xs text-postcraft-gray-700 uppercase tracking-wider mb-1 font-bold">
+            Cities
           </p>
-          <p className="text-2xl font-mono font-semibold text-tap-white">
+          <p className="text-2xl font-black text-postcraft-black">
             {coverage.citiesReached}
           </p>
         </div>
       </div>
 
-      <div className="bg-tap-black/30 rounded-lg p-4 border border-tap-panel/30">
-        <p className="text-xs text-tap-grey lowercase text-center">
-          interactive map view available on coverage page →
+      <div className="bg-postcraft-gray-50 rounded-lg p-4 border-2 border-postcraft-gray-200">
+        <p className="text-xs text-postcraft-gray-700 text-center font-medium">
+          Interactive map view available on coverage page →
         </p>
       </div>
     </Card>

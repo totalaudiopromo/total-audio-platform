@@ -17,9 +17,9 @@ export default function InsightsPage() {
   const tabs: Tab[] = [
     {
       id: 'correlations',
-      label: 'correlations',
+      label: 'Correlations',
       content: correlationsLoading ? (
-        <Card><p className="text-tap-grey lowercase">loading correlations...</p></Card>
+        <Card><p className="text-postcraft-gray-600">Loading correlations...</p></Card>
       ) : correlations ? (
         <CorrelationList
           correlations={correlations.correlations}
@@ -27,14 +27,14 @@ export default function InsightsPage() {
           recommendations={correlations.recommendations}
         />
       ) : (
-        <Card><p className="text-tap-grey lowercase">no correlation data available</p></Card>
+        <Card><p className="text-postcraft-gray-600">No correlation data available</p></Card>
       ),
     },
     {
       id: 'trajectory',
-      label: 'trajectory',
+      label: 'Trajectory',
       content: trajectoryLoading ? (
-        <Card><p className="text-tap-grey lowercase">loading trajectory...</p></Card>
+        <Card><p className="text-postcraft-gray-600">Loading trajectory...</p></Card>
       ) : trajectory ? (
         <TrajectoryForecast
           forecast={trajectory.forecast}
@@ -43,27 +43,27 @@ export default function InsightsPage() {
           confidence={trajectory.confidence}
         />
       ) : (
-        <Card><p className="text-tap-grey lowercase">no trajectory data available</p></Card>
+        <Card><p className="text-postcraft-gray-600">No trajectory data available</p></Card>
       ),
     },
     {
       id: 'patterns',
-      label: 'patterns',
+      label: 'Patterns',
       content: (
         <Card>
-          <p className="text-sm text-tap-grey lowercase">
-            pattern analysis available in main dashboard
+          <p className="text-sm text-postcraft-gray-600">
+            Pattern analysis available in main dashboard
           </p>
         </Card>
       ),
     },
     {
       id: 'recommendations',
-      label: 'recommendations',
+      label: 'Recommendations',
       content: (
         <Card>
-          <p className="text-sm text-tap-grey lowercase">
-            ai-powered recommendations coming soon
+          <p className="text-sm text-postcraft-gray-600">
+            AI-powered recommendations coming soon
           </p>
         </Card>
       ),
@@ -73,8 +73,8 @@ export default function InsightsPage() {
   return (
     <PageContainer>
       <SectionHeader
-        title="intelligence insights"
-        description="deep analysis of your campaigns and creative work"
+        title="Intelligence Insights"
+        description="Deep analysis of your campaigns and creative work"
       />
 
       <Tabbed tabs={tabs} defaultTab="correlations" />

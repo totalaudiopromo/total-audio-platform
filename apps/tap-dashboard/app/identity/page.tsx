@@ -14,11 +14,11 @@ export default function IdentityPage() {
     return (
       <PageContainer>
         <SectionHeader
-          title="identity kernel"
-          description="your unified artist identity profile"
+          title="Identity Kernel"
+          description="Your unified artist identity profile"
         />
         <Card>
-          <p className="text-tap-grey lowercase">loading identity profile...</p>
+          <p className="text-postcraft-gray-600">Loading identity profile...</p>
         </Card>
       </PageContainer>
     );
@@ -28,11 +28,11 @@ export default function IdentityPage() {
     return (
       <PageContainer>
         <SectionHeader
-          title="identity kernel"
-          description="your unified artist identity profile"
+          title="Identity Kernel"
+          description="Your unified artist identity profile"
         />
         <Card>
-          <p className="text-tap-grey lowercase">no identity data available</p>
+          <p className="text-postcraft-gray-600">No identity data available</p>
         </Card>
       </PageContainer>
     );
@@ -41,26 +41,26 @@ export default function IdentityPage() {
   return (
     <PageContainer>
       <SectionHeader
-        title="identity kernel"
-        description="your unified artist identity profile"
+        title="Identity Kernel"
+        description="Your unified artist identity profile"
       />
 
       <div className="space-y-6">
         {/* Brand Voice */}
         <Card>
-          <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">
-            brand voice
+          <h3 className="text-lg font-bold text-postcraft-black mb-4">
+            Brand Voice
           </h3>
           <div className="space-y-4">
             <div>
-              <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">
-                tone
+              <p className="text-xs text-postcraft-gray-700 uppercase tracking-wider mb-2 font-bold">
+                Tone
               </p>
-              <p className="text-sm text-tap-white lowercase">{identity.brandVoice.tone}</p>
+              <p className="text-sm text-postcraft-gray-900">{identity.brandVoice.tone}</p>
             </div>
             <div>
-              <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">
-                themes
+              <p className="text-xs text-postcraft-gray-700 uppercase tracking-wider mb-2 font-bold">
+                Themes
               </p>
               <div className="flex flex-wrap gap-2">
                 {identity.brandVoice.themes.map((theme: string) => (
@@ -71,23 +71,23 @@ export default function IdentityPage() {
               </div>
             </div>
             <div>
-              <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">
-                style
+              <p className="text-xs text-postcraft-gray-700 uppercase tracking-wider mb-2 font-bold">
+                Style
               </p>
-              <p className="text-sm text-tap-white lowercase">{identity.brandVoice.style}</p>
+              <p className="text-sm text-postcraft-gray-900">{identity.brandVoice.style}</p>
             </div>
           </div>
         </Card>
 
         {/* Creative Profile */}
         <Card>
-          <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">
-            creative profile
+          <h3 className="text-lg font-bold text-postcraft-black mb-4">
+            Creative Profile
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">
-                primary motifs
+              <p className="text-xs text-postcraft-gray-700 uppercase tracking-wider mb-2 font-bold">
+                Primary Motifs
               </p>
               <div className="flex flex-wrap gap-2">
                 {identity.creativeProfile.primaryMotifs.map((motif: string) => (
@@ -98,18 +98,18 @@ export default function IdentityPage() {
               </div>
             </div>
             <div>
-              <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">
-                emotional range
+              <p className="text-xs text-postcraft-gray-700 uppercase tracking-wider mb-2 font-bold">
+                Emotional Range
               </p>
-              <p className="text-sm text-tap-white lowercase">
+              <p className="text-sm text-postcraft-gray-900">
                 {identity.creativeProfile.emotionalRange}
               </p>
             </div>
             <div className="md:col-span-2">
-              <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">
-                structural signature
+              <p className="text-xs text-postcraft-gray-700 uppercase tracking-wider mb-2 font-bold">
+                Structural Signature
               </p>
-              <p className="text-sm text-tap-white lowercase">
+              <p className="text-sm text-postcraft-gray-900">
                 {identity.creativeProfile.structuralSignature}
               </p>
             </div>
@@ -118,21 +118,21 @@ export default function IdentityPage() {
 
         {/* Scene Identity */}
         <Card>
-          <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">
-            scene identity
+          <h3 className="text-lg font-bold text-postcraft-black mb-4">
+            Scene Identity
           </h3>
           <div className="space-y-4">
             <div>
-              <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">
-                primary scene
+              <p className="text-xs text-postcraft-gray-700 uppercase tracking-wider mb-2 font-bold">
+                Primary Scene
               </p>
               <Badge variant="success" size="md">
                 {identity.sceneIdentity.primaryScene}
               </Badge>
             </div>
             <div>
-              <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">
-                secondary scenes
+              <p className="text-xs text-postcraft-gray-700 uppercase tracking-wider mb-2 font-bold">
+                Secondary Scenes
               </p>
               <div className="flex flex-wrap gap-2">
                 {identity.sceneIdentity.secondaryScenes.map((scene: string) => (
@@ -143,10 +143,10 @@ export default function IdentityPage() {
               </div>
             </div>
             <div>
-              <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">
-                geographic roots
+              <p className="text-xs text-postcraft-gray-700 uppercase tracking-wider mb-2 font-bold">
+                Geographic Roots
               </p>
-              <p className="text-sm text-tap-white lowercase">
+              <p className="text-sm text-postcraft-gray-900">
                 {identity.sceneIdentity.geographicRoots}
               </p>
             </div>
@@ -155,31 +155,31 @@ export default function IdentityPage() {
 
         {/* EPK Fragments */}
         <Card>
-          <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">
-            auto-generated epk fragments
+          <h3 className="text-lg font-bold text-postcraft-black mb-4">
+            Auto-Generated EPK Fragments
           </h3>
           <div className="space-y-4">
             <div>
-              <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">
-                one-liner
+              <p className="text-xs text-postcraft-gray-700 uppercase tracking-wider mb-2 font-bold">
+                One-Liner
               </p>
-              <p className="text-sm text-tap-white lowercase">
+              <p className="text-sm text-postcraft-gray-900">
                 {identity.epkFragments.oneLiner}
               </p>
             </div>
             <div>
-              <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">
-                press angle
+              <p className="text-xs text-postcraft-gray-700 uppercase tracking-wider mb-2 font-bold">
+                Press Angle
               </p>
-              <p className="text-sm text-tap-white lowercase">
+              <p className="text-sm text-postcraft-gray-900">
                 {identity.epkFragments.pressAngle}
               </p>
             </div>
             <div>
-              <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">
-                pitch hook
+              <p className="text-xs text-postcraft-gray-700 uppercase tracking-wider mb-2 font-bold">
+                Pitch Hook
               </p>
-              <p className="text-sm text-tap-white lowercase">
+              <p className="text-sm text-postcraft-gray-900">
                 {identity.epkFragments.pitchHook}
               </p>
             </div>
@@ -189,18 +189,18 @@ export default function IdentityPage() {
         {/* Bios */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Card>
-            <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">
-              short bio
+            <h3 className="text-lg font-bold text-postcraft-black mb-4">
+              Short Bio
             </h3>
-            <p className="text-sm text-tap-white lowercase leading-relaxed">
+            <p className="text-sm text-postcraft-gray-900 leading-relaxed">
               {identity.bioShort}
             </p>
           </Card>
           <Card>
-            <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">
-              long bio
+            <h3 className="text-lg font-bold text-postcraft-black mb-4">
+              Long Bio
             </h3>
-            <p className="text-sm text-tap-white lowercase leading-relaxed whitespace-pre-line">
+            <p className="text-sm text-postcraft-gray-900 leading-relaxed whitespace-pre-line">
               {identity.bioLong}
             </p>
           </Card>

@@ -77,8 +77,8 @@ export default function ThreadsPage() {
   return (
     <PageContainer>
       <SectionHeader
-        title="signal threads"
-        description="narrative timelines connecting all your campaign events"
+        title="Signal Threads"
+        description="Narrative timelines connecting all your campaign events"
       />
 
       <Tabbed tabs={tabs} defaultTab="narrative" />
