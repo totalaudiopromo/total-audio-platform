@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
     const workspaceId = membership.workspace_id;
 
     // Initialize Gmail service
-    const gmailService = new GmailSyncService(workspaceId);
+    const gmailService = new GmailSyncService(workspaceId, supabase);
 
     // Check if Gmail is configured
     const isConfigured = await gmailService.isConfigured();
@@ -53,8 +53,8 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: result.success,
-      repliesFound: result.recordsSynced,
-      totalChecked: result.recordsProcessed,
+      repliesFound: result.records_updated,
+      totalChecked: result.records_synced,
       errors: result.errors,
       metadata: result.metadata,
     });

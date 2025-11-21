@@ -36,7 +36,7 @@ export async function GET(request: NextRequest) {
     const workspaceId = membership.workspace_id;
 
     // Initialize Gmail service
-    const gmailService = new GmailSyncService(workspaceId);
+    const gmailService = new GmailSyncService(workspaceId, supabase);
 
     // Get connection status
     const status = await gmailService.getConnectionStatus();

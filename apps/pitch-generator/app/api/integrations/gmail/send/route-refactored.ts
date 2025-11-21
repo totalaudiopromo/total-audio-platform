@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Initialize Gmail service
-    const gmailService = new GmailSyncService(workspaceId);
+    const gmailService = new GmailSyncService(workspaceId, supabase);
 
     // Check if Gmail is configured
     const isConfigured = await gmailService.isConfigured();

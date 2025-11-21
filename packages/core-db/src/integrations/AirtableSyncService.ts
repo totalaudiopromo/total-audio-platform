@@ -38,6 +38,10 @@ interface AirtableRecord {
 export class AirtableSyncService extends BaseIntegrationSync {
   private airtable: any | null = null;
 
+  constructor(workspace_id: string, supabase: any) {
+    super(workspace_id, supabase);
+  }
+
   /**
    * Get integration name
    */
@@ -99,13 +103,22 @@ export class AirtableSyncService extends BaseIntegrationSync {
    */
   async syncToExternal(contacts: any[]): Promise<SyncResult> {
     const startTime = Date.now();
+    const started_at = new Date();
     const result: SyncResult = {
       success: true,
-      recordsProcessed: 0,
-      recordsSynced: 0,
+      direction: 'to_external',
+      records_synced: 0,
+      records_created: 0,
+      records_updated: 0,
+      records_failed: 0,
       errors: [],
+      duration_ms: 0,
+      started_at,
+      completed_at: started_at,
       metadata: {},
     };
+
+    let recordsProcessed = 0;
 
     try {
       // Validate credentials first
@@ -135,7 +148,7 @@ export class AirtableSyncService extends BaseIntegrationSync {
 
       // Process contacts
       for (const contact of contacts) {
-        result.recordsProcessed++;
+        recordsProcessed++;
 
         try {
           const airtableRecord = this.mapContactToAirtable(contact);
@@ -146,36 +159,43 @@ export class AirtableSyncService extends BaseIntegrationSync {
           if (existingId) {
             // Update existing record
             await base(tableName).update(existingId, airtableRecord.fields);
-            result.recordsSynced++;
+            result.records_synced++;
+            result.records_updated = (result.records_updated || 0) + 1;
           } else {
             // Create new record
             await base(tableName).create(airtableRecord.fields);
-            result.recordsSynced++;
+            result.records_synced++;
+            result.records_created = (result.records_created || 0) + 1;
           }
         } catch (error) {
           const errorMsg = error instanceof Error ? error.message : 'Unknown error';
           result.errors.push(`Failed to sync ${contact.email}: ${errorMsg}`);
+          result.records_failed = (result.records_failed || 0) + 1;
           console.error(`Error syncing contact ${contact.email}:`, error);
         }
       }
 
       result.success = result.errors.length === 0;
+      result.completed_at = new Date();
+      result.duration_ms = result.completed_at.getTime() - started_at.getTime();
       result.metadata = {
-        duration_ms: Date.now() - startTime,
+        records_processed: recordsProcessed,
         base_id: baseId,
         table_name: tableName,
       };
 
       // Log sync
-      await this.logSync('to_external', result.success ? 'success' : 'partial', result);
+      await this.logSyncActivity(result);
 
       return result;
     } catch (error) {
       const errorMsg = error instanceof Error ? error.message : 'Unknown error';
       result.success = false;
       result.errors.push(errorMsg);
+      result.completed_at = new Date();
+      result.duration_ms = result.completed_at.getTime() - started_at.getTime();
 
-      await this.logSync('to_external', 'error', result);
+      await this.logSyncActivity(result);
 
       return result;
     }
@@ -188,14 +208,22 @@ export class AirtableSyncService extends BaseIntegrationSync {
    * @returns Sync statistics
    */
   async syncFromExternal(): Promise<SyncResult> {
-    const startTime = Date.now();
+    const started_at = new Date();
     const result: SyncResult = {
       success: true,
-      recordsProcessed: 0,
-      recordsSynced: 0,
+      direction: 'from_external',
+      records_synced: 0,
+      records_created: 0,
+      records_updated: 0,
+      records_failed: 0,
       errors: [],
+      duration_ms: 0,
+      started_at,
+      completed_at: started_at,
       metadata: {},
     };
+
+    let recordsProcessed = 0;
 
     try {
       // Validate credentials first
@@ -206,7 +234,7 @@ export class AirtableSyncService extends BaseIntegrationSync {
 
       // Fetch all Airtable records
       const airtableRecords = await this.fetchAllAirtableRecords();
-      result.recordsProcessed = airtableRecords.length;
+      recordsProcessed = airtableRecords.length;
 
       // Upsert each record into workspace_contacts_registry
       for (const record of airtableRecords) {
@@ -216,36 +244,43 @@ export class AirtableSyncService extends BaseIntegrationSync {
           // Skip if no email (required field)
           if (!contact.email) {
             result.errors.push(`Skipped Airtable record ${record.id}: No email`);
+            result.records_failed = (result.records_failed || 0) + 1;
             continue;
           }
 
           // Upsert into workspace
           await this.upsertWorkspaceContact(contact);
-          result.recordsSynced++;
+          result.records_synced++;
+          result.records_created = (result.records_created || 0) + 1;
         } catch (error) {
           const errorMsg = error instanceof Error ? error.message : 'Unknown error';
           result.errors.push(`Failed to import Airtable record ${record.id}: ${errorMsg}`);
+          result.records_failed = (result.records_failed || 0) + 1;
           console.error(`Error importing Airtable record ${record.id}:`, error);
         }
       }
 
       result.success = result.errors.length === 0;
+      result.completed_at = new Date();
+      result.duration_ms = result.completed_at.getTime() - started_at.getTime();
       result.metadata = {
-        duration_ms: Date.now() - startTime,
+        records_processed: recordsProcessed,
         base_id: this.config?.settings?.base_id,
         table_name: this.config?.settings?.table_name || 'Contacts',
       };
 
       // Log sync
-      await this.logSync('from_external', result.success ? 'success' : 'partial', result);
+      await this.logSyncActivity(result);
 
       return result;
     } catch (error) {
       const errorMsg = error instanceof Error ? error.message : 'Unknown error';
       result.success = false;
       result.errors.push(errorMsg);
+      result.completed_at = new Date();
+      result.duration_ms = result.completed_at.getTime() - started_at.getTime();
 
-      await this.logSync('from_external', 'error', result);
+      await this.logSyncActivity(result);
 
       return result;
     }
@@ -293,7 +328,7 @@ export class AirtableSyncService extends BaseIntegrationSync {
           view: this.config?.settings?.view_name || 'Grid view',
         })
         .eachPage(
-          (pageRecords, fetchNextPage) => {
+          (pageRecords: any, fetchNextPage: any) => {
             // Process each page
             for (const record of pageRecords) {
               records.push({
@@ -305,7 +340,7 @@ export class AirtableSyncService extends BaseIntegrationSync {
             // Fetch next page
             fetchNextPage();
           },
-          error => {
+          (error: any) => {
             if (error) {
               console.error('Error fetching Airtable records:', error);
               reject(error);
@@ -333,11 +368,11 @@ export class AirtableSyncService extends BaseIntegrationSync {
   }): Promise<void> {
     try {
       // Check for existing contact by email
-      const { data: existing, error: selectError } = await this.fromWorkspace(
-        'workspace_contacts_registry'
-      )
+      const { data: existing, error: selectError } = await this.supabase
+        .from('workspace_contacts_registry')
         .select('id')
         .eq('email', contact.email.toLowerCase())
+        .eq('workspace_id', this.workspace_id)
         .single();
 
       if (selectError && selectError.code !== 'PGRST116') {
@@ -360,19 +395,20 @@ export class AirtableSyncService extends BaseIntegrationSync {
 
       if (existing) {
         // Update existing contact
-        const { error: updateError } = await this.fromWorkspace('workspace_contacts_registry')
+        const { error: updateError } = await this.supabase
+          .from('workspace_contacts_registry')
           .update(contactData)
           .eq('id', existing.id);
 
         if (updateError) throw updateError;
       } else {
         // Insert new contact
-        const { error: insertError } = await this.fromWorkspace(
-          'workspace_contacts_registry'
-        ).insert({
-          ...contactData,
-          workspace_id: this.workspaceId,
-        });
+        const { error: insertError } = await this.supabase
+          .from('workspace_contacts_registry')
+          .insert({
+            ...contactData,
+            workspace_id: this.workspace_id,
+          });
 
         if (insertError) throw insertError;
       }
@@ -453,9 +489,9 @@ export class AirtableSyncService extends BaseIntegrationSync {
 
     // Map fields
     for (const [airtableField, workspaceField] of Object.entries(mapping)) {
-      const value = record.fields[airtableField];
+      const value = record.fields[airtableField as keyof typeof record.fields];
       if (value !== undefined && value !== null) {
-        contact[workspaceField] = value;
+        contact[workspaceField as keyof typeof contact] = value;
       }
     }
 

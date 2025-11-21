@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Create Airtable sync service instance
-    const airtableSync = new AirtableSyncService(user.id);
+    const airtableSync = new AirtableSyncService(user.id, supabase);
     const config = await airtableSync.loadConfig();
 
     if (!config) {
@@ -79,13 +79,17 @@ export async function POST(request: NextRequest) {
       result = {
         direction: 'bidirectional',
         to_airtable: {
-          records_processed: toAirtableResult.recordsProcessed,
-          records_synced: toAirtableResult.recordsSynced,
+          records_synced: toAirtableResult.records_synced,
+          records_created: toAirtableResult.records_created,
+          records_updated: toAirtableResult.records_updated,
+          records_failed: toAirtableResult.records_failed,
           errors: toAirtableResult.errors,
         },
         from_airtable: {
-          records_processed: fromAirtableResult.recordsProcessed,
-          records_synced: fromAirtableResult.recordsSynced,
+          records_synced: fromAirtableResult.records_synced,
+          records_created: fromAirtableResult.records_created,
+          records_updated: fromAirtableResult.records_updated,
+          records_failed: fromAirtableResult.records_failed,
           errors: fromAirtableResult.errors,
         },
         success: toAirtableResult.success && fromAirtableResult.success,
@@ -106,8 +110,10 @@ export async function POST(request: NextRequest) {
 
       result = {
         direction: 'to_airtable',
-        records_processed: syncResult.recordsProcessed,
-        records_synced: syncResult.recordsSynced,
+        records_synced: syncResult.records_synced,
+        records_created: syncResult.records_created,
+        records_updated: syncResult.records_updated,
+        records_failed: syncResult.records_failed,
         errors: syncResult.errors,
         success: syncResult.success,
       };
@@ -118,8 +124,10 @@ export async function POST(request: NextRequest) {
 
       result = {
         direction: 'from_airtable',
-        records_processed: syncResult.recordsProcessed,
-        records_synced: syncResult.recordsSynced,
+        records_synced: syncResult.records_synced,
+        records_created: syncResult.records_created,
+        records_updated: syncResult.records_updated,
+        records_failed: syncResult.records_failed,
         errors: syncResult.errors,
         success: syncResult.success,
       };
@@ -153,7 +161,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Get sync logs
-    const airtableSync = new AirtableSyncService(user.id);
+    const airtableSync = new AirtableSyncService(user.id, supabase);
     await airtableSync.loadConfig();
     const logs = await airtableSync.getSyncLogs(20);
 

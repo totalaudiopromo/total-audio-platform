@@ -588,4 +588,61 @@ export abstract class BaseIntegrationSync {
       error_message: undefined,
     });
   }
+
+  /**
+   * Get sync logs from database
+   * @param limit Maximum number of logs to retrieve (default: 20)
+   * @returns Array of sync log entries
+   */
+  async getSyncLogs(limit: number = 20): Promise<any[]> {
+    try {
+      if (!this.config?.id) {
+        return [];
+      }
+
+      const { data, error } = await this.supabase
+        .from('integration_sync_logs')
+        .select('*')
+        .eq('connection_id', this.config.id)
+        .order('started_at', { ascending: false })
+        .limit(limit);
+
+      if (error) throw error;
+      return data || [];
+    } catch (error) {
+      console.error('Error fetching sync logs:', error);
+      return [];
+    }
+  }
+
+  /**
+   * Disconnect integration and remove credentials
+   * More thorough than disable() - removes all auth tokens
+   */
+  async disconnect(): Promise<void> {
+    await this.saveConfig({
+      enabled: false,
+      status: 'disconnected',
+      credentials: {},
+      access_token: undefined,
+      refresh_token: undefined,
+      error_count: 0,
+      error_message: undefined,
+    });
+  }
+
+  /**
+   * Check if integration is configured with valid credentials
+   * @returns true if integration has config and is enabled
+   */
+  async isConfigured(): Promise<boolean> {
+    try {
+      if (!this.initialized) {
+        await this.initialize();
+      }
+      return this.config !== null && this.isEnabled();
+    } catch (error) {
+      return false;
+    }
+  }
 }

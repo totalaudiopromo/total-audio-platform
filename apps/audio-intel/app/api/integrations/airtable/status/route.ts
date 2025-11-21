@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Create Airtable sync service instance
-    const airtableSync = new AirtableSyncService(user.id);
+    const airtableSync = new AirtableSyncService(user.id, supabase);
     const config = await airtableSync.loadConfig();
 
     if (!config) {

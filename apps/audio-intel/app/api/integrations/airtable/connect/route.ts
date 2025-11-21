@@ -35,26 +35,26 @@ export async function POST(request: NextRequest) {
     }
 
     // Create Airtable sync service instance
-    const airtableSync = new AirtableSyncService(user.id);
+    const airtableSync = new AirtableSyncService(user.id, supabase);
 
     // Save configuration
-    const configSaved = await airtableSync.saveConfig({
-      workspace_id: user.id,
-      integration_name: 'airtable',
-      credentials: {
-        api_key,
-      },
-      settings: {
-        base_id,
-        table_name: table_name || 'Contacts',
-        view_name: view_name || 'Grid view',
-        field_mapping: field_mapping || {},
-        sync_direction: 'bidirectional',
-      },
-      status: 'active',
-    });
-
-    if (!configSaved) {
+    try {
+      await airtableSync.saveConfig({
+        workspace_id: user.id,
+        integration_name: 'airtable',
+        credentials: {
+          api_key,
+        },
+        settings: {
+          base_id,
+          table_name: table_name || 'Contacts',
+          view_name: view_name || 'Grid view',
+          field_mapping: field_mapping || {},
+          sync_direction: 'bidirectional',
+        },
+        status: 'active',
+      });
+    } catch (error) {
       return NextResponse.json({ error: 'Failed to save Airtable configuration' }, { status: 500 });
     }
 
@@ -108,7 +108,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Load Airtable configuration
-    const airtableSync = new AirtableSyncService(user.id);
+    const airtableSync = new AirtableSyncService(user.id, supabase);
     const config = await airtableSync.loadConfig();
 
     if (!config) {
@@ -158,16 +158,9 @@ export async function DELETE(request: NextRequest) {
     }
 
     // Disconnect Airtable integration
-    const airtableSync = new AirtableSyncService(user.id);
+    const airtableSync = new AirtableSyncService(user.id, supabase);
     await airtableSync.loadConfig();
-    const disconnected = await airtableSync.disconnect();
-
-    if (!disconnected) {
-      return NextResponse.json(
-        { error: 'Failed to disconnect Airtable integration' },
-        { status: 500 }
-      );
-    }
+    await airtableSync.disconnect();
 
     return NextResponse.json({
       success: true,
