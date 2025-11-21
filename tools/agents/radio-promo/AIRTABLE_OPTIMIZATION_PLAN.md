@@ -1,6 +1,6 @@
 # Airtable Optimization Plan - Liberty Music PR Contacts
 
-##  CURRENT PROBLEMS
+## CURRENT PROBLEMS
 
 Based on your feedback that "Airtable is still a real mess":
 
@@ -29,7 +29,7 @@ Based on your feedback that "Airtable is still a real mess":
 - Now used for Liberty Music PR (radio promotion)
 - Confused data model
 
-##  OPTIMIZATION STRATEGY
+## OPTIMIZATION STRATEGY
 
 ### Phase 1: Simplify Field Structure (IMMEDIATE)
 
@@ -310,7 +310,7 @@ If you want to track campaigns in Airtable:
 
 ---
 
-##  IMMEDIATE ACTIONS (Post-Enrichment)
+## IMMEDIATE ACTIONS (Post-Enrichment)
 
 ### Step 1: Hide Unused Fields (5 minutes)
 
@@ -382,7 +382,7 @@ node auto-tag-genres-from-enrichment.js
 
 ---
 
-##  EXPECTED RESULT
+## EXPECTED RESULT
 
 ### Before Optimization:
 
@@ -404,7 +404,7 @@ node auto-tag-genres-from-enrichment.js
 
 ---
 
-##  RECOMMENDATION: Two-Phase Approach
+## RECOMMENDATION: Two-Phase Approach
 
 ### Phase A: Quick Wins (TODAY - 20 minutes)
 
@@ -429,7 +429,7 @@ node auto-tag-genres-from-enrichment.js
 
 ---
 
-##  MY RECOMMENDATION
+## MY RECOMMENDATION
 
 **Start with Phase A (Quick Wins)**:
 

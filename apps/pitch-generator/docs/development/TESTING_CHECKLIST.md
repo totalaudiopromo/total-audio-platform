@@ -1,6 +1,6 @@
 # Pitch Generator V1 - Testing Checklist
 
-##  Local Testing (Before Deployment)
+## Local Testing (Before Deployment)
 
 ### 1. Authentication Flow 
 
@@ -94,7 +94,7 @@
 - [ ] Save changes
 - [ ] Verify changes persist
 
-##  Critical User Flows
+## Critical User Flows
 
 ### Flow 1: First-Time User Journey
 
@@ -122,7 +122,7 @@
 5. Verify unlimited access
    **Expected Result**: Seamless upgrade without losing data
 
-##  Bug Testing
+## Bug Testing
 
 ### Genre Matching Test
 
@@ -148,7 +148,7 @@ Generate pitches with these Key Hooks and verify AI respects genre:
 - [ ] Try generating 10 pitches in a row
 - [ ] Test with slow internet connection
 
-##  Performance Checks
+## Performance Checks
 
 - [ ] Dashboard loads in < 2 seconds
 - [ ] Pitch generation completes in < 7 seconds
@@ -156,14 +156,14 @@ Generate pitches with these Key Hooks and verify AI respects genre:
 - [ ] No 500 errors in server logs
 - [ ] Mobile responsive (test on phone or use browser dev tools)
 
-##  Security Checks
+## Security Checks
 
 - [ ] Cannot access other users' pitches (try manipulating URL IDs)
 - [ ] Cannot access dashboard without authentication
 - [ ] API routes return 401 when not authenticated
 - [ ] Stripe checkout uses correct test keys (not live keys!)
 
-##  Pre-Deployment Final Checks
+## Pre-Deployment Final Checks
 
 Before deploying to production:
 
@@ -178,7 +178,7 @@ Before deploying to production:
 9. [ ] Webhook endpoints configured
 10. [ ] Domain/SSL configured
 
-##  Post-Deployment Smoke Test
+## Post-Deployment Smoke Test
 
 After deploying to Vercel:
 

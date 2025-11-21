@@ -6,7 +6,7 @@ Generate personalized, professional music PR pitches in seconds by combining AI 
 
 ---
 
-##  Product Overview
+## Product Overview
 
 **URL:** pitch.totalaudiopromo.com  
 **Tagline:** Write 50 personalized pitches in 20 minutes
@@ -17,7 +17,7 @@ Stop spending 5+ hours writing pitches. Let Pitch Generator write personalized e
 
 ---
 
-##  Features
+## Features
 
 ### MVP Features (Implemented)
 
@@ -65,7 +65,7 @@ Stop spending 5+ hours writing pitches. Let Pitch Generator write personalized e
 
 ---
 
-##  Tech Stack
+## Tech Stack
 
 - **Frontend:** Next.js 15 + React 19
 - **Styling:** Tailwind CSS with custom TAP design system
@@ -77,7 +77,7 @@ Stop spending 5+ hours writing pitches. Let Pitch Generator write personalized e
 
 ---
 
-##  Project Structure
+## Project Structure
 
 ```
  app/
@@ -106,7 +106,7 @@ Stop spending 5+ hours writing pitches. Let Pitch Generator write personalized e
 
 ---
 
-##  Getting Started
+## Getting Started
 
 ### 1. Install Dependencies
 
@@ -164,7 +164,7 @@ Visit `http://localhost:3000`
 
 ---
 
-##  Design System
+## Design System
 
 ### Brand Colors
 
@@ -188,7 +188,7 @@ Visit `http://localhost:3000`
 
 ---
 
-##  Database Schema
+## Database Schema
 
 ### Contacts
 
@@ -239,7 +239,7 @@ Visit `http://localhost:3000`
 
 ---
 
-##  API Routes
+## API Routes
 
 ### POST `/api/pitch/generate`
 
@@ -277,7 +277,7 @@ Generates a new pitch using AI.
 
 ---
 
-##  User Flows
+## User Flows
 
 ### Single Pitch Generation
 
@@ -300,7 +300,7 @@ Generates a new pitch using AI.
 
 ---
 
-##  Pricing Strategy
+## Pricing Strategy
 
 ### Standalone Pricing
 
@@ -315,7 +315,7 @@ Generates a new pitch using AI.
 
 ---
 
-##  Success Metrics
+## Success Metrics
 
 ### Product KPIs
 
@@ -332,7 +332,7 @@ Generates a new pitch using AI.
 
 ---
 
-##  Roadmap
+## Roadmap
 
 ### Phase 2 (Post-MVP)
 
@@ -352,7 +352,7 @@ Generates a new pitch using AI.
 
 ---
 
-##  Testing
+## Testing
 
 ### Manual Testing Checklist
 
@@ -381,7 +381,7 @@ Generates a new pitch using AI.
 
 ---
 
-##  Troubleshooting
+## Troubleshooting
 
 ### AI Generation Fails
 
@@ -405,7 +405,7 @@ Generates a new pitch using AI.
 
 ---
 
-##  Development Notes
+## Development Notes
 
 ### User ID Handling
 
@@ -433,7 +433,7 @@ The app includes a simple contact management system. For production, consider:
 
 ---
 
-##  Best Practices
+## Best Practices
 
 ### Writing Key Hooks
 
@@ -460,13 +460,13 @@ Include useful context:
 
 ---
 
-##  License
+## License
 
 MIT License - Part of Total Audio Promo ecosystem
 
 ---
 
-##  Support
+## Support
 
 For questions or issues:
 

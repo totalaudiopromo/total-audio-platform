@@ -7,7 +7,7 @@
 
 ---
 
-##  Video Structure
+## Video Structure
 
 ### Opening (5 seconds)
 
@@ -68,7 +68,7 @@ Try it free at intel.totalaudiopromo.com"
 
 ---
 
-##  Recording Checklist
+## Recording Checklist
 
 ### Pre-Recording
 
@@ -119,7 +119,7 @@ Try it free at intel.totalaudiopromo.com"
 
 ---
 
-##  Script Variations (Pick One)
+## Script Variations (Pick One)
 
 ### Version 1: Time Savings Focus (60 sec)
 
@@ -191,7 +191,7 @@ team."
 
 ---
 
-##  Production Tips
+## Production Tips
 
 ### Audio Quality (Critical)
 
@@ -223,7 +223,7 @@ team."
 
 ---
 
-##  Video Variations to Test
+## Video Variations to Test
 
 ### A/B Test These Versions
 
@@ -252,7 +252,7 @@ team."
 
 ---
 
-##  Where to Embed This Video
+## Where to Embed This Video
 
 ### Primary Locations
 
@@ -284,7 +284,7 @@ team."
 
 ---
 
-##  Success Metrics
+## Success Metrics
 
 ### Video Performance (Track These)
 
@@ -307,7 +307,7 @@ team."
 
 ---
 
-##  This Weekend's Task
+## This Weekend's Task
 
 **Saturday (15 minutes):**
 
@@ -331,7 +331,7 @@ team."
 
 ---
 
-##  Pro Tips from Successful SaaS Videos
+## Pro Tips from Successful SaaS Videos
 
 1. **Show real data** (BBC Radio 1 contacts = instant credibility)
 2. **Keep it short** (60 sec max, 45 sec ideal)
@@ -341,7 +341,7 @@ team."
 
 ---
 
-##  Common Mistakes to Avoid
+## Common Mistakes to Avoid
 
  **Too long** (90+ seconds, people drop off)
  **Too salesy** (sounds like an ad, not a demo)
@@ -352,7 +352,7 @@ team."
 
 ---
 
-##  Bottom Line
+## Bottom Line
 
 This one 60-second video replaces 500 demo calls.
 

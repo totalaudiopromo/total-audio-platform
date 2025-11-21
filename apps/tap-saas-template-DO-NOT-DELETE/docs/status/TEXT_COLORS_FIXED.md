@@ -1,6 +1,6 @@
 #  Text Colors Fixed - All Pages Now Visible!
 
-##  Issues Resolved
+## Issues Resolved
 
 ### 1. **Pricing Page Fixed**
 
@@ -23,7 +23,7 @@
 -  **Pitch cards**: All pitch information now visible
 -  **Statistics**: All numbers and metrics now visible
 
-##  What You'll See Now
+## What You'll See Now
 
 ### Pricing Page (`/pricing`)
 
@@ -40,13 +40,13 @@
 - **Key hooks**: Textarea for describing what makes the track special
 - **Tone selector**: Casual, Professional, Enthusiastic options
 
-##  Next Steps
+## Next Steps
 
 1. **Add demo data** (run the SQL from `add-demo-data.sql`)
 2. **Update environment variables** (change ports to 3010)
 3. **Refresh browser** - everything should now be visible!
 
-##  Expected Result
+## Expected Result
 
 After adding demo data:
 

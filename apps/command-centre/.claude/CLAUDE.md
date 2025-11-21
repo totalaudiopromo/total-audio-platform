@@ -1,6 +1,6 @@
 # COMMAND CENTRE - CLAUDE INSTRUCTIONS (September 2025)
 
-##  COMMAND CENTRE IDENTITY
+## COMMAND CENTRE IDENTITY
 
 You are the development assistant for **Command Centre**, the central business intelligence and automation hub for Total Audio Promo. Command Centre serves as the operational nerve center supporting the Audio Intel customer acquisition mission through real-time analytics, business intelligence, and workflow automation.
 
@@ -12,7 +12,7 @@ You are the development assistant for **Command Centre**, the central business i
 - Content creation and social media automation
 - Solopreneur productivity and operational excellence
 
-##  BUSINESS CONTEXT
+## BUSINESS CONTEXT
 
 ### Role in Total Audio Ecosystem
 
@@ -28,7 +28,7 @@ You are the development assistant for **Command Centre**, the central business i
 - **Focus**: Real-time business intelligence and workflow automation
 - **Constraint**: Must not distract from Audio Intel customer acquisition efforts
 
-##  TECHNICAL ARCHITECTURE
+## TECHNICAL ARCHITECTURE
 
 ### Tech Stack
 
@@ -51,7 +51,7 @@ npm run typecheck     # TypeScript validation
 npm run test          # Currently no tests configured
 ```
 
-##  CORE FEATURES & CAPABILITIES
+## CORE FEATURES & CAPABILITIES
 
 ### 1. Business Intelligence Dashboard
 
@@ -92,7 +92,7 @@ npm run test          # Currently no tests configured
 - **Campaign Analytics**: Track radio promotion campaign performance
 - **Verification Systems**: Validate contact and campaign data
 
-##  DESIGN SYSTEM
+## DESIGN SYSTEM
 
 ### Visual Identity
 
@@ -110,7 +110,7 @@ npm run test          # Currently no tests configured
 - **Postcraft Design**: `postcraft-design.css` - Content creation styling
 - **Total Audio Brand**: `total-audio-brand.css` - Master brand guidelines
 
-##  API ARCHITECTURE
+## API ARCHITECTURE
 
 ### Business Intelligence APIs
 
@@ -142,7 +142,7 @@ npm run test          # Currently no tests configured
 - `/api/beta-tracker` - Beta user analytics
 - `/api/business-metrics` - Core business KPI tracking
 
-##  DEVELOPMENT WORKFLOW
+## DEVELOPMENT WORKFLOW
 
 ### Development Principles
 
@@ -173,7 +173,7 @@ apps/command-centre/
  public/                 # Static assets and images
 ```
 
-##  DEVELOPMENT PRIORITIES
+## DEVELOPMENT PRIORITIES
 
 ### Current Focus (Customer Acquisition Support)
 
@@ -189,7 +189,7 @@ apps/command-centre/
 - **Agent Reliability**: 95%+ success rate for automated tasks
 - **Data Accuracy**: Real-time business metrics with < 5-minute lag
 
-##  CRITICAL CONSTRAINTS
+## CRITICAL CONSTRAINTS
 
 ### Business Alignment
 
@@ -205,7 +205,7 @@ apps/command-centre/
 - **Integration**: Seamless integration with existing Total Audio infrastructure
 - **Mobile Excellence**: Full functionality on mobile devices
 
-##  INTEGRATION ECOSYSTEM
+## INTEGRATION ECOSYSTEM
 
 ### External Services
 

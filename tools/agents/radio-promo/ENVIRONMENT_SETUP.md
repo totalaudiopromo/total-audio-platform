@@ -1,12 +1,12 @@
 # WARM API Environment Setup - Liberty Radio Promo Agent
 
-##  Current Status
+## Current Status
 
  WARM API endpoint confirmed working: `https://public-api.warmmusic.net/api/v1`  
  Authentication format confirmed correct  
 Rate limited from previous failed attempts (wait 10-15 minutes or ask Gustav to whitelist IP)
 
-##  Required Environment Variables
+## Required Environment Variables
 
 Add these to your `.env` file in `tools/agents/radio-promo/`:
 
@@ -26,7 +26,7 @@ MAILCHIMP_API_KEY=your_mailchimp_api_key_here
 TYPEFORM_API_KEY=your_typeform_api_key_here
 ```
 
-##  Testing the Setup
+## Testing the Setup
 
 ### 1. Test WARM API Authentication
 
@@ -47,7 +47,7 @@ node test-warm-api.js
 node radio-promo-agent.js health
 ```
 
-##  Troubleshooting
+## Troubleshooting
 
 ### Rate Limiting (429 Error)
 
@@ -68,7 +68,7 @@ node radio-promo-agent.js health
 - **Cause**: DNS/connectivity problems
 - **Solution**: Check internet connection and try again
 
-##  WARM API Features Available
+## WARM API Features Available
 
 Once authenticated, the Liberty Radio Promo Agent can:
 
@@ -78,7 +78,7 @@ Once authenticated, the Liberty Radio Promo Agent can:
 4. **Campaign Analytics** - Track campaign success metrics
 5. **Google Drive Integration** - Auto-save reports to campaign folders
 
-##  Next Steps
+## Next Steps
 
 1. **Add WARM password** to `.env` file
 2. **Wait for rate limits to clear** (or ask Gustav to whitelist IP)
@@ -88,7 +88,7 @@ Once authenticated, the Liberty Radio Promo Agent can:
 
 ---
 
-##  Discord Co-Pilot Setup
+## Discord Co-Pilot Setup
 
 The Discord bot mirrors orchestrator status updates and exposes slash commands.
 
@@ -118,7 +118,7 @@ DISCORD_BOT_TEST_CHANNEL_ID=your_discord_channel_id_here
 - The `/status` command reads `tools/agents/radio-promo/status/current-status.json`; ensure the orchestrator keeps this file fresh.
 - `/submit` and `/notify` currently act as placeholders – extend the handlers to trigger internal workflows when ready.
 
-##  Contact
+## Contact
 
 - **WARM Support**: Gustav Morgensol (<gustav@warmmusic.net>)
 - **API Endpoint**: <https://public-api.warmmusic.net/api/v1>

@@ -2,7 +2,7 @@
 
 ## Actually Getting This Done (Not Like CC)
 
-##  What This Fixes
+## What This Fixes
 
 **Your Current Problems:**
 
@@ -26,7 +26,7 @@
 -  Color-coded Calendar system
 -  Hourly autopilot keeping everything clean
 
-##  Overnight Deployment (One Command)
+## Overnight Deployment (One Command)
 
 ```bash
 cd /Users/chrisschofield/workspace/active/total-audio-platform/tools/agents/gmail-setup
@@ -43,7 +43,7 @@ This runs through 5 phases:
 
 **Time:** ~10-15 minutes total (mostly automated)
 
-##  What Gets Created
+## What Gets Created
 
 ### Gmail Labels
 
@@ -99,7 +99,7 @@ Marketing Junk/
  Liberty - Team Meetings
 ```
 
-##  Autopilot System
+## Autopilot System
 
 **Runs every hour automatically via cron:**
 
@@ -115,7 +115,7 @@ Marketing Junk/
 0 * * * * cd /path/to/gmail-setup && node liberty-autopilot.js run >> autopilot.log 2>&1
 ```
 
-##  What Gets Fixed in Bulk
+## What Gets Fixed in Bulk
 
 The `liberty-bulk-fix.js` script finds and fixes:
 
@@ -126,7 +126,7 @@ The `liberty-bulk-fix.js` script finds and fixes:
 - All marketing emails currently in wrong folders
 - Removes "Station Feedback" from all non-station emails
 
-##  Manual Commands
+## Manual Commands
 
 If you want to run things individually:
 
@@ -194,7 +194,7 @@ node liberty-calendar-sync.js example
 node liberty-calendar-sync.js test
 ```
 
-##  Verification
+## Verification
 
 After deployment, check:
 
@@ -205,7 +205,7 @@ After deployment, check:
 5. **Calendar**: Google Calendar → Left sidebar → Should see Liberty calendars
 6. **Autopilot**: `tail autopilot.log` → Should see hourly runs
 
-##  How It Works
+## How It Works
 
 ### Why This Works (Unlike CC's Attempts)
 
@@ -243,7 +243,7 @@ This catches ONLY:
 - NOT from marketing (WARM, Machina, etc.)
 - NOT auto-responses
 
-##  Mobile Experience
+## Mobile Experience
 
 All labels, folders, and calendars work on:
 
@@ -252,7 +252,7 @@ All labels, folders, and calendars work on:
 - Google Calendar mobile app (color-coded calendars)
 - Web interfaces (full functionality)
 
-##  Color System
+## Color System
 
 Consistent across Gmail, Drive, and Calendar:
 
@@ -264,7 +264,7 @@ Consistent across Gmail, Drive, and Calendar:
 -  **Purple** - Personal tools and team coordination
 -  **Grey** - Marketing noise (archived)
 
-##  Troubleshooting
+## Troubleshooting
 
 ### "OAuth tokens not found"
 
@@ -310,7 +310,7 @@ node liberty-drive-sync.js list
 node liberty-drive-sync.js setup
 ```
 
-##  Success Criteria
+## Success Criteria
 
 **Tomorrow morning, you should:**
 
@@ -322,7 +322,7 @@ node liberty-drive-sync.js setup
 -  See autopilot running in cron (`crontab -l`)
 -  See autopilot.log with hourly entries
 
-##  Future Enhancements
+## Future Enhancements
 
 The system is built to support:
 
@@ -331,7 +331,7 @@ The system is built to support:
 - Smart campaign lifecycle management (active → completed → archived)
 - Integration with your radio promo agents
 
-##  Why This Is Different
+## Why This Is Different
 
 **CC's attempts failed because:**
 
@@ -351,7 +351,7 @@ The system is built to support:
 
 ---
 
-##  Ready to Deploy?
+## Ready to Deploy?
 
 ```bash
 cd /Users/chrisschofield/workspace/active/total-audio-platform/tools/agents/gmail-setup

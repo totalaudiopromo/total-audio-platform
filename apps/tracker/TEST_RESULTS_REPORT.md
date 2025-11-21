@@ -8,7 +8,7 @@
 
 ---
 
-##  CRITICAL SUCCESS METRICS
+## CRITICAL SUCCESS METRICS
 
 ###  No JavaScript Compilation Errors
 

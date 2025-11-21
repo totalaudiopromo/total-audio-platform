@@ -1,6 +1,6 @@
 # Newsletter Integration - The Unsigned Advantage
 
-##  Integration Complete
+## Integration Complete
 
 ### Component Created
 

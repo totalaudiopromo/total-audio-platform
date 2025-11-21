@@ -1,6 +1,6 @@
 # TAP SaaS Template
 
-##  THIS IS A TEMPLATE - DO NOT MODIFY DIRECTLY
+## THIS IS A TEMPLATE - DO NOT MODIFY DIRECTLY
 
 This is your clean, reusable starting point for all TAP mini-tools. **Duplicate this directory for each new tool** - never modify the template directly.
 

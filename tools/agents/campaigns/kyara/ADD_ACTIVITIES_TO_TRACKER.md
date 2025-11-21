@@ -1,10 +1,10 @@
 # Add 6 Activities to KYARA Campaign in Tracker (5 Minutes)
 
-##  WHAT YOU'RE DOING:
+## WHAT YOU'RE DOING:
 
 Adding timeline activities to show Dan how the tracker logs campaign progress in real-time.
 
-##  QUICK START:
+## QUICK START:
 
 1. **Open tracker:** http://localhost:3004/dashboard
 2. **Click on KYARA campaign card**
@@ -13,7 +13,7 @@ Adding timeline activities to show Dan how the tracker logs campaign progress in
 
 ---
 
-##  ACTIVITY 1: Initial Australian Pitch
+## ACTIVITY 1: Initial Australian Pitch
 
 - **Date:** 7 Oct 2025
 - **Type:** Email Sent
@@ -22,7 +22,7 @@ Adding timeline activities to show Dan how the tracker logs campaign progress in
 
 ---
 
-##  ACTIVITY 2: Gmail Drafts Created
+## ACTIVITY 2: Gmail Drafts Created
 
 - **Date:** 8 Oct 2025
 - **Type:** Email Sent
@@ -31,7 +31,7 @@ Adding timeline activities to show Dan how the tracker logs campaign progress in
 
 ---
 
-##  ACTIVITY 3: Amazing Radio Confirmed 
+## ACTIVITY 3: Amazing Radio Confirmed 
 
 - **Date:** 9 Oct 2025
 - **Type:** Response / Milestone
@@ -40,7 +40,7 @@ Adding timeline activities to show Dan how the tracker logs campaign progress in
 
 ---
 
-##  ACTIVITY 4: WARM Report (85 Plays)
+## ACTIVITY 4: WARM Report (85 Plays)
 
 - **Date:** 10 Oct 2025
 - **Type:** Milestone
@@ -49,7 +49,7 @@ Adding timeline activities to show Dan how the tracker logs campaign progress in
 
 ---
 
-##  ACTIVITY 5: UK Mailchimp Campaign
+## ACTIVITY 5: UK Mailchimp Campaign
 
 - **Date:** 11 Oct 2025
 - **Type:** Email Sent
@@ -58,7 +58,7 @@ Adding timeline activities to show Dan how the tracker logs campaign progress in
 
 ---
 
-##  ACTIVITY 6: Release Day Blast Prepared
+## ACTIVITY 6: Release Day Blast Prepared
 
 - **Date:** 11 Oct 2025 (Today)
 - **Type:** Planning
@@ -67,7 +67,7 @@ Adding timeline activities to show Dan how the tracker logs campaign progress in
 
 ---
 
-##  WHY THESE ACTIVITIES MATTER FOR DEMO:
+## WHY THESE ACTIVITIES MATTER FOR DEMO:
 
 **Shows Dan:**
 
@@ -88,7 +88,7 @@ Adding timeline activities to show Dan how the tracker logs campaign progress in
 
 ---
 
-##  AFTER YOU ADD ACTIVITIES:
+## AFTER YOU ADD ACTIVITIES:
 
 **Take screenshots for backup:**
 
@@ -101,7 +101,7 @@ Save to: `~/Desktop/kyara-demo-screenshots/`
 
 ---
 
-##  CHECKLIST:
+## CHECKLIST:
 
 - [ ] Activity 1: Australian pitch (7 Oct)
 - [ ] Activity 2: Gmail drafts (8 Oct)
@@ -114,7 +114,7 @@ Save to: `~/Desktop/kyara-demo-screenshots/`
 
 ---
 
-##  YOU'RE READY FOR FRIDAY!
+## YOU'RE READY FOR FRIDAY!
 
 Once these 6 activities are in the tracker, you have:
  Live campaign with real data

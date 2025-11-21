@@ -39,7 +39,7 @@ The radio promo agent currently uses a **tiered targeting system** based on:
 - **No personalization** - generic pitches for all stations
 - **No success tracking** - limited feedback on what works
 
-##  Optimized Airtable + Audio Intel Strategy
+## Optimized Airtable + Audio Intel Strategy
 
 ### Phase 1: Airtable as Your CRM Foundation
 
@@ -241,7 +241,7 @@ function calculateStationScore(contact, campaign) {
 - **Update relationship scores** based on success
 - **Refine pitch templates** based on what works
 
-##  Implementation Roadmap
+## Implementation Roadmap
 
 ### Week 1-2: Airtable Setup
 
@@ -271,7 +271,7 @@ function calculateStationScore(contact, campaign) {
 - [ ] Build automated follow-ups
 - [ ] Create reporting dashboard
 
-##  ROI Projections
+## ROI Projections
 
 ### Time Savings
 
@@ -295,7 +295,7 @@ function calculateStationScore(contact, campaign) {
 - **Time saved value**: 26 hours × £25/hour = £650/week
 - **ROI**: 2,300% return on investment
 
-##  Next Steps
+## Next Steps
 
 1. **Set up Airtable workspace** with the contact database structure
 2. **Import existing contacts** and categorize by station type

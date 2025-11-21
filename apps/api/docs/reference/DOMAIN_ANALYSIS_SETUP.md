@@ -1,4 +1,4 @@
-#  Email Domain Analysis Setup Guide
+# Email Domain Analysis Setup Guide
 
 ## Quick Setup
 
@@ -16,7 +16,7 @@ process.env.AIRTABLE_CONTACTS_TABLE_ID = 'your-actual-contacts-table-id-here';
 4. **Review the results** and decide if you want to apply the changes
 5. **Run live mode**: `node test-domain-analysis-live.js` (if you want to apply changes)
 
-##  How to Get Your Airtable Credentials
+## How to Get Your Airtable Credentials
 
 ### API Key
 
@@ -37,7 +37,7 @@ process.env.AIRTABLE_CONTACTS_TABLE_ID = 'your-actual-contacts-table-id-here';
 2. Look at the URL: `https://airtable.com/appXXXXXXXXXXXXXX/tblYYYYYYYYYYYYY`
 3. Copy the part after `/tbl/` (the Y's)
 
-##  Example Configuration
+## Example Configuration
 
 ```javascript
 // Example placeholder values only - replace with your actual credentials
@@ -46,7 +46,7 @@ process.env.AIRTABLE_BASE_ID = 'app1234567890abcdef'; // Example base ID
 process.env.AIRTABLE_CONTACTS_TABLE_ID = 'tbl1234567890abcdef'; // Example table ID
 ```
 
-##  What the Analysis Will Do
+## What the Analysis Will Do
 
 ### Company Extraction
 
@@ -70,7 +70,7 @@ process.env.AIRTABLE_CONTACTS_TABLE_ID = 'tbl1234567890abcdef'; // Example table
 - **Role Field**: Identified company type (Playlist Curator, Radio DJ, etc.)
 - **Notes Field**: Auto-extraction details and reasoning
 
-##  Run the Analysis
+## Run the Analysis
 
 ### Preview Mode (Recommended First)
 
@@ -86,7 +86,7 @@ cd backend
 node test-domain-analysis-live.js
 ```
 
-##  Sample Output
+## Sample Output
 
 ```
  DOMAIN ANALYSIS REPORT
@@ -124,7 +124,7 @@ node test-domain-analysis-live.js
    Reason: Matched pattern: pitchfork\.com
 ```
 
-##  Important Notes
+## Important Notes
 
 1. **Always run preview mode first** to see what changes would be made
 2. **Backup your data** before running live mode
@@ -132,7 +132,7 @@ node test-domain-analysis-live.js
 4. **Personal domains are skipped** (gmail, yahoo, etc.)
 5. **The script is conservative** - only updates records with reasonable confidence
 
-##  Customization
+## Customization
 
 You can modify the patterns in `src/services/airtableDomainAnalysis.ts` to:
 
@@ -141,7 +141,7 @@ You can modify the patterns in `src/services/airtableDomainAnalysis.ts` to:
 - Change company type classifications
 - Add new domain patterns
 
-##  Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 

@@ -1,6 +1,6 @@
 # Airtable ↔ Mailchimp Sync Analysis
 
-##  Source of "Unsubscribed" Status
+## Source of "Unsubscribed" Status
 
 **CONFIRMED**: The "Unsubscribed" status is coming **directly from your Airtable database**, not from Mailchimp.
 
@@ -22,7 +22,7 @@ The "Status" field in Airtable contains values like:
 - **"Unsubscribed"** (11 contacts)
 - **Empty/No status** (2 contacts: isthisrob@yahoo.com, bob.huggins@goqradio.com)
 
-##  Contact Breakdown (21 Total)
+## Contact Breakdown (21 Total)
 
 ###  Good Contacts (10 opted-in)
 
@@ -51,7 +51,7 @@ The "Status" field in Airtable contains values like:
 10. jeffreyrubin@shaw.ca - Unsubscribed (Jeff, Canada)
 11. nimoysucks@gmail.com - Unsubscribed (Ryan)
 
-##  Mailchimp Tag Analysis
+## Mailchimp Tag Analysis
 
 Looking at the "MC TAGS" field in Airtable, these contacts have been tagged in Mailchimp before:
 
@@ -62,7 +62,7 @@ Looking at the "MC TAGS" field in Airtable, these contacts have been tagged in M
 - **Catalina Cara Contacts** (leezalondon@gmail.com, cybermensrevenge@hotmail.com, etc.)
 - **3DAYWKEND Contacts** (Multiple pop/indie contacts)
 
-##  Two Mailchimp Accounts Problem
+## Two Mailchimp Accounts Problem
 
 You mentioned:
 
@@ -75,7 +75,7 @@ You mentioned:
 - The unsubscribed contacts likely unsubscribed from one account but not the other
 - **Risk**: Adding these contacts to a different Mailchimp account could violate their unsubscribe preference
 
-##  Mailchimp Limit Concerns
+## Mailchimp Limit Concerns
 
 You asked about "not hitting the limits" - here's the breakdown:
 
@@ -96,7 +96,7 @@ You asked about "not hitting the limits" - here's the breakdown:
 - Unknown current contact count
 - If you want to sync Airtable → Liberty Mailchimp, we need to check current count first
 
-##  Recommended Action Plan
+## Recommended Action Plan
 
 ### Option 1: Keep Separate (Recommended)
 
@@ -125,7 +125,7 @@ You asked about "not hitting the limits" - here's the breakdown:
 3. Add a new field: "Mailchimp Account" (Liberty/Total Audio Promo/Both)
 4. Only sync contacts who are verified opted-in to the target account
 
-##  Next Steps
+## Next Steps
 
 **Would you like me to:**
 
@@ -135,7 +135,7 @@ You asked about "not hitting the limits" - here's the breakdown:
 4. **Create separate Airtable views** for Liberty vs Total Audio Promo contacts?
 5. **Investigate why BBC contacts are marked unsubscribed** (they might be valuable enough to manually verify)?
 
-##  Important Notes
+## Important Notes
 
 **GDPR Compliance:**
 

@@ -7,7 +7,7 @@
 
 ---
 
-##  QUICK START (3 Steps)
+## QUICK START (3 Steps)
 
 ### Step 1: Access Tracker & Create Campaign (2 minutes)
 
@@ -115,7 +115,7 @@ MONDAY 14th OCT: Release day email blast prepared (30+ contacts)
 
 ---
 
-##  WHAT THIS GIVES YOU FOR DEMO
+## WHAT THIS GIVES YOU FOR DEMO
 
 ### Dan Will See:
 
@@ -145,7 +145,7 @@ MONDAY 14th OCT: Release day email blast prepared (30+ contacts)
 
 ---
 
-##  DEMO TALKING POINTS
+## DEMO TALKING POINTS
 
 ### When Showing This to Dan:
 
@@ -175,7 +175,7 @@ MONDAY 14th OCT: Release day email blast prepared (30+ contacts)
 
 ---
 
-##  ALTERNATIVE: Import Campaign via Script (Advanced)
+## ALTERNATIVE: Import Campaign via Script (Advanced)
 
 If you want to use the script instead of manual setup:
 
@@ -223,7 +223,7 @@ node add-kyara-campaign-to-tracker.js
 
 ---
 
-##  MANUAL SETUP IS FASTER (Recommended)
+## MANUAL SETUP IS FASTER (Recommended)
 
 **For your use case:**
 
@@ -242,7 +242,7 @@ node add-kyara-campaign-to-tracker.js
 
 ---
 
-##  THURSDAY NIGHT CHECKLIST
+## THURSDAY NIGHT CHECKLIST
 
 - [ ] Visit tracker.totalaudiopromo.com/dashboard
 - [ ] Sign in

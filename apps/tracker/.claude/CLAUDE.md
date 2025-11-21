@@ -1,6 +1,6 @@
 # TRACKER APP - CLAUDE INSTRUCTIONS
 
-##  CURRENT DEPLOYMENT SITUATION (October 2025)
+## CURRENT DEPLOYMENT SITUATION (October 2025)
 
 ### GitHub Actions Budget Issue
 
@@ -37,7 +37,7 @@ vercel --prod
 
 ---
 
-##  TRACKER APP CONTEXT
+## TRACKER APP CONTEXT
 
 **Purpose**: Campaign tracking and analytics tool
 **Live Site**: https://tracker.totalaudiopromo.com

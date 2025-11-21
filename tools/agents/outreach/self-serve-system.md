@@ -5,7 +5,7 @@
 
 ---
 
-##  New Strategy: Automated Self-Serve
+## New Strategy: Automated Self-Serve
 
 ### Old Way (85% conversion but requires YOUR time)
 
@@ -21,7 +21,7 @@
 
 ---
 
-##  The Math (Self-Serve vs Demos)
+## The Math (Self-Serve vs Demos)
 
 ### With Demos (Current)
 
@@ -45,7 +45,7 @@
 
 ---
 
-##  What You Need to Build
+## What You Need to Build
 
 ### 1. Loom Video Demo (Record Once, Use Forever)
 
@@ -219,7 +219,7 @@ PAYMENT (Stripe) → Instant PRO access
 
 ---
 
-##  Technical Implementation
+## Technical Implementation
 
 ### Step 1: Record Loom Video (15 mins)
 
@@ -264,7 +264,7 @@ PAYMENT (Stripe) → Instant PRO access
 
 ---
 
-##  Updated Conversion Funnel
+## Updated Conversion Funnel
 
 ### Realistic Self-Serve Conversions
 
@@ -280,7 +280,7 @@ PAYMENT (Stripe) → Instant PRO access
 
 ---
 
-##  Why This Works Better for You
+## Why This Works Better for You
 
 ### Time Comparison
 
@@ -302,7 +302,7 @@ PAYMENT (Stripe) → Instant PRO access
 
 ---
 
-##  Implementation Plan (Total: 2 hours)
+## Implementation Plan (Total: 2 hours)
 
 ### Today (30 mins)
 
@@ -327,7 +327,7 @@ PAYMENT (Stripe) → Instant PRO access
 
 ---
 
-##  New Cold Email Templates (Self-Serve)
+## New Cold Email Templates (Self-Serve)
 
 ### Template 1: Video Demo (Best for Self-Serve)
 
@@ -405,7 +405,7 @@ Chris
 
 ---
 
-##  Expected Results (Self-Serve)
+## Expected Results (Self-Serve)
 
 ### Month 1 (50 emails)
 
@@ -439,7 +439,7 @@ Chris
 
 ---
 
-##  Action Items (This Weekend)
+## Action Items (This Weekend)
 
 1. **Record Loom video** (15 mins)
    - Show real BBC Radio 1 enrichment
@@ -463,7 +463,7 @@ Chris
 
 ---
 
-##  Critical Success Factors
+## Critical Success Factors
 
 ###  DO THIS:
 
@@ -481,7 +481,7 @@ Chris
 
 ---
 
-##  Bottom Line
+## Bottom Line
 
 **Old way (demos):**
 
@@ -505,7 +505,7 @@ Chris
 
 ---
 
-##  Next Steps
+## Next Steps
 
 1. Record Loom video TODAY (15 mins)
 2. Set up ConvertKit drip TOMORROW (30 mins)

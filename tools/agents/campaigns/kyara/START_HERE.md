@@ -8,7 +8,7 @@
 
 ---
 
-##  YOUR IMMEDIATE TODO LIST
+## YOUR IMMEDIATE TODO LIST
 
 ### RIGHT NOW (Next 10 Minutes):
 
@@ -63,7 +63,7 @@
 
 ---
 
-##  ALL FILES CREATED (In Priority Order)
+## ALL FILES CREATED (In Priority Order)
 
 ###  **MUST READ:**
 
@@ -113,7 +113,7 @@
 
 ---
 
-##  WHAT EACH FILE DOES
+## WHAT EACH FILE DOES
 
 ### Demo Prep Files:
 
@@ -135,7 +135,7 @@
 
 ---
 
-##  QUICK DECISION TREE
+## QUICK DECISION TREE
 
 ### "I want to add campaign to tracker NOW"
 
@@ -164,7 +164,7 @@
 
 ---
 
-##  THE BIG PICTURE
+## THE BIG PICTURE
 
 ### What You're Doing:
 
@@ -200,7 +200,7 @@
 
 ---
 
-##  YOUR PATH FORWARD
+## YOUR PATH FORWARD
 
 ### TODAY (Thursday):
 
@@ -229,7 +229,7 @@
 
 ---
 
-##  SUCCESS METRICS
+## SUCCESS METRICS
 
 ### For KYARA Campaign:
 
@@ -254,7 +254,7 @@
 
 ---
 
-##  FINAL CHECKLIST
+## FINAL CHECKLIST
 
 ### TONIGHT (Before Bed):
 
@@ -283,7 +283,7 @@
 
 ---
 
-##  YOU'RE SET!
+## YOU'RE SET!
 
 **What You Have:**
  Tracker running (port 3004)

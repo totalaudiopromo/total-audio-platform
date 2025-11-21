@@ -6,7 +6,7 @@
 
 ---
 
-##  Quick Start (5 Minutes)
+## Quick Start (5 Minutes)
 
 ```bash
 # 1. Show quick start guide
@@ -25,7 +25,7 @@ cat cold-email-template.md
 
 ---
 
-##  Files in This System
+## Files in This System
 
 ### 1. `free-email-scraper.js`
 
@@ -79,7 +79,7 @@ chmod +x complete-workflow.sh
 
 ---
 
-##  Free Tools Used
+## Free Tools Used
 
 ### Email Finding
 
@@ -107,7 +107,7 @@ chmod +x complete-workflow.sh
 
 ---
 
-##  Expected Results (50 Emails)
+## Expected Results (50 Emails)
 
 | Metric              | Rate | Count         |
 | ------------------- | ---- | ------------- |
@@ -119,7 +119,7 @@ chmod +x complete-workflow.sh
 
 ---
 
-##  Week-by-Week Plan
+## Week-by-Week Plan
 
 ### Week 1: Scraping (1 hour)
 
@@ -148,7 +148,7 @@ chmod +x complete-workflow.sh
 
 ---
 
-##  Pre-Launch Checklist
+## Pre-Launch Checklist
 
 - [ ] Read `cold-email-template.md` (all 5 templates)
 - [ ] Run `node google-maps-scraper.js quick`
@@ -163,7 +163,7 @@ chmod +x complete-workflow.sh
 
 ---
 
-##  What NOT to Do
+## What NOT to Do
 
  **Don't buy Apollo.io** - Use free Hunter + Snov instead
  **Don't send generic emails** - Personalise every single one
@@ -173,7 +173,7 @@ chmod +x complete-workflow.sh
 
 ---
 
-##  When to Scale (After First Customers)
+## When to Scale (After First Customers)
 
 Once you have 2-3 paying customers (£38-57/month):
 
@@ -191,7 +191,7 @@ Once you have 2-3 paying customers (£38-57/month):
 
 ---
 
-##  Data Structure
+## Data Structure
 
 ```
 tools/agents/outreach/
@@ -208,7 +208,7 @@ tools/agents/outreach/
 
 ---
 
-##  Success Metrics
+## Success Metrics
 
 **Target:** First customer within 14 days
 **Method:** 50 emails → 42 demos → 4 customers
@@ -217,7 +217,7 @@ tools/agents/outreach/
 
 ---
 
-##  Troubleshooting
+## Troubleshooting
 
 ### "Can't find enough emails"
 
@@ -245,7 +245,7 @@ tools/agents/outreach/
 
 ---
 
-##  Quick Links
+## Quick Links
 
 - [Hunter.io](https://hunter.io) - 25 free searches/month
 - [Snov.io](https://snov.io/email-finder) - 50 free credits/month
@@ -254,7 +254,7 @@ tools/agents/outreach/
 
 ---
 
-##  Next Steps
+## Next Steps
 
 1. **Today:** Run quick start (5 minutes)
 2. **This week:** Send first 10 emails

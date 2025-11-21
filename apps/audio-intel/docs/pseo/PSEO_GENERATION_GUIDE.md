@@ -2,7 +2,7 @@
 
 **Philosophy**: Better to generate 10 truthful pages than 60 with fake data.
 
-##  Core Principles
+## Core Principles
 
 1. **Truthfulness First**: Every contact, presenter name, and submission detail must be verified
 2. **Source Verification**: All claims must have source URLs
@@ -10,7 +10,7 @@
 4. **Confidence Scoring**: All contacts must have 85%+ confidence scores
 5. **No Fake Data**: Never generate pages without verified research
 
-##  System Architecture
+## System Architecture
 
 ```
 apps/audio-intel/
@@ -30,7 +30,7 @@ apps/audio-intel/
      ...
 ```
 
-##  Usage
+## Usage
 
 ### Generate All Planned Pages
 
@@ -56,7 +56,7 @@ npm run pseo:generate -- --tier=1
 npm run pseo:validate
 ```
 
-##  Validation Checks
+## Validation Checks
 
 Before any page is generated, the system validates:
 
@@ -85,7 +85,7 @@ Before any page is generated, the system validates:
 - Research date must be within 6 months
 - Older research requires update before generation
 
-##  Creating New Pages
+## Creating New Pages
 
 ### Step 1: Add Row to CSV
 
@@ -162,7 +162,7 @@ npm run pseo:generate -- --slug=new-station
 4. Test page locally: `npm run dev`
 5. Review at `http://localhost:3000/blog/new-station`
 
-##  Quality Control Checklist
+## Quality Control Checklist
 
 Before marking a page as "live" in CSV:
 
@@ -178,7 +178,7 @@ Before marking a page as "live" in CSV:
 - [ ] Internal links work correctly
 - [ ] CTAs link to correct pricing/demo pages
 
-##  Generation Statistics
+## Generation Statistics
 
 The system tracks:
 
@@ -198,7 +198,7 @@ Total processed: 10
  Errors: 1 (validation failed)
 ```
 
-##  Error Handling
+## Error Handling
 
 Common errors and solutions:
 
@@ -218,7 +218,7 @@ Common errors and solutions:
 
 **Solution**: Add source URLs to research file for all claims
 
-##  Best Practices
+## Best Practices
 
 1. **Start with Tier 1**: Focus on high-volume searches first
 2. **Verify Everything**: Double-check all presenter names and show titles
@@ -226,7 +226,7 @@ Common errors and solutions:
 4. **Update Regularly**: Re-verify contacts every 6 months
 5. **Quality Over Quantity**: 10 perfect pages > 60 mediocre pages
 
-##  SEO Impact Tracking
+## SEO Impact Tracking
 
 Track these metrics for each page:
 
@@ -236,7 +236,7 @@ Track these metrics for each page:
 - Time on page and bounce rate
 - Internal link clicks
 
-##  Maintenance Schedule
+## Maintenance Schedule
 
 **Monthly**:
 
@@ -256,7 +256,7 @@ Track these metrics for each page:
 - Remove pages for defunct stations/platforms
 - Add new high-priority targets
 
-##  Troubleshooting
+## Troubleshooting
 
 ### Page Won't Generate
 
@@ -279,7 +279,7 @@ Track these metrics for each page:
 3. Update research file with new dates
 4. Regenerate page
 
-##  Support
+## Support
 
 For issues with the PSEO generation system:
 

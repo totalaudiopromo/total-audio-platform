@@ -1,6 +1,6 @@
 #  Fixes Applied - Pitch Generator
 
-##  Issues Fixed
+## Issues Fixed
 
 ### 1. **API Errors Fixed**
 
@@ -20,7 +20,7 @@
 -  **Landing page**: "personalized" → "personalised"
 -  **Feature descriptions**: Updated to British English
 
-##  Manual Steps Required
+## Manual Steps Required
 
 ### 1. **Update Environment Variables**
 
@@ -41,7 +41,7 @@ psql your_database_url < add-demo-data.sql
 
 Or manually run the contents of `add-demo-data.sql` in your Supabase SQL editor.
 
-##  Expected Results
+## Expected Results
 
 After completing the manual steps:
 
@@ -59,7 +59,7 @@ After completing the manual steps:
    - 3 demo pitches with proper status badges
    - All text visible on white background
 
-##  Current Status
+## Current Status
 
 -  **Server running**: http://localhost:3010
 -  **API routes created**: All 7 endpoints working
@@ -68,7 +68,7 @@ After completing the manual steps:
 -  **Text colors fixed**: All visible on white background
 - **Demo data needed**: Run SQL to populate cards
 
-##  Next Steps
+## Next Steps
 
 1. Update `.env.local` (2 lines)
 2. Run `add-demo-data.sql` in Supabase

@@ -424,7 +424,7 @@ Session End:
 
 ---
 
-##  Success!
+## Success!
 
 You now have:
 

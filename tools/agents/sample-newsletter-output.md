@@ -1,6 +1,6 @@
 # Newsletter Content Test - "The Unsigned Advantage"
 
-##  Test Results (October 9, 2025)
+## Test Results (October 9, 2025)
 
 ### RSS Feed Status:
 
@@ -35,7 +35,7 @@
 
 ---
 
-##  SAMPLE NEWSLETTER SECTION (Chris's Voice)
+## SAMPLE NEWSLETTER SECTION (Chris's Voice)
 
 ### Story: "BandLab viral hit - Tkandz' Now Or Never on Spotify"
 
@@ -63,7 +63,7 @@ Your move: Start positioning yourself to take advantage of this while the majors
 
 ---
 
-##  Voice Pattern Analysis:
+## Voice Pattern Analysis:
 
  **Opening Hook**: Uses "This week {development} happened, and here's the unsigned advantage..."
  **Transition**: "But here's where it gets interesting for indies..."
@@ -73,7 +73,7 @@ Your move: Start positioning yourself to take advantage of this while the majors
 
 ---
 
-##  Key Findings:
+## Key Findings:
 
 ###  What's Working:
 
@@ -98,7 +98,7 @@ Your move: Start positioning yourself to take advantage of this while the majors
 
 ---
 
-##  Cost Breakdown:
+## Cost Breakdown:
 
 - **Per newsletter generation**: £0.03 (3 pence)
 - **Per month (4 newsletters)**: £0.12 (12 pence)
@@ -106,7 +106,7 @@ Your move: Start positioning yourself to take advantage of this while the majors
 
 ---
 
-##  Content Audit Conclusion:
+## Content Audit Conclusion:
 
 **You DON'T need a separate content audit because:**
 

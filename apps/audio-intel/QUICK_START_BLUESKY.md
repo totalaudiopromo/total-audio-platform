@@ -41,7 +41,7 @@ Vercel automatically deploys.
 
 ---
 
-##  Done!
+## Done!
 
 Your agent now posts **twice daily** at:
 
@@ -54,7 +54,7 @@ Your agent now posts **twice daily** at:
 
 ---
 
-##  Check It's Working
+## Check It's Working
 
 After next 9am or 5pm, check:
 
@@ -73,7 +73,7 @@ Check your posts appeared correctly
 
 ---
 
-##  Need More Info?
+## Need More Info?
 
 - **Full docs:** `BLUESKY_AUTONOMOUS_POSTING_SETUP.md`
 - **Complete summary:** `BLUESKY_AUTONOMOUS_AGENT_COMPLETE.md`
@@ -81,7 +81,7 @@ Check your posts appeared correctly
 
 ---
 
-##  What You Get
+## What You Get
 
  Fully autonomous posting (no manual work)
  Peak UK engagement times

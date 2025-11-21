@@ -1,6 +1,6 @@
 # "The Unsigned Advantage" Newsletter - Quick Start
 
-##  Run Weekly Newsletter (5 minutes)
+## Run Weekly Newsletter (5 minutes)
 
 ```bash
 cd ~/workspace/active/total-audio-platform/tools/agents
@@ -12,14 +12,14 @@ node generate-real-newsletter.js
 node send-to-convertkit.js --test
 ```
 
-##  What You Get
+## What You Get
 
 - **3 newsletter sections** from indie-relevant music news
 - **Fresh content** written in your voice by Claude API
 - **ConvertKit draft** ready for your review
 - **Cost**: £0.01-0.03 per newsletter
 
-##  Voice Quality Checks
+## Voice Quality Checks
 
 Every newsletter should have:
 
@@ -30,7 +30,7 @@ Every newsletter should have:
 -  NO name dropping (Fred Again, Royal Blood, etc)
 -  NO invented personal examples
 
-##  Monday Workflow
+## Monday Workflow
 
 1. **Generate** (5 min): Run newsletter generator
 2. **Review** (5 min): Read 3 sections, check voice
@@ -38,14 +38,14 @@ Every newsletter should have:
 4. **Schedule** (2 min): Approve in ConvertKit for Tuesday 9am
 5. **Done**: 12 minutes total
 
-##  Success Metrics
+## Success Metrics
 
 - **Open rate**: Target 40%+
 - **Click rate**: Target 8%+
 - **Subscriber growth**: Track weekly
 - **Quality**: Every newsletter sounds like you
 
-##  Files
+## Files
 
 All files saved to:
 `~/workspace/active/total-audio-platform/tools/agents/`
@@ -55,7 +55,7 @@ All files saved to:
 - `FINAL_CHRIS_VOICE.md` - Your verified voice profile
 - `NEWSLETTER_SYSTEM_COMPLETE.md` - Full documentation
 
-##  If Something Breaks
+## If Something Breaks
 
 **Issue**: Claude API error
 **Fix**: Check API key in `generate-real-newsletter.js` line 14
@@ -66,7 +66,7 @@ All files saved to:
 **Issue**: No relevant stories found
 **Fix**: Normal! Newsletter skips that week (quality over quantity)
 
-##  Tips
+## Tips
 
 - Run Monday morning for Tuesday send
 - Keep manual approval (don't auto-send)

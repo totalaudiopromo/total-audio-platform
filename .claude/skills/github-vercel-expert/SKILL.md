@@ -186,7 +186,7 @@ Activate this skill when:
 4. **DON'T** skip manual redeploy test before testing automatic deployments
 5. **DON'T** commit large files or regenerate entire repo with prettier during urgent fixes
 
-##  CRITICAL: Multiple Failure Modes (2025-11-10)
+## CRITICAL: Multiple Failure Modes (2025-11-10)
 
 **IMPORTANT**: When diagnosing "GitHub Actions failing", ALWAYS check ALL three failure types:
 

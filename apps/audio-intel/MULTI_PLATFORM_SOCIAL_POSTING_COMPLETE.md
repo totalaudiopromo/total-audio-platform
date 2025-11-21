@@ -6,7 +6,7 @@
 
 ---
 
-##  What This Does
+## What This Does
 
 Your autonomous social media posting agent is fully built and configured for all four platforms:
 
@@ -21,7 +21,7 @@ Your autonomous social media posting agent is fully built and configured for all
 
 ---
 
-##  Content Calendar Overview
+## Content Calendar Overview
 
 All platforms read from the same content calendar:
 `apps/audio-intel/social-content/CONTENT_CALENDAR.json`
@@ -42,7 +42,7 @@ All platforms read from the same content calendar:
 
 ---
 
-##  Setup Required
+## Setup Required
 
 You need to add API credentials for each platform to Vercel. Only configured platforms will post - unconfigured platforms will be skipped gracefully.
 
@@ -159,7 +159,7 @@ FACEBOOK_APP_SECRET=abc123xyz
 
 ---
 
-##  Deployment Steps
+## Deployment Steps
 
 ### 1. Add Environment Variables to Vercel
 
@@ -212,7 +212,7 @@ Vercel will automatically deploy with the updated cron endpoint.
 
 ---
 
-##  Testing
+## Testing
 
 ### Manual Test (Development)
 
@@ -235,7 +235,7 @@ curl -X POST https://intel.totalaudiopromo.com/api/cron/social-posting \
 
 ---
 
-##  Posting Schedule
+## Posting Schedule
 
 **Time:** 9am and 5pm UK time (every day)
 **Platforms:** Bluesky, Twitter/X, LinkedIn, Threads
@@ -250,7 +250,7 @@ Peak UK social media engagement times for B2B audiences (radio promoters).
 
 ---
 
-##  Monitoring
+## Monitoring
 
 ### Vercel Logs
 
@@ -278,7 +278,7 @@ https://vercel.com/chris-projects-6ffe0e29/audio-intel/logs
 
 ---
 
-##  How It Works
+## How It Works
 
 ### Architecture
 
@@ -325,7 +325,7 @@ This means you can:
 
 ---
 
-##  Troubleshooting
+## Troubleshooting
 
 ### Platform Not Posting
 
@@ -354,7 +354,7 @@ All agents include built-in rate limiting:
 
 ---
 
-##  Content Strategy
+## Content Strategy
 
 ### Platform-Specific Adaptations
 
@@ -387,7 +387,7 @@ All agents include built-in rate limiting:
 
 ---
 
-##  Security Notes
+## Security Notes
 
 - **Never commit** API credentials to git
 - **Use environment variables** for all credentials
@@ -397,7 +397,7 @@ All agents include built-in rate limiting:
 
 ---
 
-##  What's Next?
+## What's Next?
 
 ### Immediate Actions:
 
@@ -416,7 +416,7 @@ All agents include built-in rate limiting:
 
 ---
 
-##  Documentation Index
+## Documentation Index
 
 - `BLUESKY_AUTONOMOUS_POSTING_SETUP.md` - Bluesky setup guide
 - `TWITTER_AGENT_README.md` - Twitter/X setup guide
@@ -427,7 +427,7 @@ All agents include built-in rate limiting:
 
 ---
 
-##  Current Status
+## Current Status
 
 ### Platform Status:
 

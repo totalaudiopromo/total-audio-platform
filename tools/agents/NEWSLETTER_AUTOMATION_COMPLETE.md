@@ -6,7 +6,7 @@
 
 ---
 
-##  What You Now Have
+## What You Now Have
 
 **ONE-COMMAND NEWSLETTER AUTOMATION:**
 
@@ -33,7 +33,7 @@ Sets up cron job to run every Monday at 9:00 AM automatically.
 
 ---
 
-##  Files Created
+## Files Created
 
 ### 1. **[generate-and-send-newsletter.js](generate-and-send-newsletter.js)** - Main Automation Script
 
@@ -70,7 +70,7 @@ Sets up cron job to run every Monday at 9:00 AM automatically.
 
 ---
 
-##  Quick Start
+## Quick Start
 
 ### Option A: Run Manually (Test It Out)
 
@@ -101,7 +101,7 @@ This will:
 
 ---
 
-##  RSS Feed Sources (9 Total)
+## RSS Feed Sources (9 Total)
 
 Your newsletter pulls from these sources automatically:
 
@@ -125,7 +125,7 @@ Your newsletter pulls from these sources automatically:
 
 ---
 
-##  Story Selection Algorithm
+## Story Selection Algorithm
 
 **Relevance Scoring:**
 
@@ -144,7 +144,7 @@ Your newsletter pulls from these sources automatically:
 
 ---
 
-##  Content Generation
+## Content Generation
 
 ### Voice Profile (Authentic sadact Details):
 
@@ -177,7 +177,7 @@ Know the difference.
 
 ---
 
-##  Weekly Workflow (Automated)
+## Weekly Workflow (Automated)
 
 ### Monday 9:00 AM (Automatic):
 
@@ -201,7 +201,7 @@ Know the difference.
 
 ---
 
-##  Cost Breakdown
+## Cost Breakdown
 
 **Per Newsletter:**
 
@@ -218,7 +218,7 @@ Know the difference.
 
 ---
 
-##  Monitoring & Management
+## Monitoring & Management
 
 ### View Logs:
 
@@ -258,7 +258,7 @@ crontab -l | grep -v 'generate-and-send-newsletter.js' | crontab -
 
 ---
 
-##  Quality Assurance
+## Quality Assurance
 
 ### Automatic Checks:
 
@@ -279,7 +279,7 @@ crontab -l | grep -v 'generate-and-send-newsletter.js' | crontab -
 
 ---
 
-##  Troubleshooting
+## Troubleshooting
 
 ### "No relevant stories found"
 
@@ -313,7 +313,7 @@ which node  # Should be /usr/local/bin/node
 
 ---
 
-##  Success Metrics
+## Success Metrics
 
 ### Newsletter Performance (Track in ConvertKit):
 
@@ -329,7 +329,7 @@ which node  # Should be /usr/local/bin/node
 
 ---
 
-##  Advanced Configuration
+## Advanced Configuration
 
 ### Change Schedule:
 
@@ -356,7 +356,7 @@ Edit `scoreStoryRelevance()` function to boost/penalize different keywords.
 
 ---
 
-##  Bottom Line
+## Bottom Line
 
 You now have **fully automated newsletter generation** that:
 

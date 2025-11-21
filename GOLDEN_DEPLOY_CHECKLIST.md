@@ -244,7 +244,7 @@ This will be attempt **#34** - with:
 
 ---
 
-##  REFERENCE DOCUMENTS
+## REFERENCE DOCUMENTS
 
 - **EXACT_ENV_VARS_NEEDED.md** - Complete environment variable reference
 - **reports/golden/final/verification-summary.md** - Infrastructure verification report
@@ -252,7 +252,7 @@ This will be attempt **#34** - with:
 
 ---
 
-##  COMMON ISSUES
+## COMMON ISSUES
 
 ### Issue: "Missing VERCEL_PROJECT_ID for tracker"
 

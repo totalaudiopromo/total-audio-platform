@@ -2,7 +2,7 @@
 
 Your enhanced Radio Promo Agent now includes personal workflow automation capabilities for streamlined campaign management.
 
-##  Features
+## Features
 
 ### Traditional Radio Promotion
 
@@ -22,7 +22,7 @@ Your enhanced Radio Promo Agent now includes personal workflow automation capabi
 5. **Google Chat integration** - Team notifications for campaign wins
 6. **Verification system** - Approve each step before execution
 
-##  Setup
+## Setup
 
 ### 1. Environment Configuration
 
@@ -54,7 +54,7 @@ The agent will automatically create these directories:
 - `./press-releases/` - Generated Liberty-style press releases
 - `./tracking-data/` - WARM API tracking configurations
 
-##  Usage
+## Usage
 
 ### Traditional Radio Promo Commands
 
@@ -108,7 +108,7 @@ node radio-promo-agent.js no-verify
    - Send Google Chat notification
    - Request verification at each step
 
-##  Workflow Steps
+## Workflow Steps
 
 ### Step 1: Transcript Processing
 
@@ -144,7 +144,7 @@ node radio-promo-agent.js no-verify
 - Daily performance updates
 - Campaign win celebrations
 
-##  Verification System
+## Verification System
 
 The agent includes a verification system that prompts before each major action:
 
@@ -160,7 +160,7 @@ Disable verification for automated workflows:
 node radio-promo-agent.js no-verify
 ```
 
-##  File Outputs
+## File Outputs
 
 ### Campaign Brief (`./campaigns/brief_*.json`)
 
@@ -217,7 +217,7 @@ New release set to dominate genre charts with innovative sound...
 }
 ```
 
-##  Integration with Orchestrator
+## Integration with Orchestrator
 
 The enhanced Radio Promo Agent integrates with the existing orchestrator system:
 
@@ -229,7 +229,7 @@ node orchestrator.js execute radio-promotion
 node radio-promo-agent.js personal-workflow transcript.txt
 ```
 
-##  Metrics Tracking
+## Metrics Tracking
 
 The agent tracks comprehensive metrics:
 
@@ -238,7 +238,7 @@ The agent tracks comprehensive metrics:
 - **Integrations**: Monday.com boards, WARM API tracks, Chat notifications
 - **Verification**: approval steps completed
 
-##  Error Handling
+## Error Handling
 
 The agent includes robust error handling:
 
@@ -248,7 +248,7 @@ The agent includes robust error handling:
 - Automatic directory creation
 - Detailed error logging with timestamps
 
-##  Best Practices
+## Best Practices
 
 1. **Transcript Quality**: Ensure clear audio and accurate transcription
 2. **Environment Setup**: Test API connections before running workflows
@@ -256,7 +256,7 @@ The agent includes robust error handling:
 4. **Verification**: Review extracted data before proceeding
 5. **Backup**: Save generated files to cloud storage
 
-##  Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -281,7 +281,7 @@ The agent includes robust error handling:
 - Check network connectivity
 - Review API endpoint URLs
 
-##  Integration Points
+## Integration Points
 
 ### Monday.com
 

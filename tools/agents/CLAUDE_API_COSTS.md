@@ -7,7 +7,7 @@
 
 ---
 
-##  The Good News
+## The Good News
 
 You're **already using Claude API** for Audio Intel contact enrichment!
 
@@ -18,7 +18,7 @@ You're **already using Claude API** for Audio Intel contact enrichment!
 
 ---
 
-##  Complete Monthly Cost Breakdown
+## Complete Monthly Cost Breakdown
 
 ### CORE OPERATIONS (£0.06/month)
 
@@ -69,7 +69,7 @@ You're **already using Claude API** for Audio Intel contact enrichment!
 
 ---
 
-##  TOTAL MONTHLY COST: £0.68
+## TOTAL MONTHLY COST: £0.68
 
 **Breakdown**:
 
@@ -80,7 +80,7 @@ You're **already using Claude API** for Audio Intel contact enrichment!
 
 ---
 
-##  Cost Comparison
+## Cost Comparison
 
 ### Old Setup (Perplexity API)
 
@@ -105,7 +105,7 @@ TOTAL: £0.68/month + 0 hours manual work
 
 ---
 
-##  Time Savings Value
+## Time Savings Value
 
 **Time saved per month**: ~190 hours
 
@@ -123,7 +123,7 @@ TOTAL: £0.68/month + 0 hours manual work
 
 ---
 
-##  Claude API Billing
+## Claude API Billing
 
 ### Current Setup
 
@@ -154,7 +154,7 @@ TOTAL: £0.68/month + 0 hours manual work
 
 ---
 
-##  What's Actually Running
+## What's Actually Running
 
 ### Automated (Cron Jobs)
 
@@ -174,7 +174,7 @@ TOTAL: £0.68/month + 0 hours manual work
 
 ---
 
-##  Budget Recommendations
+## Budget Recommendations
 
 ### Conservative (Current Setup)
 
@@ -196,7 +196,7 @@ TOTAL: £0.68/month + 0 hours manual work
 
 ---
 
-##  Cost Control Safeguards
+## Cost Control Safeguards
 
 ### 1. Agent Registry Controls
 
@@ -226,7 +226,7 @@ Monitor actual usage:
 
 ---
 
-##  Agent API Configuration
+## Agent API Configuration
 
 ### Where Claude API is Used
 
@@ -256,7 +256,7 @@ const anthropic = new Anthropic({
 
 ---
 
-##  Next Steps
+## Next Steps
 
 ### Immediate (This Week)
 
@@ -282,7 +282,7 @@ const anthropic = new Anthropic({
 
 ---
 
-##  Summary
+## Summary
 
 **You're all set!**
 

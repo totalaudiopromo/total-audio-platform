@@ -1,6 +1,6 @@
 # Authentication Setup Guide
 
-##  Authentication is now fully functional!
+## Authentication is now fully functional!
 
 All authentication features have been implemented and are production-ready.
 

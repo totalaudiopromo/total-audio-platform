@@ -7,7 +7,7 @@
 
 ---
 
-##  Newsletter Content
+## Newsletter Content
 
 **Subject**: This Week's Industry Intel - AI Music Lawsuit
 
@@ -33,7 +33,7 @@ Chris
 
 ---
 
-##  Quality Check
+## Quality Check
 
 ### Voice Authenticity:
 
@@ -66,7 +66,7 @@ Chris
 
 ---
 
-##  Expected Performance
+## Expected Performance
 
 **Open Rate**: 40-45% (indie-focused audience)
 **Click Rate**: 8-12% (strong actionable content)
@@ -74,7 +74,7 @@ Chris
 
 ---
 
-##  Why This Works
+## Why This Works
 
 1. **Timely**: AI music lawsuits are massive news for indies
 2. **Relevant**: Directly affects independent artists

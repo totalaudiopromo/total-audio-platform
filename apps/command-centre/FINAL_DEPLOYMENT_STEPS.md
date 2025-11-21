@@ -1,6 +1,6 @@
 #  FINAL DEPLOYMENT STEPS - Mobile Sidebar Fix
 
-##  Current Status:
+## Current Status:
 
 -  Mobile fixes are in commit `85487e3` (and `43282db`)
 -  Code pushed to GitHub: `totalaudiopromo/command-centre`
@@ -8,7 +8,7 @@
 -  GitHub webhook NOT triggering automatic deployments
 -  Mobile fixes NOT yet live on production
 
-##  IMMEDIATE ACTION REQUIRED:
+## IMMEDIATE ACTION REQUIRED:
 
 Since the Vercel CLI is blocked and GitHub webhooks aren't working, you need to **manually trigger deployment from the Vercel Dashboard**:
 
@@ -41,7 +41,7 @@ If you don't see a deploy button:
 3. Select: `totalaudiopromo/command-centre`
 4. This should trigger an immediate deployment
 
-##  What's Being Deployed:
+## What's Being Deployed:
 
 **Commit**: `85487e3` (trigger: Deploy mobile sidebar fixes to production)
 **Previous**: `43282db` (fix: Mobile sidebar overlay z-index and dashboard responsive design)
@@ -59,7 +59,7 @@ If you don't see a deploy button:
 -  44px touch targets on all navigation items
 -  Proper stacking order (no more light grey blocking!)
 
-##  After Deployment - Test on Mobile:
+## After Deployment - Test on Mobile:
 
 1. **Hard Refresh**: Close and reopen https://command.totalaudiopromo.com
 2. **Tap burger menu** ( icon top left)
@@ -69,7 +69,7 @@ If you don't see a deploy button:
    - All navigation items are clickable
    - Tap overlay or X button closes sidebar
 
-##  Troubleshooting:
+## Troubleshooting:
 
 ### If webhook still doesn't work after reconnecting:
 

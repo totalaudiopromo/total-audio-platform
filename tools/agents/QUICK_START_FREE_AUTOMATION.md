@@ -6,7 +6,7 @@
 
 ---
 
-##  Quick Install (One Command)
+## Quick Install (One Command)
 
 ```bash
 cd ~/workspace/active/total-audio-platform/tools/agents
@@ -17,7 +17,7 @@ This sets up 5 automation agents that run automatically with **zero monthly cost
 
 ---
 
-##  What Gets Automated (All Free)
+## What Gets Automated (All Free)
 
 | Agent                 | Schedule        | Time Saved         | Cost   |
 | --------------------- | --------------- | ------------------ | ------ |
@@ -30,7 +30,7 @@ This sets up 5 automation agents that run automatically with **zero monthly cost
 
 ---
 
-##  What Each Agent Does
+## What Each Agent Does
 
 ### 1. Gmail Autopilot (Hourly)
 
@@ -107,7 +107,7 @@ This sets up 5 automation agents that run automatically with **zero monthly cost
 
 ---
 
-##  What's NOT Automated (Costs Money)
+## What's NOT Automated (Costs Money)
 
 ### Contact Enrichment - MANUAL TRIGGER ONLY
 
@@ -129,7 +129,7 @@ node enrich-all-contacts.js
 
 ---
 
-##  Your New Weekly Schedule
+## Your New Weekly Schedule
 
 **Monday 9am**:
 
@@ -158,7 +158,7 @@ node enrich-all-contacts.js
 
 ---
 
-##  Monitoring Your Automation
+## Monitoring Your Automation
 
 ### Check Cron Jobs
 
@@ -194,7 +194,7 @@ cat ~/.total-audio-status/contact-enrichment-status.json | jq
 
 ---
 
-##  Test Before Automating
+## Test Before Automating
 
 Want to test agents before setting up cron?
 
@@ -226,7 +226,7 @@ node newsletter-automation-agent.js
 
 ---
 
-##  Troubleshooting
+## Troubleshooting
 
 ### Agent Not Running?
 
@@ -262,7 +262,7 @@ node social-media-scheduler.js generate
 
 ---
 
-##  Success Metrics
+## Success Metrics
 
 **Week 1** (After Setup):
 
@@ -284,7 +284,7 @@ node social-media-scheduler.js generate
 
 ---
 
-##  Command Centre Dashboard
+## Command Centre Dashboard
 
 Once automation is running, build the Command Centre dashboard:
 
@@ -303,7 +303,7 @@ Once automation is running, build the Command Centre dashboard:
 
 ---
 
-##  Pro Tips
+## Pro Tips
 
 ### Optimize Gmail Autopilot
 
@@ -336,7 +336,7 @@ Customize news sources:
 
 ---
 
-##  Next Steps
+## Next Steps
 
 1. **Run setup**: `./setup-free-automation.sh`
 2. **Wait 24 hours**: Let agents run their first cycle
@@ -346,7 +346,7 @@ Customize news sources:
 
 ---
 
-##  When to Add Paid Automation
+## When to Add Paid Automation
 
 **After £500/month recurring revenue**:
 
@@ -359,7 +359,7 @@ Customize news sources:
 
 ---
 
-##  FAQ
+## FAQ
 
 **Q: Will this break my existing cron jobs?**
 A: No, setup script backs up existing crontab before adding new entries.

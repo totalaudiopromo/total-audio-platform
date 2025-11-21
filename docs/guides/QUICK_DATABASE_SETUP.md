@@ -222,7 +222,7 @@ No more database errors!
 
 ---
 
-##  BONUS: ADD TO AGENT OS
+## BONUS: ADD TO AGENT OS
 
 Once working, add database health check to Agent OS:
 

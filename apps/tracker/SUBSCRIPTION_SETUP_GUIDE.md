@@ -1,6 +1,6 @@
 # Subscription Setup & Testing Guide
 
-##  Step 1: Apply Migration
+## Step 1: Apply Migration
 
 ### Option A: Supabase Dashboard (Recommended)
 
@@ -58,7 +58,7 @@ ORDER BY trigger_name;
 
 ---
 
-##  Step 2: Configure Stripe Price IDs
+## Step 2: Configure Stripe Price IDs
 
 ### 2.1 Create Stripe Products (Test Mode)
 
@@ -144,7 +144,7 @@ ORDER BY user_type, price_monthly;
 
 ---
 
-##  Step 3: Mark Beta Users
+## Step 3: Mark Beta Users
 
 ### Get Your User ID
 
@@ -179,7 +179,7 @@ WHERE is_beta_user = true;
 
 ---
 
-##  Step 4: Testing Checklist
+## Step 4: Testing Checklist
 
 ### Test 1: Free User Limits
 
@@ -308,7 +308,7 @@ WHERE id = 'TEST_USER_UUID';
 
 ---
 
-##  Debugging Queries
+## Debugging Queries
 
 ### Check All Users' Subscription Status
 
@@ -380,7 +380,7 @@ WHERE user_id = 'USER_UUID_HERE';
 
 ---
 
-##  Quick Reference
+## Quick Reference
 
 ### Beta User Management
 
@@ -416,7 +416,7 @@ SELECT id, email FROM auth.users WHERE id IN (
 
 ---
 
-##  Troubleshooting
+## Troubleshooting
 
 ### Issue: Migration fails with "column already exists"
 
@@ -469,7 +469,7 @@ WHERE routine_name = 'can_create_campaign';
 
 ---
 
-##  Next Steps After Setup
+## Next Steps After Setup
 
 1. **Test in Production**: Follow test checklist with real money (small amount)
 2. **Monitor Webhooks**: Watch Stripe Dashboard for webhook deliveries

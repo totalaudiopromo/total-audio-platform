@@ -6,7 +6,7 @@
 
 ---
 
-##  The Problem
+## The Problem
 
 The `/tools/agents/` directory had **225 JavaScript files**, creating the illusion of a massive agent system. In reality, most files were:
 
@@ -23,7 +23,7 @@ This made it impossible to:
 
 ---
 
-##  The Solution
+## The Solution
 
 ### 1. **Archived Utility Scripts** (53 files)
 
@@ -82,7 +82,7 @@ Comprehensive catalogue of **22 real production agents**:
 
 ---
 
-##  Real Agent Count: 22
+## Real Agent Count: 22
 
 ### **CORE OPERATIONS** (4 agents)
 
@@ -128,7 +128,7 @@ System health and cost tracking:
 
 ---
 
-##  New Directory Structure
+## New Directory Structure
 
 ```
 /tools/agents/
@@ -164,7 +164,7 @@ System health and cost tracking:
 
 ---
 
-##  Dashboard Integration
+## Dashboard Integration
 
 The agent registry includes **visual system metadata** for Command Centre:
 
@@ -193,7 +193,7 @@ The agent registry includes **visual system metadata** for Command Centre:
 
 ---
 
-##  Next Steps
+## Next Steps
 
 ### Immediate (Week 1)
 
@@ -222,7 +222,7 @@ The agent registry includes **visual system metadata** for Command Centre:
 
 ---
 
-##  Time & Cost Savings
+## Time & Cost Savings
 
 **Total Time Saved (per week)**: ~50 hours
 
@@ -241,7 +241,7 @@ The agent registry includes **visual system metadata** for Command Centre:
 
 ---
 
-##  Maintenance Notes
+## Maintenance Notes
 
 **What NOT to do**:
 
@@ -260,7 +260,7 @@ The agent registry includes **visual system metadata** for Command Centre:
 
 ---
 
-##  Key Takeaways
+## Key Takeaways
 
 1. **225 files ≠ 225 agents** - Most were utilities, tests, and campaign tools
 2. **22 real production agents** is a manageable, professional ecosystem

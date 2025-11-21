@@ -1,12 +1,12 @@
 # Case Study CSV Parser & Metadata Generator - Summary
 
-##  Completed Work
+## Completed Work
 
 I've created a complete TypeScript utility system for parsing programmatic case study data from CSV and generating Next.js metadata. All files are ready to use.
 
 ---
 
-##  Files Created
+## Files Created
 
 ### 1. **`utils/parseCaseStudyData.ts`** (Main CSV Parser)
 
@@ -136,7 +136,7 @@ npx ts-node utils/test-case-study-parser.ts
 
 ---
 
-##  Type Definitions
+## Type Definitions
 
 ### Inline Types (will be moved to `types/case-study.ts`)
 
@@ -173,7 +173,7 @@ interface EnrichedCaseStudyData extends CaseStudyData {
 
 ---
 
-##  Quick Start Usage
+## Quick Start Usage
 
 ### Basic Page Implementation
 
@@ -214,7 +214,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
 
 ---
 
-##  CSV Format Specification
+## CSV Format Specification
 
 **Location**: `docs/pseo/programmatic-pages.csv`
 
@@ -246,7 +246,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
 
 ---
 
-##  Validation & Error Handling
+## Validation & Error Handling
 
 ### Automatic Validation
 
@@ -281,7 +281,7 @@ Error: Invalid tier value for bbc-radio-1: 5. Must be 1, 2, or 3.
 
 ---
 
-##  Integration with Existing Code
+## Integration with Existing Code
 
 ### Matches BBC Radio 1 Example
 
@@ -316,7 +316,7 @@ bbc-radio-1,/blog/bbc-radio-1-contact-enrichment,"BBC Radio 1 Contact Enrichment
 
 ---
 
-##  Known Issues & Notes
+## Known Issues & Notes
 
 ### TypeScript Errors (Minor)
 
@@ -352,7 +352,7 @@ This is used for canonical URLs and OpenGraph metadata.
 
 ---
 
-##  Next Steps for You
+## Next Steps for You
 
 1. **Test the Parser**:
 
@@ -379,7 +379,7 @@ This is used for canonical URLs and OpenGraph metadata.
 
 ---
 
-##  Summary
+## Summary
 
 You now have:
 

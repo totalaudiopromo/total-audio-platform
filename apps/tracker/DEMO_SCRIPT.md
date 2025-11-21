@@ -184,7 +184,7 @@
 
 ---
 
-##  KEY DEMO TIPS
+## KEY DEMO TIPS
 
 ### Before the Demo
 
@@ -226,7 +226,7 @@
 
 ---
 
-##  SUCCESS METRICS
+## SUCCESS METRICS
 
 **Demo Success = At Least 2 of These:**
 

@@ -3,14 +3,14 @@
 **Last Updated**: October 4, 2025
 **Status**: Post-truthfulness audit
 
-##  WHAT AUDIO INTEL IS NOT
+## WHAT AUDIO INTEL IS NOT
 
 - **NOT a contact discovery tool** - you can't input "BBC Radio 1" and get contacts
 - **NOT a magic contact finder** - you can't upload just station names/genres
 - **NOT a replacement for initial research** - users must find basic emails first
 - **NOT a screenshot/Notion export parser** - CSV with emails only
 
-##  WHAT AUDIO INTEL ACTUALLY DOES
+## WHAT AUDIO INTEL ACTUALLY DOES
 
 ### Core Function
 
@@ -44,7 +44,7 @@
    - Genre matching (e.g., "Kenny Allstar = rap/grime, Eddie Kadi = Afrobeats")
    - Critical warnings (e.g., "general emails DELETED at Kerrang")
 
-##  THE REAL VALUE
+## THE REAL VALUE
 
 ### Time Savings
 
@@ -67,7 +67,7 @@
 5. **Genre matching to shows** - which presenters actually play your music type
 6. **Catching policy changes** - e.g., Apple Music mandatory credits from Jan 2025
 
-##  ACCURATE POSITIONING
+## ACCURATE POSITIONING
 
 ### Who It's For
 
@@ -89,7 +89,7 @@
 - **Validated** email addresses that actually work
 - **Context** for each contact (genre fit, submission timing, critical warnings)
 
-##  PROVEN USE CASES
+## PROVEN USE CASES
 
 ### 1. Outdated Database Refresh
 
@@ -115,7 +115,7 @@
 **Process**: Audio Intel researches submission policies
 **Output**: "BBC Introducing Uploader ONLY - no direct presenter contact accepted, general emails ignored"
 
-##  WHAT WE DON'T (CAN'T) DO
+## WHAT WE DON'T (CAN'T) DO
 
 1. **Find emails from nothing** - need at least basic contact info to start
 2. **Parse screenshots or Notion exports** - CSV with emails only
@@ -123,7 +123,7 @@
 4. **Discover playlist curator contacts** - need curator emails to enrich
 5. **Scrape contacts from scratch** - enrichment, not discovery
 
-##  WHAT WE SHOULD MARKET
+## WHAT WE SHOULD MARKET
 
 ### Hero Headline (CURRENT - ACCURATE)
 
@@ -144,7 +144,7 @@
 -  "Discover hidden music industry emails"
 -  "Magic contact finder for radio promoters"
 
-##  HOMEPAGE VALUE PROP AUDIT
+## HOMEPAGE VALUE PROP AUDIT
 
 **Current homepage text (line 268):**
  "Audio Intel uses AI to turn email addresses into detailed music industry profiles"
@@ -158,7 +158,7 @@
 3. Current presenter assignment updates
 4. Submission requirement discovery
 
-##  PRODUCT REALITY VS MARKETING CLAIMS
+## PRODUCT REALITY VS MARKETING CLAIMS
 
 ### Reality Check Matrix
 
@@ -172,7 +172,7 @@
 | "Verify outdated contact databases"        |  Actually does this           | TRUE    |
 | "Find current presenter assignments"       |  Actually does this           | TRUE    |
 
-##  THE FUNDAMENTAL QUESTION
+## THE FUNDAMENTAL QUESTION
 
 **"If users need emails to use Intel, what's the value?"**
 
@@ -191,7 +191,7 @@ They struggle to:
 
 ---
 
-##  RECOMMENDED NEXT STEPS
+## RECOMMENDED NEXT STEPS
 
 1.  DONE: Fix all false PSEO claims about station name inputs
 2.  DONE: Verify homepage accurately represents product

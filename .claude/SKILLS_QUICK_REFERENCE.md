@@ -263,7 +263,7 @@ Is it a NEW WORKFLOW PATTERN?
 
 ---
 
-##  Integration with Existing Tools
+## Integration with Existing Tools
 
 ### Skills + MCP Servers
 

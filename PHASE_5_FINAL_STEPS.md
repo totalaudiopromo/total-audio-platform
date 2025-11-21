@@ -143,7 +143,7 @@ git push origin main --tags
 
 ---
 
-##  Troubleshooting
+## Troubleshooting
 
 ### "Access token not provided" error
 

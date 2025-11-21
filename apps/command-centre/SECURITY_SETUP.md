@@ -1,6 +1,6 @@
 # Command Centre Security Setup
 
-##  Password Protection Implemented
+## Password Protection Implemented
 
 Your Command Centre is now protected with password authentication. No one can access it without the correct password.
 

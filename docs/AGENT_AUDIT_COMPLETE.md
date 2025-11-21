@@ -75,7 +75,7 @@ Create **task-orchestrator skill** that documents:
 
 ---
 
-##  Key Finding: Skills vs Agents (Critical Distinction)
+## Key Finding: Skills vs Agents (Critical Distinction)
 
 ### What Skills Actually Are
 

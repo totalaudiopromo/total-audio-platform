@@ -6,7 +6,7 @@
 
 ---
 
-##  The Truth About Costs
+## The Truth About Costs
 
 You're right to question the costs. Here's what **actually** costs money vs what's free:
 
@@ -72,7 +72,7 @@ You're right to question the costs. Here's what **actually** costs money vs what
 
 ---
 
-##  FREE Automation That Works Right Now
+## FREE Automation That Works Right Now
 
 ### CORE OPERATIONS (100% Free)
 
@@ -115,7 +115,7 @@ You're right to question the costs. Here's what **actually** costs money vs what
 
 ---
 
-##  FREE Alternatives to Paid AI Agents
+## FREE Alternatives to Paid AI Agents
 
 ### Instead of AI Newsletter Generation (£0.50/run):
 
@@ -172,7 +172,7 @@ You're right to question the costs. Here's what **actually** costs money vs what
 
 ---
 
-##  Recommended FREE Setup (£0/month)
+## Recommended FREE Setup (£0/month)
 
 ### Week 1: Core Free Automation
 
@@ -225,7 +225,7 @@ You're right to question the costs. Here's what **actually** costs money vs what
 
 ---
 
-##  ROI Breakdown (Free vs Paid)
+## ROI Breakdown (Free vs Paid)
 
 ### Current FREE Setup
 
@@ -247,7 +247,7 @@ You're right to question the costs. Here's what **actually** costs money vs what
 
 ---
 
-##  Action Plan: Start FREE Today
+## Action Plan: Start FREE Today
 
 ### Step 1: Verify Free Agents (5 minutes)
 
@@ -347,7 +347,7 @@ Total: 2.5h/week, £0 cost
 
 ---
 
-##  Cost Control Safeguards
+## Cost Control Safeguards
 
 ### Registry Protection
 
@@ -387,7 +387,7 @@ node core-agents/content/newsletter-automation-agent.js generate
 
 ---
 
-##  Summary: Your Free Automation Setup
+## Summary: Your Free Automation Setup
 
 **ACTIVE FREE AGENTS (10 agents)**:
 

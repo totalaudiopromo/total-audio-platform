@@ -1,6 +1,6 @@
 # Liberty Gmail - Current Campaign Setup
 
-##  YOUR ACTIVE CAMPAIGNS (Front & Center)
+## YOUR ACTIVE CAMPAIGNS (Front & Center)
 
 ** Kiara - Bloodshot** (50 emails)
 
@@ -21,7 +21,7 @@
 - Auto-updates when Sam sends new releases
 - Color: Yellow
 
-##  Complete Structure
+## Complete Structure
 
 ```
  Kiara - Bloodshot (50)        ← CURRENT CAMPAIGN
@@ -42,7 +42,7 @@ Junk/
    Marketing                 ← Spam (archived)
 ```
 
-##  How It Works
+## How It Works
 
 ### Automatic Routing (11 filters active)
 
@@ -85,7 +85,7 @@ Junk/
 - All marketing spam
 - Auto-responses
 
-##  Autopilot Maintenance
+## Autopilot Maintenance
 
 **Status:** Running every hour (next runs at top of each hour)
 
@@ -108,7 +108,7 @@ tail -f autopilot.log
 - 17:00 -  Inbox clean
 - 21:00 -  Inbox clean
 
-##  Adding New Campaigns
+## Adding New Campaigns
 
 When you start a new campaign, tell me:
 
@@ -122,14 +122,14 @@ I'll:
 3. Move existing emails to the label
 4. Archive old campaign to Liberty/Archive
 
-##  Label Colors
+## Label Colors
 
 -  **Red** - Kiara Bloodshot
 -  **Pink** - Senior Dunce Bestial
 -  **Yellow** - Weekly Releases
 - No color - Everything else
 
-##  What's Working
+## What's Working
 
 -  2 active campaigns front and center
 -  Weekly releases always visible
@@ -140,7 +140,7 @@ I'll:
 -  Marketing spam filtered
 -  Hourly autopilot maintaining everything
 
-##  Quick Access
+## Quick Access
 
 **Check Kiara campaign:**
 Click " Kiara - Bloodshot" in sidebar

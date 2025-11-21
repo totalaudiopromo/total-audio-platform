@@ -1,6 +1,6 @@
 #  API ROUTES FIXED - Data Loading Issues Resolved
 
-##  **What Was Fixed**
+## **What Was Fixed**
 
 ### **API Route User ID Issues**
 
@@ -26,7 +26,7 @@ The main problem was that the frontend pages were using `session.user.email` as 
 -  **Consistent Response Format** - All APIs return standardized JSON
 -  **Proper Error Handling** - Better error messages and status codes
 
-##  **What You'll See Now**
+## **What You'll See Now**
 
 **Refresh your browser** at http://localhost:3010 and navigate to:
 
@@ -34,7 +34,7 @@ The main problem was that the frontend pages were using `session.user.email` as 
 2. **Pitch History** (`/pitch/history`) - Should now show your pitch library
 3. **Contacts** (`/pitch/contacts`) - Should now load your contacts
 
-##  **Expected Results**
+## **Expected Results**
 
 **No more empty data errors!** You should now see:
 
@@ -44,7 +44,7 @@ The main problem was that the frontend pages were using `session.user.email` as 
 -  Contact management working
 -  All API calls succeeding
 
-##  **Still Need Demo Data?**
+## **Still Need Demo Data?**
 
 If you're still seeing empty lists, you need to run the demo data script:
 

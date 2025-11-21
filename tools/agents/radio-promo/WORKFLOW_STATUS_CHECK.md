@@ -1,6 +1,6 @@
 #  **Liberty Music PR Radio Promo Agent - Complete Workflow Status**
 
-##  **What's Fully Set Up and Working**
+## **What's Fully Set Up and Working**
 
 ### **1. Core Agent System** 
 
@@ -29,7 +29,7 @@
 - **Notion MCP**: Project management integration
 - **Puppeteer MCP**: Web automation
 
-##  **What Needs Setup (Environment Variables)**
+## **What Needs Setup (Environment Variables)**
 
 ### **Required Environment Variables**
 
@@ -53,7 +53,7 @@ GOOGLE_CHAT_WEBHOOK_URL=your_webhook_url
 WARM_API_KEY=your_warm_api_key
 ```
 
-##  **Complete Workflow - Ready to Use**
+## **Complete Workflow - Ready to Use**
 
 ### **Step 1: Process Campaign Brief**
 
@@ -108,7 +108,7 @@ node radio-promo-agent.js gather-intelligence
 node radio-promo-agent.js analyze-mailchimp
 ```
 
-##  **Complete Liberty Music PR Workflow**
+## **Complete Liberty Music PR Workflow**
 
 ### **1. Artist Call → Campaign Brief**
 
@@ -140,7 +140,7 @@ node radio-promo-agent.js analyze-mailchimp
 - **Output**: Campaign insights, success patterns, contact intelligence
 - **Command**: `gather-intelligence`
 
-##  **Security & Safety**
+## **Security & Safety**
 
 ### **READ-ONLY Integrations**
 
@@ -154,7 +154,7 @@ node radio-promo-agent.js analyze-mailchimp
 -  **Monday.com**: Only writes to board 2443582331 (your specific board)
 -  **Mailchimp**: Only creates draft campaigns for your approval
 
-##  **Current Status Summary**
+## **Current Status Summary**
 
 | Component                   | Status           | Notes                                      |
 | --------------------------- | ---------------- | ------------------------------------------ |
@@ -169,7 +169,7 @@ node radio-promo-agent.js analyze-mailchimp
 | **Otter.ai**                |  Ready         | Local file processing                      |
 | **Google Chat**             |  Needs Webhook | Intelligence gathering                     |
 
-##  **Ready to Use!**
+## **Ready to Use!**
 
 **The system is 90% ready!** You just need to:
 

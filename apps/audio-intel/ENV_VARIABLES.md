@@ -2,7 +2,7 @@
 
 Copy this file to `.env.local` for local development, or add to Vercel Environment Variables for production.
 
-##  REQUIRED - Core Functionality
+## REQUIRED - Core Functionality
 
 ### Supabase (Authentication & Database)
 
@@ -53,7 +53,7 @@ NEXT_PUBLIC_BASE_URL=https://intel.totalaudiopromo.com
 
 ---
 
-##  OPTIONAL - Enhanced Features
+## OPTIONAL - Enhanced Features
 
 ### Perplexity AI (Alternative enrichment source)
 
@@ -99,7 +99,7 @@ NEXT_PUBLIC_BING_SITE_VERIFICATION=your_bing_verification
 
 ---
 
-##  Setup Instructions
+## Setup Instructions
 
 ### For Local Development:
 
@@ -120,7 +120,7 @@ NEXT_PUBLIC_BING_SITE_VERIFICATION=your_bing_verification
 
 ---
 
-##  Security Notes
+## Security Notes
 
 -  **Never commit `.env.local`** to git (already in `.gitignore`)
 -  **Use test keys** for local development
@@ -131,7 +131,7 @@ NEXT_PUBLIC_BING_SITE_VERIFICATION=your_bing_verification
 
 ---
 
-##  Testing Your Setup
+## Testing Your Setup
 
 ### Test Supabase Connection:
 
@@ -157,7 +157,7 @@ Use test card: `4242 4242 4242 4242` (any future date, any CVC)
 
 ---
 
-##  Cost Estimates (for budgeting)
+## Cost Estimates (for budgeting)
 
 | Service                 | Plan             | Monthly Cost               |
 | ----------------------- | ---------------- | -------------------------- |
@@ -169,7 +169,7 @@ Use test card: `4242 4242 4242 4242` (any future date, any CVC)
 
 ---
 
-##  Troubleshooting
+## Troubleshooting
 
 ### "Supabase connection failed"
 

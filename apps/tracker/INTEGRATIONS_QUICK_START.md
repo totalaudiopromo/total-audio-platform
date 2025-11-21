@@ -1,6 +1,6 @@
 # Integrations Quick Start Guide
 
-##  Get Your First Integration Working in 10 Minutes
+## Get Your First Integration Working in 10 Minutes
 
 ### Prerequisites
 
@@ -174,7 +174,7 @@ curl -X POST http://localhost:3000/api/integrations/google-sheets/sync \
 
 Your campaign should appear in the spreadsheet!
 
-##  Success!
+## Success!
 
 You now have:
 

@@ -423,7 +423,7 @@ find apps -type d -name "supabase" -not -path "*/node_modules/*" -exec rm -rf {}
 
 ---
 
-##  Support
+## Support
 
 If issues arise during testing:
 

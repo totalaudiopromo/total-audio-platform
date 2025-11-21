@@ -7,7 +7,7 @@
 
 ---
 
-##  EXECUTIVE SUMMARY
+## EXECUTIVE SUMMARY
 
 **Key Findings:**
 
@@ -1408,7 +1408,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 
 ---
 
-##  CONCLUSION & NEXT STEPS
+## CONCLUSION & NEXT STEPS
 
 ### **Key Findings**
 
@@ -1508,7 +1508,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 
 ---
 
-##  APPENDIX: AGENT COMMAND REFERENCE
+## APPENDIX: AGENT COMMAND REFERENCE
 
 ### **Contact Enrichment**
 

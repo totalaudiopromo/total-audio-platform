@@ -6,7 +6,7 @@
 
 ---
 
-##  Pre-Deployment Checklist
+## Pre-Deployment Checklist
 
 ###  Code Ready
 
@@ -20,7 +20,7 @@
 
 ---
 
-##  Vercel Environment Variables (REQUIRED)
+## Vercel Environment Variables (REQUIRED)
 
 Go to: **Vercel Dashboard > Project Settings > Environment Variables**
 
@@ -73,7 +73,7 @@ DEMO_USER_PASSWORD=buildfast
 
 ---
 
-##  Deployment Steps
+## Deployment Steps
 
 ### 1. Push to GitHub
 
@@ -112,7 +112,7 @@ NODE_ENV=production npx tsx --env-file=.env.production scripts/seed-pitch-templa
 
 ---
 
-##  Post-Deployment Testing
+## Post-Deployment Testing
 
 ### Critical Flows to Test:
 
@@ -136,7 +136,7 @@ NODE_ENV=production npx tsx --env-file=.env.production scripts/seed-pitch-templa
 
 ---
 
-##  Demo-Ready Features
+## Demo-Ready Features
 
 ### For Liberty Music PR Demo:
 
@@ -166,7 +166,7 @@ NODE_ENV=production npx tsx --env-file=.env.production scripts/seed-pitch-templa
 
 ---
 
-##  Troubleshooting
+## Troubleshooting
 
 ### Issue: Pitches not generating
 
@@ -190,7 +190,7 @@ NODE_ENV=production npx tsx --env-file=.env.production scripts/seed-pitch-templa
 
 ---
 
-##  Success Metrics
+## Success Metrics
 
 **Demo-Ready Status**: 90% Complete
 **Production Build**:  Verified (28 routes)

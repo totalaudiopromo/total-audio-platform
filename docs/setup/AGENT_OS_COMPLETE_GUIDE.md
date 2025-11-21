@@ -389,7 +389,7 @@ code WEEKLY_FOCUS.md
 
 ---
 
-##  AGENT OS SUCCESS FORMULA
+## AGENT OS SUCCESS FORMULA
 
 **Context** (your business files) + **Standards** (Agent OS patterns) + **Execution** (systematic development) = **Customer acquisition focused features that ship fast and work well**
 

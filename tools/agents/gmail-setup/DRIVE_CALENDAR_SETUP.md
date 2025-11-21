@@ -1,6 +1,6 @@
 # Google Drive & Calendar Setup - Manual Guide
 
-##  Gmail Complete
+## Gmail Complete
 
 Gmail is now fully organized with:
 
@@ -9,7 +9,7 @@ Gmail is now fully organized with:
 - Hourly autopilot running
 - All Otter AI, Gemini, WARM in correct locations
 
-##  Google Drive Setup (Manual)
+## Google Drive Setup (Manual)
 
 Since OAuth needs Drive scopes, here's how to create the folders manually with color coding:
 
@@ -58,7 +58,7 @@ Right-click each folder → "Change color":
 
 Your Drive now matches your Gmail label system.
 
-##  Google Calendar Setup (Manual)
+## Google Calendar Setup (Manual)
 
 ### 1. Create Calendars
 
@@ -93,7 +93,7 @@ For each calendar, click the 3 dots → Settings → Color:
 
 Your calendars now match Gmail and Drive.
 
-##  Future: Automated Setup
+## Future: Automated Setup
 
 If you want the scripts to work (create folders/calendars automatically):
 
@@ -113,7 +113,7 @@ If you want the scripts to work (create folders/calendars automatically):
 5. Run: `node liberty-drive-sync.js setup`
 6. Run: `node liberty-calendar-sync.js setup`
 
-##  Why Manual is Fine
+## Why Manual is Fine
 
 **Manual setup takes ~5 minutes and you only do it once.**
 
@@ -125,7 +125,7 @@ The critical automated parts are working:
 
 Drive and Calendar are just visual organization that you set once and forget.
 
-##  Current Status
+## Current Status
 
 **AUTOMATED & WORKING:**
 

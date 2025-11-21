@@ -9,7 +9,7 @@
 
 ---
 
-##  DEMO STRATEGY
+## DEMO STRATEGY
 
 **The Hook:**
 "Dan, this is the KYARA 'Bloodshot' campaign I'm running right now through Liberty. Let me show you how I'm tracking it in real-time using my new tool..."
@@ -23,7 +23,7 @@
 
 ---
 
-##  CAMPAIGN DATA TO SHOWCASE
+## CAMPAIGN DATA TO SHOWCASE
 
 ### Current Stats (As of Friday 11th Oct):
 
@@ -68,7 +68,7 @@ UK TARGETS:
 
 ---
 
-##  TRACKER DASHBOARD SETUP
+## TRACKER DASHBOARD SETUP
 
 ### What to Show Dan:
 
@@ -153,7 +153,7 @@ Radio Momentum:
 
 ---
 
-##  DEMO SCRIPT FOR DAN
+## DEMO SCRIPT FOR DAN
 
 ### Opening (1 minute):
 
@@ -194,7 +194,7 @@ Radio Momentum:
 
 ---
 
-##  BUSINESS CASE FOR DAN
+## BUSINESS CASE FOR DAN
 
 ### Liberty Music PR's Current Pain Points:
 
@@ -258,7 +258,7 @@ Radio Momentum:
 
 ---
 
-##  VISUAL DEMO SCREENSHOTS TO PREPARE
+## VISUAL DEMO SCREENSHOTS TO PREPARE
 
 ### Before Friday, Take Screenshots of:
 
@@ -289,7 +289,7 @@ Radio Momentum:
 
 ---
 
-##  KILLER DEMO MOMENTS
+## KILLER DEMO MOMENTS
 
 ### Moment 1: Real-Time WARM Data
 
@@ -309,7 +309,7 @@ Radio Momentum:
 
 ---
 
-##  POTENTIAL OBJECTIONS & RESPONSES
+## POTENTIAL OBJECTIONS & RESPONSES
 
 ### "We already track campaigns in Monday.com"
 
@@ -329,7 +329,7 @@ Radio Momentum:
 
 ---
 
-##  PREPARATION CHECKLIST (Before Friday)
+## PREPARATION CHECKLIST (Before Friday)
 
 ### Thursday Night / Friday Morning:
 

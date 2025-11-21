@@ -6,7 +6,7 @@ Go to: https://vercel.com/chris-projects-6ffe0e29/audio-intel/settings/environme
 
 ---
 
-##  Bluesky (ALREADY CONFIGURED)
+## Bluesky (ALREADY CONFIGURED)
 
 ```
 BLUESKY_IDENTIFIER=chrisschouk.bsky.social
@@ -17,7 +17,7 @@ BLUESKY_APP_PASSWORD=your-app-password-here
 
 ---
 
-##  Twitter/X (PENDING)
+## Twitter/X (PENDING)
 
 ```
 TWITTER_API_KEY=your_api_key_here
@@ -37,7 +37,7 @@ TWITTER_ACCESS_SECRET=your_access_secret_here
 
 ---
 
-##  LinkedIn (PENDING)
+## LinkedIn (PENDING)
 
 ```
 LINKEDIN_CLIENT_ID=your_client_id_here
@@ -56,7 +56,7 @@ LINKEDIN_ACCESS_TOKEN=your_access_token_here
 
 ---
 
-##  Threads (PENDING)
+## Threads (PENDING)
 
 ```
 THREADS_USER_ID=your_instagram_user_id_here
@@ -77,7 +77,7 @@ FACEBOOK_APP_SECRET=your_facebook_app_secret_here
 
 ---
 
-##  Security (RECOMMENDED)
+## Security (RECOMMENDED)
 
 ```
 CRON_SECRET=generate-with-openssl-rand-base64-32
@@ -93,7 +93,7 @@ This prevents unauthorized cron triggers.
 
 ---
 
-##  Environment Settings
+## Environment Settings
 
 **For each variable:**
 
@@ -105,7 +105,7 @@ This prevents unauthorized cron triggers.
 
 ---
 
-##  After Adding Variables
+## After Adding Variables
 
 1. Wait for Vercel to redeploy (automatic)
 2. Check Vercel logs at next scheduled time (9am or 5pm)
@@ -113,7 +113,7 @@ This prevents unauthorized cron triggers.
 
 ---
 
-##  Manual Test Command
+## Manual Test Command
 
 After adding variables, test with:
 
@@ -126,7 +126,7 @@ Replace `YOUR_CRON_SECRET` with your generated secret.
 
 ---
 
-##  Checklist
+## Checklist
 
 - [x] **Bluesky** credentials added
 - [ ] **Twitter/X** credentials added

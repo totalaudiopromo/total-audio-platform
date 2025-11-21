@@ -2,7 +2,7 @@
 
 This directory contains comprehensive end-to-end tests for the Total Audio Promo MVP using Playwright.
 
-##  Test Coverage
+## Test Coverage
 
 ### Core Page Tests
 
@@ -13,7 +13,7 @@ This directory contains comprehensive end-to-end tests for the Total Audio Promo
 - **`contacts.spec.ts`** - Contact management and CRM functionality
 - **`navigation.spec.ts`** - Cross-page navigation and routing
 
-##  Running Tests
+## Running Tests
 
 ### Quick Start
 
@@ -60,7 +60,7 @@ npx playwright test --grep "should load"
 npx playwright test tests/dashboard.spec.ts
 ```
 
-##  Test Features
+## Test Features
 
 ### What We Test
 
@@ -79,7 +79,7 @@ npx playwright test tests/dashboard.spec.ts
 - **Mobile**: Chrome Mobile, Safari Mobile
 - **Headless**: All tests run headless by default
 
-##  Configuration
+## Configuration
 
 ### Playwright Config (`playwright.config.ts`)
 
@@ -98,7 +98,7 @@ npx playwright test tests/dashboard.spec.ts
 - **Timeout**: 120 seconds
 - **Reuse**: Existing server when possible
 
-##  Test Structure
+## Test Structure
 
 ### Test Organization
 
@@ -120,7 +120,7 @@ tests/
 - **Mobile Testing**: Responsive design verification
 - **Error Scenarios**: Edge case handling
 
-##  Test Scenarios
+## Test Scenarios
 
 ### Dashboard Tests
 
@@ -176,7 +176,7 @@ tests/
 - Quick action buttons
 - Page state management
 
-##  Debugging Tests
+## Debugging Tests
 
 ### Debug Mode
 
@@ -205,7 +205,7 @@ npm run test:ui
 - **Videos**: On test failure
 - **Traces**: On first retry
 
-##  Continuous Integration
+## Continuous Integration
 
 ### GitHub Actions (Recommended)
 
@@ -230,7 +230,7 @@ jobs:
           path: playwright-report/
 ```
 
-##  Best Practices
+## Best Practices
 
 ### Test Writing
 
@@ -248,7 +248,7 @@ jobs:
 - Monitor test flakiness
 - Update selectors when UI changes
 
-##  Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -273,7 +273,7 @@ npx playwright show-report
 npx playwright test --debug dashboard.spec.ts
 ```
 
-##  Resources
+## Resources
 
 - [Playwright Documentation](https://playwright.dev/)
 - [Test Best Practices](https://playwright.dev/docs/best-practices)

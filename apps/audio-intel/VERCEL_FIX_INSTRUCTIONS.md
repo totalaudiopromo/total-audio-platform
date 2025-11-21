@@ -1,6 +1,6 @@
 #  VERCEL MONOREPO FIX - REQUIRED MANUAL STEPS
 
-##  Current Problem
+## Current Problem
 
 Vercel is failing to build because it can't find `@total-audio/ui`:
 
@@ -8,13 +8,13 @@ Vercel is failing to build because it can't find `@total-audio/ui`:
 Module not found: Can't resolve '@total-audio/ui'
 ```
 
-##  Root Cause
+## Root Cause
 
 - Vercel is only uploading `apps/audio-intel` directory
 - The workspace dependency `@total-audio/ui` lives in `../../packages/ui`
 - Vercel needs access to the **entire monorepo** to link workspace packages
 
-##  SOLUTION: Configure Vercel Root Directory
+## SOLUTION: Configure Vercel Root Directory
 
 ### Option 1: Via Vercel Dashboard (RECOMMENDED)
 
@@ -93,7 +93,7 @@ If you're using turborepo, add to monorepo root:
 }
 ```
 
-##  Verification Steps
+## Verification Steps
 
 After applying the fix:
 
@@ -113,7 +113,7 @@ After applying the fix:
    # Should redirect (307/302) not 200
    ```
 
-##  Expected Results
+## Expected Results
 
  Dependencies install from monorepo root  
  Workspace packages (`@total-audio/ui`) are linked  
@@ -121,7 +121,7 @@ After applying the fix:
  Build completes successfully  
  Auth middleware protects routes
 
-##  Quick Test Command
+## Quick Test Command
 
 After fixing Vercel settings:
 
@@ -135,7 +135,7 @@ watch -n 5 'vercel ls | head -8'
 ./verify-deployment.sh
 ```
 
-##  If Still Failing
+## If Still Failing
 
 Try this alternative approach - convert to relative imports:
 

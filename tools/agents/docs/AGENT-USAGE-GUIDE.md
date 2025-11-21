@@ -1,6 +1,6 @@
 # Agent Usage Guide: Production vs Development
 
-##  Production Agents (Use in Live Workflows)
+## Production Agents (Use in Live Workflows)
 
 ### Real Data Integration Agents
 
@@ -20,7 +20,7 @@
 - **`total-audio-tdd-orchestrator.js`**  - Production TDD workflow coordination
 - **`total-audio-*-specialist.js`**  - Suite of specialist agents
 
-##  Development/Testing Agents (Mock Data Only)
+## Development/Testing Agents (Mock Data Only)
 
 ### Mock Integration Agents
 
@@ -50,7 +50,7 @@ Located in `parked/` directory:
 - **`viral-content-automation.js`** - Viral content strategies
 - **`beta-user-acquisition-agent.js`** - Beta user acquisition workflows
 
-##  Recent Production Updates
+## Recent Production Updates
 
 ###  Fixed for Production Use:
 
@@ -59,7 +59,7 @@ Located in `parked/` directory:
 3. **Parked agents** commented out in orchestrator to prevent import errors
 4. **Agent status dashboard** created in Command Centre with color-coded status
 
-##  Deployment Commands
+## Deployment Commands
 
 ### Production Orchestrator
 
@@ -85,7 +85,7 @@ node integration-agent.js health
 node test-newsjacking-system.js
 ```
 
-##  Agent Status Monitoring
+## Agent Status Monitoring
 
 Visit **Command Centre** dashboard at <http://localhost:3005> to see real-time agent status with color-coded categories:
 
@@ -95,7 +95,7 @@ Visit **Command Centre** dashboard at <http://localhost:3005> to see real-time a
 -  **Red**: Mock/testing only
 -  **Grey**: Parked (inactive)
 
-##  Important Notes
+## Important Notes
 
 1. **Always use `-real.js` versions** for production workflows
 2. **Mock agents are for development only** - they return simulated data
@@ -103,7 +103,7 @@ Visit **Command Centre** dashboard at <http://localhost:3005> to see real-time a
 4. **Agent dashboard is live** - reflects current system status
 5. **TDD system is production-ready** - use for development workflows
 
-##  Reactivating Parked Agents
+## Reactivating Parked Agents
 
 1. Move agent back: `mv parked/[agent-name].js ./`
 2. Uncomment in `orchestrator.js`

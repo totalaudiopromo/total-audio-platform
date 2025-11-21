@@ -4,7 +4,7 @@
 **Current Status**: 8/60 pages live (13.3%), all truthful
 **Goal**: Scale to 60 pages optimized for organic traffic
 
-##  CURRENT PSEO PAGES (8 LIVE)
+## CURRENT PSEO PAGES (8 LIVE)
 
 ### Tier 1 - High Search Volume (1,000+ monthly)
 
@@ -25,7 +25,7 @@
 **Average**: ~800-1,200 words per page
 **SEO Target**: 2,000-3,000 words per page for top rankings
 
-##  WHY SCALE CONTENT LENGTH?
+## WHY SCALE CONTENT LENGTH?
 
 ### SEO Benefits
 
@@ -42,7 +42,7 @@
 3. **Authority positioning** - comprehensive guides = expert status
 4. **Long-term traffic** - evergreen content compounds over time
 
-##  CONTENT EXPANSION TEMPLATE
+## CONTENT EXPANSION TEMPLATE
 
 ### Current Structure (800-1,200 words)
 
@@ -204,7 +204,7 @@ If you're targeting BBC Radio 1, you might also benefit from:
 - Follow-up best practices
 - When to move on
 
-##  IMPLEMENTATION PLAN
+## IMPLEMENTATION PLAN
 
 ### Phase 1: Expand Tier 1 Pages (Week 1)
 
@@ -236,7 +236,7 @@ If you're targeting BBC Radio 1, you might also benefit from:
 **Target**: 1,500-2,000 words each
 **Long-tail focus**: Specific show/presenter names
 
-##  CONTENT RESEARCH PROCESS
+## CONTENT RESEARCH PROCESS
 
 ### For Each New Section
 
@@ -257,7 +257,7 @@ If you're targeting BBC Radio 1, you might also benefit from:
    - Are we answering their real question?
    - Does this help them pitch successfully?
 
-##  SEO OPTIMIZATION CHECKLIST
+## SEO OPTIMIZATION CHECKLIST
 
 ### On-Page SEO (Per Page)
 
@@ -288,7 +288,7 @@ If you're targeting BBC Radio 1, you might also benefit from:
 - [ ] Real examples and case studies
 - [ ] Updated within 6 months
 
-##  CONTENT GENERATION APPROACH
+## CONTENT GENERATION APPROACH
 
 ### Option A: Manual Writing (Highest Quality)
 
@@ -320,7 +320,7 @@ If you're targeting BBC Radio 1, you might also benefit from:
   4. Template-based assembly
   5. Batch validation and review
 
-##  SUCCESS METRICS
+## SUCCESS METRICS
 
 ### Traffic Goals (30 days post-expansion)
 
@@ -342,7 +342,7 @@ If you're targeting BBC Radio 1, you might also benefit from:
 - **Revenue attributed to PSEO**: £500-1,000/month
 - **Authority positioning**: Recognised as go-to resource
 
-##  IMMEDIATE NEXT STEPS
+## IMMEDIATE NEXT STEPS
 
 1. **Choose Tier 1 page to expand first** (BBC Radio 1 recommended)
 2. **Research and write new sections** (2-3 hours)

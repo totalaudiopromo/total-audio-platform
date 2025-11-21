@@ -1,6 +1,6 @@
 # Integrations System Setup Checklist
 
-##  Complete (Built)
+## Complete (Built)
 
 - [x] Database schema (013_integrations_system.sql)
 - [x] OAuth infrastructure (oauth-handler.ts)
@@ -14,7 +14,7 @@
 - [x] Environment variable templates
 - [x] Documentation (ROADMAP, IMPLEMENTATION, ENV_SETUP)
 
-##  Configuration Needed
+## Configuration Needed
 
 ### 1. Install Dependencies
 
@@ -121,7 +121,7 @@ After deployment:
 2. Verify "/api/cron/sync-integrations" is scheduled
 3. Check logs after 15 minutes to confirm it runs
 
-##  Testing Checklist
+## Testing Checklist
 
 ### Google Sheets Integration
 
@@ -148,7 +148,7 @@ After deployment:
 - [ ] Verify campaigns updated
 - [ ] Test error handling (disconnect Google account)
 
-##  Monitoring
+## Monitoring
 
 ### Check Sync Logs
 
@@ -188,7 +188,7 @@ Look for:
 - OAuth callback success/failures
 - Error messages
 
-##  Next Steps (After Basic Setup Works)
+## Next Steps (After Basic Setup Works)
 
 1. **Airtable Integration**: Implement sync service similar to Google Sheets
 2. **Mailchimp Integration**: Contact list sync
@@ -198,7 +198,7 @@ Look for:
 6. **Bulk Operations**: Sync multiple campaigns at once
 7. **Conflict Resolution**: Handle concurrent edits better
 
-##  Documentation Reference
+## Documentation Reference
 
 - **Roadmap**: [INTEGRATIONS_ROADMAP.md](./INTEGRATIONS_ROADMAP.md)
 - **Implementation Guide**: [INTEGRATIONS_IMPLEMENTATION.md](./INTEGRATIONS_IMPLEMENTATION.md)

@@ -1,6 +1,6 @@
 #  Pitch Generator - Ready to Run!
 
-##  Setup Complete with Claude/Anthropic
+## Setup Complete with Claude/Anthropic
 
 Your Pitch Generator is now configured to use **Claude 3.5 Sonnet** instead of OpenAI GPT-4!
 
@@ -51,7 +51,7 @@ Open http://localhost:3000
 
 ---
 
-##  Why Claude Instead of OpenAI?
+## Why Claude Instead of OpenAI?
 
 **Claude 3.5 Sonnet is actually perfect for this:**
 
@@ -79,7 +79,7 @@ Open http://localhost:3000
 
 ---
 
-##  Test the AI Quality
+## Test the AI Quality
 
 Once running, generate a few test pitches and check:
 
@@ -94,7 +94,7 @@ Claude is excellent at all of these. You might find the quality is actually _bet
 
 ---
 
-##  What's Using Claude
+## What's Using Claude
 
 All pitch generation happens in `lib/openai.ts` (kept the name for simplicity):
 
@@ -108,7 +108,7 @@ model: 'claude-3-5-sonnet-20241022';
 
 ---
 
-##  Ready to Launch!
+## Ready to Launch!
 
 **Total setup time:** ~5 minutes
 
@@ -121,7 +121,7 @@ model: 'claude-3-5-sonnet-20241022';
 
 ---
 
-##  Expected Costs
+## Expected Costs
 
 **For 100 users generating 15 pitches/month:**
 
@@ -135,7 +135,7 @@ Compare to OpenAI version: ~$68/month
 
 ---
 
-##  If You Want to Switch Back to OpenAI Later
+## If You Want to Switch Back to OpenAI Later
 
 Just:
 

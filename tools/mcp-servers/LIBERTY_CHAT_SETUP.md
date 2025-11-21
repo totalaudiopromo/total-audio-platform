@@ -1,6 +1,6 @@
 # Liberty Music PR - Google Chat MCP Setup
 
-##  OBJECTIVE
+## OBJECTIVE
 
 Give the agent read-only access to Liberty Google Chat for training on:
 
@@ -9,13 +9,13 @@ Give the agent read-only access to Liberty Google Chat for training on:
 - Team processes
 - Client management patterns
 
-##  CREDENTIALS
+## CREDENTIALS
 
 **Liberty Admin Email**: `chrisschofield@libertymusicpr.com`
 **Purpose**: Read Liberty Google Chat spaces for agent training
 **Access Level**: Read-only
 
-##  SETUP STEPS
+## SETUP STEPS
 
 ### 1. Enable Google Chat API (Liberty Workspace)
 
@@ -79,7 +79,7 @@ The first time you use the agent to access Liberty Chat, it will:
 3. Request permission to read Google Chat spaces and messages
 4. Save the token to `~/.google-chat-mcp/token.json`
 
-##  SECURITY NOTES
+## SECURITY NOTES
 
 - **Read-only access**: Agent can only READ messages, not post
 - **Your account**: Uses your Liberty admin credentials
@@ -87,7 +87,7 @@ The first time you use the agent to access Liberty Chat, it will:
 - **Token refresh**: Auto-refreshes when expired
 - **Revoke access**: Can revoke from Google Account settings anytime
 
-##  WHAT THE AGENT CAN ACCESS
+## WHAT THE AGENT CAN ACCESS
 
 From Liberty Google Chat:
 
@@ -104,7 +104,7 @@ Training data will help agent understand:
 - Team coordination processes
 - Best practices for radio promotion
 
-##  QUICK START (After Setup)
+## QUICK START (After Setup)
 
 Once authenticated, you can ask the agent:
 
@@ -113,7 +113,7 @@ Once authenticated, you can ask the agent:
 - "Search Liberty Chat for 'BBC Radio 6 Music' campaigns"
 - "Extract workflow patterns from #team-updates"
 
-##  EXISTING TRAINING DATA
+## EXISTING TRAINING DATA
 
 You already have Liberty Takeout data at:
 `/Users/chrisschofield/workspace/active/liberty-music-pr/Liberty_Training_Data/Takeout/Google Chat/`

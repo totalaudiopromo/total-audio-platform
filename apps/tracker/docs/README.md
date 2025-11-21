@@ -2,7 +2,7 @@
 
 All documentation for the Campaign Tracker app, organised by category.
 
-##  Documentation Structure
+## Documentation Structure
 
 ### `/setup/` - Setup & Configuration
 
@@ -35,7 +35,7 @@ Historical completion reports:
 
 ---
 
-##  Quick Start
+## Quick Start
 
 For getting started, see the root-level documentation:
 
@@ -44,7 +44,7 @@ For getting started, see the root-level documentation:
 
 ---
 
-##  Architecture
+## Architecture
 
 Campaign Tracker follows the TAP SaaS template structure:
 
@@ -68,7 +68,7 @@ tracker/
 
 ---
 
-##  Documentation Standards
+## Documentation Standards
 
 When adding new documentation:
 
@@ -94,7 +94,7 @@ When adding new documentation:
 
 ---
 
-##  Development Workflow
+## Development Workflow
 
 1. **Local development:**
 
@@ -110,7 +110,7 @@ When adding new documentation:
 
 ---
 
-##  Design System
+## Design System
 
 Tracker inherits the Postcraft aesthetic from the TAP SaaS template:
 

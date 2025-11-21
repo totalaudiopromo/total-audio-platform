@@ -10,7 +10,7 @@ _How Chris 10x's his radio promotion efficiency with complete automation_
 
 ---
 
-##  BEFORE: Your Current Liberty Workflow (4-6 Hours Per Campaign)
+## BEFORE: Your Current Liberty Workflow (4-6 Hours Per Campaign)
 
 ### **Monday Morning - New Artist Campaign:**
 
@@ -56,7 +56,7 @@ _How Chris 10x's his radio promotion efficiency with complete automation_
 
 ---
 
-##  AFTER: Radio Promo Agent Workflow (45 Minutes + Monitoring)
+## AFTER: Radio Promo Agent Workflow (45 Minutes + Monitoring)
 
 ### **Monday Morning - New Artist Campaign:**
 
@@ -135,7 +135,7 @@ _How Chris 10x's his radio promotion efficiency with complete automation_
 
 ---
 
-##  REAL-TIME AUTOMATION (Zero Manual Work)
+## REAL-TIME AUTOMATION (Zero Manual Work)
 
 ### **Tuesday 2:15pm: Campaign Goes Live**
 
@@ -192,7 +192,7 @@ AUTO-FOLLOW-UP TRIGGERED:
 
 ---
 
-##  YOUR NEW DAILY ROUTINE
+## YOUR NEW DAILY ROUTINE
 
 ### **Monday: Campaign Planning (30 minutes)**
 
@@ -226,7 +226,7 @@ AUTO-FOLLOW-UP TRIGGERED:
 
 ---
 
-##  THE 10X MULTIPLIER EFFECT
+## THE 10X MULTIPLIER EFFECT
 
 ### **Capacity Transformation:**
 
@@ -269,7 +269,7 @@ AFTER: Industry leader with proprietary technology
 
 ---
 
-##  THE SYSTEM IN ACTION - REAL EXAMPLES
+## THE SYSTEM IN ACTION - REAL EXAMPLES
 
 ### **Sarah's Indie Pop Campaign:**
 
@@ -303,7 +303,7 @@ Result: 6 BBC stations support within 48 hours
 
 ---
 
-##  ADVANCED FEATURES (Month 2+)
+## ADVANCED FEATURES (Month 2+)
 
 ### **Predictive Campaign Intelligence:**
 
@@ -331,7 +331,7 @@ Result: 6 BBC stations support within 48 hours
 
 ---
 
-##  THE BOTTOM LINE
+## THE BOTTOM LINE
 
 **Instead of being a radio promoter doing admin work...**
 

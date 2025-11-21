@@ -183,25 +183,25 @@ Use the project-manager subagent to create a structured summary message with emo
 
 <summary_template>
 
-##  What's been done
+## What's been done
 
 1. **[FEATURE_1]** - [ONE_SENTENCE_DESCRIPTION]
 2. **[FEATURE_2]** - [ONE_SENTENCE_DESCRIPTION]
 
-##  Issues encountered
+## Issues encountered
 
 [ONLY_IF_APPLICABLE]
 
 - **[ISSUE_1]** - [DESCRIPTION_AND_REASON]
 
-##  Ready to test in browser
+## Ready to test in browser
 
 [ONLY_IF_APPLICABLE]
 
 1. [STEP_1_TO_TEST]
 2. [STEP_2_TO_TEST]
 
-##  Pull Request
+## Pull Request
 
 View PR: [GITHUB_PR_URL]
 </summary_template>

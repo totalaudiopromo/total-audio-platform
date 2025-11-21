@@ -4,7 +4,7 @@
 
 ---
 
-##  Email Campaign Details
+## Email Campaign Details
 
 **Campaign Name**: Concerta - Consumption (Electronic/Dance Radio Campaign)
 **Send Date**: Monday, 11 November 2025
@@ -13,7 +13,7 @@
 
 ---
 
-##  MAIN EMAIL TEMPLATE
+## MAIN EMAIL TEMPLATE
 
 ### Subject Line
 
@@ -54,7 +54,7 @@ www.libertymusicpr.com
 
 ---
 
-##  Target Audience (132 Contacts)
+## Target Audience (132 Contacts)
 
 ### Confirmed Electronic/Dance Stations Include:
 
@@ -78,7 +78,7 @@ www.libertymusicpr.com
 
 ---
 
-##  Assets to Include/Attach
+## Assets to Include/Attach
 
 ### Required Links
 
@@ -104,7 +104,7 @@ www.libertymusicpr.com
 
 ---
 
-##  Key Messaging Points
+## Key Messaging Points
 
 **DO Include:**
 
@@ -122,7 +122,7 @@ www.libertymusicpr.com
 
 ---
 
-##  Send Schedule
+## Send Schedule
 
 **Monday, 11 November 2025**
 
@@ -138,7 +138,7 @@ www.libertymusicpr.com
 
 ---
 
-##  Pre-Send Checklist
+## Pre-Send Checklist
 
 ### Information Needed from Concerta:
 
@@ -165,7 +165,7 @@ www.libertymusicpr.com
 
 ---
 
-##  Expected Results
+## Expected Results
 
 Based on 132 contact database:
 
@@ -183,7 +183,7 @@ Based on 132 contact database:
 
 ---
 
-##  Follow-Up Strategy
+## Follow-Up Strategy
 
 ### Week 1 (11-15 November)
 
@@ -205,7 +205,7 @@ Based on 132 contact database:
 
 ---
 
-##  Alternative Subject Lines (A/B Testing Options)
+## Alternative Subject Lines (A/B Testing Options)
 
 If we want to test different approaches:
 
@@ -218,7 +218,7 @@ If we want to test different approaches:
 
 ---
 
-##  Personalization Variables
+## Personalization Variables
 
 For Mailchimp merge tags:
 
@@ -234,7 +234,7 @@ Hi *|FNAME|* at *|STATION|*,
 
 ---
 
-##  Social Media Support
+## Social Media Support
 
 Suggested posts to coordinate with email send:
 
@@ -260,7 +260,7 @@ South Korea → Europe → the world
 
 ---
 
-##  Important Notes for Concerta
+## Important Notes for Concerta
 
 ### What to Expect:
 
@@ -284,7 +284,7 @@ South Korea → Europe → the world
 
 ---
 
-##  FINAL APPROVAL NEEDED
+## FINAL APPROVAL NEEDED
 
 **Please review and confirm by Sunday 10 November:**
 
@@ -299,7 +299,7 @@ South Korea → Europe → the world
 
 ---
 
-##  Additional Campaign Information
+## Additional Campaign Information
 
 **Liberty will also:**
 

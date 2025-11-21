@@ -1,6 +1,6 @@
 # SECURITY ROTATION CHECKLIST - IMMEDIATE ACTION REQUIRED
 
-##  COMPROMISED KEYS - REPLACE TODAY
+## COMPROMISED KEYS - REPLACE TODAY
 
 These keys were exposed in git history and need immediate replacement:
 
@@ -101,7 +101,7 @@ These keys were exposed in git history and need immediate replacement:
 8. **Regular Rotation**: Quarterly key rotation schedule
 9. **Monitoring**: Set up alerts for exposed credentials
 
-##  RECOMMENDED PASSWORD MANAGER SETUP
+## RECOMMENDED PASSWORD MANAGER SETUP
 
 Instead of Apple Notes, use:
 
@@ -110,7 +110,7 @@ Instead of Apple Notes, use:
 3. **Tags**: TAP, Liberty, AI-Advisor for organization
 4. **Shared Vaults**: For team access when you scale
 
-##  IMMEDIATE REMINDER
+## IMMEDIATE REMINDER
 
 **Your Audio Intel business is NOT at risk** - the app works and customers can't see your secrets anymore. The compromised keys just need rotation when you have 15 minutes to prevent potential abuse.
 

@@ -358,7 +358,7 @@ Now that authentication is solid, you can:
 
 ---
 
-##  Authentication is Production-Ready!
+## Authentication is Production-Ready!
 
 All core authentication features are implemented, tested, and ready for use. You can now:
 

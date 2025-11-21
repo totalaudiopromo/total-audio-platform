@@ -94,7 +94,7 @@ pnpm --filter audio-intel build
 
 ---
 
-##  Staging Deploy (10 min)
+## Staging Deploy (10 min)
 
 _(Optional but recommended before Tracker/Pitch)_
 
@@ -123,7 +123,7 @@ vercel --cwd apps/audio-intel --prod --scope totalaudiopromo-staging
 
 ---
 
-##  If All Green
+## If All Green
 
 Tag and push the validated milestone:
 

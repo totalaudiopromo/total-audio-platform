@@ -1,6 +1,6 @@
 # BBC Radio 1 Cold Email Template (85% Conversion Rate)
 
-##  Target: UK Radio Promoters (Proven 85% conversion)
+## Target: UK Radio Promoters (Proven 85% conversion)
 
 ---
 
@@ -150,7 +150,7 @@ sadact / Audio Intel founder
 
 ---
 
-##  A/B Testing Notes
+## A/B Testing Notes
 
 **Highest conversion rates:**
 
@@ -172,7 +172,7 @@ sadact / Audio Intel founder
 
 ---
 
-##  Personalisation Variables
+## Personalisation Variables
 
 ```javascript
 {
@@ -185,7 +185,7 @@ sadact / Audio Intel founder
 
 ---
 
-##  Follow-up Sequence (If No Reply)
+## Follow-up Sequence (If No Reply)
 
 **Day 3:** Quick nudge
 
@@ -236,7 +236,7 @@ sadact / totalaudiopromo.com
 
 ---
 
-##  Pre-Send Checklist
+## Pre-Send Checklist
 
 - [ ] Personalised first name (no "Hi there")
 - [ ] Company name mentioned (shows you researched)
@@ -249,7 +249,7 @@ sadact / totalaudiopromo.com
 
 ---
 
-##  What NOT to Do
+## What NOT to Do
 
  "I hope this email finds you well" - Delete this
  "I wanted to reach out" - Weak opener
@@ -261,7 +261,7 @@ sadact / totalaudiopromo.com
 
 ---
 
-##  Expected Results (50 emails sent)
+## Expected Results (50 emails sent)
 
 **Open rate:** 65% (32 opens)
 **Click rate:** 45% (22 clicks)
@@ -275,7 +275,7 @@ sadact / totalaudiopromo.com
 
 ---
 
-##  Next Steps
+## Next Steps
 
 1. Scrape 50 radio promoter contacts (Google Maps)
 2. Find emails (Hunter.io free: 25, Snov.io free: 25)

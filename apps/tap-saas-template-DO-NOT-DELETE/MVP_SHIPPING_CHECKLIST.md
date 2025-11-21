@@ -1,6 +1,6 @@
 #  MVP SHIPPING CHECKLIST - Pitch Generator
 
-##  **COMPLETED**
+## **COMPLETED**
 
 ### **Core Functionality**
 
@@ -32,7 +32,7 @@
 -  Database foreign key issues resolved
 -  All pages loading without errors
 
-##  **STILL NEEDED FOR MVP**
+## **STILL NEEDED FOR MVP**
 
 ### **API Keys** (5 minutes)
 
@@ -57,7 +57,7 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_your-stripe-key"
 - [ ] Run the `add-demo-data.sql` script in Supabase
 - [ ] Verify demo contacts and pitches appear
 
-##  **WHAT'S READY TO SHIP**
+## **WHAT'S READY TO SHIP**
 
 ### **Core Features Working:**
 
@@ -80,7 +80,7 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_your-stripe-key"
 -  Tailwind CSS for styling
 -  Clean, professional UI
 
-##  **TO SHIP MVP:**
+## **TO SHIP MVP:**
 
 1. **Add API Keys** (5 min)
    - Copy your Anthropic API key
@@ -96,7 +96,7 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_your-stripe-key"
    - Update environment variables
    - Test live deployment
 
-##  **MONETIZATION READY**
+## **MONETIZATION READY**
 
 -  Stripe integration configured
 -  Pricing tiers defined
@@ -104,7 +104,7 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_your-stripe-key"
 -  Price IDs from existing apps
 -  Professional pricing page
 
-##  **MVP STATUS: 95% COMPLETE**
+## **MVP STATUS: 95% COMPLETE**
 
 **Only missing: API keys + 15 minutes of testing!**
 

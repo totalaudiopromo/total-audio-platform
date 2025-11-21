@@ -2,7 +2,7 @@
 
 **Production URL:** https://pitch.totalaudiopromo.com
 
-##  Required Environment Variables
+## Required Environment Variables
 
 ###  Authentication (NextAuth.js)
 
@@ -53,7 +53,7 @@ NEXT_PUBLIC_BASE_URL=https://pitch.totalaudiopromo.com
 
 ---
 
-##  How to Verify in Vercel
+## How to Verify in Vercel
 
 ### Via Vercel Dashboard:
 
@@ -74,7 +74,7 @@ vercel env pull .env.production.local
 
 ---
 
-##  Critical Variables for Production
+## Critical Variables for Production
 
 ### Minimum Required (site will work but features limited):
 
@@ -92,7 +92,7 @@ vercel env pull .env.production.local
 
 ---
 
-##  Setting Variables in Vercel
+## Setting Variables in Vercel
 
 ```bash
 # Via CLI
@@ -108,7 +108,7 @@ vercel env add ANTHROPIC_API_KEY production
 
 ---
 
-##  Test After Setting Variables
+## Test After Setting Variables
 
 After adding/updating environment variables:
 
@@ -118,7 +118,7 @@ After adding/updating environment variables:
 
 ---
 
-##  Notes
+## Notes
 
 - Variables prefixed with `NEXT_PUBLIC_` are exposed to the browser
 - All other variables are server-side only

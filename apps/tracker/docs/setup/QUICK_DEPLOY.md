@@ -1,6 +1,6 @@
 # Tracker - Quick Deploy Reference
 
-##  Deploy in 15 Minutes
+## Deploy in 15 Minutes
 
 ### 1. Enable Testing (2 mins)
 
@@ -55,7 +55,7 @@ Stripe → Webhooks
 → Redeploy
 ```
 
-##  What's Ready
+## What's Ready
 
 - Intel-style design
 - Fixed campaign schema (genre, target_reach, actual_reach)
@@ -64,12 +64,12 @@ Stripe → Webhooks
 - Pattern recognition
 - Integrations section
 
-##  Pricing
+## Pricing
 
 - Free: 3 campaigns
 - Pro: £19/month unlimited + intelligence
 
-##  Value
+## Value
 
 "Your BBC Radio 1 campaign performed 50% above industry average"
 

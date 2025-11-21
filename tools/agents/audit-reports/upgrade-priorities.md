@@ -22,7 +22,7 @@
 
 ---
 
-##  CRITICAL PRIORITY AGENTS
+## CRITICAL PRIORITY AGENTS
 
 ### 1. Contact Agent (`core-agents/technical/contact-agent.js`)
 
@@ -266,7 +266,7 @@ class CampaignAgent extends StreamingAgent {
 
 ---
 
-##  HIGH PRIORITY AGENTS
+## HIGH PRIORITY AGENTS
 
 ### 4. Content Generation Agent (`core-agents/content/content-generation-agent.js`)
 
@@ -370,7 +370,7 @@ class CampaignAgent extends StreamingAgent {
 
 ---
 
-##  MEDIUM PRIORITY AGENTS
+## MEDIUM PRIORITY AGENTS
 
 ### 8. Social Media Agent (`core-agents/content/social-media-agent.js`)
 
@@ -399,7 +399,7 @@ class CampaignAgent extends StreamingAgent {
 
 ---
 
-##  LOW PRIORITY AGENTS
+## LOW PRIORITY AGENTS
 
 ### Radio Promo Sub-Agents (7 agents)
 

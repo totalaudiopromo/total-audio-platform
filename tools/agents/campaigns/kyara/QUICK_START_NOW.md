@@ -6,7 +6,7 @@
 
 ---
 
-##  RIGHT NOW (5 Minutes Total)
+## RIGHT NOW (5 Minutes Total)
 
 ### Step 1: Open Tracker (30 seconds)
 
@@ -116,7 +116,7 @@ MONDAY 14th: Release blast ready (30 contacts)
 
 ---
 
-##  DONE! (Verify)
+## DONE! (Verify)
 
 **You should now see:**
 
@@ -128,7 +128,7 @@ MONDAY 14th: Release blast ready (30 contacts)
 
 ---
 
-##  TAKE SCREENSHOTS (1 minute)
+## TAKE SCREENSHOTS (1 minute)
 
 **For Friday demo backup:**
 
@@ -142,7 +142,7 @@ MONDAY 14th: Release blast ready (30 contacts)
 
 ---
 
-##  NOW USE IT FOR REAL KYARA CAMPAIGN
+## NOW USE IT FOR REAL KYARA CAMPAIGN
 
 ### Dog-Fooding the Tracker:
 
@@ -177,7 +177,7 @@ MONDAY 14th: Release blast ready (30 contacts)
 
 ---
 
-##  DEMO PREP (Thursday Night)
+## DEMO PREP (Thursday Night)
 
 **After adding campaign:**
 
@@ -201,7 +201,7 @@ MONDAY 14th: Release blast ready (30 contacts)
 
 ---
 
-##  TROUBLESHOOTING
+## TROUBLESHOOTING
 
 ### "Tracker won't load at localhost:3004"
 
@@ -252,7 +252,7 @@ PORT=3004 npm run dev -- apps/tracker
 
 ---
 
-##  YOU'RE READY!
+## YOU'RE READY!
 
 **What You Have Now:**
  Tracker running (port 3004)

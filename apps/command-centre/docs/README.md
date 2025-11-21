@@ -2,7 +2,7 @@
 
 All documentation organised by category.
 
-##  Documentation Structure
+## Documentation Structure
 
 ### `/setup/` - Setup & Configuration
 
@@ -24,7 +24,7 @@ Historical completion reports and milestone records.
 
 ---
 
-##  Quick Start
+## Quick Start
 
 For getting started, see the root-level documentation:
 
@@ -32,7 +32,7 @@ For getting started, see the root-level documentation:
 
 ---
 
-##  Documentation Standards
+## Documentation Standards
 
 When adding new documentation:
 

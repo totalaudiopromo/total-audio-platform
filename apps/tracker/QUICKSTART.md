@@ -1,6 +1,6 @@
 # Total Audio Tracker - Quick Start Guide
 
-##  You're Almost Ready!
+## You're Almost Ready!
 
 I've built your intelligent campaign tracker based on the PRD. Everything is ready except one step: **running the database migration**.
 
@@ -64,7 +64,7 @@ Create 3+ campaigns with different platforms/genres to see:
 - "Playlists campaigns show 45% success rate - your most effective platform"
 - "Your optimal budget range is £300-£500"
 
-##  What's Different From Before
+## What's Different From Before
 
 ### Old Tracker:
 
@@ -81,7 +81,7 @@ Create 3+ campaigns with different platforms/genres to see:
 -  **Smart Recommendations** (actionable insights)
 -  **Predictive Intelligence** (forecast before launch)
 
-##  Value Delivered
+## Value Delivered
 
 Each campaign now shows:
 
@@ -92,7 +92,7 @@ Each campaign now shows:
 
 **This is worth £19/month** 
 
-##  Verify It's Working
+## Verify It's Working
 
 ### Check Benchmarks Loaded:
 
@@ -118,7 +118,7 @@ LIMIT 5;
 -- Should show calculated intelligence fields
 ```
 
-##  Common Issues
+## Common Issues
 
 ### "Column does not exist"
 
@@ -136,7 +136,7 @@ LIMIT 5;
 
 **Fix**: Check `.env.local` has correct Supabase credentials
 
-##  You're Ready!
+## You're Ready!
 
 Once migration is run:
 

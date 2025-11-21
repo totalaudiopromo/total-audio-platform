@@ -5,7 +5,7 @@
 
 ---
 
-##  What You Need for KYARA Campaign
+## What You Need for KYARA Campaign
 
 ### 1. **Email Pitch** (Gmail - Plain Text)
 
@@ -89,7 +89,7 @@ For cold contacts or follow-ups
 
 ---
 
-##  Professional Email Structure for KYARA
+## Professional Email Structure for KYARA
 
 ### For Anika Luna (Warm - Triple J)
 
@@ -136,7 +136,7 @@ chrisschofield@libertymusicpr.com
 
 ---
 
-##  Creating a Professional EPK
+## Creating a Professional EPK
 
 ### Quick Method: Google Slides → PDF
 
@@ -184,7 +184,7 @@ chrisschofield@libertymusicpr.com
 
 ---
 
-##  Streaming Link Strategy
+## Streaming Link Strategy
 
 **Create these before pitching**:
 
@@ -213,7 +213,7 @@ Offer all 3 options - let them choose their preferred platform
 
 ---
 
-##  File Package Checklist
+## File Package Checklist
 
 **Before sending pitches, prepare**:
 
@@ -252,7 +252,7 @@ Offer all 3 options - let them choose their preferred platform
 
 ---
 
-##  Recommended Workflow
+## Recommended Workflow
 
 ### 2 Weeks Before Release:
 
@@ -290,7 +290,7 @@ Offer all 3 options - let them choose their preferred platform
 
 ---
 
-##  What NOT to Do
+## What NOT to Do
 
 **Never**:
 
@@ -313,7 +313,7 @@ Offer all 3 options - let them choose their preferred platform
 
 ---
 
-##  Tracking & Follow-up
+## Tracking & Follow-up
 
 **Track in Airtable**:
 
@@ -344,7 +344,7 @@ Chris
 
 ---
 
-##  Pro Tips
+## Pro Tips
 
 1. **Personalize every email** - even small changes make a difference
 2. **Reference specific shows/times** - shows you've done research
@@ -355,7 +355,7 @@ Chris
 
 ---
 
-##  Summary
+## Summary
 
 **For KYARA Australian campaign**:
 

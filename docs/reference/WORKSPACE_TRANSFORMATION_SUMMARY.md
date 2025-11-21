@@ -188,7 +188,7 @@ npm run dev:audio-intel
 - Mobile-first experience maintained
 - Newsletter and content automation
 
-##  IMPORTANT FILE LOCATIONS (Bookmark These)
+## IMPORTANT FILE LOCATIONS (Bookmark These)
 
 ### Daily Reference
 

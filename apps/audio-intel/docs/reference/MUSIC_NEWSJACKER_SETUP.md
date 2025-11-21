@@ -17,7 +17,7 @@ A simplified version of Ole's Newsjacker 3000, built specifically for your music
 
 ---
 
-##  Quick Setup (5 minutes)
+## Quick Setup (5 minutes)
 
 ### Step 1: Get NewsAPI Key (Free)
 
@@ -54,7 +54,7 @@ ANTHROPIC_API_KEY=your_anthropic_key_here
 
 ---
 
-##  How It Works
+## How It Works
 
 ### Daily Automation
 
@@ -90,7 +90,7 @@ Each run produces:
 
 ---
 
-##  Expected Results
+## Expected Results
 
 ### News Quality
 
@@ -115,7 +115,7 @@ Each run produces:
 
 ---
 
-##  Customization Options
+## Customization Options
 
 ### Change News Sources
 
@@ -153,7 +153,7 @@ const totalScore = recencyScore * 0.35 + importanceScore * 0.65;
 
 ---
 
-##  Troubleshooting
+## Troubleshooting
 
 ### No News Found
 
@@ -175,7 +175,7 @@ const totalScore = recencyScore * 0.35 + importanceScore * 0.65;
 
 ---
 
-##  Pro Tips
+## Pro Tips
 
 ### Best Times to Run
 
@@ -197,7 +197,7 @@ const totalScore = recencyScore * 0.35 + importanceScore * 0.65;
 
 ---
 
-##  You're Ready!
+## You're Ready!
 
 Your Music Newsjacker 3000 is now set up and ready to:
 
@@ -210,7 +210,7 @@ Your Music Newsjacker 3000 is now set up and ready to:
 
 ---
 
-##  Support
+## Support
 
 If you run into any issues:
 

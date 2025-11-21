@@ -1,6 +1,6 @@
 # Exit Intent Popup Fixes
 
-##  Changes Made
+## Changes Made
 
 ### 1. Less Aggressive Timing
 
@@ -22,7 +22,7 @@
 - Clear way to permanently dismiss
 - Less manipulative copy
 
-##  About the 404 Issue
+## About the 404 Issue
 
 The "existing campaigns" link might be:
 
@@ -32,11 +32,11 @@ The "existing campaigns" link might be:
 
 **To investigate:** Check where you're clicking "existing campaigns" and I can fix the specific link.
 
-##  Files Modified
+## Files Modified
 
 - `components/ExitIntentPopup.tsx` - Made less aggressive and more respectful
 
-##  Deploy
+## Deploy
 
 These changes need to be deployed to take effect:
 

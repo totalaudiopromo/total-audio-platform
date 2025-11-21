@@ -1,6 +1,6 @@
 # TAP SaaS Template - Usage Guide
 
-##  IMPORTANT: This is a Template Directory
+## IMPORTANT: This is a Template Directory
 
 **DO NOT modify this directory directly when building new tools.**
 

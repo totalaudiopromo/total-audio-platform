@@ -548,7 +548,7 @@ async function buildSignalThread(input: {
 
 ---
 
-##  API Routes Structure
+## API Routes Structure
 
 All routes under: `apps/command-centre/app/api/intelligence/`
 
@@ -808,7 +808,7 @@ const trajectory = await predictTrajectory({
 
 ---
 
-##  Statistics
+## Statistics
 
 **Database Expansion**:
 - **+7 tables** (33 total)

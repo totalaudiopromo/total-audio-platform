@@ -284,7 +284,7 @@ console.log(' Audio Intel connection successful!');
 - [ ] Refine scoring algorithm
 - [ ] Export performance reports
 
-##  Success Metrics
+## Success Metrics
 
 ### Target KPIs:
 
@@ -301,7 +301,7 @@ console.log(' Audio Intel connection successful!');
 - Campaign performance trends
 - Time saved per campaign
 
-##  Next Steps
+## Next Steps
 
 1. **Set up Airtable base** using this guide
 2. **Import existing contacts** and clean up data

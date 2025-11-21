@@ -8,7 +8,7 @@
 
 ---
 
-##  AUSTRALIAN TARGETS (15 contacts)
+## AUSTRALIAN TARGETS (15 contacts)
 
 ### Priority 1: Triple J Network (Not Yet Contacted)
 
@@ -112,7 +112,7 @@
 
 ---
 
-##  UK TARGETS (15 contacts)
+## UK TARGETS (15 contacts)
 
 ### Priority 1: BBC Specialist Electronic
 

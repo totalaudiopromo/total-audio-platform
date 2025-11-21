@@ -28,7 +28,7 @@ _The ultimate radio promotion automation system - everything in one place_
 
 _How Chris 10x's his radio promotion efficiency with complete automation_
 
-##  BEFORE: Your Current Liberty Workflow (4-6 Hours Per Campaign)
+## BEFORE: Your Current Liberty Workflow (4-6 Hours Per Campaign)
 
 ### Monday Morning - New Artist Campaign:
 
@@ -74,7 +74,7 @@ _How Chris 10x's his radio promotion efficiency with complete automation_
 
 ---
 
-##  AFTER: Radio Promo Agent Workflow (45 Minutes + Monitoring)
+## AFTER: Radio Promo Agent Workflow (45 Minutes + Monitoring)
 
 ### Monday Morning - New Artist Campaign:
 
@@ -124,7 +124,7 @@ _How Chris 10x's his radio promotion efficiency with complete automation_
 
 **TOTAL ACTIVE WORK: 5-6 hours/week vs 30-40 hours/week**
 
-##  THE 10X MULTIPLIER EFFECT
+## THE 10X MULTIPLIER EFFECT
 
 ### Capacity Transformation:
 
@@ -152,7 +152,7 @@ BEFORE: Limited to Liberty's processes
 AFTER: Industry leader with proprietary technology
 ```
 
-##  THE SYSTEM IN ACTION - REAL EXAMPLES
+## THE SYSTEM IN ACTION - REAL EXAMPLES
 
 ### Sarah's Indie Pop Campaign:
 
@@ -174,7 +174,7 @@ Your work: 45 mins setup + 2 hours monitoring
 
 _Specialized AI agents for different aspects of radio campaign automation_
 
-##  Agent Architecture Overview
+## Agent Architecture Overview
 
 **Master System**: Radio Promo Agent
 
@@ -194,7 +194,7 @@ _Specialized AI agents for different aspects of radio campaign automation_
 
 -  **Flexible deployment** - enable/disable specific agents as needed
 
-##  AGENT TEAM STRUCTURE
+## AGENT TEAM STRUCTURE
 
 ### 1.  Campaign Intelligence Agent
 
@@ -304,7 +304,7 @@ _Specialized AI agents for different aspects of radio campaign automation_
 
 - ROI calculation and success metrics
 
-##  AGENT COORDINATION SYSTEM
+## AGENT COORDINATION SYSTEM
 
 **Master Orchestrator** coordinates agent interactions and maintains campaign state
 
@@ -360,7 +360,7 @@ _Technical implementation and integration strategy_
 
 - Automated weekly reporting
 
-##  Two-Portal Strategy
+## Two-Portal Strategy
 
 ### PR Agency Portal (Chris's Dashboard)
 
@@ -386,7 +386,7 @@ _Technical implementation and integration strategy_
 
 - Campaign timeline and milestones
 
-##  API Research Results
+## API Research Results
 
 ###  Limited API Access
 
@@ -410,7 +410,7 @@ _Technical implementation and integration strategy_
 
 - **Stripe API**: Payment processing for £10 packages
 
-##  Apify Integration Strategy
+## Apify Integration Strategy
 
 **What Is Apify**: Web scraping and browser automation platform (€49/month)
 
@@ -434,7 +434,7 @@ _Technical implementation and integration strategy_
 
 - Data extraction and normalisation
 
-##  Revenue Model Integration
+## Revenue Model Integration
 
 ### Pricing Tiers:
 
@@ -504,7 +504,7 @@ _Step-by-step development plan_
 
 - Beta testing with pilot clients
 
-##  Agent Development Priority
+## Agent Development Priority
 
 1. **Intelligence Agent** - Foundation for all other agents
 
@@ -518,7 +518,7 @@ _Step-by-step development plan_
 
 1. **Coverage Agent** - Final piece for complete automation
 
-##  Success Metrics
+## Success Metrics
 
 ### Efficiency Gains:
 
@@ -578,7 +578,7 @@ _Your clients get better results. You get your life back. Everyone wins._
 
 ---
 
-##  CONSOLIDATION NOTES
+## CONSOLIDATION NOTES
 
 This page consolidates content from:
 

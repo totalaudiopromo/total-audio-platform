@@ -1,10 +1,10 @@
 # pSEO Implementation Roadmap - Audio Intel Contact Intelligence Authority
 
-##  Goal
+## Goal
 
 Scale from 1 case study (BBC Radio 1) → 60 programmatic landing pages → 2,000+ monthly organic visits → 100+ monthly leads
 
-##  Timeline: 8-Week Implementation
+## Timeline: 8-Week Implementation
 
 ### Week 1: Template Extraction & Foundation
 
@@ -252,7 +252,7 @@ Scale from 1 case study (BBC Radio 1) → 60 programmatic landing pages → 2,00
 
 ---
 
-##  Success Metrics (Post-Launch)
+## Success Metrics (Post-Launch)
 
 ### Month 1-3: Initial Indexing & Ranking
 
@@ -274,7 +274,7 @@ Scale from 1 case study (BBC Radio 1) → 60 programmatic landing pages → 2,00
 
 ---
 
-##  Maintenance Schedule (Post-Launch)
+## Maintenance Schedule (Post-Launch)
 
 ### Quarterly (Every 3 Months):
 
@@ -300,7 +300,7 @@ Scale from 1 case study (BBC Radio 1) → 60 programmatic landing pages → 2,00
 
 ---
 
-##  Investment Summary
+## Investment Summary
 
 **Total Time Investment**: 93-118 hours over 8 weeks
 **Cost at £50/hour**: £4,650-£5,900
@@ -318,7 +318,7 @@ Scale from 1 case study (BBC Radio 1) → 60 programmatic landing pages → 2,00
 
 ---
 
-##  Quick Wins to Implement First
+## Quick Wins to Implement First
 
 ### Immediate (This Week):
 
@@ -344,7 +344,7 @@ Scale from 1 case study (BBC Radio 1) → 60 programmatic landing pages → 2,00
 
 ---
 
-##  Bottom Line
+## Bottom Line
 
 This roadmap takes Audio Intel from **1 manual case study** → **60 programmatic landing pages** → **established authority** in music industry contact intelligence.
 

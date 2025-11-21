@@ -1,6 +1,6 @@
 # Pitch Generator - Quick Start Guide
 
-##  Get Up and Running in 5 Minutes
+## Get Up and Running in 5 Minutes
 
 ### Step 1: Install Dependencies 
 
@@ -61,7 +61,7 @@ Open http://localhost:3000
 
 ---
 
-##  What Was Built
+## What Was Built
 
 ###  Core Features
 
@@ -97,7 +97,7 @@ Open http://localhost:3000
 
 ---
 
-##  Next Steps for Production
+## Next Steps for Production
 
 ### Before Launch Checklist
 
@@ -130,7 +130,7 @@ Open http://localhost:3000
 
 ---
 
-##  Pro Tips
+## Pro Tips
 
 ### Getting Better AI Results
 
@@ -156,7 +156,7 @@ The AI quality depends heavily on:
 
 ---
 
-##  Common Issues
+## Common Issues
 
 ### "Failed to generate pitch"
 
@@ -178,7 +178,7 @@ The AI quality depends heavily on:
 
 ---
 
-##  Architecture Overview
+## Architecture Overview
 
 ```
 User Flow:
@@ -195,7 +195,7 @@ User Flow:
 
 ---
 
-##  Brand Alignment
+## Brand Alignment
 
 This build follows TAP brand guidelines:
 
@@ -206,7 +206,7 @@ This build follows TAP brand guidelines:
 
 ---
 
-##  Need Help?
+## Need Help?
 
 - Read the full `PITCH_GENERATOR_README.md`
 - Check the PRD for feature specs

@@ -158,7 +158,7 @@ Verify installation completeness and provide clear next steps for the user to st
 
 <summary_template>
 
-##  Agent OS Successfully Installed
+## Agent OS Successfully Installed
 
 I've analyzed your [PRODUCT_TYPE] codebase and set up Agent OS with documentation that reflects your actual implementation.
 

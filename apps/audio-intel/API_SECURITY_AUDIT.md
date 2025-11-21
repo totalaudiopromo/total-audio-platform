@@ -5,7 +5,7 @@
 
 ---
 
-##  PROTECTED ROUTES (Middleware Authentication)
+## PROTECTED ROUTES (Middleware Authentication)
 
 ### Page Routes
 
@@ -26,7 +26,7 @@
 
 ---
 
-##  SECURITY CONCERNS & RECOMMENDATIONS
+## SECURITY CONCERNS & RECOMMENDATIONS
 
 ### 1. `/api/enrich-claude` - NOT PROTECTED 
 
@@ -166,7 +166,7 @@ const event = stripe.webhooks.constructEvent(body, sig, webhookSecret);
 
 ---
 
-##  PRE-DEPLOYMENT CHECKLIST
+## PRE-DEPLOYMENT CHECKLIST
 
 ### Critical (Must Fix)
 
@@ -191,7 +191,7 @@ const event = stripe.webhooks.constructEvent(body, sig, webhookSecret);
 
 ---
 
-##  TESTING COMMANDS
+## TESTING COMMANDS
 
 ```bash
 # Test protected routes redirect
@@ -211,7 +211,7 @@ curl -X POST http://localhost:3000/api/enrich-claude \
 
 ---
 
-##  IMMEDIATE FIX REQUIRED
+## IMMEDIATE FIX REQUIRED
 
 **File:** `middleware.ts`  
 **Line:** 19-22
@@ -233,7 +233,7 @@ const protectedAPIPaths = [
 
 ---
 
-##  WHAT'S ALREADY SECURE
+## WHAT'S ALREADY SECURE
 
 1.  Supabase RLS (Row Level Security) on database
 2.  Environment variables properly configured
@@ -245,7 +245,7 @@ const protectedAPIPaths = [
 
 ---
 
-##  References
+## References
 
 - [Next.js Middleware Docs](https://nextjs.org/docs/app/building-your-application/routing/middleware)
 - [Supabase Auth Docs](https://supabase.com/docs/guides/auth)

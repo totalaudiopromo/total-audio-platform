@@ -1,6 +1,6 @@
 # Tracker MVP - Deployment Guide
 
-##  What's Complete
+## What's Complete
 
 ### 1. Design System (Intel Match)
 
@@ -41,7 +41,7 @@
 -  Actionable recommendations
 -  Percentile ranking
 
-##  Deployment Steps (30 mins)
+## Deployment Steps (30 mins)
 
 ### Step 1: Enable Email Confirmation Bypass (5 mins)
 
@@ -160,7 +160,7 @@ STRIPE_WEBHOOK_SECRET=whsec_...
 4. Copy webhook secret to Vercel env vars
 5. Redeploy on Vercel
 
-##  Value Proposition (£19/month)
+## Value Proposition (£19/month)
 
 ### What Artists Get:
 
@@ -184,7 +184,7 @@ STRIPE_WEBHOOK_SECRET=whsec_...
 - Export to CSV
 - Priority support
 
-##  Testing Checklist
+## Testing Checklist
 
 ### Core Flow:
 
@@ -212,7 +212,7 @@ STRIPE_WEBHOOK_SECRET=whsec_...
 - [ ] CSV import option visible
 - [ ] Audio Intel cross-reference card visible
 
-##  Known Issues & Fixes
+## Known Issues & Fixes
 
 ### Issue: Email Confirmation Required
 
@@ -226,7 +226,7 @@ STRIPE_WEBHOOK_SECRET=whsec_...
 
 **Fix**: Ensure benchmark data exists in DB (migration 003 added it)
 
-##  Ready to Ship!
+## Ready to Ship!
 
 The product is technically complete and ready for:
 

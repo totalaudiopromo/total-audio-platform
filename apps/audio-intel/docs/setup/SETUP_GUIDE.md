@@ -34,7 +34,7 @@ npm run dev
 - **Landing Page**: <http://localhost:3000>
 - **Working Demo**: <http://localhost:3000/demo>
 
-##  API Key Setup
+## API Key Setup
 
 ### Claude AI API (Required)
 
@@ -62,7 +62,7 @@ npm run dev
    NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
    ```
 
-##  Current Working Features
+## Current Working Features
 
 ###  Fully Functional
 
@@ -79,7 +79,7 @@ npm run dev
 - `POST /api/ai-agent` - AI agent responses
 - `POST /api/analytics` - Usage tracking
 
-##  Testing the Demo
+## Testing the Demo
 
 ### 1. Contact Enrichment Test
 
@@ -104,7 +104,7 @@ npm run dev
 3. Ask: "How should I pitch my indie rock EP to radio?"
 4. Get strategic advice
 
-##  Design System
+## Design System
 
 ### Audio Brand Integration
 
@@ -120,7 +120,7 @@ npm run dev
 - Responsive design for all devices
 - Accessibility compliant
 
-##  Deployment Ready
+## Deployment Ready
 
 ### Vercel Deployment
 
@@ -138,7 +138,7 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_production_key
 NEXT_PUBLIC_BASE_URL=https://your-domain.com
 ```
 
-##  Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -152,7 +152,7 @@ NEXT_PUBLIC_BASE_URL=https://your-domain.com
 - Search results: Cached for 1 hour
 - File uploads: Limited to 10MB CSV files
 
-##  Success Metrics
+## Success Metrics
 
 ### Current Performance
 
@@ -168,7 +168,7 @@ NEXT_PUBLIC_BASE_URL=https://your-domain.com
 - User acquisition: 50 beta users
 - Retention target: 80%+ after 30 days
 
-##  Music Industry Context
+## Music Industry Context
 
 ### Target Markets
 

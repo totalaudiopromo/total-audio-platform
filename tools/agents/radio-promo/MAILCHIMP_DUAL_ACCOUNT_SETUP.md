@@ -1,6 +1,6 @@
 # Mailchimp Dual Account Setup - Complete Guide
 
-##  Current Situation
+## Current Situation
 
 You have **two separate Mailchimp accounts**:
 
@@ -14,7 +14,7 @@ You have **two separate Mailchimp accounts**:
    - List ID: `2c81175fba`
    - API Key: `e028ec0ce85df6990c0a824e3b55e033-us17`
 
-##  Critical Issue: TAP Account Ownership
+## Critical Issue: TAP Account Ownership
 
 **Problem**: Account is owned by `radiopromo@totalaudiotransfer.com` but you want it owned by `promo@totalaudiopromo.com`
 
@@ -43,7 +43,7 @@ Thank you!
 
 ---
 
-##  Airtable Integration
+## Airtable Integration
 
 ### Required Airtable Field
 
@@ -67,7 +67,7 @@ Add this field to your KYARA Airtable base:
 
 ---
 
-##  Running the Sync
+## Running the Sync
 
 Once the Airtable field is created, run:
 
@@ -87,7 +87,7 @@ This will:
 
 ---
 
-##  Environment Variables (.env)
+## Environment Variables (.env)
 
 Already configured in `/tools/agents/radio-promo/.env`:
 
@@ -105,7 +105,7 @@ TAP_MAILCHIMP_LIST_ID=2c81175fba
 
 ---
 
-##  Action Checklist
+## Action Checklist
 
 - [ ] Contact Mailchimp support to transfer TAP account ownership
 - [ ] Verify new owner email: promo@totalaudiopromo.com
@@ -116,7 +116,7 @@ TAP_MAILCHIMP_LIST_ID=2c81175fba
 
 ---
 
-##  Expected Results
+## Expected Results
 
 After sync completes:
 
@@ -129,7 +129,7 @@ After sync completes:
 
 ---
 
-##  Future Use
+## Future Use
 
 Use this to:
 

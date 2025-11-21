@@ -1,6 +1,6 @@
 # Case Study Parser - Quick Reference Card
 
-##  Most Common Usage Patterns
+## Most Common Usage Patterns
 
 ### 1. Create a Dynamic Case Study Page
 
@@ -126,7 +126,7 @@ Object.entries(byCategory).map(([category, studies]) => (
 
 ---
 
-##  Key Data Fields
+## Key Data Fields
 
 ```typescript
 interface EnrichedCaseStudyData {
@@ -163,7 +163,7 @@ interface EnrichedCaseStudyData {
 
 ---
 
-##  Tier Badge Component
+## Tier Badge Component
 
 ```typescript
 function TierBadge({ tier }: { tier: number }) {
@@ -175,7 +175,7 @@ function TierBadge({ tier }: { tier: number }) {
 
 ---
 
-##  Utility Functions Cheat Sheet
+## Utility Functions Cheat Sheet
 
 | Function                                | Use Case               | Returns                         |
 | --------------------------------------- | ---------------------- | ------------------------------- |
@@ -188,7 +188,7 @@ function TierBadge({ tier }: { tier: number }) {
 
 ---
 
-##  CSV Quick Edit Guide
+## CSV Quick Edit Guide
 
 **Location**: `docs/pseo/programmatic-pages.csv`
 
@@ -211,7 +211,7 @@ function TierBadge({ tier }: { tier: number }) {
 
 ---
 
-##  Common Mistakes
+## Common Mistakes
 
 1. **Forgetting semicolons in arrays**: Use `;` not `,` to separate values in `search_intent`, `audience`, `proof_points`
 2. **Invalid tier**: Must be 1, 2, or 3 (not 0 or 4+)
@@ -220,7 +220,7 @@ function TierBadge({ tier }: { tier: number }) {
 
 ---
 
-##  Debugging
+## Debugging
 
 **Case study not showing?**
 
@@ -250,7 +250,7 @@ if (study) {
 
 ---
 
-##  Full Documentation
+## Full Documentation
 
 - **Complete usage guide**: `CASE_STUDY_PARSER_USAGE.md`
 - **Implementation examples**: `EXAMPLE_CASE_STUDY_PAGE.tsx`, `EXAMPLE_BLOG_LISTING_PAGE.tsx`

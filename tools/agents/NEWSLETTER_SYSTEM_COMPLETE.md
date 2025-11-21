@@ -10,7 +10,7 @@
 
 ---
 
-##  What This System Does
+## What This System Does
 
 Automatically generates "The Unsigned Advantage" newsletter by:
 
@@ -23,7 +23,7 @@ Automatically generates "The Unsigned Advantage" newsletter by:
 
 ---
 
-##  RSS Feed Sources (9 Total)
+## RSS Feed Sources (9 Total)
 
 ### High Priority (Indie Focus):
 
@@ -45,7 +45,7 @@ Automatically generates "The Unsigned Advantage" newsletter by:
 
 ---
 
-##  Voice Profile (Verified Facts Only)
+## Voice Profile (Verified Facts Only)
 
 ### What Claude Knows About You:
 
@@ -72,7 +72,7 @@ Automatically generates "The Unsigned Advantage" newsletter by:
 
 ---
 
-##  Newsletter Framework (Enhanced with Depth Requirements)
+## Newsletter Framework (Enhanced with Depth Requirements)
 
 Every section follows **"The Unsigned Advantage"** structure with **depth requirements**:
 
@@ -118,7 +118,7 @@ Only if genuinely relevant to contact research/organisation
 
 ---
 
-##  Technical Details
+## Technical Details
 
 ### Files:
 
@@ -145,7 +145,7 @@ Only if genuinely relevant to contact research/organisation
 
 ---
 
-##  Example Newsletter Output
+## Example Newsletter Output
 
 ### Story: "Suno and Udio SUED By Indie Musicians"
 
@@ -174,7 +174,7 @@ Chris
 
 ---
 
-##  How to Use
+## How to Use
 
 ### Generate Weekly Newsletter
 
@@ -206,7 +206,7 @@ node send-to-convertkit.js --test
 
 ---
 
-##  Weekly Workflow
+## Weekly Workflow
 
 **Monday Morning (15 minutes)**:
 
@@ -225,7 +225,7 @@ node send-to-convertkit.js --test
 
 ---
 
-##  Quality Safeguards
+## Quality Safeguards
 
 ### Content Quality:
 
@@ -245,7 +245,7 @@ node send-to-convertkit.js --test
 
 ---
 
-##  Cost Breakdown
+## Cost Breakdown
 
 **Per Newsletter**:
 
@@ -262,7 +262,7 @@ node send-to-convertkit.js --test
 
 ---
 
-##  Next Steps
+## Next Steps
 
 ### Ready to Go:
 

@@ -24,7 +24,7 @@
 - `/signup` - Sign up page
 - `/auth/callback` - Email confirmation handler
 
-##  Testing Instructions
+## Testing Instructions
 
 ### Test Sign Up Flow
 
@@ -85,7 +85,7 @@
 
 6. **You should be signed in**
 
-##  Verify in Supabase
+## Verify in Supabase
 
 1. Go to your [Supabase Dashboard](https://supabase.com/dashboard/project/ucncbighzqudaszewjrv)
 
@@ -95,7 +95,7 @@
 
 4. Check **Table Editor → app_permissions** - should have `audio-intel` access
 
-##  Known Issues / Next Steps
+## Known Issues / Next Steps
 
 ### What's Working 
 
@@ -161,7 +161,7 @@ export const config = {
 };
 ```
 
-##  Success Metrics
+## Success Metrics
 
 When authentication is fully working, you should be able to:
 
@@ -174,14 +174,14 @@ When authentication is fully working, you should be able to:
 -  Sign out
 -  Protected routes redirect to sign in
 
-##  Resources
+## Resources
 
 - Auth package: `packages/auth/README.md`
 - Example components: `examples/auth-components/`
 - Full guide: `IMPLEMENTATION_GUIDE.md`
 - Supabase dashboard: https://supabase.com/dashboard/project/ucncbighzqudaszewjrv
 
-##  What's Next?
+## What's Next?
 
 1. **Test the sign-up flow** (most important!)
 2. Add UserMenu to layout

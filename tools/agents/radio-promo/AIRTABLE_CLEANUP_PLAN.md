@@ -1,10 +1,10 @@
 # Airtable Field Cleanup Plan
 
-##  GOAL
+## GOAL
 
 Tidy up your Airtable fields to create a clean, organized, single source of truth for 517 radio contacts before enriching the full database.
 
-##  CURRENT FIELD STRUCTURE (27 Fields)
+## CURRENT FIELD STRUCTURE (27 Fields)
 
 ###  KEEP - Core Contact Information (8 fields)
 
@@ -60,7 +60,7 @@ Tidy up your Airtable fields to create a clean, organized, single source of trut
 
 27. **Test Mode** (checkbox) - Used for testing? Can remove after cleanup
 
-##  CLEANUP ACTIONS
+## CLEANUP ACTIONS
 
 ### Action 1: Sync Status from Mailchimp 
 
@@ -160,7 +160,7 @@ Tidy up your Airtable fields to create a clean, organized, single source of trut
 3. Update Genre field with standardized values
 ```
 
-##  RECOMMENDED FIELD STRUCTURE (After Cleanup)
+## RECOMMENDED FIELD STRUCTURE (After Cleanup)
 
 ### Essential Fields (17 total)
 
@@ -192,7 +192,7 @@ Tidy up your Airtable fields to create a clean, organized, single source of trut
 - **Campaigns Contacted** (redundant with Campaigns linked records)
 - **Assigned Freelancer** (if not using)
 
-##  CLEANUP EXECUTION PLAN
+## CLEANUP EXECUTION PLAN
 
 ### Phase 1: Backup & Preview (Day 1)
 
@@ -222,7 +222,7 @@ Tidy up your Airtable fields to create a clean, organized, single source of trut
     - "BBC Contacts" (Station contains "BBC")
     - "Test/Invalid" (Test Mode = checked)
 
-##  IMMEDIATE NEXT STEPS
+## IMMEDIATE NEXT STEPS
 
 **Step 1: Create Backup**
 
@@ -242,7 +242,7 @@ node preview-cleanup-changes.js
 node execute-airtable-cleanup.js
 ```
 
-##  IMPORTANT SAFEGUARDS
+## IMPORTANT SAFEGUARDS
 
 Before making ANY changes:
 
@@ -252,7 +252,7 @@ Before making ANY changes:
 4.  **Preserve all data** in consolidated fields (no data loss)
 5.  **Test on 10 contacts first** before running on all 517
 
-##  EXPECTED RESULTS
+## EXPECTED RESULTS
 
 **After Cleanup**:
 
