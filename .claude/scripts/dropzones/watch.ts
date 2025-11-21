@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 /**
  * Dropzone Watcher — Safe File Monitoring for Queue Processing
  *
@@ -6,6 +7,7 @@
  * - Respects DROPZONE_LIVE env var (0=dry-run, 1=live)
  * - Respects DROPZONE_DISABLE kill-switch (1=exit immediately)
  * - Watches ONLY .claude/dropzones/queue/ (approved files only)
+ * - Auto-approves files from quarantine if autoApprove enabled
  * - Graceful shutdown on Ctrl+C
  * - Never processes without explicit DROPZONE_LIVE=1
  *
@@ -21,7 +23,7 @@
  */
 
 import { watch } from 'fs';
-import { readdir, stat } from 'fs/promises';
+import { readdir, stat, rename } from 'fs/promises';
 import { join } from 'path';
 import { processFile } from '../../workflow/dropzones/processor.js';
 import type { DropzoneType } from '../../workflow/dropzones/types.js';
@@ -32,6 +34,7 @@ const disabled = process.env.DROPZONE_DISABLE === '1';
 
 // Paths
 const QUEUE_DIR = join(process.cwd(), '.claude/dropzones/queue');
+const QUARANTINE_DIR = join(process.cwd(), '.claude/dropzones/quarantine');
 
 // Kill-switch check
 if (disabled) {
@@ -114,6 +117,42 @@ async function handleFile(filename: string): Promise<void> {
 }
 
 /**
+ * Auto-approve all files in quarantine (move to queue)
+ * Only runs if autoApprove is enabled in settings
+ */
+async function autoApproveAll(): Promise<void> {
+  try {
+    const files = await readdir(QUARANTINE_DIR);
+    const regularFiles = files.filter(f => !f.startsWith('.') && f !== 'README.md');
+
+    if (regularFiles.length === 0) {
+      console.log('📭 Quarantine is empty (nothing to auto-approve)\n');
+      return;
+    }
+
+    console.log(`🔄 Auto-approving ${regularFiles.length} file(s) from quarantine...\n`);
+
+    for (const filename of regularFiles) {
+      const src = join(QUARANTINE_DIR, filename);
+      const dest = join(QUEUE_DIR, filename);
+
+      try {
+        await rename(src, dest);
+        console.log(`🟢 Auto-approved: ${filename}`);
+      } catch (error) {
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        console.error(`❌ Failed to auto-approve ${filename}: ${errorMessage}`);
+      }
+    }
+
+    console.log('');
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    console.error(`Error reading quarantine directory: ${errorMessage}`);
+  }
+}
+
+/**
  * Process existing files in queue on startup
  */
 async function processExistingFiles(): Promise<void> {
@@ -141,7 +180,10 @@ async function processExistingFiles(): Promise<void> {
  * Start watching the queue directory
  */
 async function startWatcher(): Promise<void> {
-  // Process any existing files first
+  // Auto-approve files from quarantine → queue
+  await autoApproveAll();
+
+  // Process any existing files in queue
   await processExistingFiles();
 
   console.log('Watcher active (waiting for new files)...\n');

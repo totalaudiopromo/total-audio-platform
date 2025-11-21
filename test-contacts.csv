@@ -1,0 +1,7 @@
+name,email,role,company,phone,website
+John Smith,john@bbc.co.uk,Producer,BBC Radio 6 Music,+44 20 1234 5678,https://bbc.co.uk/6music
+Jane Doe,jane@example.com,DJ,Example FM,,
+Bob Johnson,bob.johnson@npr.org,Music Director,NPR,+1 202 555 0100,https://npr.org
+Invalid User,not-an-email,Host,Radio Station,,
+Alice Wonder,alice@gmail.com,Presenter,Independent Radio,,
+Duplicate Test,john@bbc.co.uk,Another Role,BBC,,

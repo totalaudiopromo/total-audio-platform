@@ -1,3 +1,7 @@
-2025/11/07-22:01:12.160 ffef Reusing MANIFEST /Users/chrisschofield/Library/Application Support/Google/Chrome/Default/Local Extension Settings/gighmmpiobklfepjocnamgkkbiglidom/MANIFEST-000001
-2025/11/07-22:01:12.161 ffef Recovering log #414
-2025/11/07-22:01:12.164 ffef Reusing old log /Users/chrisschofield/Library/Application Support/Google/Chrome/Default/Local Extension Settings/gighmmpiobklfepjocnamgkkbiglidom/000414.log 
+2025/11/21-17:37:26.443 14718b Log #424: 45 ops saved to Table #427 OK
+2025/11/21-17:37:26.452 14718b Archiving /Users/chrisschofield/workspace/active/total-audio-platform/tools/browser-automation/.chrome-profile/Default/Local Extension Settings/gighmmpiobklfepjocnamgkkbiglidom/000424.log: OK
+2025/11/21-17:37:26.453 14718b Table #426: 44 entries OK
+2025/11/21-17:37:26.455 14718b Table #423: 44 entries OK
+2025/11/21-17:37:26.455 14718b Table #427: 45 entries OK
+2025/11/21-17:37:26.457 14718b Archiving /Users/chrisschofield/workspace/active/total-audio-platform/tools/browser-automation/.chrome-profile/Default/Local Extension Settings/gighmmpiobklfepjocnamgkkbiglidom/MANIFEST-000001: OK
+2025/11/21-17:37:26.458 14718b **** Repaired leveldb /Users/chrisschofield/workspace/active/total-audio-platform/tools/browser-automation/.chrome-profile/Default/Local Extension Settings/gighmmpiobklfepjocnamgkkbiglidom; recovered 3 files; 683994 bytes. Some data may have been lost. ****
