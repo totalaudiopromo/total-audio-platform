@@ -10,7 +10,7 @@ export default function DashboardGateway() {
   useEffect(() => {
     // Countdown timer
     const timer = setInterval(() => {
-      setCountdown((prev) => {
+      setCountdown(prev => {
         if (prev <= 1) {
           clearInterval(timer);
           window.location.href = dashboardUrl;
@@ -78,8 +78,8 @@ export default function DashboardGateway() {
               </h1>
 
               <p className="text-xl text-gray-700 max-w-3xl mx-auto mb-8">
-                Real-time intelligence powered by 8 AI systems working together. See what's
-                working, spot patterns, and get actionable insights for every campaign.
+                Real-time intelligence powered by 8 AI systems working together. See what's working,
+                spot patterns, and get actionable insights for every campaign.
               </p>
 
               {/* Launch Button */}
@@ -146,15 +146,19 @@ export default function DashboardGateway() {
             <div className="rounded-2xl border-4 border-black bg-gradient-to-br from-blue-50 to-white p-10 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
               <div className="grid lg:grid-cols-2 gap-12 items-start">
                 <div>
-                  <h2 className="text-4xl font-bold text-gray-900 mb-6">Built for the way you actually work</h2>
+                  <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                    Built for the way you actually work
+                  </h2>
                   <div className="space-y-6">
                     <div className="flex gap-4">
                       <div className="flex-shrink-0 w-3 h-3 rounded-full bg-blue-600 mt-2" />
                       <div>
-                        <h3 className="font-bold text-lg text-gray-900 mb-1">For Radio Promoters</h3>
+                        <h3 className="font-bold text-lg text-gray-900 mb-1">
+                          For Radio Promoters
+                        </h3>
                         <p className="text-gray-700">
-                          Track every submission, monitor response rates, and identify which contacts
-                          convert. Built by someone who actually does this job.
+                          Track every submission, monitor response rates, and identify which
+                          contacts convert. Built by someone who actually does this job.
                         </p>
                       </div>
                     </div>
@@ -162,7 +166,9 @@ export default function DashboardGateway() {
                     <div className="flex gap-4">
                       <div className="flex-shrink-0 w-3 h-3 rounded-full bg-purple-600 mt-2" />
                       <div>
-                        <h3 className="font-bold text-lg text-gray-900 mb-1">For Independent Artists</h3>
+                        <h3 className="font-bold text-lg text-gray-900 mb-1">
+                          For Independent Artists
+                        </h3>
                         <p className="text-gray-700">
                           Stop spending weekends in spreadsheet hell. See which promotion tactics
                           actually work for your music.

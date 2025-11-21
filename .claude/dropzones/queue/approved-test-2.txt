@@ -1,0 +1,5 @@
+TEST FILE 2 FOR DRY-RUN WATCHER TEST
+Created: 2025-11-20
+Purpose: Stage 4B.2 dry-run watcher validation
+Expected: Watcher should detect but NOT process (dry-run mode)
+Content: Safe test data

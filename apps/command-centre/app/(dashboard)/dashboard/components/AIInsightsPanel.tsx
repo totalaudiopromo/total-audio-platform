@@ -54,9 +54,7 @@ export function AIInsightsPanel({ patterns }: Props) {
       )}
 
       <div className="mt-4 border-t border-zinc-800 pt-4">
-        <p className="text-xs text-zinc-500">
-          {patterns.patterns.length} patterns detected
-        </p>
+        <p className="text-xs text-zinc-500">{patterns.patterns.length} patterns detected</p>
       </div>
     </div>
   );

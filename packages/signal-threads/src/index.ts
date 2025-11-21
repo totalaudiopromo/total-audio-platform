@@ -50,9 +50,7 @@ export interface Milestone {
   impact: string;
 }
 
-export async function buildSignalThread(
-  input: SignalThreadInput
-): Promise<SignalThread> {
+export async function buildSignalThread(input: SignalThreadInput): Promise<SignalThread> {
   const { threadType, context } = input;
 
   // Collect events based on thread type
@@ -80,10 +78,7 @@ export async function buildSignalThread(
   };
 }
 
-function collectThreadEvents(
-  threadType: ThreadType,
-  context: FusionContext
-): ThreadEvent[] {
+function collectThreadEvents(threadType: ThreadType, context: FusionContext): ThreadEvent[] {
   const events: ThreadEvent[] = [];
 
   switch (threadType) {
@@ -111,7 +106,7 @@ function collectNarrativeEvents(context: FusionContext): ThreadEvent[] {
   const events: ThreadEvent[] = [];
 
   // Add campaign starts
-  context.tracker.campaigns.forEach((campaign) => {
+  context.tracker.campaigns.forEach(campaign => {
     events.push({
       id: `campaign-${campaign.id}`,
       date: new Date(campaign.created_at),
@@ -125,7 +120,7 @@ function collectNarrativeEvents(context: FusionContext): ThreadEvent[] {
   });
 
   // Add coverage events
-  context.coverage.events.forEach((event) => {
+  context.coverage.events.forEach(event => {
     events.push({
       id: `coverage-${event.id}`,
       date: new Date(event.date),
@@ -139,7 +134,7 @@ function collectNarrativeEvents(context: FusionContext): ThreadEvent[] {
   });
 
   // Add asset drops
-  context.assets.drops.forEach((drop) => {
+  context.assets.drops.forEach(drop => {
     events.push({
       id: `asset-${drop.id}`,
       date: new Date(drop.created_at),
@@ -159,7 +154,7 @@ function collectCampaignEvents(context: FusionContext): ThreadEvent[] {
   const events: ThreadEvent[] = [];
 
   // Campaign activities
-  context.tracker.campaigns.forEach((campaign) => {
+  context.tracker.campaigns.forEach(campaign => {
     events.push({
       id: `campaign-${campaign.id}`,
       date: new Date(campaign.created_at),
@@ -173,7 +168,7 @@ function collectCampaignEvents(context: FusionContext): ThreadEvent[] {
   });
 
   // Recent activities
-  context.tracker.recentActivity.forEach((activity) => {
+  context.tracker.recentActivity.forEach(activity => {
     events.push({
       id: `activity-${activity.id}`,
       date: new Date(activity.timestamp),
@@ -193,7 +188,7 @@ function collectCreativeEvents(context: FusionContext): ThreadEvent[] {
   const events: ThreadEvent[] = [];
 
   // Asset drops
-  context.assets.drops.forEach((drop) => {
+  context.assets.drops.forEach(drop => {
     events.push({
       id: `asset-${drop.id}`,
       date: new Date(drop.created_at),
@@ -207,7 +202,7 @@ function collectCreativeEvents(context: FusionContext): ThreadEvent[] {
   });
 
   // Writers room results (creative iterations)
-  context.writerRoom.results.forEach((result) => {
+  context.writerRoom.results.forEach(result => {
     events.push({
       id: `writer-${result.id}`,
       date: new Date(result.created_at),
@@ -227,7 +222,7 @@ function collectSceneEvents(context: FusionContext): ThreadEvent[] {
   const events: ThreadEvent[] = [];
 
   // Community posts
-  context.community.posts.forEach((post) => {
+  context.community.posts.forEach(post => {
     events.push({
       id: `post-${post.id}`,
       date: new Date(post.created_at),
@@ -247,7 +242,7 @@ function collectPerformanceEvents(context: FusionContext): ThreadEvent[] {
   const events: ThreadEvent[] = [];
 
   // Email campaigns with notable performance
-  context.email.campaigns.forEach((campaign) => {
+  context.email.campaigns.forEach(campaign => {
     if (campaign.open_rate && campaign.open_rate > 30) {
       events.push({
         id: `email-${campaign.id}`,
@@ -263,7 +258,7 @@ function collectPerformanceEvents(context: FusionContext): ThreadEvent[] {
   });
 
   // Reply intel - high value leads
-  context.replyIntel.highValueLeads.forEach((lead) => {
+  context.replyIntel.highValueLeads.forEach(lead => {
     events.push({
       id: `lead-${lead.contactId}`,
       date: new Date(lead.lastReplyDate),
@@ -284,8 +279,8 @@ function identifyMilestones(events: ThreadEvent[]): Milestone[] {
 
   // High-significance events become milestones
   events
-    .filter((e) => e.significance >= 0.8)
-    .forEach((event) => {
+    .filter(e => e.significance >= 0.8)
+    .forEach(event => {
       milestones.push({
         id: event.id,
         date: event.date,
@@ -328,8 +323,7 @@ function buildThreadStructure(events: ThreadEvent[]): ThreadStructure {
   const startDate = events[0].date;
   const endDate = events[events.length - 1].date;
   const totalEvents = events.length;
-  const avgSignificance =
-    events.reduce((sum, e) => sum + e.significance, 0) / totalEvents;
+  const avgSignificance = events.reduce((sum, e) => sum + e.significance, 0) / totalEvents;
 
   return {
     id: `thread-${Date.now()}`,
@@ -350,13 +344,12 @@ function generateNarrativeSummary(
   }
 
   const timespan = Math.ceil(
-    (events[events.length - 1].date.getTime() - events[0].date.getTime()) /
-      (1000 * 60 * 60 * 24)
+    (events[events.length - 1].date.getTime() - events[0].date.getTime()) / (1000 * 60 * 60 * 24)
   );
 
-  const coverageCount = events.filter((e) => e.type === 'coverage').length;
-  const campaignCount = events.filter((e) => e.type === 'campaign_start').length;
-  const creativeCount = events.filter((e) => e.type === 'creative_release').length;
+  const coverageCount = events.filter(e => e.type === 'coverage').length;
+  const campaignCount = events.filter(e => e.type === 'campaign_start').length;
+  const creativeCount = events.filter(e => e.type === 'creative_release').length;
 
   let summary = `Over ${timespan} days, `;
 
@@ -415,12 +408,12 @@ function extractInsights(events: ThreadEvent[], milestones: Milestone[]): string
   }
 
   // Event type distribution
-  const coverageEvents = events.filter((e) => e.type === 'coverage');
+  const coverageEvents = events.filter(e => e.type === 'coverage');
   if (coverageEvents.length > 10) {
     insights.push('Strong media coverage - effective press strategy');
   }
 
-  const replyEvents = events.filter((e) => e.type === 'reply');
+  const replyEvents = events.filter(e => e.type === 'reply');
   if (replyEvents.length > 5) {
     insights.push('High engagement rate - contacts are responding positively');
   }

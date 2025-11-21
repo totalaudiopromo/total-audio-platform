@@ -5,11 +5,7 @@
  */
 
 import type { SupabaseClient } from '@supabase/supabase-js';
-import type {
-  CommunityContext,
-  LoaderOptions,
-  LoaderResult,
-} from '../types';
+import type { CommunityContext, LoaderOptions, LoaderResult } from '../types';
 
 export async function loadCommunityContext(
   supabase: SupabaseClient,
@@ -61,7 +57,7 @@ export async function loadCommunityContext(
           }
         : undefined,
       posts:
-        posts?.map((p) => ({
+        posts?.map(p => ({
           id: p.id,
           title: p.title,
           postType: p.post_type,

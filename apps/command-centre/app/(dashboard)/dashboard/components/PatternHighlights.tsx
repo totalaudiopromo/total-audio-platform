@@ -4,9 +4,12 @@ import { TrendingUp, TrendingDown, Minus } from 'lucide-react';
 export function PatternHighlights({ patterns }: { patterns: Pattern[] }) {
   const getImpactIcon = (impact: string) => {
     switch (impact) {
-      case 'positive': return <TrendingUp className="h-4 w-4 text-green-500" />;
-      case 'negative': return <TrendingDown className="h-4 w-4 text-red-500" />;
-      default: return <Minus className="h-4 w-4 text-zinc-500" />;
+      case 'positive':
+        return <TrendingUp className="h-4 w-4 text-green-500" />;
+      case 'negative':
+        return <TrendingDown className="h-4 w-4 text-red-500" />;
+      default:
+        return <Minus className="h-4 w-4 text-zinc-500" />;
     }
   };
 
@@ -21,7 +24,8 @@ export function PatternHighlights({ patterns }: { patterns: Pattern[] }) {
               <div className="flex-1">
                 <p className="text-sm font-medium text-white">{pattern.description}</p>
                 <p className="mt-1 text-xs text-zinc-500">
-                  {Math.round(pattern.confidence * 100)}% confidence • {pattern.dataPoints} data points
+                  {Math.round(pattern.confidence * 100)}% confidence • {pattern.dataPoints} data
+                  points
                 </p>
               </div>
             </div>

@@ -115,9 +115,7 @@ function compareArtists(context: FusionContext): ArtistComparison[] {
   const scenePenetration = calculateScenePenetration(context);
   const creativityIndex = calculateCreativityIndex(context);
   const campaignEfficiency =
-    context.tracker.totalCampaigns > 0
-      ? context.tracker.performanceMetrics.successRate / 100
-      : 0;
+    context.tracker.totalCampaigns > 0 ? context.tracker.performanceMetrics.successRate / 100 : 0;
   const successAlignment = calculateSuccessAlignment(context);
   const momentum = calculateMomentum(context);
   const coverageFootprint = calculateCoverageFootprint(context);
@@ -160,7 +158,7 @@ function calculateCreativityIndex(context: FusionContext): number {
   // Based on asset drops, variety, and creative output
   const assetScore = Math.min(context.assets.drops.length / 20, 1.0) * 0.5;
   const varietyScore =
-    context.assets.drops.filter((d) => d.tags && d.tags.length > 0).length /
+    context.assets.drops.filter(d => d.tags && d.tags.length > 0).length /
     Math.max(context.assets.drops.length, 1);
   return assetScore * 0.5 + varietyScore * 0.5;
 }
@@ -170,7 +168,7 @@ function calculateSuccessAlignment(context: FusionContext): number {
   const successRate = context.tracker.performanceMetrics.successRate / 100;
   const campaignCompletion =
     context.tracker.totalCampaigns > 0
-      ? context.tracker.campaigns.filter((c) => c.status === 'completed').length /
+      ? context.tracker.campaigns.filter(c => c.status === 'completed').length /
         context.tracker.totalCampaigns
       : 0;
 
@@ -182,10 +180,8 @@ function calculateMomentum(context: FusionContext): number {
   const activeCampaignScore = Math.min(context.tracker.activeCampaigns / 5, 1.0) * 0.5;
   const recentActivityScore =
     context.tracker.recentActivity.filter(
-      (a) =>
-        new Date(a.timestamp).getTime() > Date.now() - 30 * 24 * 60 * 60 * 1000
-    ).length /
-    Math.max(context.tracker.recentActivity.length, 1);
+      a => new Date(a.timestamp).getTime() > Date.now() - 30 * 24 * 60 * 60 * 1000
+    ).length / Math.max(context.tracker.recentActivity.length, 1);
 
   return activeCampaignScore + recentActivityScore * 0.5;
 }
@@ -193,18 +189,13 @@ function calculateMomentum(context: FusionContext): number {
 function calculateCoverageFootprint(context: FusionContext): number {
   // Based on coverage events, geographic spread, and importance
   const eventScore = Math.min(context.coverage.events.length / 50, 1.0) * 0.6;
-  const countries = new Set(
-    context.coverage.events.map((e) => e.country).filter(Boolean)
-  ).size;
+  const countries = new Set(context.coverage.events.map(e => e.country).filter(Boolean)).size;
   const geoScore = Math.min(countries / 10, 1.0) * 0.4;
 
   return eventScore + geoScore;
 }
 
-function generateInsights(
-  comparisons: ArtistComparison[],
-  metrics: WorkspaceMetrics
-): string[] {
+function generateInsights(comparisons: ArtistComparison[], metrics: WorkspaceMetrics): string[] {
   const insights: string[] = [];
 
   // Analyze top performers
@@ -235,9 +226,7 @@ function generateInsights(
   }
 
   if (metrics.avgCampaignEfficiency < 0.4) {
-    insights.push(
-      'Campaign efficiency across workspace is low - consider process improvements'
-    );
+    insights.push('Campaign efficiency across workspace is low - consider process improvements');
   }
 
   return insights;
@@ -255,10 +244,8 @@ function identifyTopPerformers(comparisons: ArtistComparison[]): TopPerformer[] 
     'momentum',
   ] as const;
 
-  metrics.forEach((metric) => {
-    const sorted = [...comparisons].sort(
-      (a, b) => b[metric] - a[metric]
-    );
+  metrics.forEach(metric => {
+    const sorted = [...comparisons].sort((a, b) => b[metric] - a[metric]);
     const top = sorted[0];
     if (top) {
       topPerformers.push({
@@ -273,12 +260,10 @@ function identifyTopPerformers(comparisons: ArtistComparison[]): TopPerformer[] 
   return topPerformers;
 }
 
-function identifyImprovementAreas(
-  comparisons: ArtistComparison[]
-): ImprovementArea[] {
+function identifyImprovementAreas(comparisons: ArtistComparison[]): ImprovementArea[] {
   const improvementAreas: ImprovementArea[] = [];
 
-  comparisons.forEach((artist) => {
+  comparisons.forEach(artist => {
     const weakMetrics: string[] = [];
     const suggestions: string[] = [];
 

@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
 import { buildFusionContext } from '@total-audio/fusion-layer';
-import { getModeRecommendation, getModeInsights, type DashboardMode } from '@total-audio/dashboard-modes';
+import {
+  getModeRecommendation,
+  getModeInsights,
+  type DashboardMode,
+} from '@total-audio/dashboard-modes';
 
 export async function GET(request: NextRequest) {
   try {

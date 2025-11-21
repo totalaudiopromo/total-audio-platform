@@ -29,7 +29,7 @@ export async function loadSuccessProfileContext(
     return {
       data: {
         profiles:
-          profiles?.map((p) => ({
+          profiles?.map(p => ({
             id: p.id,
             genre: p.genre,
             profileType: p.profile_type,
@@ -75,7 +75,7 @@ export async function loadSimulatorContext(
     return {
       data: {
         simulations:
-          simulations?.map((s) => ({
+          simulations?.map(s => ({
             id: s.id,
             name: s.simulation_name,
             inputs: s.inputs || {},
@@ -86,7 +86,7 @@ export async function loadSimulatorContext(
             createdAt: new Date(s.created_at),
           })) || [],
         recentSimulations:
-          simulations?.slice(0, 5).map((s) => ({
+          simulations?.slice(0, 5).map(s => ({
             id: s.id,
             name: s.simulation_name,
             inputs: s.inputs || {},
@@ -131,7 +131,7 @@ export async function loadCoverageContext(
     const byType: Record<string, number> = {};
     let totalReach = 0;
 
-    events?.forEach((event) => {
+    events?.forEach(event => {
       if (event.country) {
         byCountry[event.country] = (byCountry[event.country] || 0) + 1;
       }
@@ -144,7 +144,7 @@ export async function loadCoverageContext(
     return {
       data: {
         events:
-          events?.map((e) => ({
+          events?.map(e => ({
             id: e.id,
             artistName: e.artist_name,
             outlet: e.outlet,
@@ -196,7 +196,7 @@ export async function loadCalendarContext(
 
     const upcomingDeadlines =
       events?.filter(
-        (e) =>
+        e =>
           e.category === 'submission_deadline' &&
           new Date(e.date) >= now &&
           new Date(e.date) <= thirtyDaysFromNow
@@ -205,7 +205,7 @@ export async function loadCalendarContext(
     return {
       data: {
         events:
-          events?.map((e) => ({
+          events?.map(e => ({
             id: e.id,
             name: e.name,
             category: e.category,
@@ -216,7 +216,7 @@ export async function loadCalendarContext(
             description: e.description,
             websiteUrl: e.website_url,
           })) || [],
-        upcomingDeadlines: upcomingDeadlines.map((e) => ({
+        upcomingDeadlines: upcomingDeadlines.map(e => ({
           id: e.id,
           name: e.name,
           category: e.category,

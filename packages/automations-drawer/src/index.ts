@@ -112,19 +112,16 @@ async function suggestContacts(input: AutomationInput): Promise<Record<string, a
 
   // Analyze contact performance from fusion context
   const contacts = context.intel.contacts
-    .filter((c) => {
+    .filter(c => {
       if (genre && c.genres && !c.genres.includes(genre)) return false;
       if (targetType && c.outlet_type !== targetType) return false;
       return true;
     })
-    .map((c) => {
+    .map(c => {
       // Score based on contact intel metrics
-      const contactIntel = context.contactIntel.contacts.find(
-        (ci) => ci.contactId === c.id
-      );
+      const contactIntel = context.contactIntel.contacts.find(ci => ci.contactId === c.id);
       const score = contactIntel
-        ? contactIntel.responsivenessScore * 0.6 +
-          contactIntel.replyQualityScore * 0.4
+        ? contactIntel.responsivenessScore * 0.6 + contactIntel.replyQualityScore * 0.4
         : 0.5;
 
       return { ...c, score };
@@ -133,7 +130,7 @@ async function suggestContacts(input: AutomationInput): Promise<Record<string, a
     .slice(0, count);
 
   return {
-    contacts: contacts.map((c) => ({
+    contacts: contacts.map(c => ({
       id: c.id,
       name: c.name,
       outlet: c.outlet,
@@ -157,8 +154,7 @@ async function fixBottleneck(input: AutomationInput): Promise<Record<string, any
     bottlenecks.push({
       type: 'low_reply_rate',
       severity: 0.9,
-      suggestion:
-        'Reply rate below 5% - consider personalizing pitches or refreshing contact list',
+      suggestion: 'Reply rate below 5% - consider personalizing pitches or refreshing contact list',
     });
   }
 
@@ -193,7 +189,7 @@ async function fixBottleneck(input: AutomationInput): Promise<Record<string, any
   return {
     bottlenecks: bottlenecks.sort((a, b) => b.severity - a.severity),
     primaryIssue: bottlenecks[0] || null,
-    actionableSteps: bottlenecks.map((b) => b.suggestion),
+    actionableSteps: bottlenecks.map(b => b.suggestion),
   };
 }
 
@@ -235,8 +231,8 @@ async function cleanSegments(input: AutomationInput): Promise<Record<string, any
 
   // Find contacts below responsiveness threshold
   const deadContacts = context.contactIntel.contacts
-    .filter((c) => c.responsivenessScore < threshold)
-    .map((c) => ({
+    .filter(c => c.responsivenessScore < threshold)
+    .map(c => ({
       contactId: c.contactId,
       score: c.responsivenessScore,
       lastContact: c.lastContactDate,
@@ -266,25 +262,24 @@ async function detectRot(input: AutomationInput): Promise<Record<string, any>> {
   const now = new Date();
 
   // Analyze campaign staleness
-  const staleCampaigns = context.tracker.campaigns.filter((c) => {
+  const staleCampaigns = context.tracker.campaigns.filter(c => {
     const daysSinceUpdate =
       (now.getTime() - new Date(c.updated_at).getTime()) / (1000 * 60 * 60 * 24);
     return daysSinceUpdate > staleThresholdDays && c.status !== 'completed';
   });
 
   // Analyze contact staleness
-  const staleContacts = context.contactIntel.contacts.filter((c) => {
+  const staleContacts = context.contactIntel.contacts.filter(c => {
     if (!c.lastContactDate) return false;
     const daysSinceContact =
       (now.getTime() - new Date(c.lastContactDate).getTime()) / (1000 * 60 * 60 * 24);
     return daysSinceContact > staleThresholdDays;
   });
 
-  const rotLevel =
-    staleCampaigns.length > 5 || staleContacts.length > 20 ? 'critical' : 'moderate';
+  const rotLevel = staleCampaigns.length > 5 || staleContacts.length > 20 ? 'critical' : 'moderate';
 
   return {
-    staleCampaigns: staleCampaigns.map((c) => ({
+    staleCampaigns: staleCampaigns.map(c => ({
       id: c.id,
       name: c.name,
       daysSinceUpdate: Math.floor(
@@ -349,9 +344,7 @@ async function optimizeSchedule(input: AutomationInput): Promise<Record<string, 
 
     schedule.push({
       date: date.toISOString().split('T')[0],
-      reason: isOptimalDay
-        ? 'Peak engagement window (Tue-Thu)'
-        : 'Good backup window (Mon/Fri)',
+      reason: isOptimalDay ? 'Peak engagement window (Tue-Thu)' : 'Good backup window (Mon/Fri)',
       confidence,
     });
   }
@@ -360,7 +353,6 @@ async function optimizeSchedule(input: AutomationInput): Promise<Record<string, 
     schedule: schedule.slice(0, days),
     bestDays: bestDays.slice(0, 3),
     optimalTime: '10:00-14:00 GMT',
-    reasoning:
-      'Based on historical open rates and industry best practices for music PR outreach',
+    reasoning: 'Based on historical open rates and industry best practices for music PR outreach',
   };
 }

@@ -20,20 +20,16 @@ export function NextActionsList({ actions }: NextActionsListProps) {
 
   return (
     <Card>
-      <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">
-        next actions
-      </h3>
+      <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">next actions</h3>
       {actions.length === 0 ? (
         <p className="text-sm text-tap-grey lowercase">no actions available</p>
       ) : (
         <List variant="bordered">
-          {actions.map((item) => (
+          {actions.map(item => (
             <ListItem key={item.id}>
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
-                  <p className="text-sm text-tap-white lowercase mb-1">
-                    {item.action}
-                  </p>
+                  <p className="text-sm text-tap-white lowercase mb-1">{item.action}</p>
                   <p className="text-xs text-tap-grey lowercase">{item.category}</p>
                 </div>
                 <Badge variant={priorityVariant(item.priority)} size="sm">

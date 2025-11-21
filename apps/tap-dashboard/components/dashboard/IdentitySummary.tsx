@@ -20,32 +20,24 @@ interface IdentitySummaryProps {
 export function IdentitySummary({ identity }: IdentitySummaryProps) {
   return (
     <Card>
-      <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">
-        identity profile
-      </h3>
+      <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">identity profile</h3>
 
       <div className="space-y-4">
         <div>
-          <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">
-            brand voice
-          </p>
+          <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">brand voice</p>
           <p className="text-sm text-tap-white lowercase">{identity.brandVoice.tone}</p>
         </div>
 
         <div>
-          <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">
-            primary scene
-          </p>
+          <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">primary scene</p>
           <Badge variant="info">{identity.sceneIdentity.primaryScene}</Badge>
         </div>
 
         <div>
-          <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">
-            microgenres
-          </p>
+          <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">microgenres</p>
           <div className="flex flex-wrap gap-2">
             <Badge variant="default">{identity.microgenreMap.primary}</Badge>
-            {identity.microgenreMap.secondary.slice(0, 3).map((genre) => (
+            {identity.microgenreMap.secondary.slice(0, 3).map(genre => (
               <Badge key={genre} variant="default" size="sm">
                 {genre}
               </Badge>

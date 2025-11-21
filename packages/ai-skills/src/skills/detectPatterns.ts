@@ -5,12 +5,7 @@
  * contact behavior, and overall music marketing effectiveness
  */
 
-import type {
-  SkillInput,
-  SkillOutput,
-  PatternDetectionOutput,
-  Pattern,
-} from '../types';
+import type { SkillInput, SkillOutput, PatternDetectionOutput, Pattern } from '../types';
 
 export async function detectPatterns(
   input: SkillInput<Record<string, never>>
@@ -75,7 +70,7 @@ export async function detectPatterns(
     const recentActivities = context.campaigns.recentEvents.slice(0, 20);
     if (recentActivities.length > 10) {
       const hourCounts = new Map<number, number>();
-      recentActivities.forEach((activity) => {
+      recentActivities.forEach(activity => {
         const hour = activity.timestamp.getHours();
         hourCounts.set(hour, (hourCounts.get(hour) || 0) + 1);
       });
@@ -92,7 +87,9 @@ export async function detectPatterns(
         });
 
         insights.push(`Contacts are most active around ${bestHour[0]}:00`);
-        recommendations.push(`Schedule important sends for ${bestHour[0]}:00 - ${bestHour[0] + 2}:00`);
+        recommendations.push(
+          `Schedule important sends for ${bestHour[0]}:00 - ${bestHour[0] + 2}:00`
+        );
       }
     }
 
@@ -136,7 +133,7 @@ export async function detectPatterns(
         });
 
         insights.push('Pitch content may need refinement');
-        recommendations.push('Use Writer\'s Room to generate new angles');
+        recommendations.push("Use Writer's Room to generate new angles");
         recommendations.push('Review Success Profiles for best practices');
       }
     }
@@ -174,9 +171,7 @@ export async function detectPatterns(
 
     // Pattern 6: Release planning
     if (context.releases.plans.length > 0) {
-      const onTimeReleases = context.releases.completed.filter(
-        (r) => r.completionPercentage >= 0.9
-      );
+      const onTimeReleases = context.releases.completed.filter(r => r.completionPercentage >= 0.9);
       const totalCompleted = context.releases.completed.length;
 
       if (totalCompleted > 0) {

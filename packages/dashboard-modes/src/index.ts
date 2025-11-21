@@ -40,13 +40,7 @@ export const DASHBOARD_MODES: Record<DashboardMode, ModeDefinition> = {
     description: 'Focus on active campaigns and execution',
     icon: 'rocket',
     color: '#3AA9BE',
-    panels: [
-      'tracker',
-      'email',
-      'trajectory',
-      'signal-threads',
-      'automations',
-    ],
+    panels: ['tracker', 'email', 'trajectory', 'signal-threads', 'automations'],
     quickActions: [
       { id: 'new-campaign', label: 'New Campaign', action: 'create_campaign', icon: 'plus' },
       { id: 'send-pitch', label: 'Send Pitch', action: 'send_pitch', icon: 'send' },
@@ -60,12 +54,7 @@ export const DASHBOARD_MODES: Record<DashboardMode, ModeDefinition> = {
     description: 'Focus on contact intelligence and relationships',
     icon: 'users',
     color: '#8B5CF6',
-    panels: [
-      'intel',
-      'contact-intel',
-      'reply-intel',
-      'automations',
-    ],
+    panels: ['intel', 'contact-intel', 'reply-intel', 'automations'],
     quickActions: [
       { id: 'find-contacts', label: 'Find Contacts', action: 'suggest_contacts', icon: 'search' },
       { id: 'clean-list', label: 'Clean List', action: 'clean_segments', icon: 'trash' },
@@ -79,15 +68,15 @@ export const DASHBOARD_MODES: Record<DashboardMode, ModeDefinition> = {
     description: 'Focus on scene positioning and community',
     icon: 'compass',
     color: '#F59E0B',
-    panels: [
-      'community',
-      'coverage-fusion',
-      'identity',
-      'signal-threads',
-    ],
+    panels: ['community', 'coverage-fusion', 'identity', 'signal-threads'],
     quickActions: [
       { id: 'view-map', label: 'View Coverage Map', action: 'view_coverage_map', icon: 'map' },
-      { id: 'scene-report', label: 'Scene Report', action: 'generate_scene_report', icon: 'file-text' },
+      {
+        id: 'scene-report',
+        label: 'Scene Report',
+        action: 'generate_scene_report',
+        icon: 'file-text',
+      },
       { id: 'find-scenes', label: 'Find Scenes', action: 'find_scenes', icon: 'target' },
     ],
   },
@@ -98,17 +87,16 @@ export const DASHBOARD_MODES: Record<DashboardMode, ModeDefinition> = {
     description: 'Focus on creative work and analysis',
     icon: 'palette',
     color: '#EC4899',
-    panels: [
-      'assets',
-      'identity',
-      'correlation',
-      'writers-room',
-      'presskit',
-    ],
+    panels: ['assets', 'identity', 'correlation', 'writers-room', 'presskit'],
     quickActions: [
       { id: 'upload-asset', label: 'Upload Asset', action: 'upload_asset', icon: 'upload' },
       { id: 'generate-copy', label: 'Generate Copy', action: 'generate_copy', icon: 'edit' },
-      { id: 'analyze-creative', label: 'Analyze Creative', action: 'analyze_creative', icon: 'bar-chart' },
+      {
+        id: 'analyze-creative',
+        label: 'Analyze Creative',
+        action: 'analyze_creative',
+        icon: 'bar-chart',
+      },
     ],
   },
 
@@ -118,16 +106,20 @@ export const DASHBOARD_MODES: Record<DashboardMode, ModeDefinition> = {
     description: 'Focus on metrics and ROI',
     icon: 'trending-up',
     color: '#10B981',
-    panels: [
-      'benchmarks',
-      'trajectory',
-      'correlation',
-      'email-performance',
-      'campaign-simulator',
-    ],
+    panels: ['benchmarks', 'trajectory', 'correlation', 'email-performance', 'campaign-simulator'],
     quickActions: [
-      { id: 'view-benchmarks', label: 'View Benchmarks', action: 'view_benchmarks', icon: 'bar-chart-2' },
-      { id: 'optimize-schedule', label: 'Optimize Schedule', action: 'optimize_schedule', icon: 'calendar' },
+      {
+        id: 'view-benchmarks',
+        label: 'View Benchmarks',
+        action: 'view_benchmarks',
+        icon: 'bar-chart-2',
+      },
+      {
+        id: 'optimize-schedule',
+        label: 'Optimize Schedule',
+        action: 'optimize_schedule',
+        icon: 'calendar',
+      },
       { id: 'export-report', label: 'Export Report', action: 'export_report', icon: 'download' },
     ],
   },
@@ -138,24 +130,26 @@ export const DASHBOARD_MODES: Record<DashboardMode, ModeDefinition> = {
     description: 'Focus on workspace management',
     icon: 'briefcase',
     color: '#6366F1',
-    panels: [
-      'benchmarks',
-      'automations-history',
-      'workspace-settings',
-      'integrations',
-    ],
+    panels: ['benchmarks', 'automations-history', 'workspace-settings', 'integrations'],
     quickActions: [
-      { id: 'compare-artists', label: 'Compare Artists', action: 'compare_artists', icon: 'git-compare' },
+      {
+        id: 'compare-artists',
+        label: 'Compare Artists',
+        action: 'compare_artists',
+        icon: 'git-compare',
+      },
       { id: 'manage-team', label: 'Manage Team', action: 'manage_team', icon: 'users' },
-      { id: 'view-automations', label: 'View Automations', action: 'view_automations', icon: 'zap' },
+      {
+        id: 'view-automations',
+        label: 'View Automations',
+        action: 'view_automations',
+        icon: 'zap',
+      },
     ],
   },
 };
 
-export function switchMode(
-  mode: DashboardMode,
-  context: FusionContext
-): ModeContext {
+export function switchMode(mode: DashboardMode, context: FusionContext): ModeContext {
   const modeDefinition = DASHBOARD_MODES[mode];
 
   // Filter context based on mode
@@ -179,10 +173,7 @@ export function switchMode(
   };
 }
 
-function filterContextByMode(
-  mode: DashboardMode,
-  context: FusionContext
-): Partial<FusionContext> {
+function filterContextByMode(mode: DashboardMode, context: FusionContext): Partial<FusionContext> {
   // Return full context filtered to relevant data for mode
   switch (mode) {
     case 'campaign':
@@ -275,8 +266,7 @@ export function getModeRecommendation(context: FusionContext): DashboardMode {
   // If recent creative activity, suggest creative mode
   if (context.assets.drops.length > 0) {
     const recentAssets = context.assets.drops.filter(
-      (drop) =>
-        new Date(drop.created_at).getTime() > Date.now() - 7 * 24 * 60 * 60 * 1000
+      drop => new Date(drop.created_at).getTime() > Date.now() - 7 * 24 * 60 * 60 * 1000
     );
     if (recentAssets.length > 0) {
       return 'creative';
@@ -308,7 +298,9 @@ export function getModeInsights(mode: DashboardMode, context: FusionContext): st
         insights.push('Low average responsiveness - consider cleaning contact list');
       }
       if (context.replyIntel.highValueLeads.length > 0) {
-        insights.push(`${context.replyIntel.highValueLeads.length} high-value leads awaiting follow-up`);
+        insights.push(
+          `${context.replyIntel.highValueLeads.length} high-value leads awaiting follow-up`
+        );
       }
       break;
 
