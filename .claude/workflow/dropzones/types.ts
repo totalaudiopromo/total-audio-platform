@@ -9,7 +9,9 @@
 export type DropzoneType =
   | 'test-this'      // Test/QA files
   | 'deploy-this'    // Deployment files
-  | 'review-this';   // Code review files
+  | 'review-this'    // Code review files
+  | 'intel'          // Contact Intel processing (CSV cleaning, enrichment)
+  | 'epk';           // EPK regeneration (JSON → Markdown + HTML)
 
 /**
  * Processing options

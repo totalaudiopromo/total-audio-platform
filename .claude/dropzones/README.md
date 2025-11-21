@@ -195,11 +195,102 @@ DROPZONE_LIVE=1 npx tsx .claude/scripts/dropzones/watch.ts
 
 Currently supported dropzone types:
 
-| Type | Description | Processing Logic |
-|------|-------------|------------------|
-| `test-this` | Test/QA files | Runs test suite |
-| `deploy-this` | Deployment files | Deployment automation |
-| `review-this` | Code review files | Code review automation |
+| Type | Description | Input Format | Output Files | Processing Logic |
+|------|-------------|--------------|--------------|------------------|
+| `intel` | **Contact Intel** - Clean & enrich contact lists | CSV with email, name, outlet, etc. | `*-cleaned.csv`, `*-invalid.csv`, `*-intel-summary.json` | Email validation, deduplication, normalization |
+| `epk` | **EPK Regeneration** - Generate artist press kits | JSON with artist, bio, quotes, links | `*-epk.md`, `*-epk.html`, `*-epk-summary.json` | Markdown/HTML generation, formatting |
+| `test-this` | Test/QA files | Any | N/A | Runs test suite (placeholder) |
+| `deploy-this` | Deployment files | Any | N/A | Deployment automation (placeholder) |
+| `review-this` | Code review files | Any | N/A | Code review automation (placeholder) |
+
+### Production Processors (Ready to Use)
+
+#### Contact Intel (`intel`)
+
+**Purpose**: Clean, validate, and enrich contact lists for Audio Intel platform.
+
+**Input**: CSV file with contact information (prefix filename with `intel-`)
+- Required fields: `email` (or `e-mail`, `email_address`, `contact_email`)
+- Optional fields: `name`, `outlet`, `role`, `country`, `tags`, `notes`
+
+**Output**:
+1. `*-cleaned.csv` - Valid, unique contacts ready for import
+2. `*-invalid.csv` - Rows with invalid emails (for manual review)
+3. `*-intel-summary.json` - Statistics and diagnostics
+
+**Example**:
+```bash
+# Create test CSV
+cat > .claude/dropzones/quarantine/intel-bbc-contacts.csv << 'EOF'
+email,name,outlet,role,country
+john@bbcradio6.co.uk,John Kennedy,BBC Radio 6 Music,Presenter,UK
+sarah@rinse.fm,Sarah Jones,Rinse FM,DJ,UK
+EOF
+
+# Approve and process
+npx tsx .claude/scripts/dropzones/approve.ts approve intel-bbc-contacts.csv --live
+DROPZONE_LIVE=1 npx tsx .claude/scripts/dropzones/watch.ts
+```
+
+**Features**:
+- Email validation (RFC-compliant)
+- Duplicate detection and removal
+- Header normalization (handles variations like "E-mail" vs "email")
+- Tag parsing (splits on `;` or `,`)
+- Source file tracking
+
+#### EPK Regeneration (`epk`)
+
+**Purpose**: Generate professional EPK (Electronic Press Kit) from structured data.
+
+**Input**: JSON file with artist information (prefix filename with `epk-`)
+- Required fields: `artist`
+- Optional fields: `tagline`, `bio`, `press_quotes`, `highlights`, `release`, `links`
+
+**Output**:
+1. `*-epk.md` - Markdown formatted EPK
+2. `*-epk.html` - Styled HTML EPK (ready to publish)
+3. `*-epk-summary.json` - Metadata for database integration
+
+**Example**:
+```bash
+# Create test JSON
+cat > .claude/dropzones/quarantine/epk-artist.json << 'EOF'
+{
+  "artist": "Artist Name",
+  "tagline": "Genre description",
+  "bio": "Full artist biography...",
+  "press_quotes": [
+    "Quote from BBC Radio 6 Music",
+    "Quote from NME"
+  ],
+  "highlights": [
+    "Supported by Radio 1",
+    "100k+ Spotify plays"
+  ],
+  "release": {
+    "title": "Latest EP",
+    "label": "Record Label",
+    "date": "2025-11-22"
+  },
+  "links": {
+    "spotify": "https://spotify.com/...",
+    "instagram": "https://instagram.com/..."
+  }
+}
+EOF
+
+# Approve and process
+npx tsx .claude/scripts/dropzones/approve.ts approve epk-artist.json --live
+DROPZONE_LIVE=1 npx tsx .claude/scripts/dropzones/watch.ts
+```
+
+**Features**:
+- Clean Markdown output for documentation
+- Styled HTML with dark theme (Total Audio brand colors)
+- Structured JSON summary for database integration
+- Links validation and formatting
+- Press quotes formatting with blockquotes
 
 ---
 

@@ -94,6 +94,28 @@ ls .claude/dropzones/processed/
 
 ---
 
+## 🎯 Production Processors
+
+### Contact Intel (CSV cleaning)
+```bash
+# Prefix filename with 'intel-'
+cp contacts.csv .claude/dropzones/quarantine/intel-contacts.csv
+npx tsx .claude/scripts/dropzones/approve.ts approve intel-contacts.csv --live
+DROPZONE_LIVE=1 npx tsx .claude/scripts/dropzones/watch.ts
+# Output: *-cleaned.csv, *-invalid.csv, *-summary.json
+```
+
+### EPK Generation (Artist press kits)
+```bash
+# Prefix filename with 'epk-'
+cp artist.json .claude/dropzones/quarantine/epk-artist.json
+npx tsx .claude/scripts/dropzones/approve.ts approve epk-artist.json --live
+DROPZONE_LIVE=1 npx tsx .claude/scripts/dropzones/watch.ts
+# Output: *-epk.md, *-epk.html, *-epk-summary.json
+```
+
+---
+
 ## 🆘 Common Issues
 
 **"Watcher disabled"** → `DROPZONE_DISABLE=1` is set (remove it)

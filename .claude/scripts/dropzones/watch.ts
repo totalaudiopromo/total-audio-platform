@@ -33,6 +33,29 @@ const disabled = process.env.DROPZONE_DISABLE === '1';
 // Paths
 const QUEUE_DIR = join(process.cwd(), '.claude/dropzones/queue');
 
+/**
+ * Detect dropzone type from filename prefix
+ * intel-*.csv → 'intel'
+ * epk-*.json → 'epk'
+ * Otherwise defaults to 'test-this'
+ */
+function detectDropzoneType(filename: string): DropzoneType {
+  if (filename.startsWith('intel-')) {
+    return 'intel';
+  }
+  if (filename.startsWith('epk-')) {
+    return 'epk';
+  }
+  if (filename.startsWith('deploy-')) {
+    return 'deploy-this';
+  }
+  if (filename.startsWith('review-')) {
+    return 'review-this';
+  }
+  // Default fallback
+  return 'test-this';
+}
+
 // Kill-switch check
 if (disabled) {
   console.log('Watcher disabled by DROPZONE_DISABLE=1');
@@ -92,9 +115,8 @@ async function handleFile(filename: string): Promise<void> {
   console.log(`\nProcessing: ${filename}`);
 
   try {
-    // Determine dropzone type from file content or naming convention
-    // For now, default to 'test-this' for testing
-    const dropzoneType: DropzoneType = 'test-this';
+    // Determine dropzone type from filename prefix
+    const dropzoneType: DropzoneType = detectDropzoneType(filename);
 
     const result = await processFile(dropzoneType, filePath, {
       dryRun: false, // LIVE processing

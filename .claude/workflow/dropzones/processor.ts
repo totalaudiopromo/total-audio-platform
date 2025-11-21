@@ -1,11 +1,13 @@
 /**
- * Dropzone File Processor
- * Handles file processing with kill-switch and dry-run support
+ * Dropzone File Processor Router
+ * Routes files to specialized processors with kill-switch and dry-run support
  */
 
-import { readFile, rename, unlink } from 'fs/promises';
+import { readFile, rename } from 'fs/promises';
 import { join, basename } from 'path';
 import type { DropzoneType, ProcessOptions, ProcessResult } from './types.js';
+import { processIntelFile } from './processors/intel.js';
+import { processEpkFile } from './processors/epk.js';
 
 // Paths
 const DROPZONE_ROOT = join(process.cwd(), '.claude/dropzones');
@@ -15,7 +17,7 @@ const FAILED_DIR = join(DROPZONE_ROOT, 'failed');
 /**
  * Process a file from the queue
  *
- * @param dropzoneType - Type of dropzone (test-this, deploy-this, etc.)
+ * @param dropzoneType - Type of dropzone (test-this, intel, epk, etc.)
  * @param filePath - Full path to file in queue
  * @param options - Processing options (dryRun, verbose)
  * @returns ProcessResult with success status and details
@@ -41,11 +43,9 @@ export async function processFile(
       console.log(`Processing ${dropzoneType}: ${filename}`);
     }
 
-    // Read file content
-    const content = await readFile(filePath, 'utf-8');
-
     if (dryRun) {
       // DRY-RUN mode - just log what would happen
+      const content = await readFile(filePath, 'utf-8');
       if (verbose) {
         console.log(`[DRY RUN] Would process ${filename}`);
         console.log(`[DRY RUN] Content length: ${content.length} bytes`);
@@ -58,23 +58,21 @@ export async function processFile(
       };
     }
 
-    // LIVE mode - actually process the file
-    await processFileByType(dropzoneType, filePath, content);
+    // LIVE mode - route to specialized processor
+    const result = await routeToProcessor(dropzoneType, filePath, filename);
 
-    // Move to processed directory
-    const processedPath = join(PROCESSED_DIR, filename);
-    await rename(filePath, processedPath);
+    // If processor succeeded, move original file to processed
+    if (result.success) {
+      const processedPath = join(PROCESSED_DIR, filename);
+      await rename(filePath, processedPath);
 
-    if (verbose) {
-      console.log(`✅ Processed and moved to: ${processedPath}`);
+      if (verbose) {
+        console.log(`✅ Processed and moved to: ${processedPath}`);
+      }
     }
 
-    return {
-      success: true,
-      action: 'PROCESSED',
-      message: `Successfully processed ${filename}`,
-      filePath: processedPath,
-    };
+    return result;
+
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
 
@@ -106,38 +104,60 @@ export async function processFile(
 }
 
 /**
- * Process file based on dropzone type
- * This is where actual processing logic lives
- *
- * @param dropzoneType - Type of dropzone
- * @param filePath - Full path to file
- * @param content - File content
+ * Route file to appropriate processor based on type or filename
  */
-async function processFileByType(
+async function routeToProcessor(
   dropzoneType: DropzoneType,
   filePath: string,
-  content: string
-): Promise<void> {
-  switch (dropzoneType) {
-    case 'test-this':
-      // Run tests on the file content
-      console.log(`Running tests for: ${basename(filePath)}`);
-      // TODO: Implement actual test logic
-      break;
-
-    case 'deploy-this':
-      // Deploy the file
-      console.log(`Deploying: ${basename(filePath)}`);
-      // TODO: Implement actual deployment logic
-      break;
-
-    case 'review-this':
-      // Review the code
-      console.log(`Reviewing code: ${basename(filePath)}`);
-      // TODO: Implement actual review logic
-      break;
-
-    default:
-      throw new Error(`Unknown dropzone type: ${dropzoneType}`);
+  filename: string
+): Promise<ProcessResult> {
+  // Route by explicit type OR filename prefix
+  if (dropzoneType === 'intel' || filename.startsWith('intel-')) {
+    return await processIntelFile(filePath, PROCESSED_DIR);
   }
+
+  if (dropzoneType === 'epk' || filename.startsWith('epk-')) {
+    return await processEpkFile(filePath, PROCESSED_DIR);
+  }
+
+  // Fallback handlers for test/deploy/review types
+  if (dropzoneType === 'test-this') {
+    console.log(`Running tests for: ${filename}`);
+    // TODO: Implement actual test logic
+    return {
+      success: true,
+      action: 'test-this:processed',
+      message: `Test processing for ${filename} (placeholder)`,
+      filePath,
+    };
+  }
+
+  if (dropzoneType === 'deploy-this') {
+    console.log(`Deploying: ${filename}`);
+    // TODO: Implement actual deployment logic
+    return {
+      success: true,
+      action: 'deploy-this:processed',
+      message: `Deployment for ${filename} (placeholder)`,
+      filePath,
+    };
+  }
+
+  if (dropzoneType === 'review-this') {
+    console.log(`Reviewing code: ${filename}`);
+    // TODO: Implement actual review logic
+    return {
+      success: true,
+      action: 'review-this:processed',
+      message: `Code review for ${filename} (placeholder)`,
+      filePath,
+    };
+  }
+
+  // Unknown type
+  return {
+    success: false,
+    action: 'router:unknown_type',
+    message: `No processor configured for type=${dropzoneType} file=${filename}`,
+  };
 }
