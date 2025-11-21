@@ -4,8 +4,8 @@ packages:
   - 'apps/pitch-generator'
   - 'apps/tracker'
   - 'apps/tap-dashboard'  # Unified Intelligence Dashboard
-  - 'apps/web'  # Landing page and portal
   # Removed apps with build errors, unused, or personal
+  # - 'apps/web'  # Removed - has build errors, will move to separate repo for landing page
   # - 'apps/api'  # Has TypeScript errors, not in production
   # - 'apps/mobile'  # Security vulnerabilities
   # - 'apps/tap-saas-template-DO-NOT-DELETE'  # Unused template
