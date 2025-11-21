@@ -10,7 +10,7 @@
     "lint": "pnpm --filter audio-intel lint",
     "lint:all": "pnpm -r --parallel lint",
     "lint:fix": "pnpm -r --parallel lint -- --fix",
-    "typecheck": "pnpm --filter audio-intel typecheck",
+    "typecheck": "pnpm --filter @total-audio/tap-dashboard typecheck",
     "typecheck:all": "pnpm -r --parallel typecheck",
     "build:audio-intel": "pnpm --filter audio-intel build",
     "build:tracker": "pnpm --filter tracker build",
