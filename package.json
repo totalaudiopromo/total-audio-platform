@@ -89,9 +89,9 @@
     "@changesets/cli": "^2.29.7",
     "@playwright/test": "^1.56.1",
     "@types/dotenv": "^8.2.3",
-    "@types/node": "^24.10.0",
+    "@types/node": "^24.10.1",
     "node-fetch": "^2.7.0",
-    "sharp": "^0.34.4",
+    "sharp": "^0.34.5",
     "tsx": "^4.20.6"
   }
 }
