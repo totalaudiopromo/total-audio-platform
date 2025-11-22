@@ -1,4 +1,4 @@
-#  Airtable Audit Setup Guide
+# Airtable Audit Setup Guide
 
 ## Quick Setup
 

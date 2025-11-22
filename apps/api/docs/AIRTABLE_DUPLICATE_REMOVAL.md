@@ -1,4 +1,4 @@
-#  Airtable Duplicate Removal System
+# Airtable Duplicate Removal System
 
 ## Overview
 

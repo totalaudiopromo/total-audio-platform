@@ -1,4 +1,4 @@
-#  Email Domain Analysis Setup Guide
+# Email Domain Analysis Setup Guide
 
 ## Quick Setup
 

@@ -1,4 +1,4 @@
-#  Contact Enrichment System Setup
+# Contact Enrichment System Setup
 
 This system uses Firecrawl to scrape UK radio station websites and extract valuable contact information for your radio DJ contacts in Airtable.
 
