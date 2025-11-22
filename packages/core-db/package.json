@@ -32,10 +32,10 @@
   "author": "Total Audio Promo",
   "license": "UNLICENSED",
   "dependencies": {
-    "@supabase/ssr": "^0.7.0",
-    "@supabase/supabase-js": "^2.75.0",
+    "@supabase/ssr": "0.7.0",
+    "@supabase/supabase-js": "2.75.0",
     "airtable": "^0.12.2",
-    "zod": "^3.23.0"
+    "zod": "^3.25.76"
   },
   "peerDependencies": {
     "next": "^15.0.0",
@@ -43,7 +43,7 @@
     "react-dom": ">=18.2.0"
   },
   "devDependencies": {
-    "@types/node": "^20.0.0",
-    "typescript": "^5.7.2"
+    "@types/node": "^20.19.25",
+    "typescript": "5.7.2"
   }
 }

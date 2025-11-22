@@ -24,12 +24,12 @@
   "author": "Total Audio Promo",
   "license": "UNLICENSED",
   "dependencies": {
+    "@supabase/supabase-js": "2.75.0",
     "@total-audio/core-db": "workspace:*",
-    "@supabase/supabase-js": "^2.75.0",
-    "zod": "^3.23.0"
+    "zod": "^3.25.76"
   },
   "devDependencies": {
-    "@types/node": "^20.0.0",
-    "typescript": "^5.7.2"
+    "@types/node": "^20.19.25",
+    "typescript": "5.7.2"
   }
 }

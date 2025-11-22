@@ -9,14 +9,14 @@
     "./components/*": "./src/components/*"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "0.65.0",
+    "@total-audio/ai-skills": "workspace:*",
     "@total-audio/core-db": "workspace:*",
     "@total-audio/fusion-layer": "workspace:*",
-    "@total-audio/ai-skills": "workspace:*",
-    "@anthropic-ai/sdk": "^0.65.0",
-    "zod": "^3.23.0"
+    "zod": "^3.25.76"
   },
   "devDependencies": {
-    "@types/node": "^20.0.0",
-    "typescript": "^5.7.2"
+    "@types/node": "^20.19.25",
+    "typescript": "5.7.2"
   }
 }

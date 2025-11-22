@@ -6,9 +6,9 @@
   "dependencies": {
     "@total-audio/core-db": "workspace:*",
     "@total-audio/fusion-layer": "workspace:*",
-    "zod": "^3.23.0"
+    "zod": "^3.25.76"
   },
   "devDependencies": {
-    "typescript": "^5.7.2"
+    "typescript": "5.7.2"
   }
 }

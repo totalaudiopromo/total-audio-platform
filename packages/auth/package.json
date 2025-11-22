@@ -28,16 +28,16 @@
   "author": "Total Audio Promo",
   "license": "UNLICENSED",
   "dependencies": {
-    "@supabase/ssr": "^0.5.2",
-    "@supabase/supabase-js": "^2.46.1"
+    "@supabase/ssr": "0.7.0",
+    "@supabase/supabase-js": "2.75.0"
   },
   "peerDependencies": {
     "next": "^15.0.0",
     "react": "^18.0.0 || ^19.0.0"
   },
   "devDependencies": {
-    "@types/node": "^20.0.0",
-    "@types/react": "^18.0.0",
-    "typescript": "^5.0.0"
+    "@types/node": "^20.19.25",
+    "@types/react": "^18.3.27",
+    "typescript": "5.7.2"
   }
 }
