@@ -15,14 +15,14 @@
 
 ### Database Migration
 
-```
+```text
 packages/core-db/supabase/migrations/
  20251117000001_unified_dashboard_ecosystem.sql (955 lines)
 ```
 
 ### Fusion Layer Package (11 files)
 
-```
+```text
 packages/fusion-layer/
  package.json
  tsconfig.json
@@ -45,7 +45,7 @@ packages/fusion-layer/
 
 ### AI Skills Package (6 files)
 
-```
+```text
 packages/ai-skills/
  package.json
  tsconfig.json
@@ -60,7 +60,7 @@ packages/ai-skills/
 
 ### Documentation
 
-```
+```text
 /
  UNIFIED_DASHBOARD_IMPLEMENTATION.md (complete technical documentation)
  UNIFIED_DASHBOARD_COMMIT_PLAN.md (this file)

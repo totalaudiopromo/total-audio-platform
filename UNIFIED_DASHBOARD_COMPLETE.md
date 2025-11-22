@@ -63,7 +63,7 @@
 
 ### Phase 1: Foundation
 
-```
+```text
 packages/core-db/supabase/migrations/
  20251117000001_unified_dashboard_ecosystem.sql (955 lines)
 
@@ -88,7 +88,7 @@ packages/ai-skills/ (6 files, 938 lines)
 
 ### Phase 2: Dashboard UI
 
-```
+```text
 apps/command-centre/
  package.json (updated with fusion-layer + ai-skills deps)
  app/(dashboard)/dashboard/
@@ -109,39 +109,39 @@ apps/command-centre/
 
 ## Architecture Overview
 
-```
+```text
 
-           UNIFIED DASHBOARD UI (Phase 2)                    
-  apps/command-centre/app/(dashboard)/dashboard              
-  • Main page with Fusion Context                            
-  • 6 dashboard components                                   
-  • AI-powered insights & actions                            
-  • Real-time feed & quick actions                           
+           UNIFIED DASHBOARD UI (Phase 2)
+  apps/command-centre/app/(dashboard)/dashboard
+  • Main page with Fusion Context
+  • 6 dashboard components
+  • AI-powered insights & actions
+  • Real-time feed & quick actions
 
-                           
-                           
 
-                    FUSION LAYER (Phase 1)                   
-  @total-audio/fusion-layer                                  
-  • 20 data loaders (parallel execution)                     
-  • Complete type system (570+ types)                        
-  • Error isolation & metadata tracking                      
 
-                           
-                           
 
-                 AI SKILLS LAYER (Phase 1)                   
-  @total-audio/ai-skills                                     
-  • Campaign analysis                                        
-  • Next actions suggestions                                 
-  • Pattern detection                                        
+                    FUSION LAYER (Phase 1)
+  @total-audio/fusion-layer
+  • 20 data loaders (parallel execution)
+  • Complete type system (570+ types)
+  • Error isolation & metadata tracking
 
-                           
-                           
 
-                DATABASE LAYER (Phase 1)                     
-  26 tables with full RLS                                    
-  Community, Intelligence, Analytics, Discovery              
+
+
+                 AI SKILLS LAYER (Phase 1)
+  @total-audio/ai-skills
+  • Campaign analysis
+  • Next actions suggestions
+  • Pattern detection
+
+
+
+
+                DATABASE LAYER (Phase 1)
+  26 tables with full RLS
+  Community, Intelligence, Analytics, Discovery
 
 ```
 

@@ -100,7 +100,7 @@ Technical Implementation:
 
 Architecture:
 
-```
+```text
 Golden Verify Workflow (GitHub Actions)
   ↓ generates test-deployment-*.md
   ↓

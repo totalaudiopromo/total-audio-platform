@@ -204,7 +204,7 @@ IMPORTANT: In the tasks.md file, mark this task and its sub-tasks complete by up
 <instructions>
   ACTION: Update tasks.md after each task completion
   MARK: [x] for completed items immediately
-  DOCUMENT: Blocking issues with  emoji
+  DOCUMENT: Blocking issues with clear description
   LIMIT: 3 attempts before marking as blocked
 </instructions>
 
