@@ -11,9 +11,8 @@
   "dependencies": {
     "@total-audio/cis-core": "workspace:*",
     "@total-audio/fusion-layer": "workspace:*",
-    "@total-audio/cmg": "workspace:*",
     "@total-audio/identity-kernel": "workspace:*",
-    "@total-audio/mig": "workspace:*",
+    "@total-audio/music-industry-graph": "workspace:*",
     "@supabase/supabase-js": "^2.39.0"
   },
   "devDependencies": {

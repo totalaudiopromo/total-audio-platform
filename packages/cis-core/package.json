@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@total-audio/fusion-layer": "workspace:*",
-    "@total-audio/db": "workspace:*"
+    "@total-audio/core-db": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
