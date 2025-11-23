@@ -1,382 +1,176 @@
 /**
- * MeshOS Type Definitions
- * Core types for the universal multi-agent coordination layer
+ * MeshOS Phase 13: Scheduled Reasoning, Contradiction Graph & Insight Summaries
+ * READ-ONLY meta-coordination layer
  */
 
-// ============================================================================
-// MESH MESSAGE TYPES
-// ============================================================================
+// ──────────────────────────────────────
+// CORE SYSTEMS
+// ──────────────────────────────────────
 
-export type MessageSource =
-  | 'autopilot'
-  | 'mal'
-  | 'coachOS'
-  | 'talentRadar'
-  | 'scenesEngine'
-  | 'mig'
-  | 'cmg'
-  | 'fusionLayer'
-  | 'identityKernel'
-  | 'rcf'
-  | 'coverageMap'
-  | 'studio'
-  | 'dashboard'
-  | 'operatorOS'
-  | 'meshOS';
+export type MeshSystem =
+  | 'Autopilot'
+  | 'MAL'
+  | 'CoachOS'
+  | 'CIS'
+  | 'Scenes'
+  | 'Talent'
+  | 'MIG'
+  | 'CMG'
+  | 'Identity'
+  | 'RCF'
+  | 'Fusion';
 
-export type MessageTarget =
-  | 'meshOS'
-  | 'planning'
-  | 'negotiation'
-  | 'insight'
-  | 'policy'
-  | 'drift'
-  | 'context';
+// ──────────────────────────────────────
+// SCHEDULED REASONING
+// ──────────────────────────────────────
 
-export type MessageType =
-  | 'request'
-  | 'response'
-  | 'notification'
-  | 'negotiation'
-  | 'insight'
-  | 'drift'
-  | 'query';
+export type ReasoningMode = 'hourly' | 'daily' | 'weekly';
 
-export type MessageStatus = 'pending' | 'processing' | 'completed' | 'failed';
-
-export interface MeshMessage {
-  id: string;
-  workspace_id: string;
-  source: MessageSource;
-  target: MessageTarget;
-  type: MessageType;
-  payload: Record<string, any>;
-  status: MessageStatus;
-  result?: Record<string, any>;
-  created_at: string;
-  processed_at?: string;
+export interface ScheduledReasoningResult {
+  mode: ReasoningMode;
+  startedAt: string; // ISO timestamp
+  finishedAt: string; // ISO timestamp
+  opportunitiesCount: number;
+  conflictsCount: number;
+  driftCount: number;
+  windowStart: string; // ISO timestamp
+  windowEnd: string; // ISO timestamp
+  insights: string[]; // Human-readable insights
 }
 
-// ============================================================================
-// NEGOTIATION TYPES
-// ============================================================================
+// ──────────────────────────────────────
+// CONTRADICTION GRAPH
+// ──────────────────────────────────────
 
-export type NegotiationStrategy =
-  | 'consensus'
-  | 'weighted'
-  | 'risk-adjusted'
-  | 'opportunity';
-
-export type NegotiationStatus =
-  | 'pending'
-  | 'in_progress'
-  | 'completed'
-  | 'failed';
-
-export interface Negotiation {
-  id: string;
-  workspace_id: string;
-  participants: string[];
-  context: {
-    goal: string;
-    constraints?: Record<string, any>;
-    data?: Record<string, any>;
-    deadline?: string;
-  };
-  strategy: NegotiationStrategy;
-  result?: {
-    decision: string;
-    rationale: string;
-    participants_agreement: Record<string, number>; // participant -> agreement score (0-1)
-    actions?: Array<{
-      system: string;
-      action: string;
-      priority: number;
-    }>;
-  };
-  confidence?: number;
-  status: NegotiationStatus;
-  created_at: string;
-  completed_at?: string;
+export interface ContradictionEdge {
+  from: MeshSystem;
+  to: MeshSystem;
+  contradictionType: string;
+  severity: 'low' | 'medium' | 'high' | 'critical';
+  humanSummary: string;
+  detectedAt: string; // ISO timestamp
+  examples?: string[]; // Example contradictions
 }
 
-// ============================================================================
-// PLANNING TYPES
-// ============================================================================
-
-export type PlanTimeframe = '7d' | '30d' | '90d';
-
-export type PlanStatus = 'active' | 'superseded' | 'archived';
-
-export interface MeshPlan {
-  id: string;
-  workspace_id: string;
-  timeframe: PlanTimeframe;
-  plan: {
-    objectives: Array<{
-      id: string;
-      description: string;
-      priority: number;
-      owner: string; // system responsible
-      deadline?: string;
-      dependencies?: string[]; // IDs of other objectives
-    }>;
-    actions: Array<{
-      id: string;
-      objective_id: string;
-      description: string;
-      system: string;
-      scheduled_for?: string;
-      estimated_effort?: number;
-      status?: 'pending' | 'in_progress' | 'completed';
-    }>;
-    milestones: Array<{
-      date: string;
-      description: string;
-      objectives: string[]; // objective IDs
-    }>;
-    risks: Array<{
-      description: string;
-      probability: number; // 0-1
-      impact: number; // 0-1
-      mitigation?: string;
-    }>;
-    opportunities: Array<{
-      description: string;
-      value: number; // 0-1
-      effort: number; // 0-1
-      window?: string; // time window
-    }>;
-  };
-  confidence?: number;
-  generated_at: string;
-  valid_until?: string;
-  status: PlanStatus;
+export interface ContradictionNode {
+  system: MeshSystem;
+  contradictionCount: number;
+  severity: 'low' | 'medium' | 'high' | 'critical';
 }
 
-// ============================================================================
-// DRIFT DETECTION TYPES
-// ============================================================================
+export interface MeshContradictionGraph {
+  nodes: ContradictionNode[];
+  edges: ContradictionEdge[];
+  generatedAt: string; // ISO timestamp
+  totalContradictions: number;
+}
 
-export type DriftType =
-  | 'creative_vs_campaign'
-  | 'scene_vs_pitch'
-  | 'segment_vs_autopilot'
-  | 'rcf_vs_goals'
-  | 'coverage_vs_strategy'
-  | 'identity_vs_actions'
-  | 'timing_drift'
-  | 'priority_conflict';
-
-export type DriftStatus =
-  | 'detected'
-  | 'acknowledged'
-  | 'correcting'
-  | 'resolved'
-  | 'ignored';
+// ──────────────────────────────────────
+// DRIFT REPORTS
+// ──────────────────────────────────────
 
 export interface DriftReport {
   id: string;
-  workspace_id: string;
-  drift_type: DriftType;
-  systems_involved: string[];
-  drift_score: number; // 0-1, higher = more drift
-  analysis: {
-    description: string;
-    specifics: Record<string, any>;
-    evidence: Array<{
-      system: string;
-      state: Record<string, any>;
-      timestamp: string;
-    }>;
-  };
-  recommended_corrections?: Array<{
-    system: string;
-    action: string;
-    priority: number;
-    rationale: string;
-  }>;
-  status: DriftStatus;
-  detected_at: string;
-  resolved_at?: string;
+  systemsInvolved: MeshSystem[];
+  contradictionType: string;
+  severity: 'low' | 'medium' | 'high' | 'critical';
+  humanSummary: string;
+  detectedAt: string;
+  details?: Record<string, any>;
 }
 
-// ============================================================================
-// INSIGHT ROUTING TYPES
-// ============================================================================
+// ──────────────────────────────────────
+// INSIGHT SUMMARIES
+// ──────────────────────────────────────
 
-export type InsightType =
-  | 'opportunity'
-  | 'threat'
-  | 'drift'
-  | 'momentum'
-  | 'coverage'
-  | 'talent'
-  | 'scene'
-  | 'performance'
-  | 'risk';
-
-export type InsightDestination =
-  | 'dashboard'
-  | 'autopilot'
-  | 'coachOS'
-  | 'talentRadar'
-  | 'scenesEngine'
-  | 'operatorOS'
-  | 'studio'
-  | 'anr'
-  | 'community';
-
-export interface InsightRoute {
+export interface CrossSystemOpportunity {
   id: string;
-  workspace_id: string;
-  insight_type: InsightType;
-  destination: InsightDestination;
-  rule: {
-    conditions?: Record<string, any>;
-    filters?: Record<string, any>;
-    transformations?: string[];
-  };
-  priority: number; // 1-10
-  enabled: boolean;
-  created_at: string;
-  updated_at: string;
+  systems: MeshSystem[];
+  opportunityType: string;
+  impact: 'low' | 'medium' | 'high';
+  description: string;
+  recommendedActions?: string[];
 }
 
-export interface Insight {
-  type: InsightType;
+export interface CrossSystemConflict {
+  id: string;
+  systems: MeshSystem[];
+  conflictType: string;
+  severity: 'low' | 'medium' | 'high' | 'critical';
+  description: string;
+  resolutionSuggestions?: string[];
+}
+
+export interface PlanSummary {
+  id: string;
   title: string;
-  description: string;
-  data: Record<string, any>;
-  confidence: number; // 0-1
-  urgency: number; // 0-1
-  source: string;
-  timestamp: string;
+  systems: MeshSystem[];
+  status: 'pending' | 'active' | 'completed' | 'blocked';
+  createdAt: string;
+  priority?: 'low' | 'medium' | 'high';
 }
 
-// ============================================================================
-// POLICY TYPES
-// ============================================================================
+export interface DailySummary {
+  date: string; // YYYY-MM-DD
+  generatedAt: string; // ISO timestamp
 
-export interface PolicyRule {
-  id: string;
-  name: string;
-  description: string;
-  type: 'constraint' | 'threshold' | 'schedule' | 'budget' | 'ethical';
-  rule: Record<string, any>;
-  enabled: boolean;
-}
+  // Top insights
+  opportunities: CrossSystemOpportunity[];
+  conflicts: CrossSystemConflict[];
 
-export interface GlobalPolicy {
-  workspace_id: string;
-  quiet_hours?: {
-    start: string; // HH:MM
-    end: string; // HH:MM
-    timezone: string;
+  // Plan tracking
+  plans: {
+    last7d: PlanSummary[];
+    last30d: PlanSummary[];
+    last90d: PlanSummary[];
   };
-  contact_fatigue?: {
-    max_contacts_per_day: number;
-    max_contacts_per_week: number;
-    min_days_between_contacts: number;
-  };
-  risk_ceilings?: {
-    max_risk_score: number; // 0-1
-    require_approval_above: number; // 0-1
-  };
-  autonomy_caps?: {
-    max_autonomous_actions_per_day: number;
-    require_human_approval: string[]; // action types
-  };
-  token_budgets?: {
-    daily_limit: number;
-    monthly_limit: number;
-    alert_at_percentage: number;
-  };
-  rate_limiting?: {
-    max_actions_per_hour: number;
-    max_messages_per_hour: number;
-  };
-  ethical_constraints?: {
-    no_spam: boolean;
-    respect_privacy: boolean;
-    transparent_ai_use: boolean;
-    custom_rules?: string[];
+
+  // Drift tracking
+  drifts: DriftReport[];
+
+  // High-level metrics
+  metrics: {
+    totalOpportunities: number;
+    totalConflicts: number;
+    totalPlans: number;
+    totalDrifts: number;
+    criticalIssues: number;
   };
 }
 
-// ============================================================================
-// GLOBAL CONTEXT TYPES
-// ============================================================================
+// ──────────────────────────────────────
+// MESH STATE
+// ──────────────────────────────────────
 
-export interface SystemState {
-  system: string;
-  health: 'healthy' | 'degraded' | 'error' | 'unknown';
-  load: number; // 0-1
-  last_activity?: string;
-  metrics?: Record<string, number>;
-  alerts?: string[];
+export interface MeshStateEntry {
+  key: string;
+  value: any;
+  updatedAt: string;
+  metadata?: Record<string, any>;
 }
 
-export interface GlobalContext {
-  workspace_id: string;
-  timestamp: string;
-  systems: SystemState[];
-  active_negotiations: number;
-  active_plans: Record<PlanTimeframe, boolean>;
-  drift_reports: {
-    total: number;
-    active: number;
-    avg_score: number;
-  };
-  opportunities: Array<{
-    type: string;
-    value: number;
-    window?: string;
-  }>;
-  threats: Array<{
-    type: string;
-    severity: number;
-    mitigation?: string;
-  }>;
-  contradictions: Array<{
-    systems: string[];
-    description: string;
-    severity: number;
-  }>;
+// ──────────────────────────────────────
+// API TYPES
+// ──────────────────────────────────────
+
+export interface RunReasoningRequest {
+  mode: ReasoningMode;
 }
 
-// ============================================================================
-// ADAPTER TYPES
-// ============================================================================
-
-export interface AdapterConfig {
-  workspace_id: string;
-  read_only: true; // ALWAYS true - MeshOS only reads from other systems
-}
-
-export interface AdapterReadResult<T = any> {
+export interface RunReasoningResponse {
   success: boolean;
-  data?: T;
+  result?: ScheduledReasoningResult;
   error?: string;
-  timestamp: string;
 }
 
-// ============================================================================
-// ORCHESTRATOR TYPES
-// ============================================================================
-
-export interface OrchestratorOptions {
-  workspace_id: string;
-  enable_auto_planning?: boolean;
-  enable_auto_drift_detection?: boolean;
-  enable_auto_negotiation?: boolean;
-  policy?: Partial<GlobalPolicy>;
+export interface GetContradictionGraphResponse {
+  success: boolean;
+  graph?: MeshContradictionGraph;
+  error?: string;
 }
 
-export interface OrchestratorStatus {
-  running: boolean;
-  last_cycle: string;
-  cycles_completed: number;
-  errors: number;
-  context: GlobalContext;
+export interface GetSummaryResponse {
+  success: boolean;
+  summary?: DailySummary;
+  error?: string;
 }

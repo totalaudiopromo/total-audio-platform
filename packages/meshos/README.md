@@ -1,98 +1,141 @@
 # @total-audio/meshos
 
-**MeshOS** - Universal Multi-Agent Coordination Layer for Total Audio Platform
+MeshOS Phase 13: Scheduled Reasoning, Contradiction Graph & Insight Summaries
+
+**READ-ONLY meta-coordination layer** for Total Audio Platform
 
 ## Overview
 
-MeshOS is the orchestration/coordination layer that sits ABOVE all agents and systems. It provides:
+MeshOS is a coordination system that reads from multiple platform systems (Autopilot, MAL, CoachOS, CIS, Scenes, Talent, MIG, CMG, Identity, RCF, Fusion) and produces:
 
-- **Cross-system messaging** - Message routing between systems
-- **Multi-agent negotiation** - Conflict resolution and priority allocation
-- **Long-range planning** - 7-day, 30-day, 90-day plans
-- **Drift detection** - Identify contradictions between systems
-- **Insight routing** - Distribute insights to appropriate destinations
-- **Policy enforcement** - Global rules and constraints
-- **Global context** - System-wide awareness
+- **Scheduled reasoning cycles** (hourly, daily, weekly)
+- **Contradiction graphs** showing system conflicts
+- **Daily insight summaries** aggregating opportunities, conflicts, plans, and drift
 
-## Critical Rule: READ-ONLY Integration
+**IMPORTANT**: MeshOS is READ-ONLY. It reads from other systems but only writes to `mesh_*` tables. It produces recommendations and reports but does NOT execute side effects (no emails, no campaigns).
 
-MeshOS **ONLY READS** from existing systems via adapters.
-It **ONLY WRITES** to its own `mesh_*` tables.
+## Features
+
+### 1. Scheduled Reasoning Cycles
+
+Run reasoning cycles at different intervals with adaptive thresholds:
+
+- **Hourly**: High-impact opportunities, high+ severity conflicts
+- **Daily**: Medium+ impact opportunities, medium+ severity conflicts
+- **Weekly**: All opportunities and conflicts
+
+```typescript
+import { runScheduledCycle } from '@total-audio/meshos';
+
+const result = await runScheduledCycle('daily');
+// Returns: ScheduledReasoningResult with opportunities, conflicts, drift counts
+```
+
+### 2. Contradiction Graph
+
+Build a graph showing contradictions between systems:
+
+```typescript
+import { getContradictionGraphSnapshot } from '@total-audio/meshos';
+
+const graph = await getContradictionGraphSnapshot();
+// Returns: MeshContradictionGraph with nodes (systems) and edges (contradictions)
+```
+
+### 3. Insight Summaries
+
+Generate daily summaries aggregating opportunities, conflicts, plans, and drift:
+
+```typescript
+import { generateDailySummary } from '@total-audio/meshos';
+
+const summary = await generateDailySummary();
+// Returns: DailySummary with top opportunities, conflicts, plans (7d/30d/90d), drift
+```
 
 ## Installation
 
 ```bash
-pnpm install @total-audio/meshos
+npm install @total-audio/meshos
+# or
+pnpm add @total-audio/meshos
 ```
 
-## Usage
+## API Endpoints
 
-```typescript
-import { MeshOrchestrator } from '@total-audio/meshos';
+When integrated with command-centre app:
 
-// Initialize orchestrator
-const orchestrator = new MeshOrchestrator({
-  workspace_id: 'workspace-123',
-  enable_auto_planning: true,
-  enable_auto_drift_detection: true,
-  enable_auto_negotiation: true,
-  policy: {
-    quiet_hours: { start: '22:00', end: '08:00', timezone: 'Europe/London' },
-    contact_fatigue: {
-      max_contacts_per_day: 50,
-      max_contacts_per_week: 200,
-      min_days_between_contacts: 2,
-    },
-  },
-});
+- `POST /api/meshos/reasoning/run` - Run scheduled reasoning cycle
+- `GET /api/meshos/drift/graph` - Get contradiction graph snapshot
+- `GET /api/meshos/summary/today` - Get today's insight summary
+- `GET /api/meshos/summary/[date]` - Get summary for specific date (YYYY-MM-DD)
 
-// Start orchestration
-await orchestrator.start();
+## UI Pages
 
-// Get global context
-const context = await orchestrator.getGlobalContext();
+Available at `/meshos` in command-centre:
 
-// Generate plan
-const plan = await orchestrator.triggerPlanning('7d');
+- `/meshos` - Main dashboard with Today's Summary
+- `/meshos/drift` - Contradiction graph visualization
+- `/meshos/plans` - Plans referenced in summaries (7d/30d/90d)
+- `/meshos/negotiations` - Cross-system negotiations (placeholder)
+
+## Database Tables
+
+MeshOS uses these tables (not included in package, defined in platform):
+
+- `mesh_state` - Key-value store for reasoning results and summaries
+- `mesh_drift_reports` - Drift and contradiction reports
+- `mesh_plans` - Cross-system coordination plans
+- `mesh_messages` - Inter-system messages
+- `mesh_negotiations` - Conflict resolution negotiations
+- `mesh_insight_routes` - Insight routing configuration
+
+## Development
+
+```bash
+# Build
+npm run build
+
+# Watch mode
+npm run dev
+
+# Run tests
+npm run test
+
+# Type checking
+npm run typecheck
 ```
 
-## Features
+## Testing
 
-### 7 Core Engines
+Comprehensive test suite covering:
 
-1. **PolicyEngine** - Global policy enforcement
-2. **MessageRouter** - Cross-system messaging
-3. **PlanningEngine** - Long-range plan generation
-4. **NegotiationEngine** - Multi-agent negotiation
-5. **DriftEngine** - Drift/contradiction detection
-6. **GlobalContextEngine** - System-wide context
-7. **InsightRouter** - Insight distribution
+- Reasoning scheduler (time windows, thresholds, aggregation)
+- Contradiction graph (node/edge structure, filtering, top conflicts)
+- Insight summariser (summary generation, helpers, metrics)
 
-### 10 READ-ONLY Adapters
+Run tests: `npm test`
 
-- AutopilotAdapter
-- MalAdapter
-- CoachAdapter
-- TalentAdapter
-- ScenesAdapter
-- MigAdapter
-- CmgAdapter
-- FusionAdapter
-- IdentityKernelAdapter
-- RcfAdapter
+## Architecture
 
-### 5 Database Stores
+```
+MeshOS (READ-ONLY)
+    ↓ reads from
+[Autopilot, MAL, CoachOS, CIS, Scenes, Talent, MIG, CMG, Identity, RCF, Fusion]
+    ↓ writes to
+[mesh_state, mesh_drift_reports, mesh_plans, etc.]
+    ↓ consumed by
+[Command Centre UI, External schedulers, Notification systems]
+```
 
-- MeshMessageStore
-- MeshStateStore
-- MeshPlanStore
-- MeshNegotiationStore
-- MeshInsightRouteStore
+## Example Outputs
 
-## Documentation
+See `examples/` directory for:
 
-See `MESHOS_IMPLEMENTATION.md` for complete implementation details, examples, and architecture documentation.
+- Scheduled reasoning result JSON
+- Contradiction graph JSON
+- Daily summary JSON
 
 ## License
 
-Private - Total Audio Platform
+Proprietary - Total Audio Platform
