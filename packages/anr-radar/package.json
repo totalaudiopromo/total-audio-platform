@@ -1,0 +1,45 @@
+{
+  "name": "@total-audio/anr-radar",
+  "version": "1.0.0",
+  "description": "A&R / Talent Discovery Radar - Scouting and breakout probability system",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./types": "./dist/types.js",
+    "./store": "./dist/anrStore.js",
+    "./scoring": "./dist/scoringEngine.js",
+    "./momentum": "./dist/momentumEngine.js",
+    "./shortlist": "./dist/shortlistEngine.js",
+    "./insights": "./dist/insightEngine.js",
+    "./events": "./dist/eventIngestion.js"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@vitest/ui": "^2.1.8",
+    "tsup": "^8.0.0",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "keywords": [
+    "anr",
+    "talent-discovery",
+    "radar",
+    "scouting",
+    "music-industry",
+    "breakout-prediction"
+  ],
+  "author": "Total Audio",
+  "license": "MIT"
+}
