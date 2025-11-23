@@ -1,0 +1,46 @@
+{
+  "name": "@total-audio/scenes-engine",
+  "version": "1.0.0",
+  "description": "Scenes Engine - Analytics and intelligence layer for modeling music scenes, microgenres, regions, and cultural movements",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./types": "./dist/types.js",
+    "./scenesStore": "./dist/scenesStore.js",
+    "./trendsEngine": "./dist/trendsEngine.js",
+    "./relationshipEngine": "./dist/relationshipEngine.js",
+    "./membershipEngine": "./dist/membershipEngine.js",
+    "./recommendationEngine": "./dist/recommendationEngine.js",
+    "./scenePulse": "./dist/scenePulse.js",
+    "./migAdapter": "./dist/migAdapter.js",
+    "./fusionAdapter": "./dist/fusionAdapter.js",
+    "./cmgAdapter": "./dist/cmgAdapter.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit",
+    "test": "jest"
+  },
+  "keywords": [
+    "total-audio",
+    "scenes",
+    "microgenres",
+    "analytics",
+    "music-intelligence"
+  ],
+  "author": "Total Audio Promo",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.46.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "jest": "^29.0.0",
+    "@types/jest": "^29.0.0",
+    "ts-jest": "^29.0.0"
+  }
+}
