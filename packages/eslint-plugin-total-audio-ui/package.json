@@ -1,0 +1,27 @@
+{
+  "name": "eslint-plugin-total-audio-ui",
+  "version": "1.0.0",
+  "description": "ESLint plugin to enforce Total Audio UI standards across TAP and OperatorOS",
+  "type": "module",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "scripts": {
+    "test": "echo 'No tests yet' && exit 0",
+    "lint": "echo 'Linting eslint-plugin...' && exit 0"
+  },
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "total-audio",
+    "ui-standards",
+    "design-system"
+  ],
+  "author": "Total Audio Promo",
+  "license": "UNLICENSED",
+  "peerDependencies": {
+    "eslint": ">=8.0.0"
+  },
+  "dependencies": {}
+}

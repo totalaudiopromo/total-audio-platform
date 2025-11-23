@@ -79,6 +79,38 @@ checks:
         severity: "warning"
         message: "Consider using @total-audio/testing validators for consistency."
 
+      # UI Standards - TAP (Unified UI System)
+      - name: "No arbitrary Tailwind colors in TAP apps"
+        pattern: '(bg|text|border|shadow)-\[#[0-9A-Fa-f]{3,8}\]'
+        files: "apps/{audio-intel,command-centre,web,pitch-generator,tracker}/**/*.{ts,tsx}"
+        severity: "error"
+        message: "Use TAP design tokens (tap-cyan, tap-slate-*, tap-success, etc.) instead of arbitrary colors."
+
+      - name: "No inline color styles in TAP apps"
+        pattern: 'style={{.*?(color|backgroundColor|boxShadow):'
+        files: "apps/{audio-intel,command-centre,web,pitch-generator,tracker}/**/*.{ts,tsx}"
+        severity: "error"
+        message: "Use @total-audio/ui-tap components instead of inline color styles."
+
+      - name: "TAP apps must use TAP UI only"
+        pattern: 'from ["\']@total-audio/ui-operatoros'
+        files: "apps/{audio-intel,command-centre,web,pitch-generator,tracker}/**/*.{ts,tsx}"
+        severity: "critical"
+        message: "TAP apps cannot import OperatorOS UI. Use @total-audio/ui-tap instead."
+
+      # UI Standards - OperatorOS (when it exists)
+      - name: "OperatorOS must use OperatorOS UI only"
+        pattern: 'from ["\']@total-audio/ui-tap'
+        files: "apps/totalaud.io/**/*.{ts,tsx}"
+        severity: "critical"
+        message: "OperatorOS cannot import TAP UI. Use @total-audio/ui-operatoros instead."
+
+      - name: "No hard-coded colors in OperatorOS"
+        pattern: '#[0-9A-Fa-f]{3,8}'
+        files: "apps/totalaud.io/**/*.{ts,tsx}"
+        severity: "error"
+        message: "Use theme tokens (--operator-*) instead of hard-coded hex colors."
+
   # Supabase migrations
   supabase:
     enabled: true
@@ -154,6 +186,36 @@ custom_rules:
     requires: "apps/*/app/api/health/route.ts"
     severity: "error"
     message: "All apps must have /api/health endpoints for Golden Verify"
+
+  # UI Standards - Focus on visual language changes
+  - name: "New color additions require review"
+    files: "**/*.{ts,tsx,css,scss}"
+    pattern: '(#[0-9A-Fa-f]{6}|rgb\(|rgba\(|hsl\()'
+    severity: "warning"
+    message: "New colors detected. Verify they align with TAP (slate cyan #3AA9BE) or OperatorOS theme tokens."
+
+  - name: "New shadow additions require review"
+    files: "**/*.{ts,tsx,css,scss}"
+    pattern: 'box-shadow:|boxShadow:'
+    severity: "warning"
+    message: "New shadows detected. Use tap-shadow-* tokens (TAP) or theme-aware shadows (OperatorOS)."
+
+  - name: "New font additions require review"
+    files: "**/*.{ts,tsx,css,scss}"
+    pattern: 'font-family:|fontFamily:'
+    severity: "warning"
+    message: "New fonts detected. TAP uses Inter (sans) and JetBrains Mono (mono) only."
+
+  - name: "New spacing values require review"
+    files: "**/*.{ts,tsx,css,scss}"
+    pattern: '(margin|padding|gap):\s*[0-9]+px'
+    severity: "info"
+    message: "Custom spacing detected. Use approved scale: 4/8/12/16/24/32/48/64/96."
+
+  - name: "UI package changes need documentation"
+    files: "packages/{ui-tap,ui-operatoros}/**/*.{ts,tsx}"
+    severity: "info"
+    message: "UI package change detected. Update README with usage examples if adding new components."
 
 # Comment behavior
 comments:
