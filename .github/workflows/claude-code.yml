@@ -1,0 +1,73 @@
+name: Claude Code
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+  issues:
+    types: [opened, assigned]
+  pull_request_review:
+    types: [submitted]
+
+jobs:
+  claude:
+    # Only run when @claude is mentioned or assigned
+    if: |
+      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude')) ||
+      (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@claude')) ||
+      (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@claude')) ||
+      (github.event_name == 'issues' && github.event.action == 'assigned' && github.event.assignee.login == 'claude')
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref || github.ref }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: '10'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run Claude Code
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Use the comment/issue body as the prompt
+          prompt: |
+            ${{ github.event.comment.body || github.event.review.body || github.event.issue.body }}
+
+            Context: This is the Total Audio Platform monorepo.
+            - Use British English spelling (colour, behaviour, optimise)
+            - Follow existing code patterns
+            - Run pnpm typecheck and pnpm lint to verify fixes
+          # Allow Claude to commit fixes
+          allowed_tools: |
+            Edit
+            Write
+            Bash(pnpm:*)
+            Bash(git:*)
+            Read
+            Glob
+            Grep
+          # Auto-commit fixes
+          auto_commit: true
+          commit_message_prefix: "fix(claude): "

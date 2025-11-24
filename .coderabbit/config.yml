@@ -175,6 +175,14 @@ comments:
   suggest_fixes: true
   link_to_docs: true
 
+  # Auto-mention Claude for critical issues
+  auto_mention:
+    enabled: true
+    on_severity:
+      - "critical"
+      - "error"
+    mention: "@claude please fix these issues"
+
 # Learning and adaptation
 learning:
   enabled: true
