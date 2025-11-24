@@ -3,10 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { buildFusionContext } from '@total-audio/fusion-layer';
 import { generateBenchmark } from '@total-audio/workspace-benchmarking';
 
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { workspaceId: string } }
-) {
+export async function GET(request: NextRequest, { params }: { params: { workspaceId: string } }) {
   try {
     const supabase = await createClient();
 

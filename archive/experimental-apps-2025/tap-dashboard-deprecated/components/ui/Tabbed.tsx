@@ -17,12 +17,12 @@ interface TabbedProps {
 export function Tabbed({ tabs, defaultTab }: TabbedProps) {
   const [activeTab, setActiveTab] = useState(defaultTab || tabs[0]?.id);
 
-  const activeContent = tabs.find((tab) => tab.id === activeTab)?.content;
+  const activeContent = tabs.find(tab => tab.id === activeTab)?.content;
 
   return (
     <div className="space-y-6">
       <div className="flex gap-2 border-b border-tap-panel pb-2">
-        {tabs.map((tab) => (
+        {tabs.map(tab => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}

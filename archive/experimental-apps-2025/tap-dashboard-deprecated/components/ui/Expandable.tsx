@@ -27,9 +27,7 @@ export function Expandable({ title, children, defaultExpanded = false }: Expanda
         />
       </button>
       {isExpanded && (
-        <div className="p-4 bg-tap-black/30 border-t border-tap-panel/50">
-          {children}
-        </div>
+        <div className="p-4 bg-tap-black/30 border-t border-tap-panel/50">{children}</div>
       )}
     </div>
   );

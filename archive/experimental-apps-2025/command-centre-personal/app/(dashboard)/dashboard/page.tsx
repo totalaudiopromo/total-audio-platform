@@ -118,12 +118,12 @@ export default async function UnifiedDashboardPage() {
               { name: 'Release Planner', href: '/dashboard/releases', color: 'green' },
               { name: 'Contact Intel', href: '/dashboard/contact-intel', color: 'amber' },
               { name: 'Press Kit Intel', href: '/dashboard/presskit-intel', color: 'orange' },
-              { name: 'Writer\'s Room', href: '/dashboard/writers-room', color: 'red' },
+              { name: "Writer's Room", href: '/dashboard/writers-room', color: 'red' },
               { name: 'Reply Intel', href: '/dashboard/reply-intel', color: 'indigo' },
               { name: 'Campaign Simulator', href: '/dashboard/simulator', color: 'violet' },
               { name: 'Industry Calendar', href: '/dashboard/calendar', color: 'teal' },
               { name: 'Coverage Map', href: '/dashboard/coverage', color: 'emerald' },
-            ].map((feature) => (
+            ].map(feature => (
               <a
                 key={feature.name}
                 href={feature.href}
@@ -132,9 +132,7 @@ export default async function UnifiedDashboardPage() {
                 <h3 className="font-medium text-white group-hover:text-[#3AA9BE]">
                   {feature.name}
                 </h3>
-                <p className="mt-1 text-sm text-zinc-400">
-                  →
-                </p>
+                <p className="mt-1 text-sm text-zinc-400">→</p>
               </a>
             ))}
           </div>

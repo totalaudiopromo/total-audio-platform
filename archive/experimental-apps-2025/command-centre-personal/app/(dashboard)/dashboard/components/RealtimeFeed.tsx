@@ -15,8 +15,11 @@ export function RealtimeFeed({ context }: { context: FusionContext }) {
         {events.length === 0 ? (
           <p className="text-sm text-zinc-500">No recent activity</p>
         ) : (
-          events.map((event) => (
-            <div key={event.id} className="flex items-start gap-3 border-l-2 border-[#3AA9BE]/30 pl-3">
+          events.map(event => (
+            <div
+              key={event.id}
+              className="flex items-start gap-3 border-l-2 border-[#3AA9BE]/30 pl-3"
+            >
               <div className="flex-1">
                 <p className="text-sm text-white">{event.eventType.replace(/_/g, ' ')}</p>
                 <p className="mt-1 text-xs text-zinc-500">

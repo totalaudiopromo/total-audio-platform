@@ -43,13 +43,10 @@ export function OverviewCards({ context }: Props) {
 
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      {cards.map((card) => {
+      {cards.map(card => {
         const Icon = card.icon;
         return (
-          <div
-            key={card.title}
-            className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-6"
-          >
+          <div key={card.title} className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-6">
             <div className="flex items-center justify-between">
               <div className="rounded-lg bg-[#3AA9BE]/10 p-2">
                 <Icon className="h-5 w-5 text-[#3AA9BE]" />

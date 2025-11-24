@@ -30,13 +30,10 @@ export function ListItem({ children, onClick, active }: ListItemProps) {
   return (
     <Component
       onClick={onClick}
-      className={clsx(
-        'w-full text-left p-3 rounded-lg transition-all duration-180',
-        {
-          'hover:bg-tap-panel cursor-pointer': onClick,
-          'bg-tap-panel': active,
-        }
-      )}
+      className={clsx('w-full text-left p-3 rounded-lg transition-all duration-180', {
+        'hover:bg-tap-panel cursor-pointer': onClick,
+        'bg-tap-panel': active,
+      })}
     >
       {children}
     </Component>

@@ -8,7 +8,10 @@ import { ModeSwitch, DashboardMode } from '@/components/ui/ModeSwitch';
 import { Badge } from '@/components/ui/Badge';
 import { useModeRecommendation } from '@/lib/hooks/use-intelligence';
 
-const MODE_DESCRIPTIONS: Record<DashboardMode, { description: string; panels: string[]; actions: string[] }> = {
+const MODE_DESCRIPTIONS: Record<
+  DashboardMode,
+  { description: string; panels: string[]; actions: string[] }
+> = {
   campaign: {
     description: 'focus on active campaigns and execution',
     panels: ['tracker', 'email', 'trajectory', 'signal threads', 'automations'],
@@ -57,23 +60,17 @@ export default function ModesPage() {
       <div className="space-y-6">
         {/* Mode Switcher */}
         <Card>
-          <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">
-            select mode
-          </h3>
+          <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">select mode</h3>
           <ModeSwitch currentMode={currentMode} onModeChange={setCurrentMode} />
         </Card>
 
         {/* Mode Details */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Card>
-            <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">
-              mode overview
-            </h3>
+            <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">mode overview</h3>
             <div className="space-y-4">
               <div>
-                <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">
-                  description
-                </p>
+                <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">description</p>
                 <p className="text-sm text-tap-white lowercase">{modeDetails.description}</p>
               </div>
               <div>
@@ -81,7 +78,7 @@ export default function ModesPage() {
                   visible panels
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {modeDetails.panels.map((panel) => (
+                  {modeDetails.panels.map(panel => (
                     <Badge key={panel} variant="info" size="sm">
                       {panel}
                     </Badge>
@@ -89,11 +86,9 @@ export default function ModesPage() {
                 </div>
               </div>
               <div>
-                <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">
-                  quick actions
-                </p>
+                <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">quick actions</p>
                 <div className="flex flex-wrap gap-2">
-                  {modeDetails.actions.map((action) => (
+                  {modeDetails.actions.map(action => (
                     <Badge key={action} variant="default" size="sm">
                       {action}
                     </Badge>
@@ -104,9 +99,7 @@ export default function ModesPage() {
           </Card>
 
           <Card>
-            <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">
-              mode insights
-            </h3>
+            <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">mode insights</h3>
             {recommendation ? (
               <div className="space-y-3">
                 {recommendation.insights.length > 0 ? (
@@ -125,12 +118,8 @@ export default function ModesPage() {
                 )}
                 {recommendation.recommendedMode !== currentMode && (
                   <div className="pt-3 border-t border-tap-panel/30">
-                    <p className="text-xs text-tap-grey lowercase mb-2">
-                      ai recommendation:
-                    </p>
-                    <Badge variant="warning">
-                      switch to {recommendation.recommendedMode} mode
-                    </Badge>
+                    <p className="text-xs text-tap-grey lowercase mb-2">ai recommendation:</p>
+                    <Badge variant="warning">switch to {recommendation.recommendedMode} mode</Badge>
                   </div>
                 )}
               </div>
@@ -142,9 +131,7 @@ export default function ModesPage() {
 
         {/* Mode Explanation */}
         <Card>
-          <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">
-            how modes work
-          </h3>
+          <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">how modes work</h3>
           <div className="space-y-3 text-sm text-tap-white lowercase leading-relaxed">
             <p>
               dashboard modes filter and prioritize data based on your current focus. each mode:

@@ -2,7 +2,17 @@
 
 import { Card } from '../ui/Card';
 import { Badge } from '../ui/Badge';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area, AreaChart } from 'recharts';
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  Area,
+  AreaChart,
+} from 'recharts';
 
 interface TrajectoryForecastProps {
   forecast: Record<string, any>;
@@ -15,7 +25,12 @@ interface TrajectoryForecastProps {
   confidence: number;
 }
 
-export function TrajectoryForecast({ forecast, opportunityWindows, riskIndicators, confidence }: TrajectoryForecastProps) {
+export function TrajectoryForecast({
+  forecast,
+  opportunityWindows,
+  riskIndicators,
+  confidence,
+}: TrajectoryForecastProps) {
   const forecastData = Object.entries(forecast).map(([day, metrics]: [string, any]) => ({
     day: parseInt(day.replace('day_', '')),
     ...metrics,
@@ -26,9 +41,7 @@ export function TrajectoryForecast({ forecast, opportunityWindows, riskIndicator
       {/* Forecast Chart */}
       <Card>
         <div className="flex items-start justify-between mb-4">
-          <h3 className="text-lg font-semibold text-tap-white lowercase">
-            90-day forecast
-          </h3>
+          <h3 className="text-lg font-semibold text-tap-white lowercase">90-day forecast</h3>
           <Badge variant="info">{(confidence * 100).toFixed(0)}% confidence</Badge>
         </div>
         <ResponsiveContainer width="100%" height={350}>
@@ -39,10 +52,7 @@ export function TrajectoryForecast({ forecast, opportunityWindows, riskIndicator
               stroke="#9CA3AF"
               style={{ fontSize: '12px', fontFamily: 'JetBrains Mono' }}
             />
-            <YAxis
-              stroke="#9CA3AF"
-              style={{ fontSize: '12px', fontFamily: 'JetBrains Mono' }}
-            />
+            <YAxis stroke="#9CA3AF" style={{ fontSize: '12px', fontFamily: 'JetBrains Mono' }} />
             <Tooltip
               contentStyle={{
                 backgroundColor: '#161A1D',
@@ -73,15 +83,10 @@ export function TrajectoryForecast({ forecast, opportunityWindows, riskIndicator
 
       {/* Opportunity Windows */}
       <Card>
-        <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">
-          opportunity windows
-        </h3>
+        <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">opportunity windows</h3>
         <div className="space-y-3">
           {opportunityWindows.map((window, i) => (
-            <div
-              key={i}
-              className="p-4 bg-green-500/10 rounded-lg border border-green-500/20"
-            >
+            <div key={i} className="p-4 bg-green-500/10 rounded-lg border border-green-500/20">
               <div className="flex items-center gap-2 mb-2">
                 <p className="text-xs text-green-400 font-mono">
                   {window.start} → {window.end}
@@ -96,9 +101,7 @@ export function TrajectoryForecast({ forecast, opportunityWindows, riskIndicator
       {/* Risk Indicators */}
       {riskIndicators.length > 0 && (
         <Card>
-          <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">
-            risk indicators
-          </h3>
+          <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">risk indicators</h3>
           <ul className="space-y-2">
             {riskIndicators.map((risk, i) => (
               <li key={i} className="flex items-start gap-2 text-sm text-tap-white">

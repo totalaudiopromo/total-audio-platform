@@ -79,7 +79,7 @@ export default function AutomationsPage() {
       <div className="space-y-6">
         {/* Automations Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {AUTOMATIONS.map((automation) => (
+          {AUTOMATIONS.map(automation => (
             <Card
               key={automation.id}
               className={clsx('cursor-pointer transition-all duration-180', {
@@ -99,9 +99,7 @@ export default function AutomationsPage() {
                     <h3 className="text-sm font-semibold text-tap-white lowercase mb-1">
                       {automation.name}
                     </h3>
-                    <p className="text-xs text-tap-grey lowercase">
-                      {automation.description}
-                    </p>
+                    <p className="text-xs text-tap-grey lowercase">{automation.description}</p>
                   </div>
                 </div>
                 {loading && selectedAutomation === automation.id && (
@@ -150,9 +148,7 @@ export default function AutomationsPage() {
           <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">
             automation history
           </h3>
-          <p className="text-sm text-tap-grey lowercase">
-            execution history will appear here
-          </p>
+          <p className="text-sm text-tap-grey lowercase">execution history will appear here</p>
         </Card>
       </div>
     </PageContainer>

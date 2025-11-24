@@ -7,14 +7,16 @@ interface CorrelationListProps {
   recommendations: string[];
 }
 
-export function CorrelationList({ correlations, highlights, recommendations }: CorrelationListProps) {
+export function CorrelationList({
+  correlations,
+  highlights,
+  recommendations,
+}: CorrelationListProps) {
   return (
     <div className="space-y-6">
       {/* Highlights */}
       <Card>
-        <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">
-          key findings
-        </h3>
+        <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">key findings</h3>
         <ul className="space-y-2">
           {highlights.map((highlight, i) => (
             <li key={i} className="flex items-start gap-2 text-sm text-tap-white">
@@ -32,17 +34,10 @@ export function CorrelationList({ correlations, highlights, recommendations }: C
         </h3>
         <div className="space-y-3">
           {Object.entries(correlations).map(([key, value]) => (
-            <div
-              key={key}
-              className="p-4 bg-tap-black/30 rounded-lg border border-tap-panel/30"
-            >
+            <div key={key} className="p-4 bg-tap-black/30 rounded-lg border border-tap-panel/30">
               <div className="flex items-start justify-between gap-4 mb-2">
-                <p className="text-sm text-tap-white lowercase flex-1">
-                  {key.replace(/_/g, ' ')}
-                </p>
-                <Badge variant="info">
-                  {(value.correlation * 100).toFixed(0)}%
-                </Badge>
+                <p className="text-sm text-tap-white lowercase flex-1">{key.replace(/_/g, ' ')}</p>
+                <Badge variant="info">{(value.correlation * 100).toFixed(0)}%</Badge>
               </div>
               {value.replyRate !== undefined && (
                 <p className="text-xs text-tap-grey lowercase">
@@ -56,9 +51,7 @@ export function CorrelationList({ correlations, highlights, recommendations }: C
 
       {/* Recommendations */}
       <Card>
-        <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">
-          recommendations
-        </h3>
+        <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">recommendations</h3>
         <ul className="space-y-2">
           {recommendations.map((rec, i) => (
             <li key={i} className="flex items-start gap-2 text-sm text-tap-white">

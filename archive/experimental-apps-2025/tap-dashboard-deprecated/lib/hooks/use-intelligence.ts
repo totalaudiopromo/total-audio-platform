@@ -49,11 +49,7 @@ export function useIdentity(artistSlug: string) {
 }
 
 // Coverage Fusion hook
-export function useCoverageFusion(
-  artistSlug: string,
-  startDate?: string,
-  endDate?: string
-) {
+export function useCoverageFusion(artistSlug: string, startDate?: string, endDate?: string) {
   return useSWR(
     artistSlug ? [`coverage-fusion`, artistSlug, startDate, endDate] : null,
     () => intelligenceAPI.getCoverageFusion(artistSlug, startDate, endDate),
@@ -90,14 +86,10 @@ export function useSignalThread(artistSlug: string, threadType = 'narrative') {
 
 // Mode Recommendation hook
 export function useModeRecommendation(mode?: string) {
-  return useSWR(
-    [`mode-recommendation`, mode],
-    () => intelligenceAPI.getModeRecommendation(mode),
-    {
-      revalidateOnFocus: false,
-      dedupingInterval: 300000,
-    }
-  );
+  return useSWR([`mode-recommendation`, mode], () => intelligenceAPI.getModeRecommendation(mode), {
+    revalidateOnFocus: false,
+    dedupingInterval: 300000,
+  });
 }
 
 // Automations hook (mutation only, no caching)

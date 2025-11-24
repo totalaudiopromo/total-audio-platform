@@ -11,11 +11,7 @@ export const metadata: Metadata = {
   description: 'Unified intelligence dashboard for Total Audio Promo',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -23,9 +19,7 @@ export default function RootLayout({
           <Sidebar />
           <div className="flex-1 ml-64">
             <TopBar />
-            <main className="min-h-[calc(100vh-73px)]">
-              {children}
-            </main>
+            <main className="min-h-[calc(100vh-73px)]">{children}</main>
           </div>
         </div>
       </body>
