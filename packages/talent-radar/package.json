@@ -1,0 +1,43 @@
+{
+  "name": "@total-audio/talent-radar",
+  "version": "1.0.0",
+  "description": "Phase 11: Global Music Pulse + Talent Radar - A&R-grade intelligence engine",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./adapters/*": "./dist/adapters/*.js",
+    "./engines/*": "./dist/engines/*.js",
+    "./radar/*": "./dist/radar/*.js",
+    "./api/*": "./dist/api/*.js",
+    "./utils/*": "./dist/utils/*.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit",
+    "test": "jest"
+  },
+  "keywords": [
+    "total-audio",
+    "talent-radar",
+    "a&r",
+    "music-intelligence",
+    "breakout-detection",
+    "artist-signals"
+  ],
+  "author": "Total Audio Promo",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.46.1",
+    "@total-audio/scenes-engine": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "jest": "^29.0.0",
+    "@types/jest": "^29.0.0",
+    "ts-jest": "^29.0.0"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "@total-audio/mig-dashboard-integration",
+  "version": "1.0.0",
+  "description": "MIG Dashboard Integration - Fuses MIG with Total Audio intelligence systems",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@total-audio/music-industry-graph": "workspace:*",
+    "@supabase/supabase-js": "^2.39.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0"
+  }
+}

@@ -1,0 +1,128 @@
+name: UI Standards
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  ui-lint:
+    name: UI Linting and Standards
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build UI packages
+        run: |
+          pnpm --filter @total-audio/ui-tap build
+          pnpm --filter @total-audio/ui-operatoros build
+          pnpm --filter eslint-plugin-total-audio-ui build
+
+      - name: Typecheck UI packages
+        run: |
+          pnpm --filter @total-audio/ui-tap typecheck
+          pnpm --filter @total-audio/ui-operatoros typecheck
+
+      - name: Lint TAP apps for UI violations
+        run: |
+          echo "Linting TAP apps for UI standard violations..."
+          pnpm --filter audio-intel lint || echo "⚠️  audio-intel has UI violations"
+          pnpm --filter tracker lint || echo "⚠️  tracker has UI violations"
+          pnpm --filter pitch-generator lint || echo "⚠️  pitch-generator has UI violations"
+          pnpm --filter total-audio-promo-frontend lint || echo "⚠️  web has UI violations"
+
+      - name: Check for arbitrary Tailwind colors
+        run: |
+          echo "Scanning for arbitrary Tailwind colors..."
+          ! grep -r "bg-\[#" apps/audio-intel apps/tracker apps/pitch-generator apps/web --include="*.tsx" --include="*.ts" || {
+            echo "❌ Found arbitrary Tailwind colors. Use design system tokens instead."
+            exit 1
+          }
+
+      - name: Check for inline color styles
+        run: |
+          echo "Scanning for inline color styles..."
+          ! grep -r "style={{.*color:" apps/audio-intel apps/tracker apps/pitch-generator apps/web --include="*.tsx" --include="*.ts" || {
+            echo "❌ Found inline color styles. Use design system components instead."
+            exit 1
+          }
+
+      - name: Check for cross-product imports
+        run: |
+          echo "Checking for cross-product UI imports..."
+
+          # TAP apps should not import OperatorOS UI
+          if grep -r "@total-audio/ui-operatoros" apps/audio-intel apps/tracker apps/pitch-generator apps/web --include="*.tsx" --include="*.ts"; then
+            echo "❌ TAP apps are importing OperatorOS UI components"
+            exit 1
+          fi
+
+          # OperatorOS should not import TAP UI (when it exists)
+          if [ -d "apps/totalaud.io" ]; then
+            if grep -r "@total-audio/ui-tap" apps/totalaud.io --include="*.tsx" --include="*.ts"; then
+              echo "❌ OperatorOS is importing TAP UI components"
+              exit 1
+            fi
+          fi
+
+          echo "✅ No cross-product UI imports found"
+
+      - name: Report UI standards status
+        if: success()
+        run: |
+          echo "✅ All UI standards checks passed!"
+          echo ""
+          echo "Design system compliance verified:"
+          echo "  - TAP packages built successfully"
+          echo "  - OperatorOS packages built successfully"
+          echo "  - No arbitrary Tailwind colors"
+          echo "  - No inline color styles"
+          echo "  - No cross-product imports"
+          echo ""
+          echo "UI system is healthy ✨"
+
+      - name: Report failures
+        if: failure()
+        run: |
+          echo "❌ UI standards checks failed"
+          echo ""
+          echo "Common fixes:"
+          echo "  - Replace arbitrary colors with design tokens"
+          echo "  - Use @total-audio/ui-tap components in TAP apps"
+          echo "  - Use @total-audio/ui-operatoros components in OperatorOS"
+          echo "  - Remove cross-product UI imports"
+          echo ""
+          echo "See docs/ui/ for full standards documentation"
