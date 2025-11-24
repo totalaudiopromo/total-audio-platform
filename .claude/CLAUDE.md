@@ -35,6 +35,28 @@ You are not building new architecture yet — your work should directly support 
 
 ---
 
+## 🧠 CLAUDE 4.5 LONG-HORIZON REASONING (State Tracking Best Practices)
+
+**Multi-Session Workflow:**
+- Use TodoWrite tool to track state across conversation
+- Write tests/checklists in structured formats (JSON) before starting work
+- Use unstructured text for progress notes
+- Leverage git for state tracking across sessions
+- Emphasise incremental progress - complete tasks systematically
+
+**Context Management:**
+- Work until task completion rather than stopping early
+- When starting fresh, discover state from filesystem (read existing files, check git status)
+- Use verification tools (typecheck, lint, test) to confirm progress without human feedback
+
+**State Recovery Pattern:**
+1. Check git status for current branch and changes
+2. Read WEEKLY_FOCUS.md for current priorities
+3. Check TodoWrite for in-progress tasks
+4. Continue from where previous session left off
+
+---
+
 ## 📁 SIMPLIFIED BUSINESS DOCUMENTATION (CHECK FIRST)
 
 **CRITICAL**: Always reference the simplified local documentation system:
