@@ -102,7 +102,7 @@ export function WorkspaceSwitcher({
         onClick={() => setIsOpen(!isOpen)}
         onKeyDown={handleKeyDown}
         className="flex items-center gap-2 px-3 py-2 bg-white border-2 border-black shadow-brutal rounded-lg hover:shadow-brutal-lg hover:-translate-y-0.5 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2"
-        style={{ focusRingColor: accentColor }}
+        style={{ ['--tw-ring-color' as string]: accentColor }}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
       >
