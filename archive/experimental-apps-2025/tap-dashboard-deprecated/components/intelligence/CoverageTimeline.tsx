@@ -32,7 +32,7 @@ export function CoverageTimeline({ events, geographicClusters }: CoverageTimelin
           geographic distribution
         </h3>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {geographicClusters.slice(0, 6).map((cluster) => (
+          {geographicClusters.slice(0, 6).map(cluster => (
             <div
               key={cluster.country}
               className="p-4 bg-tap-black/30 rounded-lg border border-tap-panel/30"
@@ -43,9 +43,7 @@ export function CoverageTimeline({ events, geographicClusters }: CoverageTimelin
               <p className="text-2xl font-mono font-semibold text-tap-white">
                 {cluster.eventCount}
               </p>
-              <p className="text-xs text-tap-grey lowercase">
-                events
-              </p>
+              <p className="text-xs text-tap-grey lowercase">events</p>
             </div>
           ))}
         </div>
@@ -53,11 +51,9 @@ export function CoverageTimeline({ events, geographicClusters }: CoverageTimelin
 
       {/* Timeline */}
       <Card>
-        <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">
-          coverage timeline
-        </h3>
+        <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">coverage timeline</h3>
         <div className="space-y-3">
-          {events.map((event) => (
+          {events.map(event => (
             <div
               key={event.id}
               className="flex items-start gap-3 p-3 bg-tap-black/30 rounded-lg border border-tap-panel/30"
@@ -67,13 +63,8 @@ export function CoverageTimeline({ events, geographicClusters }: CoverageTimelin
               </div>
               <div className="flex-1">
                 <div className="flex items-start justify-between gap-2 mb-1">
-                  <p className="text-sm text-tap-white lowercase">
-                    {event.title}
-                  </p>
-                  <Badge
-                    variant={event.importance > 0.7 ? 'success' : 'default'}
-                    size="sm"
-                  >
+                  <p className="text-sm text-tap-white lowercase">{event.title}</p>
+                  <Badge variant={event.importance > 0.7 ? 'success' : 'default'} size="sm">
                     {(event.importance * 100).toFixed(0)}%
                   </Badge>
                 </div>

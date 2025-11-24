@@ -24,13 +24,13 @@ const config: Config = {
         '88': '22rem',
       },
       borderRadius: {
-        'tap': '12px',
+        tap: '12px',
       },
       transitionDuration: {
         '180': '180ms',
       },
       boxShadow: {
-        'tap': '0 4px 6px rgba(0, 0, 0, 0.25)',
+        tap: '0 4px 6px rgba(0, 0, 0, 0.25)',
       },
     },
   },

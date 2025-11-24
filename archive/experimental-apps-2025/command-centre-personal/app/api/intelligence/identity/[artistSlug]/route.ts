@@ -3,10 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import { buildFusionContext } from '@total-audio/fusion-layer';
 import { buildIdentityProfile } from '@total-audio/identity-kernel';
 
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { artistSlug: string } }
-) {
+export async function GET(request: NextRequest, { params }: { params: { artistSlug: string } }) {
   try {
     const supabase = await createClient();
 

@@ -1,7 +1,15 @@
 'use client';
 
 import { Card } from '../ui/Card';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from 'recharts';
 
 interface TrajectoryChartProps {
   data: Array<{
@@ -14,9 +22,7 @@ interface TrajectoryChartProps {
 export function TrajectoryChart({ data }: TrajectoryChartProps) {
   return (
     <Card>
-      <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">
-        90-day trajectory
-      </h3>
+      <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">90-day trajectory</h3>
       {data.length === 0 ? (
         <p className="text-sm text-tap-grey lowercase">no trajectory data available</p>
       ) : (
@@ -28,10 +34,7 @@ export function TrajectoryChart({ data }: TrajectoryChartProps) {
               stroke="#9CA3AF"
               style={{ fontSize: '12px', fontFamily: 'JetBrains Mono' }}
             />
-            <YAxis
-              stroke="#9CA3AF"
-              style={{ fontSize: '12px', fontFamily: 'JetBrains Mono' }}
-            />
+            <YAxis stroke="#9CA3AF" style={{ fontSize: '12px', fontFamily: 'JetBrains Mono' }} />
             <Tooltip
               contentStyle={{
                 backgroundColor: '#161A1D',

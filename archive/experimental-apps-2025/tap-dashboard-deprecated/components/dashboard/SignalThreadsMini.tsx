@@ -28,14 +28,12 @@ export function SignalThreadsMini({ events }: SignalThreadsMiniProps) {
 
   return (
     <Card>
-      <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">
-        recent signals
-      </h3>
+      <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">recent signals</h3>
       {events.length === 0 ? (
         <p className="text-sm text-tap-grey lowercase">no recent events</p>
       ) : (
         <div className="space-y-3">
-          {events.slice(0, 5).map((event) => (
+          {events.slice(0, 5).map(event => (
             <div
               key={event.id}
               className="flex items-start gap-3 p-3 bg-tap-black/30 rounded-lg border border-tap-panel/30"
@@ -44,9 +42,7 @@ export function SignalThreadsMini({ events }: SignalThreadsMiniProps) {
                 {format(event.date, 'MMM dd')}
               </div>
               <div className="flex-1">
-                <p className="text-sm text-tap-white lowercase mb-1">
-                  {event.title}
-                </p>
+                <p className="text-sm text-tap-white lowercase mb-1">{event.title}</p>
                 <Badge variant={getEventColor(event.type)} size="sm">
                   {event.type.replace('_', ' ')}
                 </Badge>

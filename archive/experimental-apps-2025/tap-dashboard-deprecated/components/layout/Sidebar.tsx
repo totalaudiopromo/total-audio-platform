@@ -30,15 +30,13 @@ export function Sidebar() {
     <aside className="fixed left-0 top-0 h-screen w-64 bg-tap-panel border-r border-tap-panel/50 flex flex-col">
       {/* Logo */}
       <div className="p-6 border-b border-tap-panel/50">
-        <h1 className="text-xl font-bold text-tap-cyan lowercase tracking-tight">
-          total audio
-        </h1>
+        <h1 className="text-xl font-bold text-tap-cyan lowercase tracking-tight">total audio</h1>
         <p className="text-xs text-tap-grey lowercase mt-1">unified dashboard</p>
       </div>
 
       {/* Navigation */}
       <nav className="flex-1 p-4 space-y-1">
-        {navigation.map((item) => {
+        {navigation.map(item => {
           const isActive = pathname === item.href;
           return (
             <Link
@@ -61,9 +59,7 @@ export function Sidebar() {
 
       {/* Footer */}
       <div className="p-4 border-t border-tap-panel/50">
-        <p className="text-xs text-tap-grey lowercase">
-          © 2025 total audio promo
-        </p>
+        <p className="text-xs text-tap-grey lowercase">© 2025 total audio promo</p>
       </div>
     </aside>
   );

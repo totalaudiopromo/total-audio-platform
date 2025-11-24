@@ -36,14 +36,14 @@ export function NextActionsWidget({ actions }: Props) {
     <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-6">
       <h2 className="text-lg font-semibold text-white">Next Actions</h2>
       <p className="mt-1 text-sm text-zinc-400">
-        {actions.filter((a) => a.priority === 'high').length} urgent
+        {actions.filter(a => a.priority === 'high').length} urgent
       </p>
 
       <div className="mt-4 space-y-3">
         {actions.length === 0 ? (
           <p className="text-sm text-zinc-500">No actions needed right now</p>
         ) : (
-          actions.slice(0, 5).map((action) => (
+          actions.slice(0, 5).map(action => (
             <div
               key={action.id}
               className={`rounded-lg border p-3 ${getPriorityColor(action.priority)}`}
@@ -58,9 +58,7 @@ export function NextActionsWidget({ actions }: Props) {
                       <span className="rounded bg-zinc-800 px-2 py-0.5 text-xs text-zinc-400">
                         {action.relatedEntity.type}
                       </span>
-                      <span className="text-xs text-zinc-500">
-                        {action.relatedEntity.name}
-                      </span>
+                      <span className="text-xs text-zinc-500">{action.relatedEntity.name}</span>
                     </div>
                   )}
                 </div>
@@ -72,10 +70,7 @@ export function NextActionsWidget({ actions }: Props) {
 
       {actions.length > 5 && (
         <div className="mt-4 border-t border-zinc-800 pt-4">
-          <a
-            href="/dashboard/actions"
-            className="text-sm text-[#3AA9BE] hover:underline"
-          >
+          <a href="/dashboard/actions" className="text-sm text-[#3AA9BE] hover:underline">
             View all {actions.length} actions →
           </a>
         </div>

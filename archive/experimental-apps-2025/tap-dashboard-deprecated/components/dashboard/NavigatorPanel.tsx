@@ -32,15 +32,13 @@ export function NavigatorPanel() {
           <SparklesIcon className="w-6 h-6 text-tap-cyan" />
         </div>
         <div className="flex-1">
-          <h3 className="text-lg font-semibold text-tap-white lowercase mb-2">
-            ai navigator
-          </h3>
+          <h3 className="text-lg font-semibold text-tap-white lowercase mb-2">ai navigator</h3>
           <div className="flex gap-2 mb-4">
             <input
               type="text"
               value={question}
-              onChange={(e) => setQuestion(e.target.value)}
-              onKeyDown={(e) => e.key === 'Enter' && handleAsk()}
+              onChange={e => setQuestion(e.target.value)}
+              onKeyDown={e => e.key === 'Enter' && handleAsk()}
               placeholder="ask the navigator anything..."
               className="flex-1 bg-tap-black border border-tap-panel/50 rounded-lg px-4 py-2 text-sm text-tap-white placeholder:text-tap-grey lowercase focus:outline-none focus:ring-2 focus:ring-tap-cyan/50"
               disabled={loading}
@@ -56,9 +54,7 @@ export function NavigatorPanel() {
 
           {answer && (
             <div className="space-y-3">
-              <p className="text-sm text-tap-white leading-relaxed">
-                {answer.answer}
-              </p>
+              <p className="text-sm text-tap-white leading-relaxed">{answer.answer}</p>
               {answer.recommendedActions && answer.recommendedActions.length > 0 && (
                 <div className="pt-3 border-t border-tap-panel/30">
                   <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">

@@ -160,7 +160,11 @@ Only create new .md files with explicit permission for:
 
 ### Communication Standards
 
-- **UK Spelling**: Always British spelling (organised, realise, colour, etc.)
+- **UK Spelling (MANDATORY)**: Always use British spelling in ALL code, comments, and docs:
+  - colour (not color), behaviour (not behavior), favour (not favor)
+  - organise/optimise/realise/analyse (not -ize endings)
+  - centre (not center), licence (noun), defense → defence
+  - travelled, labelled, cancelled (double L)
 - **Currency**: Default to £GBP for all pricing and financial discussions
 - **Tone**: Authentic music industry insider (5+ years radio promotion, sadact producer)
 - **Voice**: British casual-professional ("Right, so...", "if you get a sec", "tbh")

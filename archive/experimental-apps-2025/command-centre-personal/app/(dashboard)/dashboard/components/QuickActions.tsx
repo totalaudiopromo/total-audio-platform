@@ -13,7 +13,7 @@ export function QuickActions({ context }: { context: FusionContext }) {
     <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 p-6">
       <h2 className="text-lg font-semibold text-white">Quick Actions</h2>
       <div className="mt-4 space-y-2">
-        {actions.map((action) => {
+        {actions.map(action => {
           const Icon = action.icon;
           return (
             <a

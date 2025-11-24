@@ -19,9 +19,7 @@ export function BenchmarkTable({ artistComparisons, insights }: BenchmarkTablePr
     <div className="space-y-6">
       {/* Insights */}
       <Card>
-        <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">
-          workspace insights
-        </h3>
+        <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">workspace insights</h3>
         <ul className="space-y-2">
           {insights.map((insight, i) => (
             <li key={i} className="flex items-start gap-2 text-sm text-tap-white">
@@ -62,7 +60,7 @@ export function BenchmarkTable({ artistComparisons, insights }: BenchmarkTablePr
               </tr>
             </thead>
             <tbody className="divide-y divide-tap-panel/30">
-              {artistComparisons.map((artist) => (
+              {artistComparisons.map(artist => (
                 <tr key={artist.artistSlug} className="hover:bg-tap-panel/30 transition-colors">
                   <td className="px-4 py-3">
                     <Badge variant={artist.rank === 1 ? 'success' : 'default'} size="sm">

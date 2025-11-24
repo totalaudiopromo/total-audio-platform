@@ -14,35 +14,23 @@ export function CoverageMapCard({ coverage }: CoverageMapCardProps) {
   return (
     <Card>
       <div className="flex items-start justify-between mb-4">
-        <h3 className="text-lg font-semibold text-tap-white lowercase">
-          coverage footprint
-        </h3>
-        <Badge variant="info">
-          {coverage.coverageScore.toFixed(0)} score
-        </Badge>
+        <h3 className="text-lg font-semibold text-tap-white lowercase">coverage footprint</h3>
+        <Badge variant="info">{coverage.coverageScore.toFixed(0)} score</Badge>
       </div>
 
       <div className="grid grid-cols-3 gap-4 mb-4">
         <div>
-          <p className="text-xs text-tap-grey uppercase tracking-wider mb-1">
-            total events
-          </p>
-          <p className="text-2xl font-mono font-semibold text-tap-white">
-            {coverage.totalEvents}
-          </p>
+          <p className="text-xs text-tap-grey uppercase tracking-wider mb-1">total events</p>
+          <p className="text-2xl font-mono font-semibold text-tap-white">{coverage.totalEvents}</p>
         </div>
         <div>
-          <p className="text-xs text-tap-grey uppercase tracking-wider mb-1">
-            countries
-          </p>
+          <p className="text-xs text-tap-grey uppercase tracking-wider mb-1">countries</p>
           <p className="text-2xl font-mono font-semibold text-tap-white">
             {coverage.countriesReached}
           </p>
         </div>
         <div>
-          <p className="text-xs text-tap-grey uppercase tracking-wider mb-1">
-            cities
-          </p>
+          <p className="text-xs text-tap-grey uppercase tracking-wider mb-1">cities</p>
           <p className="text-2xl font-mono font-semibold text-tap-white">
             {coverage.citiesReached}
           </p>

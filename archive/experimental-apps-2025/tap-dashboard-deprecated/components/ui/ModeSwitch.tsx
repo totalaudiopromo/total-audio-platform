@@ -21,7 +21,7 @@ const MODES: { id: DashboardMode; label: string; icon: string }[] = [
 export function ModeSwitch({ currentMode, onModeChange }: ModeSwitchProps) {
   return (
     <div className="flex gap-2 bg-tap-black/50 p-2 rounded-tap">
-      {MODES.map((mode) => (
+      {MODES.map(mode => (
         <button
           key={mode.id}
           onClick={() => onModeChange(mode.id)}
