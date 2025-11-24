@@ -57,6 +57,7 @@ jobs:
             apps/audio-intel/.next
             apps/tracker/.next
             apps/pitch-generator/.next
+            apps/liberty-demo/.next
           key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/*.{js,jsx,ts,tsx}') }}
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
@@ -83,7 +84,7 @@ jobs:
           pnpm run build:audio-intel
           pnpm run build:tracker
           pnpm run build:pitch-generator
-          pnpm run build:web
+          pnpm run build:liberty-demo
         env:
           NEXT_TELEMETRY_DISABLED: 1
           NODE_ENV: production
@@ -100,6 +101,7 @@ jobs:
             apps/audio-intel/.next
             apps/tracker/.next
             apps/pitch-generator/.next
+            apps/liberty-demo/.next
           retention-days: 7
 
   security-scan:

@@ -1,0 +1,3 @@
+name,email,role,company,phone,website
+Jane Doe,jane@example.com,DJ,Example FM,,
+Invalid User,not-an-email,Host,Radio Station,,

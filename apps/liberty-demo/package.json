@@ -1,0 +1,42 @@
+{
+  "name": "liberty-demo",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 3005",
+    "build": "next build",
+    "build:skip-lint": "SKIP_ENV_VALIDATION=true next build",
+    "start": "next start",
+    "lint": "next lint --max-warnings=100",
+    "typecheck": "tsc --noEmit",
+    "test": "playwright test",
+    "test:mobile": "playwright test tests/mobile/",
+    "test:headed": "playwright test --headed"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.7.0",
+    "@supabase/supabase-js": "^2.75.0",
+    "@total-audio/core-db": "workspace:*",
+    "@total-audio/ui": "workspace:*",
+    "lucide-react": "^0.542.0",
+    "mermaid": "^11.12.1",
+    "next": "15.3.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "reactflow": "^11.11.4"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.54.2",
+    "@total-audio/testing": "workspace:*",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^15.4.2",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.18",
+    "tailwindcss-animate": "^1.0.7",
+    "typescript": "^5.7.2"
+  }
+}

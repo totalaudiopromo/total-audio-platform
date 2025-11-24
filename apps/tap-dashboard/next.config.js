@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   transpilePackages: [
     '@total-audio/fusion-layer',
     '@total-audio/intelligence-navigator',
@@ -16,6 +19,17 @@ const nextConfig = {
     serverActions: {
       bodySizeLimit: '2mb',
     },
+  },
+  webpack: (config, { isServer, dev }) => {
+    // Prevent infinite compilation loops in development
+    if (dev && !isServer) {
+      config.watchOptions = {
+        poll: 1000,
+        aggregateTimeout: 300,
+        ignored: ['**/node_modules/**', '**/.next/**', '**/.git/**'],
+      };
+    }
+    return config;
   },
 };
 

@@ -4,6 +4,7 @@ packages:
   - 'apps/pitch-generator'
   - 'apps/tracker'
   - 'apps/tap-dashboard'  # Unified Intelligence Dashboard
+  - 'apps/liberty-demo'   # Liberty Music PR demo dashboard
   # Removed apps with build errors, unused, or personal
   # - 'apps/web'  # Removed - has build errors, will move to separate repo for landing page
   # - 'apps/api'  # Has TypeScript errors, not in production

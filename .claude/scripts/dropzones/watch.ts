@@ -10,16 +10,6 @@
  * - Auto-approves files from quarantine if autoApprove enabled
  * - Graceful shutdown on Ctrl+C
  * - Never processes without explicit DROPZONE_LIVE=1
- *
- * USAGE:
- *   # Dry-run mode (safe)
- *   DROPZONE_LIVE=0 DROPZONE_DISABLE=0 npx tsx .claude/scripts/dropzones/watch.ts
- *
- *   # Live mode (processes files)
- *   DROPZONE_LIVE=1 DROPZONE_DISABLE=0 npx tsx .claude/scripts/dropzones/watch.ts
- *
- *   # Disabled (kill-switch)
- *   DROPZONE_DISABLE=1 npx tsx .claude/scripts/dropzones/watch.ts
  */
 
 import { watch } from 'fs';
@@ -58,6 +48,31 @@ console.log('Press Ctrl+C to stop\n');
 const processedFiles = new Set<string>();
 
 /**
+ * Detect dropzone type from filename
+ */
+function detectDropzoneType(filename: string): DropzoneType {
+  const lower = filename.toLowerCase();
+
+  // Intel processor: contacts, leads, emails
+  if (lower.includes('intel-') || lower.includes('contacts') || lower.includes('leads')) {
+    return 'contacts-to-enrich';
+  }
+
+  // Changelog processor
+  if (lower.includes('changelog') || lower.includes('commits')) {
+    return 'changelog-from-commits';
+  }
+
+  // Review processor
+  if (lower.includes('review')) {
+    return 'review-this';
+  }
+
+  // Default to test-this
+  return 'test-this';
+}
+
+/**
  * Process a file from the queue
  */
 async function handleFile(filename: string): Promise<void> {
@@ -86,7 +101,8 @@ async function handleFile(filename: string): Promise<void> {
 
   if (!live) {
     // DRY-RUN mode - only log what would happen
-    console.log(`[DRY RUN] Would process: ${filename}`);
+    const dropzoneType = detectDropzoneType(filename);
+    console.log(`[DRY RUN] Would process: ${filename} (type: ${dropzoneType})`);
     processedFiles.add(filename);
     return;
   }
@@ -95,9 +111,8 @@ async function handleFile(filename: string): Promise<void> {
   console.log(`\nProcessing: ${filename}`);
 
   try {
-    // Determine dropzone type from file content or naming convention
-    // For now, default to 'test-this' for testing
-    const dropzoneType: DropzoneType = 'test-this';
+    // Detect dropzone type from filename
+    const dropzoneType = detectDropzoneType(filename);
 
     const result = await processFile(dropzoneType, filePath, {
       dryRun: false, // LIVE processing

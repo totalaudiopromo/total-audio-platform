@@ -56,4 +56,23 @@ docker-volumes/
 
 # Backup files
 *.backup
-*.bak 
+*.bak
+
+# Exclude orphan apps (not in workspace) from TypeScript indexing
+apps/api/
+apps/command-centre/
+apps/mobile/
+apps/tap-saas-template-DO-NOT-DELETE/
+apps/web/
+
+# Exclude archive directories
+archive/
+
+# Exclude experimental apps
+archive/experimental-apps-2025/
+
+# Exclude tools that aren't part of main workspace
+tools/browser-automation/node_modules/
+packages/signal-threads/node_modules/
+packages/trajectory-lens/node_modules/
+packages/ui/node_modules/ 
