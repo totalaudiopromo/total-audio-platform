@@ -1,6 +1,6 @@
 {
-  "buildCommand": "cd ../.. && npm run build:liberty-demo",
+  "buildCommand": "cd ../.. && pnpm run build:liberty-demo",
   "outputDirectory": ".next",
-  "installCommand": "cd ../.. && npm install",
+  "installCommand": "cd ../.. && pnpm install",
   "framework": "nextjs"
 }
