@@ -22,7 +22,7 @@ export async function analyseCampaign(
     const { campaignId } = params;
 
     // Find campaign in tracker context
-    const campaign = context.tracker.campaigns.find((c) => c.id === campaignId);
+    const campaign = context.tracker.campaigns.find(c => c.id === campaignId);
 
     if (!campaign) {
       return {
@@ -49,37 +49,31 @@ export async function analyseCampaign(
       weaknesses.push(
         `Low response rate of ${campaign.responseRate.toFixed(1)}% (below industry average)`
       );
-      suggestions.push(
-        'Consider refining pitch angles or targeting more relevant contacts'
-      );
+      suggestions.push('Consider refining pitch angles or targeting more relevant contacts');
     }
 
     // Contact intelligence integration
     if (context.contactIntel.avgResponsivenessScore > 0) {
       const avgScore = context.contactIntel.avgResponsivenessScore;
       if (avgScore > 0.7) {
-        strengths.push('Targeting highly responsive contacts (avg score: ' + avgScore.toFixed(2) + ')');
+        strengths.push(
+          'Targeting highly responsive contacts (avg score: ' + avgScore.toFixed(2) + ')'
+        );
       } else if (avgScore < 0.3) {
         weaknesses.push('Many contacts have low responsiveness scores');
-        suggestions.push(
-          'Use Contact Intelligence to identify better-performing contacts'
-        );
+        suggestions.push('Use Contact Intelligence to identify better-performing contacts');
       }
     }
 
     // Success profile matching
     if (context.successProfiles.profiles.length > 0) {
-      suggestions.push(
-        'Review Success Profiles for genre-specific best practices'
-      );
+      suggestions.push('Review Success Profiles for genre-specific best practices');
     }
 
     // Email performance
     if (context.email.performanceMetrics.avgOpenRate < 20) {
       weaknesses.push('Below-average email open rates');
-      suggestions.push(
-        'Test different subject lines using Writer\'s Room'
-      );
+      suggestions.push("Test different subject lines using Writer's Room");
     }
 
     // Predict outcome based on current data

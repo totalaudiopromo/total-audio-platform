@@ -26,14 +26,12 @@
       "apps/audio-intel",
       "apps/tracker",
       "apps/pitch-generator",
-      "apps/web",
-      "apps/api"
+      "apps/liberty-demo",
+      "apps/tap-dashboard",
+      "apps/web"
     ],
     "separateRepos": [
       "totalaudiopromo/command-centre"
-    ],
-    "archivedApps": [
-      "archive/apps-2025/liberty-demo"
     ],
     "sharedPackages": [
       "packages/ui",

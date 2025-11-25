@@ -96,9 +96,7 @@ export interface HeatmapData {
   }>;
 }
 
-export async function buildCoverageFusion(
-  input: CoverageFusionInput
-): Promise<CoverageFusionData> {
+export async function buildCoverageFusion(input: CoverageFusionInput): Promise<CoverageFusionData> {
   const { timeRange, context } = input;
 
   // Collect all events from different sources
@@ -132,7 +130,7 @@ function collectFusionEvents(
   const events: FusionEvent[] = [];
 
   // Coverage events from coverage map
-  context.coverage.events.forEach((event) => {
+  context.coverage.events.forEach(event => {
     const eventDate = new Date(event.date);
     if (eventDate >= timeRange.start && eventDate <= timeRange.end) {
       events.push({
@@ -153,7 +151,7 @@ function collectFusionEvents(
   });
 
   // Campaign activities
-  context.tracker.campaigns.forEach((campaign) => {
+  context.tracker.campaigns.forEach(campaign => {
     const startDate = new Date(campaign.created_at);
     if (startDate >= timeRange.start && startDate <= timeRange.end) {
       events.push({
@@ -172,7 +170,7 @@ function collectFusionEvents(
   });
 
   // Calendar events
-  context.calendar.upcomingDeadlines.forEach((deadline) => {
+  context.calendar.upcomingDeadlines.forEach(deadline => {
     if (deadline.date >= timeRange.start && deadline.date <= timeRange.end) {
       events.push({
         id: deadline.id,
@@ -196,7 +194,7 @@ function collectFusionEvents(
 function buildGeographicClusters(events: FusionEvent[]): GeographicCluster[] {
   const clusterMap = new Map<string, GeographicCluster>();
 
-  events.forEach((event) => {
+  events.forEach(event => {
     const country = event.location.country || 'Unknown';
     const key = country;
 
@@ -226,7 +224,7 @@ function buildGeographicClusters(events: FusionEvent[]): GeographicCluster[] {
 function calculateTemporalDensity(events: FusionEvent[]): TemporalDensity[] {
   const densityMap = new Map<string, TemporalDensity>();
 
-  events.forEach((event) => {
+  events.forEach(event => {
     const dateKey = event.date.toISOString().split('T')[0];
 
     if (!densityMap.has(dateKey)) {
@@ -251,17 +249,14 @@ function calculateCoverageMetrics(
   events: FusionEvent[],
   clusters: GeographicCluster[]
 ): CoverageMetrics {
-  const countries = new Set(events.map((e) => e.location.country).filter(Boolean));
-  const cities = new Set(events.map((e) => e.location.city).filter(Boolean));
+  const countries = new Set(events.map(e => e.location.country).filter(Boolean));
+  const cities = new Set(events.map(e => e.location.city).filter(Boolean));
 
   const totalImportance = events.reduce((sum, e) => sum + e.importance, 0);
   const averageImportance = events.length > 0 ? totalImportance / events.length : 0;
 
   // Coverage score: weighted by events, importance, and geographic spread
-  const coverageScore = Math.min(
-    (events.length * averageImportance * countries.size) / 10,
-    100
-  );
+  const coverageScore = Math.min((events.length * averageImportance * countries.size) / 10, 100);
 
   // Geographic spread: 0-1 based on number of countries
   const geographicSpread = Math.min(countries.size / 20, 1.0);
@@ -283,7 +278,7 @@ function generateVisualizations(
 ): Visualizations {
   // World map markers
   const worldMap: MapData = {
-    markers: clusters.map((cluster) => ({
+    markers: clusters.map(cluster => ({
       lat: cluster.coordinates.lat,
       lng: cluster.coordinates.lng,
       count: cluster.eventCount,
@@ -299,7 +294,7 @@ function generateVisualizations(
 
   // Regional heatmap
   const heatmap: HeatmapData = {
-    regions: clusters.map((cluster) => ({
+    regions: clusters.map(cluster => ({
       region: cluster.country,
       intensity: Math.min(cluster.eventCount / 10, 1.0),
       events: cluster.eventCount,
@@ -319,8 +314,7 @@ function aggregateIntoPeriods(
 ): Array<{ start: string; end: string; events: number; importance: number }> {
   if (densities.length === 0) return [];
 
-  const periods: Array<{ start: string; end: string; events: number; importance: number }> =
-    [];
+  const periods: Array<{ start: string; end: string; events: number; importance: number }> = [];
   let currentPeriod: { start: string; end: string; events: number; importance: number } | null =
     null;
 

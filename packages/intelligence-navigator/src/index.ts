@@ -32,9 +32,7 @@ export interface DeepLink {
   description: string;
 }
 
-export async function generateNavigatorAnswer(
-  input: NavigatorQuestion
-): Promise<NavigatorAnswer> {
+export async function generateNavigatorAnswer(input: NavigatorQuestion): Promise<NavigatorAnswer> {
   const { question, context } = input;
 
   // Build comprehensive context for Claude
@@ -72,8 +70,7 @@ Answer the user's question with specific, actionable insights based on this data
       ],
     });
 
-    const answerText =
-      response.content[0].type === 'text' ? response.content[0].text : '';
+    const answerText = response.content[0].type === 'text' ? response.content[0].text : '';
 
     // Extract evidence and deep links from context
     const evidence: Evidence[] = [];

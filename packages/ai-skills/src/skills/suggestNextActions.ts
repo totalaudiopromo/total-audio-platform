@@ -25,7 +25,7 @@ export async function suggestNextActions(
 
     // High-value reply follow-ups
     if (context.replyIntel.highValueLeads.length > 0) {
-      context.replyIntel.highValueLeads.slice(0, 3).forEach((lead) => {
+      context.replyIntel.highValueLeads.slice(0, 3).forEach(lead => {
         actions.push({
           id: `followup-${lead.id}`,
           type: 'followup',
@@ -45,10 +45,8 @@ export async function suggestNextActions(
 
     // Replies needing follow-up
     if (context.replyIntel.needsFollowup.length > 0) {
-      const urgentFollowups = context.replyIntel.needsFollowup.filter(
-        (r) => r.urgencyScore > 0.7
-      );
-      urgentFollowups.slice(0, 2).forEach((reply) => {
+      const urgentFollowups = context.replyIntel.needsFollowup.filter(r => r.urgencyScore > 0.7);
+      urgentFollowups.slice(0, 2).forEach(reply => {
         actions.push({
           id: `urgent-followup-${reply.id}`,
           type: 'urgent_followup',
@@ -98,13 +96,12 @@ export async function suggestNextActions(
 
     // Upcoming release deadlines
     if (context.releases.upcoming.length > 0) {
-      const urgent = context.releases.upcoming.filter((r) => {
-        const daysUntil =
-          (r.releaseDate.getTime() - Date.now()) / (1000 * 60 * 60 * 24);
+      const urgent = context.releases.upcoming.filter(r => {
+        const daysUntil = (r.releaseDate.getTime() - Date.now()) / (1000 * 60 * 60 * 24);
         return daysUntil < 30 && r.completionPercentage < 0.7;
       });
 
-      urgent.forEach((release) => {
+      urgent.forEach(release => {
         actions.push({
           id: `release-${release.id}`,
           type: 'release_prep',
@@ -123,9 +120,8 @@ export async function suggestNextActions(
 
     // Industry calendar deadlines
     if (context.calendar.upcomingDeadlines.length > 0) {
-      context.calendar.upcomingDeadlines.slice(0, 2).forEach((deadline) => {
-        const daysUntil =
-          (deadline.date.getTime() - Date.now()) / (1000 * 60 * 60 * 24);
+      context.calendar.upcomingDeadlines.slice(0, 2).forEach(deadline => {
+        const daysUntil = (deadline.date.getTime() - Date.now()) / (1000 * 60 * 60 * 24);
         actions.push({
           id: `deadline-${deadline.id}`,
           type: 'deadline',
@@ -144,10 +140,10 @@ export async function suggestNextActions(
 
     // Active campaigns with low performance
     const underperformingCampaigns = context.tracker.campaigns.filter(
-      (c) => c.status === 'active' && c.responseRate < 5
+      c => c.status === 'active' && c.responseRate < 5
     );
 
-    underperformingCampaigns.slice(0, 2).forEach((campaign) => {
+    underperformingCampaigns.slice(0, 2).forEach(campaign => {
       actions.push({
         id: `optimize-${campaign.id}`,
         type: 'optimization',
@@ -201,7 +197,7 @@ export async function suggestNextActions(
       .sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority])
       .slice(0, limit);
 
-    const urgentCount = sortedActions.filter((a) => a.priority === 'high').length;
+    const urgentCount = sortedActions.filter(a => a.priority === 'high').length;
 
     return {
       success: true,

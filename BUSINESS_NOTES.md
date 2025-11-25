@@ -12,6 +12,7 @@ _Capture everything here, process into actions weekly_
 **Root Cause:** 6,454 Chrome profile files tracked in Git (2GB bloat)
 
 **Solution Implemented:**
+
 1. Updated `.gitignore` with comprehensive browser patterns
 2. Removed Chrome files: `git rm -r --cached tools/browser-automation/.chrome-profile/`
 3. Created pre-commit hook to prevent future contamination
@@ -19,6 +20,7 @@ _Capture everything here, process into actions weekly_
 5. **Result:** 2GB repository size reduction, clean PRs deploy successfully
 
 **Future Prevention:**
+
 ```bash
 # If Chrome files sneak in again:
 git rm -r --cached tools/browser-automation/.chrome-profile/
