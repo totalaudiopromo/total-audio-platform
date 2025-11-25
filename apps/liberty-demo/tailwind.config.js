@@ -71,18 +71,33 @@ module.exports = {
         sm: 'calc(var(--radius) - 4px)',
       },
       spacing: {
-        6: '1.5rem',
-        8: '2rem',
-        10: '2.5rem',
+        0.5: '0.125rem', // 2px
+        1.5: '0.375rem', // 6px
+        2.5: '0.625rem', // 10px
+        4.5: '1.125rem', // 18px
+        6: '1.5rem', // 24px
+        8: '2rem', // 32px
+        10: '2.5rem', // 40px
+        12: '3rem', // 48px
+        16: '4rem', // 64px
       },
       animation: {
         'pulse-slow': 'pulse 12s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       transitionDuration: {
+        150: '150ms',
+        200: '200ms',
         240: '240ms',
+        300: '300ms',
       },
       transitionTimingFunction: {
         out: 'cubic-bezier(0, 0, 0.2, 1)',
+        'in-out': 'cubic-bezier(0.4, 0, 0.2, 1)',
+      },
+      boxShadow: {
+        card: '0 1px 3px rgba(0,0,0,0.04)',
+        'card-hover': '0 4px 12px rgba(0,0,0,0.06)',
+        dropdown: '0 4px 16px rgba(0,0,0,0.08)',
       },
     },
   },

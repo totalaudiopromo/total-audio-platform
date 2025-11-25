@@ -49,11 +49,11 @@ const CRM: React.FC = () => {
           </p>
         </div>
         <div className="flex space-x-3">
-          <button className="flex items-center space-x-2 px-3 py-2 bg-tap-bg border border-tap-line rounded text-sm font-medium text-tap-text hover:bg-tap-line/50 transition-colors">
+          <button className="liberty-btn-secondary gap-2">
             <Filter size={16} />
             <span>Filter</span>
           </button>
-          <button className="flex items-center space-x-2 px-3 py-2 bg-tap-text text-white rounded text-sm font-medium hover:bg-black transition-colors shadow-sm">
+          <button className="liberty-btn-primary gap-2">
             <Search size={16} />
             <span>Find Contact</span>
           </button>

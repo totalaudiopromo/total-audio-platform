@@ -65,10 +65,10 @@ const CampaignCard: React.FC<CampaignCardProps> = ({ campaign }) => {
           <StatusChip status={campaign.status} />
         </div>
 
-        <div className="grid grid-cols-2 gap-3 mb-4">
+        <div className="grid grid-cols-2 gap-4 mb-4">
           <div className="liberty-card-inner">
             <div className="flex items-center justify-between mb-2">
-              <span className="liberty-label text-[10px]">Momentum</span>
+              <span className="liberty-label">Momentum</span>
               <Activity size={14} className="text-[#111]" />
             </div>
             <div className="text-2xl font-mono font-bold leading-none text-[#111]">
@@ -77,7 +77,7 @@ const CampaignCard: React.FC<CampaignCardProps> = ({ campaign }) => {
           </div>
           <div className="liberty-card-inner">
             <div className="flex items-center justify-between mb-2">
-              <span className="liberty-label text-[10px]">Health</span>
+              <span className="liberty-label">Health</span>
               <div className={`w-2.5 h-2.5 rounded-full ${getHealthColor(campaign.health)}`}></div>
             </div>
             <div className="text-2xl font-mono font-bold leading-none text-[#111]">
@@ -228,7 +228,7 @@ const SlideoverContent: React.FC<{ campaignId: string; artistName: string }> = (
       </section>
 
       {/* Stats Grid */}
-      <section className="grid grid-cols-3 gap-3">
+      <section className="grid grid-cols-3 gap-4">
         <div className="bg-tap-bg p-3 rounded-md border border-tap-line text-center">
           <div className="text-xs text-tap-muted uppercase tracking-wide mb-1">Pitches</div>
           <div className="text-xl font-mono leading-none text-tap-text">{detail.pitchCount}</div>
@@ -400,7 +400,7 @@ const SlideoverContent: React.FC<{ campaignId: string; artistName: string }> = (
                       </p>
                     </div>
                   </div>
-                  <span className="text-[10px] font-mono text-tap-muted">{coverage.date}</span>
+                  <span className="liberty-metadata-micro">{coverage.date}</span>
                 </div>
                 <p className="text-sm text-tap-muted">{coverage.highlight}</p>
               </div>
@@ -576,7 +576,7 @@ const SlideoverContent: React.FC<{ campaignId: string; artistName: string }> = (
                         </p>
                       </div>
                     </div>
-                    <div className="flex items-center justify-between text-[10px] text-tap-muted font-mono">
+                    <div className="flex items-center justify-between liberty-metadata-micro">
                       <span>{formatSize(asset.sizeKB)}</span>
                       <span>{asset.folder}</span>
                     </div>
@@ -588,7 +588,7 @@ const SlideoverContent: React.FC<{ campaignId: string; artistName: string }> = (
                         setSelectedAsset(asset);
                         setIsAssetSlideoverOpen(true);
                       }}
-                      className="mt-2 w-full text-[10px] text-tap-accent hover:text-tap-text transition-colors font-medium text-center py-1 border-t border-tap-line"
+                      className="mt-2 w-full liberty-metadata-micro text-tap-accent hover:text-tap-text transition-colors font-medium text-center py-1 border-t border-tap-line"
                     >
                       View AI Press Summary →
                     </button>

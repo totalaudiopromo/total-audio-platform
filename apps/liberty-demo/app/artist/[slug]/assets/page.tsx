@@ -145,11 +145,11 @@ export default function AssetsPage() {
                   )}
 
                   <div className="flex items-center gap-2 pt-4 border-t border-[#D9D7D2]">
-                    <button className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-[#111] text-white rounded-md hover:bg-black transition-colors text-sm font-medium">
+                    <button className="liberty-btn-primary flex-1 gap-2">
                       <Download size={14} />
                       <span>Download</span>
                     </button>
-                    <button className="px-3 py-2 bg-[#F7F6F2] text-[#111] rounded-md hover:bg-[#FAFAF8] transition-colors border border-[#D9D7D2]">
+                    <button className="liberty-btn-icon">
                       <Eye size={16} />
                     </button>
                   </div>

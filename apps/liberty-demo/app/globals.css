@@ -227,7 +227,10 @@
 
   /* Liberty Card System */
   .liberty-card {
-    @apply bg-white rounded-xl border border-[#D9D7D2] p-6 shadow-sm hover:shadow-md transition-all;
+    @apply bg-white rounded-xl border border-[#D9D7D2] p-6;
+    @apply shadow-[0_1px_3px_rgba(0,0,0,0.04)];
+    @apply hover:shadow-[0_4px_12px_rgba(0,0,0,0.06)];
+    @apply transition-shadow duration-200 ease-out;
   }
 
   .liberty-card-inner {
@@ -259,6 +262,145 @@
   /* Ensure stat numbers/badges on colored backgrounds are always readable */
   .stat-on-color {
     @apply text-[#111] font-bold;
+  }
+
+  /* Status System - Semantic Colours */
+  .status-active { @apply bg-black text-white; }
+  .status-success { @apply bg-tap-good text-white; }
+  .status-warning { @apply bg-[#DC7B09] text-white; }
+  .status-error { @apply bg-tap-risk text-white; }
+  .status-neutral { @apply bg-[#F5F5F5] text-tap-text border border-tap-line; }
+  .status-muted { @apply bg-[#FAFAF8] text-tap-muted border border-[#E8E6E1]; }
+
+  /* Status pills/badges - outlined variants */
+  .status-active-outline { @apply border border-black text-black bg-transparent; }
+  .status-success-outline { @apply border border-tap-good text-tap-good bg-tap-good/5; }
+  .status-warning-outline { @apply border border-[#DC7B09] text-[#DC7B09] bg-[#F59E0B]/5; }
+  .status-error-outline { @apply border border-tap-risk text-tap-risk bg-tap-risk/5; }
+
+  /* Page layouts */
+  .liberty-page {
+    @apply max-w-7xl mx-auto px-6 py-8;
+  }
+
+  .liberty-page-header {
+    @apply mb-8;
+  }
+
+  .liberty-page-title {
+    @apply text-2xl font-semibold text-tap-text tracking-tight;
+  }
+
+  .liberty-page-subtitle {
+    @apply text-sm text-tap-muted mt-1;
+  }
+
+  /* Grid layouts */
+  .liberty-grid-stats {
+    @apply grid grid-cols-2 lg:grid-cols-4 gap-4;
+  }
+
+  .liberty-grid-cards {
+    @apply grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6;
+  }
+
+  .liberty-stack {
+    @apply flex flex-col gap-4;
+  }
+
+  .liberty-stack-tight {
+    @apply flex flex-col gap-2;
+  }
+
+  /* Card variants */
+  .liberty-card-compact {
+    @apply bg-white rounded-lg border border-[#D9D7D2] p-4;
+    @apply shadow-[0_1px_2px_rgba(0,0,0,0.03)];
+  }
+
+  .liberty-card-flat {
+    @apply bg-white rounded-lg border border-[#D9D7D2] p-6;
+  }
+
+  /* Interaction states - subtle, refined */
+  .liberty-interactive {
+    @apply transition-all duration-200 ease-out;
+  }
+
+  .liberty-hover-lift {
+    @apply hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.06)];
+    @apply transition-all duration-200 ease-out;
+  }
+
+  .liberty-hover-bg {
+    @apply hover:bg-[#FAFAF8];
+    @apply transition-colors duration-150 ease-out;
+  }
+
+  .liberty-focus {
+    @apply focus:outline-none focus:ring-2 focus:ring-black/10 focus:ring-offset-2;
+  }
+
+  /* Button system */
+  .liberty-btn {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg;
+    @apply font-medium text-sm;
+    @apply transition-all duration-150 ease-out;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .liberty-btn-primary {
+    @apply liberty-btn bg-black text-white;
+    @apply hover:bg-[#262626] active:bg-[#171717];
+    @apply focus:ring-black/20;
+  }
+
+  .liberty-btn-secondary {
+    @apply liberty-btn bg-white text-[#111] border border-[#D9D7D2];
+    @apply hover:bg-[#FAFAF8] hover:border-[#C5C3BE];
+    @apply focus:ring-black/10;
+  }
+
+  .liberty-btn-ghost {
+    @apply liberty-btn text-[#737373];
+    @apply hover:text-[#111] hover:bg-[#F5F5F5];
+  }
+
+  .liberty-btn-icon {
+    @apply p-2 rounded-lg;
+    @apply text-[#737373] hover:text-[#111] hover:bg-[#F5F5F5];
+    @apply transition-all duration-150 ease-out;
+    @apply focus:outline-none focus:ring-2 focus:ring-black/10 focus:ring-offset-2;
+  }
+
+  /* Micro typography - 10px metadata for dense UI */
+  .liberty-metadata-micro {
+    @apply font-mono text-[10px] text-[#737373] uppercase tracking-wide;
+  }
+
+  /* Accessibility - WCAG 2.2 AA touch targets */
+  .liberty-touch-target {
+    @apply min-h-[44px] min-w-[44px] flex items-center justify-center;
+  }
+
+  /* Loading states */
+  .liberty-skeleton {
+    @apply bg-[#F0EFEB] rounded;
+    animation: skeleton-pulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes skeleton-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+
+  .liberty-fade-in {
+    animation: fadeIn 200ms ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 }
 

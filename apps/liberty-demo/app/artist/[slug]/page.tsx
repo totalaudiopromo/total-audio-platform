@@ -221,7 +221,7 @@ export default function ArtistPortalOverviewPage() {
                   <div className="w-3 h-3 bg-[#D9D7D2] rounded-full mt-1.5"></div>
                   <div>
                     <p className="font-jakarta font-semibold text-sm text-[#111]">Release Date</p>
-                    <p className="liberty-metadata text-[11px] normal-case">Dec 15, 2023</p>
+                    <p className="liberty-metadata normal-case">Dec 15, 2023</p>
                   </div>
                 </div>
               </div>
@@ -233,13 +233,13 @@ export default function ArtistPortalOverviewPage() {
                 Quick Actions
               </h2>
               <div className="space-y-3">
-                <button className="w-full px-5 py-3 bg-[#111] text-white rounded-xl hover:bg-black transition-all text-sm font-jakarta font-semibold shadow-sm">
+                <button className="liberty-btn-primary w-full liberty-touch-target">
                   Upload New Assets
                 </button>
-                <button className="w-full px-5 py-3 bg-white border-2 border-[#D9D7D2] text-[#111] rounded-xl hover:border-[#111] transition-all text-sm font-jakarta font-semibold">
+                <button className="liberty-btn-secondary w-full liberty-touch-target">
                   View Full Timeline
                 </button>
-                <button className="w-full px-5 py-3 bg-white border-2 border-[#D9D7D2] text-[#111] rounded-xl hover:border-[#111] transition-all text-sm font-jakarta font-semibold">
+                <button className="liberty-btn-secondary w-full liberty-touch-target">
                   Download Press Kit
                 </button>
               </div>

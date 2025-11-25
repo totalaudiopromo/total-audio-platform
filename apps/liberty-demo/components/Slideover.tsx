@@ -23,11 +23,7 @@ const Slideover: React.FC<SlideoverProps> = ({ isOpen, onClose, title, children 
       <div className="relative z-10 w-full max-w-2xl h-full bg-white shadow-2xl border-l border-[#D9D7D2] flex flex-col transform transition-transform duration-300 ease-in-out animate-in slide-in-from-right">
         <div className="flex items-center justify-between px-6 py-4 border-b border-[#D9D7D2]">
           <h2 className="text-xl font-sans font-semibold tracking-tight text-black">{title}</h2>
-          <button
-            onClick={onClose}
-            className="p-2 text-neutral-500 hover:text-black hover:bg-neutral-100 rounded-full transition-colors"
-            aria-label="Close"
-          >
+          <button onClick={onClose} className="liberty-btn-icon rounded-full" aria-label="Close">
             <X size={20} />
           </button>
         </div>

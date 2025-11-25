@@ -93,7 +93,7 @@ export default function UploadPage() {
       <main className="max-w-4xl mx-auto px-6 py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="liberty-heading text-4xl mb-3">Upload Files</h1>
+          <h1 className="liberty-page-title mb-3">Upload Files</h1>
           <p className="liberty-body text-lg text-[#737373]">
             Share press shots, logos, lyrics, and other assets with your campaign team.
           </p>
@@ -108,7 +108,7 @@ export default function UploadPage() {
         )}
 
         {/* Upload Area */}
-        <div className="liberty-card p-8 mb-6">
+        <div className="liberty-card mb-6">
           <label
             htmlFor="file-upload"
             className="block border-2 border-dashed border-[#D9D7D2] rounded-lg p-12 text-center hover:border-[#111] transition-colors cursor-pointer"
@@ -150,11 +150,8 @@ export default function UploadPage() {
                       <p className="liberty-metadata">{formatFileSize(file.size)}</p>
                     </div>
                   </div>
-                  <button
-                    onClick={() => handleRemoveFile(idx)}
-                    className="p-2 hover:bg-[#FAFAF8] rounded-md transition-colors"
-                  >
-                    <X className="w-4 h-4 text-[#737373]" />
+                  <button onClick={() => handleRemoveFile(idx)} className="liberty-btn-icon">
+                    <X className="w-4 h-4" />
                   </button>
                 </div>
               ))}
@@ -164,7 +161,7 @@ export default function UploadPage() {
               <button
                 onClick={handleUpload}
                 disabled={uploading}
-                className="px-6 py-3 bg-[#111] text-white rounded-lg hover:bg-black transition-colors font-medium disabled:opacity-50 flex items-center gap-2"
+                className="liberty-btn-primary liberty-touch-target disabled:opacity-50 gap-2"
               >
                 {uploading ? (
                   <>

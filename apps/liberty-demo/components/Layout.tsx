@@ -59,7 +59,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             className="h-8 w-auto object-contain mb-4"
           />
           <div className="flex flex-col items-start leading-none">
-            <p className="font-mono text-[11px] text-neutral-400 tracking-[0.2em] uppercase font-medium mt-1.5 ml-0.5">
+            <p className="font-mono text-[11px] text-[#737373] tracking-[0.2em] uppercase font-medium mt-1.5 ml-0.5">
               Agency Console
             </p>
           </div>
@@ -80,13 +80,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <>
               <a
                 href="/debug/typography"
-                className="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-jakarta font-medium transition-colors text-neutral-500 hover:text-black hover:bg-neutral-50"
+                className="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-jakarta font-medium transition-all duration-150 ease-out text-[#737373] hover:text-[#111] hover:bg-[#FAFAF8]"
               >
                 <span>Typography Debug</span>
               </a>
               <a
                 href="/debug/hierarchy"
-                className="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-jakarta font-medium transition-colors text-neutral-500 hover:text-black hover:bg-neutral-50"
+                className="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-jakarta font-medium transition-all duration-150 ease-out text-[#737373] hover:text-[#111] hover:bg-[#FAFAF8]"
               >
                 <span>Visual Hierarchy Debug</span>
               </a>
@@ -95,25 +95,28 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         </nav>
 
         <div className="px-4 py-4 border-t border-[#D9D7D2]">
-          <div className="flex items-center space-x-3 px-3 py-2 text-neutral-500 text-sm cursor-pointer hover:text-black transition-colors group">
+          <div className="flex items-center space-x-3 px-3 py-2 text-[#737373] text-sm cursor-pointer hover:text-[#111] transition-colors duration-150 ease-out group">
             <div className="relative">
-              <MessageSquare size={18} className="group-hover:text-black transition-colors" />
+              <MessageSquare
+                size={18}
+                className="group-hover:text-[#111] transition-colors duration-150 ease-out"
+              />
               <span className="absolute -top-1 -right-1 w-2 h-2 bg-black rounded-full ring-2 ring-white"></span>
             </div>
             <span className="font-medium font-jakarta">Google Chat</span>
           </div>
           <div className="mt-6 px-3">
-            <div className="font-mono text-[11px] uppercase text-neutral-400 mb-3 tracking-wider">
+            <div className="font-mono text-[11px] uppercase text-[#737373] mb-3 tracking-wider">
               My Workspace
             </div>
             <div className="flex items-center -space-x-2">
-              <div className="w-7 h-7 rounded-full bg-neutral-200 border-2 border-white flex items-center justify-center text-[10px] font-medium text-black">
+              <div className="w-7 h-7 rounded-full bg-[#D9D7D2] border-2 border-white flex items-center justify-center text-[10px] font-medium text-black">
                 A
               </div>
-              <div className="w-7 h-7 rounded-full bg-neutral-300 border-2 border-white flex items-center justify-center text-[10px] font-medium text-black">
+              <div className="w-7 h-7 rounded-full bg-[#D9D7D2] border-2 border-white flex items-center justify-center text-[10px] font-medium text-black">
                 B
               </div>
-              <button className="w-7 h-7 rounded-full bg-white border-2 border-neutral-200 flex items-center justify-center text-[10px] text-neutral-500 hover:bg-neutral-50 transition-colors">
+              <button className="w-7 h-7 rounded-full bg-white border-2 border-[#D9D7D2] flex items-center justify-center text-[10px] text-[#737373] hover:bg-[#FAFAF8] transition-colors duration-150 ease-out">
                 +
               </button>
             </div>
@@ -139,22 +142,22 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <div className="w-full relative group max-w-md">
               <Search
                 size={16}
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400 group-focus-within:text-black transition-colors"
+                className="absolute left-3 top-1/2 -translate-y-1/2 text-[#737373] group-focus-within:text-black transition-colors duration-150 ease-out"
               />
               <input
                 type="text"
                 placeholder="Search campaigns, artists, contacts..."
-                className="w-full bg-neutral-50 hover:bg-neutral-100 focus:bg-white border border-transparent focus:border-neutral-200 rounded-xl pl-9 pr-4 py-1.5 text-sm focus:outline-none transition-all placeholder:text-neutral-400 text-black font-jakarta font-medium"
+                className="w-full bg-[#FAFAF8] hover:bg-[#F5F5F5] focus:bg-white border border-transparent focus:border-[#D9D7D2] rounded-xl pl-9 pr-4 py-1.5 text-sm focus:outline-none transition-all duration-200 ease-out placeholder:text-[#737373] text-black font-jakarta font-medium"
               />
             </div>
           </div>
 
           <div className="flex items-center space-x-6 pl-4">
-            <button className="relative text-neutral-400 hover:text-black transition-colors">
+            <button className="relative text-[#737373] hover:text-[#111] transition-colors duration-150 ease-out">
               <Bell size={18} />
               <span className="absolute top-0 right-0.5 w-1.5 h-1.5 bg-black rounded-full ring-2 ring-white"></span>
             </button>
-            <div className="h-8 w-8 rounded-full bg-black text-white flex items-center justify-center text-xs font-jakarta font-semibold border border-black shadow-sm cursor-pointer hover:bg-neutral-800 transition-colors">
+            <div className="h-8 w-8 rounded-full bg-black text-white flex items-center justify-center text-xs font-jakarta font-semibold border border-black shadow-sm cursor-pointer hover:bg-[#262626] transition-colors duration-150 ease-out">
               JD
             </div>
           </div>

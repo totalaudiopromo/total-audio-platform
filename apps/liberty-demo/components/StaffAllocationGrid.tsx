@@ -76,7 +76,7 @@ export default function StaffAllocationGrid() {
               <div className="flex items-center gap-2">
                 <div className="flex-1 h-2 bg-tap-bg rounded-full overflow-hidden border border-tap-line">
                   <div
-                    className={`h-full ${getWorkloadColour(allocation.workloadScore)} transition-all duration-300`}
+                    className={`h-full ${getWorkloadColour(allocation.workloadScore)} transition-all duration-300 ease-out`}
                     style={{ width: `${Math.min(allocation.workloadScore, 100)}%` }}
                   />
                 </div>
