@@ -27,11 +27,11 @@ export default function ArtistLoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center px-6">
+    <div className="min-h-screen bg-[#F7F6F2] flex items-center justify-center px-6">
       <div className="max-w-md w-full">
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-[#0E7C45] rounded-2xl mb-4">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-black rounded-2xl mb-4">
             <Music className="w-8 h-8 text-white" />
           </div>
           <h1 className="text-3xl font-heading font-semibold text-gray-900 mb-2">
@@ -44,8 +44,8 @@ export default function ArtistLoginPage() {
         <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8">
           {sent ? (
             <div className="text-center py-8">
-              <div className="w-16 h-16 bg-[#0E7C45] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Mail className="w-8 h-8 text-[#0E7C45]" />
+              <div className="w-16 h-16 bg-[#111] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Mail className="w-8 h-8 text-black" />
               </div>
               <h2 className="text-2xl font-heading font-semibold text-gray-900 mb-2">
                 Check your email
@@ -77,14 +77,14 @@ export default function ArtistLoginPage() {
                     onChange={e => setEmail(e.target.value)}
                     placeholder="artist@example.com"
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0E7C45] focus:border-transparent outline-none transition-all"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-all"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={loading || !email}
-                  className="w-full px-6 py-3 bg-[#0E7C45] text-white rounded-lg hover:bg-[#0c6838] transition-colors font-medium disabled:opacity-50 flex items-center justify-center gap-2"
+                  className="liberty-btn-primary w-full liberty-touch-target disabled:opacity-50 gap-2"
                 >
                   {loading ? (
                     <>
@@ -105,7 +105,7 @@ export default function ArtistLoginPage() {
                   Don't have access?{' '}
                   <a
                     href="mailto:hello@libertymusic.co.uk"
-                    className="text-[#0E7C45] hover:underline font-medium"
+                    className="text-black hover:underline font-medium"
                   >
                     Contact your campaign manager
                   </a>

@@ -158,15 +158,15 @@ export default function PitchBuilderPage() {
   const getAssetIcon = (kind: string) => {
     switch (kind) {
       case 'press-release':
-        return <FileText className="w-4 h-4 text-red-500" />;
+        return <FileText className="w-4 h-4 tap-accent-press" />;
       case 'artwork':
-        return <ImageIcon className="w-4 h-4 text-blue-500" />;
+        return <ImageIcon className="w-4 h-4 tap-accent-crm" />;
       case 'photo':
-        return <ImageIcon className="w-4 h-4 text-purple-500" />;
+        return <ImageIcon className="w-4 h-4 tap-accent-playlist" />;
       case 'audio':
-        return <Music className="w-4 h-4 text-green-500" />;
+        return <Music className="w-4 h-4 tap-accent-radio" />;
       default:
-        return <LinkIcon className="w-4 h-4 text-gray-500" />;
+        return <LinkIcon className="w-4 h-4 text-[#737373]" />;
     }
   };
 

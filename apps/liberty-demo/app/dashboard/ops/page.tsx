@@ -99,9 +99,7 @@ const OpsPage: React.FC = () => {
   return (
     <div className="space-y-8">
       <div className="pb-6 border-b border-tap-line">
-        <h1 className="font-heading font-normal text-4xl tracking-tight text-tap-text">
-          Operations Dashboard
-        </h1>
+        <h1 className="liberty-page-title">Operations Dashboard</h1>
         <p className="text-sm text-tap-muted mt-2">
           Monday.com integration — timelines and team allocation
         </p>
@@ -114,9 +112,7 @@ const OpsPage: React.FC = () => {
           <section>
             <div className="flex items-center gap-2 mb-4 pb-2 border-b border-tap-line">
               <Calendar className="w-5 h-5 text-tap-accent" />
-              <h2 className="font-heading font-normal text-3xl tracking-tight text-tap-text">
-                Campaign Timelines
-              </h2>
+              <h2 className="liberty-heading text-xl">Campaign Timelines</h2>
             </div>
             <div className="space-y-4">
               {timelines.map(timeline => {
@@ -139,7 +135,7 @@ const OpsPage: React.FC = () => {
                     <div className="mb-3">
                       <div className="w-full bg-tap-bg rounded-full h-2 border border-tap-line overflow-hidden">
                         <div
-                          className={`h-full ${getStatusColour(timeline.status)} transition-all duration-300`}
+                          className={`h-full ${getStatusColour(timeline.status)} transition-all duration-300 ease-out`}
                           style={{ width: `${progress}%` }}
                         />
                       </div>
@@ -160,9 +156,7 @@ const OpsPage: React.FC = () => {
           <section>
             <div className="flex items-center gap-2 mb-4 pb-2 border-b border-tap-line">
               <Users className="w-5 h-5 text-tap-accent" />
-              <h2 className="font-heading font-normal text-3xl tracking-tight text-tap-text">
-                Team Allocation
-              </h2>
+              <h2 className="liberty-heading text-xl">Team Allocation</h2>
             </div>
             <div className="bg-tap-panel border border-tap-line rounded-lg overflow-hidden">
               <table className="w-full">
@@ -191,7 +185,7 @@ const OpsPage: React.FC = () => {
                         <div className="flex items-center gap-3">
                           <div className="flex-1 bg-tap-bg rounded-full h-2 border border-tap-line overflow-hidden">
                             <div
-                              className={`h-full ${getWorkloadColour(allocation.workloadScore)} transition-all duration-300`}
+                              className={`h-full ${getWorkloadColour(allocation.workloadScore)} transition-all duration-300 ease-out`}
                               style={{ width: `${Math.min(100, allocation.workloadScore)}%` }}
                             />
                           </div>
@@ -213,9 +207,7 @@ const OpsPage: React.FC = () => {
           <section className="bg-tap-panel border border-tap-line rounded-lg p-6">
             <div className="flex items-center gap-2 mb-6">
               <TrendingUp className="w-5 h-5 text-tap-accent" />
-              <h2 className="font-heading font-normal text-3xl tracking-tight text-tap-text">
-                Operational Health
-              </h2>
+              <h2 className="liberty-heading text-lg">Operational Health</h2>
             </div>
             <div className="space-y-6">
               <div>

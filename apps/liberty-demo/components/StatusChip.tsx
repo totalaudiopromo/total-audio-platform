@@ -10,18 +10,18 @@ const StatusChip: React.FC<StatusChipProps> = ({ status, size = 'md' }) => {
   const getStyles = (s: string) => {
     switch (s.toLowerCase()) {
       case 'active':
-        return 'bg-neutral-100 text-black border-neutral-300';
+        return 'bg-[#F5F5F5] text-black border-[#D9D7D2]';
       case 'risk':
-        return 'bg-neutral-100 text-neutral-600 border-neutral-300';
+        return 'bg-[#F5F5F5] text-[#525252] border-[#D9D7D2]';
       case 'scheduled':
-        return 'bg-neutral-50 text-neutral-500 border-neutral-200';
+        return 'bg-[#FAFAF8] text-[#737373] border-[#E8E6E1]';
       case 'completed':
       case 'complete':
-        return 'bg-neutral-50 text-neutral-400 border-neutral-200';
+        return 'bg-[#FAFAF8] text-[#9CA3AF] border-[#E8E6E1]';
       case 'paused':
-        return 'bg-neutral-50 text-neutral-400 border-neutral-200';
+        return 'bg-[#FAFAF8] text-[#9CA3AF] border-[#E8E6E1]';
       default:
-        return 'bg-neutral-100 text-neutral-600 border-neutral-200';
+        return 'bg-[#F5F5F5] text-[#525252] border-[#E8E6E1]';
     }
   };
 

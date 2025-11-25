@@ -48,10 +48,10 @@ const PortalNav: React.FC<PortalNavProps> = ({ artistSlug }) => {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center gap-2 px-4 py-3 text-sm font-jakarta font-medium transition-colors border-b-2 whitespace-nowrap ${
+                className={`flex items-center gap-2 px-4 py-3 text-sm font-jakarta font-medium transition-all duration-200 ease-out border-b-2 whitespace-nowrap liberty-focus ${
                   isActive
                     ? 'text-black border-black'
-                    : 'text-neutral-500 border-transparent hover:text-black hover:border-neutral-300'
+                    : 'text-[#737373] border-transparent hover:text-[#111] hover:border-[#D9D7D2]'
                 }`}
               >
                 <Icon size={16} />

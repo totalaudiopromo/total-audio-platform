@@ -21,13 +21,13 @@ const StatCard: React.FC<StatCardProps> = ({
   accentColor,
 }) => {
   const getTrendIcon = () => {
-    if (trend === 'up') return <TrendingUp size={14} className="tap-accent-momentum" />;
+    if (trend === 'up') return <TrendingUp size={14} className="text-tap-good" />;
     if (trend === 'down') return <TrendingDown size={14} className="text-[#737373]" />;
     return <Minus size={14} className="text-[#D9D7D2]" />;
   };
 
   const getTrendColor = () => {
-    if (trend === 'up') return 'tap-accent-momentum';
+    if (trend === 'up') return 'text-tap-good';
     if (trend === 'down') return 'text-[#737373]';
     return 'text-[#737373]';
   };
@@ -39,21 +39,25 @@ const StatCard: React.FC<StatCardProps> = ({
 
   return (
     <div className="liberty-card">
-      <div className="liberty-label text-[11px] mb-2">{label}</div>
+      <div className="liberty-metadata-micro mb-3">{label}</div>
       <div className="flex items-baseline gap-2">
-        <div className={`text-3xl font-mono font-bold text-[#111] ${getAccentClass()}`}>
+        <div
+          className={`text-3xl font-mono font-bold text-[#111] tracking-tight ${getAccentClass()}`}
+        >
           {value}
-          {suffix && <span className="text-lg text-[#737373] ml-1 font-jakarta">{suffix}</span>}
+          {suffix && <span className="text-base text-[#737373] ml-1 font-sans">{suffix}</span>}
         </div>
       </div>
       {change !== undefined && (
-        <div className={`flex items-center gap-1 mt-2 text-sm ${getTrendColor()}`}>
+        <div
+          className={`flex items-center gap-1 mt-3 pt-3 border-t border-[#D9D7D2]/50 text-sm ${getTrendColor()}`}
+        >
           {getTrendIcon()}
           <span className="font-mono">
             {change > 0 ? '+' : ''}
             {change}%
           </span>
-          <span className="text-[#737373] text-xs font-jakarta">vs last period</span>
+          <span className="text-[#737373] text-xs font-sans">vs last period</span>
         </div>
       )}
     </div>

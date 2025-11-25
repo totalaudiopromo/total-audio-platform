@@ -93,7 +93,7 @@ const DashboardOverview: React.FC = () => {
                 <stat.icon size={20} className="text-[#111]" />
               </div>
               <span
-                className={`font-mono text-[11px] font-semibold tap-accent-${stat.accent} bg-tap-accent-${stat.accent} px-2.5 py-1 rounded-full`}
+                className={`liberty-metadata-micro font-semibold tap-accent-${stat.accent} bg-tap-accent-${stat.accent} px-2.5 py-1 rounded-full`}
               >
                 {stat.change}
               </span>
@@ -101,7 +101,7 @@ const DashboardOverview: React.FC = () => {
             <div className="font-mono text-4xl font-bold leading-none text-[#111] mb-2">
               {stat.value}
             </div>
-            <div className="liberty-label text-[11px]">{stat.label}</div>
+            <div className="liberty-metadata-micro">{stat.label}</div>
           </div>
         ))}
       </div>
@@ -136,9 +136,7 @@ const DashboardOverview: React.FC = () => {
                   </div>
                   <div>
                     <div className="font-jakarta font-semibold text-base text-[#111]">WARM</div>
-                    <div className="liberty-metadata text-[11px] normal-case">
-                      Radio Intelligence
-                    </div>
+                    <div className="liberty-metadata normal-case">Radio Intelligence</div>
                   </div>
                 </div>
                 <div className="text-base font-mono text-[#737373] group-hover:text-[#111] transition-colors">
@@ -152,9 +150,7 @@ const DashboardOverview: React.FC = () => {
                   </div>
                   <div>
                     <div className="font-jakarta font-semibold text-base text-[#111]">Monday</div>
-                    <div className="liberty-metadata text-[11px] normal-case">
-                      Project Management
-                    </div>
+                    <div className="liberty-metadata normal-case">Project Management</div>
                   </div>
                 </div>
                 <div className="text-base font-mono text-[#737373] group-hover:text-[#111] transition-colors">

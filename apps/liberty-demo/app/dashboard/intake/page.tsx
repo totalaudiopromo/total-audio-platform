@@ -122,7 +122,7 @@ const IntakePage: React.FC = () => {
                       <div className="flex-1 max-w-[200px]">
                         <div className="h-2 bg-tap-bg rounded-full overflow-hidden border border-tap-line">
                           <div
-                            className={`h-full ${getCompletenessColour(submission.completeness)} transition-all duration-300`}
+                            className={`h-full ${getCompletenessColour(submission.completeness)} transition-all duration-300 ease-out`}
                             style={{ width: `${submission.completeness}%` }}
                           />
                         </div>

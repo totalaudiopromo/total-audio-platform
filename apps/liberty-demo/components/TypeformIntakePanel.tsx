@@ -86,7 +86,7 @@ export default function TypeformIntakePanel() {
             <div className="mb-2">
               <div className="w-full h-2 bg-tap-bg rounded-full border border-tap-line overflow-hidden">
                 <div
-                  className={`h-full ${getCompletenessColour(submission.completeness)} transition-all duration-300`}
+                  className={`h-full ${getCompletenessColour(submission.completeness)} transition-all duration-300 ease-out`}
                   style={{ width: `${Math.min(submission.completeness, 100)}%` }}
                 />
               </div>
