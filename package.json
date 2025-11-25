@@ -50,7 +50,8 @@
     "enhance-deployment": "pnpm run create-health-endpoints && pnpm run validate-env && pnpm run standardize-deps",
     "changeset": "changeset",
     "version": "changeset version",
-    "release": "pnpm run build:all && changeset publish"
+    "release": "pnpm run build:all && changeset publish",
+    "prepare": "husky"
   },
   "keywords": [
     "music",
@@ -90,8 +91,19 @@
     "@playwright/test": "^1.56.1",
     "@types/dotenv": "^8.2.3",
     "@types/node": "^24.10.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "node-fetch": "^2.7.0",
+    "prettier": "^3.5.1",
     "sharp": "^0.34.5",
     "tsx": "^4.20.6"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
   }
 }
