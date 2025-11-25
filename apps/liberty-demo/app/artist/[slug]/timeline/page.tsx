@@ -13,13 +13,14 @@ import {
   fetchArtistCampaigns,
   type PortalArtist,
 } from '@/lib/api/portal';
+import type { TrackerCampaignDetail } from '@/lib/types';
 
 export default function TimelinePage() {
   const params = useParams();
   const slug = params?.slug as string;
 
   const [artist, setArtist] = useState<PortalArtist | null>(null);
-  const [campaignDetail, setCampaignDetail] = useState<any>(null);
+  const [campaignDetail, setCampaignDetail] = useState<TrackerCampaignDetail | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

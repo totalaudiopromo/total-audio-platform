@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { X, Download, FileText, Image, FileArchive, Music } from 'lucide-react';
+import { X, Download, FileText, Image, FileArchive } from 'lucide-react';
 import { fetchPressProfileForAsset } from '@/lib/api/drive';
 import type { DriveAsset } from '@/lib/types';
 import type { PressProfile } from '@/lib/constants/pressProfiles';
@@ -13,9 +13,44 @@ interface AssetSlideoverProps {
 }
 
 const AssetSlideover: React.FC<AssetSlideoverProps> = ({ asset, isOpen, onClose }) => {
+  // Hooks must be called unconditionally at the top level
+  const [pressProfile, setPressProfile] = React.useState<PressProfile | null>(null);
+  const [loadingProfile, setLoadingProfile] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, [onClose]);
+
+  React.useEffect(() => {
+    let active = true;
+    if (!asset) {
+      setPressProfile(null);
+      return;
+    }
+    (async () => {
+      setLoadingProfile(true);
+      try {
+        const profile = await fetchPressProfileForAsset(asset.id);
+        if (active) setPressProfile(profile);
+      } catch (err) {
+        console.warn('[AssetSlideover] Failed to fetch press profile', err);
+      } finally {
+        if (active) setLoadingProfile(false);
+      }
+    })();
+    return () => {
+      active = false;
+    };
+  }, [asset]);
+
+  // Early return after all hooks
   if (!isOpen || !asset) return null;
 
-  const getFileIcon = (type: string) => {
+  const getFileIcon = (type: DriveAsset['type']) => {
     switch (type) {
       case 'pdf':
         return <FileText className="w-6 h-6 text-red-500" />;
@@ -23,11 +58,8 @@ const AssetSlideover: React.FC<AssetSlideoverProps> = ({ asset, isOpen, onClose 
       case 'png':
         return <Image className="w-6 h-6 text-blue-500" />;
       case 'doc':
-      case 'docx':
         return <FileText className="w-6 h-6 text-blue-600" />;
-      case 'mp3':
-      case 'wav':
-        return <Music className="w-6 h-6 text-purple-500" />;
+      case 'other':
       default:
         return <FileArchive className="w-6 h-6 text-gray-500" />;
     }
@@ -48,36 +80,6 @@ const AssetSlideover: React.FC<AssetSlideoverProps> = ({ asset, isOpen, onClose 
       minute: '2-digit',
     });
   };
-
-  const [pressProfile, setPressProfile] = React.useState<PressProfile | null>(null);
-  const [loadingProfile, setLoadingProfile] = React.useState(false);
-
-  React.useEffect(() => {
-    const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
-    window.addEventListener('keydown', handleEsc);
-    return () => window.removeEventListener('keydown', handleEsc);
-  }, [onClose]);
-
-  React.useEffect(() => {
-    let active = true;
-    (async () => {
-      if (!asset) return;
-      setLoadingProfile(true);
-      try {
-        const profile = await fetchPressProfileForAsset(asset.id);
-        if (active) setPressProfile(profile);
-      } catch (err) {
-        console.warn('[AssetSlideover] Failed to fetch press profile', err);
-      } finally {
-        if (active) setLoadingProfile(false);
-      }
-    })();
-    return () => {
-      active = false;
-    };
-  }, [asset]);
 
   return (
     <div className="fixed inset-0 z-[100] flex justify-end">

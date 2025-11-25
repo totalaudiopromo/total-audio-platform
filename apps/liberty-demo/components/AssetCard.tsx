@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FileText, Image, FileArchive, Music } from 'lucide-react';
+import { FileText, Image, FileArchive } from 'lucide-react';
 import type { DriveAsset } from '@/lib/types';
 import { fetchAssetUsageForCampaign } from '@/lib/api/drive';
 
@@ -15,7 +15,7 @@ const AssetCard: React.FC<AssetCardProps> = ({ asset, onClick }) => {
     fetchAssetUsageForCampaign(asset.id).then(setUsage);
   }, [asset.id]);
 
-  const getFileIcon = (type: string) => {
+  const getFileIcon = (type: DriveAsset['type']) => {
     switch (type) {
       case 'pdf':
         return <FileText className="w-10 h-10 text-red-500" />;
@@ -23,11 +23,8 @@ const AssetCard: React.FC<AssetCardProps> = ({ asset, onClick }) => {
       case 'png':
         return <Image className="w-10 h-10 text-blue-500" />;
       case 'doc':
-      case 'docx':
         return <FileText className="w-10 h-10 text-blue-600" />;
-      case 'mp3':
-      case 'wav':
-        return <Music className="w-10 h-10 text-purple-500" />;
+      case 'other':
       default:
         return <FileArchive className="w-10 h-10 text-gray-500" />;
     }
