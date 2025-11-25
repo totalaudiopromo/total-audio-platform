@@ -2,21 +2,23 @@
   "name": "total-audio-platform",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "pnpm@10.0.0",
   "description": "Total Audio Promo - Music Industry Tools Platform",
   "scripts": {
     "setup": "bash scripts/setup.sh",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\" --ignore-path .gitignore",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\" --ignore-path .gitignore",
     "lint": "pnpm --filter audio-intel lint",
-    "lint:all": "pnpm -r --parallel lint",
+    "lint:all": "turbo run lint",
     "lint:fix": "pnpm -r --parallel lint -- --fix",
     "typecheck": "pnpm --filter audio-intel typecheck",
-    "typecheck:all": "pnpm -r --parallel typecheck",
+    "typecheck:all": "turbo run typecheck",
+    "build": "turbo run build",
     "build:audio-intel": "pnpm --filter audio-intel build",
     "build:tracker": "pnpm --filter tracker build",
     "build:web": "pnpm --filter total-audio-promo-frontend build",
     "build:pitch-generator": "pnpm --filter pitch-generator build",
-    "build:all": "pnpm -r build",
+    "build:all": "turbo run build",
     "test": "playwright test",
     "test:demo": "playwright test tests/demo-scenarios/",
     "test:smoke": "playwright test tests/demo-scenarios/liberty-workflow.spec.ts --grep 'Quick Demo Smoke Test'",
@@ -96,7 +98,8 @@
     "node-fetch": "^2.7.0",
     "prettier": "^3.5.1",
     "sharp": "^0.34.5",
-    "tsx": "^4.20.6"
+    "tsx": "^4.20.6",
+    "turbo": "^2.6.1"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
