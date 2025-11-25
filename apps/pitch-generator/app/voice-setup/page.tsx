@@ -42,7 +42,7 @@ export default function VoiceSetupPage() {
     {
       field: 'writingSamples',
       label: 'Writing Samples',
-      placeholder: 'Paste 2-3 examples of your best pitches here...\n\nExample: "Hi Jack, Hope you're well! Quick one about this track from Billie Marten - it's got that late-night Radio 1 energy you champion. She's already had support from Huw Stephens and this feels like a natural next step. The production is clean but not over-polished, exactly the kind of thing that works on your show. Stream below - would love to know what you think. Cheers, Sam"',
+      placeholder: "Paste 2-3 examples of your best pitches here...\n\nExample: \"Hi Jack, Hope you're well! Quick one about this track from Billie Marten - it's got that late-night Radio 1 energy you champion. She's already had support from Huw Stephens and this feels like a natural next step. The production is clean but not over-polished, exactly the kind of thing that works on your show. Stream below - would love to know what you think. Cheers, Sam\"",
       helper: 'Copy and paste 2-3 of your most successful pitch emails'
     },
     {
