@@ -1,0 +1,99 @@
+{
+  "name": "total-audio-orchestrator",
+  "version": "3.0.0",
+  "description": "Multi-agent orchestration system for Total Audio Platform",
+  "author": "Chris Schofield",
+  "created": "2025-11-24",
+
+  "config": {
+    "defaultModel": "claude-sonnet-4-5-20250929",
+    "architectModel": "claude-opus-4-5-20251101",
+    "maxConcurrentAgents": 4,
+    "dryRunDefault": true,
+    "autoCommit": false,
+    "safetyMode": true
+  },
+
+  "protectedPaths": [
+    "packages/core-db/src/lib/rls",
+    "packages/core-db/prisma/migrations",
+    ".env*",
+    "apps/*/app/api/auth"
+  ],
+
+  "workspaceContext": {
+    "activeApps": [
+      "apps/audio-intel",
+      "apps/tracker",
+      "apps/pitch-generator",
+      "apps/web",
+      "apps/api"
+    ],
+    "separateRepos": [
+      "totalaudiopromo/command-centre"
+    ],
+    "archivedApps": [
+      "archive/apps-2025/liberty-demo"
+    ],
+    "sharedPackages": [
+      "packages/ui",
+      "packages/core-db",
+      "packages/shared"
+    ]
+  },
+
+  "agents": {
+    "analysis": {
+      "file": "agents/analysis-agent.js",
+      "purpose": "Analyse problems and plan solutions",
+      "model": "opus"
+    },
+    "file-scanner": {
+      "file": "agents/file-scanner-agent.js",
+      "purpose": "Locate relevant files and components",
+      "model": "sonnet"
+    },
+    "context-mapper": {
+      "file": "agents/context-mapper-agent.js",
+      "purpose": "Build context from codebase patterns",
+      "model": "sonnet"
+    },
+    "patch-generator": {
+      "file": "agents/patch-generator-agent.js",
+      "purpose": "Generate code patches",
+      "model": "sonnet"
+    },
+    "code-mod": {
+      "file": "agents/code-mod-agent.js",
+      "purpose": "Apply code modifications",
+      "model": "sonnet"
+    },
+    "diff": {
+      "file": "agents/diff-agent.js",
+      "purpose": "Generate and display diffs",
+      "model": "haiku"
+    },
+    "impact-tester": {
+      "file": "agents/impact-tester-agent.js",
+      "purpose": "Test impact of changes",
+      "model": "sonnet"
+    },
+    "pr": {
+      "file": "agents/pr-agent.js",
+      "purpose": "Create PRs and commits",
+      "model": "haiku"
+    }
+  },
+
+  "workflows": {
+    "fix": ["analysis", "file-scanner", "patch-generator", "code-mod", "diff", "impact-tester"],
+    "refactor": ["analysis", "context-mapper", "file-scanner", "patch-generator", "code-mod", "diff", "impact-tester"],
+    "audit": ["analysis", "file-scanner", "context-mapper", "diff"],
+    "polish": ["file-scanner", "patch-generator", "code-mod", "diff"],
+    "ship": ["analysis", "file-scanner", "patch-generator", "code-mod", "impact-tester", "pr"]
+  },
+
+  "aliases": {
+    "tado": "node tools/orchestrator/orchestrator.js"
+  }
+}
