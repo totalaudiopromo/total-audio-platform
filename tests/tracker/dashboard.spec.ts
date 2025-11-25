@@ -52,15 +52,22 @@ test.describe('Campaign Tracker - Dashboard', () => {
 
     await page.waitForLoadState('networkidle', { timeout: 30000 });
 
-    // Look for stats cards (common patterns)
-    const statsElements = page.locator(
-      '[data-testid*="stat"], .stat-card, .metric, text=/total/i, text=/active/i, text=/pending/i, text=/completed/i'
-    );
+    // Look for stats cards using CSS selectors only (valid Playwright syntax)
+    const cssStatsCount = await page
+      .locator('[data-testid*="stat"], .stat-card, .metric')
+      .count();
 
-    const count = await statsElements.count();
-    console.log(`Found ${count} stat elements`);
+    // Also check for common stats text patterns using getByText
+    const hasStatsText =
+      (await page.getByText(/total/i).count()) > 0 ||
+      (await page.getByText(/active/i).count()) > 0 ||
+      (await page.getByText(/pending/i).count()) > 0 ||
+      (await page.getByText(/completed/i).count()) > 0;
 
-    if (count > 0) {
+    const totalFound = cssStatsCount + (hasStatsText ? 1 : 0);
+    console.log(`Found ${cssStatsCount} CSS stat elements, hasStatsText: ${hasStatsText}`);
+
+    if (totalFound > 0) {
       console.log('✅ Dashboard metrics displayed');
     } else {
       console.log('⚠️  No stat elements found - may need different selectors');
