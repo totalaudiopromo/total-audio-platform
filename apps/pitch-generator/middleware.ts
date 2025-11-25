@@ -4,7 +4,15 @@ import { NextResponse, type NextRequest } from 'next/server';
 export async function middleware(request: NextRequest) {
   const { supabaseResponse, user } = await updateSession(request);
 
-  const publicRoutes = ['/', '/auth/signin', '/auth/signup', '/pricing', '/privacy', '/terms'];
+  const publicRoutes = [
+    '/',
+    '/auth/signin',
+    '/auth/signup',
+    '/pricing',
+    '/privacy',
+    '/terms',
+    '/api/health',
+  ];
   const isPublicRoute =
     publicRoutes.includes(request.nextUrl.pathname) ||
     request.nextUrl.pathname.startsWith('/auth/callback') ||

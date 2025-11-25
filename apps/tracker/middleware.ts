@@ -58,6 +58,7 @@ export async function middleware(request: NextRequest) {
     '/billing',
     '/upgrade',
     '/verify-email',
+    '/api/health',
   ];
   const isPublicRoute =
     publicRoutes.includes(request.nextUrl.pathname) ||
