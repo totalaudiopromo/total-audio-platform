@@ -1,0 +1,10 @@
+{
+  "buildCommand": "cd ../.. && npm run build:liberty-demo",
+  "outputDirectory": ".next",
+  "installCommand": "cd ../.. && npm install",
+  "framework": "nextjs",
+  "env": {
+    "NEXT_PUBLIC_SUPABASE_URL": "@liberty-demo-supabase-url",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "@liberty-demo-supabase-anon-key"
+  }
+}
