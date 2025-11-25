@@ -22,7 +22,7 @@ export async function loadAssetContext(
     const byType: Record<string, number> = {};
     let totalSize = 0;
 
-    assets?.forEach((asset) => {
+    assets?.forEach(asset => {
       byType[asset.asset_type] = (byType[asset.asset_type] || 0) + 1;
       totalSize += asset.file_size || 0;
     });
@@ -30,7 +30,7 @@ export async function loadAssetContext(
     return {
       data: {
         assets:
-          assets?.map((a) => ({
+          assets?.map(a => ({
             id: a.id,
             type: a.asset_type,
             fileName: a.file_name,
@@ -42,7 +42,7 @@ export async function loadAssetContext(
         totalAssets: assets?.length || 0,
         byType,
         recentUploads:
-          assets?.slice(0, 10).map((a) => ({
+          assets?.slice(0, 10).map(a => ({
             id: a.id,
             type: a.asset_type,
             fileName: a.file_name,

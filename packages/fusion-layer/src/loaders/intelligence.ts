@@ -39,7 +39,7 @@ export async function loadContactIntelContext(
     return {
       data: {
         graphs:
-          graphs?.map((g) => ({
+          graphs?.map(g => ({
             contactId: g.contact_id,
             genreAffinity: g.genre_affinity || {},
             responsivenessScore: g.responsiveness_score || 0,
@@ -54,7 +54,7 @@ export async function loadContactIntelContext(
         totalContacts: graphs?.length || 0,
         avgResponsivenessScore: avgScore,
         topPerformingContacts:
-          graphs?.slice(0, 10).map((g) => ({
+          graphs?.slice(0, 10).map(g => ({
             contactId: g.contact_id,
             genreAffinity: g.genre_affinity || {},
             responsivenessScore: g.responsiveness_score || 0,
@@ -107,7 +107,7 @@ export async function loadPressKitIntelContext(
     return {
       data: {
         reports:
-          reports?.map((r) => ({
+          reports?.map(r => ({
             id: r.id,
             artistName: r.artist_name,
             qualityScore: r.kit_quality_score || 0,
@@ -164,7 +164,7 @@ export async function loadWriterRoomContext(
     return {
       data: {
         results:
-          results?.map((r) => ({
+          results?.map(r => ({
             id: r.id,
             artistName: r.artist_name,
             releaseName: r.release_name,
@@ -176,7 +176,7 @@ export async function loadWriterRoomContext(
             createdAt: new Date(r.created_at),
           })) || [],
         recentGenerated:
-          results?.slice(0, 5).map((r) => ({
+          results?.slice(0, 5).map(r => ({
             id: r.id,
             artistName: r.artist_name,
             releaseName: r.release_name,
@@ -219,8 +219,8 @@ export async function loadReplyIntelContext(
       .limit(50);
 
     const highValueLeads =
-      classifications?.filter((c) => c.classification === 'high_value_lead') || [];
-    const needsFollowup = classifications?.filter((c) => c.requires_followup) || [];
+      classifications?.filter(c => c.classification === 'high_value_lead') || [];
+    const needsFollowup = classifications?.filter(c => c.requires_followup) || [];
 
     const avgInterestScore =
       classifications && classifications.length > 0
@@ -237,7 +237,7 @@ export async function loadReplyIntelContext(
     return {
       data: {
         classifications:
-          classifications?.map((c) => ({
+          classifications?.map(c => ({
             id: c.id,
             campaignId: c.campaign_id,
             contactId: c.contact_id,
@@ -248,7 +248,7 @@ export async function loadReplyIntelContext(
             suggestedResponse: c.suggested_response,
             timestamp: new Date(c.created_at),
           })) || [],
-        highValueLeads: highValueLeads.map((c) => ({
+        highValueLeads: highValueLeads.map(c => ({
           id: c.id,
           campaignId: c.campaign_id,
           contactId: c.contact_id,
@@ -259,7 +259,7 @@ export async function loadReplyIntelContext(
           suggestedResponse: c.suggested_response,
           timestamp: new Date(c.created_at),
         })),
-        needsFollowup: needsFollowup.map((c) => ({
+        needsFollowup: needsFollowup.map(c => ({
           id: c.id,
           campaignId: c.campaign_id,
           contactId: c.contact_id,
@@ -307,14 +307,14 @@ export async function loadCampaignWatcherContext(
       .limit(100);
 
     const eventsByType: Record<string, number> = {};
-    feed?.forEach((event) => {
+    feed?.forEach(event => {
       eventsByType[event.event_type] = (eventsByType[event.event_type] || 0) + 1;
     });
 
     return {
       data: {
         feed:
-          feed?.map((f) => ({
+          feed?.map(f => ({
             id: f.id,
             campaignId: f.campaign_id,
             eventType: f.event_type,
@@ -322,7 +322,7 @@ export async function loadCampaignWatcherContext(
             timestamp: new Date(f.created_at),
           })) || [],
         recentEvents:
-          feed?.slice(0, 20).map((f) => ({
+          feed?.slice(0, 20).map(f => ({
             id: f.id,
             campaignId: f.campaign_id,
             eventType: f.event_type,
@@ -372,7 +372,7 @@ export async function loadPitchContext(
     return {
       data: {
         pitches:
-          pitches?.map((p) => ({
+          pitches?.map(p => ({
             id: p.id,
             artistName: p.artist_name || '',
             subject: p.subject || '',
@@ -425,9 +425,9 @@ export async function loadReleaseContext(
       .eq('user_id', options.userId)
       .order('release_date', { ascending: true });
 
-    const upcoming = plans?.filter((p) => new Date(p.release_date) > new Date()) || [];
-    const inProgress = plans?.filter((p) => p.status === 'in_progress') || [];
-    const completed = plans?.filter((p) => p.status === 'completed') || [];
+    const upcoming = plans?.filter(p => new Date(p.release_date) > new Date()) || [];
+    const inProgress = plans?.filter(p => p.status === 'in_progress') || [];
+    const completed = plans?.filter(p => p.status === 'completed') || [];
 
     const mapPlan = (p: any) => ({
       id: p.id,
@@ -477,7 +477,7 @@ export async function loadIntegrationContext(
       .eq('user_id', options.userId);
 
     const syncStatus: Record<string, any> = {};
-    integrations?.forEach((integration) => {
+    integrations?.forEach(integration => {
       syncStatus[integration.provider] = {
         isActive: integration.status === 'active',
         lastSync: integration.last_sync_at ? new Date(integration.last_sync_at) : undefined,
@@ -499,7 +499,7 @@ export async function loadIntegrationContext(
     return {
       data: {
         connected:
-          integrations?.map((i) => ({
+          integrations?.map(i => ({
             id: i.id,
             provider: i.provider,
             status: i.status,

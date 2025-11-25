@@ -58,21 +58,17 @@ console.log(fusionContext.contactIntel.avgResponsivenessScore);
 import { buildPartialFusionContext } from '@total-audio/fusion-layer';
 
 // Load only specific contexts for performance
-const partialContext = await buildPartialFusionContext(
-  supabase,
-  userId,
-  ['intel', 'tracker', 'contactIntel']
-);
+const partialContext = await buildPartialFusionContext(supabase, userId, [
+  'intel',
+  'tracker',
+  'contactIntel',
+]);
 ```
 
 ### With Workspace
 
 ```typescript
-const fusionContext = await buildFusionContext(
-  supabase,
-  userId,
-  workspaceId
-);
+const fusionContext = await buildFusionContext(supabase, userId, workspaceId);
 
 // Multi-client agency access
 console.log(fusionContext.tracker.campaigns); // Filtered by workspace

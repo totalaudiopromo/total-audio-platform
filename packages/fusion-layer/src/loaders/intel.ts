@@ -5,11 +5,7 @@
  */
 
 import type { SupabaseClient } from '@supabase/supabase-js';
-import type {
-  IntelContext,
-  LoaderOptions,
-  LoaderResult,
-} from '../types';
+import type { IntelContext, LoaderOptions, LoaderResult } from '../types';
 
 export async function loadIntelContext(
   supabase: SupabaseClient,
@@ -41,7 +37,7 @@ export async function loadIntelContext(
 
     // Calculate metrics
     const totalContacts = contacts?.length || 0;
-    const successfulEnrichments = enrichments?.filter((e) => e.metadata?.success) || [];
+    const successfulEnrichments = enrichments?.filter(e => e.metadata?.success) || [];
     const enrichmentRate =
       enrichments && enrichments.length > 0
         ? (successfulEnrichments.length / enrichments.length) * 100
@@ -51,7 +47,7 @@ export async function loadIntelContext(
     const genres = new Map<string, number>();
     const regions = new Map<string, number>();
 
-    contacts?.forEach((contact) => {
+    contacts?.forEach(contact => {
       if (contact.metadata?.genres) {
         contact.metadata.genres.forEach((g: string) => {
           genres.set(g, (genres.get(g) || 0) + 1);
@@ -65,16 +61,16 @@ export async function loadIntelContext(
     const topGenres = Array.from(genres.entries())
       .sort((a, b) => b[1] - a[1])
       .slice(0, 5)
-      .map((e) => e[0]);
+      .map(e => e[0]);
 
     const topRegions = Array.from(regions.entries())
       .sort((a, b) => b[1] - a[1])
       .slice(0, 5)
-      .map((e) => e[0]);
+      .map(e => e[0]);
 
     const context: IntelContext = {
       contacts:
-        contacts?.map((c) => ({
+        contacts?.map(c => ({
           id: c.id,
           name: c.name || c.metadata?.name || 'Unknown',
           email: c.email,
@@ -87,7 +83,7 @@ export async function loadIntelContext(
         })) || [],
       totalContacts,
       recentEnrichments:
-        enrichments?.map((e) => ({
+        enrichments?.map(e => ({
           id: e.id,
           contactId: e.metadata?.contactId,
           timestamp: new Date(e.created_at),

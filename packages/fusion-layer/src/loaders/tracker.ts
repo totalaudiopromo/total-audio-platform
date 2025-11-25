@@ -5,11 +5,7 @@
  */
 
 import type { SupabaseClient } from '@supabase/supabase-js';
-import type {
-  TrackerContext,
-  LoaderOptions,
-  LoaderResult,
-} from '../types';
+import type { TrackerContext, LoaderOptions, LoaderResult } from '../types';
 
 export async function loadTrackerContext(
   supabase: SupabaseClient,
@@ -19,10 +15,7 @@ export async function loadTrackerContext(
 
   try {
     // Build workspace filter
-    let query = supabase
-      .from('campaigns')
-      .select('*')
-      .eq('user_id', options.userId);
+    let query = supabase.from('campaigns').select('*').eq('user_id', options.userId);
 
     if (options.workspaceId) {
       query = query.eq('workspace_id', options.workspaceId);
@@ -47,7 +40,7 @@ export async function loadTrackerContext(
     // Calculate metrics
     const totalCampaigns = campaigns?.length || 0;
     const activeCampaigns =
-      campaigns?.filter((c) => c.status === 'active' || c.status === 'in_progress').length || 0;
+      campaigns?.filter(c => c.status === 'active' || c.status === 'in_progress').length || 0;
 
     // Aggregate performance metrics
     let totalSent = 0;
@@ -56,7 +49,7 @@ export async function loadTrackerContext(
     let totalResponseTime = 0;
     let responseCount = 0;
 
-    campaigns?.forEach((campaign) => {
+    campaigns?.forEach(campaign => {
       if (campaign.metadata?.metrics) {
         totalSent += campaign.metadata.metrics.sent || 0;
         totalOpened += campaign.metadata.metrics.opened || 0;
@@ -73,7 +66,7 @@ export async function loadTrackerContext(
 
     const context: TrackerContext = {
       campaigns:
-        campaigns?.map((c) => ({
+        campaigns?.map(c => ({
           id: c.id,
           artistName: c.artist_name,
           releaseName: c.release_name || '',
@@ -85,7 +78,7 @@ export async function loadTrackerContext(
       totalCampaigns,
       activeCampaigns,
       recentActivities:
-        activities?.map((a) => ({
+        activities?.map(a => ({
           id: a.id,
           campaignId: a.campaign_id,
           type: a.event_type,

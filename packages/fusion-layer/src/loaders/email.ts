@@ -27,15 +27,14 @@ export async function loadEmailContext(
       .order('created_at', { ascending: false })
       .limit(50);
 
-    const scheduledCampaigns =
-      campaigns?.filter((c) => c.schedule_type === 'scheduled').length || 0;
+    const scheduledCampaigns = campaigns?.filter(c => c.schedule_type === 'scheduled').length || 0;
 
     let totalSent = 0;
     let totalOpens = 0;
     let totalClicks = 0;
     let totalReplies = 0;
 
-    campaigns?.forEach((c) => {
+    campaigns?.forEach(c => {
       totalSent += c.sent_count || 0;
       totalOpens += c.open_count || 0;
       totalClicks += c.click_count || 0;
@@ -49,7 +48,7 @@ export async function loadEmailContext(
     return {
       data: {
         campaigns:
-          campaigns?.map((c) => ({
+          campaigns?.map(c => ({
             id: c.id,
             name: c.name,
             subject: c.subject,
@@ -63,7 +62,7 @@ export async function loadEmailContext(
         totalCampaigns: campaigns?.length || 0,
         scheduledCampaigns,
         recentActivity:
-          activities?.map((a) => ({
+          activities?.map(a => ({
             id: a.id,
             campaignId: a.campaign_id,
             contactId: a.contact_id,
@@ -119,7 +118,7 @@ export async function loadListContext(
     return {
       data: {
         segments:
-          segments?.map((s) => ({
+          segments?.map(s => ({
             id: s.id,
             name: s.name,
             contactCount: s.contact_count || 0,
@@ -130,7 +129,7 @@ export async function loadListContext(
         totalSegments: segments?.length || 0,
         totalContacts,
         recentlyUpdated:
-          segments?.slice(0, 5).map((s) => ({
+          segments?.slice(0, 5).map(s => ({
             id: s.id,
             name: s.name,
             contactCount: s.contact_count || 0,

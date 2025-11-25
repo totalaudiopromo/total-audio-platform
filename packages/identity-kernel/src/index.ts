@@ -114,8 +114,8 @@ export async function buildIdentityProfile(input: IdentityInput): Promise<Identi
 function analyzeBrandVoice(context: FusionContext): BrandVoice {
   // Analyze tone from email campaigns
   const emailTones = context.email.campaigns
-    .filter((c) => c.subject_line)
-    .map((c) => {
+    .filter(c => c.subject_line)
+    .map(c => {
       const subject = c.subject_line!.toLowerCase();
       if (subject.includes('new') || subject.includes('out now')) return 'direct';
       if (subject.includes('?')) return 'conversational';
@@ -127,8 +127,8 @@ function analyzeBrandVoice(context: FusionContext): BrandVoice {
 
   // Extract themes from community posts
   const themes = context.community.posts
-    .filter((p) => p.tags && p.tags.length > 0)
-    .flatMap((p) => p.tags || [])
+    .filter(p => p.tags && p.tags.length > 0)
+    .flatMap(p => p.tags || [])
     .slice(0, 5);
 
   return {
@@ -142,8 +142,8 @@ function analyzeBrandVoice(context: FusionContext): BrandVoice {
 function analyzeCreativeProfile(context: FusionContext): CreativeProfile {
   // Extract motifs from asset tags
   const motifs = context.assets.drops
-    .filter((d) => d.tags && d.tags.length > 0)
-    .flatMap((d) => d.tags || [])
+    .filter(d => d.tags && d.tags.length > 0)
+    .flatMap(d => d.tags || [])
     .slice(0, 5);
 
   return {
@@ -157,8 +157,8 @@ function analyzeCreativeProfile(context: FusionContext): CreativeProfile {
 function analyzeNarrativeProfile(context: FusionContext): NarrativeProfile {
   // Analyze campaign narrative from tracker
   const campaignThemes = context.tracker.campaigns
-    .filter((c) => c.description)
-    .map((c) => {
+    .filter(c => c.description)
+    .map(c => {
       const desc = c.description!.toLowerCase();
       if (desc.includes('debut') || desc.includes('first')) return 'emergence';
       if (desc.includes('follow up') || desc.includes('next')) return 'evolution';
@@ -177,9 +177,9 @@ function analyzeNarrativeProfile(context: FusionContext): NarrativeProfile {
 function analyzeSceneIdentity(context: FusionContext): SceneIdentity {
   // Analyze scene from community posts and tags
   const sceneTags = context.community.posts
-    .filter((p) => p.tags && p.tags.length > 0)
-    .flatMap((p) => p.tags || [])
-    .filter((tag) => tag.includes('scene') || tag.includes('community'));
+    .filter(p => p.tags && p.tags.length > 0)
+    .flatMap(p => p.tags || [])
+    .filter(tag => tag.includes('scene') || tag.includes('community'));
 
   const primaryScene = sceneTags[0] || 'independent music';
 
@@ -194,8 +194,8 @@ function analyzeSceneIdentity(context: FusionContext): SceneIdentity {
 function analyzeMicrogenres(context: FusionContext): MicrogenreMap {
   // Extract genres from intel contacts
   const genres = context.intel.contacts
-    .filter((c) => c.genres && c.genres.length > 0)
-    .flatMap((c) => c.genres || [])
+    .filter(c => c.genres && c.genres.length > 0)
+    .flatMap(c => c.genres || [])
     .reduce(
       (acc, genre) => {
         acc[genre] = (acc[genre] || 0) + 1;

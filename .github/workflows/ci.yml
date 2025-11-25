@@ -57,12 +57,17 @@ jobs:
             apps/audio-intel/.next
             apps/tracker/.next
             apps/pitch-generator/.next
+            apps/tap-dashboard/.next
+            apps/liberty-demo/.next
           key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/*.{js,jsx,ts,tsx}') }}
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
 
       - name: Lint all packages
         run: pnpm run lint
@@ -74,6 +79,9 @@ jobs:
         run: pnpm run test
         env:
           CI: true
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
 
       - name: Build all apps
         run: |
@@ -96,6 +104,8 @@ jobs:
             apps/audio-intel/.next
             apps/tracker/.next
             apps/pitch-generator/.next
+            apps/tap-dashboard/.next
+            apps/liberty-demo/.next
           retention-days: 7
 
   security-scan:
