@@ -104,17 +104,21 @@ async function runPerplexityResearch(
         successfulEnrichments++;
         return result;
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       // Soft log to avoid noisy server output
+      const axiosErr = err as {
+        response?: { status?: number; data?: { error?: { message?: string } } };
+        message?: string;
+      };
       console.warn(
         `Perplexity API attempt ${attempt + 1} failed:`,
-        err?.response?.status || err.message
+        axiosErr?.response?.status || axiosErr?.message
       );
       if (attempt === retries) {
         return {
           content: '',
           confidence: 'Low',
-          error: err?.response?.data?.error?.message || err.message || 'Unknown error',
+          error: axiosErr?.response?.data?.error?.message || axiosErr?.message || 'Unknown error',
         };
       }
       // Exponential backoff with jitter to reduce 429 burst
@@ -206,13 +210,14 @@ async function processContactBatch(
           lastResearched: new Date().toISOString(),
           errors: errors.length > 0 ? errors : undefined,
         };
-      } catch (err: any) {
+      } catch (err: unknown) {
+        const message = err instanceof Error ? err.message : String(err);
         return {
           ...contact,
           contactIntelligence: 'Enrichment failed.',
           researchConfidence: 'Low',
           lastResearched: new Date().toISOString(),
-          errors: [err.message || String(err)],
+          errors: [message],
         };
       }
     });
@@ -315,14 +320,15 @@ async function originalPerplexityHandler(req: NextRequest) {
         averageResponseTime: `${elapsed}s for ${contacts.length} contacts`,
       },
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Enrichment API error:', error);
     const elapsed = ((Date.now() - start) / 1000).toFixed(1);
+    const message = error instanceof Error ? error.message : 'Enrichment processing failed';
 
     return NextResponse.json(
       {
         success: false,
-        error: error.message || 'Enrichment processing failed',
+        error: message,
         elapsed,
       },
       { status: 500 }

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Sparkles, Loader2 } from 'lucide-react';
+import { Sparkles, Loader2, AlertTriangle } from 'lucide-react';
 import WebSearchEnrichmentIndicator from '../WebSearchEnrichmentIndicator';
 
 type DemoContact = {
@@ -73,6 +73,7 @@ export function HeroDemo() {
   const [confidenceImproved, setConfidenceImproved] = useState<
     { before: 'Low' | 'Medium' | 'High'; after: 'Low' | 'Medium' | 'High' } | undefined
   >();
+  const [demoError, setDemoError] = useState<string | null>(null);
 
   const handleDemoEnrich = async () => {
     setDemoLoading(true);
@@ -81,6 +82,7 @@ export function HeroDemo() {
     setIsSearching(false);
     setWebSearchUsed(false);
     setConfidenceImproved(undefined);
+    setDemoError(null);
 
     const startTime = Date.now();
 
@@ -195,22 +197,16 @@ export function HeroDemo() {
         setEnrichmentTime(elapsed);
       }
     } catch (error) {
-      // Silent fallback on error
+      // Show visible error to user instead of silent fallback
       console.error('Enrichment API error:', error);
       const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      setDemoError(`Enrichment failed: ${errorMessage}. Please try again.`);
+      setEnrichmentTime(elapsed);
+      // Still show fallback data if available (demo contacts)
       if (demoContact) {
         setDemoResult(demoContact);
-      } else {
-        setDemoResult({
-          email: demoEmail,
-          name: contactName,
-          role: 'Unknown',
-          platform: 'Unknown',
-          confidence: 'Low',
-          notes: 'API error - please try again',
-        });
       }
-      setEnrichmentTime(elapsed);
     } finally {
       setDemoLoading(false);
     }
@@ -236,6 +232,7 @@ export function HeroDemo() {
     setDemoEmail(libertyDemoContacts[nextIndex].email);
     setDemoResult(null);
     setEnrichmentTime(null);
+    setDemoError(null);
   };
 
   return (
@@ -332,6 +329,23 @@ export function HeroDemo() {
                     <div className="flex items-center gap-2">
                       <Loader2 className="h-4 w-4 animate-spin text-blue-600" />
                       <p className="font-medium text-blue-900">Enriching contact...</p>
+                    </div>
+                  </div>
+                )}
+                {demoError && !demoLoading && (
+                  <div className="mt-4 rounded-lg border-2 border-red-300 bg-red-50 p-4 text-sm">
+                    <div className="flex items-start gap-2">
+                      <AlertTriangle className="h-4 w-4 flex-shrink-0 text-red-600 mt-0.5" />
+                      <div>
+                        <p className="font-medium text-red-900">{demoError}</p>
+                        <p className="mt-1 text-xs text-red-700">
+                          This may be a temporary issue. Try again or{' '}
+                          <a href="mailto:info@totalaudiopromo.com" className="underline">
+                            contact support
+                          </a>
+                          .
+                        </p>
+                      </div>
                     </div>
                   </div>
                 )}

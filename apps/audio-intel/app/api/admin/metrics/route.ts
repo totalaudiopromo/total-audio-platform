@@ -15,22 +15,47 @@ function getSupabaseAdmin() {
   );
 }
 
+// List of admin user IDs (add your admin user IDs here)
+const ADMIN_USER_IDS = [
+  process.env.ADMIN_USER_ID, // Set this in your environment variables
+].filter(Boolean);
+
 /**
  * Admin Metrics API
  * Provides growth metrics for internal dashboards
  *
- * Security: In production, add authentication check for admin users
+ * Security: Requires admin authentication via Supabase session
  */
 export async function GET(req: NextRequest) {
   try {
-    // TODO: Add admin authentication check
-    // const session = await getSupabaseSession();
-    // if (!session || !isAdmin(session.user)) {
-    //   return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    // }
-
     // Initialize Supabase client at runtime (inside handler)
     const supabase = getSupabaseAdmin();
+
+    // Verify admin authentication
+    const authHeader = req.headers.get('authorization');
+    if (!authHeader?.startsWith('Bearer ')) {
+      return NextResponse.json({ error: 'Missing authorization header' }, { status: 401 });
+    }
+
+    const token = authHeader.replace('Bearer ', '');
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser(token);
+
+    if (authError || !user) {
+      return NextResponse.json({ error: 'Invalid or expired token' }, { status: 401 });
+    }
+
+    // Check if user is admin (by user ID or email domain)
+    const isAdmin =
+      ADMIN_USER_IDS.includes(user.id) ||
+      user.email?.endsWith('@totalaudiopromo.com') ||
+      user.email === process.env.ADMIN_EMAIL;
+
+    if (!isAdmin) {
+      return NextResponse.json({ error: 'Admin access required' }, { status: 403 });
+    }
 
     // Get date range from query params (default: last 30 days)
     const { searchParams } = new URL(req.url);

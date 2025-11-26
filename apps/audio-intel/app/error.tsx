@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { AlertTriangle, Home, RefreshCw, Mail } from 'lucide-react';
 
 export default function Error({
@@ -20,11 +21,16 @@ export default function Error({
       <div className="max-w-xl w-full">
         {/* Error card - neobrutalist style */}
         <div className="rounded-2xl border-4 border-black bg-gradient-to-br from-red-50 to-white p-10 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] text-center">
-          {/* Error icon */}
+          {/* Error mascot */}
           <div className="mb-6 flex justify-center">
-            <div className="w-24 h-24 bg-gradient-to-br from-red-400 to-red-600 rounded-full flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <AlertTriangle className="w-12 h-12 text-white" strokeWidth={2.5} />
-            </div>
+            <Image
+              src="/assets/loading-states/chaos-overwhelmed.png"
+              alt="Something went wrong"
+              width={140}
+              height={140}
+              className="drop-shadow-lg"
+              priority
+            />
           </div>
 
           {/* Error badge */}
@@ -38,8 +44,8 @@ export default function Error({
           </h1>
 
           <p className="mt-4 text-lg text-gray-700">
-            We encountered an unexpected error. Don't worry, your pitch data is safe. Let's get you
-            back on track.
+            We encountered an unexpected error. Don't worry, your contact data is safe. Let's get
+            you back on track.
           </p>
 
           {error.digest && (
@@ -52,7 +58,7 @@ export default function Error({
           <div className="mt-8 space-y-3">
             <button
               onClick={reset}
-              className="inline-flex items-center justify-center gap-2 w-full rounded-xl border-4 border-black bg-amber-500 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 hover:bg-amber-600"
+              className="inline-flex items-center justify-center gap-2 w-full rounded-xl border-4 border-black bg-blue-600 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 hover:bg-blue-700"
             >
               <RefreshCw className="w-5 h-5" />
               Try Again
@@ -87,7 +93,7 @@ export default function Error({
               Need help?{' '}
               <a
                 href="mailto:info@totalaudiopromo.com"
-                className="inline-flex items-center gap-1 font-bold text-amber-600 hover:underline"
+                className="inline-flex items-center gap-1 font-bold text-blue-600 hover:underline"
               >
                 <Mail className="w-4 h-4" />
                 info@totalaudiopromo.com

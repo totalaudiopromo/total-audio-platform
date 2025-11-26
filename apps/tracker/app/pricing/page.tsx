@@ -353,6 +353,17 @@ export default function PricingPage() {
           >
             Start Free Trial →
           </Link>
+
+          {/* Support Contact */}
+          <p className="mt-8 text-sm text-gray-600">
+            Have questions?{' '}
+            <a
+              href="mailto:info@totalaudiopromo.com"
+              className="text-teal-600 hover:text-teal-700 underline"
+            >
+              info@totalaudiopromo.com
+            </a>
+          </p>
         </div>
       </div>
     </div>
