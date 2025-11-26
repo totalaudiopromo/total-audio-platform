@@ -9,6 +9,7 @@ import MondayTimelinePanel from '@/components/MondayTimelinePanel';
 import StaffAllocationGrid from '@/components/StaffAllocationGrid';
 import TypeformIntakePanel from '@/components/TypeformIntakePanel';
 import GmailInboxPanel from '@/components/GmailInboxPanel';
+import ChrisRadioPanel from '@/components/ChrisRadioPanel';
 import Loading from '@/components/Loading';
 import { Radio, BarChart3, Activity, ArrowUpRight } from 'lucide-react';
 import { fetchLibertyCampaignSummaries } from '@/lib/api/tracker';
@@ -168,6 +169,7 @@ const DashboardOverview: React.FC = () => {
         {/* Right Sidebar */}
         <div className="space-y-6">
           <GmailInboxPanel />
+          <ChrisRadioPanel />
           <WarmPanel />
           <LeadGenPanel />
           <TypeformIntakePanel />
