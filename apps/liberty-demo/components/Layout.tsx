@@ -76,22 +76,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <NavItem href="/dashboard/intake" icon={<FileText size={18} />} label="Artist Intake" />
           <NavItem href="/dashboard/ops" icon={<Calendar size={18} />} label="Operations" />
           <NavItem href="/dashboard/automation" icon={<Zap size={18} />} label="Automations" />
-          {process.env.NODE_ENV === 'development' && (
-            <>
-              <a
-                href="/debug/typography"
-                className="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-jakarta font-medium transition-all duration-150 ease-out text-[#737373] hover:text-[#111] hover:bg-[#FAFAF8]"
-              >
-                <span>Typography Debug</span>
-              </a>
-              <a
-                href="/debug/hierarchy"
-                className="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-jakarta font-medium transition-all duration-150 ease-out text-[#737373] hover:text-[#111] hover:bg-[#FAFAF8]"
-              >
-                <span>Visual Hierarchy Debug</span>
-              </a>
-            </>
-          )}
         </nav>
 
         <div className="px-4 py-4 border-t border-[#D9D7D2]">
