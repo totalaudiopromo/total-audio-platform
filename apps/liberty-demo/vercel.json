@@ -1,6 +1,7 @@
 {
-  "buildCommand": "cd ../.. && pnpm run build:liberty-demo",
+  "framework": "nextjs",
+  "buildCommand": "pnpm --filter liberty-demo build",
+  "installCommand": "pnpm install --frozen-lockfile",
   "outputDirectory": ".next",
-  "installCommand": "cd ../.. && pnpm install",
-  "framework": "nextjs"
+  "regions": ["lhr1"]
 }
