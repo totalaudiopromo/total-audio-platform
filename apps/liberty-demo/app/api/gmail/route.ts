@@ -24,13 +24,52 @@ export interface GmailMessage {
 }
 
 const GMAIL_API_URL = 'https://gmail.googleapis.com/gmail/v1';
+const TOKEN_URL = 'https://oauth2.googleapis.com/token';
 
-async function getGmailClient() {
-  const accessToken = process.env.GMAIL_ACCESS_TOKEN;
-  if (!accessToken) {
-    throw new Error('GMAIL_ACCESS_TOKEN not configured');
+// Cache for access token (refreshes automatically)
+let cachedAccessToken: string | null = null;
+let tokenExpiry: number = 0;
+
+async function getGmailClient(): Promise<string> {
+  // Check if we have a valid cached token
+  if (cachedAccessToken && Date.now() < tokenExpiry - 60000) {
+    return cachedAccessToken;
   }
-  return accessToken;
+
+  const clientId = process.env.NEXT_PUBLIC_GMAIL_CLIENT_ID;
+  const clientSecret = process.env.GMAIL_CLIENT_SECRET;
+  const refreshToken = process.env.GMAIL_REFRESH_TOKEN;
+
+  if (!clientId || !clientSecret || !refreshToken) {
+    throw new Error(
+      'Gmail OAuth credentials not configured (need CLIENT_ID, CLIENT_SECRET, REFRESH_TOKEN)'
+    );
+  }
+
+  // Refresh the access token
+  const response = await fetch(TOKEN_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({
+      client_id: clientId,
+      client_secret: clientSecret,
+      refresh_token: refreshToken,
+      grant_type: 'refresh_token',
+    }),
+  });
+
+  if (!response.ok) {
+    const error = await response.text();
+    console.error('[Gmail OAuth] Token refresh failed:', error);
+    throw new Error('Failed to refresh Gmail access token');
+  }
+
+  const data = await response.json();
+  cachedAccessToken = data.access_token;
+  tokenExpiry = Date.now() + data.expires_in * 1000;
+
+  console.log('[Gmail] Access token refreshed successfully');
+  return cachedAccessToken as string;
 }
 
 // GET /api/gmail?type=threads|messages&query=xxx&threadId=xxx
