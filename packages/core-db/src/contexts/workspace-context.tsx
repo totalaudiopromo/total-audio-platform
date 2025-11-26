@@ -1,5 +1,3 @@
-// @ts-nocheck
-// TODO: Add @types/react to packages/core-db
 'use client';
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';

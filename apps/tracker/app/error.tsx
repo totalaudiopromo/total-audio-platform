@@ -23,7 +23,10 @@ export default function Error({
           {/* Error icon */}
           <div className="mb-6 flex justify-center">
             <div className="w-24 h-24 bg-gradient-to-br from-red-400 to-red-600 rounded-full flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <AlertTriangle className="w-12 h-12 text-white" strokeWidth={2.5} />
+              <AlertTriangle
+                className="w-12 h-12 text-white"
+                strokeWidth={2.5}
+              />
             </div>
           </div>
 
@@ -38,8 +41,8 @@ export default function Error({
           </h1>
 
           <p className="mt-4 text-lg text-gray-700">
-            We encountered an unexpected error. Don't worry, your pitch data is safe. Let's get you
-            back on track.
+            We encountered an unexpected error. Don't worry, your campaign data
+            is safe. Let's get you back on track.
           </p>
 
           {error.digest && (
@@ -52,7 +55,7 @@ export default function Error({
           <div className="mt-8 space-y-3">
             <button
               onClick={reset}
-              className="inline-flex items-center justify-center gap-2 w-full rounded-xl border-4 border-black bg-amber-500 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 hover:bg-amber-600"
+              className="inline-flex items-center justify-center gap-2 w-full rounded-xl border-4 border-black bg-teal-600 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 hover:bg-teal-700"
             >
               <RefreshCw className="w-5 h-5" />
               Try Again
@@ -69,9 +72,13 @@ export default function Error({
           {/* Development error details */}
           {process.env.NODE_ENV === 'development' && (
             <div className="mt-8 bg-red-100 border-2 border-red-300 rounded-xl p-4 text-left">
-              <h3 className="text-sm font-bold text-red-800 mb-2">Development Error Details</h3>
+              <h3 className="text-sm font-bold text-red-800 mb-2">
+                Development Error Details
+              </h3>
               <div className="bg-red-900/10 border border-red-300 rounded-lg p-3 overflow-auto">
-                <p className="text-xs font-mono text-red-700 break-all">{error.message}</p>
+                <p className="text-xs font-mono text-red-700 break-all">
+                  {error.message}
+                </p>
                 {error.stack && (
                   <pre className="mt-2 text-xs text-red-600 overflow-x-auto whitespace-pre-wrap">
                     {error.stack}
@@ -87,7 +94,7 @@ export default function Error({
               Need help?{' '}
               <a
                 href="mailto:info@totalaudiopromo.com"
-                className="inline-flex items-center gap-1 font-bold text-amber-600 hover:underline"
+                className="inline-flex items-center gap-1 font-bold text-teal-600 hover:underline"
               >
                 <Mail className="w-4 h-4" />
                 info@totalaudiopromo.com

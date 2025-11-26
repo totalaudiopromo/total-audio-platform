@@ -606,6 +606,19 @@ function PricingContent() {
               </p>
             </div>
           </div>
+
+          {/* Support Contact */}
+          <div className="mt-12 text-center">
+            <p className="text-lg font-bold text-gray-700">
+              Have questions?{' '}
+              <a
+                href="mailto:info@totalaudiopromo.com"
+                className="text-blue-600 hover:text-blue-700 underline"
+              >
+                info@totalaudiopromo.com
+              </a>
+            </p>
+          </div>
         </div>
       </section>
     </div>

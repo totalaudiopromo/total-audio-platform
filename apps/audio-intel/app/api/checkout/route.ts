@@ -30,18 +30,19 @@ function resolvePlanPriceId(plan?: Plan, billing?: Billing): string | null {
   if (envPriceId) return envPriceId;
 
   // Fallback to hardcoded price IDs if environment variables are not set
+  // Audio Intel: Professional £19.99/mo, Agency £39.99/mo
   const fallbackPriceIds: Record<string, Record<string, string>> = {
     STARTER: {
       MONTHLY: 'price_1Ro9x2PqujcPv5fbMFNSIqq1',
       ANNUAL: 'price_1Ro9x2PqujcPv5fbjvdTBDvE',
     },
     PROFESSIONAL: {
-      MONTHLY: 'price_1Ro9xiPqujcPv5fbutj97L7C',
-      ANNUAL: 'price_1Ro9xiPqujcPv5fbutj97L7C',
+      MONTHLY: 'price_1S01YSPqujcPv5fbYBurc1cj', // £19.99/month
+      ANNUAL: 'price_1S01YSPqujcPv5fb08KwusJl', // £191.90/year
     },
     AGENCY: {
-      MONTHLY: 'price_1Ro9zrPqujcPv5fbmjN7bph6',
-      ANNUAL: 'price_1Ro9yePqujcPv5fb4PBXlwVb',
+      MONTHLY: 'price_1S01YTPqujcPv5fb0GOBSBx2', // £39.99/month
+      ANNUAL: 'price_1S01YTPqujcPv5fbd3VsXsa7', // £383.90/year
     },
   };
 
@@ -254,11 +255,12 @@ export async function POST(req: NextRequest) {
       const session = await stripe.checkout.sessions.create(sessionConfig);
 
       return NextResponse.json({ url: session.url });
-    } catch (stripeError: any) {
+    } catch (stripeError: unknown) {
       console.error('Stripe API error:', stripeError);
 
       // Provide specific error messages for common Stripe errors
-      if (stripeError.type === 'StripeInvalidRequestError') {
+      const stripeErr = stripeError as { type?: string };
+      if (stripeErr.type === 'StripeInvalidRequestError') {
         return NextResponse.json(
           {
             error: 'Invalid payment configuration. Please contact support.',
@@ -267,7 +269,7 @@ export async function POST(req: NextRequest) {
         );
       }
 
-      if (stripeError.type === 'StripeAuthenticationError') {
+      if (stripeErr.type === 'StripeAuthenticationError') {
         return NextResponse.json(
           {
             error: 'Payment service authentication failed. Please contact support.',
@@ -283,7 +285,7 @@ export async function POST(req: NextRequest) {
         { status: 500 }
       );
     }
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error('Checkout route error:', err);
     return NextResponse.json(
       {

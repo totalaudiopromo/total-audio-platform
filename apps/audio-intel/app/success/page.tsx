@@ -1,9 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
-import { Check, Sparkles, ArrowRight, Mail, Zap, FileText } from 'lucide-react';
+import { Check, Sparkles, ArrowRight, Mail, Zap } from 'lucide-react';
 
 function SuccessContent() {
   const searchParams = useSearchParams();
@@ -11,13 +12,14 @@ function SuccessContent() {
   const [showConfetti, setShowConfetti] = useState(true);
 
   useEffect(() => {
+    // Hide confetti animation after 3 seconds
     const timer = setTimeout(() => setShowConfetti(false), 3000);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-slate-50 flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Confetti animation */}
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 flex items-center justify-center p-4 relative overflow-hidden">
+      {/* Confetti burst animation */}
       {showConfetti && (
         <div className="absolute inset-0 pointer-events-none">
           {[...Array(20)].map((_, i) => (
@@ -33,7 +35,7 @@ function SuccessContent() {
             >
               <div
                 className={`w-3 h-3 rounded-full ${
-                  ['bg-amber-500', 'bg-orange-500', 'bg-yellow-400', 'bg-red-400'][i % 4]
+                  ['bg-green-500', 'bg-blue-500', 'bg-yellow-400', 'bg-pink-500'][i % 4]
                 }`}
               />
             </div>
@@ -43,51 +45,55 @@ function SuccessContent() {
 
       <div className="max-w-xl w-full">
         {/* Success card - neobrutalist style */}
-        <div className="rounded-2xl border-4 border-black bg-gradient-to-br from-amber-50 to-white p-10 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] text-center">
-          {/* Success icon */}
+        <div className="glass-panel border-green-500 bg-gradient-to-br from-green-50 to-white p-10 text-center">
+          {/* Success mascot */}
           <div className="mb-6 flex justify-center">
-            <div
-              className="w-24 h-24 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] animate-bounce"
+            <Image
+              src="/assets/loading-states/success-complete.png"
+              alt="Success!"
+              width={140}
+              height={140}
+              className="drop-shadow-lg animate-bounce"
               style={{ animationDuration: '2s' }}
-            >
-              <Check className="w-12 h-12 text-white" strokeWidth={3} />
-            </div>
+              priority
+            />
           </div>
 
           {/* Success badge */}
-          <div className="inline-flex items-center gap-2 rounded-full border-2 border-amber-600 bg-amber-100 px-5 py-2 text-sm font-bold uppercase tracking-wider text-amber-800 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+          <div className="inline-flex items-center gap-2 rounded-full border-2 border-green-600 bg-green-100 px-5 py-2 text-sm font-bold uppercase tracking-wider text-green-800 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
             <Sparkles className="h-4 w-4" />
             Payment Successful
           </div>
 
           <h1 className="mt-6 text-3xl font-black text-gray-900 sm:text-4xl">
-            Welcome to Pitch Generator Pro!
+            Welcome to Audio Intel Pro!
           </h1>
 
           <p className="mt-4 text-lg text-gray-700">
-            Your <span className="font-bold text-amber-600">14-day free trial</span> has started.
-            You now have access to unlimited AI-powered pitch generation and all Pro features.
+            Your <span className="font-bold text-green-600">14-day free trial</span> has started.
+            You now have access to unlimited contact enrichment, priority support, and all Pro
+            features.
           </p>
 
           {/* Feature highlights */}
           <div className="mt-8 grid gap-3 text-left">
             <div className="flex items-center gap-3 bg-white p-3 rounded-xl border-2 border-gray-200 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.1)]">
-              <div className="w-10 h-10 bg-amber-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0">
-                <Zap className="w-5 h-5 text-white" />
+              <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0">
+                <Check className="w-5 h-5 text-white" />
               </div>
-              <span className="font-bold text-gray-900">Unlimited AI pitch generation</span>
+              <span className="font-bold text-gray-900">Unlimited contact enrichment</span>
             </div>
             <div className="flex items-center gap-3 bg-white p-3 rounded-xl border-2 border-gray-200 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.1)]">
-              <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0">
-                <FileText className="w-5 h-5 text-white" />
+              <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0">
+                <Zap className="w-5 h-5 text-white" />
               </div>
-              <span className="font-bold text-gray-900">Personalised templates library</span>
+              <span className="font-bold text-gray-900">Priority processing</span>
             </div>
             <div className="flex items-center gap-3 bg-white p-3 rounded-xl border-2 border-gray-200 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.1)]">
               <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex-shrink-0">
                 <Mail className="w-5 h-5 text-white" />
               </div>
-              <span className="font-bold text-gray-900">Direct email integration</span>
+              <span className="font-bold text-gray-900">Direct founder support</span>
             </div>
           </div>
 
@@ -95,15 +101,12 @@ function SuccessContent() {
           <div className="mt-8 space-y-3">
             <Link
               href="/dashboard"
-              className="inline-flex items-center justify-center gap-2 w-full rounded-xl border-4 border-black bg-amber-500 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 hover:bg-amber-600"
+              className="cta-button w-full flex items-center justify-center gap-2"
             >
               Go to Dashboard
               <ArrowRight className="w-5 h-5" />
             </Link>
-            <Link
-              href="/"
-              className="inline-flex items-center justify-center w-full rounded-xl border-2 border-black bg-white px-5 py-2.5 text-sm font-semibold text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5"
-            >
+            <Link href="/" className="subtle-button w-full">
               Return Home
             </Link>
           </div>
@@ -113,7 +116,7 @@ function SuccessContent() {
             Need help getting started?{' '}
             <a
               href="mailto:info@totalaudiopromo.com"
-              className="font-bold text-amber-600 hover:underline"
+              className="font-bold text-blue-600 hover:underline"
             >
               info@totalaudiopromo.com
             </a>
@@ -134,7 +137,7 @@ export default function SuccessPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-slate-50 flex items-center justify-center">
+        <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 flex items-center justify-center">
           <div className="animate-pulse text-gray-500">Loading...</div>
         </div>
       }
