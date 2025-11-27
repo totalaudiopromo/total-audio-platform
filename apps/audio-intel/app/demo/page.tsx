@@ -1,6 +1,5 @@
 /**
  * Audio Intel Demo Page - Professional Contact Enrichment Showcase
- * Optimised for Liberty Music PR pitch and customer acquisition
  *
  * Features:
  * - Live demo with pre-loaded BBC Radio 1, Spotify, and industry contacts
@@ -105,13 +104,13 @@ export default function SimpleAudioIntelDemo() {
     primaryColor: '#2563eb',
   });
 
-  // Load Liberty demo data
-  const loadLibertyDemoData = () => {
+  // Load sample demo data
+  const loadDemoData = () => {
     setIsLoadingDemo(true);
-    setNotifyStatus('Loading Liberty demo data...');
+    setNotifyStatus('Loading demo contacts...');
 
     // Real industry contacts for demonstration (BBC Radio 1, Spotify, major outlets)
-    const libertyDemoContacts: Contact[] = [
+    const sampleDemoContacts: Contact[] = [
       {
         name: 'Jack Saunders',
         email: 'jack.saunders@bbc.co.uk',
@@ -160,7 +159,7 @@ export default function SimpleAudioIntelDemo() {
     ];
 
     setTimeout(() => {
-      setEnrichmentResults(libertyDemoContacts);
+      setEnrichmentResults(sampleDemoContacts);
       setHasEnrichedData(true);
       setActiveTab('analytics');
       setIsLoadingDemo(false);
@@ -354,13 +353,13 @@ export default function SimpleAudioIntelDemo() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Liberty Music PR Hero Banner - Pitch-Ready */}
+      {/* Hero Banner */}
       <div className="bg-gradient-to-r from-blue-50 to-blue-100 border-b-4 border-black px-4 py-6 md:py-8">
         <div className="mx-auto max-w-6xl">
           <div className="text-center">
             <div className="mb-4 flex items-center justify-center gap-2">
               <Badge className="bg-blue-600 text-white border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] font-bold px-4 py-2">
-                🎯 Liberty Music PR Demo
+                🎯 Live Demo
               </Badge>
             </div>
             <h1 className="text-3xl md:text-4xl font-black text-gray-900 mb-3 tracking-tight">
