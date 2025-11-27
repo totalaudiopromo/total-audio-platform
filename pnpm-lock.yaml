@@ -710,6 +710,9 @@ importers:
       '@types/node':
         specifier: ^20.19.25
         version: 20.19.25
+      '@types/react':
+        specifier: ^19
+        version: 19.2.6
       typescript:
         specifier: 5.7.2
         version: 5.7.2
