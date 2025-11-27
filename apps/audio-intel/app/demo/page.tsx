@@ -584,32 +584,32 @@ export default function SimpleAudioIntelDemo() {
               </TabsList>
 
               {/* Combined Processing & Enrichment Tab */}
-              <TabsContent value="process" className="space-y-8">
-                <div className="bg-white p-8 rounded-2xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all">
-                  <div className="text-center pb-8">
-                    <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 tracking-tight">
+              <TabsContent value="process" className="space-y-6 md:space-y-8">
+                <div className="bg-white p-4 md:p-8 rounded-2xl border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] md:hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] md:hover:-translate-x-1 md:hover:-translate-y-1 transition-all">
+                  <div className="text-center pb-4 md:pb-8">
+                    <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-gray-900 mb-4 md:mb-6 tracking-tight">
                       Contact Enrichment
                     </h2>
-                    <p className="text-xl font-bold text-gray-700 max-w-3xl mx-auto leading-relaxed">
+                    <p className="text-base md:text-xl font-bold text-gray-700 max-w-3xl mx-auto leading-relaxed">
                       Transform your contact lists into actionable music industry intelligence with
                       automated processing and AI-powered enrichment.
                     </p>
 
-                    <div className="grid md:grid-cols-2 gap-4 mt-8 max-w-4xl mx-auto">
-                      <div className="bg-white border-4 border-black rounded-xl p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                        <div className="text-gray-900 font-black mb-2 text-lg">
+                    <div className="grid md:grid-cols-2 gap-3 md:gap-4 mt-6 md:mt-8 max-w-4xl mx-auto">
+                      <div className="bg-white border-2 md:border-4 border-black rounded-xl p-4 md:p-6 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] md:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                        <div className="text-gray-900 font-black mb-2 text-base md:text-lg">
                           Intelligent Processing Pipeline
                         </div>
-                        <p className="text-sm text-gray-700 font-bold">
+                        <p className="text-xs md:text-sm text-gray-700 font-bold">
                           Upload → Clean → Deduplicate → Enrich → Export
                         </p>
                       </div>
-                      <div className="bg-white border-4 border-black rounded-xl p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                        <div className="text-gray-900 font-black mb-2 text-lg flex items-center justify-center gap-2">
-                          <Target className="w-5 h-5" />
+                      <div className="bg-white border-2 md:border-4 border-black rounded-xl p-4 md:p-6 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] md:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                        <div className="text-gray-900 font-black mb-2 text-base md:text-lg flex items-center justify-center gap-2">
+                          <Target className="w-4 h-4 md:w-5 md:h-5" />
                           Cost-Effective Intelligence
                         </div>
-                        <p className="text-sm text-gray-700 font-bold">
+                        <p className="text-xs md:text-sm text-gray-700 font-bold">
                           7x more affordable than traditional research methods
                         </p>
                       </div>
@@ -618,19 +618,19 @@ export default function SimpleAudioIntelDemo() {
                 </div>
 
                 {/* Demo Data Loader */}
-                <div className="bg-white border-4 border-black rounded-2xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-6 mb-6">
+                <div className="bg-white border-2 md:border-4 border-black rounded-2xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-4 md:p-6 mb-4 md:mb-6">
                   <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                    <div className="flex-1">
-                      <h3 className="text-xl font-black text-gray-900 mb-2">
+                    <div className="flex-1 text-center md:text-left">
+                      <h3 className="text-lg md:text-xl font-black text-gray-900 mb-2">
                         🎯 Quick Demo: Real Industry Contacts
                       </h3>
-                      <p className="text-sm text-gray-700 font-bold">
+                      <p className="text-xs md:text-sm text-gray-700 font-bold">
                         Load 5 pre-enriched contacts from BBC Radio 1 and Spotify instantly to see
-                        Audio Intel in action. Real emails, real enrichment data.
+                        Audio Intel in action.
                       </p>
                     </div>
                     <Button
-                      onClick={loadLibertyDemoData}
+                      onClick={loadDemoData}
                       disabled={isLoadingDemo}
                       className="bg-blue-600 hover:bg-blue-700 text-white font-black px-6 py-3 rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
                     >
@@ -698,39 +698,39 @@ export default function SimpleAudioIntelDemo() {
                       </p>
                     </div>
                     <div>
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                        <div className="text-center p-6 bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                          <div className="text-3xl font-black text-blue-600 mb-2">
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 mb-6 md:mb-8">
+                        <div className="text-center p-3 md:p-6 bg-white border-2 md:border-4 border-black rounded-xl shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] md:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                          <div className="text-2xl md:text-3xl font-black text-blue-600 mb-1 md:mb-2">
                             {enrichmentResults.length}
                           </div>
-                          <div className="text-sm text-gray-700 font-bold">Total Contacts</div>
+                          <div className="text-xs md:text-sm text-gray-700 font-bold">Total Contacts</div>
                         </div>
-                        <div className="text-center p-6 bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                          <div className="text-3xl font-black text-green-600 mb-2">
+                        <div className="text-center p-3 md:p-6 bg-white border-2 md:border-4 border-black rounded-xl shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] md:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                          <div className="text-2xl md:text-3xl font-black text-green-600 mb-1 md:mb-2">
                             {enrichmentResults.filter(c => c.confidence === 'High').length}
                           </div>
-                          <div className="text-sm text-gray-700 font-bold">High Confidence</div>
+                          <div className="text-xs md:text-sm text-gray-700 font-bold">High Confidence</div>
                         </div>
-                        <div className="text-center p-6 bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                          <div className="text-3xl font-black text-yellow-600 mb-2">
+                        <div className="text-center p-3 md:p-6 bg-white border-2 md:border-4 border-black rounded-xl shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] md:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                          <div className="text-2xl md:text-3xl font-black text-yellow-600 mb-1 md:mb-2">
                             {enrichmentResults.filter(c => c.confidence === 'Medium').length}
                           </div>
-                          <div className="text-sm text-gray-700 font-bold">Medium Confidence</div>
+                          <div className="text-xs md:text-sm text-gray-700 font-bold">Medium Confidence</div>
                         </div>
-                        <div className="text-center p-6 bg-white border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                          <div className="text-3xl font-black text-red-600 mb-2">
+                        <div className="text-center p-3 md:p-6 bg-white border-2 md:border-4 border-black rounded-xl shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] md:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                          <div className="text-2xl md:text-3xl font-black text-red-600 mb-1 md:mb-2">
                             {enrichmentResults.filter(c => c.confidence === 'Low').length}
                           </div>
-                          <div className="text-sm text-gray-700 font-bold">Low Confidence</div>
+                          <div className="text-xs md:text-sm text-gray-700 font-bold">Low Confidence</div>
                         </div>
                       </div>
 
                       {/* Professional Export Section */}
-                      <div className="bg-white rounded-2xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-6 mb-8">
-                        <h3 className="text-2xl font-black text-gray-900 mb-4">
+                      <div className="bg-white rounded-2xl border-2 md:border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-4 md:p-6 mb-6 md:mb-8">
+                        <h3 className="text-xl md:text-2xl font-black text-gray-900 mb-3 md:mb-4">
                           Professional Export Options
                         </h3>
-                        <p className="text-gray-700 font-bold mb-6">
+                        <p className="text-sm md:text-base text-gray-700 font-bold mb-4 md:mb-6">
                           Export your enriched contacts in professional formats for your PR
                           campaigns, client deliverables, and team collaboration.
                         </p>

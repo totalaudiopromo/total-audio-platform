@@ -1,6 +1,6 @@
 /**
- * Example Sign In Form Component
- * Copy this to your app and customise as needed
+ * Sign In Form Component - Neobrutalist Design System
+ * Matches Pitch Generator and Tracker styling
  */
 
 'use client';
@@ -64,76 +64,76 @@ export function SignInForm() {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto p-6 bg-white rounded-lg shadow-lg">
-      <h2 className="text-2xl font-bold mb-6 text-center">Sign In</h2>
-
-      <form onSubmit={handleSignIn} className="space-y-4">
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium mb-1">
-            Email
-          </label>
-          <input
-            id="email"
-            type="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            required
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="you@example.com"
-          />
+    <form onSubmit={handleSignIn} className="space-y-5">
+      {error && (
+        <div className="rounded-2xl border-2 border-red-500 bg-red-50 px-4 py-3 text-sm font-bold text-red-700">
+          {error}
         </div>
+      )}
 
-        <div>
-          <label htmlFor="password" className="block text-sm font-medium mb-1">
-            Password
-          </label>
-          <input
-            id="password"
-            type="password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            required
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="••••••••"
-          />
+      {message && (
+        <div className="rounded-2xl border-2 border-green-500 bg-green-50 px-4 py-3 text-sm font-bold text-green-700">
+          {message}
         </div>
+      )}
 
-        {error && (
-          <div className="p-3 bg-red-50 border border-red-200 rounded-md text-red-700 text-sm">
-            {error}
-          </div>
-        )}
-
-        {message && (
-          <div className="p-3 bg-green-50 border border-green-200 rounded-md text-green-700 text-sm">
-            {message}
-          </div>
-        )}
-
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+      <div className="space-y-2">
+        <label
+          htmlFor="email"
+          className="text-xs font-bold uppercase tracking-[0.35em] text-gray-500"
         >
-          {loading ? 'Signing in...' : 'Sign In'}
-        </button>
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          className="w-full rounded-xl border-2 border-gray-300 bg-gray-50 px-4 py-3 text-sm font-medium text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40"
+          placeholder="you@example.com"
+          required
+        />
+      </div>
 
-        <button
-          type="button"
-          onClick={handleMagicLink}
-          disabled={loading || !email}
-          className="w-full py-2 px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+      <div className="space-y-2">
+        <label
+          htmlFor="password"
+          className="text-xs font-bold uppercase tracking-[0.35em] text-gray-500"
         >
-          Send Magic Link
-        </button>
-      </form>
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          className="w-full rounded-xl border-2 border-gray-300 bg-gray-50 px-4 py-3 text-sm font-medium text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40"
+          placeholder="••••••••"
+          required
+        />
+      </div>
 
-      <p className="mt-4 text-center text-sm text-gray-600">
-        Don't have an account?{' '}
-        <a href="/signup" className="text-blue-600 hover:underline">
-          Sign up
-        </a>
-      </p>
-    </div>
+      <button type="submit" disabled={loading} className="cta-button w-full justify-center">
+        {loading ? 'Signing in…' : 'Sign in'}
+      </button>
+
+      <div className="relative my-6">
+        <div className="absolute inset-0 flex items-center">
+          <div className="w-full border-t-2 border-gray-200"></div>
+        </div>
+        <div className="relative flex justify-center text-xs">
+          <span className="px-4 bg-white font-bold text-gray-500">Or continue with</span>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        onClick={handleMagicLink}
+        disabled={loading || !email}
+        className="subtle-button w-full justify-center"
+      >
+        Send Magic Link
+      </button>
+    </form>
   );
 }
