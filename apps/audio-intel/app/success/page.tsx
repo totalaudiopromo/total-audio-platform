@@ -35,7 +35,7 @@ function SuccessContent() {
             >
               <div
                 className={`w-3 h-3 rounded-full ${
-                  ['bg-green-500', 'bg-blue-500', 'bg-yellow-400', 'bg-pink-500'][i % 4]
+                  ['bg-green-500', 'bg-blue-500', 'bg-yellow-400', 'bg-blue-300'][i % 4]
                 }`}
               />
             </div>
