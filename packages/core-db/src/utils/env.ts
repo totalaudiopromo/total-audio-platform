@@ -67,6 +67,14 @@ let _env: Env | null = null;
 export const env = new Proxy({} as Env, {
   get(target, prop) {
     if (_env === null) {
+      // Guard against process being undefined during static generation
+      if (typeof process === 'undefined' || !process.env) {
+        throw new Error(
+          'Environment variables are not available in this context. ' +
+            'This usually happens during static generation. Use dynamic rendering or client components.'
+        );
+      }
+
       // In browser/client-side, process.env only contains NEXT_PUBLIC_* vars
       // Use safeParse and provide defaults for missing optional vars
       const result = envSchema.safeParse(process.env);
@@ -114,8 +122,12 @@ export const env = new Proxy({} as Env, {
 /**
  * Safe environment access (returns undefined if validation fails)
  * Useful for optional features
+ * Note: Only parse at runtime, not at module load time during static generation
  */
-export const safeEnv = envSchema.safeParse(process.env);
+export const safeEnv =
+  typeof process !== 'undefined' && process.env
+    ? envSchema.safeParse(process.env)
+    : { success: false as const, error: new z.ZodError([]) };
 
 /**
  * Check if running in production environment
@@ -137,6 +149,12 @@ export const isTest = () => env.NODE_ENV === 'test';
  * Call this in your app's entry point to fail fast on misconfiguration
  */
 export function validateEnv() {
+  // Guard against process being undefined
+  if (typeof process === 'undefined' || !process.env) {
+    console.warn('⚠️ Environment validation skipped: process.env not available');
+    return false;
+  }
+
   try {
     envSchema.parse(process.env);
     console.log('✅ Environment variables validated successfully');

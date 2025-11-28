@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import { ConditionalTrackerLayout } from '@/components/ConditionalTrackerLayout';
-import { ExitIntentPopup } from '@/components/ExitIntentPopup';
-import { CookieConsent } from '@/components/CookieConsent';
-import { WorkspaceProvider } from '@total-audio/core-db/contexts/workspace-context';
+import ClientLayout from '@/components/ClientLayout';
+
+// Force dynamic rendering for all routes to avoid RSC serialisation issues
+// with process.env during static generation in Next.js 15
+export const dynamic = 'force-dynamic';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -128,13 +129,7 @@ export default function RootLayout({
             style={{ display: 'none', visibility: 'hidden' }}
           ></iframe>
         </noscript>
-        <WorkspaceProvider>
-          <div className="flex min-h-screen flex-col bg-white">
-            <ConditionalTrackerLayout>{children}</ConditionalTrackerLayout>
-            <ExitIntentPopup />
-            <CookieConsent />
-          </div>
-        </WorkspaceProvider>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );
