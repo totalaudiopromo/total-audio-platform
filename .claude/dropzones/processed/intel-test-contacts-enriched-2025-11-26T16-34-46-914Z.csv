@@ -1,0 +1,5 @@
+name,email,company,role,email_valid,domain,contact_type,confidence_score,enriched_at
+John Smith,john@bbc.co.uk,BBC Radio 6 Music,Producer,true,bbc.co.uk,radio,100,2025-11-26T16:34:46.914Z
+Sarah Jones,sarah@radiox.co.uk,Radio X,DJ,true,radiox.co.uk,radio,100,2025-11-26T16:34:46.914Z
+Mike Wilson,mike@example.com,Independent,Artist Manager,true,example.com,other,100,2025-11-26T16:34:46.914Z
+Emma Brown,emma@spotify.com,Spotify,Playlist Curator,true,spotify.com,platform,100,2025-11-26T16:34:46.914Z

@@ -13,7 +13,7 @@ export const ARTISTS: Record<string, Artist> = {
     name: 'Senior Dunce',
     genre: 'Indie Rock / Lo-Fi',
     image:
-      'https://ui-avatars.com/api/?name=Senior+Dunce&background=0E7C45&color=fff&size=128&bold=true',
+      'https://ui-avatars.com/api/?name=Senior+Dunce&background=3AA9BE&color=fff&size=128&bold=true',
     stats: { monthlyListeners: '120k', followers: '34.1k' },
   },
   '3': {
@@ -29,12 +29,12 @@ export const ARTISTS: Record<string, Artist> = {
 export const CAMPAIGNS: Campaign[] = [
   {
     id: 'c1',
-    artistId: '1',
-    title: 'Ladybird - Single Campaign',
+    artistId: '3',
+    title: 'Consumption - Single Campaign',
     status: 'active',
     momentumScore: 88,
     healthScore: 94,
-    startDate: '2024-02-01',
+    startDate: '2025-11-01',
     nextTask: 'BBC 6 Music Follow-up',
     coverage: 15,
     radioHits: 8,
@@ -43,82 +43,90 @@ export const CAMPAIGNS: Campaign[] = [
     title Campaign Timeline
     dateFormat YYYY-MM-DD
     section Pitching
-    Initial Outreach    :done, 2024-02-01, 7d
-    Follow-ups          :active, 2024-02-08, 10d
+    Initial Outreach    :done, 2025-11-01, 7d
+    Follow-ups          :active, 2025-11-08, 10d
     section Coverage
-    Press Window        :2024-02-15, 14d
-    Radio Push          :2024-02-20, 21d
+    Press Window        :2025-11-15, 14d
+    Radio Push          :2025-11-20, 21d
     section Social
-    Content Rollout     :2024-02-15, 30d`,
+    Content Rollout     :2025-11-15, 30d`,
     coverageLog: [
       {
         type: 'Press',
-        outlet: 'Pitchfork',
-        date: '2024-02-18',
-        highlight: 'Best New Track feature',
+        outlet: 'Clash Magazine',
+        date: '2025-11-18',
+        highlight: 'Premiere feature',
       },
-      { type: 'Press', outlet: 'NME', date: '2024-02-20', highlight: 'Track of the Week' },
+      { type: 'Press', outlet: 'DIY Magazine', date: '2025-11-20', highlight: 'Track of the Day' },
       {
         type: 'Radio',
-        outlet: 'BBC Radio 1',
-        date: '2024-02-22',
-        highlight: 'Future Sounds playlist add',
+        outlet: 'BBC Radio 6 Music',
+        date: '2025-11-22',
+        highlight: 'Steve Lamacq show spin',
       },
-      { type: 'Radio', outlet: 'RTE 2XM', date: '2024-02-23', highlight: 'Daytime rotation' },
+      { type: 'Radio', outlet: 'Amazing Radio', date: '2025-11-23', highlight: 'Daytime rotation' },
       {
         type: 'Press',
         outlet: 'The Line of Best Fit',
-        date: '2024-02-25',
+        date: '2025-11-25',
         highlight: 'Interview feature',
       },
     ],
     pitchHistory: [
-      { date: '2024-02-01', subject: 'KYARA - Ladybird (New Single)', opened: true },
-      { date: '2024-02-03', subject: 'Re: KYARA - Ladybird premiere opportunity', opened: true },
-      { date: '2024-02-08', subject: 'KYARA follow-up - Radio 1 consideration', opened: true },
-      { date: '2024-02-12', subject: 'KYARA - Additional press materials', opened: false },
-      { date: '2024-02-15', subject: 'KYARA Ladybird - Interview availability', opened: true },
+      { date: '2025-11-01', subject: 'Concerta - Consumption (New Single)', opened: true },
+      {
+        date: '2025-11-03',
+        subject: 'Re: Concerta - Consumption premiere opportunity',
+        opened: true,
+      },
+      { date: '2025-11-08', subject: 'Concerta follow-up - 6 Music consideration', opened: true },
+      { date: '2025-11-12', subject: 'Concerta - Additional press materials', opened: false },
+      {
+        date: '2025-11-15',
+        subject: 'Concerta Consumption - Interview availability',
+        opened: true,
+      },
     ],
     tasks: [
       { id: 't1', text: 'BBC 6 Music Follow-up call', completed: false },
-      { id: 't2', text: 'Send hi-res photos to Wonderland', completed: false },
-      { id: 't3', text: 'Confirm Radio 1 interview slot', completed: true },
+      { id: 't2', text: 'Send hi-res photos to DIY Magazine', completed: false },
+      { id: 't3', text: 'Confirm Amazing Radio interview slot', completed: true },
       { id: 't4', text: 'Update Spotify Canvas', completed: true },
     ],
     assets: [
       { name: 'Press Kit', type: 'pdf', url: '#' },
       { name: 'Artist Photo (Hi-Res)', type: 'jpg', url: '#' },
       { name: 'Bio & Quotes', type: 'docx', url: '#' },
-      { name: 'Album Artwork', type: 'png', url: '#' },
+      { name: 'Single Artwork', type: 'png', url: '#' },
     ],
     aiSummary:
-      'Last week saw a spike in coverage from Pitchfork and NME, with radio rotations improving in Ireland. Momentum dipped midweek but has stabilised following the BBC Radio 1 Future Sounds playlist add. Social engagement is trending upward with strong Spotify save rates.',
+      'Consumption is gaining strong traction with post-punk press outlets. BBC 6 Music spin from Steve Lamacq has boosted momentum. Amazing Radio added to daytime rotation. Social engagement trending upward with strong Spotify save rates.',
   },
   {
     id: 'c2',
-    artistId: '2',
-    title: 'UK Tour & EP Launch',
-    status: 'risk',
-    momentumScore: 45,
-    healthScore: 58,
-    startDate: '2024-01-15',
-    nextTask: 'Venue coordination Leeds',
+    artistId: '1',
+    title: 'Bloodshot - Single Campaign',
+    status: 'completed',
+    momentumScore: 72,
+    healthScore: 85,
+    startDate: '2025-09-01',
+    nextTask: 'Campaign wrap-up report',
     coverage: 28,
     radioHits: 42,
-    stats: { pitchesSent: 85, openRate: 42, replyRate: 5 },
+    stats: { pitchesSent: 156, openRate: 52, replyRate: 14 },
   },
   {
     id: 'c3',
-    artistId: '3',
-    title: 'Debut EP Intro',
-    status: 'scheduled',
-    momentumScore: 15,
-    healthScore: 100,
-    startDate: '2024-04-10',
-    nextTask: 'Press Release Approval',
-    coverage: 0,
-    radioHits: 0,
-    stats: { pitchesSent: 0, openRate: 0, replyRate: 0 },
+    artistId: '2',
+    title: 'Bestial - EP Campaign',
+    status: 'completed',
+    momentumScore: 65,
+    healthScore: 78,
+    startDate: '2025-08-15',
+    nextTask: 'Final coverage report',
+    coverage: 34,
+    radioHits: 28,
+    stats: { pitchesSent: 98, openRate: 45, replyRate: 8 },
   },
 ];
 
@@ -259,7 +267,7 @@ export const ARTIST_PORTALS: Record<string, import('./types').ArtistPortalConfig
   kyara: {
     slug: 'kyara',
     artistId: '1',
-    campaignIds: ['c1'],
+    campaignIds: ['c2'],
     label: 'Independent',
     visibility: {
       showMomentum: true,
@@ -272,45 +280,54 @@ export const ARTIST_PORTALS: Record<string, import('./types').ArtistPortalConfig
       { name: 'BBC Radio 1', status: 'Rotation' },
       { name: 'BBC 6 Music', status: 'Support' },
       { name: 'RTE 2XM', status: 'Rotation' },
-      { name: 'Triple J', status: 'Added' },
       { name: 'Amazing Radio', status: 'Support' },
     ],
     playlists: [
       { name: 'Fresh Finds', platform: 'Spotify', status: 'Added' },
       { name: 'Our Generation', platform: 'Spotify', status: 'Added' },
-      { name: 'New Music Friday UK', platform: 'Spotify', status: 'Pending' },
+      { name: 'New Music Friday UK', platform: 'Spotify', status: 'Added' },
     ],
   },
   'senior-dunce': {
     slug: 'senior-dunce',
     artistId: '2',
-    campaignIds: ['c2'],
-    label: 'Rough Trade Records',
+    campaignIds: ['c3'],
+    label: 'Independent',
     visibility: {
       showMomentum: true,
       showCoverage: true,
-      showRadio: false,
+      showRadio: true,
       showTasks: false,
       showAiSummary: true,
     },
     radioStations: [
-      { name: 'BBC Radio 1', status: 'Support' },
       { name: 'BBC 6 Music', status: 'Rotation' },
+      { name: 'Amazing Radio', status: 'Support' },
+      { name: 'RTE 2FM', status: 'Added' },
     ],
-    playlists: [{ name: 'Rock Rotation', platform: 'Spotify', status: 'Added' }],
+    playlists: [{ name: 'Indie Rock', platform: 'Spotify', status: 'Added' }],
   },
   concerta: {
     slug: 'concerta',
     artistId: '3',
-    campaignIds: ['c3'],
+    campaignIds: ['c1'],
     label: 'Self-Released',
     visibility: {
       showMomentum: true,
-      showCoverage: false,
-      showRadio: false,
+      showCoverage: true,
+      showRadio: true,
       showTasks: true,
-      showAiSummary: false,
+      showAiSummary: true,
     },
+    radioStations: [
+      { name: 'BBC 6 Music', status: 'Support' },
+      { name: 'Amazing Radio', status: 'Rotation' },
+      { name: 'Absolute Radio', status: 'Added' },
+    ],
+    playlists: [
+      { name: 'Post-Punk Now', platform: 'Spotify', status: 'Added' },
+      { name: 'New Noise', platform: 'Spotify', status: 'Pending' },
+    ],
   },
 };
 
@@ -383,31 +400,31 @@ export const MOCK_PITCH_EVENTS: import('./types').PitchEvent[] = [
 // WARM Radio Intelligence Mock Data
 export const WARM_AGENCY_SUMMARY: import('./types').WarmAgencySummary[] = [
   {
-    artistId: '1',
-    artistName: 'KYARA',
-    trackName: 'Ladybird',
+    artistId: '3',
+    artistName: 'Concerta',
+    trackName: 'Consumption',
     totalSpins: 47,
     uniqueStations: 12,
     topTerritories: ['UK', 'IE', 'DE'],
-    lastSpinAt: '2024-02-20T14:30:00Z',
+    lastSpinAt: '2025-11-26T14:30:00Z',
+  },
+  {
+    artistId: '1',
+    artistName: 'KYARA',
+    trackName: 'Bloodshot',
+    totalSpins: 89,
+    uniqueStations: 18,
+    topTerritories: ['UK', 'IE', 'US'],
+    lastSpinAt: '2025-10-15T09:15:00Z',
   },
   {
     artistId: '2',
     artistName: 'Senior Dunce',
-    trackName: 'Echoes in the Hall',
-    totalSpins: 32,
-    uniqueStations: 8,
+    trackName: 'Bestial',
+    totalSpins: 64,
+    uniqueStations: 14,
     topTerritories: ['UK', 'IE'],
-    lastSpinAt: '2024-02-19T09:15:00Z',
-  },
-  {
-    artistId: '3',
-    artistName: 'The Wandering Hearts',
-    trackName: 'Wild Silence',
-    totalSpins: 28,
-    uniqueStations: 9,
-    topTerritories: ['UK', 'US', 'AU'],
-    lastSpinAt: '2024-02-18T16:45:00Z',
+    lastSpinAt: '2025-09-28T16:45:00Z',
   },
 ];
 
@@ -806,24 +823,24 @@ export const AUTOMATION_WORKFLOWS: import('./types').AutomationWorkflow[] = [
 export const MONDAY_TIMELINES: import('./types').MondayTimeline[] = [
   {
     id: 'mt1',
-    title: 'KYARA - Ladybird Campaign',
-    startDate: '2024-02-01',
-    endDate: '2024-03-15',
+    title: 'Concerta - Consumption Campaign',
+    startDate: '2025-11-01',
+    endDate: '2025-12-15',
     status: 'on-track',
   },
   {
     id: 'mt2',
-    title: 'Senior Dunce - UK Tour & EP Launch',
-    startDate: '2024-01-15',
-    endDate: '2024-04-30',
-    status: 'at-risk',
+    title: 'KYARA - Bloodshot Campaign',
+    startDate: '2025-09-01',
+    endDate: '2025-10-31',
+    status: 'completed',
   },
   {
     id: 'mt3',
-    title: 'Concerta - Debut EP Intro',
-    startDate: '2024-04-10',
-    endDate: '2024-06-20',
-    status: 'on-track',
+    title: 'Senior Dunce - Bestial EP Campaign',
+    startDate: '2025-08-15',
+    endDate: '2025-10-15',
+    status: 'completed',
   },
 ];
 

@@ -250,7 +250,7 @@ export interface MondayTimeline {
   title: string;
   startDate: string;
   endDate: string;
-  status: 'on-track' | 'at-risk' | 'behind';
+  status: 'on-track' | 'at-risk' | 'behind' | 'completed';
 }
 
 export interface MondayAllocation {

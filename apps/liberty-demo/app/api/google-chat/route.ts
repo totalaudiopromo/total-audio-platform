@@ -57,7 +57,11 @@ export async function POST(request: NextRequest) {
     const { webhookUrl, message, card } = body;
 
     // Use provided webhook URL or fall back to environment variable
-    const targetUrl = webhookUrl || process.env.GOOGLE_CHAT_WEBHOOK_URL;
+    // Hardcoded fallback due to env parsing issues with & character
+    const HARDCODED_WEBHOOK =
+      'https://chat.googleapis.com/v1/spaces/AAQAmmp_xdE/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=zNfKWOTWVTC22HEmTHu-RgXxavhjPissifW_oEjm3Ok';
+    const envUrl = process.env.GOOGLE_CHAT_WEBHOOK_URL;
+    const targetUrl = webhookUrl || (envUrl && envUrl.length > 10 ? envUrl : HARDCODED_WEBHOOK);
 
     if (!targetUrl) {
       return NextResponse.json(

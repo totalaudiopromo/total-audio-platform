@@ -32,6 +32,7 @@ import {
   Clock,
 } from 'lucide-react';
 import Link from 'next/link';
+import { createClient } from '@total-audio/core-db/client';
 import SpreadsheetUploader, { EnhancedSpreadsheetUploader } from '@/components/SpreadsheetUploader';
 import { ProfessionalExportService } from '@/utils/exportService';
 import ContactLoadingState from '../components/ContactLoadingState';
@@ -58,6 +59,24 @@ export default function SimpleAudioIntelDemo() {
   const [betaTrialStatus, setBetaTrialStatus] = useState<any>(null);
   const [notifyStatus, setNotifyStatus] = useState<string | null>(null);
   const [isLoadingDemo, setIsLoadingDemo] = useState(false);
+  const [authenticatedEmail, setAuthenticatedEmail] = useState<string | null>(null);
+
+  // Check for authenticated user (for Liberty demo access)
+  useEffect(() => {
+    const supabase = createClient();
+    async function checkAuth() {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      if (user?.email) {
+        setAuthenticatedEmail(user.email);
+      }
+    }
+    checkAuth();
+  }, []);
+
+  // Only Chris at Liberty can access the demo data loader
+  const isLibertyUser = authenticatedEmail === 'chrisschofield@libertymusicpr.com';
 
   // Get user email from localStorage or URL params (from beta signup)
   useEffect(() => {
@@ -618,45 +637,49 @@ export default function SimpleAudioIntelDemo() {
                   </div>
                 </div>
 
-                {/* Demo Data Loader */}
-                <div className="bg-white border-4 border-black rounded-2xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-6 mb-6">
-                  <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                    <div className="flex-1">
-                      <h3 className="text-xl font-black text-gray-900 mb-2">
-                        🎯 Quick Demo: Real Industry Contacts
-                      </h3>
-                      <p className="text-sm text-gray-700 font-bold">
-                        Load 5 pre-enriched contacts from BBC Radio 1 and Spotify instantly to see
-                        Audio Intel in action. Real emails, real enrichment data.
-                      </p>
+                {/* Demo Data Loader - Only visible to Chris at Liberty */}
+                {isLibertyUser && (
+                  <>
+                    <div className="bg-white border-4 border-black rounded-2xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-6 mb-6">
+                      <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                        <div className="flex-1">
+                          <h3 className="text-xl font-black text-gray-900 mb-2">
+                            🎯 Quick Demo: Real Industry Contacts
+                          </h3>
+                          <p className="text-sm text-gray-700 font-bold">
+                            Load 5 pre-enriched contacts from BBC Radio 1 and Spotify instantly to
+                            see Audio Intel in action. Real emails, real enrichment data.
+                          </p>
+                        </div>
+                        <Button
+                          onClick={loadLibertyDemoData}
+                          disabled={isLoadingDemo}
+                          className="bg-blue-600 hover:bg-blue-700 text-white font-black px-6 py-3 rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+                        >
+                          {isLoadingDemo ? (
+                            <>
+                              <Loader2 className="w-4 h-4 mr-2 animate-spin inline" />
+                              Loading...
+                            </>
+                          ) : (
+                            <>
+                              <Sparkles className="w-4 h-4 mr-2 inline" />
+                              Load Demo Data
+                            </>
+                          )}
+                        </Button>
+                      </div>
                     </div>
-                    <Button
-                      onClick={loadLibertyDemoData}
-                      disabled={isLoadingDemo}
-                      className="bg-blue-600 hover:bg-blue-700 text-white font-black px-6 py-3 rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
-                    >
-                      {isLoadingDemo ? (
-                        <>
-                          <Loader2 className="w-4 h-4 mr-2 animate-spin inline" />
-                          Loading...
-                        </>
-                      ) : (
-                        <>
-                          <Sparkles className="w-4 h-4 mr-2 inline" />
-                          Load Demo Data
-                        </>
-                      )}
-                    </Button>
-                  </div>
-                </div>
 
-                <div className="text-center my-6">
-                  <div className="inline-flex items-center gap-4 text-gray-500 font-bold">
-                    <div className="h-px bg-gray-300 flex-1 w-32"></div>
-                    <span>OR</span>
-                    <div className="h-px bg-gray-300 flex-1 w-32"></div>
-                  </div>
-                </div>
+                    <div className="text-center my-6">
+                      <div className="inline-flex items-center gap-4 text-gray-500 font-bold">
+                        <div className="h-px bg-gray-300 flex-1 w-32"></div>
+                        <span>OR</span>
+                        <div className="h-px bg-gray-300 flex-1 w-32"></div>
+                      </div>
+                    </div>
+                  </>
+                )}
 
                 <EnhancedSpreadsheetUploader
                   onDataEnriched={enrichedData => {

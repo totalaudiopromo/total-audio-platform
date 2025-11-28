@@ -87,11 +87,8 @@ export async function POST(req: NextRequest) {
 
       case 'customer.subscription.created':
       case 'customer.subscription.updated':
-        await handleSubscriptionChange(event);
-        break;
-
       case 'customer.subscription.deleted':
-        await handleSubscriptionDeleted(event);
+        await handleSubscriptionChange(event, supabase);
         break;
 
       case 'charge.refunded':
@@ -440,27 +437,86 @@ async function handleInvoicePaymentFailed(
 }
 
 /**
- * Handle subscription change events
+ * Handle subscription change events - sync to subscriptions table with app_source
  */
-async function handleSubscriptionChange(event: Stripe.Event) {
-  const subscription = event.data.object as Stripe.Subscription;
+async function handleSubscriptionChange(
+  event: Stripe.Event,
+  supabase: ReturnType<typeof getSupabaseAdmin>
+) {
+  // Type assertion for subscription webhook data
+  const sub = event.data.object as any;
 
-  console.log('🔄 Subscription change:', subscription.id, subscription.status);
+  console.log('🔄 Subscription change:', sub.id, sub.status);
 
-  // We mainly track subscription changes through invoice events
-  // This handler is for logging and potential future use
-}
+  const stripeSubscriptionId = sub.id as string;
+  const customerId = sub.customer as string;
+  const status = sub.status as string;
+  const priceId = sub.items?.data?.[0]?.price?.id as string | undefined;
+  const periodStart = sub.current_period_start
+    ? new Date(sub.current_period_start * 1000).toISOString()
+    : null;
+  const periodEnd = sub.current_period_end
+    ? new Date(sub.current_period_end * 1000).toISOString()
+    : null;
+  const cancelAtPeriodEnd = !!sub.cancel_at_period_end;
 
-/**
- * Handle subscription deleted event
- */
-async function handleSubscriptionDeleted(event: Stripe.Event) {
-  const subscription = event.data.object as Stripe.Subscription;
+  // Find user by customer ID
+  const { data: customerRow } = await supabase
+    .from('customers')
+    .select('user_id')
+    .eq('stripe_customer_id', customerId)
+    .single();
 
-  console.log('🗑️ Subscription deleted:', subscription.id);
+  const userId = customerRow?.user_id;
+  if (!userId) {
+    console.warn('⚠️ No user found for customer:', customerId);
+    return;
+  }
 
-  // Track subscription cancellations through events table
-  // The payment record remains with status 'succeeded' for historical accuracy
+  // Check if subscription exists
+  const { data: existing } = await supabase
+    .from('subscriptions')
+    .select('id')
+    .eq('stripe_subscription_id', stripeSubscriptionId)
+    .maybeSingle();
+
+  if (existing?.id) {
+    // Update existing subscription
+    const { error } = await supabase
+      .from('subscriptions')
+      .update({
+        status,
+        price_id: priceId,
+        current_period_start: periodStart,
+        current_period_end: periodEnd,
+        cancel_at_period_end: cancelAtPeriodEnd,
+      })
+      .eq('id', existing.id);
+
+    if (error) {
+      console.error('❌ Failed to update subscription:', error);
+    } else {
+      console.log('✅ Subscription updated:', stripeSubscriptionId);
+    }
+  } else {
+    // Insert new subscription with app_source
+    const { error } = await supabase.from('subscriptions').insert({
+      user_id: userId,
+      stripe_subscription_id: stripeSubscriptionId,
+      status,
+      price_id: priceId,
+      current_period_start: periodStart,
+      current_period_end: periodEnd,
+      cancel_at_period_end: cancelAtPeriodEnd,
+      app_source: 'audio-intel',
+    });
+
+    if (error) {
+      console.error('❌ Failed to insert subscription:', error);
+    } else {
+      console.log('✅ Subscription created:', stripeSubscriptionId);
+    }
+  }
 }
 
 /**

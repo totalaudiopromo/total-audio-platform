@@ -67,6 +67,7 @@ export async function getUserSubscription() {
     .from('subscriptions')
     .select('*')
     .eq('user_id', user.id)
+    .eq('app_source', 'tracker')
     .eq('status', 'active')
     .single();
 

@@ -77,6 +77,7 @@ export async function POST(request: Request) {
             current_period_start: periodStart,
             current_period_end: periodEnd,
             cancel_at_period_end: cancelAtPeriodEnd,
+            app_source: 'tracker',
           });
         }
         break;

@@ -4,38 +4,486 @@
 
 @layer base {
   :root {
-    /* Tracker teal/cyan brand colors */
-    --color-background: #f0fdfa;
-    --color-foreground: #111827;
-    --color-card: #ffffff;
-    --color-card-foreground: #111827;
-    --color-popover: #ffffff;
-    --color-popover-foreground: #111827;
-    --color-primary: #14b8a6;
-    --color-primary-foreground: #ffffff;
-    --color-secondary: #ccfbf1;
-    --color-secondary-foreground: #111827;
-    --color-muted: #ccfbf1;
-    --color-muted-foreground: #6b7280;
-    --color-accent: #14b8a6;
-    --color-accent-foreground: #ffffff;
-    --color-destructive: #ef4444;
-    --color-destructive-foreground: #ffffff;
-    --color-border: #000000;
-    --color-input: #e5e7eb;
-    --color-ring: #14b8a6;
+    /* Tracker teal brand - HSL format for consistency */
+    --background: 166 76% 97%;
+    --foreground: 220 20% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
+    --primary: 171 77% 40%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 166 84% 93%;
+    --secondary-foreground: 220 20% 10%;
+    --muted: 166 84% 93%;
+    --muted-foreground: 220 8% 46%;
+    --accent: 171 77% 40%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 0%;
+    --input: 220 13% 91%;
+    --ring: 171 77% 40%;
     --radius: 1rem;
+    --chart-1: 171 77% 40%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --background: 220 20% 10%;
+    --foreground: 166 76% 97%;
+    --card: 220 20% 10%;
+    --card-foreground: 166 76% 97%;
+    --popover: 220 20% 10%;
+    --popover-foreground: 166 76% 97%;
+    --primary: 171 77% 50%;
+    --primary-foreground: 220 20% 10%;
+    --secondary: 220 15% 20%;
+    --secondary-foreground: 166 76% 97%;
+    --muted: 220 15% 20%;
+    --muted-foreground: 220 10% 60%;
+    --accent: 220 15% 20%;
+    --accent-foreground: 166 76% 97%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 166 76% 97%;
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 171 77% 50%;
+    --chart-1: 171 77% 50%;
+    --chart-2: 160 60% 55%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  /* Prevent text overflow globally */
+  p, h1, h2, h3, h4, h5, h6, span, div, a {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-foreground tracking-tight font-bold;
+  }
+
+  button,
+  [role="button"],
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"] {
+    @apply min-h-[44px] min-w-[44px];
   }
 }
 
-/* Tracker brutalist styles with amber brand */
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: #ffffff;
+/* Neobrutalist Design System - Tracker teal brand */
+@layer components {
+  .glass-panel {
+    @apply rounded-2xl border-4 border-black bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 hover:bg-teal-50/30;
+    position: relative;
+  }
+
+  .glass-panel::before {
+    content: '';
+    position: absolute;
+    inset: -40px;
+    background: radial-gradient(circle 400px at center, rgba(20, 184, 166, 0.06), transparent 70%);
+    border-radius: 2rem;
+    z-index: -1;
+    filter: blur(40px);
+    pointer-events: none;
+  }
+
+  .badge-postcraft {
+    @apply inline-flex items-center gap-2 rounded-full border-2 border-black bg-teal-100 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-teal-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)];
+  }
+
+  .cta-button {
+    @apply inline-flex items-center justify-center rounded-xl border-4 border-black bg-teal-500 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 hover:bg-teal-600 active:scale-95 min-h-[44px] min-w-[44px] w-full sm:w-auto;
+  }
+
+  .subtle-button {
+    @apply inline-flex items-center justify-center rounded-xl border-2 border-black bg-white px-5 py-2.5 text-sm font-semibold text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 min-h-[44px] min-w-[44px] w-full sm:w-auto;
+  }
+
+  /* Mobile Sticky CTA - Thumb Zone Optimization */
+  @media (max-width: 640px) {
+    .mobile-sticky-cta {
+      @apply fixed bottom-4 left-4 right-4 z-50 bg-teal-500 border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] py-4 px-6 text-center font-bold text-white;
+    }
+
+    .mobile-sticky-cta-hidden {
+      @apply hidden sm:flex;
+    }
+  }
+
+  /* Tracker Loading States Animations */
+  .loading-character {
+    animation: gentle-bob 2s ease-in-out infinite;
+  }
+
+  @keyframes gentle-bob {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-3px); }
+  }
+
+  .processing-character {
+    animation: typing-motion 1.5s ease-in-out infinite;
+  }
+
+  @keyframes typing-motion {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-1deg); }
+    75% { transform: rotate(1deg); }
+  }
+
+  .success-character {
+    animation: success-bounce 0.6s ease-out infinite alternate;
+  }
+
+  @keyframes success-bounce {
+    0% { transform: translateY(0px) scale(1); }
+    100% { transform: translateY(-5px) scale(1.02); }
+  }
+
+  .error-character {
+    animation: error-shake 0.5s ease-in-out infinite;
+  }
+
+  @keyframes error-shake {
+    0%, 100% { transform: translateX(0px); }
+    25% { transform: translateX(-2px); }
+    75% { transform: translateX(2px); }
+  }
+
+  /* Progress bar shine animation */
+  .progress-bar {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .progress-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 30%;
+    background: linear-gradient(90deg, transparent, rgba(20, 184, 166, 0.4), transparent);
+    animation: progress-shine 2s linear infinite;
+  }
+
+  @keyframes progress-shine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(400%); }
+  }
+
+  .loading-container {
+    @apply flex flex-col items-center justify-center p-6 space-y-4;
+  }
+
+  .loading-character {
+    @apply w-24 h-24 object-contain;
+  }
+
+  .status-message {
+    @apply text-center text-sm font-medium text-gray-600;
+  }
+
+  /* Action character animations */
+  .action-character {
+    animation: dynamic-throw 1.2s ease-out infinite;
+  }
+
+  @keyframes dynamic-throw {
+    0% { transform: translateX(0px) rotate(0deg); }
+    30% { transform: translateX(10px) rotate(5deg); }
+    60% { transform: translateX(5px) rotate(-2deg); }
+    100% { transform: translateX(0px) rotate(0deg); }
+  }
+
+  .export-character {
+    animation: export-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes export-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  .launch-character {
+    animation: launch-energy 0.8s ease-out infinite alternate;
+  }
+
+  @keyframes launch-energy {
+    0% { transform: translateY(0px) rotate(0deg); }
+    100% { transform: translateY(-8px) rotate(3deg); }
+  }
+
+  .action-container {
+    @apply flex flex-col items-center justify-center p-6 space-y-4 text-center;
+  }
+
+  .action-container h3 {
+    @apply text-xl font-bold text-gray-900;
+  }
+
+  .action-container p {
+    @apply text-gray-600 max-w-sm;
+  }
+
+  @media (max-width: 768px) {
+    .loading-character {
+      @apply w-20 h-20;
+    }
+
+    .loading-container {
+      @apply p-4 space-y-3;
+    }
+
+    .action-container {
+      @apply p-4 space-y-3;
+    }
+  }
 }
 
+/* Agent Visualization System Animations */
+@layer components {
+  @keyframes agent-pulse {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.05);
+    }
+  }
+
+  .agent-pulse {
+    animation: agent-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes agent-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .agent-spin {
+    animation: agent-spin 1s linear infinite;
+  }
+
+  @keyframes agent-bounce {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(-8px) scale(1.1);
+      opacity: 0.8;
+    }
+  }
+
+  .agent-bounce {
+    animation: agent-bounce 0.6s ease-out;
+  }
+
+  @keyframes agent-shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+  }
+
+  .agent-shake {
+    animation: agent-shake 0.5s ease-in-out;
+  }
+
+  @keyframes agent-flash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .agent-flash {
+    animation: agent-flash 1s ease-in-out infinite;
+  }
+
+  @keyframes agent-glow {
+    0%, 100% {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+      box-shadow: 0 8px 24px rgba(20, 184, 166, 0.3);
+    }
+  }
+
+  .agent-glow {
+    animation: agent-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes agent-progress {
+    0% { width: 0%; }
+    100% { width: var(--progress-width, 100%); }
+  }
+
+  .agent-progress-bar {
+    animation: agent-progress 1s ease-out forwards;
+  }
+
+  .agent-status-dot {
+    @apply w-3 h-3 rounded-full transition-all duration-300;
+  }
+
+  .agent-status-dot.idle {
+    @apply bg-gray-400;
+  }
+
+  .agent-status-dot.active {
+    @apply bg-green-500;
+    animation: agent-pulse 2s infinite;
+  }
+
+  .agent-status-dot.processing {
+    @apply bg-teal-500;
+    animation: agent-pulse 1s infinite;
+  }
+
+  .agent-status-dot.completed {
+    @apply bg-green-500;
+    animation: agent-bounce 0.6s ease-out;
+  }
+
+  .agent-status-dot.error {
+    @apply bg-red-500;
+    animation: agent-flash 1s infinite;
+  }
+
+  .agent-status-dot.warning {
+    @apply bg-yellow-500;
+    animation: agent-pulse 1.5s infinite;
+  }
+
+  .agent-card {
+    @apply transition-all duration-300 ease-out;
+    transform-origin: center;
+  }
+
+  .agent-card:hover {
+    @apply transform scale-105;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .agent-card.priority-critical {
+    animation: agent-glow 2s infinite;
+    border-color: #F44336 !important;
+  }
+
+  .agent-card.priority-high {
+    border-width: 2px;
+    border-color: #FF9800;
+  }
+
+  .agent-card.priority-medium {
+    border-width: 1px;
+    border-color: #14B8A6;
+  }
+
+  .agent-card.priority-low {
+    border-width: 1px;
+    border-color: #9E9E9E;
+  }
+
+  .agent-workflow-step {
+    @apply relative transition-all duration-500 ease-out;
+  }
+
+  .agent-workflow-step.pending {
+    @apply opacity-50;
+  }
+
+  .agent-workflow-step.active {
+    @apply transform scale-105;
+    animation: agent-glow 2s infinite;
+  }
+
+  .agent-workflow-step.completed {
+    @apply opacity-100;
+  }
+
+  .agent-workflow-step.error {
+    animation: agent-shake 0.5s ease-in-out;
+  }
+
+  .agent-monitor {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .agent-monitor.collapsed {
+    @apply transform scale-95 opacity-80;
+  }
+
+  .agent-monitor.expanded {
+    @apply transform scale-100 opacity-100;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  @keyframes agent-log-entry {
+    0% {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .agent-log-entry {
+    animation: agent-log-entry 0.5s ease-out forwards;
+  }
+
+  @media (max-width: 768px) {
+    .agent-card:hover {
+      transform: scale(1.02);
+    }
+
+    .agent-workflow-step.active {
+      transform: scale(1.02);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .agent-pulse,
+    .agent-spin,
+    .agent-bounce,
+    .agent-shake,
+    .agent-flash,
+    .agent-glow {
+      animation: none !important;
+    }
+
+    .agent-card,
+    .agent-workflow-step,
+    .agent-monitor {
+      transition: none !important;
+    }
+  }
+}
+
+/* Brutalist shadow utilities */
 .shadow-brutal {
   box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
 }
@@ -56,31 +504,70 @@ body {
   border: 2px solid #000000;
 }
 
-/* Tracker teal brand brutalist components */
-.glass-panel {
-  @apply rounded-2xl border-4 border-black bg-white p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 hover:bg-teal-50/30;
-  position: relative;
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-.glass-panel::before {
-  content: '';
-  position: absolute;
-  inset: -40px;
-  background: radial-gradient(circle 400px at center, rgba(20, 184, 166, 0.06), transparent 70%);
-  border-radius: 2rem;
-  z-index: -1;
-  filter: blur(40px);
-  pointer-events: none;
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
 }
 
-.cta-button {
-  @apply inline-flex items-center justify-center rounded-xl border-4 border-black bg-teal-500 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 hover:bg-teal-600 active:scale-95;
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
 }
 
-.subtle-button {
-  @apply inline-flex items-center justify-center rounded-xl border-2 border-black bg-white px-5 py-2.5 text-sm font-semibold text-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5;
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
-.badge-postcraft {
-  @apply inline-flex items-center gap-2 rounded-full border-2 border-black bg-teal-100 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-teal-800 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)];
+/* Focus styles */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  @apply outline-none ring-2 ring-teal-500 ring-offset-2;
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  body {
+    @apply text-sm;
+  }
+
+  button, a {
+    @apply text-sm;
+  }
+
+  h1, h2, h3 {
+    @apply text-lg font-semibold;
+  }
+
+  .container {
+    @apply px-4;
+  }
+}
+
+@media (max-width: 640px) {
+  h1 {
+    @apply text-xl;
+  }
+
+  h2 {
+    @apply text-lg;
+  }
+
+  h3 {
+    @apply text-base;
+  }
+
+  p {
+    @apply text-sm;
+  }
+
+  .mobile-nav {
+    @apply fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-2;
+  }
 }
