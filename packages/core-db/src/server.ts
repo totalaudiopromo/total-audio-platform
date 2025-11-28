@@ -1,7 +1,24 @@
 import { createServerClient as createSupabaseServerClient } from '@supabase/ssr';
 import type { Database } from './types/database';
-import { env } from './utils/env';
 import type { cookies } from 'next/headers';
+
+/**
+ * Get environment variables at runtime (not import time)
+ * This avoids RSC serialisation issues during static generation
+ */
+function getEnvVars() {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  if (!supabaseUrl || !supabaseAnonKey) {
+    throw new Error(
+      'Missing Supabase environment variables. Ensure NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY are set.'
+    );
+  }
+
+  return { supabaseUrl, supabaseAnonKey, supabaseServiceKey };
+}
 
 /**
  * Create a Supabase client for server-side usage (anon key)
@@ -22,32 +39,29 @@ import type { cookies } from 'next/headers';
  */
 export async function createServerClient(cookieStore: ReturnType<typeof cookies>) {
   const cookieStoreInstance = await cookieStore;
+  const { supabaseUrl, supabaseAnonKey } = getEnvVars();
 
-  return createSupabaseServerClient<Database>(
-    env.NEXT_PUBLIC_SUPABASE_URL,
-    env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-    {
-      cookies: {
-        get(name: string) {
-          return cookieStoreInstance.get(name)?.value;
-        },
-        set(name: string, value: string, options: any) {
-          try {
-            cookieStoreInstance.set({ name, value, ...options });
-          } catch (error) {
-            // Handle cookie setting errors (e.g., in middleware)
-          }
-        },
-        remove(name: string, options: any) {
-          try {
-            cookieStoreInstance.set({ name, value: '', ...options });
-          } catch (error) {
-            // Handle cookie removal errors
-          }
-        },
+  return createSupabaseServerClient<Database>(supabaseUrl, supabaseAnonKey, {
+    cookies: {
+      get(name: string) {
+        return cookieStoreInstance.get(name)?.value;
       },
-    }
-  );
+      set(name: string, value: string, options: any) {
+        try {
+          cookieStoreInstance.set({ name, value, ...options });
+        } catch (error) {
+          // Handle cookie setting errors (e.g., in middleware)
+        }
+      },
+      remove(name: string, options: any) {
+        try {
+          cookieStoreInstance.set({ name, value: '', ...options });
+        } catch (error) {
+          // Handle cookie removal errors
+        }
+      },
+    },
+  });
 }
 
 /**
@@ -69,37 +83,35 @@ export async function createServerClient(cookieStore: ReturnType<typeof cookies>
  * ```
  */
 export async function createAdminClient(cookieStore: ReturnType<typeof cookies>) {
-  if (!env.SUPABASE_SERVICE_ROLE_KEY) {
+  const { supabaseUrl, supabaseServiceKey } = getEnvVars();
+
+  if (!supabaseServiceKey) {
     throw new Error('SUPABASE_SERVICE_ROLE_KEY is not set. This is required for admin operations.');
   }
 
   const cookieStoreInstance = await cookieStore;
 
-  return createSupabaseServerClient<Database>(
-    env.NEXT_PUBLIC_SUPABASE_URL,
-    env.SUPABASE_SERVICE_ROLE_KEY,
-    {
-      cookies: {
-        get(name: string) {
-          return cookieStoreInstance.get(name)?.value;
-        },
-        set(name: string, value: string, options: any) {
-          try {
-            cookieStoreInstance.set({ name, value, ...options });
-          } catch (error) {
-            // Handle cookie setting errors
-          }
-        },
-        remove(name: string, options: any) {
-          try {
-            cookieStoreInstance.set({ name, value: '', ...options });
-          } catch (error) {
-            // Handle cookie removal errors
-          }
-        },
+  return createSupabaseServerClient<Database>(supabaseUrl, supabaseServiceKey, {
+    cookies: {
+      get(name: string) {
+        return cookieStoreInstance.get(name)?.value;
       },
-    }
-  );
+      set(name: string, value: string, options: any) {
+        try {
+          cookieStoreInstance.set({ name, value, ...options });
+        } catch (error) {
+          // Handle cookie setting errors
+        }
+      },
+      remove(name: string, options: any) {
+        try {
+          cookieStoreInstance.set({ name, value: '', ...options });
+        } catch (error) {
+          // Handle cookie removal errors
+        }
+      },
+    },
+  });
 }
 
 /**

@@ -4,7 +4,10 @@ import './globals.css';
 import './mobile.css';
 import React from 'react';
 import ClientLayout from './components/ClientLayout';
-import { WorkspaceProvider } from '@total-audio/core-db/contexts/workspace-context';
+
+// Force dynamic rendering for all routes to avoid RSC serialisation issues
+// with process.env during static generation in Next.js 15
+export const dynamic = 'force-dynamic';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -76,12 +79,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} font-sans`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        {/* Search Engine Verification */}
-        <meta
-          name="google-site-verification"
-          content={process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || ''}
-        />
-        <meta name="msvalidate.01" content={process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || ''} />
         {/* JSON-LD: Organization */}
         <script
           type="application/ld+json"
@@ -142,9 +139,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             style={{ display: 'none', visibility: 'hidden' }}
           ></iframe>
         </noscript>
-        <WorkspaceProvider>
-          <ClientLayout>{children}</ClientLayout>
-        </WorkspaceProvider>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );

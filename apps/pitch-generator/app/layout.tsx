@@ -1,10 +1,11 @@
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import { AuthProvider } from '@/components/AuthProvider';
-import { WorkspaceProvider } from '@total-audio/core-db/contexts/workspace-context';
-import { ConditionalLayout } from '@/components/ConditionalLayout';
-import { ExitIntentPopup, CookieBanner } from '@/components/ClientOnlyComponents';
+import ClientLayout from '@/components/ClientLayout';
 import { defaultMetadata } from './metadata';
+
+// Force dynamic rendering for all routes to avoid RSC serialisation issues
+// with process.env during static generation in Next.js 15
+export const dynamic = 'force-dynamic';
 
 const geistSans = Geist({ subsets: ['latin'], variable: '--font-sans' });
 const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-mono' });
@@ -38,15 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             style={{ display: 'none', visibility: 'hidden' }}
           ></iframe>
         </noscript>
-        <AuthProvider>
-          <WorkspaceProvider>
-            <div className="flex min-h-screen flex-col bg-white">
-              <ConditionalLayout>{children}</ConditionalLayout>
-              <ExitIntentPopup />
-              <CookieBanner />
-            </div>
-          </WorkspaceProvider>
-        </AuthProvider>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );

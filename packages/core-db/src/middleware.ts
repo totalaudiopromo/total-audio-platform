@@ -1,6 +1,5 @@
 import { createServerClient } from '@supabase/ssr';
 import type { Database } from './types/database';
-import { env } from './utils/env';
 import { NextResponse, type NextRequest } from 'next/server';
 
 /**
@@ -30,51 +29,58 @@ import { NextResponse, type NextRequest } from 'next/server';
  * ```
  */
 export async function updateSession(request: NextRequest) {
+  // Access environment variables at runtime (not import time)
+  // This avoids RSC serialisation issues during static generation
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (!supabaseUrl || !supabaseAnonKey) {
+    throw new Error(
+      'Missing Supabase environment variables. Ensure NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY are set.'
+    );
+  }
+
   let supabaseResponse = NextResponse.next({
     request,
   });
 
-  const supabase = createServerClient<Database>(
-    env.NEXT_PUBLIC_SUPABASE_URL,
-    env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-    {
-      cookies: {
-        get(name: string) {
-          return request.cookies.get(name)?.value;
-        },
-        set(name: string, value: string, options: any) {
-          request.cookies.set({
-            name,
-            value,
-            ...options,
-          });
-          supabaseResponse = NextResponse.next({
-            request,
-          });
-          supabaseResponse.cookies.set({
-            name,
-            value,
-            ...options,
-          });
-        },
-        remove(name: string, options: any) {
-          request.cookies.set({
-            name,
-            value: '',
-            ...options,
-          });
-          supabaseResponse = NextResponse.next({
-            request,
-          });
-          supabaseResponse.cookies.set({
-            name,
-            value: '',
-            ...options,
-          });
-        },
+  const supabase = createServerClient<Database>(supabaseUrl, supabaseAnonKey, {
+    cookies: {
+      get(name: string) {
+        return request.cookies.get(name)?.value;
       },
-    }
-  );
+      set(name: string, value: string, options: any) {
+        request.cookies.set({
+          name,
+          value,
+          ...options,
+        });
+        supabaseResponse = NextResponse.next({
+          request,
+        });
+        supabaseResponse.cookies.set({
+          name,
+          value,
+          ...options,
+        });
+      },
+      remove(name: string, options: any) {
+        request.cookies.set({
+          name,
+          value: '',
+          ...options,
+        });
+        supabaseResponse = NextResponse.next({
+          request,
+        });
+        supabaseResponse.cookies.set({
+          name,
+          value: '',
+          ...options,
+        });
+      },
+    },
+  });
 
   // Refresh session if expired - required for Server Components
   const {
