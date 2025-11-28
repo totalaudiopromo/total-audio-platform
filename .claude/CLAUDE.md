@@ -1058,9 +1058,101 @@ If neither applies, log it for later — don't build it now.
 
 ---
 
-**Last Updated**: October 2025
+## 🔄 INDYDEVDAN WORKFLOW SYSTEM
+
+This repo uses a safe, IndyDevDan-style automation workflow built around:
+
+- **Dropzones**: quarantine → queue → processed flow
+- **Watcher**: Background daemon with LIVE/DRY-RUN modes
+- **Auto-approve**: Files move from quarantine → queue automatically
+- **Kill-switch**: `DROPZONE_DISABLE=1` stops all processing
+- **Processors**: Intel (contact enrichment) + EPK (press kits)
+- **Safety hooks**: Pre/post tool validation, audit logging
+- **Worktree isolation**: Safe automation in isolated branches
+
+### Environment Variables
+
+| Variable           | Default | Description                                      |
+| ------------------ | ------- | ------------------------------------------------ |
+| `DROPZONE_LIVE`    | `0`     | `0` = dry-run (logs only), `1` = live processing |
+| `DROPZONE_DISABLE` | unset   | Set to `1` for emergency kill-switch             |
+
+### File Routing
+
+| Pattern       | Processor | Description          |
+| ------------- | --------- | -------------------- |
+| `intel-*.csv` | Intel     | Contact enrichment   |
+| `epk-*.md`    | EPK       | Press kit (markdown) |
+| `epk-*.json`  | EPK       | Press kit (JSON)     |
+
+### Quick Commands
+
+```bash
+# Safety status
+npx tsx .claude/workflow/safety-controls.ts status
+
+# Start watcher (dry-run - default)
+npx tsx .claude/scripts/dropzone-watcher.ts
+
+# Start watcher (live mode)
+DROPZONE_LIVE=1 npx tsx .claude/scripts/dropzone-watcher.ts
+
+# Emergency stop
+npx tsx .claude/workflow/safety-controls.ts enable-kill-switch
+
+# File approval
+npx tsx .claude/scripts/approve-file.ts list
+npx tsx .claude/scripts/approve-file.ts approve <filename>
+
+# Worktree isolation
+npx tsx .claude/skills/worktree-isolation/worktree-manager.ts list
+npx tsx .claude/skills/worktree-isolation/worktree-manager.ts create automation/task-name
+```
+
+### Dropzone Directory Structure
+
+```
+.claude/dropzones/
+├── input/           # Drop files here
+├── quarantine/      # Awaiting approval
+├── queue/           # Approved, ready for processing
+├── processed/       # Successful outputs
+└── errors/          # Failed processing
+```
+
+### Workflow Rules (Claude Must Follow)
+
+1. **SAFETY FIRST** - Default to DRY-RUN unless explicitly told LIVE. Never run destructive commands.
+
+2. **DROPZONE AUTOMATION** - When given files for processing:
+   - Place in `.claude/dropzones/quarantine/`
+   - Auto-approve moves to queue
+   - Router chooses processor (intel, epk)
+
+3. **PROCESSOR ROUTING**:
+   - `intel-*.csv` → Contact Intel processor
+   - `epk-*.md/json` → EPK generator
+   - Output to `.claude/dropzones/processed/`
+
+4. **WORKTREE ISOLATION** - Use for experiments, never modify main without instruction.
+
+5. **LOGGING** - Audit every tool invocation. Summaries include actions, files touched, safety mode.
+
+6. **PROACTIVE BEHAVIOUR**:
+   - CSV → assume Contact Intel
+   - Artist info → assume EPK
+   - Scripts/config → suggest worktree isolation
+
+### Full Reference
+
+See `.claude/workflow/QUICK_REFERENCE.md` for complete command reference.
+
+---
+
+**Last Updated**: November 2025
 **Current Business Phase**: Customer Acquisition (Audio Intel revenue validation)
 **Development Focus**: First paying customers through proven segments
 **Future Vision**: Agentic platform architecture across TotalAudioPromo + TotalAud.io
 **Newsletter**: "The Unsigned Advantage" - operational and growing
 **Philosophy**: Foundation monetisation now, creative AI orchestration later
+**Automation**: IndyDevDan workflow operational (dropzones + safety + processors)

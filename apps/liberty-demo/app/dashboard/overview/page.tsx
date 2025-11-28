@@ -11,13 +11,65 @@ import TypeformIntakePanel from '@/components/TypeformIntakePanel';
 import GmailInboxPanel from '@/components/GmailInboxPanel';
 import ChrisRadioPanel from '@/components/ChrisRadioPanel';
 import Loading from '@/components/Loading';
-import { Radio, BarChart3, Activity, ArrowUpRight } from 'lucide-react';
+import {
+  Radio,
+  BarChart3,
+  Activity,
+  ArrowUpRight,
+  MessageSquare,
+  CheckCircle,
+  Loader2,
+} from 'lucide-react';
 import { fetchLibertyCampaignSummaries } from '@/lib/api/tracker';
 import type { TrackerCampaignSummary } from '@/lib/types';
 
 const DashboardOverview: React.FC = () => {
   const [campaigns, setCampaigns] = useState<TrackerCampaignSummary[]>([]);
   const [loading, setLoading] = useState(true);
+  const [notificationStatus, setNotificationStatus] = useState<
+    'idle' | 'sending' | 'sent' | 'error'
+  >('idle');
+
+  const sendTestNotification = async () => {
+    setNotificationStatus('sending');
+    try {
+      const response = await fetch('/api/google-chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          card: {
+            header: {
+              title: '🎵 Liberty Console Alert',
+              subtitle: 'Campaign Update',
+            },
+            sections: [
+              {
+                header: 'New Coverage Detected',
+                items: [
+                  { type: 'keyValue', label: 'Artist', value: 'Concerta' },
+                  { type: 'keyValue', label: 'Track', value: 'Consumption' },
+                  { type: 'keyValue', label: 'Outlet', value: 'BBC Radio 6 Music' },
+                  { type: 'text', content: '✅ Steve Lamacq show spin confirmed' },
+                ],
+              },
+            ],
+          },
+        }),
+      });
+
+      if (response.ok) {
+        setNotificationStatus('sent');
+        setTimeout(() => setNotificationStatus('idle'), 3000);
+      } else {
+        setNotificationStatus('error');
+        setTimeout(() => setNotificationStatus('idle'), 3000);
+      }
+    } catch (err) {
+      console.error('Failed to send notification:', err);
+      setNotificationStatus('error');
+      setTimeout(() => setNotificationStatus('idle'), 3000);
+    }
+  };
 
   useEffect(() => {
     let active = true;
@@ -159,6 +211,54 @@ const DashboardOverview: React.FC = () => {
                   →
                 </div>
               </div>
+            </div>
+
+            {/* Google Chat Integration Demo */}
+            <div className="mt-6 liberty-card border-dashed border-2 border-[#3AA9BE]/30 bg-[#3AA9BE]/5">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-3">
+                  <div className="w-12 h-12 bg-[#3AA9BE] text-white rounded-xl flex items-center justify-center">
+                    <MessageSquare size={24} />
+                  </div>
+                  <div>
+                    <div className="font-jakarta font-semibold text-base text-[#111]">
+                      Google Chat
+                    </div>
+                    <div className="liberty-metadata normal-case">Real-time notifications</div>
+                  </div>
+                </div>
+                <button
+                  onClick={sendTestNotification}
+                  disabled={notificationStatus === 'sending'}
+                  className={`liberty-btn-primary flex items-center space-x-2 ${
+                    notificationStatus === 'sent'
+                      ? 'bg-green-600 hover:bg-green-700'
+                      : notificationStatus === 'error'
+                        ? 'bg-red-600 hover:bg-red-700'
+                        : ''
+                  }`}
+                >
+                  {notificationStatus === 'sending' ? (
+                    <>
+                      <Loader2 size={16} className="animate-spin" />
+                      <span>Sending...</span>
+                    </>
+                  ) : notificationStatus === 'sent' ? (
+                    <>
+                      <CheckCircle size={16} />
+                      <span>Sent!</span>
+                    </>
+                  ) : notificationStatus === 'error' ? (
+                    <span>Failed - Check webhook</span>
+                  ) : (
+                    <span>Send Test Alert</span>
+                  )}
+                </button>
+              </div>
+              <p className="mt-3 text-sm text-[#737373]">
+                Click to send a live notification to your Google Chat space. Configure webhook URL
+                in .env.local
+              </p>
             </div>
           </section>
 

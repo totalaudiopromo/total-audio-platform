@@ -147,6 +147,10 @@ const config = {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-10px)' },
         },
+        slideUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
         // Audio character animations
         'color-activate': {
           '0%': { filter: 'grayscale(1)' },
@@ -166,6 +170,31 @@ const config = {
           '50%': { transform: 'scale(1) rotate(180deg)', opacity: '1' },
           '100%': { transform: 'scale(0) rotate(360deg)', opacity: '0' },
         },
+        // Mascot animations
+        'mascot-float': {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-8px)' },
+        },
+        'mascot-focus': {
+          '0%, 100%': { transform: 'translateX(0px) rotate(0deg)' },
+          '25%': { transform: 'translateX(-2px) rotate(-1deg)' },
+          '75%': { transform: 'translateX(2px) rotate(1deg)' },
+        },
+        'mascot-celebrate': {
+          '0%, 100%': { transform: 'translateY(0px) scale(1)' },
+          '50%': { transform: 'translateY(-12px) scale(1.05)' },
+        },
+        'mascot-confused': {
+          '0%, 100%': { transform: 'rotate(0deg)' },
+          '25%': { transform: 'rotate(-5deg)' },
+          '75%': { transform: 'rotate(5deg)' },
+        },
+        'mascot-action': {
+          '0%': { transform: 'translateX(0) rotate(0deg) scale(1)' },
+          '20%': { transform: 'translateX(-8px) rotate(-10deg) scale(1.1)' },
+          '40%': { transform: 'translateX(16px) rotate(15deg) scale(0.95)' },
+          '60%, 100%': { transform: 'translateX(0) rotate(0deg) scale(1)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -177,11 +206,18 @@ const config = {
         'spin-slow': 'spin-slow 2s linear infinite',
         blob: 'blob 7s infinite',
         float: 'float 6s ease-in-out infinite',
+        'slide-up': 'slideUp 0.5s ease-out',
         // Audio character animations
         'color-activate': 'color-activate 0.8s ease-in-out',
         'audio-bounce': 'audio-bounce 0.6s ease-in-out',
         'success-pulse': 'success-pulse 1.2s ease-in-out',
         'celebration-sparkle': 'celebration-sparkle 1.5s ease-in-out',
+        // Mascot animations
+        'mascot-float': 'mascot-float 3s ease-in-out infinite',
+        'mascot-focus': 'mascot-focus 0.8s ease-in-out infinite',
+        'mascot-celebrate': 'mascot-celebrate 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite',
+        'mascot-confused': 'mascot-confused 0.5s ease-in-out infinite',
+        'mascot-action': 'mascot-action 1.2s ease-out infinite',
       },
       screens: {
         xs: '475px',
@@ -193,10 +229,7 @@ const config = {
       },
     },
   },
-  plugins: [
-    // Temporarily disabled due to monorepo hoisting issues
-    // require("tailwindcss-animate")
-  ],
+  plugins: [require('tailwindcss-animate')],
 } satisfies Config;
 
 export default config;

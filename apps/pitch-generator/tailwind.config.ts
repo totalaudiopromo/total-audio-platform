@@ -8,7 +8,7 @@ const config: Config = {
       center: true,
       padding: '1.5rem',
       screens: {
-        '2xl': '1200px',
+        '2xl': '1400px',
       },
     },
     extend: {
@@ -68,9 +68,54 @@ const config: Config = {
         elevated: '0 24px 60px -30px rgba(76, 92, 246, 0.55)',
         panel: '0 18px 42px -22px rgba(24, 28, 47, 0.65)',
       },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+        slideUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        // Mascot animations
+        'mascot-float': {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-8px)' },
+        },
+        'mascot-focus': {
+          '0%, 100%': { transform: 'translateX(0px) rotate(0deg)' },
+          '25%': { transform: 'translateX(-2px) rotate(-1deg)' },
+          '75%': { transform: 'translateX(2px) rotate(1deg)' },
+        },
+        'mascot-celebrate': {
+          '0%, 100%': { transform: 'translateY(0px) scale(1)' },
+          '50%': { transform: 'translateY(-12px) scale(1.05)' },
+        },
+        'mascot-confused': {
+          '0%, 100%': { transform: 'rotate(0deg)' },
+          '25%': { transform: 'rotate(-5deg)' },
+          '75%': { transform: 'rotate(5deg)' },
+        },
+        'mascot-action': {
+          '0%': { transform: 'translateX(0) rotate(0deg) scale(1)' },
+          '20%': { transform: 'translateX(-8px) rotate(-10deg) scale(1.1)' },
+          '40%': { transform: 'translateX(16px) rotate(15deg) scale(0.95)' },
+          '60%, 100%': { transform: 'translateX(0) rotate(0deg) scale(1)' },
+        },
+      },
+      animation: {
+        float: 'float 6s ease-in-out infinite',
+        'slide-up': 'slideUp 0.5s ease-out',
+        // Mascot animations
+        'mascot-float': 'mascot-float 3s ease-in-out infinite',
+        'mascot-focus': 'mascot-focus 0.8s ease-in-out infinite',
+        'mascot-celebrate': 'mascot-celebrate 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite',
+        'mascot-confused': 'mascot-confused 0.5s ease-in-out infinite',
+        'mascot-action': 'mascot-action 1.2s ease-out infinite',
+      },
     },
   },
-  plugins: [],
+  plugins: [require('tailwindcss-animate')],
 };
 
 export default config;

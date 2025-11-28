@@ -8,17 +8,43 @@ import { createClient } from '@total-audio/core-db/client';
 import Link from 'next/link';
 import { UserMenu } from '@/components/auth/UserMenu';
 
+interface UserProfile {
+  subscription_tier: 'beta' | 'professional' | 'agency' | null;
+  enrichments_used: number | null;
+  enrichments_limit: number | null;
+}
+
 export default function DashboardPage() {
   const [user, setUser] = useState<any>(null);
+  const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const supabase = createClient();
 
-    supabase.auth.getUser().then(({ data: { user } }) => {
+    async function loadUserData() {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
       setUser(user);
+
+      if (user) {
+        // Fetch subscription details from users table
+        const { data: profile } = await supabase
+          .from('users')
+          .select('subscription_tier, enrichments_used, enrichments_limit')
+          .eq('id', user.id)
+          .single();
+
+        if (profile) {
+          setUserProfile(profile as UserProfile);
+        }
+      }
+
       setLoading(false);
-    });
+    }
+
+    loadUserData();
   }, []);
 
   if (loading) {
@@ -68,14 +94,16 @@ export default function DashboardPage() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Welcome Section */}
         <div className="mb-12">
-          <h2 className="text-4xl font-black text-gray-900 mb-3">Welcome back, {displayName}</h2>
-          <p className="text-lg font-bold text-gray-600">
+          <h2 className="text-2xl sm:text-4xl font-black text-gray-900 mb-3">
+            Welcome back, {displayName}
+          </h2>
+          <p className="text-base sm:text-lg font-bold text-gray-600">
             Ready to enrich your contacts and save hours of research time
           </p>
         </div>
 
         {/* Quick Actions - Neobrutalist Style */}
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 gap-4 md:gap-8 mb-12">
           {/* Start Enrichment Card */}
           <Link href="/demo" className="group">
             <div className="bg-white rounded-2xl border-4 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 transition-all">
@@ -116,15 +144,19 @@ export default function DashboardPage() {
         </div>
 
         {/* Stats Grid */}
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
+        <div className="grid md:grid-cols-3 gap-4 md:gap-6 mb-12">
           <div className="bg-white rounded-xl border-4 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
             <div className="flex items-center justify-between mb-2">
               <span className="text-sm font-black uppercase tracking-wider text-gray-600">
                 Your Plan
               </span>
             </div>
-            <p className="text-3xl font-black text-gray-900">Free</p>
-            <p className="text-sm font-bold text-gray-600 mt-1">10 enrichments/month</p>
+            <p className="text-2xl sm:text-3xl font-black text-gray-900 capitalize">
+              {userProfile?.subscription_tier || 'Free'}
+            </p>
+            <p className="text-sm font-bold text-gray-600 mt-1">
+              {userProfile?.enrichments_limit || 10} enrichments/month
+            </p>
           </div>
 
           <div className="bg-white rounded-xl border-4 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
@@ -133,8 +165,13 @@ export default function DashboardPage() {
                 Used This Month
               </span>
             </div>
-            <p className="text-3xl font-black text-gray-900">0 / 10</p>
-            <p className="text-sm font-bold text-blue-600 mt-1">All available</p>
+            <p className="text-2xl sm:text-3xl font-black text-gray-900">
+              {userProfile?.enrichments_used || 0} / {userProfile?.enrichments_limit || 10}
+            </p>
+            <p className="text-sm font-bold text-blue-600 mt-1">
+              {(userProfile?.enrichments_limit || 10) - (userProfile?.enrichments_used || 0)}{' '}
+              remaining
+            </p>
           </div>
 
           <div className="bg-white rounded-xl border-4 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
@@ -167,7 +204,9 @@ export default function DashboardPage() {
               <span className="text-sm font-black uppercase tracking-wider text-gray-600">
                 Subscription
               </span>
-              <p className="font-bold text-gray-900">Free Plan</p>
+              <p className="font-bold text-gray-900 capitalize">
+                {userProfile?.subscription_tier || 'Free'} Plan
+              </p>
             </div>
             <div className="flex items-center justify-between py-3">
               <span className="text-sm font-black uppercase tracking-wider text-gray-600">

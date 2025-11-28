@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Home, Sparkles, FileText, Mail } from 'lucide-react';
+import { AudioDogMascot } from '@/components/AudioDogMascot';
 
 export default function NotFound() {
   return (
@@ -7,9 +8,9 @@ export default function NotFound() {
       <div className="max-w-xl w-full">
         {/* 404 card - neobrutalist style */}
         <div className="rounded-2xl border-4 border-black bg-gradient-to-br from-amber-50 to-white p-10 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] text-center">
-          {/* 404 badge */}
-          <div className="mb-6">
-            <span className="text-8xl font-black text-amber-200">404</span>
+          {/* Audio the Dog - confused animation */}
+          <div className="mb-6 flex justify-center">
+            <AudioDogMascot mood="error" size="lg" />
           </div>
 
           <h1 className="text-3xl font-black text-gray-900 sm:text-4xl">Pitch Not Found</h1>
