@@ -172,15 +172,21 @@ export async function POST(request: NextRequest) {
 
   const body = await request.json();
 
-  // Validate required fields
-  if (!body.name) {
-    return validationError('Campaign name is required', undefined, corsHeaders);
+  // Validate required fields - accept either 'title' or 'name' for backwards compatibility
+  const campaignTitle = body.title || body.name;
+  if (!campaignTitle) {
+    return validationError(
+      'Campaign title is required',
+      undefined,
+      corsHeaders
+    );
   }
 
-  // Build campaign payload
+  // Build campaign payload - use 'title' as the primary field (DB requires it)
   const payload: Record<string, unknown> = {
     user_id: userId,
-    name: body.name,
+    title: campaignTitle,
+    name: campaignTitle, // Also set name for backwards compatibility
     status: body.status || 'planning',
   };
 
