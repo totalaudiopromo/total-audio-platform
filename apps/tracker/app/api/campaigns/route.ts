@@ -4,7 +4,10 @@
 // POST: Create new campaign
 // ============================================================================
 
-import { createServerClient } from '@total-audio/core-db/server';
+import {
+  createServerClient,
+  createAdminClient,
+} from '@total-audio/core-db/server';
 import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 import { generateCampaignInsights, analyzePatterns } from '@/lib/intelligence';
@@ -44,8 +47,11 @@ export async function GET(req: NextRequest) {
     return unauthorized(auth.error.message, corsHeaders);
   }
 
-  // Create Supabase client for database operations
-  const supabase = await createServerClient(cookies());
+  // Use admin client for API key auth (bypasses RLS), regular client for session auth
+  const supabase =
+    auth.context.authMethod === 'api_key'
+      ? await createAdminClient(cookies())
+      : await createServerClient(cookies());
   const userId = auth.context.userId;
 
   // Fetch campaigns
@@ -147,8 +153,11 @@ export async function POST(request: NextRequest) {
     return unauthorized(auth.error.message, corsHeaders);
   }
 
-  // Create Supabase client for database operations
-  const supabase = await createServerClient(cookies());
+  // Use admin client for API key auth (bypasses RLS), regular client for session auth
+  const supabase =
+    auth.context.authMethod === 'api_key'
+      ? await createAdminClient(cookies())
+      : await createServerClient(cookies());
   const userId = auth.context.userId;
 
   // Check subscription limits before creating campaign
