@@ -5,10 +5,8 @@ on:
   workflow_dispatch:
   # Only run scheduled checks (removes push trigger to save quota)
   schedule:
-    # Run health checks every 6 hours (00:00, 06:00, 12:00, 18:00 GMT)
-    # Reduced from hourly to save 83% of quota usage
-    - cron: '0 0,6,12,18 * * *'
-    # Daily summary at 8am GMT
+    # Daily health check and summary at 8am GMT only
+    # Single notification per day for healthy apps
     - cron: '0 8 * * *'
 
 env:
@@ -59,7 +57,7 @@ jobs:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
 
       - name: Send AI Summary Report
-        if: success() && github.event.schedule == '0 8 * * *'
+        if: success()
         run: pnpm tsx scripts/golden-summary.ts
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}

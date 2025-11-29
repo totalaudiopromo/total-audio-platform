@@ -28,10 +28,13 @@ export class WorkspaceQueries {
    * Automatically filters by workspace_id
    *
    * @example
-   * const campaigns = await queries.from('campaigns').select('*');
+   * const { data } = await queries.from('campaigns');
    */
-  from<T extends keyof Database['public']['Tables']>(table: T) {
-    return this.supabase.from(table).eq('workspace_id', this.workspaceId);
+  async from<T extends keyof Database['public']['Tables']>(table: T) {
+    return this.supabase
+      .from(table)
+      .select('*')
+      .eq('workspace_id' as any, this.workspaceId);
   }
 
   // ========================================
@@ -92,11 +95,12 @@ export class WorkspaceQueries {
 
   /**
    * Fetch Pitch Generator contacts for current workspace
+   * Note: Uses contacts table as pitch_contacts may not exist in all deployments
    */
   async getPitchContacts() {
     try {
       const { data, error } = await this.supabase
-        .from('pitch_contacts')
+        .from('contacts')
         .select('*')
         .eq('workspace_id', this.workspaceId)
         .order('created_at', { ascending: false });
@@ -194,7 +198,7 @@ export class WorkspaceQueries {
           `
           *,
           intel_contact:intel_contacts(*),
-          pitch_contact:pitch_contacts(*)
+          contact:contacts(*)
         `
         )
         .eq('workspace_id', this.workspaceId)

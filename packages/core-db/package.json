@@ -36,6 +36,7 @@
     "@supabase/ssr": "0.7.0",
     "@supabase/supabase-js": "2.75.0",
     "airtable": "^0.12.2",
+    "googleapis": "^144.0.0",
     "zod": "^3.25.76"
   },
   "peerDependencies": {

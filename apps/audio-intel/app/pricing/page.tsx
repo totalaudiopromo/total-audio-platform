@@ -50,14 +50,14 @@ function PricingContent() {
 
   // Auto-open modal when linked with query params (e.g., /pricing?plan=professional&billing=monthly)
   useEffect(() => {
-    const plan = (searchParams.get('plan') || '').toLowerCase();
-    const billing = (searchParams.get('billing') || '').toLowerCase();
+    const plan = (searchParams?.get('plan') || '').toLowerCase();
+    const billing = (searchParams?.get('billing') || '').toLowerCase();
     const validPlan = ['professional', 'agency'].includes(plan);
     const validBilling = ['monthly', 'annual'].includes(billing);
     if (validPlan && validBilling) {
       setShowEmailForm({ tier: plan, billing });
     }
-  }, [searchParams?.toString()]);
+  }, [searchParams]);
 
   const handleCheckout = async (
     tier: 'professional' | 'agency',
@@ -65,7 +65,8 @@ function PricingContent() {
   ) => {
     setShowEmailForm({ tier, billing });
     // Also reflect in URL so deep-linking reliably opens the modal even if click handlers are blocked
-    const params = new URLSearchParams(Array.from(searchParams.entries()));
+    const currentParams = searchParams ? Object.fromEntries(searchParams.entries()) : {};
+    const params = new URLSearchParams(currentParams);
     params.set('plan', tier);
     params.set('billing', billing);
     router.replace(`/pricing?${params.toString()}`, { scroll: false });

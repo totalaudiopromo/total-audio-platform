@@ -203,9 +203,11 @@ export class GmailSyncService extends BaseIntegrationSync {
       // Check each tracked email for replies
       for (const trackedEmail of trackedEmails) {
         try {
+          // Type assertion for fields that may not be in generated types yet
+          const emailRecord = trackedEmail as typeof trackedEmail & { to_email?: string };
           const hasReply = await this.checkThreadForReply(
             trackedEmail.gmail_thread_id!,
-            trackedEmail.to_email!
+            emailRecord.to_email || ''
           );
 
           if (hasReply) {
@@ -421,7 +423,8 @@ export class GmailSyncService extends BaseIntegrationSync {
     subject: string;
   }): Promise<void> {
     try {
-      await this.supabase.from('pitch_email_tracking').insert({
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      await (this.supabase.from('pitch_email_tracking') as any).insert({
         workspace_id: this.workspace_id,
         pitch_id: pitchId,
         contact_id: contactId || null,
