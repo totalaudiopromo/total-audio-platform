@@ -24,6 +24,25 @@ export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const userAgent = request.headers.get('user-agent')?.toLowerCase() || '';
 
+  // Check for API key authentication on API routes
+  // If a valid Bearer token is present, bypass session auth
+  const authHeader = request.headers.get('authorization');
+  const isApiRoute = pathname.startsWith('/api/');
+  const hasApiKey = authHeader?.startsWith('Bearer tap_');
+
+  // If it's an API route with an API key, let the route handler validate it
+  // Don't redirect to login - let the request through
+  if (isApiRoute && hasApiKey) {
+    const response = NextResponse.next();
+    // Add CORS headers for API key authenticated requests
+    const origin = request.headers.get('origin');
+    if (origin) {
+      response.headers.set('Access-Control-Allow-Origin', origin);
+      response.headers.set('Access-Control-Allow-Credentials', 'true');
+    }
+    return response;
+  }
+
   // Update Supabase session (with fallback)
   let supabaseResponse = NextResponse.next();
   let user = null;
@@ -41,7 +60,7 @@ export async function middleware(request: NextRequest) {
   // Protected routes that require authentication
   const protectedPaths = ['/dashboard'];
 
-  // Protected API routes
+  // Protected API routes (only apply session auth if no API key)
   const protectedAPIPaths = ['/api/enrich', '/api/enrich-claude', '/api/usage', '/api/checkout'];
 
   // Check if current path needs authentication
@@ -49,7 +68,7 @@ export async function middleware(request: NextRequest) {
     protectedPaths.some(path => pathname.startsWith(path)) ||
     protectedAPIPaths.some(path => pathname.startsWith(path));
 
-  // Redirect to signin if not authenticated
+  // Redirect to signin if not authenticated (and no API key)
   if (needsAuth && !user) {
     const redirectUrl = new URL('/signin', request.url);
     redirectUrl.searchParams.set('redirectTo', pathname);
