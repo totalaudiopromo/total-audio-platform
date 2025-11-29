@@ -159,7 +159,7 @@ Generate:
 Return ONLY the pitch body text, nothing else.`;
 
   const response = await anthropic.messages.create({
-    model: 'claude-3-5-sonnet-latest',
+    model: 'claude-sonnet-4-20250514',
     max_tokens: 1024,
     temperature: 0.8,
     system:
@@ -195,7 +195,7 @@ RULES for subject lines:
 Format: Return exactly 3 subject lines, one per line, numbered 1-3.`;
 
   const subjectResponse = await anthropic.messages.create({
-    model: 'claude-3-5-sonnet-latest',
+    model: 'claude-sonnet-4-20250514',
     max_tokens: 256,
     temperature: 0.7,
     system: 'You write effective email subject lines that sound personal and get opened.',

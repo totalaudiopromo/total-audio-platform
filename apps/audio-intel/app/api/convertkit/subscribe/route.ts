@@ -16,12 +16,25 @@ interface SubscribeRequest {
   form_type: 'hero' | 'pricing' | 'demo' | 'newsletter' | 'beta';
 }
 
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+};
+
+export async function OPTIONS() {
+  return NextResponse.json({}, { headers: corsHeaders });
+}
+
 export async function POST(request: NextRequest) {
   try {
     const { subscriber, form_type }: SubscribeRequest = await request.json();
 
     if (!subscriber.email_address) {
-      return NextResponse.json({ error: 'Email address is required' }, { status: 400 });
+      return NextResponse.json(
+        { error: 'Email address is required' },
+        { status: 400, headers: corsHeaders }
+      );
     }
 
     const formId = convertKit.getFormId(form_type);
@@ -45,14 +58,17 @@ export async function POST(request: NextRequest) {
     });
 
     if (!result.success) {
-      return NextResponse.json({ error: result.error }, { status: 500 });
+      return NextResponse.json({ error: result.error }, { status: 500, headers: corsHeaders });
     }
 
-    return NextResponse.json({
-      success: true,
-      subscription_id: result.subscriberId,
-      message: 'Successfully subscribed to ConvertKit',
-    });
+    return NextResponse.json(
+      {
+        success: true,
+        subscription_id: result.subscriberId,
+        message: 'Successfully subscribed to ConvertKit',
+      },
+      { headers: corsHeaders }
+    );
   } catch (error) {
     console.error('ConvertKit subscription error:', error);
     return NextResponse.json(
@@ -60,7 +76,7 @@ export async function POST(request: NextRequest) {
         error: 'Subscription failed',
         details: error instanceof Error ? error.message : 'Unknown error',
       },
-      { status: 500 }
+      { status: 500, headers: corsHeaders }
     );
   }
 }
