@@ -8,6 +8,7 @@ import { ErrorCodes, ErrorStatusCodes } from '../types/api-response';
  * @param data - Response payload
  * @param meta - Optional metadata
  * @param status - HTTP status code (default 200)
+ * @param corsHeaders - Optional CORS headers to include
  *
  * @example
  * ```typescript
@@ -18,11 +19,21 @@ import { ErrorCodes, ErrorStatusCodes } from '../types/api-response';
 export function successResponse<T>(
   data: T,
   meta?: ApiMeta,
-  status = 200
+  status = 200,
+  corsHeaders?: Record<string, string>
 ): NextResponse<ApiResponse<T>> {
   const response: ApiResponse<T> = { success: true, data };
   if (meta) response.meta = meta;
-  return NextResponse.json(response, { status });
+  const nextResponse = NextResponse.json(response, { status });
+
+  // Apply CORS headers if provided
+  if (corsHeaders) {
+    Object.entries(corsHeaders).forEach(([key, value]) => {
+      nextResponse.headers.set(key, value);
+    });
+  }
+
+  return nextResponse;
 }
 
 /**
@@ -32,6 +43,7 @@ export function successResponse<T>(
  * @param message - Human-readable error message
  * @param status - HTTP status code (auto-mapped from code if not provided)
  * @param details - Additional error details
+ * @param corsHeaders - Optional CORS headers to include
  *
  * @example
  * ```typescript
@@ -43,96 +55,128 @@ export function errorResponse(
   code: ErrorCode | string,
   message: string,
   status?: number,
-  details?: Record<string, unknown>
+  details?: Record<string, unknown>,
+  corsHeaders?: Record<string, string>
 ): NextResponse<ApiResponse<never>> {
   const httpStatus = status ?? ErrorStatusCodes[code as ErrorCode] ?? 400;
   const error: ApiError = { code, message };
   if (details) error.details = details;
 
-  return NextResponse.json({ success: false, error }, { status: httpStatus });
+  const nextResponse = NextResponse.json({ success: false, error }, { status: httpStatus });
+
+  // Apply CORS headers if provided
+  if (corsHeaders) {
+    Object.entries(corsHeaders).forEach(([key, value]) => {
+      nextResponse.headers.set(key, value);
+    });
+  }
+
+  return nextResponse;
 }
 
 // ============================================================================
-// Convenience Error Helpers
+// Convenience Error Helpers (all accept optional corsHeaders as last param)
 // ============================================================================
 
 /**
  * 401 Unauthorized response
  */
-export const unauthorized = (message = 'Authentication required') =>
-  errorResponse(ErrorCodes.UNAUTHORIZED, message, 401);
+export const unauthorized = (
+  message = 'Authentication required',
+  corsHeaders?: Record<string, string>
+) => errorResponse(ErrorCodes.UNAUTHORIZED, message, 401, undefined, corsHeaders);
 
 /**
  * 403 Forbidden response
  */
-export const forbidden = (message = 'Access denied') =>
-  errorResponse(ErrorCodes.FORBIDDEN, message, 403);
+export const forbidden = (message = 'Access denied', corsHeaders?: Record<string, string>) =>
+  errorResponse(ErrorCodes.FORBIDDEN, message, 403, undefined, corsHeaders);
+
+/**
+ * Alias for forbidden - 403 Forbidden response
+ */
+export const forbiddenError = forbidden;
 
 /**
  * 404 Not Found response
  */
-export const notFound = (resource = 'Resource') =>
-  errorResponse(ErrorCodes.NOT_FOUND, `${resource} not found`, 404);
+export const notFound = (resource = 'Resource', corsHeaders?: Record<string, string>) =>
+  errorResponse(ErrorCodes.NOT_FOUND, `${resource} not found`, 404, undefined, corsHeaders);
 
 /**
  * 400 Validation Error response
  */
-export const validationError = (message: string, details?: Record<string, unknown>) =>
-  errorResponse(ErrorCodes.VALIDATION_ERROR, message, 400, details);
+export const validationError = (
+  message: string,
+  details?: Record<string, unknown>,
+  corsHeaders?: Record<string, string>
+) => errorResponse(ErrorCodes.VALIDATION_ERROR, message, 400, details, corsHeaders);
 
 /**
  * 400 Bad Request response
  */
-export const badRequest = (message: string, details?: Record<string, unknown>) =>
-  errorResponse(ErrorCodes.BAD_REQUEST, message, 400, details);
+export const badRequest = (
+  message: string,
+  details?: Record<string, unknown>,
+  corsHeaders?: Record<string, string>
+) => errorResponse(ErrorCodes.BAD_REQUEST, message, 400, details, corsHeaders);
 
 /**
  * 409 Conflict response
  */
-export const conflict = (message: string) => errorResponse(ErrorCodes.CONFLICT, message, 409);
+export const conflict = (message: string, corsHeaders?: Record<string, string>) =>
+  errorResponse(ErrorCodes.CONFLICT, message, 409, undefined, corsHeaders);
 
 /**
  * 429 Rate Limited response
  */
-export const rateLimited = (retryAfter?: number) =>
+export const rateLimited = (retryAfter?: number, corsHeaders?: Record<string, string>) =>
   errorResponse(
     ErrorCodes.RATE_LIMITED,
     'Too many requests. Please try again later.',
     429,
-    retryAfter ? { retryAfter } : undefined
+    retryAfter ? { retryAfter } : undefined,
+    corsHeaders
   );
 
 /**
  * 402 Subscription Required response
  */
-export const subscriptionRequired = (message = 'This feature requires a subscription') =>
-  errorResponse(ErrorCodes.SUBSCRIPTION_REQUIRED, message, 402);
+export const subscriptionRequired = (
+  message = 'This feature requires a subscription',
+  corsHeaders?: Record<string, string>
+) => errorResponse(ErrorCodes.SUBSCRIPTION_REQUIRED, message, 402, undefined, corsHeaders);
 
 /**
  * 429 Quota Exceeded response
  */
 export const quotaExceeded = (
   message = 'Usage quota exceeded',
-  details?: Record<string, unknown>
-) => errorResponse(ErrorCodes.QUOTA_EXCEEDED, message, 429, details);
+  details?: Record<string, unknown>,
+  corsHeaders?: Record<string, string>
+) => errorResponse(ErrorCodes.QUOTA_EXCEEDED, message, 429, details, corsHeaders);
 
 /**
  * 500 Internal Server Error response
  */
-export const internalError = (message = 'An unexpected error occurred') =>
-  errorResponse(ErrorCodes.INTERNAL_ERROR, message, 500);
+export const internalError = (
+  message = 'An unexpected error occurred',
+  corsHeaders?: Record<string, string>
+) => errorResponse(ErrorCodes.INTERNAL_ERROR, message, 500, undefined, corsHeaders);
 
 /**
  * 503 Service Unavailable response
  */
-export const serviceUnavailable = (message = 'Service temporarily unavailable') =>
-  errorResponse(ErrorCodes.SERVICE_UNAVAILABLE, message, 503);
+export const serviceUnavailable = (
+  message = 'Service temporarily unavailable',
+  corsHeaders?: Record<string, string>
+) => errorResponse(ErrorCodes.SERVICE_UNAVAILABLE, message, 503, undefined, corsHeaders);
 
 /**
  * 504 Gateway Timeout response
  */
-export const timeout = (message = 'Request timed out') =>
-  errorResponse(ErrorCodes.TIMEOUT, message, 504);
+export const timeout = (message = 'Request timed out', corsHeaders?: Record<string, string>) =>
+  errorResponse(ErrorCodes.TIMEOUT, message, 504, undefined, corsHeaders);
 
 // ============================================================================
 // Utility Helpers

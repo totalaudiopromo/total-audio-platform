@@ -6,9 +6,19 @@
 
 import { createServerClient } from '@total-audio/core-db/server';
 import { cookies } from 'next/headers';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { generateCampaignInsights, analyzePatterns } from '@/lib/intelligence';
 import { canCreateCampaign, getSubscriptionLimits } from '@/lib/subscription';
+import {
+  getUserFromRequest,
+  getCorsHeaders,
+  corsOptionsResponse,
+  successResponse,
+  unauthorized,
+  validationError,
+  forbiddenError,
+  internalError,
+} from '@total-audio/core-db';
 import type {
   Campaign,
   Benchmark,
@@ -19,28 +29,34 @@ import type {
 // GET /api/campaigns - List all campaigns with intelligence
 // ============================================================================
 export const dynamic = 'force-dynamic';
-export async function GET() {
-  const supabase = await createServerClient(cookies());
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
 
-  if (!user) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+// Handle OPTIONS for CORS preflight
+export async function OPTIONS(req: NextRequest) {
+  return corsOptionsResponse(req.headers.get('origin'));
+}
+
+export async function GET(req: NextRequest) {
+  const corsHeaders = getCorsHeaders(req.headers.get('origin'));
+
+  // Use unified auth (supports API keys and sessions)
+  const auth = await getUserFromRequest(req);
+  if (!auth.success) {
+    return unauthorized(auth.error.message, corsHeaders);
   }
+
+  // Create Supabase client for database operations
+  const supabase = await createServerClient(cookies());
+  const userId = auth.context.userId;
 
   // Fetch campaigns
   const { data: campaigns, error: campaignsError } = await supabase
     .from('campaigns')
     .select('*')
-    .eq('user_id', user.id)
+    .eq('user_id', userId)
     .order('created_at', { ascending: false });
 
   if (campaignsError) {
-    return NextResponse.json(
-      { error: campaignsError.message },
-      { status: 500 }
-    );
+    return internalError(campaignsError.message, corsHeaders);
   }
 
   // Fetch benchmarks for intelligence
@@ -107,38 +123,41 @@ export async function GET() {
     avg_success_rate: Math.round(avgSuccessRate * 10) / 10,
   };
 
-  return NextResponse.json({
-    campaigns: enrichedCampaigns,
-    patterns,
-    metrics,
-  });
+  return successResponse(
+    {
+      campaigns: enrichedCampaigns,
+      patterns,
+      metrics,
+    },
+    undefined,
+    200,
+    corsHeaders
+  );
 }
 
 // ============================================================================
 // POST /api/campaigns - Create new campaign
 // ============================================================================
-export async function POST(request: Request) {
-  const supabase = await createServerClient(cookies());
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+export async function POST(request: NextRequest) {
+  const corsHeaders = getCorsHeaders(request.headers.get('origin'));
 
-  if (!user) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  // Use unified auth (supports API keys and sessions)
+  const auth = await getUserFromRequest(request);
+  if (!auth.success) {
+    return unauthorized(auth.error.message, corsHeaders);
   }
 
+  // Create Supabase client for database operations
+  const supabase = await createServerClient(cookies());
+  const userId = auth.context.userId;
+
   // Check subscription limits before creating campaign
-  const canCreate = await canCreateCampaign(user.id);
+  const canCreate = await canCreateCampaign(userId);
   if (!canCreate) {
-    const limits = await getSubscriptionLimits(user.id);
-    return NextResponse.json(
-      {
-        error: 'Campaign limit reached',
-        message: `You've reached your campaign limit of ${limits?.campaignsLimit}. Upgrade your plan to create more campaigns.`,
-        requiresUpgrade: true,
-        limits,
-      },
-      { status: 403 }
+    const limits = await getSubscriptionLimits(userId);
+    return forbiddenError(
+      `You've reached your campaign limit of ${limits?.campaignsLimit}. Upgrade your plan to create more campaigns.`,
+      corsHeaders
     );
   }
 
@@ -146,15 +165,12 @@ export async function POST(request: Request) {
 
   // Validate required fields
   if (!body.name) {
-    return NextResponse.json(
-      { error: 'Campaign name is required' },
-      { status: 400 }
-    );
+    return validationError('Campaign name is required', undefined, corsHeaders);
   }
 
   // Build campaign payload
   const payload: Record<string, unknown> = {
-    user_id: user.id,
+    user_id: userId,
     name: body.name,
     status: body.status || 'planning',
   };
@@ -201,10 +217,7 @@ export async function POST(request: Request) {
 
   if (error) {
     console.error('Campaign creation error:', error);
-    return NextResponse.json(
-      { error: error.message, details: error },
-      { status: 500 }
-    );
+    return internalError(error.message, corsHeaders);
   }
 
   const campaignData = data as any;
@@ -220,11 +233,16 @@ export async function POST(request: Request) {
 
     const insights = generateCampaignInsights(campaignData as any, benchmark);
 
-    return NextResponse.json({
-      ...data,
-      insights,
-    });
+    return successResponse(
+      {
+        ...data,
+        insights,
+      },
+      undefined,
+      201,
+      corsHeaders
+    );
   }
 
-  return NextResponse.json(data);
+  return successResponse(data, undefined, 201, corsHeaders);
 }

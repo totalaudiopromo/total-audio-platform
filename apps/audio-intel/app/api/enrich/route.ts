@@ -1,6 +1,18 @@
+/**
+ * Contact Enrichment API - Forwarding Endpoint
+ * Forwards requests to the enrich-claude endpoint with unified auth and CORS
+ */
+
 import { NextRequest, NextResponse } from 'next/server';
 import { formatContactIntelligence } from '@/utils/formatIntelligence';
 import axios from 'axios';
+import {
+  getUserFromRequest,
+  getCorsHeaders,
+  corsOptionsResponse,
+  unauthorized,
+  internalError,
+} from '@total-audio/core-db';
 
 // Constants - safe at module scope
 const PERPLEXITY_API_URL = 'https://api.perplexity.ai/chat/completions';
@@ -238,21 +250,43 @@ async function processContactBatch(
   return enriched;
 }
 
+// Handle OPTIONS for CORS preflight
+export async function OPTIONS(req: NextRequest) {
+  return corsOptionsResponse(req.headers.get('origin'));
+}
+
 export async function POST(req: NextRequest) {
+  const corsHeaders = getCorsHeaders(req.headers.get('origin'));
+
+  // Validate authentication
+  const auth = await getUserFromRequest(req);
+  if (!auth.success) {
+    return unauthorized(auth.error.message, corsHeaders);
+  }
+
   // Forward to the improved Claude API endpoint for better performance and cost
   try {
     const body = await req.json();
 
+    // Forward with auth header preserved
     const response = await fetch(`${req.nextUrl.origin}/api/enrich-claude`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: req.headers.get('Authorization') || '',
+        Cookie: req.headers.get('Cookie') || '',
       },
       body: JSON.stringify(body),
     });
 
     const data = await response.json();
-    return NextResponse.json(data, { status: response.status });
+
+    // Add CORS headers to response
+    const result = NextResponse.json(data, { status: response.status });
+    Object.entries(corsHeaders).forEach(([key, value]) => {
+      result.headers.set(key, value);
+    });
+    return result;
   } catch (error) {
     console.error('Error forwarding to Claude API:', error);
     // Fall back to original Perplexity logic if Claude fails
@@ -336,13 +370,25 @@ async function originalPerplexityHandler(req: NextRequest) {
   }
 }
 
-export async function GET() {
-  return NextResponse.json({
-    message: 'Audio Intel Contact Enrichment API',
-    method: 'POST',
-    description: 'Send contact data for AI-powered enrichment',
-    example: {
-      contacts: [{ email: 'john@example.com', name: 'John Smith' }],
+export async function GET(req: NextRequest) {
+  const corsHeaders = getCorsHeaders(req.headers.get('origin'));
+
+  const response = NextResponse.json({
+    success: true,
+    data: {
+      service: 'Audio Intel Contact Enrichment API',
+      method: 'POST',
+      authentication: 'Required (API key or session)',
+      description: 'Send contact data for AI-powered enrichment',
+      example: {
+        contacts: [{ email: 'john@example.com', name: 'John Smith' }],
+      },
     },
   });
+
+  Object.entries(corsHeaders).forEach(([key, value]) => {
+    response.headers.set(key, value);
+  });
+
+  return response;
 }
