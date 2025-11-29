@@ -3,6 +3,10 @@
  * TypeScript SDK for Total Audio Platform APIs
  */
 
+import { IntelClient } from './intel-client';
+import { PitchClient } from './pitch-client';
+import { TrackerClient } from './tracker-client';
+
 export { BaseClient, TotalAudioApiError } from './base-client';
 export type { ClientConfig } from './base-client';
 
