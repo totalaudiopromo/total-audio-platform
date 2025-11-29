@@ -186,19 +186,19 @@ What's your biggest challenge with music promotion? I'd love to help solve it.
 
 ### **🎯 SUCCESS TACTICS**
 
-1. **Respond to EVERY comment** within 15 minutes
-2. **Ask engaging questions** to drive discussion
-3. **Share value** before promoting
-4. **Be authentic** - your story is your biggest asset
-5. **Track everything** - measure what works
+1. **Respond to EVERY comment**within 15 minutes
+2. **Ask engaging questions**to drive discussion
+3. **Share value**before promoting
+4. **Be authentic**- your story is your biggest asset
+5. **Track everything**- measure what works
 
 ### **🚨 CRITICAL SUCCESS FACTORS**
 
-- **Start immediately** - don't wait for perfect
-- **Be consistent** - post and engage daily
-- **Provide value** - every post should help indie artists
-- **Stay authentic** - your passion will shine through
-- **Track results** - double down on what works
+- **Start immediately**- don't wait for perfect
+- **Be consistent**- post and engage daily
+- **Provide value**- every post should help indie artists
+- **Stay authentic**- your passion will shine through
+- **Track results**- double down on what works
 
 ---
 

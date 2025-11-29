@@ -1,4 +1,4 @@
-#  Airtable Setup Guide for Radio Promo Agent
+# Airtable Setup Guide for Radio Promo Agent
 
 ## Quick Start Checklist
 
@@ -119,7 +119,7 @@
 
 #### Automation 1: Auto-Enrich New Contacts
 
-**Trigger:** When a record is created in Radio Contacts
+**Trigger:**When a record is created in Radio Contacts
 **Action:**
 
 - Set "Audio Intel Enriched" to False
@@ -128,7 +128,7 @@
 
 #### Automation 2: Follow-up Reminder
 
-**Trigger:** When "Last Contacted" is more than 14 days ago
+**Trigger:**When "Last Contacted" is more than 14 days ago
 **Action:**
 
 - Send email notification
@@ -136,7 +136,7 @@
 
 #### Automation 3: Update Response Rate
 
-**Trigger:** When a new Interaction is created
+**Trigger:**When a new Interaction is created
 **Action:**
 
 - Calculate new response rate
@@ -303,12 +303,12 @@ console.log(' Audio Intel connection successful!');
 
 ## Next Steps
 
-1. **Set up Airtable base** using this guide
-2. **Import existing contacts** and clean up data
-3. **Test API integrations** with sample data
-4. **Run enrichment pipeline** on all contacts
-5. **Update radio promo agent** to use dynamic targeting
-6. **Launch first campaign** with new system
-7. **Monitor and optimize** based on results
+1. **Set up Airtable base**using this guide
+2. **Import existing contacts**and clean up data
+3. **Test API integrations**with sample data
+4. **Run enrichment pipeline**on all contacts
+5. **Update radio promo agent**to use dynamic targeting
+6. **Launch first campaign**with new system
+7. **Monitor and optimize**based on results
 
 This setup transforms your contact management from a static list into a dynamic, intelligent system that learns and improves with every campaign!

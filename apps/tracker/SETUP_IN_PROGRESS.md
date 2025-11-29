@@ -1,15 +1,15 @@
-#  Integrations Setup In Progress
+# Integrations Setup In Progress
 
 ## Completed
 
-1. **Database Migration** - SQL copied to clipboard
+1. **Database Migration**- SQL copied to clipboard
    - Paste and run in: https://app.supabase.com/project/ucncbighzqudaszewjrv/sql/new
    - Creates 4 tables: integration_connections, integration_sync_logs, integration_field_mappings, gmail_tracked_emails
 
-2. **Cron Secret** - Generated and added to .env.local
+2. **Cron Secret**- Generated and added to .env.local
    - `CRON_SECRET=vHt2Iqy8a2Gobw3etChkw9blsIb85CKIcMYJBwAuCwM=`
 
-3. **Dependencies** - Installed
+3. **Dependencies**- Installed
    - googleapis@^144.0.0
    - nanoid@^5.0.9
 
@@ -46,14 +46,14 @@ Go to: https://console.cloud.google.com/apis/credentials/consent
    - App name: **"Tracker by Total Audio"**
    - User support email: Your email
    - Developer contact email: Your email
-4. Click **"Save and Continue"** (3 times)
+4. Click **"Save and Continue"**(3 times)
 5. Click **"Back to Dashboard"**
 
 ### Step 4: Create OAuth Client ID
 
 Go to: https://console.cloud.google.com/apis/credentials
 
-1. Click **"Create Credentials"** → **"OAuth Client ID"**
+1. Click **"Create Credentials"**→ **"OAuth Client ID"**
 2. Application type: **"Web application"**
 3. Name: **"Tracker Local Development"**
 4. Authorized redirect URIs - Add these **exactly**:
@@ -62,7 +62,7 @@ Go to: https://console.cloud.google.com/apis/credentials
    http://localhost:3004/api/integrations/gmail/callback
    ```
 5. Click **"Create"**
-6. **Copy Client ID and Client Secret** (keep modal open)
+6. **Copy Client ID and Client Secret**(keep modal open)
 
 ### Step 5: Update .env.local
 
@@ -146,4 +146,4 @@ Visit: http://localhost:3004/dashboard/integrations
 
 ---
 
-**Questions or issues?** Check [INTEGRATIONS_QUICK_START.md](./INTEGRATIONS_QUICK_START.md) for detailed troubleshooting.
+**Questions or issues?**Check [INTEGRATIONS_QUICK_START.md](./INTEGRATIONS_QUICK_START.md) for detailed troubleshooting.

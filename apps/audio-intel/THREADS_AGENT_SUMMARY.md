@@ -4,26 +4,26 @@
 
 ### Files Created
 
-1. **`lib/threads-posting-agent.ts`** (485 lines)
+1. **`lib/threads-posting-agent.ts`**(485 lines)
    - Complete Threads API integration
    - Autonomous posting system
    - Content mapping from markdown
    - Scheduled post processing
    - Health checks and insights
 
-2. **`lib/THREADS_API_SETUP.md`** (Complete setup documentation)
+2. **`lib/THREADS_API_SETUP.md`**(Complete setup documentation)
    - Step-by-step API configuration
    - OAuth flow instructions
    - Token generation and refresh
    - Troubleshooting guide
    - Security best practices
 
-3. **`.env.threads.example`** (Environment variable template)
+3. **`.env.threads.example`**(Environment variable template)
    - All required credentials
    - Setup instructions
    - Quick reference commands
 
-4. **`scripts/test-threads-agent.ts`** (Test script)
+4. **`scripts/test-threads-agent.ts`**(Test script)
    - Health check validation
    - Content retrieval testing
    - Safe test posting workflow
@@ -31,7 +31,7 @@
 
 ## Dependencies
 
-**No new npm packages required** - Uses existing dependencies:
+**No new npm packages required**- Uses existing dependencies:
 
 - `axios` (already installed) - HTTP client for Threads API
 - `@atproto/api` pattern followed for consistency
@@ -109,7 +109,7 @@ All content sourced from `social-content/BLUESKY_THREADS_CONTENT.md`:
 
 Threads requires a two-step process (matching Instagram's requirements):
 
-1. **Create Media Container** (unpublished draft)
+1. **Create Media Container**(unpublished draft)
 
    ```typescript
    POST /v1.0/{user_id}/threads

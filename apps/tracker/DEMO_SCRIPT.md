@@ -2,7 +2,7 @@
 
 ## Demo Duration: 10-12 minutes
 
-###  Demo Goals
+### Demo Goals
 
 1. Show real AI-powered campaign analysis (NOT just maths)
 2. Demonstrate CSV import saving hours of manual data entry
@@ -103,7 +103,7 @@
    - Click "Copy" on any section
    - "Use this in your client reports or team briefings"
 
-6. **Regenerate Demo** (optional if time)
+6. **Regenerate Demo**(optional if time)
    - Click "Regenerate Autopsy"
    - Show that Claude gives fresh analysis each time
    - Point out: "Different perspective, same data"
@@ -245,7 +245,7 @@
 
 ---
 
-**Demo Version:** 1.0
-**Last Updated:** October 2025
-**Target Audience:** Radio promoters, PR agencies, playlist pluggers
-**Success Rate:** 85% conversion for radio promoters (proven segment)
+**Demo Version:**1.0
+**Last Updated:**October 2025
+**Target Audience:**Radio promoters, PR agencies, playlist pluggers
+**Success Rate:**85% conversion for radio promoters (proven segment)

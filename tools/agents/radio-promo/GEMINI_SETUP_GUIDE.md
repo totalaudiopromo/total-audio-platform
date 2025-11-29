@@ -94,17 +94,17 @@ node radio-promo-agent.js process-transcript gemini:test-transcript-123
 
 ## **Example Workflow**
 
-1. **Record Google Meet** with artist
-2. **Get transcript** from Google Meet
+1. **Record Google Meet**with artist
+2. **Get transcript**from Google Meet
 3. **Process with Gemini**:
 
    ```bash
    node radio-promo-agent.js personal-workflow gemini:meeting-transcript-456
    ```
 
-4. **Review extracted data** in the campaign brief
-5. **Approve Monday.com campaign** creation
-6. **Generate press release** automatically
+4. **Review extracted data**in the campaign brief
+5. **Approve Monday.com campaign**creation
+6. **Generate press release**automatically
 
 ## **Benefits**
 

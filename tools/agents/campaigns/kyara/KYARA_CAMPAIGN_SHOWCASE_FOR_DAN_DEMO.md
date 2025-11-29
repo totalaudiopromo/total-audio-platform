@@ -2,10 +2,10 @@
 
 ## Using Real Campaign Data to Demonstrate tracker.totalaudiopromo.com
 
-**Demo Date:** Friday October 11th, 2025
-**Campaign:** KYARA "Bloodshot" (Real Liberty Music PR Campaign)
-**Release Date:** Monday 14th October 2025
-**Purpose:** Show Dan how your tracker tool can streamline Liberty's campaign management
+**Demo Date:**Friday October 11th, 2025
+**Campaign:**KYARA "Bloodshot" (Real Liberty Music PR Campaign)
+**Release Date:**Monday 14th October 2025
+**Purpose:**Show Dan how your tracker tool can streamline Liberty's campaign management
 
 ---
 
@@ -72,7 +72,7 @@ UK TARGETS:
 
 ### What to Show Dan:
 
-#### 1. **Campaign Overview Card** (Top of Dashboard)
+#### 1. **Campaign Overview Card**(Top of Dashboard)
 
 ```
 KYARA - "Bloodshot"
@@ -87,7 +87,7 @@ Quick Stats:
 - 9 countries reached
 ```
 
-#### 2. **Activity Timeline** (Visual Progress)
+#### 2. **Activity Timeline**(Visual Progress)
 
 ```
 Week 1 (Oct 1-7): Pre-release pitch wave
@@ -106,7 +106,7 @@ Week 3 (Oct 15-21): Post-release follow-ups [PENDING]
 Week 4-6: Sustained campaign + reporting [PLANNED]
 ```
 
-#### 3. **Integration Status** (Key Value Prop)
+#### 3. **Integration Status**(Key Value Prop)
 
 ```
  Gmail: 5 drafts auto-created, sent from Liberty inbox
@@ -116,7 +116,7 @@ Week 4-6: Sustained campaign + reporting [PLANNED]
 CoverageBook: Campaign report pending release week
 ```
 
-#### 4. **Performance Metrics** (Real Numbers)
+#### 4. **Performance Metrics**(Real Numbers)
 
 ```
 Email Performance:
@@ -133,7 +133,7 @@ Radio Momentum:
 - Confirmed Adds: 3 (Amazing Radio + 2 community)
 ```
 
-#### 5. **Next Actions** (AI-Powered Suggestions)
+#### 5. **Next Actions**(AI-Powered Suggestions)
 
 ```
  HIGH PRIORITY (This Weekend):
@@ -182,11 +182,11 @@ Radio Momentum:
 
 **The Value Prop:**
 
-- **Save time:** 10+ hours per campaign on admin/tracking
-- **Better reporting:** Real-time data for clients
-- **Integration:** Gmail, Mailchimp, WARM, Google Sheets all synced
-- **AI insights:** Automated next actions and suggestions
-- **Multi-campaign view:** See all 20+ Liberty campaigns at once
+- **Save time:**10+ hours per campaign on admin/tracking
+- **Better reporting:**Real-time data for clients
+- **Integration:**Gmail, Mailchimp, WARM, Google Sheets all synced
+- **AI insights:**Automated next actions and suggestions
+- **Multi-campaign view:**See all 20+ Liberty campaigns at once
 
 ### The Ask (1 minute):
 
@@ -248,13 +248,13 @@ Radio Momentum:
 - 20 campaigns × 10 hours = 200 hours saved
 - 20 client reports × 2 hours = 40 hours saved
 - Team coordination: 20 hours saved
-- **Total: 260 hours/month = £3,900/month** (at £15/hour)
+- **Total: 260 hours/month = £3,900/month**(at £15/hour)
 
 **Cost:**
 
 - Pilot: FREE (3-5 campaigns, 4 weeks)
 - Agency Plan: £79/month (unlimited campaigns)
-- **ROI: 49:1** (£3,900 saved vs £79 cost)
+- **ROI: 49:1**(£3,900 saved vs £79 cost)
 
 ---
 
@@ -367,8 +367,8 @@ Radio Momentum:
 
 ---
 
-**Created:** October 12, 2025
-**Demo Date:** Friday October 11, 2025
-**Campaign:** KYARA "Bloodshot" (Liberty Music PR)
-**Tool:** tracker.totalaudiopromo.com
-**Goal:** Secure pilot agreement with Liberty Music PR
+**Created:**October 12, 2025
+**Demo Date:**Friday October 11, 2025
+**Campaign:**KYARA "Bloodshot" (Liberty Music PR)
+**Tool:**tracker.totalaudiopromo.com
+**Goal:**Secure pilot agreement with Liberty Music PR

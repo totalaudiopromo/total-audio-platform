@@ -12,8 +12,8 @@ A simplified version of Ole's Newsjacker 3000, built specifically for your music
 - ✅ Generates newsletter content automatically
 - ✅ Sends to your ConvertKit subscribers
 
-**Time to set up:** 5 minutes
-**Cost:** ~$3/month (NewsAPI + Anthropic credits)
+**Time to set up:**5 minutes
+**Cost:**~$3/month (NewsAPI + Anthropic credits)
 
 ---
 
@@ -60,13 +60,13 @@ ANTHROPIC_API_KEY=your_anthropic_key_here
 
 The system automatically:
 
-1. **Fetches news** from UK entertainment sources (BBC, Guardian, etc.)
-2. **Scores articles** using Ole's exact formula:
+1. **Fetches news**from UK entertainment sources (BBC, Guardian, etc.)
+2. **Scores articles**using Ole's exact formula:
    - 35% recency (newer = higher score)
    - 65% importance (major outlets + viral keywords)
-3. **Filters out** non-music stories (politics, stocks, etc.)
-4. **Analyzes through your voice** using your expertise areas
-5. **Generates newsletter content** with industry insights and tips
+3. **Filters out**non-music stories (politics, stocks, etc.)
+4. **Analyzes through your voice**using your expertise areas
+5. **Generates newsletter content**with industry insights and tips
 
 ### Your Voice Calibration
 

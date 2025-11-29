@@ -4,7 +4,7 @@
 
 ---
 
-Copy the **ENTIRE** contents of this file and paste into Supabase SQL Editor, then click "Run":
+Copy the **ENTIRE**contents of this file and paste into Supabase SQL Editor, then click "Run":
 
 `supabase/migrations/010_tracker_prd_schema.sql`
 

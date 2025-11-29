@@ -1,4 +1,4 @@
-#  MVP SHIPPING CHECKLIST - Pitch Generator
+# MVP SHIPPING CHECKLIST - Pitch Generator
 
 ## **COMPLETED**
 
@@ -34,7 +34,7 @@
 
 ## **STILL NEEDED FOR MVP**
 
-### **API Keys** (5 minutes)
+### **API Keys**(5 minutes)
 
 ```bash
 # Add these to .env.local:
@@ -44,7 +44,7 @@ STRIPE_WEBHOOK_SECRET="whsec_your-webhook-secret"
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_your-stripe-key"
 ```
 
-### **Final Testing** (10 minutes)
+### **Final Testing**(10 minutes)
 
 - [ ] Test pitch generation with real AI
 - [ ] Test saving pitches to database
@@ -52,7 +52,7 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_your-stripe-key"
 - [ ] Test checkout flow
 - [ ] Verify user data isolation
 
-### **Database Setup** (2 minutes)
+### **Database Setup**(2 minutes)
 
 - [ ] Run the `add-demo-data.sql` script in Supabase
 - [ ] Verify demo contacts and pitches appear
@@ -61,14 +61,14 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_your-stripe-key"
 
 ### **Core Features Working:**
 
-1. **Landing Page** - Professional pitch with clear value prop
-2. **Authentication** - Sign in/up with demo credentials
-3. **Dashboard** - Stats, recent pitches, quick actions
-4. **Pitch Generation** - AI-powered personalized pitches
-5. **Pitch Management** - History, status tracking, copy/save
-6. **Contact Management** - Add/edit/delete contacts
-7. **Pricing** - Stripe-ready checkout flow
-8. **Template Library** - Genre-specific templates
+1. **Landing Page**- Professional pitch with clear value prop
+2. **Authentication**- Sign in/up with demo credentials
+3. **Dashboard**- Stats, recent pitches, quick actions
+4. **Pitch Generation**- AI-powered personalized pitches
+5. **Pitch Management**- History, status tracking, copy/save
+6. **Contact Management**- Add/edit/delete contacts
+7. **Pricing**- Stripe-ready checkout flow
+8. **Template Library**- Genre-specific templates
 
 ### **Technical Stack:**
 
@@ -82,16 +82,16 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_your-stripe-key"
 
 ## **TO SHIP MVP:**
 
-1. **Add API Keys** (5 min)
+1. **Add API Keys**(5 min)
    - Copy your Anthropic API key
    - Copy your Stripe keys from other apps
 
-2. **Test Core Flow** (10 min)
+2. **Test Core Flow**(10 min)
    - Generate a pitch
    - Save it to database
    - Check it appears in history
 
-3. **Deploy** (15 min)
+3. **Deploy**(15 min)
    - Push to your hosting platform
    - Update environment variables
    - Test live deployment

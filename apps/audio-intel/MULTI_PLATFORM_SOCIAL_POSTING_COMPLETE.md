@@ -10,14 +10,14 @@
 
 Your autonomous social media posting agent is fully built and configured for all four platforms:
 
-- **Bluesky** - 9 posts scheduled
-- **Twitter/X** - 6 threads (43 tweets total)
-- **LinkedIn** - 10 posts scheduled
-- **Threads** - 10 posts scheduled
+- **Bluesky**- 9 posts scheduled
+- **Twitter/X**- 6 threads (43 tweets total)
+- **LinkedIn**- 10 posts scheduled
+- **Threads**- 10 posts scheduled
 
-**Posts twice daily** at 9am and 5pm UK time (peak engagement)
-**Fully autonomous** - reads from your content calendar
-**Vercel cron** - completely free, no external services
+**Posts twice daily**at 9am and 5pm UK time (peak engagement)
+**Fully autonomous**- reads from your content calendar
+**Vercel cron**- completely free, no external services
 
 ---
 
@@ -69,7 +69,7 @@ BLUESKY_IDENTIFIER=chrisschouk.bsky.social
 BLUESKY_APP_PASSWORD=your-app-password-here
 ```
 
-**Documentation:** `BLUESKY_AUTONOMOUS_POSTING_SETUP.md`
+**Documentation:**`BLUESKY_AUTONOMOUS_POSTING_SETUP.md`
 
 ---
 
@@ -98,7 +98,7 @@ TWITTER_ACCESS_TOKEN=your_access_token
 TWITTER_ACCESS_SECRET=your_access_secret
 ```
 
-**Documentation:** `TWITTER_AGENT_README.md`
+**Documentation:**`TWITTER_AGENT_README.md`
 
 ---
 
@@ -125,7 +125,7 @@ LINKEDIN_CLIENT_SECRET=your_client_secret
 LINKEDIN_ACCESS_TOKEN=your_access_token
 ```
 
-**Documentation:** `LINKEDIN_OAUTH_SETUP.md`
+**Documentation:**`LINKEDIN_OAUTH_SETUP.md`
 
 ---
 
@@ -155,7 +155,7 @@ FACEBOOK_APP_ID=987654321
 FACEBOOK_APP_SECRET=abc123xyz
 ```
 
-**Documentation:** `THREADS_API_SETUP.md`, `THREADS_QUICK_START.md`
+**Documentation:**`THREADS_API_SETUP.md`, `THREADS_QUICK_START.md`
 
 ---
 
@@ -237,14 +237,14 @@ curl -X POST https://intel.totalaudiopromo.com/api/cron/social-posting \
 
 ## Posting Schedule
 
-**Time:** 9am and 5pm UK time (every day)
-**Platforms:** Bluesky, Twitter/X, LinkedIn, Threads
-**Cron Expression:** `0 9,17 * * *`
+**Time:**9am and 5pm UK time (every day)
+**Platforms:**Bluesky, Twitter/X, LinkedIn, Threads
+**Cron Expression:**`0 9,17 * * *`
 
 **Why these times?**
 
-- **9am** - Morning commute + coffee scroll
-- **5pm** - End-of-work scroll + evening engagement
+- **9am**- Morning commute + coffee scroll
+- **5pm**- End-of-work scroll + evening engagement
 
 Peak UK social media engagement times for B2B audiences (radio promoters).
 
@@ -358,27 +358,27 @@ All agents include built-in rate limiting:
 
 ### Platform-Specific Adaptations
 
-**Bluesky** (9 posts):
+**Bluesky**(9 posts):
 
 - Casual, authentic tone
 - 300 character limit
 - Community-focused messaging
 
-**Twitter/X** (6 threads, 43 tweets):
+**Twitter/X**(6 threads, 43 tweets):
 
 - Thread format (5-7 tweets each)
 - 280 character limit per tweet
 - Radio promoter pain points
 - Strong CTAs
 
-**LinkedIn** (10 posts):
+**LinkedIn**(10 posts):
 
 - Professional tone
 - 3000 character limit (longer form)
 - Industry credibility
 - B2B messaging
 
-**Threads** (10 posts):
+**Threads**(10 posts):
 
 - Visual, engaging tone
 - 500 character limit
@@ -389,11 +389,11 @@ All agents include built-in rate limiting:
 
 ## Security Notes
 
-- **Never commit** API credentials to git
-- **Use environment variables** for all credentials
-- **Set CRON_SECRET** to prevent unauthorized triggers
-- **Rotate tokens** when necessary (see platform docs)
-- **App passwords** can be revoked anytime from platform settings
+- **Never commit**API credentials to git
+- **Use environment variables**for all credentials
+- **Set CRON_SECRET**to prevent unauthorized triggers
+- **Rotate tokens**when necessary (see platform docs)
+- **App passwords**can be revoked anytime from platform settings
 
 ---
 
@@ -401,10 +401,10 @@ All agents include built-in rate limiting:
 
 ### Immediate Actions:
 
-1. **Bluesky is ready** - Already configured, will start posting at 9am/5pm
-2. **Add Twitter credentials** - Follow `TWITTER_AGENT_README.md`
-3. **Add LinkedIn credentials** - Follow `LINKEDIN_OAUTH_SETUP.md`
-4. **Add Threads credentials** - Follow `THREADS_QUICK_START.md`
+1. **Bluesky is ready**- Already configured, will start posting at 9am/5pm
+2. **Add Twitter credentials**- Follow `TWITTER_AGENT_README.md`
+3. **Add LinkedIn credentials**- Follow `LINKEDIN_OAUTH_SETUP.md`
+4. **Add Threads credentials**- Follow `THREADS_QUICK_START.md`
 
 ### Optional Improvements:
 
@@ -433,10 +433,10 @@ All agents include built-in rate limiting:
 
 | Platform      | Agent    | Content      | Credentials | Status   |
 | ------------- | -------- | ------------ | ----------- | -------- |
-| **Bluesky**   |  Built |  9 posts   |  Added    | **LIVE** |
-| **Twitter/X** |  Built |  6 threads | Pending  | Ready    |
-| **LinkedIn**  |  Built |  10 posts  | Pending  | Ready    |
-| **Threads**   |  Built |  10 posts  | Pending  | Ready    |
+| **Bluesky**  |  Built |  9 posts   |  Added    | **LIVE**|
+| **Twitter/X**|  Built |  6 threads | Pending  | Ready    |
+| **LinkedIn** |  Built |  10 posts  | Pending  | Ready    |
+| **Threads**  |  Built |  10 posts  | Pending  | Ready    |
 
 ### Code Status:
 
@@ -458,8 +458,8 @@ All agents include built-in rate limiting:
 
 ---
 
-**Built:** January 2025
-**Cost:** £0 (Vercel free tier)
-**Status:** Production Ready 
+**Built:**January 2025
+**Cost:**£0 (Vercel free tier)
+**Status:**Production Ready 
 
 Your autonomous social posting agent is complete. Add credentials for each platform and watch your Audio Intel marketing run on autopilot twice daily.

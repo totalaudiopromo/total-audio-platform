@@ -4,17 +4,17 @@
 
 ## Quick Start
 
-**Daily workflow:** `code WEEKLY_FOCUS.md` - Your main priorities and progress tracker
+**Daily workflow:**`code WEEKLY_FOCUS.md` - Your main priorities and progress tracker
 
-**Business context:** `code AUDIO_INTEL_CONTEXT.md` - Complete product and customer info
+**Business context:**`code AUDIO_INTEL_CONTEXT.md` - Complete product and customer info
 
-**Quick capture:** `code BUSINESS_NOTES.md` - Running log of ideas and feedback
+**Quick capture:**`code BUSINESS_NOTES.md` - Running log of ideas and feedback
 
 ## Live Applications
 
-- **[Audio Intel](https://intel.totalaudiopromo.com)** - Contact enrichment & validation (PRIMARY REVENUE FOCUS)
-- **[Pitch Generator](https://pitch.totalaudiopromo.com)** - AI-powered personalised pitch writing
-- **[Campaign Tracker](https://tracker.totalaudiopromo.com)** - Radio promotion campaign management
+- **[Audio Intel](https://intel.totalaudiopromo.com)**- Contact enrichment & validation (PRIMARY REVENUE FOCUS)
+- **[Pitch Generator](https://pitch.totalaudiopromo.com)**- AI-powered personalised pitch writing
+- **[Campaign Tracker](https://tracker.totalaudiopromo.com)**- Radio promotion campaign management
 
 ## Current Focus (November 2025)
 
@@ -37,7 +37,7 @@ npm run organize-docs:dry-run
 
 The script automatically categorizes and organizes `.md` files into proper `docs/` structure.
 
-**Full guide:** [`PROJECT_STRUCTURE.md`](./PROJECT_STRUCTURE.md)
+**Full guide:**[`PROJECT_STRUCTURE.md`](./PROJECT_STRUCTURE.md)
 
 ## Directory Structure
 
@@ -104,9 +104,9 @@ npm run typecheck:audio-intel   # TypeScript validation
 
 ## Customer Segments
 
-1. **Radio Promoters** - 85% conversion (highest priority)
-2. **Solo Artists** - 60% conversion
-3. **PR Agencies** - 70% conversion
+1. **Radio Promoters**- 85% conversion (highest priority)
+2. **Solo Artists**- 60% conversion
+3. **PR Agencies**- 70% conversion
 
 ## CI/CD & Monitoring
 
@@ -118,11 +118,11 @@ npm run typecheck:audio-intel   # TypeScript validation
 
 ## Next Milestones
 
-1. **First Paying Customer** - Radio promoter segment (highest conversion)
-2. **£500/month MRR** - Sustainable revenue validation
-3. **Case Study Distribution** - BBC Radio 1 & Spotify success stories
-4. **Newsletter Growth** - "The Unsigned Advantage" subscriber expansion
+1. **First Paying Customer**- Radio promoter segment (highest conversion)
+2. **£500/month MRR**- Sustainable revenue validation
+3. **Case Study Distribution**- BBC Radio 1 & Spotify success stories
+4. **Newsletter Growth**- "The Unsigned Advantage" subscriber expansion
 
 ---
 
-**Built by Chris Schofield** | 5+ years radio promotion experience | [Audio Intel](https://intel.totalaudiopromo.com) · [Pitch Generator](https://pitch.totalaudiopromo.com) · [Tracker](https://tracker.totalaudiopromo.com)
+**Built by Chris Schofield**| 5+ years radio promotion experience | [Audio Intel](https://intel.totalaudiopromo.com) · [Pitch Generator](https://pitch.totalaudiopromo.com) · [Tracker](https://tracker.totalaudiopromo.com)

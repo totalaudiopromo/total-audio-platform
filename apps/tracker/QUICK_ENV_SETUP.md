@@ -13,10 +13,10 @@ The application requires Supabase environment variables to function. Without the
    - Select your project (or create a new one)
 
 2. **Get Your Credentials**
-   - Go to: **Settings** → **API**
+   - Go to: **Settings**→ **API**
    - Copy these two values:
-     - **Project URL** (e.g., `https://xxxxx.supabase.co`)
-     - **anon/public key** (long string starting with `eyJ...`)
+     - **Project URL**(e.g., `https://xxxxx.supabase.co`)
+     - **anon/public key**(long string starting with `eyJ...`)
 
 ---
 
@@ -59,7 +59,7 @@ The application requires Supabase environment variables to function. Without the
 
 ## Step 3: Restart Development Server
 
-1. **Stop the current dev server** (Ctrl+C in terminal)
+1. **Stop the current dev server**(Ctrl+C in terminal)
 
 2. **Start it again:**
 
@@ -121,15 +121,15 @@ If you want Liberty demo data for testing:
 
 ### Error: "ZodError: NEXT_PUBLIC_SUPABASE_URL is required"
 
-**Solution:** Make sure `.env.local` file exists and has the correct variable names. Restart dev server after creating/editing the file.
+**Solution:**Make sure `.env.local` file exists and has the correct variable names. Restart dev server after creating/editing the file.
 
 ### Error: "Invalid Supabase URL"
 
-**Solution:** Check that your URL starts with `https://` and doesn't have trailing slashes.
+**Solution:**Check that your URL starts with `https://` and doesn't have trailing slashes.
 
 ### Error: "Invalid API key"
 
-**Solution:** Make sure you copied the **anon/public** key, not the service_role key. The anon key is safe to use in client-side code.
+**Solution:**Make sure you copied the **anon/public**key, not the service_role key. The anon key is safe to use in client-side code.
 
 ### Page loads but shows "Failed to load campaigns"
 
@@ -171,4 +171,4 @@ Once environment variables are configured:
 
 ---
 
-**Need Help?** Check `ENV_SETUP_INTEGRATIONS.md` for more detailed setup instructions.
+**Need Help?**Check `ENV_SETUP_INTEGRATIONS.md` for more detailed setup instructions.

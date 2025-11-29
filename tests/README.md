@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Comprehensive Playwright tests to validate functionality for **Liberty Music PR presentation** in 9 days.
+Comprehensive Playwright tests to validate functionality for **Liberty Music PR presentation**in 9 days.
 
 **Focus**: Demo-blocking bugs only. Core features that will be shown, not edge cases.
 
@@ -86,7 +86,7 @@ pnpm test:headed
 
 ## What We're Testing
 
-###  Audio Intel
+### Audio Intel
 
 - [x] Contact enrichment works
 - [x] Demo data loads successfully
@@ -96,21 +96,21 @@ pnpm test:headed
 - [x] Intelligence data is meaningful (not placeholder)
 - [x] No critical console errors
 
-###  Pitch Generator
+### Pitch Generator
 
 - [x] Pitch generation works
 - [x] Personalization is evident
 - [x] Copy to clipboard works
 - [x] No crashes during generation
 
-###  Campaign Tracker
+### Campaign Tracker
 
 - [x] Dashboard displays correctly
 - [x] Campaign listing works
 - [x] Navigation to campaign detail works
 - [x] Stats/metrics display
 
-###  Demo Scenarios
+### Demo Scenarios
 
 - [x] Complete agency workflow (enrich → pitch → track)
 - [x] Export functionality for client reporting
@@ -252,7 +252,7 @@ After running tests, you should know:
 1.  Critical bugs identified
 2.  Core functionality validated
 3.  Demo scenarios tested
-4.  Confidence level: **HIGH/MEDIUM/LOW** for demo readiness
+4.  Confidence level: **HIGH/MEDIUM/LOW**for demo readiness
 
 ---
 

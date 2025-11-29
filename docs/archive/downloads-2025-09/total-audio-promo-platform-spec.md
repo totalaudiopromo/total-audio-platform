@@ -307,7 +307,7 @@ model Release {
 
 ### Revenue Streams
 
-1. **Subscription Revenue** (Primary): £500K-5M ARR target
+1. **Subscription Revenue**(Primary): £500K-5M ARR target
 2. **Transaction Fees**: 2-5% on campaign budgets
 3. **Integration Partnerships**: Revenue sharing with platforms
 4. **Custom Development**: Enterprise feature development

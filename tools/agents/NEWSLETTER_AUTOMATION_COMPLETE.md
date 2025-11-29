@@ -35,7 +35,7 @@ Sets up cron job to run every Monday at 9:00 AM automatically.
 
 ## Files Created
 
-### 1. **[generate-and-send-newsletter.js](generate-and-send-newsletter.js)** - Main Automation Script
+### 1. **[generate-and-send-newsletter.js](generate-and-send-newsletter.js)**- Main Automation Script
 
 **What it does:**
 
@@ -53,7 +53,7 @@ Sets up cron job to run every Monday at 9:00 AM automatically.
 - Proper error handling and progress output
 - Cost tracking (typically £0.01-0.03 per newsletter)
 
-### 2. **[setup-weekly-newsletter.sh](setup-weekly-newsletter.sh)** - Automation Setup
+### 2. **[setup-weekly-newsletter.sh](setup-weekly-newsletter.sh)**- Automation Setup
 
 **What it does:**
 
@@ -107,21 +107,21 @@ Your newsletter pulls from these sources automatically:
 
 ### High Priority (Indie Focus):
 
-- **Ari's Take** (0.95) - Ari Herstand's indie artist business advice
-- **Attack Magazine** (0.90) - Electronic music production
-- **Complete Music Update** (0.90) - UK music industry news
-- **Music Business Worldwide** (0.90) - Global industry business
+- **Ari's Take**(0.95) - Ari Herstand's indie artist business advice
+- **Attack Magazine**(0.90) - Electronic music production
+- **Complete Music Update**(0.90) - UK music industry news
+- **Music Business Worldwide**(0.90) - Global industry business
 
 ### UK Scene:
 
-- **DIY Magazine** (0.85) - UK independent artists
-- **BBC Music** (0.80) - UK cultural authority
-- **The Line of Best Fit** (0.75) - UK indie culture
-- **NME** (0.70) - UK music culture
+- **DIY Magazine**(0.85) - UK independent artists
+- **BBC Music**(0.80) - UK cultural authority
+- **The Line of Best Fit**(0.75) - UK indie culture
+- **NME**(0.70) - UK music culture
 
 ### Mainstream Context:
 
-- **Billboard** (0.80) - Charts/trends for "major label drama" angles
+- **Billboard**(0.80) - Charts/trends for "major label drama" angles
 
 ---
 
@@ -130,11 +130,11 @@ Your newsletter pulls from these sources automatically:
 **Relevance Scoring:**
 
 - Base score: Feed priority (0.70-0.95)
-- **+0.15** for indie/independent/unsigned/DIY/underground keywords
-- **+0.10** for radio/promotion/playlist/streaming keywords
-- **+0.10** for AI music content
-- **+0.05** for electronic/producer/production content
-- **-0.10** for major label focus
+- **+0.15**for indie/independent/unsigned/DIY/underground keywords
+- **+0.10**for radio/promotion/playlist/streaming keywords
+- **+0.10**for AI music content
+- **+0.05**for electronic/producer/production content
+- **-0.10**for major label focus
 
 **Selection Criteria:**
 
@@ -155,10 +155,10 @@ Your newsletter pulls from these sources automatically:
 
 ### Framework (150-200 words per section):
 
-1. **HOOK** (1-2 sentences) - What happened
-2. **EXPERTISE CONNECTION** (2-3 sentences) - Radio/Audio Intel/Scene perspective
-3. **THE UNSIGNED ADVANTAGE** (2-3 sentences) - Specific advantage from experience
-4. **ACTION STEP** (2-3 sentences) - 30min-2hr task with budget/timing
+1. **HOOK**(1-2 sentences) - What happened
+2. **EXPERTISE CONNECTION**(2-3 sentences) - Radio/Audio Intel/Scene perspective
+3. **THE UNSIGNED ADVANTAGE**(2-3 sentences) - Specific advantage from experience
+4. **ACTION STEP**(2-3 sentences) - 30min-2hr task with budget/timing
 
 ### Tool Philosophy Footer (Every Newsletter):
 
@@ -358,7 +358,7 @@ Edit `scoreStoryRelevance()` function to boost/penalize different keywords.
 
 ## Bottom Line
 
-You now have **fully automated newsletter generation** that:
+You now have **fully automated newsletter generation**that:
 
 1.  Runs every Monday morning automatically
 2.  Fetches real music industry news
@@ -380,10 +380,10 @@ You now have **fully automated newsletter generation** that:
 - `FINAL_CHRIS_VOICE.md` - Voice profile with sadact details
 - `logs/` - Dated log files for each run
 
-**Ready to Go:**  Production ready
-**First Automated Run:** Next Monday 9:00 AM
-**Your Action:** Review draft in ConvertKit dashboard
+**Ready to Go:** Production ready
+**First Automated Run:**Next Monday 9:00 AM
+**Your Action:**Review draft in ConvertKit dashboard
 
 ---
 
-**Questions or issues?** Check logs first, then review troubleshooting section above.
+**Questions or issues?**Check logs first, then review troubleshooting section above.

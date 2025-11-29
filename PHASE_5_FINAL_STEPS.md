@@ -16,7 +16,7 @@
    - Deleted 6 Supabase directories 
    - Deleted 2 standalone files 
 
-3. **Supabase CLI installed** 
+3. **Supabase CLI installed**
    - Version: 2.54.11
    - Location: `/opt/homebrew/bin/supabase`
 
@@ -57,7 +57,7 @@ This will:
 
 Once types are generated, search for and remove `as any` workarounds:
 
-**Audio Intel** (`apps/audio-intel/app/api/usage/route.ts`):
+**Audio Intel**(`apps/audio-intel/app/api/usage/route.ts`):
 
 ```typescript
 // BEFORE:
@@ -75,12 +75,12 @@ const { data: userData } = await supabase
   .single();
 ```
 
-**Tracker** (multiple campaign API routes):
+**Tracker**(multiple campaign API routes):
 
 - `apps/tracker/app/api/campaigns/route.ts`
 - `apps/tracker/app/api/campaigns/[id]/route.ts`
 
-**Pitch Generator** (10+ API routes):
+**Pitch Generator**(10+ API routes):
 
 - `apps/pitch-generator/app/api/pitch/generate/route.ts`
 - `apps/pitch-generator/app/api/contacts/route.ts`
@@ -228,7 +228,7 @@ Test database interactions across apps:
 
 ## Summary
 
-**Migration Status**: **Complete** (pending type generation)
+**Migration Status**: **Complete**(pending type generation)
 
 **What's Left**:
 

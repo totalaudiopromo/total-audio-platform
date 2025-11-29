@@ -11,7 +11,7 @@ description: Use when working on totalaud.io experimental project - ensures expe
 
 This skill ensures experimental work in totalaud.io never affects production Audio Intel.
 
-**Core principle:** Experiments can fail. Production cannot.
+**Core principle:**Experiments can fail. Production cannot.
 
 ## When to Use
 
@@ -115,7 +115,7 @@ payments
 radio_contacts
 ```
 
-**Rule:** If table name doesn't start with `totalaud_` or `exp_`, it's production. Don't touch.
+**Rule:**If table name doesn't start with `totalaud_` or `exp_`, it's production. Don't touch.
 
 ## Environment Variables
 
@@ -150,7 +150,7 @@ NEXT_PUBLIC_APP_URL=https://totalaud.io
 
 ## Code Import Safety
 
-###  NEVER Do This (Cross-Project Imports)
+### NEVER Do This (Cross-Project Imports)
 
 ```typescript
 // totalaud.io importing from production
@@ -196,7 +196,7 @@ interface AgentManifest {
 - **Database**: Experimental Supabase tables
 - **Impact**: No customers, can break
 
-**Rule:** Separate Vercel projects, separate deployments, separate URLs.
+**Rule:**Separate Vercel projects, separate deployments, separate URLs.
 
 ## Red Flags - STOP Immediately
 
@@ -209,7 +209,7 @@ If you catch yourself:
 - Copying production code and modifying it in place
 - "This experiment is ready for production, let me merge it..."
 
-**ALL of these mean:** STOP. Violating isolation. Fix immediately.
+**ALL of these mean:**STOP. Violating isolation. Fix immediately.
 
 ## When to Move Experimental → Production
 
@@ -241,9 +241,9 @@ If you catch yourself:
 
 **Risk Indicators (Monthly):**
 
-- Incidents caused by experimental code: **\_** (target: 0)
-- Production data affected by experiments: **\_** (target: 0)
-- Customer-facing breaks from experiments: **\_** (target: 0)
+- Incidents caused by experimental code: **\_**(target: 0)
+- Production data affected by experiments: **\_**(target: 0)
+- Customer-facing breaks from experiments: **\_**(target: 0)
 
 ## Common Rationalizations
 
@@ -260,12 +260,12 @@ If you catch yourself:
 **When working on totalaud.io:**
 
 1. Use this skill to verify isolation
-2. DON'T use **customer-acquisition-focus** (no customers in experiments)
+2. DON'T use **customer-acquisition-focus**(no customers in experiments)
 3. Experiment freely, break things, learn
 
 **When working on Total Audio Platform:**
 
-1. Use **customer-acquisition-focus** to validate customer impact
+1. Use **customer-acquisition-focus**to validate customer impact
 2. DON'T use experimental patterns from totalaud.io
 3. Ship fast, validate with customers
 

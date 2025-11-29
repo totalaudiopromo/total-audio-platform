@@ -1,4 +1,4 @@
-#  VERCEL MONOREPO FIX - REQUIRED MANUAL STEPS
+# VERCEL MONOREPO FIX - REQUIRED MANUAL STEPS
 
 ## Current Problem
 
@@ -12,7 +12,7 @@ Module not found: Can't resolve '@total-audio/ui'
 
 - Vercel is only uploading `apps/audio-intel` directory
 - The workspace dependency `@total-audio/ui` lives in `../../packages/ui`
-- Vercel needs access to the **entire monorepo** to link workspace packages
+- Vercel needs access to the **entire monorepo**to link workspace packages
 
 ## SOLUTION: Configure Vercel Root Directory
 

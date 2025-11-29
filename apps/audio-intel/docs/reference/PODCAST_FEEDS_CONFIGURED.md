@@ -1,10 +1,10 @@
-#  Configured Podcast Feeds for Audio Intel
+# Configured Podcast Feeds for Audio Intel
 
 ## **Your Selected Podcasts**
 
 Based on your request, here are the RSS feeds for the podcasts you want to monitor:
 
-### ** Confirmed RSS Feeds**
+### **Confirmed RSS Feeds**
 
 1. **A New Vibe - Riley Brown**
    - RSS: `https://rss.com/podcasts/a-new-vibe/`
@@ -21,7 +21,7 @@ Based on your request, here are the RSS feeds for the podcasts you want to monit
    - Focus: AI and future of technology
    - Relevance: High (pure AI content)
 
-### ** Need to Find RSS Feeds**
+### **Need to Find RSS Feeds**
 
 4. **Music Tectonics**
    - Status: Need to find RSS feed
@@ -48,7 +48,7 @@ Based on your request, here are the RSS feeds for the podcasts you want to monit
    - Focus: Startup ideas and innovation
    - Relevance: Medium (startup + tech)
 
-## ** Quick Setup**
+## **Quick Setup**
 
 ### **Step 1: Add to Environment Variables**
 
@@ -74,7 +74,7 @@ curl -X POST http://localhost:3001/api/podcast-monitor \
 curl http://localhost:3001/api/newsjacker
 ```
 
-## ** Finding Missing RSS Feeds**
+## **Finding Missing RSS Feeds**
 
 ### **Method 1: Apple Podcasts**
 
@@ -96,26 +96,26 @@ curl http://localhost:3001/api/newsjacker
 - **Podcast Addict**: <https://podcastaddict.com>
 - **Overcast**: <https://overcast.fm>
 
-## ** Expected Content Types**
+## **Expected Content Types**
 
-### **High-Relevance Episodes** (Music Industry + AI/Tech)
+### **High-Relevance Episodes**(Music Industry + AI/Tech)
 
 - Music Tectonics
 - The New Music Business Podcast
 - A New Vibe (when discussing music tech)
 
-### **Medium-Relevance Episodes** (Business + AI/Tech)
+### **Medium-Relevance Episodes**(Business + AI/Tech)
 
 - My First Million
 - Startups for the Rest of Us
 - The Start-Up Ideas Podcast
 
-### **High-Relevance Episodes** (Pure AI/Tech)
+### **High-Relevance Episodes**(Pure AI/Tech)
 
 - The Next Wave
 - Marketing Against the Grain (AI marketing tools)
 
-## ** Content Strategy**
+## **Content Strategy**
 
 ### **What to Look For**
 
@@ -132,20 +132,20 @@ curl http://localhost:3001/api/newsjacker
 - **Industry Analysis**: Expert takes on music tech
 - **Actionable Tips**: Practical advice for indie artists
 
-## ** Next Steps**
+## **Next Steps**
 
-1. **Test with confirmed feeds** (3 podcasts)
-2. **Find remaining RSS feeds** (5 podcasts)
+1. **Test with confirmed feeds**(3 podcasts)
+2. **Find remaining RSS feeds**(5 podcasts)
 3. **Add all feeds to environment variables**
 4. **Test full integration**
 5. **Start monitoring for content**
 
-## ** Pro Tips**
+## **Pro Tips**
 
-- **Start with 3 confirmed feeds** to test the system
-- **Add more feeds gradually** as you find them
-- **Monitor content quality** and adjust feeds as needed
-- **Focus on high-relevance content** for your newsletter
-- **Use demo system** for testing while finding real feeds
+- **Start with 3 confirmed feeds**to test the system
+- **Add more feeds gradually**as you find them
+- **Monitor content quality**and adjust feeds as needed
+- **Focus on high-relevance content**for your newsletter
+- **Use demo system**for testing while finding real feeds
 
 Ready to start monitoring these podcasts for AI and tech insights! 

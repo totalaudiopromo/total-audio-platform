@@ -9,7 +9,7 @@ description: Use when encountering any bug, test failure, or unexpected behavior
 
 Random fixes waste time and create new bugs. Quick patches mask underlying issues.
 
-**Core principle:** ALWAYS find root cause before attempting fixes. Symptom fixes are failure.
+**Core principle:**ALWAYS find root cause before attempting fixes. Symptom fixes are failure.
 
 **Violating the letter of this process is violating the spirit of debugging.**
 
@@ -110,13 +110,13 @@ You MUST complete each phase before proceeding to the next.
    codesign --sign "$IDENTITY" --verbose=4 "$APP"
    ```
 
-   **This reveals:** Which layer fails (secrets → workflow , workflow → build )
+   **This reveals:**Which layer fails (secrets → workflow , workflow → build )
 
 5. **Trace Data Flow**
 
    **WHEN error is deep in call stack:**
 
-   **REQUIRED SUB-SKILL:** Use superpowers:root-cause-tracing for backward tracing technique
+   **REQUIRED SUB-SKILL:**Use superpowers:root-cause-tracing for backward tracing technique
 
    **Quick version:**
    - Where does bad value originate?
@@ -181,7 +181,7 @@ You MUST complete each phase before proceeding to the next.
    - Automated test if possible
    - One-off test script if no framework
    - MUST have before fixing
-   - **REQUIRED SUB-SKILL:** Use superpowers:test-driven-development for writing proper failing tests
+   - **REQUIRED SUB-SKILL:**Use superpowers:test-driven-development for writing proper failing tests
 
 2. **Implement Single Fix**
    - Address the root cause identified
@@ -235,7 +235,7 @@ If you catch yourself thinking:
 
 **ALL of these mean: STOP. Return to Phase 1.**
 
-**If 3+ fixes failed:** Question the architecture (see Phase 4.5)
+**If 3+ fixes failed:**Question the architecture (see Phase 4.5)
 
 ## your human partner's Signals You're Doing It Wrong
 
@@ -247,7 +247,7 @@ If you catch yourself thinking:
 - "Ultrathink this" - Question fundamentals, not just symptoms
 - "We're stuck?" (frustrated) - Your approach isn't working
 
-**When you see these:** STOP. Return to Phase 1.
+**When you see these:**STOP. Return to Phase 1.
 
 ## Common Rationalizations
 
@@ -266,10 +266,10 @@ If you catch yourself thinking:
 
 | Phase                 | Key Activities                                         | Success Criteria            |
 | --------------------- | ------------------------------------------------------ | --------------------------- |
-| **1. Root Cause**     | Read errors, reproduce, check changes, gather evidence | Understand WHAT and WHY     |
-| **2. Pattern**        | Find working examples, compare                         | Identify differences        |
-| **3. Hypothesis**     | Form theory, test minimally                            | Confirmed or new hypothesis |
-| **4. Implementation** | Create test, fix, verify                               | Bug resolved, tests pass    |
+| **1. Root Cause**    | Read errors, reproduce, check changes, gather evidence | Understand WHAT and WHY     |
+| **2. Pattern**       | Find working examples, compare                         | Identify differences        |
+| **3. Hypothesis**    | Form theory, test minimally                            | Confirmed or new hypothesis |
+| **4. Implementation**| Create test, fix, verify                               | Bug resolved, tests pass    |
 
 ## When Process Reveals "No Root Cause"
 
@@ -280,20 +280,20 @@ If systematic investigation reveals issue is truly environmental, timing-depende
 3. Implement appropriate handling (retry, timeout, error message)
 4. Add monitoring/logging for future investigation
 
-**But:** 95% of "no root cause" cases are incomplete investigation.
+**But:**95% of "no root cause" cases are incomplete investigation.
 
 ## Integration with Other Skills
 
 **This skill requires using:**
 
-- **root-cause-tracing** - REQUIRED when error is deep in call stack (see Phase 1, Step 5)
-- **test-driven-development** - REQUIRED for creating failing test case (see Phase 4, Step 1)
+- **root-cause-tracing**- REQUIRED when error is deep in call stack (see Phase 1, Step 5)
+- **test-driven-development**- REQUIRED for creating failing test case (see Phase 4, Step 1)
 
 **Complementary skills:**
 
-- **defense-in-depth** - Add validation at multiple layers after finding root cause
-- **condition-based-waiting** - Replace arbitrary timeouts identified in Phase 2
-- **verification-before-completion** - Verify fix worked before claiming success
+- **defense-in-depth**- Add validation at multiple layers after finding root cause
+- **condition-based-waiting**- Replace arbitrary timeouts identified in Phase 2
+- **verification-before-completion**- Verify fix worked before claiming success
 
 ## Real-World Impact
 

@@ -8,13 +8,13 @@ All documentation for the TAP SaaS template, organised by category.
 
 Guides for initial setup and configuration:
 
-- **[AUTH_SETUP.md](./setup/AUTH_SETUP.md)** - NextAuth configuration and OAuth setup
+- **[AUTH_SETUP.md](./setup/AUTH_SETUP.md)**- NextAuth configuration and OAuth setup
 
 ### `/reference/` - Reference Documentation
 
 Technical references and detailed guides:
 
-- **[PITCH_GENERATOR_README.md](./reference/PITCH_GENERATOR_README.md)** - Pitch Generator feature documentation
+- **[PITCH_GENERATOR_README.md](./reference/PITCH_GENERATOR_README.md)**- Pitch Generator feature documentation
 
 ### `/status/` - Status Reports (Archive)
 
@@ -27,7 +27,7 @@ Historical status updates and completion reports:
 - `FIXES_APPLIED.md` - General fixes report
 - `TEXT_COLORS_FIXED.md` - Text colour system update
 
-> **Note:** Status files are kept for historical reference but are not actively maintained.
+> **Note:**Status files are kept for historical reference but are not actively maintained.
 
 ---
 
@@ -35,10 +35,10 @@ Historical status updates and completion reports:
 
 For getting started, see the root-level documentation:
 
-- **[README.md](../README.md)** - Main project overview
-- **[QUICKSTART.md](../QUICKSTART.md)** - Quick start guide
-- **[DESIGN_SYSTEM.md](../DESIGN_SYSTEM.md)** - Complete design system reference
-- **[TEMPLATE_USAGE.md](../TEMPLATE_USAGE.md)** - How to duplicate and use this template
+- **[README.md](../README.md)**- Main project overview
+- **[QUICKSTART.md](../QUICKSTART.md)**- Quick start guide
+- **[DESIGN_SYSTEM.md](../DESIGN_SYSTEM.md)**- Complete design system reference
+- **[TEMPLATE_USAGE.md](../TEMPLATE_USAGE.md)**- How to duplicate and use this template
 
 ---
 
@@ -46,22 +46,22 @@ For getting started, see the root-level documentation:
 
 When adding new documentation:
 
-1. **Setup guides** → `/docs/setup/`
+1. **Setup guides**→ `/docs/setup/`
    - Configuration files
    - Environment setup
    - Integration guides
 
-2. **How-to guides** → `/docs/guides/`
+2. **How-to guides**→ `/docs/guides/`
    - Step-by-step tutorials
    - Feature usage guides
    - Best practices
 
-3. **Reference docs** → `/docs/reference/`
+3. **Reference docs**→ `/docs/reference/`
    - API documentation
    - Technical specifications
    - Architecture decisions
 
-4. **Status updates** → `/docs/status/`
+4. **Status updates**→ `/docs/status/`
    - Completion reports
    - Migration notes
    - Historical records

@@ -1,4 +1,4 @@
-#  TOTAL AUDIO AGENTS - COMPREHENSIVE AUTOMATION AUDIT
+# TOTAL AUDIO AGENTS - COMPREHENSIVE AUTOMATION AUDIT
 
 **Generated**: October 9, 2025
 **Total Agents Found**: 229 JavaScript/TypeScript files
@@ -11,11 +11,11 @@
 
 **Key Findings:**
 
-- **153 radio promotion agents** (66% of total) - highest concentration
-- **56 Airtable integrations** (contact enrichment, lead management)
-- **18 Mailchimp integrations** (email campaigns, list management)
-- **9 Anthropic Claude integrations** (AI content generation, contact intelligence)
-- **14+ MCP servers operational** (Gmail, Notion, Puppeteer, Google Drive)
+- **153 radio promotion agents**(66% of total) - highest concentration
+- **56 Airtable integrations**(contact enrichment, lead management)
+- **18 Mailchimp integrations**(email campaigns, list management)
+- **9 Anthropic Claude integrations**(AI content generation, contact intelligence)
+- **14+ MCP servers operational**(Gmail, Notion, Puppeteer, Google Drive)
 
 **Automation Readiness**:
 
@@ -34,7 +34,7 @@
 
 ## 1⃣ AGENT INVENTORY
 
-### **A. HIGH-PRIORITY PRODUCTION AGENTS** (Ready for Automation)
+### **A. HIGH-PRIORITY PRODUCTION AGENTS**(Ready for Automation)
 
 #### **Contact Enrichment & Audio Intel Revenue Drivers**
 
@@ -43,8 +43,8 @@
    - **Status**:  FUNCTIONAL - Production ready
    - **Last Modified**: October 4, 2025
    - **Integration**: Airtable + Anthropic Claude
-   - **Automation Potential**: **SCHEDULE DAILY** (overnight batch)
-   - **Revenue Impact**:  **CRITICAL** - Core Audio Intel functionality
+   - **Automation Potential**: **SCHEDULE DAILY**(overnight batch)
+   - **Revenue Impact**:  **CRITICAL**- Core Audio Intel functionality
    - **Dependencies**:
      - `AIRTABLE_API_KEY`: pat52SEWV8PWmKZfW.d557f03560fdc8aa0895ac6fda0cbffd753054ea2fedbedd53207e7c265469ec
      - `ANTHROPIC_API_KEY`: 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
@@ -56,16 +56,16 @@
    - **Purpose**: Targeted enrichment for Kyara campaign contacts
    - **Status**:  FUNCTIONAL - Campaign-specific
    - **Last Modified**: October 3, 2025
-   - **Automation Potential**: **EVENT-TRIGGERED** (new campaign import)
-   - **Revenue Impact**:  **HIGH** - Client campaign success
+   - **Automation Potential**: **EVENT-TRIGGERED**(new campaign import)
+   - **Revenue Impact**:  **HIGH**- Client campaign success
    - **Dependencies**: Same as `enrich-all-contacts.js`
 
 3. **`update-fields-from-enrichment.js`**
    - **Purpose**: Update Airtable contact fields with enrichment data
    - **Status**:  FUNCTIONAL
    - **Last Modified**: October 3, 2025
-   - **Automation Potential**: **SCHEDULED** (after enrichment runs)
-   - **Revenue Impact**:  **HIGH** - Data quality for Audio Intel
+   - **Automation Potential**: **SCHEDULED**(after enrichment runs)
+   - **Revenue Impact**:  **HIGH**- Data quality for Audio Intel
    - **Dependencies**: Airtable API only
 
 4. **`clean-airtable-contacts.js`**
@@ -73,7 +73,7 @@
    - **Status**:  FUNCTIONAL
    - **Last Modified**: October 4, 2025
    - **Automation Potential**: **WEEKLY SCHEDULE**
-   - **Revenue Impact**:  **MEDIUM** - Data quality maintenance
+   - **Revenue Impact**:  **MEDIUM**- Data quality maintenance
    - **Dependencies**: Airtable API
 
 #### **Gmail Automation - Time Savings**
@@ -82,9 +82,9 @@
    - **Purpose**: Automated Gmail organization (Otter AI, Gemini, WARM, Machina marketing)
    - **Status**:  FUNCTIONAL - Production ready
    - **Last Modified**: September 2025
-   - **Automation Potential**: **HOURLY CRON JOB** (already designed for this)
+   - **Automation Potential**: **HOURLY CRON JOB**(already designed for this)
    - **Time Savings**: 2-3 hours/week manual email sorting
-   - **Revenue Impact**:  **MEDIUM** - Productivity gain
+   - **Revenue Impact**:  **MEDIUM**- Productivity gain
    - **Dependencies**: Gmail OAuth tokens (gmail-token.json)
    - **Command**: `0 * * * * cd tools/agents/gmail-setup && node liberty-autopilot.js run`
    - **Log File**: `tools/agents/gmail-setup/autopilot.log`
@@ -109,9 +109,9 @@
    - **Purpose**: Generate 4-week content calendar across Twitter, LinkedIn, Bluesky, Threads
    - **Status**:  FUNCTIONAL - Content library based
    - **Last Modified**: September 29, 2025
-   - **Automation Potential**: **WEEKLY REGENERATION** + **DAILY POSTING** (needs platform APIs)
+   - **Automation Potential**: **WEEKLY REGENERATION**+ **DAILY POSTING**(needs platform APIs)
    - **Time Savings**: 5-8 hours/week manual social posting
-   - **Revenue Impact**:  **HIGH** - Customer acquisition content
+   - **Revenue Impact**:  **HIGH**- Customer acquisition content
    - **Content Sources**:
      - `apps/audio-intel/social-content/RADIO_PROMOTER_LINKEDIN_POSTS.md`
      - `apps/audio-intel/social-content/TWITTER_X_THREADS_RADIO_PROMOTERS.md`
@@ -128,9 +128,9 @@
    - **Purpose**: "The Unsigned Advantage" newsletter generation
    - **Status**:  FUNCTIONAL - ConvertKit integration
    - **Last Modified**: September 27, 2025
-   - **Automation Potential**: **WEEKLY SCHEDULE** (Monday mornings)
+   - **Automation Potential**: **WEEKLY SCHEDULE**(Monday mornings)
    - **Time Savings**: 3-4 hours/week newsletter creation
-   - **Revenue Impact**:  **HIGH** - Lead nurturing, customer acquisition
+   - **Revenue Impact**:  **HIGH**- Lead nurturing, customer acquisition
    - **Dependencies**:
      - ConvertKit API
      - Anthropic Claude for content generation
@@ -149,16 +149,16 @@
    - **Last Modified**: October 6, 2025
    - **Automation Potential**: **MONTHLY SCHEDULE**
    - **Time Savings**: 2 hours/month manual research
-   - **Revenue Impact**:  **MEDIUM** - Radio promo database growth
+   - **Revenue Impact**:  **MEDIUM**- Radio promo database growth
    - **Dependencies**: WARM API token
 
 10. **`get-real-campaign-data.js`**
     - **Purpose**: Fetch real campaign play data from WARM API
     - **Status**:  FUNCTIONAL - Analytics/reporting
     - **Last Modified**: September 2025
-    - **Automation Potential**: **DAILY SCHEDULE** (campaign monitoring)
+    - **Automation Potential**: **DAILY SCHEDULE**(campaign monitoring)
     - **Time Savings**: 1 hour/day manual dashboard checking
-    - **Revenue Impact**:  **MEDIUM** - Client reporting
+    - **Revenue Impact**:  **MEDIUM**- Client reporting
     - **Dependencies**: WARM API token (WARM_API_TOKEN env var)
     - **Features**:
       - Senior Dunce campaign tracking
@@ -171,9 +171,9 @@
     - **Purpose**: Business analytics and performance tracking
     - **Status**:  FUNCTIONAL
     - **Last Modified**: August 27, 2025
-    - **Automation Potential**: **DAILY SCHEDULE** (morning reports)
+    - **Automation Potential**: **DAILY SCHEDULE**(morning reports)
     - **Time Savings**: 1-2 hours/week manual analytics
-    - **Revenue Impact**:  **MEDIUM** - Business intelligence
+    - **Revenue Impact**:  **MEDIUM**- Business intelligence
     - **Integration**: Command Centre dashboard potential
 
 12. **`agent-os-dashboard.js`**
@@ -181,19 +181,19 @@
     - **Status**:  FUNCTIONAL
     - **Last Modified**: September 29, 2025
     - **Automation Potential**: **ALWAYS-ON WEB SERVICE**
-    - **Revenue Impact**:  **LOW** - Internal tooling
+    - **Revenue Impact**:  **LOW**- Internal tooling
     - **Integration**: **PERFECT FOR command.totalaudiopromo.com**
 
 ---
 
-### **B. MEDIUM-PRIORITY AGENTS** (Need Minor Setup)
+### **B. MEDIUM-PRIORITY AGENTS**(Need Minor Setup)
 
 #### **Mailchimp Campaign Management**
 
 13. **`add-kyara-to-mailchimp.js`**
     - **Purpose**: Sync Airtable contacts to Mailchimp
     - **Status**:  FUNCTIONAL - Needs config update
-    - **Automation Potential**: **EVENT-TRIGGERED** (new campaign)
+    - **Automation Potential**: **EVENT-TRIGGERED**(new campaign)
     - **Dependencies**: Mailchimp API key, Airtable API
 
 14. **`sync-both-mailchimp-accounts.js`**
@@ -206,12 +206,12 @@
     - **Purpose**: Monitor Mailchimp account limits
     - **Status**:  FUNCTIONAL
     - **Last Modified**: October 6, 2025
-    - **Automation Potential**: **DAILY SCHEDULE** (alert on limits)
-    - **Revenue Impact**:  **LOW** - Cost monitoring
+    - **Automation Potential**: **DAILY SCHEDULE**(alert on limits)
+    - **Revenue Impact**:  **LOW**- Cost monitoring
 
-#### **Campaign-Specific Agents** (Kyara, Bestial examples)
+#### **Campaign-Specific Agents**(Kyara, Bestial examples)
 
-16-22. **`create-kyara-gmail-drafts.js`, `send-kyara-australian-emails.js`, `bestial-*-strategy.js`** - **Purpose**: Campaign-specific pitch automation - **Status**:  FUNCTIONAL - Template-based - **Automation Potential**: **EVENT-TRIGGERED** (new campaign) - **Revenue Impact**:  **MEDIUM** - Client campaign success - **Pattern**: These demonstrate proven workflow for automating client campaigns
+16-22. **`create-kyara-gmail-drafts.js`, `send-kyara-australian-emails.js`, `bestial-*-strategy.js`**- **Purpose**: Campaign-specific pitch automation - **Status**:  FUNCTIONAL - Template-based - **Automation Potential**: **EVENT-TRIGGERED**(new campaign) - **Revenue Impact**:  **MEDIUM**- Client campaign success - **Pattern**: These demonstrate proven workflow for automating client campaigns
 
 #### **Content Generation**
 
@@ -219,27 +219,27 @@
     - **Purpose**: AI-powered news analysis for content
     - **Status**:  FUNCTIONAL
     - **Last Modified**: September 1, 2025
-    - **Automation Potential**: **DAILY SCHEDULE** (morning)
+    - **Automation Potential**: **DAILY SCHEDULE**(morning)
     - **Time Savings**: 2 hours/day content research
-    - **Revenue Impact**:  **MEDIUM** - Newsletter/social content
+    - **Revenue Impact**:  **MEDIUM**- Newsletter/social content
 
 24. **`content-generation-agent.js`**
     - **Purpose**: General content generation
     - **Status**:  FUNCTIONAL
-    - **Automation Potential**: **ON-DEMAND** (API endpoint)
+    - **Automation Potential**: **ON-DEMAND**(API endpoint)
 
 25. **`audio-intel-content-agent.js`**
     - **Purpose**: Audio Intel specific content creation
     - **Status**:  FUNCTIONAL
     - **Last Modified**: August 31, 2025
     - **Automation Potential**: **WEEKLY SCHEDULE**
-    - **Revenue Impact**:  **HIGH** - Customer acquisition content
+    - **Revenue Impact**:  **HIGH**- Customer acquisition content
 
 ---
 
-### **C. EXPERIMENTAL/ARCHIVED AGENTS** (Not for Automation)
+### **C. EXPERIMENTAL/ARCHIVED AGENTS**(Not for Automation)
 
-#### **Archive Directory** (`tools/agents/archive/`)
+#### **Archive Directory**(`tools/agents/archive/`)
 
 - **oauth-fixes/**: 12 files - OAuth setup scripts (completed, historical)
 - **tests/**: 4 files - Test agents and debugging tools
@@ -251,7 +251,7 @@
 - **Status**: One-time research scripts for specific campaigns
 - **Automation Potential**:  Not suitable
 
-#### **Parked Features** (`tools/agents/parked/`)
+#### **Parked Features**(`tools/agents/parked/`)
 
 - Future features not currently in use
 - **Automation Potential**:  Not ready
@@ -264,16 +264,16 @@
 
 | Frequency   | Agent                                  | Time Savings | Priority    |
 | ----------- | -------------------------------------- | ------------ | ----------- |
-| **Hourly**  | `liberty-autopilot.js`                 | 2-3 hrs/week |  HIGH     |
-| **Daily**   | `enrich-all-contacts.js`               | 5-8 hrs/week |  CRITICAL |
-| **Daily**   | `get-real-campaign-data.js`            | 1 hr/day     |  MEDIUM   |
-| **Daily**   | `newsletter-automation-agent.js` (Mon) | 3-4 hrs/week |  HIGH     |
-| **Daily**   | `social-media-scheduler.js` (generate) | 5-8 hrs/week |  HIGH     |
-| **Daily**   | `newsjacking-agent.js` (morning)       | 2 hrs/day    |  MEDIUM   |
-| **Daily**   | `analytics-agent.js` (morning report)  | 1-2 hrs/week |  MEDIUM   |
-| **Weekly**  | `clean-airtable-contacts.js`           | 1 hr/week    |  MEDIUM   |
-| **Weekly**  | `station-discovery-system.js`          | 2 hrs/month  |  MEDIUM   |
-| **Monthly** | `liberty-label-cleanup.js`             | 30min/month  |  LOW      |
+| **Hourly** | `liberty-autopilot.js`                 | 2-3 hrs/week |  HIGH     |
+| **Daily**  | `enrich-all-contacts.js`               | 5-8 hrs/week |  CRITICAL |
+| **Daily**  | `get-real-campaign-data.js`            | 1 hr/day     |  MEDIUM   |
+| **Daily**  | `newsletter-automation-agent.js` (Mon) | 3-4 hrs/week |  HIGH     |
+| **Daily**  | `social-media-scheduler.js` (generate) | 5-8 hrs/week |  HIGH     |
+| **Daily**  | `newsjacking-agent.js` (morning)       | 2 hrs/day    |  MEDIUM   |
+| **Daily**  | `analytics-agent.js` (morning report)  | 1-2 hrs/week |  MEDIUM   |
+| **Weekly** | `clean-airtable-contacts.js`           | 1 hr/week    |  MEDIUM   |
+| **Weekly** | `station-discovery-system.js`          | 2 hrs/month  |  MEDIUM   |
+| **Monthly**| `liberty-label-cleanup.js`             | 30min/month  |  LOW      |
 
 **Total Time Savings Potential**: **25-35 hours/week**
 
@@ -348,11 +348,11 @@ Audio Intel Upload → Airtable → Enrichment Agents → Updated Records → Au
 
 **Perfect Agents for Command Centre**:
 
-1. **`agent-os-dashboard.js`** - Central status dashboard
+1. **`agent-os-dashboard.js`**- Central status dashboard
    - Already monitors agent health
    - Could be web service on command.totalaudiopromo.com
 
-2. **`analytics-agent.js`** - Business metrics
+2. **`analytics-agent.js`**- Business metrics
    - Revenue tracking
    - Customer acquisition metrics
    - Conversion rates
@@ -384,19 +384,19 @@ Audio Intel Upload → Airtable → Enrichment Agents → Updated Records → Au
 
 | Service              | API Keys Required    | Usage in Agents | Rate Limits              | Cost         |
 | -------------------- | -------------------- | --------------- | ------------------------ | ------------ |
-| **Airtable**         | `AIRTABLE_API_KEY`   | 56 agents       | 5 req/sec                | Free tier    |
-| **Anthropic Claude** | `ANTHROPIC_API_KEY`  | 9 agents        | Standard                 | $0.003/req   |
-| **Mailchimp**        | `MAILCHIMP_API_KEY`  | 18 agents       | 10 req/sec               | Free tier    |
-| **WARM API**         | `WARM_API_TOKEN`     | 2 agents        | Unknown                  | Trial access |
-| **Gmail**            | OAuth tokens         | 12 agents       | 250 quota units/user/sec | Free         |
-| **Google Drive**     | OAuth tokens         | MCP integration | Standard                 | Free         |
-| **Notion**           | OAuth tokens         | MCP integration | Standard                 | Free         |
-| **Puppeteer**        | None                 | MCP integration | None                     | Free         |
-| **ConvertKit**       | `CONVERTKIT_API_KEY` | 1 agent         | Standard                 | Paid plan    |
-| **NewsAPI**          | `NEWS_API_KEY`       | 1 agent         | 100 req/day (free)       | Free/Paid    |
-| **Perplexity**       | `PERPLEXITY_API_KEY` | Potential       | Standard                 | Paid         |
-| **Monday.com**       | `MONDAY_API_KEY`     | 4 agents        | Standard                 | Paid plan    |
-| **Typeform**         | `TYPEFORM_API_KEY`   | 1 agent         | Standard                 | Free tier    |
+| **Airtable**        | `AIRTABLE_API_KEY`   | 56 agents       | 5 req/sec                | Free tier    |
+| **Anthropic Claude**| `ANTHROPIC_API_KEY`  | 9 agents        | Standard                 | $0.003/req   |
+| **Mailchimp**       | `MAILCHIMP_API_KEY`  | 18 agents       | 10 req/sec               | Free tier    |
+| **WARM API**        | `WARM_API_TOKEN`     | 2 agents        | Unknown                  | Trial access |
+| **Gmail**           | OAuth tokens         | 12 agents       | 250 quota units/user/sec | Free         |
+| **Google Drive**    | OAuth tokens         | MCP integration | Standard                 | Free         |
+| **Notion**          | OAuth tokens         | MCP integration | Standard                 | Free         |
+| **Puppeteer**       | None                 | MCP integration | None                     | Free         |
+| **ConvertKit**      | `CONVERTKIT_API_KEY` | 1 agent         | Standard                 | Paid plan    |
+| **NewsAPI**         | `NEWS_API_KEY`       | 1 agent         | 100 req/day (free)       | Free/Paid    |
+| **Perplexity**      | `PERPLEXITY_API_KEY` | Potential       | Standard                 | Paid         |
+| **Monday.com**      | `MONDAY_API_KEY`     | 4 agents        | Standard                 | Paid plan    |
+| **Typeform**        | `TYPEFORM_API_KEY`   | 1 agent         | Standard                 | Free tier    |
 
 ### **Environment Variables Needed**
 
@@ -461,7 +461,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 
 ## 5⃣ AUTOMATION PRIORITY RANKING
 
-### ** CRITICAL PRIORITY** (Immediate Revenue Impact)
+### **CRITICAL PRIORITY**(Immediate Revenue Impact)
 
 **Rank 1: Contact Enrichment Pipeline**
 
@@ -503,7 +503,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 
 ---
 
-### ** HIGH PRIORITY** (Customer Acquisition Support)
+### **HIGH PRIORITY**(Customer Acquisition Support)
 
 **Rank 4: Social Media Content Calendar**
 
@@ -535,7 +535,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 
 ---
 
-### ** MEDIUM PRIORITY** (Operational Efficiency)
+### **MEDIUM PRIORITY**(Operational Efficiency)
 
 **Rank 7: Newsjacking/Content Research**
 
@@ -575,7 +575,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 
 ---
 
-### ** LOW PRIORITY** (Nice to Have)
+### **LOW PRIORITY**(Nice to Have)
 
 **Rank 11-15**: Station discovery, label cleanup, usage monitoring
 
@@ -587,7 +587,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 
 ## 6⃣ COMMAND CENTRE INTEGRATION SPEC
 
-### **Dashboard Overview** (`command.totalaudiopromo.com`)
+### **Dashboard Overview**(`command.totalaudiopromo.com`)
 
 **Purpose**: Single-pane-of-glass for all automation status and business metrics
 
@@ -891,7 +891,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 
 ### **Alerts & Notifications**
 
-**Email/Slack Alerts** (sent to Chris):
+**Email/Slack Alerts**(sent to Chris):
 
 -  Enrichment agent failed (with error details)
 -  Gmail autopilot stopped (needs manual restart)
@@ -1010,7 +1010,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 -  Calendar generation automated
 -  Posting NOT automated (platform APIs needed)
 
-**Semi-Automated Workflow** (Current Best Option):
+**Semi-Automated Workflow**(Current Best Option):
 
 ```
 1. [SCHEDULE] Weekly (Sunday 8pm)
@@ -1028,7 +1028,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 6. [TRACKING] Manual log of engagement
 ```
 
-**Future Full Automation** (needs platform APIs):
+**Future Full Automation**(needs platform APIs):
 
 ```
 1. [SCHEDULE] Weekly calendar generation
@@ -1056,8 +1056,8 @@ PERPLEXITY_API_KEY=your_perplexity_key
 
 **Recommendation**:
 
-- **Phase 1** (NOW): Semi-automated via Buffer/Hootsuite
-- **Phase 2** (After first £500/month): Invest in platform APIs
+- **Phase 1**(NOW): Semi-automated via Buffer/Hootsuite
+- **Phase 2**(After first £500/month): Invest in platform APIs
 
 ---
 
@@ -1123,39 +1123,39 @@ PERPLEXITY_API_KEY=your_perplexity_key
 
 #### **Agent-Specific Blockers**
 
-**1. Contact Enrichment Pipeline**  NO BLOCKERS
+**1. Contact Enrichment Pipeline** NO BLOCKERS
 
 - Status: READY FOR AUTOMATION
 - Dependencies: All API keys present
 - Reliability: Error handling exists
 - Action: Set up cron job
 
-**2. Gmail Autopilot**  NO BLOCKERS
+**2. Gmail Autopilot** NO BLOCKERS
 
 - Status: READY FOR AUTOMATION
 - Dependencies: OAuth tokens valid
 - Reliability: Logs to file, graceful failures
 - Action: Set up cron job
 
-**3. Newsletter Automation**  MANUAL REVIEW NEEDED
+**3. Newsletter Automation** MANUAL REVIEW NEEDED
 
 - Blocker: Content needs Chris approval before sending
 - Solution: Auto-generate draft, alert Chris for review
 - Workflow: Generate → Notify → Manual send
 
-**4. Social Media Calendar**  PLATFORM APIS NEEDED
+**4. Social Media Calendar** PLATFORM APIS NEEDED
 
 - Blocker: No platform APIs integrated
 - Solution: Export to Buffer/Hootsuite for posting
 - Alternative: Build API integrations (costs $100+/month)
 
-**5. Campaign Data Fetching**  WARM TOKEN EXPIRY
+**5. Campaign Data Fetching** WARM TOKEN EXPIRY
 
 - Blocker: WARM trial access expires (250 songs limit)
 - Solution: Purchase WARM subscription or find alternative
 - Workaround: Manual campaign tracking
 
-**6. Lead Gen Research**  NO BLOCKERS
+**6. Lead Gen Research** NO BLOCKERS
 
 - Status: READY FOR AUTOMATION
 - Dependencies: WARM API token available
@@ -1228,7 +1228,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 - **Impact**: Bad data in Audio Intel, wasted outreach
 - **Solution**: Quality score confidence threshold (> 80%)
 
-**Social Media Posting** (if fully automated):
+**Social Media Posting**(if fully automated):
 
 - **Risk**: Posts content with tone/timing issues
 - **Impact**: Brand damage, audience confusion
@@ -1269,7 +1269,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 
 ## 9⃣ RECOMMENDED IMPLEMENTATION ROADMAP
 
-### **Phase 1: Immediate Wins** (Week 1-2)
+### **Phase 1: Immediate Wins**(Week 1-2)
 
 **Goal**: Automate highest-impact, zero-blocker agents
 
@@ -1296,7 +1296,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 
 ---
 
-### **Phase 2: Command Centre Foundation** (Week 3-4)
+### **Phase 2: Command Centre Foundation**(Week 3-4)
 
 **Goal**: Build status dashboard for automation visibility
 
@@ -1323,7 +1323,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 
 ---
 
-### **Phase 3: Content & Lead Gen** (Week 5-6)
+### **Phase 3: Content & Lead Gen**(Week 5-6)
 
 **Goal**: Automate content generation and lead research
 
@@ -1352,7 +1352,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 
 ---
 
-### **Phase 4: Analytics & Reporting** (Week 7-8)
+### **Phase 4: Analytics & Reporting**(Week 7-8)
 
 **Goal**: Daily business intelligence automation
 
@@ -1380,7 +1380,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 
 ---
 
-### **Phase 5: Polish & Scale** (Week 9+)
+### **Phase 5: Polish & Scale**(Week 9+)
 
 **Goal**: Optimize, monitor, and scale automation
 
@@ -1412,7 +1412,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 
 ### **Key Findings**
 
-**Ready for Immediate Automation** (8 agents):
+**Ready for Immediate Automation**(8 agents):
 
 1. Contact enrichment pipeline (CRITICAL - £3/day cost)
 2. Gmail autopilot (HIGH - 2hrs/week saved)
@@ -1427,7 +1427,7 @@ PERPLEXITY_API_KEY=your_perplexity_key
 
 ---
 
-### **Recommended First Steps** (This Week)
+### **Recommended First Steps**(This Week)
 
 **Monday**:
 

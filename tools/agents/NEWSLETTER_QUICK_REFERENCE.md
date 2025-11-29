@@ -14,10 +14,10 @@
 
 ## Files Modified
 
-1. **[FINAL_CHRIS_VOICE.md](FINAL_CHRIS_VOICE.md)** - Voice profile with depth requirements
-2. **[generate-real-newsletter.js](generate-real-newsletter.js)** - Enhanced generation system
-3. **[test-newsletter-depth.js](test-newsletter-depth.js)** - Quality testing script (NEW)
-4. **[NEWSLETTER_DEPTH_UPGRADE.md](NEWSLETTER_DEPTH_UPGRADE.md)** - Full change documentation
+1. **[FINAL_CHRIS_VOICE.md](FINAL_CHRIS_VOICE.md)**- Voice profile with depth requirements
+2. **[generate-real-newsletter.js](generate-real-newsletter.js)**- Enhanced generation system
+3. **[test-newsletter-depth.js](test-newsletter-depth.js)**- Quality testing script (NEW)
+4. **[NEWSLETTER_DEPTH_UPGRADE.md](NEWSLETTER_DEPTH_UPGRADE.md)**- Full change documentation
 
 ## Usage Commands
 
@@ -35,12 +35,12 @@ node test-newsletter-depth.js
 
 Every generated newsletter section is now tested for:
 
--  **Experience phrase used** - "After 5+ years..." / "Building Audio Intel..." / "As an underground..."
--  **Specific numbers included** - Budgets, timings, percentages, durations
--  **Tactical detail present** - Real campaign tactics, processes, workflows
--  **Avoided generic takes** - No "indies are nimble" without backing
--  **British spelling used** - organised, whilst, realise (currently marginal detection)
--  **Action step included** - Clear 30min-2hr task with budget
+-  **Experience phrase used**- "After 5+ years..." / "Building Audio Intel..." / "As an underground..."
+-  **Specific numbers included**- Budgets, timings, percentages, durations
+-  **Tactical detail present**- Real campaign tactics, processes, workflows
+-  **Avoided generic takes**- No "indies are nimble" without backing
+-  **British spelling used**- organised, whilst, realise (currently marginal detection)
+-  **Action step included**- Clear 30min-2hr task with budget
 
 ## Framework Structure
 

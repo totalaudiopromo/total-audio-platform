@@ -76,7 +76,7 @@ Enrich contact data with music industry intelligence.
 }
 ```
 
-**Success Response** (200):
+**Success Response**(200):
 
 ```json
 {

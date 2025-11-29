@@ -22,9 +22,9 @@
 
 The Total Audio Platform consists of three Next.js applications deployed on Vercel:
 
-- **Audio Intel** (`apps/audio-intel`) - Contact enrichment SaaS (PRIMARY REVENUE PRODUCT)
-- **Campaign Tracker** (`apps/tracker`) - Radio submission tracking CRM
-- **Pitch Generator** (`apps/pitch-generator`) - Personalised pitch email generation
+- **Audio Intel**(`apps/audio-intel`) - Contact enrichment SaaS (PRIMARY REVENUE PRODUCT)
+- **Campaign Tracker**(`apps/tracker`) - Radio submission tracking CRM
+- **Pitch Generator**(`apps/pitch-generator`) - Personalised pitch email generation
 
 ### Deployment Architecture
 
@@ -144,7 +144,7 @@ FEATURE_PAYMENTS_ENABLED=true
 
 **Workflows:**
 
-1. **CI Workflow** (`.github/workflows/ci.yml`)
+1. **CI Workflow**(`.github/workflows/ci.yml`)
    - Runs on all pushes and PRs
    - Lints, typechecks, tests, and builds all apps
    - Uploads build artifacts
@@ -157,7 +157,7 @@ FEATURE_PAYMENTS_ENABLED=true
    - Only trigger when app-specific files change
    - Deploy to Vercel with proper environment variables
 
-3. **Supabase Backup Workflow** (`.github/workflows/supabase-backup.yml`)
+3. **Supabase Backup Workflow**(`.github/workflows/supabase-backup.yml`)
    - Runs daily at 2:00 AM UTC
    - Exports schema, data, and roles
    - Retains backups for 30 days
@@ -232,7 +232,7 @@ psql $DATABASE_URL < backups/YYYY-MM-DD_HH-MM-SS/data.sql
 psql $DATABASE_URL < backups/YYYY-MM-DD_HH-MM-SS/roles.sql
 ```
 
-**IMPORTANT:** Always test database restoration in a staging environment first.
+**IMPORTANT:**Always test database restoration in a staging environment first.
 
 ---
 
@@ -287,7 +287,7 @@ curl https://intel.totalaudiopromo.com/api/health
 
 #### Build Failures
 
-**Symptom:** "Build failed" in GitHub Actions or Vercel
+**Symptom:**"Build failed" in GitHub Actions or Vercel
 
 **Solutions:**
 
@@ -298,7 +298,7 @@ curl https://intel.totalaudiopromo.com/api/health
 
 #### Database Connection Errors
 
-**Symptom:** "Failed to connect to Supabase" in production
+**Symptom:**"Failed to connect to Supabase" in production
 
 **Solutions:**
 
@@ -309,7 +309,7 @@ curl https://intel.totalaudiopromo.com/api/health
 
 #### Stripe Webhook Failures
 
-**Symptom:** Payments succeed but subscriptions not updated
+**Symptom:**Payments succeed but subscriptions not updated
 
 **Solutions:**
 
@@ -320,7 +320,7 @@ curl https://intel.totalaudiopromo.com/api/health
 
 #### Environment Variable Issues
 
-**Symptom:** "Environment validation failed" error
+**Symptom:**"Environment validation failed" error
 
 **Solutions:**
 
@@ -351,7 +351,7 @@ For production incidents, follow [INCIDENTS.md](./INCIDENTS.md) procedures.
 | CI Pipeline              | 5-8 minutes      | Lint, typecheck, test, build |
 | Vercel Build             | 2-4 minutes      | Per app                      |
 | Edge Network Propagation | 1-2 minutes      | Global CDN update            |
-| **Total**                | **8-14 minutes** | From push to live            |
+| **Total**               | **8-14 minutes**| From push to live            |
 
 ### Maintenance Windows
 
@@ -385,6 +385,6 @@ For production incidents, follow [INCIDENTS.md](./INCIDENTS.md) procedures.
 
 ---
 
-**Last Deployment:** Check Vercel dashboard for timestamp
-**Next Scheduled Deployment:** Based on feature completion
-**Deployment Frequency:** 2-3 times per week (development phase)
+**Last Deployment:**Check Vercel dashboard for timestamp
+**Next Scheduled Deployment:**Based on feature completion
+**Deployment Frequency:**2-3 times per week (development phase)

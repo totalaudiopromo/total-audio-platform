@@ -21,17 +21,17 @@ Give the agent read-only access to Liberty Google Chat for training on:
 
 Go to: https://console.cloud.google.com/apis/library/chat.googleapis.com
 
-**Important**: Make sure you're in the **Liberty workspace project** (not Total Audio)
+**Important**: Make sure you're in the **Liberty workspace project**(not Total Audio)
 
 1. Select or create a Google Cloud project for Liberty Music PR
-2. Click **"ENABLE"** on Google Chat API
+2. Click **"ENABLE"**on Google Chat API
 3. Note the project name/ID
 
 ### 2. Create OAuth 2.0 Client ID (Liberty)
 
 Go to: https://console.cloud.google.com/apis/credentials
 
-1. Click **"+ CREATE CREDENTIALS"** → OAuth 2.0 Client ID
+1. Click **"+ CREATE CREDENTIALS"**→ OAuth 2.0 Client ID
 2. Application type: **Desktop app**
 3. Name: **Liberty Agent - Google Chat**
 4. Click **Create**
@@ -41,7 +41,7 @@ Go to: https://console.cloud.google.com/apis/credentials
 
 If prompted, configure the OAuth consent screen:
 
-- User Type: **Internal** (if Google Workspace) or **External**
+- User Type: **Internal**(if Google Workspace) or **External**
 - App name: **Liberty Music PR Agent**
 - User support email: `chrisschofield@libertymusicpr.com`
 - Developer contact: `chrisschofield@libertymusicpr.com`

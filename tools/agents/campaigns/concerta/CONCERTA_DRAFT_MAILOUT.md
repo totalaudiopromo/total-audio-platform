@@ -100,7 +100,7 @@ www.libertymusicpr.com
 
 1. **Primary artwork**: consumption_anime_artwork 04b + type.jpg
 2. **Artist photo**: CONCERTA_High-res_1.jpg
-3. **Press kit** (if available)
+3. **Press kit**(if available)
 
 ---
 
@@ -142,16 +142,16 @@ www.libertymusicpr.com
 
 ### Information Needed from Concerta:
 
-- [ ] **Spotify link** for "Consumption"
-- [ ] **Apple Music link** for "Consumption"
-- [ ] **SoundCloud/Bandcamp** link (if applicable)
-- [ ] **YouTube video** link (if available)
-- [ ] **Instagram handle** (@concerta...?)
-- [ ] **TikTok** (if active)
-- [ ] **Artist bio** (2-3 sentences max)
-- [ ] **Press release** (if available - check email)
-- [ ] **Any press quotes/coverage** to date
-- [ ] **Preferred contact method** for radio programmers
+- [ ] **Spotify link**for "Consumption"
+- [ ] **Apple Music link**for "Consumption"
+- [ ] **SoundCloud/Bandcamp**link (if applicable)
+- [ ] **YouTube video**link (if available)
+- [ ] **Instagram handle**(@concerta...?)
+- [ ] **TikTok**(if active)
+- [ ] **Artist bio**(2-3 sentences max)
+- [ ] **Press release**(if available - check email)
+- [ ] **Any press quotes/coverage**to date
+- [ ] **Preferred contact method**for radio programmers
 
 ### Technical Setup:
 
@@ -264,16 +264,16 @@ South Korea → Europe → the world
 
 ### What to Expect:
 
-- **Replies start within 24-48 hours** (stations check email Mon-Fri)
-- **Most responses by end of week** (Friday 15 November)
-- **Airplay decisions take 1-2 weeks** (programming schedules)
-- **Not all replies = immediate airplay** (some need more time)
+- **Replies start within 24-48 hours**(stations check email Mon-Fri)
+- **Most responses by end of week**(Friday 15 November)
+- **Airplay decisions take 1-2 weeks**(programming schedules)
+- **Not all replies = immediate airplay**(some need more time)
 
 ### What We Need from You:
 
-- **Quick response to station requests** (bios, interviews, track info)
-- **Monitor streaming numbers** (stations like to see traction)
-- **Share any coverage** (press, blogs, playlists help momentum)
+- **Quick response to station requests**(bios, interviews, track info)
+- **Monitor streaming numbers**(stations like to see traction)
+- **Share any coverage**(press, blogs, playlists help momentum)
 
 ### Communication:
 

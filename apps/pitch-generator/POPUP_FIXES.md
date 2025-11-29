@@ -4,17 +4,17 @@
 
 ### 1. Less Aggressive Timing
 
-- **Before:** Popup triggered immediately on mouse leave
-- **After:** 30-second delay before popup becomes active
-- **Before:** Guilt-inducing copy ("I'll keep wasting 15 hours")
-- **After:** Simple "No thanks" button
+- **Before:**Popup triggered immediately on mouse leave
+- **After:**30-second delay before popup becomes active
+- **Before:**Guilt-inducing copy ("I'll keep wasting 15 hours")
+- **After:**Simple "No thanks" button
 
 ### 2. Better User Control
 
-- **Before:** Popup could show multiple times per session
-- **After:** "No thanks" button dismisses permanently (localStorage)
-- **Before:** Only session-based dismissal
-- **After:** Permanent dismissal option
+- **Before:**Popup could show multiple times per session
+- **After:**"No thanks" button dismisses permanently (localStorage)
+- **Before:**Only session-based dismissal
+- **After:**Permanent dismissal option
 
 ### 3. More Respectful UX
 
@@ -30,7 +30,7 @@ The "existing campaigns" link might be:
 2. A navigation item that needs updating
 3. A cached link from an old version
 
-**To investigate:** Check where you're clicking "existing campaigns" and I can fix the specific link.
+**To investigate:**Check where you're clicking "existing campaigns" and I can fix the specific link.
 
 ## Files Modified
 

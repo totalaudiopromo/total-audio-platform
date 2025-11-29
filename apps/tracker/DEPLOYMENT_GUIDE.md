@@ -343,7 +343,7 @@ Everything is in place for tracker.totalaudiopromo.com:
 
 ---
 
-**Questions?** Check:
+**Questions?**Check:
 
 - [NEWSLETTER_STRATEGY.md](./docs/NEWSLETTER_STRATEGY.md) - ConvertKit integration details
 - [PSEO_STRATEGY_TRACKER.md](./docs/reference/PSEO_STRATEGY_TRACKER.md) - Full 60-page content plan

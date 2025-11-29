@@ -1,8 +1,8 @@
-#  Email Tracking Setup Guide
+# Email Tracking Setup Guide
 
 ## Simple Email Open & Click Tracking (No Mailchimp Required!)
 
-Right, so I've built you a simple email tracking system that works with **any** email service - Gmail, Outlook, Mailchimp, whatever you want to use. No need to commit to Mailchimp or pay for expensive tracking services.
+Right, so I've built you a simple email tracking system that works with **any**email service - Gmail, Outlook, Mailchimp, whatever you want to use. No need to commit to Mailchimp or pay for expensive tracking services.
 
 ## **How It Works**
 
@@ -131,31 +131,31 @@ const campaign = {
 
 ### **Real-time Analytics**
 
-- **Open rates** - Who's opening your emails
-- **Click rates** - Who's clicking your links
-- **Click-through rates** - Engagement quality
-- **Timeline** - When people are engaging
+- **Open rates**- Who's opening your emails
+- **Click rates**- Who's clicking your links
+- **Click-through rates**- Engagement quality
+- **Timeline**- When people are engaging
 
 ### **Contact Engagement Scoring**
 
-- **0-100 score** for each contact
-- **Engagement history** across all campaigns
-- **Last engagement** tracking
-- **Campaign performance** per contact
+- **0-100 score**for each contact
+- **Engagement history**across all campaigns
+- **Last engagement**tracking
+- **Campaign performance**per contact
 
 ### **Automated Recommendations**
 
-- **Subject line** suggestions based on open rates
-- **Content** improvements based on click rates
-- **Targeting** advice based on engagement
-- **Success** patterns to replicate
+- **Subject line**suggestions based on open rates
+- **Content**improvements based on click rates
+- **Targeting**advice based on engagement
+- **Success**patterns to replicate
 
 ### **Data Export**
 
-- **CSV export** of all tracking data
-- **Campaign reports** for clients
-- **Contact lists** with engagement scores
-- **Performance metrics** for analysis
+- **CSV export**of all tracking data
+- **Campaign reports**for clients
+- **Contact lists**with engagement scores
+- **Performance metrics**for analysis
 
 ## **Example Workflow**
 
@@ -211,9 +211,9 @@ console.log(`Engagement Score: ${engagement.engagementScore}/100`);
 
 | Service              | Monthly Cost | Features                                            |
 | -------------------- | ------------ | --------------------------------------------------- |
-| **Mailchimp**        | £10-50+      | Basic tracking, limited contacts                    |
-| **Constant Contact** | £15-45+      | Email marketing, basic analytics                    |
-| **Our System**       | **£0**       | Full tracking, unlimited contacts, custom analytics |
+| **Mailchimp**       | £10-50+      | Basic tracking, limited contacts                    |
+| **Constant Contact**| £15-45+      | Email marketing, basic analytics                    |
+| **Our System**      | **£0**      | Full tracking, unlimited contacts, custom analytics |
 
 ## **Advanced Features**
 
@@ -245,11 +245,11 @@ console.log(`Engagement Score: ${engagement.engagementScore}/100`);
 
 Your email tracking system is ready to go! It will:
 
-- **Track every email** you send automatically
-- **Show you what's working** with real-time analytics
-- **Help you improve** with automated recommendations
-- **Work with any email system** - no vendor lock-in
-- **Cost nothing** to run (just hosting costs)
+- **Track every email**you send automatically
+- **Show you what's working**with real-time analytics
+- **Help you improve**with automated recommendations
+- **Work with any email system**- no vendor lock-in
+- **Cost nothing**to run (just hosting costs)
 
 **Bottom line**: You now have professional email tracking that works with any email system, costs nothing to run, and gives you better insights than most paid services!
 

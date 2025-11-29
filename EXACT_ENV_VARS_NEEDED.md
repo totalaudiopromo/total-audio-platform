@@ -34,7 +34,7 @@ env:
 
 ### Build-Time Secrets (Used by GitHub Actions)
 
-These are needed for the **BUILD** step in GitHub Actions:
+These are needed for the **BUILD**step in GitHub Actions:
 
 ```
 NEXT_PUBLIC_SUPABASE_URL=https://lbtazcdqirgvmhvtwrbc.supabase.co
@@ -44,7 +44,7 @@ SUPABASE_SERVICE_ROLE_KEY=[your-service-role-key]
 
 ### Promotion Secrets (Used by Promotion Script)
 
-These are needed for the **PROMOTE** step to push to Vercel production:
+These are needed for the **PROMOTE**step to push to Vercel production:
 
 ```
 VERCEL_TOKEN=[your-vercel-token]
@@ -305,7 +305,7 @@ NEXT_PUBLIC_BASE_URL=https://totalaudiopromo.com
 
 ## Next Steps
 
-1. **Fix golden-deploy.yml** - Add missing VERCEL*PROJECT_ID*\* vars to promote step
-2. **Verify GitHub Secrets** - Check all 12 secrets are present
-3. **Verify Vercel Projects** - Each of 5 projects has Supabase vars in all 3 environments
-4. **Deploy** - Create new v2.5.4-golden tag to test
+1. **Fix golden-deploy.yml**- Add missing VERCEL*PROJECT_ID*\* vars to promote step
+2. **Verify GitHub Secrets**- Check all 12 secrets are present
+3. **Verify Vercel Projects**- Each of 5 projects has Supabase vars in all 3 environments
+4. **Deploy**- Create new v2.5.4-golden tag to test

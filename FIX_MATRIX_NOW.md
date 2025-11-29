@@ -24,9 +24,9 @@ matrix:
 
 **Three locations need fixing:**
 
-1. **Line 81** - Build matrix
-2. **Line 119** - Deploy staging matrix
-3. **Line 204** - Deploy production matrix
+1. **Line 81**- Build matrix
+2. **Line 119**- Deploy staging matrix
+3. **Line 204**- Deploy production matrix
 
 ### Changes Required
 
@@ -46,9 +46,9 @@ app: [audio-intel, tracker, pitch-generator, command-centre, web]
 
 ## Why This Matters
 
-- **tracker** and **pitch-generator** are PRODUCTION apps that need deployment
-- **command-centre** is a PRODUCTION app that needs deployment
-- **api** is NOT a Vercel app and should NOT be in the deployment matrix
+- **tracker**and **pitch-generator**are PRODUCTION apps that need deployment
+- **command-centre**is a PRODUCTION app that needs deployment
+- **api**is NOT a Vercel app and should NOT be in the deployment matrix
 
 ## Verification After Fix
 

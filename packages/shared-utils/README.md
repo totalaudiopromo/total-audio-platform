@@ -99,11 +99,11 @@ Or reference in package.json:
 
 ## Usage Across Platform
 
-- **Automation Agents** (`/tools/agents/`) - Primary users for logging and cost tracking
-- **Audio Intel** (`/apps/audio-intel/`) - Can use for contact enrichment logging
-- **Command Centre** (`/apps/command-centre/`) - Uses for dashboard data
-- **Newsletter System** (`/apps/newsletter/`) - Can use for content generation tracking
-- **Any Future App** - Shared utilities available across entire monorepo
+- **Automation Agents**(`/tools/agents/`) - Primary users for logging and cost tracking
+- **Audio Intel**(`/apps/audio-intel/`) - Can use for contact enrichment logging
+- **Command Centre**(`/apps/command-centre/`) - Uses for dashboard data
+- **Newsletter System**(`/apps/newsletter/`) - Can use for content generation tracking
+- **Any Future App**- Shared utilities available across entire monorepo
 
 ## Data Storage
 

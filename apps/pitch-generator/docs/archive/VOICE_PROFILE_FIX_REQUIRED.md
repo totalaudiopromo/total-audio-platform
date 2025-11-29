@@ -6,7 +6,7 @@ The voice profile feature cannot save data until a database migration is run.
 
 ## Problem
 
-The `user_pitch_settings` table has `user_id` column as **UUID** type, but the application passes **email addresses** (TEXT type) like `"founder@totalaudiopromo.com"`.
+The `user_pitch_settings` table has `user_id` column as **UUID**type, but the application passes **email addresses**(TEXT type) like `"founder@totalaudiopromo.com"`.
 
 ## Error Message
 
@@ -31,9 +31,9 @@ ALTER TABLE user_pitch_settings
 ALTER COLUMN user_id TYPE TEXT USING user_id::TEXT;
 ```
 
-4. **Click RUN** (or CMD+Enter)
+4. **Click RUN**(or CMD+Enter)
 
-5. **Verify the change** (optional):
+5. **Verify the change**(optional):
 
 ```sql
 SELECT column_name, data_type, udt_name
@@ -44,7 +44,7 @@ WHERE table_name = 'user_pitch_settings'
 
 Expected result: `data_type = 'text'`
 
-6. **Test voice profile save** at [http://localhost:3001/profile/voice](http://localhost:3001/profile/voice)
+6. **Test voice profile save**at [http://localhost:3001/profile/voice](http://localhost:3001/profile/voice)
 
 ## Why Can't Claude Run This Automatically?
 

@@ -12,11 +12,11 @@ _Unified reference for brand positioning, messaging, design, and campaign execut
 
 ## 2. Messaging Pillars
 
-1. **Credible Outcomes** – show real campaign transformations (15 hours → 15 minutes, Liberty churn insights, organic stream guarantees).
-2. **Automation With Personality** – AI agents that feel human, support content creation and campaign workflows.
-3. **UK Industry Insider** – local knowledge, contact intelligence, and support tailored to British independent artists and agencies.
-4. **Accessible Pricing** – highlight £19/£79 tiers vs. expensive agency retainers and pay-per-pitch platforms.
-5. **Real-life builder** – weave in Chris’s dual-role context (freelance radio promoter + sadact producer + parent) so content feels grounded.
+1. **Credible Outcomes**– show real campaign transformations (15 hours → 15 minutes, Liberty churn insights, organic stream guarantees).
+2. **Automation With Personality**– AI agents that feel human, support content creation and campaign workflows.
+3. **UK Industry Insider**– local knowledge, contact intelligence, and support tailored to British independent artists and agencies.
+4. **Accessible Pricing**– highlight £19/£79 tiers vs. expensive agency retainers and pay-per-pitch platforms.
+5. **Real-life builder**– weave in Chris’s dual-role context (freelance radio promoter + sadact producer + parent) so content feels grounded.
 
 ## 3. Content Strategy
 

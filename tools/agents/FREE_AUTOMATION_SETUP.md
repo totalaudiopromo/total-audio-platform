@@ -8,64 +8,64 @@
 
 ## The Truth About Costs
 
-You're right to question the costs. Here's what **actually** costs money vs what's free:
+You're right to question the costs. Here's what **actually**costs money vs what's free:
 
-###  COSTS MONEY (All Disabled by Default)
+### COSTS MONEY (All Disabled by Default)
 
-**Contact Enrichment** - £3 per enrichment
+**Contact Enrichment**- £3 per enrichment
 
 - Uses Perplexity API
-- **Only run when customers pay for it** (they pay you £19+ for PRO tier)
+- **Only run when customers pay for it**(they pay you £19+ for PRO tier)
 - This is **revenue**, not cost
 - Status: `enabled: true` but `automation: manual` (you control when it runs)
 
-**Newsletter/Content Generation** - ~£0.50-£1 per run
+**Newsletter/Content Generation**- ~£0.50-£1 per run
 
 - Uses Anthropic Claude API
-- **DISABLED** in registry (`enabled: false`)
+- **DISABLED**in registry (`enabled: false`)
 - You can write newsletters manually for now
 - Enable later when you have revenue
 
-**Liberty Intelligence Agent** - £0.50 per transcript
+**Liberty Intelligence Agent**- £0.50 per transcript
 
 - Uses Google Gemini API
-- **DISABLED** in registry (`enabled: false`)
+- **DISABLED**in registry (`enabled: false`)
 - Only run when Liberty pays you for campaign work
 
-###  100% FREE (Already Working)
+### 100% FREE (Already Working)
 
-**Social Media Scheduler** - £0/month
+**Social Media Scheduler**- £0/month
 
 - No AI APIs needed
 - Just posts scheduled content
 - Runs Sunday 8pm automatically
 - **Saves 8h/week**
 
-**Gmail Autopilot** - £0/month
+**Gmail Autopilot**- £0/month
 
 - Uses Gmail API (free tier)
 - Auto-sorts emails by colour
 - Runs every 2 hours
 - **Saves 6h/day = 42h/week**
 
-**Database Operations** - £0/month
+**Database Operations**- £0/month
 
 - Internal database management
 - No external API costs
 
-**Agent Health Check** - £0/month
+**Agent Health Check**- £0/month
 
 - Monitors system health
 - Runs every 30 minutes
 - No API costs
 
-**Business Analytics** - £0/month
+**Business Analytics**- £0/month
 
 - Analyses internal data
 - No external API costs
 - Runs Monday 10am
 
-**Data Cleanup** - £0/month
+**Data Cleanup**- £0/month
 
 - Internal data maintenance
 - Runs Sunday 2am weekly
@@ -88,9 +88,9 @@ You're right to question the costs. Here's what **actually** costs money vs what
 | ---------------------- | --------- | ---------- | ----------- | ------------------------- |
 | Social Media Scheduler | £0        | 8h/week    | Sunday 8pm  |  Active                 |
 | Business Analytics     | £0        | 4h/week    | Monday 10am |  Active                 |
-| **Newsletter**         | £0.50/run | 8h/week    | Manual      |  Disabled (costs money) |
-| **Newsjacking**        | £0.20/run | 4h/week    | Manual      |  Disabled (costs money) |
-| **Content Generation** | £0.30/run | 3h/week    | Manual      |  Disabled (costs money) |
+| **Newsletter**        | £0.50/run | 8h/week    | Manual      |  Disabled (costs money) |
+| **Newsjacking**       | £0.20/run | 4h/week    | Manual      |  Disabled (costs money) |
+| **Content Generation**| £0.30/run | 3h/week    | Manual      |  Disabled (costs money) |
 
 ### MONITORING (100% Free)
 
@@ -176,15 +176,15 @@ You're right to question the costs. Here's what **actually** costs money vs what
 
 ### Week 1: Core Free Automation
 
-1. **Enable Gmail Autopilot** (every 2 hours)
+1. **Enable Gmail Autopilot**(every 2 hours)
    - Auto-sort emails by colour
    - **Saves 6h/day**
 
-2. **Enable Social Media Scheduler** (Sunday 8pm)
+2. **Enable Social Media Scheduler**(Sunday 8pm)
    - Pre-schedule week's content
    - **Saves 8h/week**
 
-3. **Enable Data Cleanup** (Sunday 2am)
+3. **Enable Data Cleanup**(Sunday 2am)
    - Maintain contact quality
    - **Saves 2h/week**
 
@@ -193,15 +193,15 @@ You're right to question the costs. Here's what **actually** costs money vs what
 
 ### Week 2: Manual Content Workflow
 
-1. **Write newsletter manually** (30 min)
+1. **Write newsletter manually**(30 min)
    - Monday morning routine
    - No AI costs
 
-2. **Batch social media content** (1 hour)
+2. **Batch social media content**(1 hour)
    - Sunday afternoon
    - Schedule for week
 
-3. **Manual newsjacking** (10 min/day)
+3. **Manual newsjacking**(10 min/day)
    - Google Alerts
    - Quick commentary
 
@@ -297,7 +297,7 @@ node agent-os-dashboard.js
 
 ### Step 3: Manual Content Workflow (1 hour setup)
 
-**Create weekly content template** (~/Desktop/weekly-content-template.md):
+**Create weekly content template**(~/Desktop/weekly-content-template.md):
 
 ```markdown
 # Week of [DATE]
@@ -365,7 +365,7 @@ All paid agents have:
 
 Command Centre shows:
 
--  **DISABLED** badge for paid agents
+-  **DISABLED**badge for paid agents
 -  Cost estimate on hover
 -  "Enable at your own risk" warning
 
@@ -381,7 +381,7 @@ Paid agents require:
 
 ```bash
 node core-agents/content/newsletter-automation-agent.js generate
-#  WARNING: This will cost ~£0.50
+# WARNING: This will cost ~£0.50
 # Type 'confirm' to proceed: _
 ```
 
@@ -411,6 +411,6 @@ node core-agents/content/newsletter-automation-agent.js generate
 
 ---
 
-**Bottom Line**: You can run a professional automation system for **£0/month** right now. Save the paid AI agents for when you have revenue coming in.
+**Bottom Line**: You can run a professional automation system for **£0/month**right now. Save the paid AI agents for when you have revenue coming in.
 
 Use this guide to stay 100% free until Audio Intel brings in £500+/month, then gradually enable paid features as budget allows.

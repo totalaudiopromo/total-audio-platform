@@ -4,7 +4,7 @@ notion_url: https://www.notion.so/RADIO-PROMO-AGENT-SYSTEM-ARCHITECTURE-2620a35b
 exported_at: 2025-09-26T14:33:14.119Z
 ---
 
-#  RADIO PROMO AGENT - SYSTEM ARCHITECTURE
+# RADIO PROMO AGENT - SYSTEM ARCHITECTURE
 
 _Automated radio promotion workflow for Liberty Music PR integration with Total Audio ecosystem_
 
@@ -72,7 +72,7 @@ _Automated radio promotion workflow for Liberty Music PR integration with Total 
 
 ## API Research Results
 
-###  **Limited API Access**
+### **Limited API Access**
 
 - [**Warmusic.net**](http://warmusic.net/): No public API (uses ACRCloud internally)
 
@@ -82,7 +82,7 @@ _Automated radio promotion workflow for Liberty Music PR integration with Total 
 
 - **Wigwam Radio**: No public API identified
 
-###  **Available Integrations**
+### **Available Integrations**
 
 - **Mailchimp API**: Full campaign automation
 
@@ -104,7 +104,7 @@ _Automated radio promotion workflow for Liberty Music PR integration with Total 
 
 1. **Amazing Radio Automation**: Browser automation for track uploads
 
-1. [**Warmusic.net**](http://warmusic.net/)** Scraping**: Automated play tracking data collection
+1. [**Warmusic.net**](http://warmusic.net/)**Scraping**: Automated play tracking data collection
 
 1. **Radio Station Discovery**: Scraping contact databases
 

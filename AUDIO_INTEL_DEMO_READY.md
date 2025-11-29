@@ -4,9 +4,9 @@
 
 Audio Intel's contact enrichment system has been completely rebuilt with production-ready Claude API integration, advanced email validation, and cost-aware model selection.
 
-**Status:** Ready for Thursday 19th November demo
-**Dev Server:** http://localhost:3001
-**Demo Tools:** All ready, Pitch Generator seeded, Campaign Tracker demo live
+**Status:**Ready for Thursday 19th November demo
+**Dev Server:**http://localhost:3001
+**Demo Tools:**All ready, Pitch Generator seeded, Campaign Tracker demo live
 
 ---
 
@@ -14,7 +14,7 @@ Audio Intel's contact enrichment system has been completely rebuilt with product
 
 ### 1. Claude Enrichment Service 
 
-**File:** `/apps/audio-intel/utils/claudeEnrichmentService.ts`
+**File:**`/apps/audio-intel/utils/claudeEnrichmentService.ts`
 
 **Features:**
 
@@ -29,13 +29,13 @@ Audio Intel's contact enrichment system has been completely rebuilt with product
 
 **Models:**
 
-- **Primary:** Claude Sonnet 4.5 (high quality, $3/$15 per 1M tokens)
-- **Fallback:** Claude Haiku 3.5 (good quality, $1/$5 per 1M tokens)
-- **Auto-switch:** Switches to Haiku when daily cost hits $4 (80% of $5 limit)
+- **Primary:**Claude Sonnet 4.5 (high quality, $3/$15 per 1M tokens)
+- **Fallback:**Claude Haiku 3.5 (good quality, $1/$5 per 1M tokens)
+- **Auto-switch:**Switches to Haiku when daily cost hits $4 (80% of $5 limit)
 
 ### 2. Enrichment Prompts 
 
-**File:** `/apps/audio-intel/utils/enrichmentPrompts.ts`
+**File:**`/apps/audio-intel/utils/enrichmentPrompts.ts`
 
 **Features:**
 
@@ -58,7 +58,7 @@ Audio Intel's contact enrichment system has been completely rebuilt with product
 
 ### 3. Rate Limiter 
 
-**File:** `/apps/audio-intel/utils/rateLimiter.ts`
+**File:**`/apps/audio-intel/utils/rateLimiter.ts`
 
 **Features:**
 
@@ -70,7 +70,7 @@ Audio Intel's contact enrichment system has been completely rebuilt with product
 
 ### 4. ContactFinder Refactor 
 
-**File:** `/apps/audio-intel/agents/intel/subagents/ContactFinder.ts`
+**File:**`/apps/audio-intel/agents/intel/subagents/ContactFinder.ts`
 
 **Changes:**
 
@@ -83,7 +83,7 @@ Audio Intel's contact enrichment system has been completely rebuilt with product
 
 ### 5. Homepage Demo (Real API) 
 
-**File:** `/apps/audio-intel/components/home/HeroDemo.tsx`
+**File:**`/apps/audio-intel/components/home/HeroDemo.tsx`
 
 **Changes:**
 
@@ -96,7 +96,7 @@ Audio Intel's contact enrichment system has been completely rebuilt with product
 
 ### 6. Enrichment API Endpoint 
 
-**File:** `/apps/audio-intel/app/api/enrich-claude/route.ts`
+**File:**`/apps/audio-intel/app/api/enrich-claude/route.ts`
 
 **Enhancements:**
 
@@ -117,7 +117,7 @@ Audio Intel's contact enrichment system has been completely rebuilt with product
 
 ### 7. Email Validation Integration 
 
-**File:** `/apps/audio-intel/utils/spreadsheetProcessor.ts`
+**File:**`/apps/audio-intel/utils/spreadsheetProcessor.ts`
 
 **New Features:**
 
@@ -197,7 +197,7 @@ Audio Intel's contact enrichment system has been completely rebuilt with product
 
 ### Part 1: Audio Intel (Core Tool)
 
-1. **Homepage Demo** (http://localhost:3001)
+1. **Homepage Demo**(http://localhost:3001)
    - Click "Enrich Contact" on demo page
    - Show REAL Claude API enrichment (not fake!)
    - Display enrichment time (3-5 seconds)
@@ -227,7 +227,7 @@ Audio Intel's contact enrichment system has been completely rebuilt with product
 
 ### Part 3: Campaign Tracker (Management Tool)
 
-1. **Demo Page** (http://localhost:3000/demo)
+1. **Demo Page**(http://localhost:3000/demo)
    - Show 3 example campaigns
    - Click to see detail views
    - Demonstrate activity tracking
@@ -500,11 +500,11 @@ Audio Intel is **production-ready and demo-ready**. The enrichment system works 
 - "Claude generates personalized intelligence for each contact"
 - "It costs less than £0.01 per contact with our caching"
 
-**Ready for Thursday 19th November** 
+**Ready for Thursday 19th November**
 
 ---
 
-**Author:** Claude Code (Sonnet 4.5)
-**Date:** 10th November 2025
-**Implementation Time:** 2 hours
-**Status:** Production Ready
+**Author:**Claude Code (Sonnet 4.5)
+**Date:**10th November 2025
+**Implementation Time:**2 hours
+**Status:**Production Ready

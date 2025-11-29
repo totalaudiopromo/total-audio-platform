@@ -7,7 +7,7 @@ _Combined reference for product vision, technical status, launch tasks, and agen
 - **Status**: Production-ready contact enrichment platform with 515 verified UK industry contacts and 25 orchestrated agents.
 - **Core Promise**: “15 hours → 15 minutes” to research radio/press contacts with guaranteed organic-quality results.
 - **Live Assets**: Next.js 15 app, Stripe billing, onboarding newsletter (“The Unsigned Advantage”), responsive UI tested across mobile breakpoints.
-- **Daily quick links** (from Notion export): production site, Stripe dashboard, customer feedback inbox, bug tracker.
+- **Daily quick links**(from Notion export): production site, Stripe dashboard, customer feedback inbox, bug tracker.
 
 ## 2. Pricing & Plans
 
@@ -30,11 +30,11 @@ _Combined reference for product vision, technical status, launch tasks, and agen
 - **Agent System**: 25 specialised agents coordinating research, QA, and reporting (Radio Promo Agent workflow, multi-agent architecture, system diagrams).
 - **Infrastructure**: Stripe, Warm API, email orchestration, and MCP integrations stable; API response time 6–75 ms post warm-up.
 - **Quality**: 100% match accuracy within curated pool, fallback heuristics for new entries, streaming quality assurance baked in.
-- **Pivot status** (Dec 2024 intelligence update): retired the unreliable Perplexity enrichment and replaced it with a curated database approach—launch with 5 verified BBC contacts, expand monthly, market as “verified music industry intelligence.”
+- **Pivot status**(Dec 2024 intelligence update): retired the unreliable Perplexity enrichment and replaced it with a curated database approach—launch with 5 verified BBC contacts, expand monthly, market as “verified music industry intelligence.”
 
 ## 5. Launch Blockers & Operational Fixes
 
-- **Email Automation** (Critical): Renew Kit API token (credentials received; store outside git), reconnect signup forms, update price references in templates, retest onboarding flows.
+- **Email Automation**(Critical): Renew Kit API token (credentials received; store outside git), reconnect signup forms, update price references in templates, retest onboarding flows.
 - **Content Alignment**: Refresh landing page copy, align pricing messaging, complete support docs, embed expectation management.
 - **User Journey QA**: Run end-to-end beta signup including payment, enrichment, newsletter onboarding, and agent-triggered updates.
 - **Website copy**: Remove promises about “enrich any contact list,” replace with curated-intelligence messaging and example outputs per the PIVOT doc.

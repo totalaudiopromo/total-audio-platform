@@ -1,7 +1,7 @@
 # Total Audio - Claude API Costs (October 2025)
 
 **Last Updated**: 9th October 2025
-**Total Monthly Cost**: **£0.68** (68 pence)
+**Total Monthly Cost**: **£0.68**(68 pence)
 **API Provider**: Anthropic Claude 3.5 Sonnet
 **Status**: All AI agents enabled 
 
@@ -9,10 +9,10 @@
 
 ## The Good News
 
-You're **already using Claude API** for Audio Intel contact enrichment!
+You're **already using Claude API**for Audio Intel contact enrichment!
 
 **OLD (Perplexity)**: £3 per enrichment = £60/month for 20 enrichments
-**NEW (Claude)**: £0.003 per enrichment = **£0.06/month** for 20 enrichments
+**NEW (Claude)**: £0.003 per enrichment = **£0.06/month**for 20 enrichments
 
 **Savings**: £59.94/month (99.9% cost reduction!)
 
@@ -28,7 +28,7 @@ You're **already using Claude API** for Audio Intel contact enrichment!
 | Database Operations | Always on         | £0            | £0           |
 | Agent Manager       | Always on         | £0            | £0           |
 | Data Cleanup        | Weekly            | £0            | £0           |
-| **SUBTOTAL**        |                   |               | **£0.06**    |
+| **SUBTOTAL**       |                   |               | **£0.06**   |
 
 ### MARKETING & CONTENT (£0.62/month)
 
@@ -40,7 +40,7 @@ You're **already using Claude API** for Audio Intel contact enrichment!
 | Social Media          | Weekly               | £0           | £0           |
 | Business Analytics    | Weekly               | £0           | £0           |
 | SaaS Marketing        | Manual               | £0           | £0           |
-| **SUBTOTAL**          |                      |              | **£0.62**    |
+| **SUBTOTAL**         |                      |              | **£0.62**   |
 
 ### CLIENT DELIVERY (£0/month normally)
 
@@ -53,7 +53,7 @@ You're **already using Claude API** for Audio Intel contact enrichment!
 | Liberty Analytics    | Manual    | £0           | £0           |
 | Liberty Coverage     | Manual    | £0           | £0           |
 | Liberty Followup     | Manual    | £0           | £0           |
-| **SUBTOTAL**         |           |              | **£0\***     |
+| **SUBTOTAL**        |           |              | **£0\***    |
 
 \*Only runs for paying client work
 
@@ -65,7 +65,7 @@ You're **already using Claude API** for Audio Intel contact enrichment!
 | Health Check    | Every 30 min  | £0           | £0           |
 | Agent Dashboard | Real-time     | £0           | £0           |
 | Cost Tracker    | Real-time     | £0           | £0           |
-| **SUBTOTAL**    |               |              | **£0**       |
+| **SUBTOTAL**   |               |              | **£0**      |
 
 ---
 
@@ -158,19 +158,19 @@ TOTAL: £0.68/month + 0 hours manual work
 
 ### Automated (Cron Jobs)
 
- **Newsletter Automation** - Monday 9am
- **Newsjacking Agent** - Daily 8am
- **Social Media** - Sunday 8pm
- **Gmail Autopilot** - Every 2 hours
- **Health Check** - Every 30 minutes
- **Business Analytics** - Monday 10am
- **Data Cleanup** - Sunday 2am
+ **Newsletter Automation**- Monday 9am
+ **Newsjacking Agent**- Daily 8am
+ **Social Media**- Sunday 8pm
+ **Gmail Autopilot**- Every 2 hours
+ **Health Check**- Every 30 minutes
+ **Business Analytics**- Monday 10am
+ **Data Cleanup**- Sunday 2am
 
 ### Manual Trigger Only
 
-⏸ **Contact Enrichment** - Run when customers request
-⏸ **Content Generation** - Run when you need content
-⏸ **Liberty Agents** - Run for client work only
+⏸ **Contact Enrichment**- Run when customers request
+⏸ **Content Generation**- Run when you need content
+⏸ **Liberty Agents**- Run for client work only
 
 ---
 
@@ -230,7 +230,7 @@ Monitor actual usage:
 
 ### Where Claude API is Used
 
-**Audio Intel** (`apps/audio-intel/app/api/enrich-claude/route.ts`):
+**Audio Intel**(`apps/audio-intel/app/api/enrich-claude/route.ts`):
 
 ```typescript
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
@@ -239,7 +239,7 @@ const ANTHROPIC_MODEL = 'claude-3-5-sonnet-20241022';
 
  Already configured and working
 
-**Content Agents** (`tools/agents/core-agents/content/service-wrapper.js`):
+**Content Agents**(`tools/agents/core-agents/content/service-wrapper.js`):
 
 ```javascript
 const anthropic = new Anthropic({
@@ -249,7 +249,7 @@ const anthropic = new Anthropic({
 
  Already configured and working
 
-**Liberty Intelligence** (`tools/agents/radio-promo/agents/intelligence-agent.js`):
+**Liberty Intelligence**(`tools/agents/radio-promo/agents/intelligence-agent.js`):
 
 - Currently uses Google Gemini
 - **Recommendation**: Update to use Claude API instead (same £0.01 cost, better quality)

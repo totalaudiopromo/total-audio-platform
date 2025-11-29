@@ -51,19 +51,19 @@
 
 ### What They're Missing
 
-1. **Contact ownership** - They don't give you the contacts
-2. **UK focus** - Most are US-centric
-3. **Affordable pricing** - All are expensive
-4. **Direct relationships** - They act as gatekeepers
-5. **Time savings** - They don't address research time
+1. **Contact ownership**- They don't give you the contacts
+2. **UK focus**- Most are US-centric
+3. **Affordable pricing**- All are expensive
+4. **Direct relationships**- They act as gatekeepers
+5. **Time savings**- They don't address research time
 
 ### Content Angles to Exploit
 
-1. **"Stop paying per submission"** - Direct cost comparison
-2. **"Own your contacts"** - Contact ownership benefits
-3. **"UK music industry focus"** - Local market advantage
-4. **"2 minutes vs 15 hours"** - Time savings emphasis
-5. **"Built by a producer"** - Authentic industry experience
+1. **"Stop paying per submission"**- Direct cost comparison
+2. **"Own your contacts"**- Contact ownership benefits
+3. **"UK music industry focus"**- Local market advantage
+4. **"2 minutes vs 15 hours"**- Time savings emphasis
+5. **"Built by a producer"**- Authentic industry experience
 
 ### Messaging Opportunities
 
@@ -100,11 +100,11 @@
 
 ### What to Track
 
-- **Content themes** they're posting about
-- **Engagement rates** on their posts
-- **New features** they're promoting
-- **Pricing changes** or offers
-- **Partnerships** or collaborations
+- **Content themes**they're posting about
+- **Engagement rates**on their posts
+- **New features**they're promoting
+- **Pricing changes**or offers
+- **Partnerships**or collaborations
 
 ### Tools to Use
 
@@ -117,28 +117,28 @@
 
 ### Unique Positioning
 
-1. **"Built by a producer"** - Authentic industry experience
-2. **"UK-focused"** - Local market advantage
-3. **"Contact ownership"** - Keep your contacts forever
-4. **"Affordable"** - £19.99 vs £200-500+ alternatives
-5. **"Time-saving"** - 2 minutes vs 15+ hours
+1. **"Built by a producer"**- Authentic industry experience
+2. **"UK-focused"**- Local market advantage
+3. **"Contact ownership"**- Keep your contacts forever
+4. **"Affordable"**- £19.99 vs £200-500+ alternatives
+5. **"Time-saving"**- 2 minutes vs 15+ hours
 
 ### Content Themes to Own
 
-1. **"Stop wasting your weekends"** - Time waste problem
-2. **"94% of research is wasted"** - Efficiency focus
-3. **"Built for indie artists"** - Target audience focus
-4. **"Contact intelligence"** - Value proposition
-5. **"Focus on music"** - Core message
+1. **"Stop wasting your weekends"**- Time waste problem
+2. **"94% of research is wasted"**- Efficiency focus
+3. **"Built for indie artists"**- Target audience focus
+4. **"Contact intelligence"**- Value proposition
+5. **"Focus on music"**- Core message
 
 ## Quick Response Strategy
 
 ### When Competitors Post
 
-- **Don't directly respond** to their posts
-- **Create your own content** addressing the same topic
-- **Use your unique angle** and positioning
-- **Focus on your advantages** over their approach
+- **Don't directly respond**to their posts
+- **Create your own content**addressing the same topic
+- **Use your unique angle**and positioning
+- **Focus on your advantages**over their approach
 
 ### Content Ideas from Competitor Posts
 

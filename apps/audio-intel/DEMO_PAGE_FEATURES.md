@@ -39,9 +39,9 @@ Three quick-fact cards at a glance:
 
 | Metric           | Dimension | Description                        |
 | ---------------- | --------- | ---------------------------------- |
-| **Time Savings** | 15h → 15m | Per-campaign research acceleration |
-| **Success Rate** | 100%      | Real industry contacts verified    |
-| **Data Sources** | Live      | BBC, Spotify, streaming platforms  |
+| **Time Savings**| 15h → 15m | Per-campaign research acceleration |
+| **Success Rate**| 100%      | Real industry contacts verified    |
+| **Data Sources**| Live      | BBC, Spotify, streaming platforms  |
 
 **Implementation**:
 
@@ -135,9 +135,9 @@ new ProfessionalExportService({
 
 **Confidence-Based Organisation**:
 
-- **High Confidence** (green badge) - 4 contacts
-- **Medium Confidence** (yellow badge) - 1 contact
-- **Low Confidence** (red badge) - requires manual research
+- **High Confidence**(green badge) - 4 contacts
+- **Medium Confidence**(yellow badge) - 1 contact
+- **Low Confidence**(red badge) - requires manual research
 
 **Per-Contact Card**:
 
@@ -307,19 +307,19 @@ useEffect(() => {
 
 ### Pre-loaded Contacts
 
-1. **Jack Saunders** (BBC Radio 1)
+1. **Jack Saunders**(BBC Radio 1)
    - Email: jack.saunders@bbc.co.uk
    - Role: Presenter
    - Confidence: High
    - Speciality: New music discovery
 
-2. **Nick Grimshaw** (BBC 6 Music)
+2. **Nick Grimshaw**(BBC 6 Music)
    - Email: nick.grimshaw@bbc.co.uk
    - Role: Presenter
    - Confidence: High
    - Speciality: Alternative/indie
 
-3. **Clara Amfo** (BBC Radio 1)
+3. **Clara Amfo**(BBC Radio 1)
    - Email: clara.amfo@bbc.co.uk
    - Role: Presenter
    - Confidence: High
@@ -331,7 +331,7 @@ useEffect(() => {
    - Confidence: Medium
    - Speciality: All genres
 
-5. **Huw Stephens** (BBC Radio 1 & 6 Music)
+5. **Huw Stephens**(BBC Radio 1 & 6 Music)
    - Email: huw.stephens@bbc.co.uk
    - Role: Presenter
    - Confidence: High

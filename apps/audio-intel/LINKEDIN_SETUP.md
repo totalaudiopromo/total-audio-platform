@@ -19,7 +19,7 @@ If you don't see an app with that Client ID, you may need to create a new one.
 
 In your app settings:
 
-1. Go to the **Auth** tab
+1. Go to the **Auth**tab
 2. Under **Redirect URLs**, add:
    ```
    https://intel.totalaudiopromo.com/auth/linkedin/callback
@@ -28,14 +28,14 @@ In your app settings:
 
 ### Step 4: Request Permissions
 
-In the **Products** tab:
+In the **Products**tab:
 
-1. Make sure you have **"Share on LinkedIn"** or **"Marketing Developer Platform"** enabled
+1. Make sure you have **"Share on LinkedIn"**or **"Marketing Developer Platform"**enabled
 2. This gives you the `w_member_social` permission needed for posting
 
 ### Step 5: Get Access Token
 
-**Option A: Use the OAuth Helper Script** (recommended)
+**Option A: Use the OAuth Helper Script**(recommended)
 
 ```bash
 cd /Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel
@@ -57,9 +57,9 @@ Follow the prompts. The script will:
    https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=781ioptlbwi0ok&redirect_uri=https%3A%2F%2Fintel.totalaudiopromo.com%2Fauth%2Flinkedin%2Fcallback&scope=openid%20profile%20email%20w_member_social&state=abc123
    ```
 
-2. **Visit the URL** - LinkedIn will ask you to authorize
+2. **Visit the URL**- LinkedIn will ask you to authorize
 
-3. **Get the code** - After authorization, you'll be redirected to:
+3. **Get the code**- After authorization, you'll be redirected to:
 
    ```
    https://intel.totalaudiopromo.com/auth/linkedin/callback?code=XXXXXXXXXX&state=abc123
@@ -67,7 +67,7 @@ Follow the prompts. The script will:
 
    The page will show an error (this is fine). Copy the `code` value from the URL.
 
-4. **Exchange code for token** - Run this curl command:
+4. **Exchange code for token**- Run this curl command:
 
    ```bash
    curl -X POST https://www.linkedin.com/oauth/v2/accessToken \
@@ -81,7 +81,7 @@ Follow the prompts. The script will:
 
    Replace `PASTE_CODE_HERE` with the code you copied.
 
-5. **Save the token** - The response will include an `access_token`. Copy it!
+5. **Save the token**- The response will include an `access_token`. Copy it!
 
 ### Step 6: Add to Environment Variables
 

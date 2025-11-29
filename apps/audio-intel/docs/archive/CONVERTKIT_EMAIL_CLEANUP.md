@@ -16,10 +16,10 @@ All emojis need to be removed from the 4-email sequence. Replace with text alter
 ### Changes Needed:
 
 - ♪ (musical note) → Keep or remove from subject line
-- 🎵 What You'll Get → **What You'll Get** (remove emoji)
+- 🎵 What You'll Get → **What You'll Get**(remove emoji)
 - 📊 (any chart emojis) → Remove
-- 👉 Your First Steps → **Your First Steps:** (remove emoji)
-- 💡 Pro Tip → **Pro Tip:** (remove emoji)
+- 👉 Your First Steps → **Your First Steps:**(remove emoji)
+- 💡 Pro Tip → **Pro Tip:**(remove emoji)
 
 ---
 

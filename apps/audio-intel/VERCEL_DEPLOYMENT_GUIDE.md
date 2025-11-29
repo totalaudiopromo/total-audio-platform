@@ -1,19 +1,19 @@
-#  Audio Intel - Vercel Deployment Guide
+# Audio Intel - Vercel Deployment Guide
 
 **Last Updated**: November 11, 2025
 **Status**: Fixed and ready for deployment
 
 ## Quick Summary
 
-Audio Intel is part of a **pnpm monorepo** at `total-audio-platform`. Vercel needs special configuration to handle monorepo deployments correctly.
+Audio Intel is part of a **pnpm monorepo**at `total-audio-platform`. Vercel needs special configuration to handle monorepo deployments correctly.
 
 ## Configuration Applied (November 11, 2025)
 
 ### Files Updated
 
-1. **`vercel.json`** - Simplified to use local build commands
-2. **`.vercelignore`** - Added to exclude unnecessary files
-3. **Configuration documented** - This guide created
+1. **`vercel.json`**- Simplified to use local build commands
+2. **`.vercelignore`**- Added to exclude unnecessary files
+3. **Configuration documented**- This guide created
 
 ## Vercel Dashboard Setup (REQUIRED)
 
@@ -23,23 +23,23 @@ Go to: https://vercel.com/chris-projects-6ffe0e29/audio-intel/settings
 
 ### Step 2: Configure Build Settings
 
-Navigate to **General** → **Build & Development Settings**
+Navigate to **General**→ **Build & Development Settings**
 
 Set these values:
 
 | Setting                        | Value                            | Why                                |
 | ------------------------------ | -------------------------------- | ---------------------------------- |
-| **Root Directory**             | `apps/audio-intel`               | Deploy only this app from monorepo |
-| **Include files outside root** |  **ENABLED**                   | Critical for pnpm workspace access |
-| **Framework Preset**           | Next.js                          | Auto-detected                      |
-| **Build Command**              | `pnpm build`                     | From vercel.json                   |
-| **Install Command**            | `pnpm install --frozen-lockfile` | From vercel.json                   |
-| **Output Directory**           | `.next`                          | Next.js default                    |
-| **Node.js Version**            | 18.x                             | Default (18.x or 20.x work)        |
+| **Root Directory**            | `apps/audio-intel`               | Deploy only this app from monorepo |
+| **Include files outside root**|  **ENABLED**                  | Critical for pnpm workspace access |
+| **Framework Preset**          | Next.js                          | Auto-detected                      |
+| **Build Command**             | `pnpm build`                     | From vercel.json                   |
+| **Install Command**           | `pnpm install --frozen-lockfile` | From vercel.json                   |
+| **Output Directory**          | `.next`                          | Next.js default                    |
+| **Node.js Version**           | 18.x                             | Default (18.x or 20.x work)        |
 
 ### Step 3: Verify Environment Variables
 
-Ensure these are set in **Environment Variables** section:
+Ensure these are set in **Environment Variables**section:
 
 #### Required for App Function
 
@@ -67,9 +67,9 @@ Ensure these are set in **Environment Variables** section:
 
 ### Step 4: Save and Deploy
 
-1. Click **Save** at the bottom of settings
-2. Go to **Deployments** tab
-3. Click **"..." menu** on latest deployment
+1. Click **Save**at the bottom of settings
+2. Go to **Deployments**tab
+3. Click **"..." menu**on latest deployment
 4. Click **Redeploy**
 5. Monitor the build logs
 
@@ -239,4 +239,4 @@ This respects `vercel.json` settings automatically.
 
 ---
 
-**Questions?** Check the Vercel build logs first - they show the exact commands being run and any errors.
+**Questions?**Check the Vercel build logs first - they show the exact commands being run and any errors.

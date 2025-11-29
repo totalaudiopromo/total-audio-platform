@@ -2,9 +2,9 @@
 
 ## 30 UK & Australian Specialist Electronic/Evening Show Programmers
 
-**Campaign:** KYARA "Bloodshot" Release Week Push
-**Focus:** Specialist electronic, evening shows, Triple J-aware programmers
-**Priority:** UK + Australian stations given her Sydney base + Triple J history
+**Campaign:**KYARA "Bloodshot" Release Week Push
+**Focus:**Specialist electronic, evening shows, Triple J-aware programmers
+**Priority:**UK + Australian stations given her Sydney base + Triple J history
 
 ---
 
@@ -12,19 +12,19 @@
 
 ### Priority 1: Triple J Network (Not Yet Contacted)
 
-1. **Bridget Hustwaite** - Triple J Presenter
+1. **Bridget Hustwaite**- Triple J Presenter
    - Email: hustwaite.bridget@abc.net.au
    - Show: Various Triple J shows
    - Angle: Sydney artist with Home & Hosed support
    - Best time: Weekday mornings
 
-2. **Tyrone Pynor** - Triple J
+2. **Tyrone Pynor**- Triple J
    - Email: pynor.tyrone@abc.net.au
    - Show: Abby & Tyrone duo
    - Angle: Electronic music specialist, previous Triple J support
    - Best time: Afternoon/evening
 
-3. **Declan Byrne** - Triple J
+3. **Declan Byrne**- Triple J
    - Email: byrne.declan@abc.net.au
    - Show: Triple J evening
    - Angle: Alternative/electronic focus
@@ -52,7 +52,7 @@
 
 ### Priority 3: Community Radio - Melbourne
 
-7. **Simon Winkler** - Triple R (Already listed but worth emphasis)
+7. **Simon Winkler**- Triple R (Already listed but worth emphasis)
    - Email: simonw@rrr.org.au
    - Station: Triple R Melbourne
    - Angle: Melbourne community support for Sydney independent
@@ -116,25 +116,25 @@
 
 ### Priority 1: BBC Specialist Electronic
 
-16. **Danny Howard** - BBC Radio 1 Dance
+16. **Danny Howard**- BBC Radio 1 Dance
     - Email: danny.howard@bbc.co.uk
     - Show: Radio 1 Dance (Friday 7-9pm)
     - Angle: Australian electronic artist, international reach
     - Genre: House/techno specialist
 
-17. **Pete Tong** - BBC Radio 1 Essential Selection
+17. **Pete Tong**- BBC Radio 1 Essential Selection
     - Email: pete.tong@bbc.co.uk
     - Show: Essential Selection (Friday evening)
     - Angle: International electronic prestige
     - Genre: Electronic legends platform
 
-18. **Jaguar** - BBC Radio 1 Residency
+18. **Jaguar**- BBC Radio 1 Residency
     - Email: jaguar@bbc.co.uk
     - Show: Radio 1 Residency
     - Angle: Female electronic artist supporting female artist
     - Genre: Bass/electronic specialist
 
-19. **Sian Anderson** - BBC Radio 1Xtra
+19. **Sian Anderson**- BBC Radio 1Xtra
     - Email: sian.anderson@bbc.co.uk
     - Show: 1Xtra evening
     - Angle: Electronic crossover, international artist support
@@ -142,19 +142,19 @@
 
 ### Priority 2: BBC 6 Music Evening Shows
 
-20. **Tom Ravenscroft** - BBC 6 Music
+20. **Tom Ravenscroft**- BBC 6 Music
     - Email: tom.ravenscroft@bbc.co.uk
     - Show: 6 Music Evening (Monday-Thursday)
     - Angle: Independent electronic, international artist focus
     - Genre: Alternative/electronic specialist
 
-21. **Mary Anne Hobbs** - BBC 6 Music
+21. **Mary Anne Hobbs**- BBC 6 Music
     - Email: maryanne.hobbs@bbc.co.uk
     - Show: 6 Music (Tuesday evening)
     - Angle: Championing female electronic artists
     - Genre: Electronic/experimental pioneer
 
-22. **Elizabeth Alker** - BBC 6 Music
+22. **Elizabeth Alker**- BBC 6 Music
     - Email: elizabeth.alker@bbc.co.uk
     - Show: 6 Music (various shows)
     - Angle: Alternative electronic support
@@ -252,32 +252,32 @@
 
 ### For Australian Triple J Network (1-3):
 
-- Use **Template 1 or 2** (WARM if previous contact, Music Director if not)
+- Use **Template 1 or 2**(WARM if previous contact, Music Director if not)
 - Lead with Sydney local + Home & Hosed support
 - Mention Amazing Radio as international validation
 
 ### For Australian Community (4-11):
 
-- Use **Template 3** (Community Radio Follow-Up)
+- Use **Template 3**(Community Radio Follow-Up)
 - Lead with LOCAL Sydney artist angle
 - Emphasise bedroom production + independent ethos
 
 ### For Australian Digital/National (12-15):
 
-- Use **Template 4** (Commercial/Crossover)
+- Use **Template 4**(Commercial/Crossover)
 - Lead with Triple J credibility
 - Focus on emerging artist momentum
 
 ### For UK BBC Specialist (16-22):
 
-- Use **Template 5** (UK Specialist Shows)
+- Use **Template 5**(UK Specialist Shows)
 - Lead with Amazing Radio support
 - Mention Australian Triple J context
 - Keep brief, professional
 
 ### For UK Community/Digital (23-30):
 
-- Use **Template 3 or 5** (adapt for UK context)
+- Use **Template 3 or 5**(adapt for UK context)
 - Lead with underground/independent angle
 - Bedroom production = credibility
 - International artist showcase angle
@@ -295,7 +295,7 @@
 3. FBi Radio Sydney (LOCAL)
 4. 2SER Sydney (LOCAL)
 
-**Day 3-4 (Thu-Fri):** 5. Triple R Melbourne (Simon Winkler) 6. PBS FM Melbourne 7. Danny Howard (BBC Radio 1 Dance) 8. Amazing Radio (FOLLOW UP - thank them)
+**Day 3-4 (Thu-Fri):**5. Triple R Melbourne (Simon Winkler) 6. PBS FM Melbourne 7. Danny Howard (BBC Radio 1 Dance) 8. Amazing Radio (FOLLOW UP - thank them)
 
 ### Week 2 (Oct 21-25):
 
@@ -317,12 +317,12 @@ Create Google Sheet with columns:
 - **Contact Name**
 - **Station**
 - **Email**
-- **Region** (AU/UK)
-- **Priority** (1-5)
+- **Region**(AU/UK)
+- **Priority**(1-5)
 - **Template Used**
 - **Date Sent**
-- **Response?** (Y/N)
-- **Action Taken** (rotation/declined/no response)
+- **Response?**(Y/N)
+- **Action Taken**(rotation/declined/no response)
 - **Follow-Up Date**
 - **Notes**
 
@@ -346,14 +346,14 @@ Create Google Sheet with columns:
 
 ### Overall Goals:
 
-- **10-15 new station adds** across both regions
-- **3-5 BBC plays** (Radio 1 or 6 Music)
-- **5-10 community station plays** (AU + UK)
-- **Digital platform features** (NTS, Rinse FM, Unearthed)
+- **10-15 new station adds**across both regions
+- **3-5 BBC plays**(Radio 1 or 6 Music)
+- **5-10 community station plays**(AU + UK)
+- **Digital platform features**(NTS, Rinse FM, Unearthed)
 
 ---
 
-**Campaign Timeline:** October 14-31, 2025
-**Created:** October 12, 2025
-**Gmail Account:** chrisschofield@libertymusicpr.com
-**Region Focus:** Australia (primary) + UK (secondary)
+**Campaign Timeline:**October 14-31, 2025
+**Created:**October 12, 2025
+**Gmail Account:**chrisschofield@libertymusicpr.com
+**Region Focus:**Australia (primary) + UK (secondary)

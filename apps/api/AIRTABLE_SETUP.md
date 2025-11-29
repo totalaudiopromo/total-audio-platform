@@ -3,7 +3,7 @@
 ## Quick Setup
 
 1. **Open the test file**: `backend/test-audit.js`
-2. **Replace the placeholders** at the top of the file with your actual credentials:
+2. **Replace the placeholders**at the top of the file with your actual credentials:
 
 ```javascript
 // Replace these with your actual values:

@@ -119,31 +119,31 @@ chrisschofield@libertymusicpr.com
 
 ### Week 1: Warm Contact (Triple J)
 
-1. **Anika Luna** (Home & Hosed) - warm follow-up
+1. **Anika Luna**(Home & Hosed) - warm follow-up
    - Send 2 weeks before release
    - Reference "Yearn" support
    - Offer exclusive first listen
 
-2. **Claire Mooney** (Music Director) - semi-warm
+2. **Claire Mooney**(Music Director) - semi-warm
    - Send 1 week after Anika
    - Reference Home & Hosed support
    - Position for playlist rotation
 
 ### Week 2: Cold Australian Contacts
 
-3. **Triple R Melbourne** (simonw@rrr.org.au)
+3. **Triple R Melbourne**(simonw@rrr.org.au)
    - Melbourne's premier indie station
    - Reference Triple J support
 
-4. **PBS FM Melbourne** (Firas@pbsfm.org.au)
+4. **PBS FM Melbourne**(Firas@pbsfm.org.au)
    - Alternative/indie focus
    - Personal pitch to Firas
 
-5. **KIIS 106.5** (music@kiis1065.com.au)
+5. **KIIS 106.5**(music@kiis1065.com.au)
    - Mainstream pop/dance
    - Position as crossover track
 
-6. **ABC Radio Sydney** (abcradiosydney@abc.net.au)
+6. **ABC Radio Sydney**(abcradiosydney@abc.net.au)
    - National broadcaster
    - Reference Triple J (same network)
 

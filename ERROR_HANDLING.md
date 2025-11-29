@@ -6,11 +6,11 @@ Production-grade error handling infrastructure for Liberty Music PR pitch readin
 
 The error handling system provides:
 
-- **Centralised error logging** with categorisation (network, auth, validation, integration)
-- **React error boundaries** for client-side error capture
-- **Toast notifications** with Postcraft aesthetic for user feedback
-- **Integration service error handling** with OAuth token refresh support
-- **UK English messaging** throughout for authenticity
+- **Centralised error logging**with categorisation (network, auth, validation, integration)
+- **React error boundaries**for client-side error capture
+- **Toast notifications**with Postcraft aesthetic for user feedback
+- **Integration service error handling**with OAuth token refresh support
+- **UK English messaging**throughout for authenticity
 
 ## Architecture
 
@@ -309,11 +309,11 @@ class CustomSync extends BaseIntegrationSync {
 
 | Category        | Cause                            | User Message                                                         |
 | --------------- | -------------------------------- | -------------------------------------------------------------------- |
-| **network**     | Connection, fetch, timeout       | "Connection error. Please check your internet and try again."        |
-| **auth**        | Unauthorized, token expired      | "Your authentication has expired. Please log in again."              |
-| **validation**  | Invalid input, schema mismatch   | "Invalid input. Please check your data and try again."               |
-| **integration** | Service sync, OAuth, third-party | "Service integration failed. Please try again or contact support."   |
-| **unknown**     | Unexpected                       | "An unexpected error occurred. Please try again or contact support." |
+| **network**    | Connection, fetch, timeout       | "Connection error. Please check your internet and try again."        |
+| **auth**       | Unauthorized, token expired      | "Your authentication has expired. Please log in again."              |
+| **validation** | Invalid input, schema mismatch   | "Invalid input. Please check your data and try again."               |
+| **integration**| Service sync, OAuth, third-party | "Service integration failed. Please try again or contact support."   |
+| **unknown**    | Unexpected                       | "An unexpected error occurred. Please try again or contact support." |
 
 ## Design System Compliance
 
@@ -410,7 +410,7 @@ export function ErrorTestingComponent() {
 
 For Liberty Music PR pitch readiness:
 
-1. **Add to Audio Intel root layout** (`apps/audio-intel/app/layout.tsx`):
+1. **Add to Audio Intel root layout**(`apps/audio-intel/app/layout.tsx`):
 
    ```typescript
    import { ToastContainer } from '@total-audio/ui';

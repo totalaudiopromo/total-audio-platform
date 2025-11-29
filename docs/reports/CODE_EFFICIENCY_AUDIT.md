@@ -198,17 +198,17 @@
 
 ### Immediate Archive (High Confidence)
 
-1. **apps/landing-page** - 40KB, only 3 files, appears unused
-2. **apps/mobile** - 167MB, React Native prototype, not in active development
-3. **apps/seo-tool** - 228MB, contains only demo.html file
-4. **apps/tracker** - 468MB, generic Next.js boilerplate with template README
-5. **apps/tap-saas-template** - 296MB, template for future products, move to `/templates/`
+1. **apps/landing-page**- 40KB, only 3 files, appears unused
+2. **apps/mobile**- 167MB, React Native prototype, not in active development
+3. **apps/seo-tool**- 228MB, contains only demo.html file
+4. **apps/tracker**- 468MB, generic Next.js boilerplate with template README
+5. **apps/tap-saas-template**- 296MB, template for future products, move to `/templates/`
 
 ### Assess Before Archive (Needs Business Context Check)
 
-6. **apps/content-domination** - 41MB, has real packages but unclear if supporting customer acquisition
-7. **apps/playlist-pulse** - 372MB, has OAuth setup, unclear if supporting Audio Intel
-8. **apps/voice-echo** - 281MB, has professional export system docs, unclear usage
+6. **apps/content-domination**- 41MB, has real packages but unclear if supporting customer acquisition
+7. **apps/playlist-pulse**- 372MB, has OAuth setup, unclear if supporting Audio Intel
+8. **apps/voice-echo**- 281MB, has professional export system docs, unclear usage
 
 **Total Potential Archive**: 1.8GB from 8 apps (if all archived)
 
@@ -216,23 +216,23 @@
 
 ### Phase 1: Quick Wins (4 hours, High ROI)
 
-1. **Archive 5 unused apps** (30 min) - Immediate 1.1GB cleanup
-2. **Archive parked agents** (30 min) - Remove 6,098 lines of unused code
-3. **Consolidate OAuth files** (2 hours) - From 41 files to 2 working implementations
-4. **Archive radio-promo test/debug scripts** (1 hour) - From 97 to ~20 core files
+1. **Archive 5 unused apps**(30 min) - Immediate 1.1GB cleanup
+2. **Archive parked agents**(30 min) - Remove 6,098 lines of unused code
+3. **Consolidate OAuth files**(2 hours) - From 41 files to 2 working implementations
+4. **Archive radio-promo test/debug scripts**(1 hour) - From 97 to ~20 core files
 
 **Impact**: 1.1GB disk space, ~10,000 lines removed, dramatically clearer agent system
 
 ### Phase 2: Component Quality (8 hours, Medium ROI)
 
-1. **Split Command Centre large components** (4 hours) - Break 6 components into focused sub-components
-2. **Consolidate Command Centre API routes** (4 hours) - From 52 to ~20 routes
+1. **Split Command Centre large components**(4 hours) - Break 6 components into focused sub-components
+2. **Consolidate Command Centre API routes**(4 hours) - From 52 to ~20 routes
 
 **Impact**: Better maintainability of supporting infrastructure (but NOT customer-facing)
 
 ### Phase 3: Audio Intel Optimisation (3 hours, Only If Adds Customer Value)
 
-1. **Consolidate export services** (3 hours) - Only if it improves customer experience or enables new features
+1. **Consolidate export services**(3 hours) - Only if it improves customer experience or enables new features
 
 **Impact**: Cleaner code in THE revenue app, but only do if it adds customer value
 

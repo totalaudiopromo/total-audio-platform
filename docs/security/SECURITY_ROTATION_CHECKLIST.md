@@ -4,7 +4,7 @@
 
 These keys were exposed in git history and need immediate replacement:
 
-###  CRITICAL PRIORITY (Replace within 24 hours)
+### CRITICAL PRIORITY (Replace within 24 hours)
 
 #### 1. Airtable API Key ALREADY REPLACED
 
@@ -43,7 +43,7 @@ These keys were exposed in git history and need immediate replacement:
   2. Revoke current token and generate new
   3. Update Liberty and TAP configs
 
-###  MEDIUM PRIORITY (Replace this week)
+### MEDIUM PRIORITY (Replace this week)
 
 #### 6. Discord Bot Token  STILL COMPROMISED
 
@@ -58,16 +58,16 @@ These keys were exposed in git history and need immediate replacement:
 ### What's Been Set Up:
 
 1. **Master Vault**: `.env.vault` (chmod 600) - Organized by business
-   - **Total Audio Promo** (TAP\_\* prefix)
-   -  **Liberty Music PR** (LIBERTY\_\* prefix)
-   -  **AI Investment Advisor** (AI*ADVISOR*\* prefix)
-   - **Shared Infrastructure** (SHARED\_\* prefix)
+   - **Total Audio Promo**(TAP\_\* prefix)
+   -  **Liberty Music PR**(LIBERTY\_\* prefix)
+   -  **AI Investment Advisor**(AI*ADVISOR*\* prefix)
+   - **Shared Infrastructure**(SHARED\_\* prefix)
 
 2. **Production Config**: `apps/audio-intel/.env.local` - Ready to use with clean keys
 
 3. **All Hardcoded Secrets Removed**: Replaced with placeholders in 15+ files
 
-###  Security Best Practices NOW IN PLACE:
+### Security Best Practices NOW IN PLACE:
 
 - `.env.vault` is secured (600 permissions)
 - All `.env.local` files are gitignored
@@ -78,7 +78,7 @@ These keys were exposed in git history and need immediate replacement:
 ## YOUR AUDIO INTEL APP STATUS
 
 **WORKING**: Your app starts and UI functions normally
-** LIMITED**: Some API features may need fresh keys
+**LIMITED**: Some API features may need fresh keys
 **SECURE**: No secrets visible in codebase anymore
 
 ## NEXT STEPS FOR YOU:
@@ -105,13 +105,13 @@ These keys were exposed in git history and need immediate replacement:
 
 Instead of Apple Notes, use:
 
-1. **1Password** or **Bitwarden** for business keys
-2. **Secure Notes** section for API keys
+1. **1Password**or **Bitwarden**for business keys
+2. **Secure Notes**section for API keys
 3. **Tags**: TAP, Liberty, AI-Advisor for organization
 4. **Shared Vaults**: For team access when you scale
 
 ## IMMEDIATE REMINDER
 
-**Your Audio Intel business is NOT at risk** - the app works and customers can't see your secrets anymore. The compromised keys just need rotation when you have 15 minutes to prevent potential abuse.
+**Your Audio Intel business is NOT at risk**- the app works and customers can't see your secrets anymore. The compromised keys just need rotation when you have 15 minutes to prevent potential abuse.
 
 **Priority order**: ConvertKit → MailChimp → Monday → Discord

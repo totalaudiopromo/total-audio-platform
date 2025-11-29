@@ -1,4 +1,4 @@
-#  Emerging Projects Portfolio
+# Emerging Projects Portfolio
 
 _Reference summary for initiatives developing alongside the core Audio Intel product._
 

@@ -8,17 +8,17 @@ _Brand voice, content creation, and marketing materials_
 
 ### **🎯 Brand Positioning:**
 
-- **UK Music Industry Focus** - British alternative to US tools
-- **Producer Credibility** - Real radio promotion experience
-- **Affordable Pricing** - £19.99/month vs £200-500+ competitors
-- **Personal Story** - Bedroom to professional journey
+- **UK Music Industry Focus**- British alternative to US tools
+- **Producer Credibility**- Real radio promotion experience
+- **Affordable Pricing**- £19.99/month vs £200-500+ competitors
+- **Personal Story**- Bedroom to professional journey
 
 ### **🗺️ Brand Voice:**
 
-- **Authentic British** - UK spelling and tone
-- **Industry Credible** - 5+ years radio promotion experience
-- **Relatable Entrepreneur** - 2am coding sessions, family life
-- **Results-Focused** - BBC Radio 1 pitch experience
+- **Authentic British**- UK spelling and tone
+- **Industry Credible**- 5+ years radio promotion experience
+- **Relatable Entrepreneur**- 2am coding sessions, family life
+- **Results-Focused**- BBC Radio 1 pitch experience
 
 ---
 
@@ -26,24 +26,24 @@ _Brand voice, content creation, and marketing materials_
 
 ### **📱 Social Media Content:**
 
-- **LinkedIn Updates** - Professional industry insights
-- **Twitter/X Posts** - Quick tips and product updates
-- **Instagram Stories** - Behind-the-scenes development
-- **YouTube Content** - Product demos and tutorials
+- **LinkedIn Updates**- Professional industry insights
+- **Twitter/X Posts**- Quick tips and product updates
+- **Instagram Stories**- Behind-the-scenes development
+- **YouTube Content**- Product demos and tutorials
 
 ### **📰 Marketing Materials:**
 
-- **Landing Page Copy** - Value proposition and benefits
-- **Email Sequences** - Onboarding and retention
-- **Sales Pages** - Product features and pricing
-- **Case Studies** - Customer success stories
+- **Landing Page Copy**- Value proposition and benefits
+- **Email Sequences**- Onboarding and retention
+- **Sales Pages**- Product features and pricing
+- **Case Studies**- Customer success stories
 
 ### **📧 Customer Communication:**
 
-- **Onboarding Emails** - Welcome series and setup
-- **Product Updates** - Feature announcements
-- **Support Content** - Help guides and FAQs
-- **Retention Campaigns** - Engagement and loyalty
+- **Onboarding Emails**- Welcome series and setup
+- **Product Updates**- Feature announcements
+- **Support Content**- Help guides and FAQs
+- **Retention Campaigns**- Engagement and loyalty
 
 ---
 
@@ -51,17 +51,17 @@ _Brand voice, content creation, and marketing materials_
 
 ### **🎨 Design Assets:**
 
-- **Logo Variations** - Different formats and sizes
-- **Colour Palette** - Brand colours and usage
-- **Typography** - Font choices and hierarchy
-- **Image Style** - Photography and graphics style
+- **Logo Variations**- Different formats and sizes
+- **Colour Palette**- Brand colours and usage
+- **Typography**- Font choices and hierarchy
+- **Image Style**- Photography and graphics style
 
 ### **📱 Platform Assets:**
 
-- **Social Media Templates** - Consistent visual style
-- **Website Graphics** - Headers, icons, and illustrations
-- **Email Templates** - Branded communication design
-- **Product Screenshots** - Feature demonstrations
+- **Social Media Templates**- Consistent visual style
+- **Website Graphics**- Headers, icons, and illustrations
+- **Email Templates**- Branded communication design
+- **Product Screenshots**- Feature demonstrations
 
 ---
 
@@ -69,15 +69,15 @@ _Brand voice, content creation, and marketing materials_
 
 ### **🔥 This Week:**
 
-1. **Landing page copy update** - Clearer value proposition
-2. **LinkedIn post** - Building Audio Intel announcement
-3. **Customer outreach templates** - Personalised messages
+1. **Landing page copy update**- Clearer value proposition
+2. **LinkedIn post**- Building Audio Intel announcement
+3. **Customer outreach templates**- Personalised messages
 
 ### **📈 Next Sprint:**
 
-1. **Video content** - Product demo creation
-2. **Email sequence** - Automated onboarding
-3. **Case study development** - First customer success story
+1. **Video content**- Product demo creation
+2. **Email sequence**- Automated onboarding
+3. **Case study development**- First customer success story
 
 ---
 

@@ -2,7 +2,7 @@
 
 ## Context
 
-Working on Total Audio Platform monorepo. The Golden Deployment Pipeline has failed **30 times** due to various CI/CD issues. We've fixed:
+Working on Total Audio Platform monorepo. The Golden Deployment Pipeline has failed **30 times**due to various CI/CD issues. We've fixed:
 
 - Build matrix app names (27th attempt)
 - Deployment case statements for Vercel (28th attempt)
@@ -24,12 +24,12 @@ Working on Total Audio Platform monorepo. The Golden Deployment Pipeline has fai
 
 ### Failed Jobs:
 
-1. **Lint, Typecheck, Test & Build** - Exit code 1
-2. **Security Scan** - Exit code 1 (twice)
+1. **Lint, Typecheck, Test & Build**- Exit code 1
+2. **Security Scan**- Exit code 1 (twice)
 
 ## Your Task: FIX EVERYTHING
 
-Run these diagnostic steps **locally** first, then fix ALL issues:
+Run these diagnostic steps **locally**first, then fix ALL issues:
 
 ### Step 1: Diagnose Lint Failures
 
@@ -175,11 +175,11 @@ git push origin main
 
 ## Critical Requirements
 
-1. **Test EVERYTHING locally first** - don't push until all commands pass
-2. **Fix ALL issues in ONE commit** - no more incremental fixes
-3. **Provide detailed commit message** - explain what each fix addresses
-4. **Verify no regressions** - don't break previously working configs
-5. **Check file permissions** - use `git add -f` if files are gitignored
+1. **Test EVERYTHING locally first**- don't push until all commands pass
+2. **Fix ALL issues in ONE commit**- no more incremental fixes
+3. **Provide detailed commit message**- explain what each fix addresses
+4. **Verify no regressions**- don't break previously working configs
+5. **Check file permissions**- use `git add -f` if files are gitignored
 
 ## Files You May Need to Edit
 

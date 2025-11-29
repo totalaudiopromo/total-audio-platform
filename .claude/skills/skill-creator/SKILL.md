@@ -13,34 +13,34 @@ description: Use when creating new skills, editing existing skills, or verifying
 
 You write test cases (pressure scenarios with subagents), watch them fail (baseline behavior), write the skill (documentation), watch tests pass (agents comply), and refactor (close loopholes).
 
-**Core principle:** If you didn't watch an agent fail without the skill, you don't know if the skill teaches the right thing.
+**Core principle:**If you didn't watch an agent fail without the skill, you don't know if the skill teaches the right thing.
 
-**REQUIRED BACKGROUND:** You MUST understand superpowers:test-driven-development before using this skill. That skill defines the fundamental RED-GREEN-REFACTOR cycle. This skill adapts TDD to documentation.
+**REQUIRED BACKGROUND:**You MUST understand superpowers:test-driven-development before using this skill. That skill defines the fundamental RED-GREEN-REFACTOR cycle. This skill adapts TDD to documentation.
 
-**Official guidance:** For Anthropic's official skill authoring best practices, see anthropic-best-practices.md. This document provides additional patterns and guidelines that complement the TDD-focused approach in this skill.
+**Official guidance:**For Anthropic's official skill authoring best practices, see anthropic-best-practices.md. This document provides additional patterns and guidelines that complement the TDD-focused approach in this skill.
 
 ## What is a Skill?
 
-A **skill** is a reference guide for proven techniques, patterns, or tools. Skills help future Claude instances find and apply effective approaches.
+A **skill**is a reference guide for proven techniques, patterns, or tools. Skills help future Claude instances find and apply effective approaches.
 
-**Skills are:** Reusable techniques, patterns, tools, reference guides
+**Skills are:**Reusable techniques, patterns, tools, reference guides
 
-**Skills are NOT:** Narratives about how you solved a problem once
+**Skills are NOT:**Narratives about how you solved a problem once
 
 ## TDD Mapping for Skills
 
 | TDD Concept             | Skill Creation                                   |
 | ----------------------- | ------------------------------------------------ |
-| **Test case**           | Pressure scenario with subagent                  |
-| **Production code**     | Skill document (SKILL.md)                        |
-| **Test fails (RED)**    | Agent violates rule without skill (baseline)     |
-| **Test passes (GREEN)** | Agent complies with skill present                |
-| **Refactor**            | Close loopholes while maintaining compliance     |
-| **Write test first**    | Run baseline scenario BEFORE writing skill       |
-| **Watch it fail**       | Document exact rationalizations agent uses       |
-| **Minimal code**        | Write skill addressing those specific violations |
-| **Watch it pass**       | Verify agent now complies                        |
-| **Refactor cycle**      | Find new rationalizations → plug → re-verify     |
+| **Test case**          | Pressure scenario with subagent                  |
+| **Production code**    | Skill document (SKILL.md)                        |
+| **Test fails (RED)**   | Agent violates rule without skill (baseline)     |
+| **Test passes (GREEN)**| Agent complies with skill present                |
+| **Refactor**           | Close loopholes while maintaining compliance     |
+| **Write test first**   | Run baseline scenario BEFORE writing skill       |
+| **Watch it fail**      | Document exact rationalizations agent uses       |
+| **Minimal code**       | Write skill addressing those specific violations |
+| **Watch it pass**      | Verify agent now complies                        |
+| **Refactor cycle**     | Find new rationalizations → plug → re-verify     |
 
 The entire skill creation process follows RED-GREEN-REFACTOR.
 
@@ -82,12 +82,12 @@ skills/
     supporting-file.*     # Only if needed
 ```
 
-**Flat namespace** - all skills in one searchable namespace
+**Flat namespace**- all skills in one searchable namespace
 
 **Separate files for:**
 
-1. **Heavy reference** (100+ lines) - API docs, comprehensive syntax
-2. **Reusable tools** - Scripts, utilities, templates
+1. **Heavy reference**(100+ lines) - API docs, comprehensive syntax
+2. **Reusable tools**- Scripts, utilities, templates
 
 **Keep inline:**
 
@@ -150,13 +150,13 @@ Concrete results
 
 ## Claude Search Optimization (CSO)
 
-**Critical for discovery:** Future Claude needs to FIND your skill
+**Critical for discovery:**Future Claude needs to FIND your skill
 
 ### 1. Rich Description Field
 
-**Purpose:** Claude reads description to decide which skills to load for a given task. Make it answer: "Should I read this skill right now?"
+**Purpose:**Claude reads description to decide which skills to load for a given task. Make it answer: "Should I read this skill right now?"
 
-**Format:** Start with "Use when..." to focus on triggering conditions, then explain what it does
+**Format:**Start with "Use when..." to focus on triggering conditions, then explain what it does
 
 **Content:**
 
@@ -167,13 +167,13 @@ Concrete results
 - Write in third person (injected into system prompt)
 
 ```yaml
-#  BAD: Too abstract, vague, doesn't include when to use
+# BAD: Too abstract, vague, doesn't include when to use
 description: For async testing
 
-#  BAD: First person
+# BAD: First person
 description: I can help you with async tests when they're flaky
 
-#  BAD: Mentions technology but skill isn't specific to it
+# BAD: Mentions technology but skill isn't specific to it
 description: Use when tests use setTimeout/sleep and are flaky
 
 # GOOD: Starts with "Use when", describes problem, then what it does
@@ -201,7 +201,7 @@ Use words Claude would search for:
 
 ### 4. Token Efficiency (Critical)
 
-**Problem:** getting-started and frequently-referenced skills load into EVERY conversation. Every token counts.
+**Problem:**getting-started and frequently-referenced skills load into EVERY conversation. Every token counts.
 
 **Target word counts:**
 
@@ -214,7 +214,7 @@ Use words Claude would search for:
 **Move details to tool help:**
 
 ```bash
-#  BAD: Document all flags in SKILL.md
+# BAD: Document all flags in SKILL.md
 search-conversations supports --text, --both, --after DATE, --before DATE, --limit N
 
 # GOOD: Reference --help
@@ -224,7 +224,7 @@ search-conversations supports multiple modes and filters. Run --help for details
 **Use cross-references:**
 
 ```markdown
-#  BAD: Repeat workflow details
+# BAD: Repeat workflow details
 
 When searching, dispatch subagent with template...
 [20 lines of repeated instructions]
@@ -237,7 +237,7 @@ Always use subagents (50-100x context savings). REQUIRED: Use [other-skill-name]
 **Compress examples:**
 
 ```markdown
-#  BAD: Verbose example (42 words)
+# BAD: Verbose example (42 words)
 
 your human partner: "How did we handle authentication errors in React Router before?"
 You: I'll search past conversations for React Router authentication patterns.
@@ -282,12 +282,12 @@ wc -w skills/path/SKILL.md
 
 Use skill name only, with explicit requirement markers:
 
-- Good: `**REQUIRED SUB-SKILL:** Use superpowers:test-driven-development`
-- Good: `**REQUIRED BACKGROUND:** You MUST understand superpowers:systematic-debugging`
+- Good: `**REQUIRED SUB-SKILL:**Use superpowers:test-driven-development`
+- Good: `**REQUIRED BACKGROUND:**You MUST understand superpowers:systematic-debugging`
 -  Bad: `See skills/testing/test-driven-development` (unclear if required)
 -  Bad: `@skills/testing/test-driven-development/SKILL.md` (force-loads, burns context)
 
-**Why no @ links:** `@` syntax force-loads files immediately, consuming 200k+ context before you need them.
+**Why no @ links:**`@` syntax force-loads files immediately, consuming 200k+ context before you need them.
 
 ## Flowchart Usage
 
@@ -398,7 +398,7 @@ Edit skill without testing? Same violation.
 - Don't "adapt" while running tests
 - Delete means delete
 
-**REQUIRED BACKGROUND:** The superpowers:test-driven-development skill explains why this matters. Same principles apply to documentation.
+**REQUIRED BACKGROUND:**The superpowers:test-driven-development skill explains why this matters. Same principles apply to documentation.
 
 ## Testing All Skill Types
 
@@ -406,7 +406,7 @@ Different skill types need different test approaches:
 
 ### Discipline-Enforcing Skills (rules/requirements)
 
-**Examples:** TDD, verification-before-completion, designing-before-coding
+**Examples:**TDD, verification-before-completion, designing-before-coding
 
 **Test with:**
 
@@ -415,11 +415,11 @@ Different skill types need different test approaches:
 - Multiple pressures combined: time + sunk cost + exhaustion
 - Identify rationalizations and add explicit counters
 
-**Success criteria:** Agent follows rule under maximum pressure
+**Success criteria:**Agent follows rule under maximum pressure
 
 ### Technique Skills (how-to guides)
 
-**Examples:** condition-based-waiting, root-cause-tracing, defensive-programming
+**Examples:**condition-based-waiting, root-cause-tracing, defensive-programming
 
 **Test with:**
 
@@ -427,11 +427,11 @@ Different skill types need different test approaches:
 - Variation scenarios: Do they handle edge cases?
 - Missing information tests: Do instructions have gaps?
 
-**Success criteria:** Agent successfully applies technique to new scenario
+**Success criteria:**Agent successfully applies technique to new scenario
 
 ### Pattern Skills (mental models)
 
-**Examples:** reducing-complexity, information-hiding concepts
+**Examples:**reducing-complexity, information-hiding concepts
 
 **Test with:**
 
@@ -439,11 +439,11 @@ Different skill types need different test approaches:
 - Application scenarios: Can they use the mental model?
 - Counter-examples: Do they know when NOT to apply?
 
-**Success criteria:** Agent correctly identifies when/how to apply pattern
+**Success criteria:**Agent correctly identifies when/how to apply pattern
 
 ### Reference Skills (documentation/APIs)
 
-**Examples:** API documentation, command references, library guides
+**Examples:**API documentation, command references, library guides
 
 **Test with:**
 
@@ -451,7 +451,7 @@ Different skill types need different test approaches:
 - Application scenarios: Can they use what they found correctly?
 - Gap testing: Are common use cases covered?
 
-**Success criteria:** Agent finds and correctly applies reference information
+**Success criteria:**Agent finds and correctly applies reference information
 
 ## Common Rationalizations for Skipping Testing
 
@@ -472,7 +472,7 @@ Different skill types need different test approaches:
 
 Skills that enforce discipline (like TDD) need to resist rationalization. Agents are smart and will find loopholes when under pressure.
 
-**Psychology note:** Understanding WHY persuasion techniques work helps you apply them systematically. See persuasion-principles.md for research foundation (Cialdini, 2021; Meincke et al., 2025) on authority, commitment, scarcity, social proof, and unity principles.
+**Psychology note:**Understanding WHY persuasion techniques work helps you apply them systematically. See persuasion-principles.md for research foundation (Cialdini, 2021; Meincke et al., 2025) on authority, commitment, scarcity, social proof, and unity principles.
 
 ### Close Every Loophole Explicitly
 
@@ -568,7 +568,7 @@ Run same scenarios WITH skill. Agent should now comply.
 
 Agent found new rationalization? Add explicit counter. Re-test until bulletproof.
 
-**REQUIRED SUB-SKILL:** Use superpowers:testing-skills-with-subagents for the complete testing methodology:
+**REQUIRED SUB-SKILL:**Use superpowers:testing-skills-with-subagents for the complete testing methodology:
 
 - How to write pressure scenarios
 - Pressure types (time, sunk cost, authority, exhaustion)
@@ -577,29 +577,29 @@ Agent found new rationalization? Add explicit counter. Re-test until bulletproof
 
 ## Anti-Patterns
 
-###  Narrative Example
+### Narrative Example
 
 "In session 2025-10-03, we found empty projectDir caused..."
-**Why bad:** Too specific, not reusable
+**Why bad:**Too specific, not reusable
 
-###  Multi-Language Dilution
+### Multi-Language Dilution
 
 example-js.js, example-py.py, example-go.go
-**Why bad:** Mediocre quality, maintenance burden
+**Why bad:**Mediocre quality, maintenance burden
 
-###  Code in Flowcharts
+### Code in Flowcharts
 
 ```dot
 step1 [label="import fs"];
 step2 [label="read file"];
 ```
 
-**Why bad:** Can't copy-paste, hard to read
+**Why bad:**Can't copy-paste, hard to read
 
-###  Generic Labels
+### Generic Labels
 
 helper1, helper2, step3, pattern4
-**Why bad:** Labels should have semantic meaning
+**Why bad:**Labels should have semantic meaning
 
 ## STOP: Before Moving to Next Skill
 
@@ -663,13 +663,13 @@ Deploying untested skills = deploying untested code. It's a violation of quality
 
 How future Claude finds your skill:
 
-1. **Encounters problem** ("tests are flaky")
-2. **Finds SKILL** (description matches)
-3. **Scans overview** (is this relevant?)
-4. **Reads patterns** (quick reference table)
-5. **Loads example** (only when implementing)
+1. **Encounters problem**("tests are flaky")
+2. **Finds SKILL**(description matches)
+3. **Scans overview**(is this relevant?)
+4. **Reads patterns**(quick reference table)
+5. **Loads example**(only when implementing)
 
-**Optimize for this flow** - put searchable terms early and often.
+**Optimize for this flow**- put searchable terms early and often.
 
 ## The Bottom Line
 

@@ -12,10 +12,10 @@
 
 | Platform      | Status            | Time to Setup | Complexity |
 | ------------- | ----------------- | ------------- | ---------- |
-| **Bluesky**   |  Working        | Done          | Easy       |
-| **LinkedIn**  |  Needs token    | 10 minutes    | Medium     |
-| **Threads**   |  Not configured | 30+ minutes   | Hard       |
-| **Twitter/X** |  Unknown        | Need to check | Medium     |
+| **Bluesky**  |  Working        | Done          | Easy       |
+| **LinkedIn** |  Needs token    | 10 minutes    | Medium     |
+| **Threads**  |  Not configured | 30+ minutes   | Hard       |
+| **Twitter/X**|  Unknown        | Need to check | Medium     |
 
 ---
 
@@ -141,8 +141,8 @@ curl -X POST https://intel.totalaudiopromo.com/api/cron/social-posting \
 
 The system posts **twice daily**:
 
-- **9:00 AM UK time** - Morning post
-- **5:00 PM UK time** - Afternoon post
+- **9:00 AM UK time**- Morning post
+- **5:00 PM UK time**- Afternoon post
 
 Content comes from: `social-content/CONTENT_CALENDAR.json`
 
@@ -173,10 +173,10 @@ Content comes from: `social-content/CONTENT_CALENDAR.json`
 
 All documentation in one place:
 
-1. **[SOCIAL_POSTING_QUICKSTART.md](./SOCIAL_POSTING_QUICKSTART.md)** (this file) - Start here
-2. **[LINKEDIN_SETUP.md](./LINKEDIN_SETUP.md)** - Detailed LinkedIn OAuth guide
-3. **[THREADS_SETUP.md](./THREADS_SETUP.md)** - Detailed Threads OAuth guide
-4. **[SOCIAL_POSTING_SETUP.md](./SOCIAL_POSTING_SETUP.md)** - Complete technical reference
+1. **[SOCIAL_POSTING_QUICKSTART.md](./SOCIAL_POSTING_QUICKSTART.md)**(this file) - Start here
+2. **[LINKEDIN_SETUP.md](./LINKEDIN_SETUP.md)**- Detailed LinkedIn OAuth guide
+3. **[THREADS_SETUP.md](./THREADS_SETUP.md)**- Detailed Threads OAuth guide
+4. **[SOCIAL_POSTING_SETUP.md](./SOCIAL_POSTING_SETUP.md)**- Complete technical reference
 
 Scripts:
 

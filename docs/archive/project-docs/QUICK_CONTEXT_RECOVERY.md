@@ -4,7 +4,7 @@ _Use this template after conversation compacting to rapidly restore context_
 
 ---
 
-## ⚡ **IMMEDIATE CONTEXT RESTORATION** (30 seconds)
+## ⚡ **IMMEDIATE CONTEXT RESTORATION**(30 seconds)
 
 1. **Primary Project**: Audio Intel - Contact enrichment SaaS tool
 2. **Main Directory**: `/workspace/active/total-audio-platform/`
@@ -58,11 +58,11 @@ npm run preserve-context
 
 ## ⚠️ **CRITICAL REMINDERS**
 
-1. **Always use Plan Mode** for significant changes during Sprint Week
-2. **Audio Intel is the PRIMARY focus** - other apps are future/internal tools
-3. **23+ Specialized agents available** - use them for complex tasks
-4. **MCP servers provide** browser automation + file system access
-5. **Visual system implemented** - check `lib/agent-color-system.ts`
+1. **Always use Plan Mode**for significant changes during Sprint Week
+2. **Audio Intel is the PRIMARY focus**- other apps are future/internal tools
+3. **23+ Specialized agents available**- use them for complex tasks
+4. **MCP servers provide**browser automation + file system access
+5. **Visual system implemented**- check `lib/agent-color-system.ts`
 
 ## 🚨 **IF CONTEXT IS STILL MISSING**
 

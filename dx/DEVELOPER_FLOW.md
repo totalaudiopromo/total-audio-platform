@@ -23,7 +23,7 @@ This guide explains the complete developer workflow for Total Audio Platform, fr
 
 ### Primary Tools
 
-**Cursor** (or VS Code with Claude integration)
+**Cursor**(or VS Code with Claude integration)
 
 - Primary code editor
 - AI-powered code completion
@@ -156,7 +156,7 @@ chore: update dependencies to latest versions
 
 ### Monorepo Structure
 
-**Apps** (independent applications):
+**Apps**(independent applications):
 
 ```
 apps/
@@ -166,7 +166,7 @@ apps/
  web/                 # Marketing website
 ```
 
-**Packages** (shared code):
+**Packages**(shared code):
 
 ```
 packages/
@@ -237,7 +237,7 @@ The template includes sections for:
 - Performance considerations
 - Deployment notes
 
-**Fill it out thoroughly** - it helps CodeRabbit and reviewers understand your changes.
+**Fill it out thoroughly**- it helps CodeRabbit and reviewers understand your changes.
 
 ### Enabling Auto-Merge
 
@@ -245,9 +245,9 @@ After creating PR:
 
 1. Click "Enable auto-merge" button
 2. Select merge method:
-   - **Squash and merge** (recommended for feature branches)
-   - **Rebase and merge** (for clean history)
-   - **Create merge commit** (preserves all commits)
+   - **Squash and merge**(recommended for feature branches)
+   - **Rebase and merge**(for clean history)
+   - **Create merge commit**(preserves all commits)
 
 ### What Happens Next
 
@@ -330,7 +330,7 @@ Developer Push → CI (Validate) → Vercel (Deploy) → Golden Verify (Check)
   - Tracker → https://tracker.totalaudiopromo.com
   - Pitch Generator → https://pitch.totalaudiopromo.com
 
-**No manual intervention needed** - Vercel handles everything.
+**No manual intervention needed**- Vercel handles everything.
 
 ### Golden Verify (Post-Deployment Checks)
 
@@ -389,7 +389,7 @@ vercel --prod
 
 **Setup**: Telegram bot sends notifications to configured chat.
 
-**Notification triggers** (failures only):
+**Notification triggers**(failures only):
 
 -  Golden Verify health check failed
 -  CI workflow failed
@@ -615,7 +615,7 @@ pnpm run build:audio-intel  # Build locally to debug
 Reason: [explain why this is a false positive]
 ```
 
-**Get human review approval** for overrides.
+**Get human review approval**for overrides.
 
 ### PR Not Auto-Merging
 
@@ -801,7 +801,7 @@ git push
 -  CI checks fail
 -  Telegram alerts you
 
-**This is frictionless development** - focus on coding, let automation handle the rest.
+**This is frictionless development**- focus on coding, let automation handle the rest.
 
 ---
 

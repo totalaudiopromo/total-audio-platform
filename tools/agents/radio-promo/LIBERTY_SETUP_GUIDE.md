@@ -18,7 +18,7 @@ This is a shared workspace used by the entire Liberty team. The agent is configu
 ### 2. Google Chat Integration (READ-ONLY MODE)  CONFIGURED
 
 - **Mode**: Read-only intelligence gathering
-- **No notifications sent** to anyone
+- **No notifications sent**to anyone
 - **Channels monitored**:
   - Success Shout Outs: `AAAANDK-SNA`
   - Radio Superstars: `AAAACVjpDTI`
@@ -210,7 +210,7 @@ If you encounter issues:
 
 ## Next Steps
 
-1. **Set up API keys** (priority order):
+1. **Set up API keys**(priority order):
    - Monday.com (critical)
    - Google Chat (critical)
    - Otter.ai (for existing transcripts)

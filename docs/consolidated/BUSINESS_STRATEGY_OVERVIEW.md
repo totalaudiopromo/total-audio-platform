@@ -54,11 +54,11 @@ _A consolidated view of the UK market strategy, positioning, pricing, and growth
 
 ## 6. Strategic Pillars (2025)
 
-1. **Contact Intelligence Leadership** – keep the 515-contact curated pool authoritative; expand vertical datasets.
-2. **Transparent Automation** – dashboards that show progress in real-time and eliminate “silent campaign” anxiety.
-3. **Accessible Pricing** – maintain the £19/£79 tiers as anchor offers; promote savings over pay-per-pitch rivals.
-4. **Credible Storytelling** – leverage BBC Radio 1 / Spotify case studies and the founder’s 5+ year promo history.
-5. **Retention Mechanics** – embed onboarding sequences, expectation management, and proactive success alerts.
+1. **Contact Intelligence Leadership**– keep the 515-contact curated pool authoritative; expand vertical datasets.
+2. **Transparent Automation**– dashboards that show progress in real-time and eliminate “silent campaign” anxiety.
+3. **Accessible Pricing**– maintain the £19/£79 tiers as anchor offers; promote savings over pay-per-pitch rivals.
+4. **Credible Storytelling**– leverage BBC Radio 1 / Spotify case studies and the founder’s 5+ year promo history.
+5. **Retention Mechanics**– embed onboarding sequences, expectation management, and proactive success alerts.
 
 ## 7. Roadmap Highlights
 
@@ -82,10 +82,10 @@ _A consolidated view of the UK market strategy, positioning, pricing, and growth
 
 ## 10. Key Risks & Mitigations
 
-- **Onboarding gap** – fix Kit email automation, align pricing references, rehearse end-to-end beta flow.
-- **Content debt** – update landing page messaging, refresh support docs, ensure tone matches “authentic UK operator.”
-- **Expectation mismatch** – emphasise organic growth guarantees, provide honest success predictions, monitor stream quality optics.
-- **Resource focus** – prioritise radio promoter wins before diversifying segments; avoid relapse into generic automation experiments.
+- **Onboarding gap**– fix Kit email automation, align pricing references, rehearse end-to-end beta flow.
+- **Content debt**– update landing page messaging, refresh support docs, ensure tone matches “authentic UK operator.”
+- **Expectation mismatch**– emphasise organic growth guarantees, provide honest success predictions, monitor stream quality optics.
+- **Resource focus**– prioritise radio promoter wins before diversifying segments; avoid relapse into generic automation experiments.
 
 ---
 

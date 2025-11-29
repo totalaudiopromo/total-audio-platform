@@ -10,9 +10,9 @@ The Discord bot now supports approval workflows for purchasing the £10 Euro Ind
 
 1. Go to your Discord server settings
 2. Navigate to the channel where you want approval requests (e.g., #approvals or #admin)
-3. Click **Integrations** → **Webhooks** → **New Webhook**
+3. Click **Integrations**→ **Webhooks**→ **New Webhook**
 4. Name it: "Euro Indie Purchase Requests"
-5. Copy the **Webhook URL** (looks like: `https://discord.com/api/webhooks/123456789/abcdefg...`)
+5. Copy the **Webhook URL**(looks like: `https://discord.com/api/webhooks/123456789/abcdefg...`)
 
 ### 2. Update Environment Variables
 
@@ -78,7 +78,7 @@ const EURO_INDIE_CONTACT = {
 
 ### 6. Monday.com Board Security
 
-The bot is **hardcoded** to only access Chris Schofield's Monday.com board:
+The bot is **hardcoded**to only access Chris Schofield's Monday.com board:
 
 - **Board ID**: `2443582331`
 - **Board URL**: https://liberty-music.monday.com/boards/2443582331

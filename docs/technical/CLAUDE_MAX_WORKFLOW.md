@@ -29,17 +29,17 @@
 
 ### What You Get
 
-- **Priority access** during peak times
-- **5x more usage** than free tier
-- **Early access** to new features
-- **Longer conversations** without hitting limits
+- **Priority access**during peak times
+- **5x more usage**than free tier
+- **Early access**to new features
+- **Longer conversations**without hitting limits
 
 ### How to Use It Best
 
-1. **Long development sessions** (your 2-hour max sessions)
-2. **Complex refactoring** (TDD workflow)
-3. **Strategic planning** (customer acquisition)
-4. **Agent development** (your 14+ agents)
+1. **Long development sessions**(your 2-hour max sessions)
+2. **Complex refactoring**(TDD workflow)
+3. **Strategic planning**(customer acquisition)
+4. **Agent development**(your 14+ agents)
 
 ---
 
@@ -383,19 +383,19 @@ Plan next week's priorities for customer acquisition."
 
 ### BEST Uses (Max Plan Shines)
 
-1. **Multi-file refactoring** (TDD workflow, agent consolidation)
-2. **Strategic planning** (customer acquisition, roadmap)
-3. **Content generation** (batch creation, campaign planning)
-4. **Complex debugging** (multi-system issues)
-5. **Feature development** (end-to-end with tests)
-6. **Agent development** (new agents, orchestration)
+1. **Multi-file refactoring**(TDD workflow, agent consolidation)
+2. **Strategic planning**(customer acquisition, roadmap)
+3. **Content generation**(batch creation, campaign planning)
+4. **Complex debugging**(multi-system issues)
+5. **Feature development**(end-to-end with tests)
+6. **Agent development**(new agents, orchestration)
 
-###  DON'T Use For (Save Your Quota)
+### DON'T Use For (Save Your Quota)
 
-1. **Simple questions** (use docs, Google, or free tier)
-2. **Typo fixes** (use VSCode directly)
-3. **Copy-paste tasks** (do manually)
-4. **Exploratory browsing** (use regular search)
+1. **Simple questions**(use docs, Google, or free tier)
+2. **Typo fixes**(use VSCode directly)
+3. **Copy-paste tasks**(do manually)
+4. **Exploratory browsing**(use regular search)
 
 ---
 

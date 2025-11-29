@@ -27,7 +27,7 @@
 
 ### 1. Update Command Centre to Pull from Production
 
-**Current** (line 6 in command-centre/app/api/audio-intel-metrics/route.ts):
+**Current**(line 6 in command-centre/app/api/audio-intel-metrics/route.ts):
 
 ```typescript
 const audioIntelBaseUrl = 'http://localhost:3001';
@@ -85,7 +85,7 @@ The `/api/analytics` endpoint exists but needs to store data. Current flow:
 
 ## 🎯 COMMAND CENTRE DASHBOARD METRICS
 
-**Currently displays** (from `/apps/command-centre/app/analytics/page.tsx`):
+**Currently displays**(from `/apps/command-centre/app/analytics/page.tsx`):
 
 - Total Revenue & MRR
 - User Growth
@@ -174,27 +174,27 @@ You view on mobile at command.totalaudiopromo.com
 
 ## ⚡ IMMEDIATE ACTIONS REQUIRED
 
-1. **Fix Command Centre API URL** (5 minutes)
+1. **Fix Command Centre API URL**(5 minutes)
    - Update `audioIntelBaseUrl` to production URL
    - Add environment variable
    - Redeploy Command Centre
 
-2. **Add Database for Analytics Storage** (30 minutes)
+2. **Add Database for Analytics Storage**(30 minutes)
    - Use existing Supabase/PostgreSQL
    - Create `analytics_events` table
    - Update `/api/analytics/route.ts` to store events
 
-3. **Add PSEO Page Tracking** (15 minutes per page)
+3. **Add PSEO Page Tracking**(15 minutes per page)
    - Add `useEffect` with `trackPageView()` to all 8 PSEO pages
    - Include metadata (topic, search volume, referrer)
 
-4. **Test Full Pipeline** (10 minutes)
+4. **Test Full Pipeline**(10 minutes)
    - Visit PSEO page
    - Check GTM fires in browser dev tools
    - Verify data appears in `/api/analytics`
    - Check Command Centre dashboard updates
 
-5. **Add PSEO Dashboard Section** (45 minutes)
+5. **Add PSEO Dashboard Section**(45 minutes)
    - Add new "PSEO Performance" tab to Command Centre
    - Show traffic by page, conversions, top keywords
    - Mobile-optimized for on-the-go viewing

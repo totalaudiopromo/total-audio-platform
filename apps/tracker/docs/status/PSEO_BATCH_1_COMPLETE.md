@@ -159,13 +159,13 @@ Each page includes:
 | Music PR    | 2,200            | 300-600                  | 9-18 signups      |
 | Apple Music | 1,800            | 250-500                  | 8-15 signups      |
 | BBC Radio 1 | 1,500            | 200-400                  | 6-12 signups      |
-| **TOTAL**   | **8,300**        | **1,150-2,300**          | **35-69 signups** |
+| **TOTAL**  | **8,300**       | **1,150-2,300**         | **35-69 signups**|
 
 ### Optimistic Estimates (Top 3 Rankings)
 
 - **Double the traffic**: 2,300-4,600 monthly visits
-- **70-140 monthly signups** from these 4 pages alone
-- **£1,400-2,800/month revenue** (at £20/signup avg)
+- **70-140 monthly signups**from these 4 pages alone
+- **£1,400-2,800/month revenue**(at £20/signup avg)
 
 ---
 
@@ -175,27 +175,27 @@ Each page includes:
 
 Create by end of Week 2:
 
-1. **BBC Radio 6 Music Campaign Analytics** (900/month)
+1. **BBC Radio 6 Music Campaign Analytics**(900/month)
    - Similar to Radio 1 but alternative/indie focus
    - Benchmarks: 8-14% specialist, older demographic
 
-2. **BBC Introducing Campaign Tracking** (700/month)
+2. **BBC Introducing Campaign Tracking**(700/month)
    - Unsigned artist pathway
    - Benchmarks: 8-12% success, regional differences
 
-3. **Community Radio Promotion Tracking** (800/month)
+3. **Community Radio Promotion Tracking**(800/month)
    - Local radio focus
    - Benchmarks: 18-24% success (much higher than nationals)
 
-4. **Commercial Radio Campaign Tracking** (650/month)
+4. **Commercial Radio Campaign Tracking**(650/month)
    - Capital, Kiss, Absolute, Kerrang
    - Benchmarks: 5-9% success, centralized playlisting
 
-5. **Blog Campaign Analytics for Musicians** (1,900/month)
+5. **Blog Campaign Analytics for Musicians**(1,900/month)
    - Expansion of PR tracking
    - Focus on individual blog outreach vs PR agencies
 
-6. **Deezer Playlist Campaign Tracking** (600/month)
+6. **Deezer Playlist Campaign Tracking**(600/month)
    - Underserved market
    - Benchmarks: 14-18% success (less competitive than Spotify)
 
@@ -206,7 +206,7 @@ Create by end of Week 2:
 
 ## KEY DIFFERENTIATORS FROM INTEL
 
-| **Audio Intel**                    | **Tracker**                                 |
+| **Audio Intel**                   | **Tracker**                                |
 | ---------------------------------- | ------------------------------------------- |
 | Contact enrichment                 | Campaign tracking                           |
 | "How to find BBC Radio 1 contacts" | "How to track BBC Radio 1 campaign success" |
@@ -339,7 +339,7 @@ PSEO_BATCH_1_COMPLETE.md (this file)
 
 ## WHAT WE'VE BUILT
 
-**4 comprehensive PSEO pages** targeting 8,300 monthly searches, with:
+**4 comprehensive PSEO pages**targeting 8,300 monthly searches, with:
 
 - Real industry benchmarks
 - Your authentic voice throughout

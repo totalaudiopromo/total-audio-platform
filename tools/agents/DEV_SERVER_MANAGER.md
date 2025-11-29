@@ -1,4 +1,4 @@
-#  DEVELOPMENT SERVER MANAGER
+# DEVELOPMENT SERVER MANAGER
 
 **Problem**: Database and server startup slowing you down
 **Solution**: Simple serverless approach for your solopreneur workflow
@@ -96,7 +96,7 @@ npx prisma generate
 
 ### Install PostgreSQL Locally
 
-**macOS** (requires Homebrew):
+**macOS**(requires Homebrew):
 
 ```bash
 # Install Homebrew first if needed
@@ -133,13 +133,13 @@ npx prisma db push
 
 | Feature               | Vercel Postgres | Supabase     | Local PostgreSQL    |
 | --------------------- | --------------- | ------------ | ------------------- |
-| **Setup Time**        | 5 minutes       | 10 minutes   | 30 minutes          |
-| **Maintenance**       | Zero            | Zero         | Weekly              |
-| **Works Everywhere**  |  Yes          |  Yes       |  One machine only |
-| **Backup**            |  Automatic    |  Automatic |  Manual           |
-| **Cost (your scale)** |  FREE         |  FREE      |  FREE             |
-| **Slows You Down**    |  Never        |  Never     |  Often            |
-| **Production Ready**  |  Yes          |  Yes       |  Need to migrate  |
+| **Setup Time**       | 5 minutes       | 10 minutes   | 30 minutes          |
+| **Maintenance**      | Zero            | Zero         | Weekly              |
+| **Works Everywhere** |  Yes          |  Yes       |  One machine only |
+| **Backup**           |  Automatic    |  Automatic |  Manual           |
+| **Cost (your scale)**|  FREE         |  FREE      |  FREE             |
+| **Slows You Down**   |  Never        |  Never     |  Often            |
+| **Production Ready** |  Yes          |  Yes       |  Need to migrate  |
 
 ---
 
@@ -305,7 +305,7 @@ npx prisma db push
 
 ### Rule of Thumb
 
-**If it requires "remembering to start a service"** → Go serverless
+**If it requires "remembering to start a service"**→ Go serverless
 
 **Examples**:
 

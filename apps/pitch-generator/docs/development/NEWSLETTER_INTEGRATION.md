@@ -4,7 +4,7 @@
 
 ### Component Created
 
-**`components/NewsletterSignup.tsx`** - Reusable newsletter signup component with 3 variants:
+**`components/NewsletterSignup.tsx`**- Reusable newsletter signup component with 3 variants:
 
 - `card` - Full card with icon and description (for dashboard)
 - `inline` - Compact inline form (for footer)
@@ -12,12 +12,12 @@
 
 ### Integration Points
 
-1. **Dashboard** (`app/dashboard/page.tsx`)
+1. **Dashboard**(`app/dashboard/page.tsx`)
    - Added newsletter signup card between recent pitches and quick links
    - Encourages newsletter signup from logged-in users
    - Full description with benefits
 
-2. **Site Footer** (`components/SiteFooter.tsx`)
+2. **Site Footer**(`components/SiteFooter.tsx`)
    - Inline newsletter signup in footer
    - Available on every page
    - Clean, non-intrusive design

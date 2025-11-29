@@ -228,21 +228,21 @@ Examples:
 
 ### Conversion Funnel
 
-**Top of Funnel** (Awareness)
+**Top of Funnel**(Awareness)
 
 - Social media posts highlighting problems
 - Time wasting and research inefficiency
 - Industry pain points
 - Target: Radio promoters discovering Audio Intel
 
-**Middle of Funnel** (Consideration)
+**Middle of Funnel**(Consideration)
 
 - Case study blog posts
 - ROI calculations
 - Real campaign results
 - Target: Evaluating Audio Intel vs alternatives
 
-**Bottom of Funnel** (Decision)
+**Bottom of Funnel**(Decision)
 
 - Email outreach templates
 - Demo booking CTAs
@@ -274,37 +274,37 @@ Examples:
 
 ### Content Themes
 
-1. **BBC Radio 1 Case Study** (Credibility)
+1. **BBC Radio 1 Case Study**(Credibility)
    - Real enrichment examples
    - Current show information
    - Submission guidelines accuracy
    - 100% verified data
 
-2. **Time Savings** (Primary Benefit)
+2. **Time Savings**(Primary Benefit)
    - 15 hours → 2 minutes
    - 780 hours annually
    - 32+ days of work
    - Focus on music instead
 
-3. **Pricing Comparison** (Value Proposition)
+3. **Pricing Comparison**(Value Proposition)
    - US alternatives: £400-600/month
    - Audio Intel: £19/month
    - 95% cost savings
    - Realistic for independents
 
-4. **Regional Radio** (Underutilised Opportunity)
+4. **Regional Radio**(Underutilised Opportunity)
    - 300+ stations
    - 35M+ combined reach
    - 35% response rates
    - Less competitive
 
-5. **Founder Story** (Authenticity)
+5. **Founder Story**(Authenticity)
    - Brighton producer (sadact)
    - 2AM development reality
    - pitches to BBC Radio 6 Music and regional stations
    - Uses tool daily
 
-6. **Response Rates** (Results)
+6. **Response Rates**(Results)
    - Generic: 8% response
    - Personalised: 28% response
    - 300% better results
@@ -568,7 +568,7 @@ Examples:
 
 ### Voice Standards
 
-** ALWAYS**:
+**ALWAYS**:
 
 - Use UK spelling (organised, realise, colour, etc.)
 - Be direct and honest about problems
@@ -577,7 +577,7 @@ Examples:
 - Focus on time savings and ROI
 - Maintain professional but authentic tone
 
-** NEVER**:
+**NEVER**:
 
 - Use US spelling
 - Make exaggerated claims without data

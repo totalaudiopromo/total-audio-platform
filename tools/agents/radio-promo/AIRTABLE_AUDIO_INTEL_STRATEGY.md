@@ -1,43 +1,43 @@
-#  Airtable + Audio Intel Integration Strategy
+# Airtable + Audio Intel Integration Strategy
 
 ## Current State Analysis
 
 ### Station Selection Logic
 
-The radio promo agent currently uses a **tiered targeting system** based on:
+The radio promo agent currently uses a **tiered targeting system**based on:
 
-1. **Tier 1 Commercial** (Critical Priority)
+1. **Tier 1 Commercial**(Critical Priority)
    - BBC Radio 1, BBC Radio 2, Capital FM, Heart, Absolute Radio
    - National reach, 100% importance
    - Immediate notifications
 
-2. **Tier 2 Commercial** (High Priority)
+2. **Tier 2 Commercial**(High Priority)
    - Kiss FM, Magic, Classic FM, Smooth, LBC
    - National reach, 80% importance
 
-3. **Specialist Shows** (High Priority)
+3. **Specialist Shows**(High Priority)
    - BBC 6 Music, BBC Radio 1Xtra, Kerrang! Radio
    - 90% importance, specialist audience
 
-4. **Regional Commercial** (Medium Priority)
+4. **Regional Commercial**(Medium Priority)
    - Regional stations like Key 103, Radio City, Clyde 1
    - 60% importance, regional reach
 
-5. **Online Stations** (Medium Priority)
+5. **Online Stations**(Medium Priority)
    - Amazing Radio, Boom Radio, Union JACK
    - 50% importance, online reach
 
-6. **Community Radio** (Low Priority)
+6. **Community Radio**(Low Priority)
    - Local community stations
    - 30% importance, local reach
 
 ### Current Limitations
 
-- **Static targeting** - no dynamic adjustment based on campaign performance
-- **No contact enrichment** - basic station info only
-- **No relationship tracking** - no history of interactions
-- **No personalization** - generic pitches for all stations
-- **No success tracking** - limited feedback on what works
+- **Static targeting**- no dynamic adjustment based on campaign performance
+- **No contact enrichment**- basic station info only
+- **No relationship tracking**- no history of interactions
+- **No personalization**- generic pitches for all stations
+- **No success tracking**- limited feedback on what works
 
 ## Optimized Airtable + Audio Intel Strategy
 
@@ -72,10 +72,10 @@ Fields:
 
 **Linked Tables:**
 
-- **Campaigns** (linked to contacts)
-- **Interactions** (email opens, responses, plays)
-- **Play History** (from WARM API)
-- **Station Performance** (success rates, response times)
+- **Campaigns**(linked to contacts)
+- **Interactions**(email opens, responses, plays)
+- **Play History**(from WARM API)
+- **Station Performance**(success rates, response times)
 
 #### 1.2 Automated Workflows
 
@@ -131,11 +131,11 @@ async function enrichContacts() {
 
 **Use Audio Intel data to:**
 
-- **Personalize pitches** based on station focus and preferences
-- **Optimize timing** based on show schedules and submission windows
-- **Target genres** that match station's audience
-- **Track relationships** and interaction history
-- **Predict success** based on similar contacts
+- **Personalize pitches**based on station focus and preferences
+- **Optimize timing**based on show schedules and submission windows
+- **Target genres**that match station's audience
+- **Track relationships**and interaction history
+- **Predict success**based on similar contacts
 
 ### Phase 3: Dynamic Station Selection
 
@@ -177,11 +177,11 @@ function calculateStationScore(contact, campaign) {
 
 **For each campaign:**
 
-1. **Analyze track characteristics** (genre, mood, commercial appeal)
-2. **Score all contacts** based on relevance
-3. **Select top 20-30 contacts** for initial outreach
-4. **Reserve 10-15 contacts** for follow-up based on early success
-5. **Track performance** and adjust future targeting
+1. **Analyze track characteristics**(genre, mood, commercial appeal)
+2. **Score all contacts**based on relevance
+3. **Select top 20-30 contacts**for initial outreach
+4. **Reserve 10-15 contacts**for follow-up based on early success
+5. **Track performance**and adjust future targeting
 
 ### Phase 4: Advanced CRM Features
 
@@ -226,20 +226,20 @@ function calculateStationScore(contact, campaign) {
 
 **Update the radio agent to:**
 
-1. **Query Airtable** for relevant contacts
-2. **Score contacts** using dynamic algorithm
-3. **Generate personalized pitches** using Audio Intel data
-4. **Track interactions** and update relationship status
-5. **Learn from success** to improve future targeting
+1. **Query Airtable**for relevant contacts
+2. **Score contacts**using dynamic algorithm
+3. **Generate personalized pitches**using Audio Intel data
+4. **Track interactions**and update relationship status
+5. **Learn from success**to improve future targeting
 
 #### 5.2 Real-time Optimization
 
 **During campaigns:**
 
-- **Monitor response rates** and adjust targeting
-- **Track play confirmations** from WARM API
-- **Update relationship scores** based on success
-- **Refine pitch templates** based on what works
+- **Monitor response rates**and adjust targeting
+- **Track play confirmations**from WARM API
+- **Update relationship scores**based on success
+- **Refine pitch templates**based on what works
 
 ## Implementation Roadmap
 
@@ -282,10 +282,10 @@ function calculateStationScore(contact, campaign) {
 
 ### Revenue Impact
 
-- **Better targeting** = 30% higher response rates
-- **Personalized pitches** = 25% more playlist adds
-- **Relationship tracking** = 40% more repeat success
-- **Automated follow-ups** = 20% more conversions
+- **Better targeting**= 30% higher response rates
+- **Personalized pitches**= 25% more playlist adds
+- **Relationship tracking**= 40% more repeat success
+- **Automated follow-ups**= 20% more conversions
 
 ### Cost Analysis
 
@@ -297,11 +297,11 @@ function calculateStationScore(contact, campaign) {
 
 ## Next Steps
 
-1. **Set up Airtable workspace** with the contact database structure
-2. **Import existing contacts** and categorize by station type
-3. **Test Audio Intel enrichment** on a sample of contacts
-4. **Build integration scripts** to connect Airtable with Audio Intel
-5. **Update radio promo agent** to use dynamic targeting
-6. **Monitor and optimize** based on real campaign results
+1. **Set up Airtable workspace**with the contact database structure
+2. **Import existing contacts**and categorize by station type
+3. **Test Audio Intel enrichment**on a sample of contacts
+4. **Build integration scripts**to connect Airtable with Audio Intel
+5. **Update radio promo agent**to use dynamic targeting
+6. **Monitor and optimize**based on real campaign results
 
 This strategy transforms your Airtable from a simple contact list into a powerful CRM that learns and improves with every campaign, while Audio Intel provides the intelligence needed to make every pitch count.

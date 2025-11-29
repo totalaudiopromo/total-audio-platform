@@ -4,9 +4,9 @@
 
 Before you can post to Threads via API, you need:
 
-- [ ] **Professional Instagram Account** (not personal)
+- [ ] **Professional Instagram Account**(not personal)
 - [ ] Instagram account connected to a **Facebook Page**
-- [ ] Access to **Facebook Developers** portal
+- [ ] Access to **Facebook Developers**portal
 
 ### Don't Have These Yet?
 
@@ -30,7 +30,7 @@ Before you can post to Threads via API, you need:
 
 1. Go to: https://developers.facebook.com/apps
 2. Click **"Create App"**
-3. Select **"Business"** as the app type
+3. Select **"Business"**as the app type
 4. Fill in:
    - App name: "Total Audio Posting"
    - App contact email: your email
@@ -40,11 +40,11 @@ Before you can post to Threads via API, you need:
 
 1. In your new app dashboard
 2. Click **"Add Product"**
-3. Find **"Threads API"** and click **"Set Up"**
+3. Find **"Threads API"**and click **"Set Up"**
 
 ### Step 3: Request Permissions
 
-1. Go to **App Review** → **Permissions and Features**
+1. Go to **App Review**→ **Permissions and Features**
 2. Request these permissions:
    - `threads_basic`
    - `threads_content_publish`
@@ -52,10 +52,10 @@ Before you can post to Threads via API, you need:
 
 ### Step 4: Get Your Credentials
 
-1. Go to **Settings** → **Basic**
+1. Go to **Settings**→ **Basic**
 2. Copy your:
    - **App ID**
-   - **App Secret** (click "Show")
+   - **App Secret**(click "Show")
 
 Add these to `.env.local`:
 
@@ -66,7 +66,7 @@ THREADS_APP_SECRET=<your app secret>
 
 ### Step 5: Configure Redirect URI
 
-1. In your app, go to **Threads API** → **Settings**
+1. In your app, go to **Threads API**→ **Settings**
 2. Add redirect URI:
    ```
    https://intel.totalaudiopromo.com/auth/threads/callback
@@ -74,7 +74,7 @@ THREADS_APP_SECRET=<your app secret>
 
 ### Step 6: Get Access Token
 
-**Option A: Use the OAuth Helper Script** (recommended)
+**Option A: Use the OAuth Helper Script**(recommended)
 
 ```bash
 cd /Users/chrisschofield/workspace/active/total-audio-platform/apps/audio-intel
@@ -91,9 +91,9 @@ npx tsx scripts/get-threads-token.ts
 
    Replace `YOUR_APP_ID` with your actual app ID.
 
-2. **Visit the URL** - Authorize with your Instagram business account
+2. **Visit the URL**- Authorize with your Instagram business account
 
-3. **Get the code** - After authorization:
+3. **Get the code**- After authorization:
 
    ```
    https://intel.totalaudiopromo.com/auth/threads/callback?code=XXXXXXXXXX&state=abc123
@@ -107,13 +107,13 @@ npx tsx scripts/get-threads-token.ts
    curl "https://graph.threads.net/oauth/access_token?client_id=YOUR_APP_ID&client_secret=YOUR_APP_SECRET&grant_type=authorization_code&redirect_uri=https://intel.totalaudiopromo.com/auth/threads/callback&code=PASTE_CODE_HERE"
    ```
 
-5. **Exchange for long-lived token** (60 days):
+5. **Exchange for long-lived token**(60 days):
 
    ```bash
    curl "https://graph.threads.net/access_token?grant_type=th_exchange_token&client_secret=YOUR_APP_SECRET&access_token=SHORT_LIVED_TOKEN"
    ```
 
-6. **Save the response** - You'll get:
+6. **Save the response**- You'll get:
    - `access_token` (long-lived, 60 days)
    - `user_id` (your Instagram user ID)
 
@@ -172,7 +172,7 @@ This lets you test while waiting for app review.
 
 Threads long-lived tokens expire after 60 days.
 
-**Set a calendar reminder** to refresh every 55 days:
+**Set a calendar reminder**to refresh every 55 days:
 
 ```bash
 npx tsx scripts/get-threads-token.ts
@@ -202,7 +202,7 @@ The autonomous posting system will simply skip Threads if credentials aren't con
 
 ## Character Limits
 
-Threads has a **500 character limit** for text posts.
+Threads has a **500 character limit**for text posts.
 
 The posting agent automatically truncates posts to 497 characters (+ "...") if they're too long.
 

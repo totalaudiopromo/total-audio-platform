@@ -31,7 +31,7 @@ This document explains how to configure GitHub branch protection rules and auto-
 - **Require status checks to pass before merging**:  Enabled
   - **Require branches to be up to date before merging**:  Enabled
 
-  **Required status checks** (add these):
+  **Required status checks**(add these):
   - `ci` - Main CI workflow (lint, typecheck, test, build)
   - `security-scan` - Security audit workflow
   - `coderabbit` - CodeRabbit review status
@@ -75,11 +75,11 @@ This document explains how to configure GitHub branch protection rules and auto-
 
 When a PR is created:
 
-1. **CodeRabbit reviews** → Comments if issues found
-2. **CI runs** → lint, typecheck, test, build
-3. **Security scan runs** → Checks dependencies
+1. **CodeRabbit reviews**→ Comments if issues found
+2. **CI runs**→ lint, typecheck, test, build
+3. **Security scan runs**→ Checks dependencies
 
-When all pass: 4. **CodeRabbit auto-approves** (if configured to do so) 5. **PR auto-merges** (if auto-merge enabled on PR) 6. **Branch auto-deletes** 7. **Vercel auto-deploys** 8. **Golden Verify runs** post-deployment checks
+When all pass: 4. **CodeRabbit auto-approves**(if configured to do so) 5. **PR auto-merges**(if auto-merge enabled on PR) 6. **Branch auto-deletes**7. **Vercel auto-deploys**8. **Golden Verify runs**post-deployment checks
 
 ## CodeRabbit Integration
 
@@ -122,12 +122,12 @@ Vercel integration should already be configured. Verify:
 
 ### Important Notes
 
-- **DO NOT** add Vercel checks to branch protection
+- **DO NOT**add Vercel checks to branch protection
   - Vercel deploys AFTER merge, not before
   - Branch protection should NOT wait for Vercel
   - Golden Verify handles post-deployment checks
 
-- **Preview deployments** happen on PR creation
+- **Preview deployments**happen on PR creation
   - But don't block merging
   - Use for manual testing only
 
@@ -167,7 +167,7 @@ NOTION_PAGE_ID=xxx
 
 Each Vercel project needs environment variables configured in dashboard.
 
-**Per-project variables** (set in Vercel dashboard):
+**Per-project variables**(set in Vercel dashboard):
 
 ```
 # All environments (Production, Preview, Development)

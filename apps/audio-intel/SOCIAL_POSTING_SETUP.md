@@ -37,14 +37,14 @@ npx tsx scripts/test-bluesky.ts
 - LinkedIn Developer App with posting permissions
 - OAuth 2.0 authentication
 
-**Current credentials** (from your previous setup):
+**Current credentials**(from your previous setup):
 
 - `LINKEDIN_CLIENT_ID=781ioptlbwi0ok`
 - `LINKEDIN_CLIENT_SECRET=WPL_AP1.frlXgbgIa5bM62VZ.yrVM6g==`
 
 **Setup steps**:
 
-1. **Get Access Token** (run this script):
+1. **Get Access Token**(run this script):
 
    ```bash
    npx tsx scripts/get-linkedin-token.ts
@@ -104,7 +104,7 @@ npx tsx scripts/test-bluesky.ts
      THREADS_APP_SECRET=<your app secret>
      ```
 
-3. **Get Access Token** (run this script):
+3. **Get Access Token**(run this script):
 
    ```bash
    npx tsx scripts/get-threads-token.ts

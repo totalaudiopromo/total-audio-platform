@@ -8,10 +8,10 @@ Your autonomous Bluesky posting agent is built and configured. You just need to 
 
 ## What This Does
 
-- **Posts twice daily** at 9am and 5pm UK time (peak engagement)
-- **Fully autonomous** - reads from your content calendar
-- **Vercel cron** - completely free, no external services
-- **35 posts scheduled** across 4 weeks
+- **Posts twice daily**at 9am and 5pm UK time (peak engagement)
+- **Fully autonomous**- reads from your content calendar
+- **Vercel cron**- completely free, no external services
+- **35 posts scheduled**across 4 weeks
 
 ---
 
@@ -23,9 +23,9 @@ Your autonomous Bluesky posting agent is built and configured. You just need to 
 2. Click **"Add App Password"**
 3. Name it: `Audio Intel Posting Agent`
 4. Click **"Create App Password"**
-5. **Copy the password** (you'll need it in Step 2)
+5. **Copy the password**(you'll need it in Step 2)
 
-**IMPORTANT:** This is NOT your main Bluesky password. It's a special app-only password.
+**IMPORTANT:**This is NOT your main Bluesky password. It's a special app-only password.
 
 ---
 
@@ -38,22 +38,22 @@ Add these two variables:
 
 **Variable 1:**
 
-- **Name:** `BLUESKY_IDENTIFIER`
-- **Value:** Your Bluesky handle (e.g., `yourname.bsky.social`)
-- **Environment:** Production, Preview, Development (all three)
+- **Name:**`BLUESKY_IDENTIFIER`
+- **Value:**Your Bluesky handle (e.g., `yourname.bsky.social`)
+- **Environment:**Production, Preview, Development (all three)
 
 **Variable 2:**
 
-- **Name:** `BLUESKY_APP_PASSWORD`
-- **Value:** The app password from Step 1
-- **Environment:** Production, Preview, Development (all three)
+- **Name:**`BLUESKY_APP_PASSWORD`
+- **Value:**The app password from Step 1
+- **Environment:**Production, Preview, Development (all three)
 
 **Optional (Recommended):**
 
-- **Name:** `CRON_SECRET`
-- **Value:** Generate a random secret (e.g., `openssl rand -base64 32`)
-- **Environment:** Production, Preview, Development (all three)
-- **Purpose:** Prevents unauthorized cron triggers
+- **Name:**`CRON_SECRET`
+- **Value:**Generate a random secret (e.g., `openssl rand -base64 32`)
+- **Environment:**Production, Preview, Development (all three)
+- **Purpose:**Prevents unauthorized cron triggers
 
 ---
 
@@ -106,11 +106,11 @@ Replace `YOUR_CRON_SECRET` with the secret you set in Step 2.
 
 ## Posting Schedule
 
-**Time:** 9am and 5pm UK time (every day)
-**Platform:** Bluesky
-**Content:** 35 posts across 4 weeks from your content calendar
+**Time:**9am and 5pm UK time (every day)
+**Platform:**Bluesky
+**Content:**35 posts across 4 weeks from your content calendar
 
-**Cron Expression:** `0 9,17 * * *`
+**Cron Expression:**`0 9,17 * * *`
 
 - `0` = At minute 0
 - `9,17` = At 9am and 5pm
@@ -118,10 +118,10 @@ Replace `YOUR_CRON_SECRET` with the secret you set in Step 2.
 
 **Why these times?**
 
-- **9am** - Catch morning commute + coffee scroll
-- **5pm** - Catch end-of-work scroll + evening engagement
+- **9am**- Catch morning commute + coffee scroll
+- **5pm**- Catch end-of-work scroll + evening engagement
 
-These are **peak UK social media engagement times** for B2B audiences (radio promoters).
+These are **peak UK social media engagement times**for B2B audiences (radio promoters).
 
 ---
 
@@ -166,7 +166,7 @@ Your posts are loaded from:
 - Week 3: Social Proof & Results (10 posts)
 - Week 4: Call-to-Action Focus (10 posts)
 
-**Bluesky posts:** 10 posts total across 4 weeks
+**Bluesky posts:**10 posts total across 4 weeks
 
 The agent automatically:
 
@@ -210,9 +210,9 @@ The agent automatically:
 
 Once Bluesky is working, you can add:
 
-- **X/Twitter** posting (need API credentials)
-- **LinkedIn** posting (OAuth required)
-- **Threads** posting (Instagram Graph API)
+- **X/Twitter**posting (need API credentials)
+- **LinkedIn**posting (OAuth required)
+- **Threads**posting (Instagram Graph API)
 
 Same architecture, just add more agents to the cron endpoint.
 
@@ -220,10 +220,10 @@ Same architecture, just add more agents to the cron endpoint.
 
 ## Security Notes
 
-- **Never commit** your app password to git
-- **Use environment variables** for all credentials
-- **Set CRON_SECRET** to prevent unauthorized triggers
-- **App passwords** can be revoked anytime from Bluesky settings
+- **Never commit**your app password to git
+- **Use environment variables**for all credentials
+- **Set CRON_SECRET**to prevent unauthorized triggers
+- **App passwords**can be revoked anytime from Bluesky settings
 
 ---
 
@@ -238,6 +238,6 @@ If something's not working:
 
 ---
 
-**Built:** January 2025
-**Status:** Production Ready 
-**Cost:** £0 (Vercel free tier)
+**Built:**January 2025
+**Status:**Production Ready 
+**Cost:**£0 (Vercel free tier)

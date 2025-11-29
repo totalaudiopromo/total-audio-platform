@@ -64,8 +64,8 @@ Style: Bold 2px black borders, white background,
 
 **What you get:**
 
-- **Custom company logo** (your brand)
-- **Custom brand color** (your website color)
+- **Custom company logo**(your brand)
+- **Custom brand color**(your website color)
 - Full neobrutalist styling
 - Professional white-label appearance
 
@@ -120,9 +120,9 @@ Brand Color: #9333EA (Purple) - used for:
 
 **What you get:**
 
-- **Custom company logo** (your brand)
-- **Custom brand color** (your website color)
-- **Bulk export support** (100+ contacts)
+- **Custom company logo**(your brand)
+- **Custom brand color**(your website color)
+- **Bulk export support**(100+ contacts)
 - Full neobrutalist styling
 - Professional white-label appearance
 

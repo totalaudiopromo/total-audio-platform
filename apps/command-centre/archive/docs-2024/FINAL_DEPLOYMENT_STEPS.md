@@ -62,7 +62,7 @@ If you don't see a deploy button:
 ## 🧪 After Deployment - Test on Mobile:
 
 1. **Hard Refresh**: Close and reopen https://command.totalaudiopromo.com
-2. **Tap burger menu** (☰ icon top left)
+2. **Tap burger menu**(☰ icon top left)
 3. **Expected Result**:
    - Dark semi-transparent overlay appears
    - White sidebar slides in from left (ABOVE overlay)

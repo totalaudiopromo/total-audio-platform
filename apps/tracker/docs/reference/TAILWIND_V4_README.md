@@ -1,10 +1,10 @@
-#  TAILWIND V4 - IMPORTANT
+# TAILWIND V4 - IMPORTANT
 
-This project uses **Tailwind CSS v4** (not v3).
+This project uses **Tailwind CSS v4**(not v3).
 
 ## Critical Rules
 
-###  CORRECT globals.css syntax:
+### CORRECT globals.css syntax:
 
 ```css
 @import 'tailwindcss';
@@ -16,7 +16,7 @@ This project uses **Tailwind CSS v4** (not v3).
 }
 ```
 
-###  WRONG - DO NOT USE (v3 syntax):
+### WRONG - DO NOT USE (v3 syntax):
 
 ```css
 /* These will break the build */
@@ -31,9 +31,9 @@ This project uses **Tailwind CSS v4** (not v3).
 
 ## Key Differences
 
-- **v4 uses** `@import "tailwindcss"` (single import)
-- **v4 uses** `@theme {}` for design tokens
-- **v3 used** separate imports and `@layer base {}`
+- **v4 uses**`@import "tailwindcss"` (single import)
+- **v4 uses**`@theme {}` for design tokens
+- **v3 used**separate imports and `@layer base {}`
 
 ## If CSS breaks:
 

@@ -1,6 +1,6 @@
 # Claude Code Skills - Activation Steps
 
-**Status:** Skills installed, not yet enabled
+**Status:**Skills installed, not yet enabled
 
 ---
 
@@ -16,12 +16,12 @@
 
 3. **Enable Skills Toggle:**
    - Find "Skills" option
-   - Toggle it to **ON** (should turn blue/green)
+   - Toggle it to **ON**(should turn blue/green)
 
 4. **Restart Claude Code:**
    - Close Claude Code completely (⌘Q)
    - Reopen Claude Code
-   - **This is critical!** Skills won't load without restart
+   - **This is critical!**Skills won't load without restart
 
 ---
 
@@ -231,11 +231,11 @@ After completing these steps, you should have:
 
 ## Next Actions After Activation
 
-1. **Read:** [SKILLS_QUICK_REFERENCE.md](file:///Users/chrisschofield/.claude/SKILLS_QUICK_REFERENCE.md) - Daily usage patterns
-2. **Follow:** [SKILLS_IMPLEMENTATION_CHECKLIST.md](file:///Users/chrisschofield/.claude/SKILLS_IMPLEMENTATION_CHECKLIST.md) - Week-by-week plan
-3. **Create:** 5 custom skills using Skill Creator (mobile validator, customer tracker, session validator, experimental guard, theme validator)
-4. **Measure:** Track time saved, bugs caught, sessions on-time
-5. **Refine:** Adjust skills based on actual usage patterns
+1. **Read:**[SKILLS_QUICK_REFERENCE.md](file:///Users/chrisschofield/.claude/SKILLS_QUICK_REFERENCE.md) - Daily usage patterns
+2. **Follow:**[SKILLS_IMPLEMENTATION_CHECKLIST.md](file:///Users/chrisschofield/.claude/SKILLS_IMPLEMENTATION_CHECKLIST.md) - Week-by-week plan
+3. **Create:**5 custom skills using Skill Creator (mobile validator, customer tracker, session validator, experimental guard, theme validator)
+4. **Measure:**Track time saved, bugs caught, sessions on-time
+5. **Refine:**Adjust skills based on actual usage patterns
 
 ---
 
@@ -246,8 +246,8 @@ After completing these steps, you should have:
 - Step 3 (Test): 5 minutes
 - Step 4 (Create Custom Skills): 2-3 hours this week
 
-**Total Setup Time:** ~10 minutes to activate, 2-3 hours to customize
-**Expected Monthly ROI:** 8-10 hours saved
+**Total Setup Time:**~10 minutes to activate, 2-3 hours to customize
+**Expected Monthly ROI:**8-10 hours saved
 
 ---
 
@@ -259,8 +259,8 @@ After completing these steps, you should have:
 
 ---
 
-**Current Status:** Skills installed in both directories
-**Next Step:** Enable skills in Claude Code settings (⌘, → Capabilities → Skills)
-**After Enabling:** Come back and say "Skills enabled! Let's test them."
+**Current Status:**Skills installed in both directories
+**Next Step:**Enable skills in Claude Code settings (⌘, → Capabilities → Skills)
+**After Enabling:**Come back and say "Skills enabled! Let's test them."
 
 You're 2 minutes away from having powerful workflow automation!

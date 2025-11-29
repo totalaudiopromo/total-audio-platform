@@ -8,15 +8,15 @@
 
 **Git Cleanup Solution for PR Deployment Failures:**
 
-**Problem:** PR #15 failed with 75 files (67 unrelated Chrome/cache files)
-**Root Cause:** 6,454 Chrome profile files tracked in Git (2GB bloat)
+**Problem:**PR #15 failed with 75 files (67 unrelated Chrome/cache files)
+**Root Cause:**6,454 Chrome profile files tracked in Git (2GB bloat)
 
 **Solution Implemented:**
 1. Updated `.gitignore` with comprehensive browser patterns
 2. Removed Chrome files: `git rm -r --cached tools/browser-automation/.chrome-profile/`
 3. Created pre-commit hook to prevent future contamination
 4. Archived demo files to `archive/data/demo/` and `archive/liberty-demo/`
-5. **Result:** 2GB repository size reduction, clean PRs deploy successfully
+5. **Result:**2GB repository size reduction, clean PRs deploy successfully
 
 **Future Prevention:**
 ```bash
@@ -74,7 +74,7 @@ git commit -m "chore: Remove Chrome profile from Git"
 - User Feedback Captured: ≥5 test events
 - Revenue Correlation Detected: ≥1 feature driver identified
 
-**Git Tag:** `v2.4.0-phase9-autonomous-ops`
+**Git Tag:**`v2.4.0-phase9-autonomous-ops`
 
 **Philosophy:**
 
@@ -594,9 +594,9 @@ pnpm tsx scripts/golden-intelligence.ts
 
 # Expected output:
 # Golden Intelligence: Ingestion complete
-#    - Golden Verify: X records inserted
-#    - Testing: Y records inserted
-#    - Latest test-deployment-*.md file processed
+# - Golden Verify: X records inserted
+# - Testing: Y records inserted
+# - Latest test-deployment-*.md file processed
 
 # Verify data was inserted:
 # Check Supabase Table Editor for new records in golden_history and testing_results
@@ -611,13 +611,13 @@ pnpm tsx scripts/golden-intelligence.ts
 # Checklist:
 # [ ] Page loads without errors
 # [ ] Golden Verify card displays:
-#     - Latest deployment status (healthy/degraded/down)
-#     - Lighthouse scores (Performance, Accessibility, etc.)
-#     - Tests passed/failed counts
+# - Latest deployment status (healthy/degraded/down)
+# - Lighthouse scores (Performance, Accessibility, etc.)
+# - Tests passed/failed counts
 # [ ] Testing card displays:
-#     - Test pass rate percentage
-#     - Issues found/fixed counts
-#     - Test suite breakdown (component-analyzer, playwright-mobile, etc.)
+# - Test pass rate percentage
+# - Issues found/fixed counts
+# - Test suite breakdown (component-analyzer, playwright-mobile, etc.)
 # [ ] Data updates when refreshing page
 # [ ] No API errors in browser console
 # [ ] Charts/visualizations render correctly
@@ -688,15 +688,15 @@ SELECT COUNT(*) FROM testing_results;
 
 ```bash
 # Check workflow logs for:
-#  Missing Supabase credentials
-#  No test-deployment-*.md files found
-#  Database connection errors
+# Missing Supabase credentials
+# No test-deployment-*.md files found
+# Database connection errors
 
 # Fix:
 # 1. Verify GitHub secrets exist:
-#    SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY
+# SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY
 # 2. Check if test-deployment-*.md file was created
-#    (golden-postcheck.ts should create this)
+# (golden-postcheck.ts should create this)
 # 3. Test ingestion locally:
 pnpm tsx scripts/golden-intelligence.ts
 ```
@@ -796,7 +796,7 @@ SELECT * FROM testing_results WHERE component IN ('HeroDemo', 'DashboardCard');
 
 #### CRITICAL GOTCHAS
 
-1. **Command Centre is NOT in the monorepo** - It's a standalone app at `apps/command-centre/` with its own `package.json` and Vercel deployment
+1. **Command Centre is NOT in the monorepo**- It's a standalone app at `apps/command-centre/` with its own `package.json` and Vercel deployment
 2. **Two Supabase connections**: Main repo ingestion script uses `SUPABASE_SERVICE_ROLE_KEY`, Command Centre API uses both `ANON_KEY` (client) and `SERVICE_ROLE_KEY` (server)
 3. **RLS policies**: Service role has full access, authenticated users have read-only access
 4. **Sample data conflict**: Migration uses `ON CONFLICT DO NOTHING` - re-running won't duplicate sample data

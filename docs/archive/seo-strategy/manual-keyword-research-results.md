@@ -5,14 +5,14 @@
 ### Base Term: "music contact"
 Google autocomplete suggestions reveal what people actually search for:
 
-1. **music contact database** ⭐ HIGH PRIORITY
-2. **music contact information**  
+1. **music contact database**⭐ HIGH PRIORITY
+2. **music contact information** 
 3. **music contact list**
 4. **music contact management**
 5. **music contact form**
 
 ### Base Term: "playlist curator"  
-1. **playlist curator contacts** ⭐ HIGH PRIORITY
+1. **playlist curator contacts**⭐ HIGH PRIORITY
 2. **playlist curator email**
 3. **playlist curator submission**
 4. **playlist curator database**
@@ -20,15 +20,15 @@ Google autocomplete suggestions reveal what people actually search for:
 
 ### Base Term: "music PR"
 1. **music PR contacts**
-2. **music PR email list** ⭐ HIGH PRIORITY  
+2. **music PR email list**⭐ HIGH PRIORITY  
 3. **music PR database**
 4. **music PR agency contacts**
 5. **music PR submission**
 
 ### Base Term: "contact enrichment"
 1. **contact enrichment tools**
-2. **contact enrichment software** ⭐ HIGH PRIORITY
-3. **contact enrichment services**  
+2. **contact enrichment software**⭐ HIGH PRIORITY
+3. **contact enrichment services** 
 4. **contact enrichment platform**
 5. **contact enrichment api**
 

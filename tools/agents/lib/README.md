@@ -1,4 +1,4 @@
-#  MOVED TO SHARED PACKAGE
+# MOVED TO SHARED PACKAGE
 
 The shared utilities previously in this directory have been moved to:
 

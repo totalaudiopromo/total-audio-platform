@@ -48,18 +48,18 @@
 
 ### **Primary Goals**
 
-1. **Finalise Campaign Strategy** - 6-week timeline, budget allocation
-2. **Asset Collection** - High-res images, audio files, press kit
-3. **Target Station List** - Confirm radio station priorities
-4. **Timeline Alignment** - Ensure all deadlines are realistic
+1. **Finalise Campaign Strategy**- 6-week timeline, budget allocation
+2. **Asset Collection**- High-res images, audio files, press kit
+3. **Target Station List**- Confirm radio station priorities
+4. **Timeline Alignment**- Ensure all deadlines are realistic
 
 ### **Key Discussion Points**
 
-- **Audio File Delivery** - Get "Bloodshot" master for proper analysis
-- **Asset Form Completion** - Marie mentioned filling out forms, get status
-- **Distributor Information** - She's sourcing info from distributor
-- **Press Release Content** - Review and approve draft
-- **Radio Station Priorities** - Need actual track analysis for accurate targeting
+- **Audio File Delivery**- Get "Bloodshot" master for proper analysis
+- **Asset Form Completion**- Marie mentioned filling out forms, get status
+- **Distributor Information**- She's sourcing info from distributor
+- **Press Release Content**- Review and approve draft
+- **Radio Station Priorities**- Need actual track analysis for accurate targeting
 
 ---
 

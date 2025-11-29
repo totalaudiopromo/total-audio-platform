@@ -116,40 +116,40 @@ testConnection();
 
 Your Social Media Content database has these properties:
 
-- **Title** (title)
-- **Content** (rich_text)
-- **Platform** (multi_select): LinkedIn, Twitter/X, Blue Sky, Threads, Reddit
-- **Content Type** (select): Thread, Single Tweet, LinkedIn Article, LinkedIn Post, Reddit Post, Story Update
-- **Status** (select): Draft, Ready to Post, Scheduled, Posted, Performing Well
-- **Scheduled Date** (date)
-- **Post Time** (rich_text): "9:00am GMT", "12:00pm GMT"
-- **API Status** (select): Pending, Posted Successfully, Failed - Retry, Failed - Manual Review
-- **Content Optimised** (checkbox)
-- **UTM Tracking** (rich_text)
-- **Engagement Target** (number)
-- **Actual Engagement** (number)
-- **Beta Signups** (number)
-- **Tags** (multi_select): 94% Automation, Personal Story, Industry Insight, Product Demo, Customer Acquisition, Competitive Advantage
-- **Notes** (rich_text)
+- **Title**(title)
+- **Content**(rich_text)
+- **Platform**(multi_select): LinkedIn, Twitter/X, Blue Sky, Threads, Reddit
+- **Content Type**(select): Thread, Single Tweet, LinkedIn Article, LinkedIn Post, Reddit Post, Story Update
+- **Status**(select): Draft, Ready to Post, Scheduled, Posted, Performing Well
+- **Scheduled Date**(date)
+- **Post Time**(rich_text): "9:00am GMT", "12:00pm GMT"
+- **API Status**(select): Pending, Posted Successfully, Failed - Retry, Failed - Manual Review
+- **Content Optimised**(checkbox)
+- **UTM Tracking**(rich_text)
+- **Engagement Target**(number)
+- **Actual Engagement**(number)
+- **Beta Signups**(number)
+- **Tags**(multi_select): 94% Automation, Personal Story, Industry Insight, Product Demo, Customer Acquisition, Competitive Advantage
+- **Notes**(rich_text)
 
 ## **Ready-to-Post Content Available**
 
 Your database already contains:
 
-1. **94% Automation Thread** - Ready for LinkedIn + Twitter + Threads
-2. **Building Audio Intel Story** - Ready for LinkedIn
-3. **Radio Submission Tips** - Ready for Twitter + Blue Sky
-4. **vs Groover/SubmitHub** - Draft stage for LinkedIn + Twitter
+1. **94% Automation Thread**- Ready for LinkedIn + Twitter + Threads
+2. **Building Audio Intel Story**- Ready for LinkedIn
+3. **Radio Submission Tips**- Ready for Twitter + Blue Sky
+4. **vs Groover/SubmitHub**- Draft stage for LinkedIn + Twitter
 
 ## **Next Steps for Cursor**
 
-1. **Set up Notion integration** (steps above)
-2. **Test connection** with the test file
-3. **Build automation script** using the specification document
-4. **Implement UK timing logic** with GMT-based scheduling
-5. **Add platform APIs** for posting automation
-6. **Create content processing** (UK spelling, no emojis)
-7. **Set up cron scheduling** for automated posting
+1. **Set up Notion integration**(steps above)
+2. **Test connection**with the test file
+3. **Build automation script**using the specification document
+4. **Implement UK timing logic**with GMT-based scheduling
+5. **Add platform APIs**for posting automation
+6. **Create content processing**(UK spelling, no emojis)
+7. **Set up cron scheduling**for automated posting
 
 Once you have the Notion integration token and share the database, Cursor will be able to read and update your social media content for full automation.
 

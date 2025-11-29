@@ -19,13 +19,13 @@
 
 ## THE PROBLEM
 
-You have **two separate data sources** with different unsubscribe statuses:
+You have **two separate data sources**with different unsubscribe statuses:
 
 1. **Airtable**: Shows 11 contacts as "Unsubscribed"
 2. **Mailchimp (Liberty)**: Shows 22 total unsubscribes (across all 475 contacts)
 3. **No Sync**: These two systems are NOT talking to each other
 
-**This creates confusion** because:
+**This creates confusion**because:
 
 - Airtable might show "Unsubscribed" for contacts who are actually subscribed in Mailchimp
 - Mailchimp might have contacts marked unsubscribed that Airtable shows as "Opted-In"
@@ -57,15 +57,15 @@ You have **two separate data sources** with different unsubscribe statuses:
 - Mailchimp = Only contacts who can receive emails
 - When adding to Mailchimp, filter by Airtable "Status" = "Opted-In"
 
-**Problem:** You manually manage two lists and risk sending to unsubscribed contacts
+**Problem:**You manually manage two lists and risk sending to unsubscribed contacts
 
 ## IMPLEMENTATION: Mailchimp → Airtable Sync
 
 I can create a script that:
 
-1. **Fetches all contacts from Mailchimp** (Liberty Music PR audience)
-2. **Checks subscription status** for each email
-3. **Updates Airtable "Status" field** to match Mailchimp reality
+1. **Fetches all contacts from Mailchimp**(Liberty Music PR audience)
+2. **Checks subscription status**for each email
+3. **Updates Airtable "Status" field**to match Mailchimp reality
 4. **Adds new field**: "Mailchimp Sync Date" to track last sync
 
 ### Example Workflow:
@@ -134,21 +134,21 @@ Use cron/scheduler to run sync daily:
 
 You mentioned having TWO Mailchimp accounts:
 
-1. **Liberty Music PR** (connected now) - 475 contacts
-2. **Total Audio Promo** (separate account) - Unknown contact count
+1. **Liberty Music PR**(connected now) - 475 contacts
+2. **Total Audio Promo**(separate account) - Unknown contact count
 
 **Current Setup:**
 
 - The script is connected to **Liberty Music PR**
 - All 21 KYARA contacts were added to **Liberty Music PR**
-- Your Airtable was intended for **Total Audio Promo** but you're using it for **Liberty**
+- Your Airtable was intended for **Total Audio Promo**but you're using it for **Liberty**
 
 **Recommendation:**
 
-- **Keep using Liberty Mailchimp** for radio promotion (it's your valuable contact list)
-- **Use Total Audio Promo Mailchimp** only for Audio Intel product marketing
-- **Sync Airtable → Liberty Mailchimp** (what we just did with KYARA)
-- **Don't cross-pollinate** the two accounts to avoid confusion
+- **Keep using Liberty Mailchimp**for radio promotion (it's your valuable contact list)
+- **Use Total Audio Promo Mailchimp**only for Audio Intel product marketing
+- **Sync Airtable → Liberty Mailchimp**(what we just did with KYARA)
+- **Don't cross-pollinate**the two accounts to avoid confusion
 
 ## CONTACT LIMITS - YOU'RE SAFE
 
@@ -169,13 +169,13 @@ You mentioned having TWO Mailchimp accounts:
 
 Would you like me to create a script that:
 
-1. **Checks the 21 KYARA contacts** in Mailchimp
-2. **Shows their actual subscription status** (subscribed/unsubscribed)
-3. **Compares to Airtable status** to find mismatches
-4. **Identifies which contacts need investigation** (e.g., BBC contacts marked unsubscribed)
+1. **Checks the 21 KYARA contacts**in Mailchimp
+2. **Shows their actual subscription status**(subscribed/unsubscribed)
+3. **Compares to Airtable status**to find mismatches
+4. **Identifies which contacts need investigation**(e.g., BBC contacts marked unsubscribed)
 
 This will help us understand if the "Unsubscribed" in Airtable is accurate or just stale data.
 
 ---
 
-**Summary**: You're connected to **Liberty Music PR Mailchimp** (475 contacts, 21 KYARA tagged). The "Unsubscribed" status in Airtable is NOT synced from Mailchimp - it's just old data stored in Airtable. I recommend syncing Mailchimp → Airtable to get the real subscription status.
+**Summary**: You're connected to **Liberty Music PR Mailchimp**(475 contacts, 21 KYARA tagged). The "Unsubscribed" status in Airtable is NOT synced from Mailchimp - it's just old data stored in Airtable. I recommend syncing Mailchimp → Airtable to get the real subscription status.

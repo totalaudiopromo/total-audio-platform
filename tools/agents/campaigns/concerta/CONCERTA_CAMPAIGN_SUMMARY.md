@@ -39,9 +39,9 @@
 
 ### Current Contact Database
 
--  **132 Electronic/Dance Specialists** (Global)
--  **0 Eastern European Stations** (needs research)
--  **0 South Korean Stations** (needs research)
+-  **132 Electronic/Dance Specialists**(Global)
+-  **0 Eastern European Stations**(needs research)
+-  **0 South Korean Stations**(needs research)
 
 **Total Ready to Contact**: 132 stations
 
@@ -74,22 +74,22 @@ The 132 electronic/dance contacts include:
 
 ### Available Assets
 
-1. **Profile Images** 
+1. **Profile Images**
    - 4 high-resolution variants
    - Location: `Profile image/`
    - Files: CONCERTA_High-res_1.jpg through CONCERTA_High_res_4.jpg
 
-2. **Track Artwork** 
+2. **Track Artwork**
    - Anime-inspired artwork (4 variants)
    - Futuristic city artwork (4 variants)
    - Location: `consumption_artwork_final/`
    - Includes typography layouts
 
-3. **Music Video** 
+3. **Music Video**
    - Location: `consumption_video/`
    - File: CONCERTA_city_03.mp4
 
-4. **Label Assets (SYLQ)** 
+4. **Label Assets (SYLQ)**
    - Logo files
    - Instagram icon
    - Location: `SYLQ/`
@@ -185,11 +185,11 @@ All campaign files are located in:
 
 ### Files Created
 
-1. **find-concerta-contacts.js** - Airtable contact search script
-2. **concerta-contacts.json** - Full contact database (132 contacts)
-3. **concerta-liberty-agent.js** - Main campaign automation script
-4. **concerta-campaign-report.json** - Detailed campaign configuration
-5. **CONCERTA_CAMPAIGN_SUMMARY.md** - This document
+1. **find-concerta-contacts.js**- Airtable contact search script
+2. **concerta-contacts.json**- Full contact database (132 contacts)
+3. **concerta-liberty-agent.js**- Main campaign automation script
+4. **concerta-campaign-report.json**- Detailed campaign configuration
+5. **CONCERTA_CAMPAIGN_SUMMARY.md**- This document
 
 ---
 
@@ -209,12 +209,12 @@ All campaign files are located in:
 
 ### Information Needed from Concerta
 
-1. **Press Release** (check email thread)
-2. **Streaming Links** (Spotify, Apple Music, etc.)
-3. **Social Media Links** (Instagram, TikTok, etc.)
-4. **Artist Biography** (short & long versions)
-5. **Previous Coverage/Support** (if any)
-6. **Preferred Pitch Angle** (confirm messaging strategy)
+1. **Press Release**(check email thread)
+2. **Streaming Links**(Spotify, Apple Music, etc.)
+3. **Social Media Links**(Instagram, TikTok, etc.)
+4. **Artist Biography**(short & long versions)
+5. **Previous Coverage/Support**(if any)
+6. **Preferred Pitch Angle**(confirm messaging strategy)
 
 ---
 
@@ -293,11 +293,11 @@ cat concerta-campaign-report.json | jq
 
 ## Next Discussion Points
 
-1. **Press Release Review** - Can you forward the press release from the email thread?
-2. **Contact Preferences** - Does Concerta prefer UK focus or broader European approach?
-3. **Timeline Confirmation** - Is 15 November release date confirmed?
-4. **Budget Considerations** - Any budget for additional Eastern European contact research?
-5. **Asset Preferences** - Which artwork variant should be primary?
+1. **Press Release Review**- Can you forward the press release from the email thread?
+2. **Contact Preferences**- Does Concerta prefer UK focus or broader European approach?
+3. **Timeline Confirmation**- Is 15 November release date confirmed?
+4. **Budget Considerations**- Any budget for additional Eastern European contact research?
+5. **Asset Preferences**- Which artwork variant should be primary?
 
 ---
 

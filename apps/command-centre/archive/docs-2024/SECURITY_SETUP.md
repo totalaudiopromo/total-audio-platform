@@ -6,10 +6,10 @@ Your Command Centre is now protected with password authentication. No one can ac
 
 ## What Was Added
 
-1. **Middleware** (`middleware.ts`) - Blocks all unauthenticated access
-2. **Login Page** (`app/auth/login/page.tsx`) - Secure login interface
-3. **Authentication API** (`app/api/auth/login/route.ts`) - Password verification
-4. **Logout API** (`app/api/auth/logout/route.ts`) - Sign out functionality
+1. **Middleware**(`middleware.ts`) - Blocks all unauthenticated access
+2. **Login Page**(`app/auth/login/page.tsx`) - Secure login interface
+3. **Authentication API**(`app/api/auth/login/route.ts`) - Password verification
+4. **Logout API**(`app/api/auth/logout/route.ts`) - Sign out functionality
 
 ## Setting Up Vercel Environment Variables
 
@@ -25,15 +25,15 @@ open "https://vercel.com/chris-projects-6ffe0e29/command-centre/settings/environ
 
 **Variable 1:**
 
-- **Name:** `COMMAND_CENTRE_PASSWORD`
-- **Value:** Choose a strong password (e.g., `MySecurePassword2025!`)
-- **Environment:** Production
+- **Name:**`COMMAND_CENTRE_PASSWORD`
+- **Value:**Choose a strong password (e.g., `MySecurePassword2025!`)
+- **Environment:**Production
 
 **Variable 2:**
 
-- **Name:** `COMMAND_CENTRE_AUTH_TOKEN`
-- **Value:** `wN3ByvLds9ANqQAZ56VEA8PHORbVy8XuS5wNmcM/GX0=`
-- **Environment:** Production
+- **Name:**`COMMAND_CENTRE_AUTH_TOKEN`
+- **Value:**`wN3ByvLds9ANqQAZ56VEA8PHORbVy8XuS5wNmcM/GX0=`
+- **Environment:**Production
 
 ### Step 3: Deploy
 
@@ -46,9 +46,9 @@ vercel --prod
 
 The `.env.local` file has been created with a temporary password:
 
-- **Password:** `CommandCentre2025!SecureAccess`
+- **Password:**`CommandCentre2025!SecureAccess`
 
-**⚠️ IMPORTANT:** Change this password in both `.env.local` and Vercel before deploying!
+**⚠️ IMPORTANT:**Change this password in both `.env.local` and Vercel before deploying!
 
 ## How It Works
 
@@ -104,7 +104,7 @@ If you need to temporarily disable protection:
    vercel --prod
    ```
 
-**⚠️ WARNING:** Only do this temporarily! Your personal data will be exposed.
+**⚠️ WARNING:**Only do this temporarily! Your personal data will be exposed.
 
 ## Password Best Practices
 

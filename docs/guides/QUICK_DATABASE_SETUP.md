@@ -15,18 +15,18 @@ https://vercel.com/chris-projects-6ffe0e29/audio-intel
 
 ### Step 2: Add Postgres Storage
 
-1. Click **Storage** tab in your Audio Intel project
+1. Click **Storage**tab in your Audio Intel project
 2. Click **Create Database**
 3. Select **Postgres**
 4. Name it: `total-audio-db`
-5. Region: **Washington, D.C., USA (East)** (closest to you)
+5. Region: **Washington, D.C., USA (East)**(closest to you)
 6. Click **Create**
 
 ### Step 3: Connect to Project
 
 1. After creation, click **Connect Project**
 2. Select: `audio-intel`
-3. Environment: **Development, Preview, Production** (all three)
+3. Environment: **Development, Preview, Production**(all three)
 4. Click **Connect**
 
 ### Step 4: Pull Environment Variables Locally
@@ -57,7 +57,7 @@ cd ../audio-intel
 npm run dev
 ```
 
-**DONE!** No more "database server not running" errors.
+**DONE!**No more "database server not running" errors.
 
 ---
 
@@ -75,13 +75,13 @@ https://supabase.com/dashboard
 2. Name: `total-audio-promo`
 3. Database Password: `AudioIntel2025!` (save this)
 4. Region: **East US (North Virginia)**
-5. Click **Create new project** (takes 2 minutes)
+5. Click **Create new project**(takes 2 minutes)
 
 ### Step 3: Get Connection String
 
-1. Go to **Settings** → **Database**
+1. Go to **Settings**→ **Database**
 2. Scroll to **Connection string**
-3. Select **URI** mode
+3. Select **URI**mode
 4. Copy the connection string (looks like):
    ```
    postgresql://postgres.[project-ref]:[YOUR-PASSWORD]@aws-0-us-east-1.pooler.supabase.com:5432/postgres
@@ -111,7 +111,7 @@ cd ../audio-intel
 npm run dev
 ```
 
-**DONE!** Database is live and accessible everywhere.
+**DONE!**Database is live and accessible everywhere.
 
 ---
 
@@ -119,14 +119,14 @@ npm run dev
 
 | Feature         | Vercel Postgres           | Supabase                 |
 | --------------- | ------------------------- | ------------------------ |
-| **Setup Time**  | 3 minutes                 | 5 minutes                |
-| **Integration** | Native with Vercel        | Manual connection string |
-| **Dashboard**   | Basic                     | Feature-rich UI          |
-| **Free Tier**   | 256MB, 10k rows           | 500MB, unlimited rows    |
-| **Backups**     | Automatic                 | Automatic                |
-| **Best For**    | Quick setup, Vercel users | Better UI, more features |
+| **Setup Time** | 3 minutes                 | 5 minutes                |
+| **Integration**| Native with Vercel        | Manual connection string |
+| **Dashboard**  | Basic                     | Feature-rich UI          |
+| **Free Tier**  | 256MB, 10k rows           | 500MB, unlimited rows    |
+| **Backups**    | Automatic                 | Automatic                |
+| **Best For**   | Quick setup, Vercel users | Better UI, more features |
 
-**My Recommendation**: **Vercel Postgres** (Option 1)
+**My Recommendation**: **Vercel Postgres**(Option 1)
 
 - You're already using Vercel
 - 3-minute setup via dashboard

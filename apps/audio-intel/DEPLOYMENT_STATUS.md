@@ -1,4 +1,4 @@
-#  DEPLOYMENT BLOCKER STATUS
+# DEPLOYMENT BLOCKER STATUS
 
 **Date**: November 11, 2025
 **Status**: FIXED - VERCEL MONOREPO CONFIGURATION CORRECTED
@@ -59,7 +59,7 @@ Created proper ignore file to exclude test files and documentation while includi
 **CRITICAL**: You must update these settings in Vercel Dashboard:
 
 1. Go to: https://vercel.com/chris-projects-6ffe0e29/audio-intel/settings
-2. Navigate to: **General** → **Build & Development Settings**
+2. Navigate to: **General**→ **Build & Development Settings**
 3. Set these values:
    - **Root Directory**: `apps/audio-intel`
    - **Enable**:  "Include source files outside of the Root Directory in the Build Step"
@@ -68,7 +68,7 @@ Created proper ignore file to exclude test files and documentation while includi
    - **Install Command**: `pnpm install --frozen-lockfile` (from vercel.json)
    - **Output Directory**: `.next` (default)
 
-4. **Environment Variables** - Ensure these are set:
+4. **Environment Variables**- Ensure these are set:
    - `NEXT_PUBLIC_BASE_URL`
    - `NEXT_PUBLIC_SUPABASE_URL`
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
@@ -78,13 +78,13 @@ Created proper ignore file to exclude test files and documentation while includi
    - `STRIPE_WEBHOOK_SECRET`
    - All other required API keys
 
-5. Click **Save** and trigger a new deployment
+5. Click **Save**and trigger a new deployment
 
 ## Verification Steps
 
 After updating Vercel settings and redeploying:
 
-1. **Check build logs** - Should show:
+1. **Check build logs**- Should show:
 
    ```
    Installing dependencies...
@@ -96,7 +96,7 @@ After updating Vercel settings and redeploying:
     Compiled successfully
    ```
 
-2. **Build time** - Should complete in ~55-90 seconds (not 13-14 minutes)
+2. **Build time**- Should complete in ~55-90 seconds (not 13-14 minutes)
 
 3. **Test deployment**:
 

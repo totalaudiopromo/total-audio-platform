@@ -175,10 +175,10 @@ setInterval(runAutomation, 15 * 60 * 1000);
 
 Your database has these posts ready:
 
-- **94% Automation Thread** (Twitter/LinkedIn/Threads)
-- **Building Audio Intel Story** (LinkedIn)
-- **Radio Submission Tips** (Twitter/Blue Sky)
-- **vs Groover/SubmitHub** (LinkedIn/Twitter)
+- **94% Automation Thread**(Twitter/LinkedIn/Threads)
+- **Building Audio Intel Story**(LinkedIn)
+- **Radio Submission Tips**(Twitter/Blue Sky)
+- **vs Groover/SubmitHub**(LinkedIn/Twitter)
 
 ## **Weekly Workflow**
 

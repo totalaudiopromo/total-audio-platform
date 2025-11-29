@@ -4,7 +4,7 @@ notion_url: https://www.notion.so/RADIO-PROMO-AGENT-DAY-IN-THE-LIFE-WORKFLOW-265
 exported_at: 2025-09-26T14:33:12.701Z
 ---
 
-#  RADIO PROMO AGENT - DAY-IN-THE-LIFE WORKFLOW
+# RADIO PROMO AGENT - DAY-IN-THE-LIFE WORKFLOW
 
 _How Chris 10x's his radio promotion efficiency with complete automation_
 
@@ -14,43 +14,43 @@ _How Chris 10x's his radio promotion efficiency with complete automation_
 
 ### **Monday Morning - New Artist Campaign:**
 
-- **9:00am:** Artist calls you about new track promotion
+- **9:00am:**Artist calls you about new track promotion
 
-- **9:30am:** Take notes, discuss budget, timeline, preferences
+- **9:30am:**Take notes, discuss budget, timeline, preferences
 
-- **10:00am:** Manually create [Monday.com](http://monday.com/) project with all details
+- **10:00am:**Manually create [Monday.com](http://monday.com/) project with all details
 
-- **10:30am:** Research radio stations for this genre
+- **10:30am:**Research radio stations for this genre
 
-- **11:30am:** Write personalized press release in Word/Google Docs
+- **11:30am:**Write personalized press release in Word/Google Docs
 
-- **12:30pm:** Manually create Mailchimp campaign
+- **12:30pm:**Manually create Mailchimp campaign
 
-- **1:30pm:** Upload contacts, customize email templates
+- **1:30pm:**Upload contacts, customize email templates
 
-- **2:30pm:** Send campaign to 50+ radio stations
+- **2:30pm:**Send campaign to 50+ radio stations
 
-- **3:00pm:** Manually set up Warmusic tracking
+- **3:00pm:**Manually set up Warmusic tracking
 
-- **3:30pm:** Email artist confirming campaign launched
+- **3:30pm:**Email artist confirming campaign launched
 
 ### **Throughout Week:**
 
-- **Daily:** Manually check Warmusic for new plays
+- **Daily:**Manually check Warmusic for new plays
 
-- **Wednesday:** Email artist mid-week update
+- **Wednesday:**Email artist mid-week update
 
-- **Friday:** Compile weekly report, email to artist
+- **Friday:**Compile weekly report, email to artist
 
-- **Weekend:** Update [Monday.com](http://monday.com/) with any new plays/responses
+- **Weekend:**Update [Monday.com](http://monday.com/) with any new plays/responses
 
 ### **End of Campaign:**
 
-- **3+ hours:** Compile CoverageBook report with screenshots
+- **3+ hours:**Compile CoverageBook report with screenshots
 
-- **1+ hour:** Email final report to artist
+- **1+ hour:**Email final report to artist
 
-- **30 mins:** Archive campaign materials
+- **30 mins:**Archive campaign materials
 
 **TOTAL TIME: 15-20 hours per campaign across 3-4 weeks**
 
@@ -337,17 +337,17 @@ Result: 6 BBC stations support within 48 hours
 
 **You become a strategic campaign consultant with AI superpowers.**
 
- **10x capacity** (5 campaigns → 50 campaigns monthly)
+ **10x capacity**(5 campaigns → 50 campaigns monthly)
 
- **Premium pricing** (£75 → £150+ per campaign)
+ **Premium pricing**(£75 → £150+ per campaign)
 
- **Better results** (data-driven optimization)
+ **Better results**(data-driven optimization)
 
- **Professional differentiation** (only UK promoter with this system)
+ **Professional differentiation**(only UK promoter with this system)
 
- **Client retention** (real-time transparency)
+ **Client retention**(real-time transparency)
 
- **Personal freedom** (system works while you sleep)
+ **Personal freedom**(system works while you sleep)
 
 **The Radio Promo Agent doesn't replace your expertise - it amplifies it.**
 

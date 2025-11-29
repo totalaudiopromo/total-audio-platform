@@ -1,11 +1,11 @@
-#  Final Setup Steps - 3 Minutes to Complete
+# Final Setup Steps - 3 Minutes to Complete
 
 ## Already Done
 
-1.  **Database Migration SQL** - Copied to clipboard
-2.  **Cron Secret** - Generated and added to .env.local
-3.  **Google OAuth Credentials** - Found and added to .env.local
-4.  **Dependencies** - Installed (googleapis, nanoid)
+1.  **Database Migration SQL**- Copied to clipboard
+2.  **Cron Secret**- Generated and added to .env.local
+3.  **Google OAuth Credentials**- Found and added to .env.local
+4.  **Dependencies**- Installed (googleapis, nanoid)
 
 ## 3 Steps Remaining
 
@@ -13,7 +13,7 @@
 
 The SQL is already in your clipboard. Now:
 
-1. **Paste and run** in Supabase SQL editor (already open in browser)
+1. **Paste and run**in Supabase SQL editor (already open in browser)
    - Or open: https://app.supabase.com/project/ucncbighzqudaszewjrv/sql/new
    - Paste the migration
    - Click "Run"
@@ -106,11 +106,11 @@ After connecting Google Sheets, check your Supabase database:
 
 ## Next Steps (After Basic Setup Works)
 
-1. **Create a test campaign** in Tracker
-2. **Configure Google Sheet** (set which spreadsheet to sync to)
-3. **Watch the magic** - campaigns appear in your sheet
-4. **Edit in sheet** - changes sync back to Tracker
-5. **Deploy to production** - Add production redirect URIs
+1. **Create a test campaign**in Tracker
+2. **Configure Google Sheet**(set which spreadsheet to sync to)
+3. **Watch the magic**- campaigns appear in your sheet
+4. **Edit in sheet**- changes sync back to Tracker
+5. **Deploy to production**- Add production redirect URIs
 
 ---
 

@@ -1,8 +1,8 @@
 # Follow-up Email for Ruby - Triple J Home & Hosed
 
-**TO:** Ruby (Triple J Home & Hosed)
-**SUBJECT:** Re: KYARA - "Bloodshot" (14th Oct) - Follow up
-**TIMING:** Send Thursday evening or Friday morning (before Monday release)
+**TO:**Ruby (Triple J Home & Hosed)
+**SUBJECT:**Re: KYARA - "Bloodshot" (14th Oct) - Follow up
+**TIMING:**Send Thursday evening or Friday morning (before Monday release)
 
 ---
 
@@ -23,8 +23,8 @@ The production quality is commercial-ready despite being bedroom-produced. Sultr
 
 Given Jaimee Taylor-Neilsen supported "Yearn" back in August, thought you'd want to hear how this one's tracking before Monday's official release.
 
-**Listen:** [SPOTIFY PRE-SAVE LINK]
-**Download WAV:** [WETRANSFER/DROPBOX LINK]
+**Listen:**[SPOTIFY PRE-SAVE LINK]
+**Download WAV:**[WETRANSFER/DROPBOX LINK]
 
 Worth a listen if you're after Sydney talent with proven traction.
 
@@ -36,20 +36,20 @@ Liberty Music PR
 
 ## WHY THIS WORKS:
 
- **References original connection** - "Yearn" played by Jaimee Taylor-Neilsen
- **Shows momentum** - 85 plays, 9 countries, Amazing Radio support
- **Highlights Triple J credibility** - Home & Hosed history
- **Sydney artist** - Local content priority
- **Bedroom-produced** - Fits Home & Hosed ethos
- **Brief** - Respects her time
+ **References original connection**- "Yearn" played by Jaimee Taylor-Neilsen
+ **Shows momentum**- 85 plays, 9 countries, Amazing Radio support
+ **Highlights Triple J credibility**- Home & Hosed history
+ **Sydney artist**- Local content priority
+ **Bedroom-produced**- Fits Home & Hosed ethos
+ **Brief**- Respects her time
 
 ---
 
 ## SEND TIMING:
 
-**Best:** Thursday evening (5-6pm AEST) or Friday morning (9-10am AEST)
-**Why:** Gives Ruby the weekend to listen before Monday release
-**Goal:** Get it on Home & Hosed playlist or Monday night show
+**Best:**Thursday evening (5-6pm AEST) or Friday morning (9-10am AEST)
+**Why:**Gives Ruby the weekend to listen before Monday release
+**Goal:**Get it on Home & Hosed playlist or Monday night show
 
 ---
 
@@ -76,8 +76,8 @@ Some quick momentum to share:
 
 Given Jaimee Taylor-Neilsen played "Yearn" in August, thought you'd want to hear this before Monday's release.
 
-**Listen:** [SPOTIFY LINK]
-**Download:** [WAV LINK]
+**Listen:**[SPOTIFY LINK]
+**Download:**[WAV LINK]
 
 Worth a listen for Sydney talent with proven Triple J history.
 
@@ -86,4 +86,4 @@ Chris
 
 ---
 
-**RECOMMENDATION:** Use the main version - it's more substantial but still respectful. Ruby knows KYARA from "Yearn" so this is a warm follow-up, not a cold pitch.
+**RECOMMENDATION:**Use the main version - it's more substantial but still respectful. Ruby knows KYARA from "Yearn" so this is a warm follow-up, not a cold pitch.

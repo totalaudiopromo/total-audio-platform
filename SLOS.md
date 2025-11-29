@@ -222,7 +222,7 @@ Success Rate = (2xx + 3xx Responses) / (Total Requests - 4xx) × 100
 
 ### What is an Error Budget?
 
-**Error Budget** = Allowed downtime/errors within SLO target
+**Error Budget**= Allowed downtime/errors within SLO target
 
 **Example:**
 
@@ -240,7 +240,7 @@ Success Rate = (2xx + 3xx Responses) / (Total Requests - 4xx) × 100
 - Prioritise velocity over caution
 - Test in production with feature flags
 
-**Risk Tolerance:** High
+**Risk Tolerance:**High
 
 ---
 
@@ -253,7 +253,7 @@ Success Rate = (2xx + 3xx Responses) / (Total Requests - 4xx) × 100
 - Require manual verification before deployment
 - Monitor post-deployment closely
 
-**Risk Tolerance:** Medium
+**Risk Tolerance:**Medium
 
 ---
 
@@ -267,7 +267,7 @@ Success Rate = (2xx + 3xx Responses) / (Total Requests - 4xx) × 100
 - Extended testing for all changes
 - Post-mortem required for all incidents
 
-**Risk Tolerance:** Low
+**Risk Tolerance:**Low
 
 **Restoration:**
 
@@ -286,7 +286,7 @@ Success Rate = (2xx + 3xx Responses) / (Total Requests - 4xx) × 100
 | Nov 2025 | Tracker     | 99.0%      | TBD    | TBD%              | Healthy |
 | Nov 2025 | Pitch Gen   | 99.0%      | TBD    | TBD%              | Healthy |
 
-**Update Frequency:** Weekly during customer acquisition phase
+**Update Frequency:**Weekly during customer acquisition phase
 
 ---
 
@@ -331,11 +331,11 @@ Success Rate = (2xx + 3xx Responses) / (Total Requests - 4xx) × 100
 
 **Every Monday Morning:**
 
-1. **Calculate SLIs** (from Vercel + Supabase dashboards)
-2. **Check Error Budget** (update tracking table)
-3. **Review Incidents** (count P0/P1/P2 incidents from previous week)
-4. **Assess Deployment Velocity** (number of deployments vs. error budget health)
-5. **Update Status** (Healthy / Caution / Freeze)
+1. **Calculate SLIs**(from Vercel + Supabase dashboards)
+2. **Check Error Budget**(update tracking table)
+3. **Review Incidents**(count P0/P1/P2 incidents from previous week)
+4. **Assess Deployment Velocity**(number of deployments vs. error budget health)
+5. **Update Status**(Healthy / Caution / Freeze)
 
 **Report Format:**
 
@@ -372,11 +372,11 @@ Success Rate = (2xx + 3xx Responses) / (Total Requests - 4xx) × 100
 
 **First Monday of Each Month:**
 
-1. **Comprehensive SLI analysis** (all apps, all metrics)
-2. **Error budget reset** (new month, fresh budget)
-3. **SLO target review** (adjust based on business priorities)
-4. **Incident retrospective** (review all P0/P1 incidents)
-5. **Customer impact assessment** (churn analysis, satisfaction scores)
+1. **Comprehensive SLI analysis**(all apps, all metrics)
+2. **Error budget reset**(new month, fresh budget)
+3. **SLO target review**(adjust based on business priorities)
+4. **Incident retrospective**(review all P0/P1 incidents)
+5. **Customer impact assessment**(churn analysis, satisfaction scores)
 
 ---
 
@@ -430,9 +430,9 @@ Success Rate = (2xx + 3xx Responses) / (Total Requests - 4xx) × 100
 During customer acquisition phase:
 
 - **No contractual SLA commitments**
-- **Best effort** reliability based on SLOs above
-- **Transparent communication** during incidents
-- **Service credits** offered at discretion for major outages
+- **Best effort**reliability based on SLOs above
+- **Transparent communication**during incidents
+- **Service credits**offered at discretion for major outages
 
 ---
 
@@ -443,15 +443,15 @@ After sustainable revenue established:
 #### Pro Tier (£19/month)
 
 - **99.5% monthly uptime guarantee**
-- **< 3 second response time** (p95)
-- **Email support** (24-hour response)
+- **< 3 second response time**(p95)
+- **Email support**(24-hour response)
 - **Service credit**: 5% per 0.5% below SLA
 
 #### Agency Tier (£79/month)
 
 - **99.9% monthly uptime guarantee**
-- **< 2 second response time** (p95)
-- **Priority email support** (12-hour response)
+- **< 2 second response time**(p95)
+- **Priority email support**(12-hour response)
 - **Service credit**: 10% per 0.1% below SLA
 
 ---

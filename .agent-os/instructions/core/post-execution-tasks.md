@@ -185,14 +185,14 @@ Use the project-manager subagent to create a structured summary message with emo
 
 ## What's been done
 
-1. **[FEATURE_1]** - [ONE_SENTENCE_DESCRIPTION]
-2. **[FEATURE_2]** - [ONE_SENTENCE_DESCRIPTION]
+1. **[FEATURE_1]**- [ONE_SENTENCE_DESCRIPTION]
+2. **[FEATURE_2]**- [ONE_SENTENCE_DESCRIPTION]
 
 ## Issues encountered
 
 [ONLY_IF_APPLICABLE]
 
-- **[ISSUE_1]** - [DESCRIPTION_AND_REASON]
+- **[ISSUE_1]**- [DESCRIPTION_AND_REASON]
 
 ## Ready to test in browser
 

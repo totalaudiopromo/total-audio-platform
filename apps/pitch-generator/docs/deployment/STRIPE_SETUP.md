@@ -29,7 +29,7 @@
 
 ### 3. Free Tier (No Stripe Product Required)
 
-- **5 pitches/month** - Managed in app database
+- **5 pitches/month**- Managed in app database
 - No payment required
 - Great for testing and demos
 
@@ -42,14 +42,14 @@
    - Description: "Unlimited AI-powered pitch generation"
    - Pricing: Recurring, Monthly, £14.00 GBP
    - Click "Save product"
-   - **Copy the Price ID** (starts with `price_`)
+   - **Copy the Price ID**(starts with `price_`)
 
 4. For **AGENCY tier**:
    - Name: "Pitch Generator AGENCY"
    - Description: "Unlimited pitch generation with team features"
    - Pricing: Recurring, Monthly, £49.00 GBP
    - Click "Save product"
-   - **Copy the Price ID** (starts with `price_`)
+   - **Copy the Price ID**(starts with `price_`)
 
 5. Update `.env.local` with the new Price IDs:
    ```env

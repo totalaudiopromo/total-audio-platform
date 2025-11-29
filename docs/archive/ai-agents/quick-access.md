@@ -85,11 +85,11 @@ Research potential partnerships with [target partner] for Total Audio Promo. Foc
 
 ### 1. Identify Task Type
 
-- **Marketing/Campaigns** → Music Marketing Mastermind
-- **Development/Technical** → Full-Stack Music Tech
-- **Content/Social Media** → Viral Content Automation
-- **Growth/Analytics** → Growth Hacking Optimizer
-- **Business/Partnerships** → Music Industry Strategist
+- **Marketing/Campaigns**→ Music Marketing Mastermind
+- **Development/Technical**→ Full-Stack Music Tech
+- **Content/Social Media**→ Viral Content Automation
+- **Growth/Analytics**→ Growth Hacking Optimizer
+- **Business/Partnerships**→ Music Industry Strategist
 
 ### 2. Copy Agent Command
 

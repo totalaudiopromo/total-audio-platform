@@ -66,7 +66,7 @@
 
 ### Template 1 - PR Industry Contacts
 
-**Subject:** Quick favor - testing something that could help you
+**Subject:**Quick favor - testing something that could help you
 
 Hi [Name],
 
@@ -85,7 +85,7 @@ Chris
 
 ### Template 2 - Artist/Label Contacts
 
-**Subject:** Built something for music industry contacts
+**Subject:**Built something for music industry contacts
 
 Hi [Name],
 

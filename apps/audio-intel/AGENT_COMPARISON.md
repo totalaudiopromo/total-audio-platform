@@ -25,15 +25,15 @@ export function createAgent(): PostingAgent;
 
 | Feature             | BlueSky Agent     | Threads Agent                       |
 | ------------------- | ----------------- | ----------------------------------- |
-| **Authentication**  | Username/password | OAuth access token                  |
-| **Protocol**        | AT Protocol       | Instagram Graph API                 |
-| **Character Limit** | 300               | 500                                 |
-| **Posting Method**  | Single-step       | Two-step (create + publish)         |
-| **Rate Limiting**   | 1s delay          | 2s delay                            |
-| **Health Check**    | Login test        | API access test                     |
-| **Insights**        |  Not available  |  Views, likes, replies, followers |
-| **Content Mapping** | 8 posts           | 10 posts                            |
-| **Dependencies**    | @atproto/api      | axios (existing)                    |
+| **Authentication** | Username/password | OAuth access token                  |
+| **Protocol**       | AT Protocol       | Instagram Graph API                 |
+| **Character Limit**| 300               | 500                                 |
+| **Posting Method** | Single-step       | Two-step (create + publish)         |
+| **Rate Limiting**  | 1s delay          | 2s delay                            |
+| **Health Check**   | Login test        | API access test                     |
+| **Insights**       |  Not available  |  Views, likes, replies, followers |
+| **Content Mapping**| 8 posts           | 10 posts                            |
+| **Dependencies**   | @atproto/api      | axios (existing)                    |
 
 ## Implementation Details
 
@@ -305,14 +305,14 @@ If switching between platforms:
 
 | Aspect               | Winner  | Reason                 |
 | -------------------- | ------- | ---------------------- |
-| **Setup Speed**      | BlueSky | 5 min vs 45 min        |
-| **Analytics**        | Threads | Built-in insights API  |
-| **Maintenance**      | BlueSky | No token expiry        |
-| **Audience Reach**   | Threads | Instagram network      |
-| **Rate Limits**      | Threads | Clear published limits |
-| **Content Length**   | Threads | 500 vs 300 chars       |
-| **Setup Complexity** | BlueSky | Simple credentials     |
-| **Long-term Cost**   | Equal   | Both free              |
+| **Setup Speed**     | BlueSky | 5 min vs 45 min        |
+| **Analytics**       | Threads | Built-in insights API  |
+| **Maintenance**     | BlueSky | No token expiry        |
+| **Audience Reach**  | Threads | Instagram network      |
+| **Rate Limits**     | Threads | Clear published limits |
+| **Content Length**  | Threads | 500 vs 300 chars       |
+| **Setup Complexity**| BlueSky | Simple credentials     |
+| **Long-term Cost**  | Equal   | Both free              |
 
 ## Recommendation
 

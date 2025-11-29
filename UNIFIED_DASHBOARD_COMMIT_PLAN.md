@@ -167,7 +167,7 @@ git push -u origin claude/build-unified-dashboard-019CXb7FhYSHdbXKDMdYKJjz
 3. Review and apply migration
 4. Verify tables created with `SELECT * FROM information_schema.tables WHERE table_schema = 'public';`
 
-**Option B: Via Supabase CLI** (if available)
+**Option B: Via Supabase CLI**(if available)
 
 ```bash
 cd packages/core-db
@@ -504,7 +504,7 @@ Expected performance (empty database):
    - Monitor query performance
    - Check RLS policy effectiveness
 
-2. **Create Seed Data** (optional for testing)
+2. **Create Seed Data**(optional for testing)
    - Community profiles
    - Sample press kit reports
    - Industry calendar events

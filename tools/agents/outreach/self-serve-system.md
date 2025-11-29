@@ -1,7 +1,7 @@
 # Self-Serve Audio Intel System (No Demos, Full Automation)
 
-**Problem:** You don't have time for demo calls (full-time job at Postman)
-**Solution:** Product-led growth - let the product sell itself
+**Problem:**You don't have time for demo calls (full-time job at Postman)
+**Solution:**Product-led growth - let the product sell itself
 
 ---
 
@@ -26,22 +26,22 @@
 ### With Demos (Current)
 
 - 50 emails → 42 demos (85%) → 4 customers (10%)
-- **Revenue:** £76/month
-- **Your time:** 84 hours (2 hours per demo)
-- **Hourly rate:** £0.90/hour (terrible)
+- **Revenue:**£76/month
+- **Your time:**84 hours (2 hours per demo)
+- **Hourly rate:**£0.90/hour (terrible)
 
 ### Self-Serve (New)
 
 - 50 emails → 25 signups (50%) → 8 trials (32%) → 2 customers (25%)
-- **Revenue:** £38/month per 50 emails
-- **Your time:** 0 hours (fully automated)
-- **Hourly rate:** ∞ (no time spent)
+- **Revenue:**£38/month per 50 emails
+- **Your time:**0 hours (fully automated)
+- **Hourly rate:**∞ (no time spent)
 
 ### Self-Serve at Scale (200 emails/month)
 
 - 200 emails → 100 signups → 32 trials → 8 customers
-- **Revenue:** £152/month
-- **Your time:** Still 0 hours
+- **Revenue:**£152/month
+- **Your time:**Still 0 hours
 
 ---
 
@@ -49,8 +49,8 @@
 
 ### 1. Loom Video Demo (Record Once, Use Forever)
 
-**Time to create:** 15 minutes
-**Replaces:** 500 demo calls
+**Time to create:**15 minutes
+**Replaces:**500 demo calls
 
 **Script:**
 
@@ -81,7 +81,7 @@ No card required. Just upload your contacts and watch it work."
 
 ### 2. Updated Cold Email (Product-Led Growth)
 
-**Subject:** BBC Radio 1 contacts in 15 minutes (watch video)
+**Subject:**BBC Radio 1 contacts in 15 minutes (watch video)
 
 Hi {{firstName}},
 
@@ -89,9 +89,9 @@ I spent 15 hours researching BBC Radio 1 contacts last month.
 
 Then I built Audio Intel to do it in 15 minutes.
 
-**Watch:** [60-second video showing real enrichment]
+**Watch:**[60-second video showing real enrichment]
 
-**Try free:** intel.totalaudiopromo.com
+**Try free:**intel.totalaudiopromo.com
 
 - Upload 5 contacts
 - Watch real-time enrichment
@@ -108,7 +108,7 @@ P.S. The BBC Radio 1 enrichment in the video? 100% real. Every contact validated
 
 ### 3. Automated Email Drip (ConvertKit)
 
-**Email 1:** Immediate (Welcome)
+**Email 1:**Immediate (Welcome)
 
 ```
 Subject: Your Audio Intel account is ready
@@ -127,7 +127,7 @@ Need more? Upgrade to PRO (£19/month) for unlimited.
 Chris
 ```
 
-**Email 2:** Day 2 (If they haven't enriched anything)
+**Email 2:**Day 2 (If they haven't enriched anything)
 
 ```
 Subject: Try Audio Intel with one contact
@@ -149,7 +149,7 @@ Try it: intel.totalaudiopromo.com/dashboard
 Chris
 ```
 
-**Email 3:** Day 5 (Case study)
+**Email 3:**Day 5 (Case study)
 
 ```
 Subject: How I used Audio Intel for BBC Radio 1
@@ -170,7 +170,7 @@ Try it: intel.totalaudiopromo.com/dashboard
 Chris
 ```
 
-**Email 4:** Day 9 (Last chance + upgrade offer)
+**Email 4:**Day 9 (Last chance + upgrade offer)
 
 ```
 Subject: £19/month to never research contacts again
@@ -215,7 +215,7 @@ Day 9: Upgrade prompt (£19/month)
 PAYMENT (Stripe) → Instant PRO access
 ```
 
-**Your involvement:** ZERO HOURS
+**Your involvement:**ZERO HOURS
 
 ---
 
@@ -276,7 +276,7 @@ PAYMENT (Stripe) → Instant PRO access
 | Free signups                        | 50%  | 8                 | 32                 |
 | Active users (enriched 1+ contacts) | 70%  | 5                 | 22                 |
 | Upgrade to PRO (£19/month)          | 40%  | 2                 | 9                  |
-| **Monthly revenue**                 | -    | **£38**           | **£171**           |
+| **Monthly revenue**                | -    | **£38**          | **£171**          |
 
 ---
 
@@ -291,7 +291,7 @@ PAYMENT (Stripe) → Instant PRO access
 | Demo calls             | 84 hours/month  | 0 hours              |
 | Email sequences        | Manual          | Automated            |
 | Payment processing     | Manual          | Automated (Stripe)   |
-| **Total monthly time** | **86 hours**    | **0 hours**          |
+| **Total monthly time**| **86 hours**   | **0 hours**         |
 
 ### Revenue Comparison (200 emails/month)
 
@@ -331,7 +331,7 @@ PAYMENT (Stripe) → Instant PRO access
 
 ### Template 1: Video Demo (Best for Self-Serve)
 
-**Subject:** BBC Radio 1 in 15 minutes (watch this)
+**Subject:**BBC Radio 1 in 15 minutes (watch this)
 
 Hi {{firstName}},
 
@@ -339,13 +339,13 @@ Last month I spent 15 hours researching BBC Radio 1 contacts.
 
 This month I spent 15 minutes.
 
-**Watch this 60-second video:** [Loom link showing real enrichment]
+**Watch this 60-second video:**[Loom link showing real enrichment]
 
 The tool is called Audio Intel. It's free to try (10 enrichments/month, no card required).
 
 If it saves you time, upgrade to unlimited for £19/month.
 
-**Try it:** intel.totalaudiopromo.com
+**Try it:**intel.totalaudiopromo.com
 
 Chris
 sadact / Audio Intel
@@ -354,7 +354,7 @@ sadact / Audio Intel
 
 ### Template 2: Instant Access
 
-**Subject:** Free contact enrichment tool (no card required)
+**Subject:**Free contact enrichment tool (no card required)
 
 Hi {{firstName}},
 
@@ -374,7 +374,7 @@ Audio Intel = automated radio contact research.
 
 Used for BBC Radio 1, Spotify, Radio X campaigns.
 
-**Start free:** intel.totalaudiopromo.com
+**Start free:**intel.totalaudiopromo.com
 
 Chris
 
@@ -382,7 +382,7 @@ Chris
 
 ### Template 3: Social Proof First
 
-**Subject:** The tool I used to pitch BBC Radio 1
+**Subject:**The tool I used to pitch BBC Radio 1
 
 Hi {{firstName}},
 
@@ -396,10 +396,10 @@ I used Audio Intel to research contacts for:
 
 You can use the same tool right now:
 
-**Free:** 10 enrichments/month (no card)
-**PRO:** £19/month (unlimited)
+**Free:**10 enrichments/month (no card)
+**PRO:**£19/month (unlimited)
 
-**Watch demo + try free:** intel.totalaudiopromo.com
+**Watch demo + try free:**intel.totalaudiopromo.com
 
 Chris
 
@@ -412,51 +412,51 @@ Chris
 - 8 free signups
 - 5 active users (enriched contacts)
 - 2 paying customers = £38/month
-- **Your time:** 2 hours (setup)
+- **Your time:**2 hours (setup)
 
 ### Month 2 (100 emails)
 
 - 16 free signups
 - 11 active users
 - 4 paying customers = £76/month
-- **Your time:** 0 hours
+- **Your time:**0 hours
 
 ### Month 3 (200 emails)
 
 - 32 free signups
 - 22 active users
 - 9 paying customers = £171/month
-- **Your time:** 0 hours
+- **Your time:**0 hours
 
 ### Month 6 (400 emails/month via paid tools)
 
 - 64 free signups
 - 45 active users
 - 18 paying customers = £342/month
-- **Your time:** Still 0 hours
-- **Cost:** £34/month (Hunter.io Starter)
-- **Net profit:** £308/month
+- **Your time:**Still 0 hours
+- **Cost:**£34/month (Hunter.io Starter)
+- **Net profit:**£308/month
 
 ---
 
 ## Action Items (This Weekend)
 
-1. **Record Loom video** (15 mins)
+1. **Record Loom video**(15 mins)
    - Show real BBC Radio 1 enrichment
    - 60 seconds max
    - Upload to YouTube (unlisted)
 
-2. **Set up ConvertKit drip** (30 mins)
+2. **Set up ConvertKit drip**(30 mins)
    - 4 emails (Day 0, 2, 5, 9)
    - Trigger: On Audio Intel signup
    - Test with your own email
 
-3. **Update cold email template** (5 mins)
+3. **Update cold email template**(5 mins)
    - Add Loom video link
    - Change CTA from "demo" to "try free"
    - Emphasize "no card required"
 
-4. **Send 10 test emails** (10 mins)
+4. **Send 10 test emails**(10 mins)
    - Use free Hunter.io credits
    - Track: signups (not demo bookings)
    - Optimize based on signup rate
@@ -465,14 +465,14 @@ Chris
 
 ## Critical Success Factors
 
-###  DO THIS:
+### DO THIS:
 
 - Loom video MUST show REAL enrichment (not fake demo)
 - Free tier MUST work perfectly (10 enrichments is enough to prove value)
 - Upgrade prompt in product (after 8th enrichment: "2 left this month, upgrade?")
 - Email drip MUST be value-first (not salesy)
 
-###  DON'T DO THIS:
+### DON'T DO THIS:
 
 - Don't require demo calls (kills self-serve)
 - Don't ask for card for free tier (reduces signups)

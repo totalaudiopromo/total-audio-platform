@@ -134,7 +134,7 @@ git tag v1.0.1-audiointel-tested
 git push origin main --tags
 ```
 
-**Then run Phase 5.2** (Tracker + Pitch Generator migrations).
+**Then run Phase 5.2**(Tracker + Pitch Generator migrations).
 
 ---
 

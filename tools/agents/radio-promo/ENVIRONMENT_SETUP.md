@@ -72,19 +72,19 @@ node radio-promo-agent.js health
 
 Once authenticated, the Liberty Radio Promo Agent can:
 
-1. **Real-time Play Tracking** - Monitor track performance across UK radio
-2. **Station Database** - Access 200+ UK radio stations
-3. **CSV Reports** - Generate weekly performance reports
-4. **Campaign Analytics** - Track campaign success metrics
-5. **Google Drive Integration** - Auto-save reports to campaign folders
+1. **Real-time Play Tracking**- Monitor track performance across UK radio
+2. **Station Database**- Access 200+ UK radio stations
+3. **CSV Reports**- Generate weekly performance reports
+4. **Campaign Analytics**- Track campaign success metrics
+5. **Google Drive Integration**- Auto-save reports to campaign folders
 
 ## Next Steps
 
-1. **Add WARM password** to `.env` file
-2. **Wait for rate limits to clear** (or ask Gustav to whitelist IP)
-3. **Run test script** to verify authentication
-4. **Test full agent** with WARM integration
-5. **Start using** for real radio promo campaigns!
+1. **Add WARM password**to `.env` file
+2. **Wait for rate limits to clear**(or ask Gustav to whitelist IP)
+3. **Run test script**to verify authentication
+4. **Test full agent**with WARM integration
+5. **Start using**for real radio promo campaigns!
 
 ---
 

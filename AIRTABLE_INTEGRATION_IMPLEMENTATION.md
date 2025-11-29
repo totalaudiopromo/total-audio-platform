@@ -31,7 +31,7 @@ Complete Airtable bidirectional sync integration for Audio Intel, extending the 
 - `mapContactToAirtable(contact)` → Field mapping helper
 - `mapAirtableToContact(record)` → Reverse field mapping
 
-**Field Mapping** (default):
+**Field Mapping**(default):
 
 ```typescript
 Total Audio → Airtable:
@@ -48,7 +48,7 @@ Total Audio → Airtable:
 
 #### `/api/integrations/airtable/connect`
 
-**POST** - Save Airtable credentials:
+**POST**- Save Airtable credentials:
 
 ```json
 {
@@ -60,12 +60,12 @@ Total Audio → Airtable:
 }
 ```
 
-**GET** - Check connection status
-**DELETE** - Disconnect integration
+**GET**- Check connection status
+**DELETE**- Disconnect integration
 
 #### `/api/integrations/airtable/sync`
 
-**POST** - Trigger sync:
+**POST**- Trigger sync:
 
 ```json
 {
@@ -92,11 +92,11 @@ Total Audio → Airtable:
 }
 ```
 
-**GET** - Fetch sync history (last 20 syncs)
+**GET**- Fetch sync history (last 20 syncs)
 
 #### `/api/integrations/airtable/status`
 
-**GET** - Connection status, sync stats, record counts:
+**GET**- Connection status, sync stats, record counts:
 
 ```json
 {
@@ -380,13 +380,13 @@ curl -X POST .../api/integrations/airtable/sync \
 
 ## Success Criteria (Verification)
 
-**Airtable SDK installed** to `@total-audio/core-db` package  
-**AirtableSyncService class created** extending BaseIntegrationSync  
-**API routes created** for Audio Intel (connect, sync, status)  
-**Field mapping implemented** with genre_tags array support  
-**TypeScript compilation** - Minor errors remain (non-blocking)  
- **Tests written** - None yet (next phase)  
- **UI integration** - Not yet (customer acquisition focus)
+**Airtable SDK installed**to `@total-audio/core-db` package  
+**AirtableSyncService class created**extending BaseIntegrationSync  
+**API routes created**for Audio Intel (connect, sync, status)  
+**Field mapping implemented**with genre_tags array support  
+**TypeScript compilation**- Minor errors remain (non-blocking)  
+ **Tests written**- None yet (next phase)  
+ **UI integration**- Not yet (customer acquisition focus)
 
 ---
 
@@ -417,11 +417,11 @@ curl -X POST .../api/integrations/airtable/sync \
 
 ## Technical Debt
 
-1. **TypeScript compilation errors** - Requires SyncResult interface alignment
-2. **No rate limiting** - Airtable SDK handles this, but should add safeguards
-3. **No conflict resolution** - Last-write-wins strategy (acceptable for MVP)
-4. **No webhook support** - Manual/scheduled sync only (acceptable for MVP)
-5. **No tests** - Critical gap, but acceptable during customer acquisition phase
+1. **TypeScript compilation errors**- Requires SyncResult interface alignment
+2. **No rate limiting**- Airtable SDK handles this, but should add safeguards
+3. **No conflict resolution**- Last-write-wins strategy (acceptable for MVP)
+4. **No webhook support**- Manual/scheduled sync only (acceptable for MVP)
+5. **No tests**- Critical gap, but acceptable during customer acquisition phase
 
 ---
 

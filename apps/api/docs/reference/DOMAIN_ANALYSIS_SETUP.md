@@ -3,7 +3,7 @@
 ## Quick Setup
 
 1. **Open the test file**: `backend/test-domain-analysis.js`
-2. **Replace the placeholders** at the top of the file with your actual credentials:
+2. **Replace the placeholders**at the top of the file with your actual credentials:
 
 ```javascript
 // Replace these with your actual values:
@@ -13,7 +13,7 @@ process.env.AIRTABLE_CONTACTS_TABLE_ID = 'your-actual-contacts-table-id-here';
 ```
 
 3. **Run the preview**: `node test-domain-analysis.js`
-4. **Review the results** and decide if you want to apply the changes
+4. **Review the results**and decide if you want to apply the changes
 5. **Run live mode**: `node test-domain-analysis-live.js` (if you want to apply changes)
 
 ## How to Get Your Airtable Credentials
@@ -126,11 +126,11 @@ node test-domain-analysis-live.js
 
 ## Important Notes
 
-1. **Always run preview mode first** to see what changes would be made
-2. **Backup your data** before running live mode
-3. **Review the confidence levels** - higher confidence means more reliable extraction
-4. **Personal domains are skipped** (gmail, yahoo, etc.)
-5. **The script is conservative** - only updates records with reasonable confidence
+1. **Always run preview mode first**to see what changes would be made
+2. **Backup your data**before running live mode
+3. **Review the confidence levels**- higher confidence means more reliable extraction
+4. **Personal domains are skipped**(gmail, yahoo, etc.)
+5. **The script is conservative**- only updates records with reasonable confidence
 
 ## Customization
 

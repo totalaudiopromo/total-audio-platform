@@ -13,7 +13,7 @@ I've built your intelligent campaign tracker based on the PRD. Everything is rea
 ### Copy and Run Migration:
 
 1. Open: `supabase/migrations/010_tracker_prd_schema.sql`
-2. Copy **entire file** contents
+2. Copy **entire file**contents
 3. Paste into Supabase SQL editor
 4. Click "Run"
 5. Wait for "Success. No rows returned"
@@ -75,11 +75,11 @@ Create 3+ campaigns with different platforms/genres to see:
 
 ### New Intelligent Tracker:
 
--  **Automatic Performance Scoring** (0-100)
--  **Industry Benchmarking** (30+ platforms/genres)
--  **Pattern Recognition** (learns what works for you)
--  **Smart Recommendations** (actionable insights)
--  **Predictive Intelligence** (forecast before launch)
+-  **Automatic Performance Scoring**(0-100)
+-  **Industry Benchmarking**(30+ platforms/genres)
+-  **Pattern Recognition**(learns what works for you)
+-  **Smart Recommendations**(actionable insights)
+-  **Predictive Intelligence**(forecast before launch)
 
 ## Value Delivered
 
@@ -90,7 +90,7 @@ Each campaign now shows:
 - What's working best for you
 - Where to focus next
 
-**This is worth £19/month** 
+**This is worth £19/month**
 
 ## Verify It's Working
 

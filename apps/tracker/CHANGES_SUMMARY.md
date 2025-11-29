@@ -289,7 +289,7 @@ apps/tracker/
 
 ### Critical User Flows to Test
 
-1. **Pricing Page Access** 
+1. **Pricing Page Access**
 
    ```bash
    # Should NOT redirect to login
@@ -297,7 +297,7 @@ apps/tracker/
    # Expected: 200 OK
    ```
 
-2. **Cookie Consent** 
+2. **Cookie Consent**
 
    ```bash
    # Should appear on first visit
@@ -308,7 +308,7 @@ apps/tracker/
    # Refresh → Banner should NOT reappear
    ```
 
-3. **Privacy/Terms Pages** 
+3. **Privacy/Terms Pages**
 
    ```bash
    open http://localhost:3000/privacy
@@ -317,7 +317,7 @@ apps/tracker/
    # Check: Footer links work
    ```
 
-4. **Email Verification Flow** 
+4. **Email Verification Flow**
 
    ```bash
    # 1. Sign up with test email
@@ -328,7 +328,7 @@ apps/tracker/
    # 6. Go to dashboard → Banner gone
    ```
 
-5. **Onboarding Checklist** 
+5. **Onboarding Checklist**
 
    ```bash
    # New user dashboard should show:
@@ -438,7 +438,7 @@ dataLayer.push({ event: 'page_view', page_path: '/terms' });
 
 1. **Navigate to**: Authentication → Email Templates → Confirm signup
 
-2. **Update template** (if using custom template):
+2. **Update template**(if using custom template):
 
    ```html
    <h2>Confirm Your Email</h2>

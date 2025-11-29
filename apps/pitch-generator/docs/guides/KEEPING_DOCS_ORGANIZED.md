@@ -70,14 +70,14 @@ The script automatically categorizes files based on naming patterns:
 
 | Category       | Patterns                                             | Examples                                                           |
 | -------------- | ---------------------------------------------------- | ------------------------------------------------------------------ |
-| **setup/**     | `*SETUP*`, `*DEPLOYMENT*`, `*MIGRATION*`, `*OAUTH*`  | `AUTH_SETUP.md`, `DEPLOYMENT_GUIDE.md`, `RUN_MIGRATION.md`         |
-| **guides/**    | `*QUICKSTART*`, `*TUTORIAL*`, `*HOW_TO*`             | `QUICKSTART.md`, `HOW_TO_DEPLOY.md`                                |
-| **reference/** | `*README_*`, `*STRATEGY*`, `*ARCHITECTURE*`, `*PRD*` | `README_PRD.md`, `PSEO_STRATEGY.md`, `API_REFERENCE.md`            |
-| **status/**    | `*COMPLETE*`, `*FIXED*`, `*SUMMARY*`, `*REPORT*`     | `BUILD_COMPLETE.md`, `TEXT_COLORS_FIXED.md`, `BATCH_1_COMPLETE.md` |
+| **setup/**    | `*SETUP*`, `*DEPLOYMENT*`, `*MIGRATION*`, `*OAUTH*`  | `AUTH_SETUP.md`, `DEPLOYMENT_GUIDE.md`, `RUN_MIGRATION.md`         |
+| **guides/**   | `*QUICKSTART*`, `*TUTORIAL*`, `*HOW_TO*`             | `QUICKSTART.md`, `HOW_TO_DEPLOY.md`                                |
+| **reference/**| `*README_*`, `*STRATEGY*`, `*ARCHITECTURE*`, `*PRD*` | `README_PRD.md`, `PSEO_STRATEGY.md`, `API_REFERENCE.md`            |
+| **status/**   | `*COMPLETE*`, `*FIXED*`, `*SUMMARY*`, `*REPORT*`     | `BUILD_COMPLETE.md`, `TEXT_COLORS_FIXED.md`, `BATCH_1_COMPLETE.md` |
 
 ### 2. Protected Files
 
-These files **never** move (stay at root):
+These files **never**move (stay at root):
 
 - `README.md`
 - `DESIGN_SYSTEM.md`
@@ -317,14 +317,14 @@ const CATEGORIES = {
 
 ## Summary
 
--  **Automated:** One command organizes everything
--  **Safe:** Dry-run mode previews changes
--  **Smart:** Categorizes based on filenames
--  **Consistent:** Same structure across all apps
--  **Fast:** Organizes entire monorepo in seconds
+-  **Automated:**One command organizes everything
+-  **Safe:**Dry-run mode previews changes
+-  **Smart:**Categorizes based on filenames
+-  **Consistent:**Same structure across all apps
+-  **Fast:**Organizes entire monorepo in seconds
 
 Keep your docs organized. Your future self will thank you.
 
 ---
 
-**Next:** Read [PROJECT_STRUCTURE.md](../../../PROJECT_STRUCTURE.md) for complete organizational standards.
+**Next:**Read [PROJECT_STRUCTURE.md](../../../PROJECT_STRUCTURE.md) for complete organizational standards.

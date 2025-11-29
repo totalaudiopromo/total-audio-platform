@@ -20,7 +20,7 @@ Technical specifications, architecture docs, and API references.
 
 Historical completion reports and milestone records.
 
-> **Note:** Status files are kept for historical reference but are not actively maintained.
+> **Note:**Status files are kept for historical reference but are not actively maintained.
 
 ---
 
@@ -28,7 +28,7 @@ Historical completion reports and milestone records.
 
 For getting started, see the root-level documentation:
 
-- **[README.md](../README.md)** - Main project overview
+- **[README.md](../README.md)**- Main project overview
 
 ---
 
@@ -36,10 +36,10 @@ For getting started, see the root-level documentation:
 
 When adding new documentation:
 
-1. **Setup guides** → `/docs/setup/`
-2. **How-to guides** → `/docs/guides/`
-3. **Reference docs** → `/docs/reference/`
-4. **Status updates** → `/docs/status/`
+1. **Setup guides**→ `/docs/setup/`
+2. **How-to guides**→ `/docs/guides/`
+3. **Reference docs**→ `/docs/reference/`
+4. **Status updates**→ `/docs/status/`
 
 ---
 

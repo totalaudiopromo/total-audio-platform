@@ -4,11 +4,11 @@
 
 All 5 emails are ready to copy/paste into Gmail drafts. Files created:
 
-1. **KYARA-DRAFT-1-ANIKA-LUNA.txt** - Priority 1 (WARM - SEND FIRST)
-2. **KYARA-DRAFT-2-CLAIRE-MOONEY.txt** - Priority 2 (Send after Anika or tomorrow)
-3. **KYARA-DRAFT-3-SIMON-TRIPLE-R.txt** - Priority 3 (Send today/tomorrow)
-4. **KYARA-DRAFT-4-FIRAS-PBS.txt** - Priority 4 (Send today/tomorrow)
-5. **KYARA-DRAFT-5-KIIS.txt** - Priority 5 (Send within 48 hours)
+1. **KYARA-DRAFT-1-ANIKA-LUNA.txt**- Priority 1 (WARM - SEND FIRST)
+2. **KYARA-DRAFT-2-CLAIRE-MOONEY.txt**- Priority 2 (Send after Anika or tomorrow)
+3. **KYARA-DRAFT-3-SIMON-TRIPLE-R.txt**- Priority 3 (Send today/tomorrow)
+4. **KYARA-DRAFT-4-FIRAS-PBS.txt**- Priority 4 (Send today/tomorrow)
+5. **KYARA-DRAFT-5-KIIS.txt**- Priority 5 (Send within 48 hours)
 
 ## How to Create Gmail Drafts
 
@@ -45,9 +45,9 @@ All 5 emails are ready to copy/paste into Gmail drafts. Files created:
 
 ### Priority 3-5 - Other Australian Stations
 
-- **Triple R Melbourne** (simonw@rrr.org.au)
-- **PBS FM** (Firas@pbsfm.org.au)
-- **KIIS 106.5** (music@kiis1065.com.au)
+- **Triple R Melbourne**(simonw@rrr.org.au)
+- **PBS FM**(Firas@pbsfm.org.au)
+- **KIIS 106.5**(music@kiis1065.com.au)
 - **When**: Today/tomorrow/within 48 hours
 - **Strategy**: All reference Triple J support
 

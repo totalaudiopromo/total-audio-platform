@@ -2,16 +2,16 @@
 
 ## What's Working
 
-1. **`.env.local` file exists** at `/apps/tracker/.env.local`
+1. **`.env.local` file exists**at `/apps/tracker/.env.local`
 2. **Credentials are present**:
    - `NEXT_PUBLIC_SUPABASE_URL=https://ucncbighzqudaszewjrv.supabase.co`
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIs...` (full key present)
-3. **Server-side rendering works** - Landing page loads successfully
-4. **Environment variables are readable** - Node.js can read them from the file
+3. **Server-side rendering works**- Landing page loads successfully
+4. **Environment variables are readable**- Node.js can read them from the file
 
 ## Current Issue
 
-**Problem:** Client-side components (like `AuthButton`, `TrackerHeader`) cannot access environment variables, causing a ZodError.
+**Problem:**Client-side components (like `AuthButton`, `TrackerHeader`) cannot access environment variables, causing a ZodError.
 
 **Error Location:**
 
@@ -93,22 +93,22 @@ NEXT_PUBLIC_APP_URL=http://localhost:3004
 
 ## Next Steps
 
-1. **Try Option 2 first** - Update `next.config.ts` to explicitly expose env vars
-2. **Restart dev server** after making changes
-3. **Clear browser cache** - Hard refresh (Cmd+Shift+R)
-4. **Test again** - Navigate to http://localhost:3004/dashboard
+1. **Try Option 2 first**- Update `next.config.ts` to explicitly expose env vars
+2. **Restart dev server**after making changes
+3. **Clear browser cache**- Hard refresh (Cmd+Shift+R)
+4. **Test again**- Navigate to http://localhost:3004/dashboard
 
 ## Notes
 
-- The dev server is running on **port 3004** (correct port for Tracker)
+- The dev server is running on **port 3004**(correct port for Tracker)
 - Landing page works because it's server-rendered
 - Client-side components fail because env vars aren't exposed to browser bundle
 - This is a Next.js configuration issue, not a missing credentials issue
 
 ---
 
-**Status:** Environment variables are configured correctly, but Next.js needs to be configured to expose them to client-side code.
+**Status:**Environment variables are configured correctly, but Next.js needs to be configured to expose them to client-side code.
 
-**Priority:** HIGH - Blocks all client-side functionality
+**Priority:**HIGH - Blocks all client-side functionality
 
-**Estimated Fix Time:** 5-10 minutes (if Option 2 works)
+**Estimated Fix Time:**5-10 minutes (if Option 2 works)

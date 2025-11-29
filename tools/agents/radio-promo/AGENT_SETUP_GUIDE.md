@@ -1,6 +1,6 @@
-#  **Agent Setup Guide - Liberty Music PR vs Total Audio Promo**
+# **Agent Setup Guide - Liberty Music PR vs Total Audio Promo**
 
-## **Current Setup: Liberty Music PR Agent** 
+## **Current Setup: Liberty Music PR Agent**
 
 ### **What This Agent Does**
 
@@ -18,7 +18,7 @@
 -  **Transcript Processing**: Google Meet + Otter.ai
 -  **Intelligence Gathering**: Google Chat monitoring
 
-## **Future Setup: Total Audio Promo Agent** 
+## **Future Setup: Total Audio Promo Agent**
 
 ### **What This Agent Will Do**
 
@@ -27,7 +27,7 @@
 - **Monday.com**: Your Total Audio Promo boards
 - **Focus**: SaaS operations, Audio Intel, business development
 
-### **Total Audio Promo Agent Features** (Planned)
+### **Total Audio Promo Agent Features**(Planned)
 
 -  **Audio Intel Management**: Contact enrichment workflows
 -  **Customer Support**: Ticket management and responses
@@ -35,7 +35,7 @@
 -  **Content Generation**: Blog posts, social media
 -  **Lead Management**: Prospect tracking and nurturing
 
-## **Current Liberty Agent Status** 
+## **Current Liberty Agent Status**
 
 ### **Fully Working**
 
@@ -67,7 +67,7 @@ node ../radio-promo-agent.js gather-intelligence
 node ../radio-promo-agent.js analyze-mailchimp
 ```
 
-## **MCP Integration Status** 
+## **MCP Integration Status**
 
 ### **Current MCPs**
 
@@ -124,7 +124,7 @@ cd total-audio-promo-agent/
 
 ## **Agent Separation Strategy**
 
-### **Liberty Music PR Agent** (Current)
+### **Liberty Music PR Agent**(Current)
 
 - **Location**: `/tools/agents/radio-promo/`
 - **Purpose**: Personal Liberty Music PR work
@@ -132,7 +132,7 @@ cd total-audio-promo-agent/
 - **Monday.com**: Board `2443582331`
 - **Focus**: Radio promotion, press releases, artist management
 
-### **Total Audio Promo Agent** (Future)
+### **Total Audio Promo Agent**(Future)
 
 - **Location**: `/tools/agents/total-audio-promo/`
 - **Purpose**: Total Audio Promo business operations
@@ -144,12 +144,12 @@ cd total-audio-promo-agent/
 
 | Component               | Liberty Agent       | Total Audio Promo Agent |
 | ----------------------- | ------------------- | ----------------------- |
-| **Core System**         |  Ready            |  Planned              |
-| **Gmail Integration**   |  Liberty email    |  Total Audio email    |
-| **Monday.com**          |  Board 2443582331 |  Total Audio boards   |
-| **MCP Integration**     |  Ready            |  Copy from Liberty    |
-| **Press Releases**      |  Ready            |  Adapt for business   |
-| **Campaign Management** |  Ready            |  Adapt for SaaS       |
+| **Core System**        |  Ready            |  Planned              |
+| **Gmail Integration**  |  Liberty email    |  Total Audio email    |
+| **Monday.com**         |  Board 2443582331 |  Total Audio boards   |
+| **MCP Integration**    |  Ready            |  Copy from Liberty    |
+| **Press Releases**     |  Ready            |  Adapt for business   |
+| **Campaign Management**|  Ready            |  Adapt for SaaS       |
 
 ## **Ready to Use!**
 
@@ -159,6 +159,6 @@ cd total-audio-promo-agent/
 
 **Would you like me to:**
 
-1. **Test the Liberty agent** with your Monday.com API key?
-2. **Start building the Total Audio Promo agent** based on the Liberty agent?
-3. **Set up the MCP integration** for Gmail/Drive/Calendar?
+1. **Test the Liberty agent**with your Monday.com API key?
+2. **Start building the Total Audio Promo agent**based on the Liberty agent?
+3. **Set up the MCP integration**for Gmail/Drive/Calendar?

@@ -55,8 +55,8 @@ CONVERTKIT_API_SECRET=your_api_secret_here
 
 To enable automatic weekly scheduling:
 
-1. **Deploy to Vercel** (if not already deployed)
-2. **Add the cron configuration** to your Vercel project:
+1. **Deploy to Vercel**(if not already deployed)
+2. **Add the cron configuration**to your Vercel project:
    - Go to Vercel Dashboard → Your Project → Settings → Functions
    - Add the cron job from `vercel-cron.json`
 
@@ -72,17 +72,17 @@ To enable automatic weekly scheduling:
 ### **Manual Workflow:**
 
 1. **Go to Dashboard**: `/newsletter-dashboard`
-2. **Click "🤖 Generate Weekly Intelligence"** - Analyzes underground music news
-3. **Click "📧 Create ConvertKit Draft"** - Creates draft in ConvertKit
-4. **Review in ConvertKit** - Check the draft in your ConvertKit dashboard
-5. **Click "📤 Send Draft"** - Sends to all subscribers
+2. **Click "🤖 Generate Weekly Intelligence"**- Analyzes underground music news
+3. **Click "📧 Create ConvertKit Draft"**- Creates draft in ConvertKit
+4. **Review in ConvertKit**- Check the draft in your ConvertKit dashboard
+5. **Click "📤 Send Draft"**- Sends to all subscribers
 
 ### **Automatic Workflow:**
 
-1. **Set up ConvertKit credentials** (see above)
-2. **Deploy with Vercel Cron** - Agent runs every Sunday at 9 AM
-3. **Wake up to ready newsletter** - Draft created automatically
-4. **Review and send** - One click to send to subscribers
+1. **Set up ConvertKit credentials**(see above)
+2. **Deploy with Vercel Cron**- Agent runs every Sunday at 9 AM
+3. **Wake up to ready newsletter**- Draft created automatically
+4. **Review and send**- One click to send to subscribers
 
 ## 📊 Dashboard Features
 
@@ -161,11 +161,11 @@ To enable automatic weekly scheduling:
 
 ## 📈 Next Steps
 
-1. **Add ConvertKit credentials** to `.env.local`
-2. **Test the dashboard** - Generate intelligence and create draft
-3. **Deploy to Vercel** with cron jobs enabled
-4. **Monitor performance** - Check subscriber growth and engagement
-5. **Optimize content** - Adjust AI prompts based on performance
+1. **Add ConvertKit credentials**to `.env.local`
+2. **Test the dashboard**- Generate intelligence and create draft
+3. **Deploy to Vercel**with cron jobs enabled
+4. **Monitor performance**- Check subscriber growth and engagement
+5. **Optimize content**- Adjust AI prompts based on performance
 
 ## 🎵 Success Metrics
 

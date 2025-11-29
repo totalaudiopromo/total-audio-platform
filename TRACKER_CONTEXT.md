@@ -11,7 +11,7 @@ _Everything you need to know about the Tracker tool_
 
 ## CURRENT ROLE
 
-**Supporting Audio Intel** - Provides campaign tracking for paying customers, not primary revenue driver
+**Supporting Audio Intel**- Provides campaign tracking for paying customers, not primary revenue driver
 
 ## WHAT'S PROVEN & WORKING
 
@@ -99,7 +99,7 @@ npm run db:seed               # Seed demo data
 
 **Workflow**:
 
-1. User enriches contacts in **Audio Intel** (saves 15 hours)
+1. User enriches contacts in **Audio Intel**(saves 15 hours)
 2. User imports enriched contacts into **Tracker**
 3. User creates campaign and tracks submissions
 4. User sees response rates and follow-up opportunities

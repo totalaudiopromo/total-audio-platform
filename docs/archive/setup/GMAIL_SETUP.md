@@ -31,7 +31,7 @@ This guide will help you set up Gmail integration for Total Audio Promo to track
    - **Authorized JavaScript origins**: `http://localhost:3000`
    - **Authorized redirect URIs**: `http://localhost:3001/api/gmail/callback`
 5. Click "Create"
-6. Copy the **Client ID** and **Client Secret**
+6. Copy the **Client ID**and **Client Secret**
 
 ## Step 2: Environment Variables
 

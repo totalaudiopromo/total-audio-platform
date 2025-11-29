@@ -1,4 +1,4 @@
-#  AUDIO INTEL - WEEK 1 CONTENT CALENDAR
+# AUDIO INTEL - WEEK 1 CONTENT CALENDAR
 
 _Notion-Powered Social Media Posts for Beta User Acquisition_
 

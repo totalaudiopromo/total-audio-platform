@@ -13,7 +13,7 @@
 
 ### Step 1: Authorize LinkedIn App
 
-**Authorization URL** (open this in your browser):
+**Authorization URL**(open this in your browser):
 
 ```
 https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=781ioptlbwi0ok&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauth%2Flinkedin%2Fcallback&state=bqzng8&scope=openid%20profile%20email%20w_member_social
@@ -23,7 +23,7 @@ https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=781
 
 1. LinkedIn will ask you to authorize the app
 2. You'll be redirected to: `http://localhost:3000/auth/linkedin/callback?code=XXX&state=XXX`
-3. **Copy the entire `code` parameter value** (the XXX part after `code=`)
+3. **Copy the entire `code` parameter value**(the XXX part after `code=`)
 4. The terminal script is waiting for you to paste it
 
 ### Step 3: Get the access token
@@ -57,7 +57,7 @@ After LinkedIn is done, you'll need to set up Threads:
 
 - [ ] Do you have a **Business Instagram account**?
 - [ ] Is it connected to a **Facebook Page**?
-- [ ] Do you have access to **Facebook Developer** portal?
+- [ ] Do you have access to **Facebook Developer**portal?
 
 If yes to all three → Run: `npx tsx scripts/get-threads-token.ts`
 
@@ -97,7 +97,7 @@ curl -X POST https://intel.totalaudiopromo.com/api/cron/social-posting \
 
 ## What's Already Working
 
-The autonomous posting system is **fully built** and **ready to go**:
+The autonomous posting system is **fully built**and **ready to go**:
 
 -  Bluesky agent working
 -  Content calendar created (CONTENT_CALENDAR.json)

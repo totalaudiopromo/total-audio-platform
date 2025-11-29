@@ -120,7 +120,7 @@ Audio Intel accuracy: 94%+ (verified, current)
 Generic pitching (manual research): 8-12% response
 Personalised pitching (Audio Intel data): 30-35% response
 
-**Why?** Radio presenters can tell when you've actually researched their show.
+**Why?**Radio presenters can tell when you've actually researched their show.
 
 ---
 

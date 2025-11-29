@@ -1,4 +1,4 @@
-#  DEPLOY MOBILE FIXES TO PRODUCTION
+# DEPLOY MOBILE FIXES TO PRODUCTION
 
 Your mobile sidebar fixes are ready but not yet live. Here's how to deploy them:
 
@@ -6,7 +6,7 @@ Your mobile sidebar fixes are ready but not yet live. Here's how to deploy them:
 
 Vercel is blocking auto-deploys because the commits are authored by `chris@totalaudiopromo.com`, which is not a user on the project team.
 
-1. **Invite the email to Vercel**  
+1. **Invite the email to Vercel** 
    Vercel dashboard → Team → Members → “Invite Member” → enter `chris@totalaudiopromo.com`.  
    Once the invite is accepted, the next push to `main` will deploy automatically.
 
@@ -20,7 +20,7 @@ Vercel is blocking auto-deploys because the commits are authored by `chris@total
 
    Use this only if you prefer to keep the team membership unchanged.
 
-3. **Confirm the webhook delivery**  
+3. **Confirm the webhook delivery** 
    GitHub → Repo → Settings → Webhooks → Vercel hook → “Recent Deliveries” — look for a `200` response on the latest push. Re-deliver if needed.
 
 ## Changes Ready to Deploy (Commit: 43282db)

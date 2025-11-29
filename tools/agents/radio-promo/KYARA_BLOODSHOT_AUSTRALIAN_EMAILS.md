@@ -229,11 +229,11 @@ chrisschofield@libertymusicpr.com
 
 **Send Priority**:
 
-1. **Anika Luna** (Home & Hosed) - SEND TODAY
-2. **Claire Mooney** (Music Director) - Send tomorrow or after Anika response
-3. **Triple R** - Send today/tomorrow
-4. **PBS FM** - Send today/tomorrow
-5. **KIIS 106.5** - Send within 48 hours
+1. **Anika Luna**(Home & Hosed) - SEND TODAY
+2. **Claire Mooney**(Music Director) - Send tomorrow or after Anika response
+3. **Triple R**- Send today/tomorrow
+4. **PBS FM**- Send today/tomorrow
+5. **KIIS 106.5**- Send within 48 hours
 
 ---
 
@@ -269,7 +269,7 @@ chrisschofield@libertymusicpr.com
 - Keep it brief
 - Reference Sydney local angle
 
-**General follow-up** (if needed after 5 days):
+**General follow-up**(if needed after 5 days):
 
 ```
 Hi [Name],
@@ -294,11 +294,11 @@ Chris
 
 **Why This Campaign Is Strong**:
 
-1. **Local artist angle** - KYARA is Sydney-based (huge for Australian radio)
-2. **Proven support** - Triple J Home & Hosed has already backed her
-3. **Authentic story** - Bedroom producer, self-sufficient, independent
-4. **Professional quality** - Self-produced but sounds polished
-5. **Relatable narrative** - Empowerment anthem (broad appeal)
+1. **Local artist angle**- KYARA is Sydney-based (huge for Australian radio)
+2. **Proven support**- Triple J Home & Hosed has already backed her
+3. **Authentic story**- Bedroom producer, self-sufficient, independent
+4. **Professional quality**- Self-produced but sounds polished
+5. **Relatable narrative**- Empowerment anthem (broad appeal)
 
 **Timing**:
 

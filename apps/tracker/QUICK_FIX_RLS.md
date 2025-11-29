@@ -18,7 +18,7 @@ Apply the SQL fix via Supabase Dashboard:
 ### Step 1: Open Supabase SQL Editor
 
 1. Go to: https://app.supabase.com/project/ucncbighzqudaszewjrv
-2. Click **SQL Editor** in the left sidebar
+2. Click **SQL Editor**in the left sidebar
 3. Click **New Query**
 
 ### Step 2: Copy and Paste This SQL
@@ -75,7 +75,7 @@ CREATE POLICY "Users can delete own collaborator records" ON campaign_collaborat
 
 ### Step 3: Run the Query
 
-1. Click **Run** (or press Cmd+Enter / Ctrl+Enter)
+1. Click **Run**(or press Cmd+Enter / Ctrl+Enter)
 2. You should see: "Success. No rows returned"
 
 ### Step 4: Verify the Fix
@@ -86,9 +86,9 @@ CREATE POLICY "Users can delete own collaborator records" ON campaign_collaborat
 
 ## What This Fix Does
 
-- **Removes all cross-table policy checks** that were causing recursion
-- **Creates simple policies** that only check `user_id` directly
-- **Allows users to manage their own collaborator records** without recursion
+- **Removes all cross-table policy checks**that were causing recursion
+- **Creates simple policies**that only check `user_id` directly
+- **Allows users to manage their own collaborator records**without recursion
 
 ## Alternative: If You Prefer Command Line
 

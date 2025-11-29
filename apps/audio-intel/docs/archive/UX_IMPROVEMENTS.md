@@ -39,7 +39,7 @@
 - Option B: Use icon-only cards on mobile, show text labels below
 - Option C: Hide the decorative text on mobile, keep only the card titles
 
-**Recommended Fix** (Option A):
+**Recommended Fix**(Option A):
 
 ```tsx
 // Update the workflow cards to be responsive
@@ -163,15 +163,15 @@ This gets users to the action faster.
 
 ## 💡 Quick Wins (15 mins each)
 
-1. **Remove duplicate heading** - 2 minutes
+1. **Remove duplicate heading**- 2 minutes
    - File: `/app/demo/page.tsx` line 324
    - Action: Delete the heading, keep component version
 
-2. **Fix mobile workflow diagram** - 15 minutes
+2. **Fix mobile workflow diagram**- 15 minutes
    - File: `/components/SpreadsheetUploader.tsx`
    - Action: Add responsive classes for vertical/horizontal text
 
-3. **Test actual CSV upload** - 10 minutes
+3. **Test actual CSV upload**- 10 minutes
    - Create test CSV with 5 contacts
    - Upload and verify enrichment works
    - Check export functionality
@@ -212,22 +212,22 @@ This gets users to the action faster.
 
 | Category             | Score | Notes                                    |
 | -------------------- | ----- | ---------------------------------------- |
-| **Desktop UX**       | 9/10  | Excellent, minor duplicate heading issue |
-| **Mobile UX**        | 7/10  | Good, needs workflow diagram fix         |
-| **Visual Design**    | 10/10 | Outstanding brutalist execution          |
-| **Copy & Messaging** | 9/10  | Clear, authentic, compelling             |
-| **Performance**      | ✅    | Fast load times, no blocking issues      |
-| **Market Readiness** | 8/10  | Ready to launch with 2 quick fixes       |
+| **Desktop UX**      | 9/10  | Excellent, minor duplicate heading issue |
+| **Mobile UX**       | 7/10  | Good, needs workflow diagram fix         |
+| **Visual Design**   | 10/10 | Outstanding brutalist execution          |
+| **Copy & Messaging**| 9/10  | Clear, authentic, compelling             |
+| **Performance**     | ✅    | Fast load times, no blocking issues      |
+| **Market Readiness**| 8/10  | Ready to launch with 2 quick fixes       |
 
 ---
 
 ## 🎯 Recommended Launch Sequence
 
-1. **NOW** (30 mins):
+1. **NOW**(30 mins):
    - Remove duplicate heading
    - Fix mobile workflow diagram text
 
-2. **Before First Demo Call** (1 hour):
+2. **Before First Demo Call**(1 hour):
    - Test complete CSV upload → enrichment → export flow
    - Verify Stripe checkout works with test card
    - Check ConvertKit email sequence triggers

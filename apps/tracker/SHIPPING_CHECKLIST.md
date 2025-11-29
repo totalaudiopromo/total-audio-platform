@@ -1,4 +1,4 @@
-#  TRACKER - SHIPPING CHECKLIST
+# TRACKER - SHIPPING CHECKLIST
 
 **Target**: Ship to production tonight
 **Timeline**: 2-3 hours total
@@ -8,11 +8,11 @@
 
 ## COMPLETED TONIGHT
 
-- [x] **Stripe keys added** to .env.local (LIVE keys ready)
-- [x] **Export button** added to dashboard
-- [x] **Loading states** confirmed working on forms
-- [x] **Seed data script** created for demo campaigns
-- [x] **Database migration** review complete (010_tracker_prd_schema.sql is latest)
+- [x] **Stripe keys added**to .env.local (LIVE keys ready)
+- [x] **Export button**added to dashboard
+- [x] **Loading states**confirmed working on forms
+- [x] **Seed data script**created for demo campaigns
+- [x] **Database migration**review complete (010_tracker_prd_schema.sql is latest)
 
 ---
 
@@ -74,20 +74,20 @@ cd /Users/chrisschofield/workspace/active/total-audio-platform/apps/tracker
 npm run dev
 ```
 
-- [ ] **Sign up** works (no email confirmation needed)
-- [ ] **Dashboard** loads with empty state
-- [ ] **Create campaign** works
+- [ ] **Sign up**works (no email confirmation needed)
+- [ ] **Dashboard**loads with empty state
+- [ ] **Create campaign**works
   - Fill in: name, platform, genre, budget, dates, reach
   - Click "Create Campaign"
   - Verify appears in list
-- [ ] **Intelligence shows** (if platform + genre match benchmarks)
+- [ ] **Intelligence shows**(if platform + genre match benchmarks)
   - Should see "X% above/below average"
   - Should see cost per result comparison
-- [ ] **Edit campaign** works
-- [ ] **Delete campaign** works
-- [ ] **Export CSV** works
-- [ ] **Sign out** works
-- [ ] **Sign in** works with existing account
+- [ ] **Edit campaign**works
+- [ ] **Delete campaign**works
+- [ ] **Export CSV**works
+- [ ] **Sign out**works
+- [ ] **Sign in**works with existing account
 
 **B. Test Payment Flow (Optional - can test in production)**
 
@@ -176,7 +176,7 @@ git push origin main
 6. **Output Directory**: `.next`
 7. **Install Command**: `npm install`
 
-8. **Environment Variables** (Add all from .env.production above)
+8. **Environment Variables**(Add all from .env.production above)
 
 9. **Deploy**
 
@@ -186,15 +186,15 @@ git push origin main
    - Go to "Domains"
    - Add: `tracker.totalaudiopromo.com`
 
-2. **In Your DNS Provider** (wherever totalaudiopromo.com is hosted):
+2. **In Your DNS Provider**(wherever totalaudiopromo.com is hosted):
    - Type: `CNAME`
    - Name: `tracker`
    - Value: `cname.vercel-dns.com`
    - TTL: `Auto` or `3600`
 
-3. **Wait for DNS** (5-15 minutes)
+3. **Wait for DNS**(5-15 minutes)
 
-4. **Verify SSL** (auto-issued by Vercel)
+4. **Verify SSL**(auto-issued by Vercel)
 
 ---
 
@@ -202,14 +202,14 @@ git push origin main
 
 **Once deployed to tracker.totalaudiopromo.com**:
 
-- [ ] **Homepage** loads correctly
-- [ ] **Sign up** creates account
-- [ ] **Dashboard** shows empty state
-- [ ] **Create campaign** works
-- [ ] **Intelligence features** show benchmarks
-- [ ] **Export CSV** downloads file
-- [ ] **Stripe checkout** redirects correctly
-- [ ] **Mobile responsive** (test on phone)
+- [ ] **Homepage**loads correctly
+- [ ] **Sign up**creates account
+- [ ] **Dashboard**shows empty state
+- [ ] **Create campaign**works
+- [ ] **Intelligence features**show benchmarks
+- [ ] **Export CSV**downloads file
+- [ ] **Stripe checkout**redirects correctly
+- [ ] **Mobile responsive**(test on phone)
 
 ---
 
@@ -221,12 +221,12 @@ git push origin main
 2. **Add endpoint**:
    - URL: `https://tracker.totalaudiopromo.com/api/stripe/webhook`
    - Events: Select all `customer.subscription.*` events
-3. **Copy signing secret** (starts with `whsec_`)
-4. **Add to Vercel** environment variables:
+3. **Copy signing secret**(starts with `whsec_`)
+4. **Add to Vercel**environment variables:
    ```
    STRIPE_WEBHOOK_SECRET=whsec_...
    ```
-5. **Redeploy** to apply webhook secret
+5. **Redeploy**to apply webhook secret
 
 **B. Update Audio Intel Cross-Links**
 
@@ -309,7 +309,7 @@ tracker.totalaudiopromo.com
 
 If something breaks in production:
 
-1. **Vercel Dashboard** → Click "Rollback to previous deployment"
+1. **Vercel Dashboard**→ Click "Rollback to previous deployment"
 2. **Or**: Update environment variable and redeploy
 3. **Or**: Fix code locally, commit, auto-deploys
 

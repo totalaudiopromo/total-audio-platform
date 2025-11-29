@@ -10,7 +10,7 @@
 
 ## Email 1: The Problem (Send immediately)
 
-**Subject:** Stop wasting 15 hours a week on radio research
+**Subject:**Stop wasting 15 hours a week on radio research
 
 Hey {{first_name}},
 
@@ -40,7 +40,7 @@ P.S. Built this because I was sick of paying £300/month for Cision when I only 
 
 ## Email 2: The Solution (Send after 3 days)
 
-**Subject:** Here's exactly how Audio Intel works
+**Subject:**Here's exactly how Audio Intel works
 
 {{first_name}},
 
@@ -82,7 +82,7 @@ Chris
 
 ## Email 3: The Close (Send after 3 more days)
 
-**Subject:** Last thing on Audio Intel
+**Subject:**Last thing on Audio Intel
 
 {{first_name}},
 
@@ -133,7 +133,7 @@ P.S. If you've got questions, just reply. I actually read these.
 - Location: United Kingdom
 - Industry: Music
 
-**Goal:** 30-50 contacts to start
+**Goal:**30-50 contacts to start
 
 ### Facebook Groups
 
@@ -152,9 +152,9 @@ P.S. If you've got questions, just reply. I actually read these.
 
 ### Week 1 (30 minutes total)
 
-- **Day 1:** LinkedIn search, add 30 contacts to CSV (15 mins)
-- **Day 1:** ConvertKit setup, upload CSV (10 mins)
-- **Day 1:** Schedule 3-email sequence (5 mins)
+- **Day 1:**LinkedIn search, add 30 contacts to CSV (15 mins)
+- **Day 1:**ConvertKit setup, upload CSV (10 mins)
+- **Day 1:**Schedule 3-email sequence (5 mins)
 
 ### Week 2 (Monitor)
 
@@ -227,6 +227,6 @@ P.S. If you've got questions, just reply. I actually read these.
 
 This is a proven outreach system for SaaS. The emails are ready to send as-is, but personalise if you want.
 
-**Key metric:** If you're not getting 30%+ open rates, your subject lines need work. If you're not getting 5%+ click rates, your offer needs work.
+**Key metric:**If you're not getting 30%+ open rates, your subject lines need work. If you're not getting 5%+ click rates, your offer needs work.
 
 Start with 30 contacts. Test. Scale what works.

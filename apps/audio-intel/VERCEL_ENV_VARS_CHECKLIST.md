@@ -33,7 +33,7 @@ TWITTER_ACCESS_SECRET=your_access_secret_here
 3. Generate keys under "Keys and tokens"
 4. Set permissions to "Read and Write"
 
-**Documentation:** `TWITTER_AGENT_README.md`
+**Documentation:**`TWITTER_AGENT_README.md`
 
 ---
 
@@ -52,7 +52,7 @@ LINKEDIN_ACCESS_TOKEN=your_access_token_here
 3. Request "Share on LinkedIn" product access
 4. Complete OAuth2 flow for access token
 
-**Documentation:** `LINKEDIN_OAUTH_SETUP.md`
+**Documentation:**`LINKEDIN_OAUTH_SETUP.md`
 
 ---
 
@@ -73,7 +73,7 @@ FACEBOOK_APP_SECRET=your_facebook_app_secret_here
 4. Get Instagram Business Account ID
 5. Generate long-lived access token (60 days)
 
-**Documentation:** `THREADS_QUICK_START.md`
+**Documentation:**`THREADS_QUICK_START.md`
 
 ---
 
@@ -128,16 +128,16 @@ Replace `YOUR_CRON_SECRET` with your generated secret.
 
 ## Checklist
 
-- [x] **Bluesky** credentials added
-- [ ] **Twitter/X** credentials added
-- [ ] **LinkedIn** credentials added
-- [ ] **Threads** credentials added
-- [ ] **CRON_SECRET** generated and added
+- [x] **Bluesky**credentials added
+- [ ] **Twitter/X**credentials added
+- [ ] **LinkedIn**credentials added
+- [ ] **Threads**credentials added
+- [ ] **CRON_SECRET**generated and added
 - [ ] Code deployed to Vercel
 - [ ] Manual test successful
 - [ ] Monitoring first automated post
 
 ---
 
-**Current Status:** Bluesky ready, awaiting other platform credentials
-**Next Cron Run:** Check Vercel dashboard for next scheduled time (9am or 5pm UK)
+**Current Status:**Bluesky ready, awaiting other platform credentials
+**Next Cron Run:**Check Vercel dashboard for next scheduled time (9am or 5pm UK)

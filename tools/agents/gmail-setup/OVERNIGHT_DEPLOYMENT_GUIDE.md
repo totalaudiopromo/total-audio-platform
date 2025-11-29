@@ -35,13 +35,13 @@ cd /Users/chrisschofield/workspace/active/total-audio-platform/tools/agents/gmai
 
 This runs through 5 phases:
 
-1. **Gmail Filter Fix** - Deletes all old broken filters, creates precise new ones
-2. **Bulk Email Fix** - Re-labels all existing misclassified emails
-3. **Autopilot Setup** - Installs hourly cron job for maintenance
-4. **Drive Sync** - Creates color-coded folder structure
-5. **Calendar Sync** - Creates color-coded calendar system
+1. **Gmail Filter Fix**- Deletes all old broken filters, creates precise new ones
+2. **Bulk Email Fix**- Re-labels all existing misclassified emails
+3. **Autopilot Setup**- Installs hourly cron job for maintenance
+4. **Drive Sync**- Creates color-coded folder structure
+5. **Calendar Sync**- Creates color-coded calendar system
 
-**Time:** ~10-15 minutes total (mostly automated)
+**Time:**~10-15 minutes total (mostly automated)
 
 ## What Gets Created
 
@@ -209,12 +209,12 @@ After deployment, check:
 
 ### Why This Works (Unlike CC's Attempts)
 
-1. **Deletes old filters first** - CC probably kept adding conflicting filters
-2. **Uses exact email patterns** - Based on your actual inbox screenshot
-3. **Bulk fixes existing mess** - Not just "going forward"
-4. **Explicit exclusions** - Filters specifically exclude Otter, Gemini, marketing
-5. **Automated maintenance** - Runs every hour forever
-6. **Unified color system** - Gmail + Drive + Calendar all match
+1. **Deletes old filters first**- CC probably kept adding conflicting filters
+2. **Uses exact email patterns**- Based on your actual inbox screenshot
+3. **Bulk fixes existing mess**- Not just "going forward"
+4. **Explicit exclusions**- Filters specifically exclude Otter, Gemini, marketing
+5. **Automated maintenance**- Runs every hour forever
+6. **Unified color system**- Gmail + Drive + Calendar all match
 
 ### Filter Logic
 
@@ -256,13 +256,13 @@ All labels, folders, and calendars work on:
 
 Consistent across Gmail, Drive, and Calendar:
 
--  **Green** - Active work (campaigns, current projects)
--  **Orange** - Station feedback and assets
--  **Blue** - Needs action (urgent)
--  **Yellow** - Completed (recent wins)
--  **Red** - Archive or important deadlines
--  **Purple** - Personal tools and team coordination
--  **Grey** - Marketing noise (archived)
+-  **Green**- Active work (campaigns, current projects)
+-  **Orange**- Station feedback and assets
+-  **Blue**- Needs action (urgent)
+-  **Yellow**- Completed (recent wins)
+-  **Red**- Archive or important deadlines
+-  **Purple**- Personal tools and team coordination
+-  **Grey**- Marketing noise (archived)
 
 ## Troubleshooting
 
@@ -358,8 +358,8 @@ cd /Users/chrisschofield/workspace/active/total-audio-platform/tools/agents/gmai
 ./deploy-overnight.sh
 ```
 
-**Time:** 10-15 minutes
-**Effort:** Mostly automated
-**Result:** Wake up to perfectly organized workspace
+**Time:**10-15 minutes
+**Effort:**Mostly automated
+**Result:**Wake up to perfectly organized workspace
 
 **Actually getting this done tonight. Not like CC.**

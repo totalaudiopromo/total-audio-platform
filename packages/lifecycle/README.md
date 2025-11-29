@@ -4,11 +4,11 @@ User lifecycle tracking and email automation package for Total Audio Platform.
 
 ## Features
 
-- **Lifecycle Stage Tracking** - Track users through TRIAL → ACTIVE → AT_RISK → CHURNED → REACTIVATED
-- **Engagement Scoring** - Calculate 0-100 engagement scores based on activity, frequency, recency, and adoption
-- **Email Automation** - Automated ConvertKit email campaigns based on lifecycle transitions
-- **Churn Prevention** - Predict churn risk and trigger win-back campaigns
-- **Type-Safe** - Full TypeScript support with strict type checking
+- **Lifecycle Stage Tracking**- Track users through TRIAL → ACTIVE → AT_RISK → CHURNED → REACTIVATED
+- **Engagement Scoring**- Calculate 0-100 engagement scores based on activity, frequency, recency, and adoption
+- **Email Automation**- Automated ConvertKit email campaigns based on lifecycle transitions
+- **Churn Prevention**- Predict churn risk and trigger win-back campaigns
+- **Type-Safe**- Full TypeScript support with strict type checking
 
 ## Installation
 

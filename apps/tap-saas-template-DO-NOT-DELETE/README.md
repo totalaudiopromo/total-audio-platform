@@ -2,10 +2,10 @@
 
 ## THIS IS A TEMPLATE - DO NOT MODIFY DIRECTLY
 
-This is your clean, reusable starting point for all TAP mini-tools. **Duplicate this directory for each new tool** - never modify the template directly.
+This is your clean, reusable starting point for all TAP mini-tools. **Duplicate this directory for each new tool**- never modify the template directly.
 
- **Read first:** [`TEMPLATE_USAGE.md`](./TEMPLATE_USAGE.md) - Complete duplication workflow  
- **Design standards:** [`DESIGN_SYSTEM.md`](./DESIGN_SYSTEM.md) - Postcraft aesthetic guide
+ **Read first:**[`TEMPLATE_USAGE.md`](./TEMPLATE_USAGE.md) - Complete duplication workflow  
+ **Design standards:**[`DESIGN_SYSTEM.md`](./DESIGN_SYSTEM.md) - Postcraft aesthetic guide
 
 ---
 
@@ -84,7 +84,7 @@ See [`TEMPLATE_USAGE.md`](./TEMPLATE_USAGE.md) for the full step-by-step guide, 
 
 ## Design System
 
-- **Clean Postcraft aesthetic:** Bold borders, offset shadows, solid colours (no gradients!)
+- **Clean Postcraft aesthetic:**Bold borders, offset shadows, solid colours (no gradients!)
 - `app/globals.css` defines `.glass-panel`, `.cta-button`, `.subtle-button`, `.badge-postcraft`
 - `tailwind.config.ts` has brand colours for each tool
 - See [`DESIGN_SYSTEM.md`](./DESIGN_SYSTEM.md) for complete component reference
@@ -106,18 +106,18 @@ See [`TEMPLATE_USAGE.md`](./TEMPLATE_USAGE.md) for the full step-by-step guide, 
 
 ### Core Documentation (Root Level)
 
-- **[TEMPLATE_USAGE.md](./TEMPLATE_USAGE.md)** - How to duplicate and customise this template
-- **[DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md)** - Complete Postcraft aesthetic guide
-- **[QUICKSTART.md](./QUICKSTART.md)** - Development setup guide
+- **[TEMPLATE_USAGE.md](./TEMPLATE_USAGE.md)**- How to duplicate and customise this template
+- **[DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md)**- Complete Postcraft aesthetic guide
+- **[QUICKSTART.md](./QUICKSTART.md)**- Development setup guide
 
 ### Additional Documentation (`/docs/`)
 
-- **[docs/README.md](./docs/README.md)** - Complete documentation index
-- **Setup Guides:** Auth setup, configuration, integrations
-- **Reference:** Technical specs, feature docs
-- **Status Reports:** Historical completion notes (archive)
+- **[docs/README.md](./docs/README.md)**- Complete documentation index
+- **Setup Guides:**Auth setup, configuration, integrations
+- **Reference:**Technical specs, feature docs
+- **Status Reports:**Historical completion notes (archive)
 
-**Browse all docs:** [`/docs/`](./docs/)
+**Browse all docs:**[`/docs/`](./docs/)
 
 ## Tool-Specific Customisation
 

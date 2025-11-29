@@ -2,8 +2,8 @@
 
 ## Quick Setup Guide (5 Minutes)
 
-**Goal:** Add KYARA "Bloodshot" campaign to tracker.totalaudiopromo.com manually
-**When:** Thursday night (before Friday demo with Dan)
+**Goal:**Add KYARA "Bloodshot" campaign to tracker.totalaudiopromo.com manually
+**When:**Thursday night (before Friday demo with Dan)
 
 ---
 
@@ -11,9 +11,9 @@
 
 ### Step 1: Access Tracker & Create Campaign (2 minutes)
 
-1. **Visit:** https://tracker.totalaudiopromo.com/dashboard
-2. **Sign in** with your account
-3. **Click:** "+ New Campaign" button
+1. **Visit:**https://tracker.totalaudiopromo.com/dashboard
+2. **Sign in**with your account
+3. **Click:**"+ New Campaign" button
 4. **Fill in the form:**
 
 ```
@@ -51,7 +51,7 @@ UK TARGETS: Danny Howard, Pete Tong, Amazing Radio
 MONDAY 14th OCT: Release day email blast prepared (30+ contacts)
 ```
 
-5. **Click:** "Create Campaign"
+5. **Click:**"Create Campaign"
 
 ---
 
@@ -99,7 +99,7 @@ MONDAY 14th OCT: Release day email blast prepared (30+ contacts)
 
 ### Step 3: Verify Dashboard (1 minute)
 
-1. **Return to dashboard:** https://tracker.totalaudiopromo.com/dashboard
+1. **Return to dashboard:**https://tracker.totalaudiopromo.com/dashboard
 2. **Check you see:**
    - KYARA - Bloodshot campaign card
    - Status: Active
@@ -107,7 +107,7 @@ MONDAY 14th OCT: Release day email blast prepared (30+ contacts)
    - Stats: 15 contacts, 85 plays mentioned
    - Activity timeline showing 6 events
 
-3. **Take screenshots** for backup (5-6 screenshots):
+3. **Take screenshots**for backup (5-6 screenshots):
    - Dashboard overview
    - KYARA campaign card
    - Activity timeline
@@ -204,7 +204,7 @@ node add-kyara-campaign-to-tracker.js
 
 If you have Supabase service role key:
 
-1. **Get service role key** from Supabase dashboard:
+1. **Get service role key**from Supabase dashboard:
    - Visit: https://app.supabase.com/project/ucncbighzqudaszewjrv/settings/api
    - Copy "service_role" key (NOT anon key)
 
@@ -238,7 +238,7 @@ node add-kyara-campaign-to-tracker.js
 - Ability to show Dan how easy it is
 - No auth/permissions headaches
 
-**RECOMMENDATION:** Do manual setup Thursday night, 5 minutes, done.
+**RECOMMENDATION:**Do manual setup Thursday night, 5 minutes, done.
 
 ---
 
@@ -253,13 +253,13 @@ node add-kyara-campaign-to-tracker.js
 - [ ] Take 5-6 screenshots for backup
 - [ ] Review demo script (`FRIDAY_DEMO_PREP_COMPLETE.md`)
 
-**Time Required:** 10 minutes total
+**Time Required:**10 minutes total
 
 - 2 min: Create campaign
 - 5 min: Add 6 activities
 - 3 min: Verify & screenshot
 
-**Result:** Tracker ready to demo to Dan on Friday! 
+**Result:**Tracker ready to demo to Dan on Friday! 
 
 ---
 

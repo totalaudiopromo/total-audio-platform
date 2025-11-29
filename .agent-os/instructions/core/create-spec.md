@@ -182,8 +182,8 @@ Use the file-creator subagent to create the file: .agent-os/specs/YYYY-MM-DD-spe
   <template>
     ## Spec Scope
 
-    1. **[FEATURE_NAME]** - [ONE_SENTENCE_DESCRIPTION]
-    2. **[FEATURE_NAME]** - [ONE_SENTENCE_DESCRIPTION]
+    1. **[FEATURE_NAME]**- [ONE_SENTENCE_DESCRIPTION]
+    2. **[FEATURE_NAME]**- [ONE_SENTENCE_DESCRIPTION]
 
   </template>
   <constraints>
@@ -282,8 +282,8 @@ Use the file-creator subagent to create the file: sub-specs/technical-spec.md us
 
 [ONLY_IF_NEW_DEPENDENCIES_NEEDED]
 
-- **[LIBRARY_NAME]** - [PURPOSE]
-- **Justification:** [REASON_FOR_INCLUSION]
+- **[LIBRARY_NAME]**- [PURPOSE]
+- **Justification:**[REASON_FOR_INCLUSION]
   </example_template>
 
 <conditional_logic>
@@ -367,10 +367,10 @@ SKIP this_step
 
 ### [HTTP_METHOD] [ENDPOINT_PATH]
 
-**Purpose:** [DESCRIPTION]
-**Parameters:** [LIST]
-**Response:** [FORMAT]
-**Errors:** [POSSIBLE_ERRORS]
+**Purpose:**[DESCRIPTION]
+**Parameters:**[LIST]
+**Response:**[FORMAT]
+**Errors:**[POSSIBLE_ERRORS]
 </endpoint_template>
 
 </step>

@@ -8,7 +8,7 @@ You successfully got a LinkedIn access token, but it's giving a 403 error:
 ACCESS_DENIED: Not enough permissions to access: me.GET.NO_VERSION
 ```
 
-This means your LinkedIn app doesn't have the right **Products** enabled.
+This means your LinkedIn app doesn't have the right **Products**enabled.
 
 ---
 
@@ -24,11 +24,11 @@ Look for the app with Client ID: `781ioptlbwi0ok`
 
 ###Step 3: Add Required Products
 
-In your app dashboard, go to the **"Products"** tab.
+In your app dashboard, go to the **"Products"**tab.
 
-You need to add **ONE** of these products:
+You need to add **ONE**of these products:
 
-**Option A: "Share on LinkedIn"** (recommended for posting)
+**Option A: "Share on LinkedIn"**(recommended for posting)
 
 - Click "Request access" on "Share on LinkedIn"
 - This gives you `w_member_social` permission (needed for posting)
@@ -40,7 +40,7 @@ You need to add **ONE** of these products:
 - Includes posting + analytics
 - May require business verification
 
-**Start with Option A** - it's faster and exactly what we need.
+**Start with Option A**- it's faster and exactly what we need.
 
 ### Step 4: Verify Permissions
 
@@ -64,7 +64,7 @@ Run the script again:
 npx tsx scripts/get-linkedin-token-simple.ts
 ```
 
-Follow the prompts to get a **new** token with the correct permissions.
+Follow the prompts to get a **new**token with the correct permissions.
 
 ### Step 6: Update .env.local
 
@@ -84,8 +84,8 @@ Should now show: ` LinkedIn agent working correctly!`
 
 LinkedIn has a two-step permission model:
 
-1. **OAuth Scopes** (what you request in the authorization URL)  Done
-2. **App Products** (what LinkedIn approves for your app)  Missing
+1. **OAuth Scopes**(what you request in the authorization URL)  Done
+2. **App Products**(what LinkedIn approves for your app)  Missing
 
 We requested the right scopes (`w_member_social`), but your app doesn't have a Product that grants those scopes.
 

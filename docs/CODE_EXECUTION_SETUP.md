@@ -110,10 +110,10 @@ pnpm build
 
 The Testing Orchestrator skill (`/.claude/skills/testing-orchestrator/SKILL.md`) uses code execution to:
 
-1. **Execute Playwright tests** across all apps
-2. **Run validation scripts** (TypeScript, builds)
-3. **Coordinate parallel execution** via task-orchestrator patterns
-4. **Generate intelligent reports** from test results
+1. **Execute Playwright tests**across all apps
+2. **Run validation scripts**(TypeScript, builds)
+3. **Coordinate parallel execution**via task-orchestrator patterns
+4. **Generate intelligent reports**from test results
 
 ## Advanced Patterns
 
@@ -187,11 +187,11 @@ AI-powered test selection:
 
 ## Best Practices
 
-1. **Use Testing Orchestrator Skill** for all test execution
-2. **Run tests before commits** to catch regressions early
-3. **Leverage parallel execution** for speed
-4. **Focus on customer-facing tests** during acquisition phase
-5. **Generate reports** for stakeholder visibility
+1. **Use Testing Orchestrator Skill**for all test execution
+2. **Run tests before commits**to catch regressions early
+3. **Leverage parallel execution**for speed
+4. **Focus on customer-facing tests**during acquisition phase
+5. **Generate reports**for stakeholder visibility
 
 ## Troubleshooting
 

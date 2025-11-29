@@ -131,12 +131,12 @@ if (health.healthy) {
 
 Pre-configured threads mapped from `TWITTER_X_THREADS_RADIO_PROMOTERS.md`:
 
-1. **The 2AM Reality** - Origin story and problem awareness
-2. **The Contact Intelligence Reality** - Feature demonstration
-3. **The Brighton Producer Story** - Founder credibility and authenticity
-4. **The Submission Window Problem** - Urgency and time-saving benefits
-5. **The Cost Reality** - Pricing comparison and value proposition
-6. **The Response Rate Breakthrough** - Results and social proof
+1. **The 2AM Reality**- Origin story and problem awareness
+2. **The Contact Intelligence Reality**- Feature demonstration
+3. **The Brighton Producer Story**- Founder credibility and authenticity
+4. **The Submission Window Problem**- Urgency and time-saving benefits
+5. **The Cost Reality**- Pricing comparison and value proposition
+6. **The Response Rate Breakthrough**- Results and social proof
 
 Each thread contains 5-7 tweets with natural breaks and UTM tracking.
 
@@ -405,12 +405,12 @@ export async function GET() {
 
 ## Security Best Practices
 
-1. **Never commit credentials** - Use `.env.local` (gitignored)
-2. **Use environment variables** - Keep secrets out of code
-3. **Rotate tokens regularly** - Regenerate API keys periodically
-4. **Monitor API usage** - Watch for unusual activity
-5. **Use read/write permissions only** - Don't grant unnecessary access
-6. **Verify webhook signatures** - If using webhooks for automation
+1. **Never commit credentials**- Use `.env.local` (gitignored)
+2. **Use environment variables**- Keep secrets out of code
+3. **Rotate tokens regularly**- Regenerate API keys periodically
+4. **Monitor API usage**- Watch for unusual activity
+5. **Use read/write permissions only**- Don't grant unnecessary access
+6. **Verify webhook signatures**- If using webhooks for automation
 
 ## Troubleshooting
 

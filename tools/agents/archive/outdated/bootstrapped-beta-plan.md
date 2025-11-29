@@ -113,10 +113,10 @@ Looking for 20 more beta testers. Who's tired of manual research?
 
 ### **Reddit Communities (Free)**
 
-- **r/WeAreTheMusicMakers** (1.4M members)
-- **r/trapproduction** (200K+ members)
-- **r/edmproduction** (300K+ members)
-- **r/makinghiphop** (200K+ members)
+- **r/WeAreTheMusicMakers**(1.4M members)
+- **r/trapproduction**(200K+ members)
+- **r/edmproduction**(300K+ members)
+- **r/makinghiphop**(200K+ members)
 
 #### **Reddit Strategy**:
 
@@ -226,10 +226,10 @@ Looking for 20 more beta testers. Who's tired of manual research?
 
 ### **This Week**:
 
-1. **List everyone you know** in music industry (aim for 50+ contacts)
-2. **Send 5 personal messages per day** to your network
-3. **Post on LinkedIn** about looking for beta testers
-4. **Create simple landing page** explaining beta program
+1. **List everyone you know**in music industry (aim for 50+ contacts)
+2. **Send 5 personal messages per day**to your network
+3. **Post on LinkedIn**about looking for beta testers
+4. **Create simple landing page**explaining beta program
 
 ### **Next Week**:
 

@@ -183,11 +183,11 @@ Professional `/demo` page for Audio Intel showcasing contact enrichment capabili
 
 ### Pre-loaded Contacts (5 Real Industry Contacts)
 
-1. **Jack Saunders** - BBC Radio 1 (Presenter) - High Confidence
-2. **Nick Grimshaw** - BBC 6 Music (Presenter) - High Confidence
-3. **Clara Amfo** - BBC Radio 1 (Presenter) - High Confidence
-4. **Spotify Editorial** - Spotify (Playlist Curators) - Medium Confidence
-5. **Huw Stephens** - BBC Radio 1 & 6 Music (Presenter) - High Confidence
+1. **Jack Saunders**- BBC Radio 1 (Presenter) - High Confidence
+2. **Nick Grimshaw**- BBC 6 Music (Presenter) - High Confidence
+3. **Clara Amfo**- BBC Radio 1 (Presenter) - High Confidence
+4. **Spotify Editorial**- Spotify (Playlist Curators) - Medium Confidence
+5. **Huw Stephens**- BBC Radio 1 & 6 Music (Presenter) - High Confidence
 
 ### Data Includes
 

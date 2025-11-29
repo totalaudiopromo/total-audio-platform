@@ -1,4 +1,4 @@
-#  Total Audio - FREE Automation Quick Start
+# Total Audio - FREE Automation Quick Start
 
 **Monthly Cost**: £0
 **Time Saved**: 15-23 hours/week
@@ -21,12 +21,12 @@ This sets up 5 automation agents that run automatically with **zero monthly cost
 
 | Agent                 | Schedule        | Time Saved         | Cost   |
 | --------------------- | --------------- | ------------------ | ------ |
-| **Gmail Autopilot**   | Hourly          | 2-3 hrs/week       | £0     |
-| **Social Calendar**   | Weekly Sun 8pm  | 5-8 hrs/week       | £0     |
-| **Newsletter Gen**    | Weekly Mon 9am  | 3-4 hrs/week       | £0     |
-| **Data Cleanup**      | Weekly Sun 11pm | 1-2 hrs/week       | £0     |
-| **Station Discovery** | Weekly Tue 9am  | 4-6 hrs/week       | £0     |
-| **TOTAL**             | -               | **15-23 hrs/week** | **£0** |
+| **Gmail Autopilot**  | Hourly          | 2-3 hrs/week       | £0     |
+| **Social Calendar**  | Weekly Sun 8pm  | 5-8 hrs/week       | £0     |
+| **Newsletter Gen**   | Weekly Mon 9am  | 3-4 hrs/week       | £0     |
+| **Data Cleanup**     | Weekly Sun 11pm | 1-2 hrs/week       | £0     |
+| **Station Discovery**| Weekly Tue 9am  | 4-6 hrs/week       | £0     |
+| **TOTAL**            | -               | **15-23 hrs/week**| **£0**|
 
 ---
 
@@ -264,7 +264,7 @@ node social-media-scheduler.js generate
 
 ## Success Metrics
 
-**Week 1** (After Setup):
+**Week 1**(After Setup):
 
 -  5 agents running automatically
 -  Gmail organized hourly
@@ -273,7 +273,7 @@ node social-media-scheduler.js generate
 -  15-23 hrs/week saved
 -  £0 monthly costs
 
-**Week 4** (Fully Integrated):
+**Week 4**(Fully Integrated):
 
 -  Zero manual email sorting
 -  Social content pre-planned for month

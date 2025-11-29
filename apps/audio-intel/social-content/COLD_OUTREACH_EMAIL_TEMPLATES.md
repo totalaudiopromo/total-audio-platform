@@ -37,7 +37,7 @@ After 5+ years pitching to BBC Radio 1, I know exactly what contact intelligence
 
 If you're spending 15+ hours per campaign on research, I'd love to show you how Audio Intel can get that down to 2 minutes.
 
-**Free beta access** for radio promoters: https://intel.totalaudiopromo.com/beta?ref=cold_outreach_national
+**Free beta access**for radio promoters: https://intel.totalaudiopromo.com/beta?ref=cold_outreach_national
 
 Would appreciate 15 minutes on a call to show you how it works with your actual contact lists.
 

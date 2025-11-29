@@ -4,7 +4,7 @@
 
 **Critical Issue**: The promote step in `.github/workflows/golden-deploy.yml` was **ONLY passing 1 of 5 required Vercel project IDs**.
 
-**Fix Applied** (commit dfd4a63):
+**Fix Applied**(commit dfd4a63):
 
 - Added `VERCEL_PROJECT_ID_TRACKER`
 - Added `VERCEL_PROJECT_ID_PITCH_GENERATOR`
@@ -96,7 +96,7 @@ Value: [your-service-role-key]
 Environments:  Production   Preview   Development
 ```
 
-**IMPORTANT**: Check **ALL THREE** environment boxes (Production, Preview, Development) for each variable!
+**IMPORTANT**: Check **ALL THREE**environment boxes (Production, Preview, Development) for each variable!
 
 ---
 
@@ -104,7 +104,7 @@ Environments:  Production   Preview   Development
 
 #### audio-intel (prj_3rSBMs1gaZj8uSg2XyCW31tzeF60)
 
-**Additional variables needed** (beyond the 3 Supabase vars above):
+**Additional variables needed**(beyond the 3 Supabase vars above):
 
 ```
 STRIPE_SECRET_KEY=[your-stripe-secret]
@@ -128,7 +128,7 @@ NEXT_PUBLIC_APP_URL=https://tracker.totalaudiopromo.com
 NEXT_PUBLIC_BASE_URL=https://tracker.totalaudiopromo.com
 ```
 
-**Optional** (if using integrations):
+**Optional**(if using integrations):
 
 ```
 NEXT_PUBLIC_GOOGLE_SHEETS_CLIENT_ID=[your-google-client-id]
@@ -157,7 +157,7 @@ COMMAND_CENTRE_URL=https://command.totalaudiopromo.com
 AUDIO_INTEL_API_URL=https://intel.totalaudiopromo.com
 ```
 
-**Optional** (social media features):
+**Optional**(social media features):
 
 ```
 BLUESKY_IDENTIFIER=[your-handle].bsky.social
@@ -234,7 +234,7 @@ git tag v2.5.4-golden
 git push origin v2.5.4-golden
 ```
 
-This will be attempt **#34** - with:
+This will be attempt **#34**- with:
 
 - All 5 VERCEL*PROJECT_ID*\* vars in workflow (JUST FIXED)
 - All Supabase env vars in GitHub Secrets
@@ -246,9 +246,9 @@ This will be attempt **#34** - with:
 
 ## REFERENCE DOCUMENTS
 
-- **EXACT_ENV_VARS_NEEDED.md** - Complete environment variable reference
-- **reports/golden/final/verification-summary.md** - Infrastructure verification report
-- **GOLDEN_DEPLOY_FINAL_FIX.md** - Root cause analysis from 32 failed attempts
+- **EXACT_ENV_VARS_NEEDED.md**- Complete environment variable reference
+- **reports/golden/final/verification-summary.md**- Infrastructure verification report
+- **GOLDEN_DEPLOY_FINAL_FIX.md**- Root cause analysis from 32 failed attempts
 
 ---
 
@@ -260,11 +260,11 @@ This will be attempt **#34** - with:
 
 ### Issue: "Database query failed" in golden-check
 
-**Solution**: Ensure SUPABASE_SERVICE_ROLE_KEY is set in **Vercel project settings** (not just GitHub Secrets)
+**Solution**: Ensure SUPABASE_SERVICE_ROLE_KEY is set in **Vercel project settings**(not just GitHub Secrets)
 
 ### Issue: "Cannot read environment variable NEXT_PUBLIC_SUPABASE_URL"
 
-**Solution**: Check you've ticked **all 3 environment boxes** in Vercel (Production, Preview, Development)
+**Solution**: Check you've ticked **all 3 environment boxes**in Vercel (Production, Preview, Development)
 
 ### Issue: Promotion step says "No preview deployment found"
 

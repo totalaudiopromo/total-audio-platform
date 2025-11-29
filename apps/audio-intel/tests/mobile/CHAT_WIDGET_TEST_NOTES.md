@@ -270,7 +270,7 @@ test.describe('Chat Widget Mobile Experience', () => {
 
 ## Current Test Coverage Status
 
-###  Validated
+### Validated
 
 - Touch target sizes (all buttons including chat widget)
 - Scroll behavior conflicts
@@ -278,12 +278,12 @@ test.describe('Chat Widget Mobile Experience', () => {
 - Body scroll lock mechanism
 - General mobile accessibility
 
-###  Partial Coverage
+### Partial Coverage
 
 - Chat widget button visibility (covered by general button tests)
 - Z-index hierarchy (validated indirectly)
 
-###  Not Yet Tested
+### Not Yet Tested
 
 - Chat opening/closing flow
 - Message sending functionality

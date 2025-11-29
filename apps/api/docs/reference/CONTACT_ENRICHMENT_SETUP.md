@@ -133,11 +133,11 @@ The system includes built-in rate limiting (1 second between requests) to avoid 
 
 Based on your 210+ radio contacts:
 
-- **~150-180 successful enrichments** (stations with known domains)
-- **Enhanced contact data** for each radio station
-- **Submission guidelines** for music promotion
-- **DJ and show information** for targeted outreach
-- **Social media links** for additional contact methods
+- **~150-180 successful enrichments**(stations with known domains)
+- **Enhanced contact data**for each radio station
+- **Submission guidelines**for music promotion
+- **DJ and show information**for targeted outreach
+- **Social media links**for additional contact methods
 
 ## Troubleshooting
 
@@ -224,4 +224,4 @@ To add support for new radio stations, edit `src/services/airtableContactEnrichm
 
 ---
 
-**Need Help?** Check the error logs or add new station mappings to expand coverage.
+**Need Help?**Check the error logs or add new station mappings to expand coverage.

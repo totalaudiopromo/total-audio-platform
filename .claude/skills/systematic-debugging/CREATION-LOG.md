@@ -27,12 +27,12 @@ Extracted debugging framework from `/Users/jesse/.claude/CLAUDE.md`:
 
 ## Structure Following skill-creation/SKILL.md
 
-1. **Rich when_to_use** - Included symptoms and anti-patterns
-2. **Type: technique** - Concrete process with steps
-3. **Keywords** - "root cause", "symptom", "workaround", "debugging", "investigation"
-4. **Flowchart** - Decision point for "fix failed" → re-analyze vs add more fixes
-5. **Phase-by-phase breakdown** - Scannable checklist format
-6. **Anti-patterns section** - What NOT to do (critical for this skill)
+1. **Rich when_to_use**- Included symptoms and anti-patterns
+2. **Type: technique**- Concrete process with steps
+3. **Keywords**- "root cause", "symptom", "workaround", "debugging", "investigation"
+4. **Flowchart**- Decision point for "fix failed" → re-analyze vs add more fixes
+5. **Phase-by-phase breakdown**- Scannable checklist format
+6. **Anti-patterns section**- What NOT to do (critical for this skill)
 
 ## Bulletproofing Elements
 
@@ -47,10 +47,10 @@ Framework designed to resist rationalization under pressure:
 
 ### Structural Defenses
 
-- **Phase 1 required** - Can't skip to implementation
-- **Single hypothesis rule** - Forces thinking, prevents shotgun fixes
-- **Explicit failure mode** - "IF your first fix doesn't work" with mandatory action
-- **Anti-patterns section** - Shows exactly what shortcuts look like
+- **Phase 1 required**- Can't skip to implementation
+- **Single hypothesis rule**- Forces thinking, prevents shotgun fixes
+- **Explicit failure mode**- "IF your first fix doesn't work" with mandatory action
+- **Anti-patterns section**- Shows exactly what shortcuts look like
 
 ### Redundancy
 
@@ -65,24 +65,24 @@ Created 4 validation tests following skills/meta/testing-skills-with-subagents:
 ### Test 1: Academic Context (No Pressure)
 
 - Simple bug, no time pressure
-- **Result:** Perfect compliance, complete investigation
+- **Result:**Perfect compliance, complete investigation
 
 ### Test 2: Time Pressure + Obvious Quick Fix
 
 - User "in a hurry", symptom fix looks easy
-- **Result:** Resisted shortcut, followed full process, found real root cause
+- **Result:**Resisted shortcut, followed full process, found real root cause
 
 ### Test 3: Complex System + Uncertainty
 
 - Multi-layer failure, unclear if can find root cause
-- **Result:** Systematic investigation, traced through all layers, found source
+- **Result:**Systematic investigation, traced through all layers, found source
 
 ### Test 4: Failed First Fix
 
 - Hypothesis doesn't work, temptation to add more fixes
-- **Result:** Stopped, re-analyzed, formed new hypothesis (no shotgun)
+- **Result:**Stopped, re-analyzed, formed new hypothesis (no shotgun)
 
-**All tests passed.** No rationalizations found.
+**All tests passed.**No rationalizations found.
 
 ## Iterations
 
@@ -112,7 +112,7 @@ Bulletproof skill that:
 
 ## Key Insight
 
-**Most important bulletproofing:** Anti-patterns section showing exact shortcuts that feel justified in the moment. When Claude thinks "I'll just add this one quick fix", seeing that exact pattern listed as wrong creates cognitive friction.
+**Most important bulletproofing:**Anti-patterns section showing exact shortcuts that feel justified in the moment. When Claude thinks "I'll just add this one quick fix", seeing that exact pattern listed as wrong creates cognitive friction.
 
 ## Usage Example
 
@@ -124,8 +124,8 @@ When encountering a bug:
 4. If tempted to skip - see anti-pattern, stop
 5. Complete all phases - root cause found
 
-**Time investment:** 5-10 minutes
-**Time saved:** Hours of symptom-whack-a-mole
+**Time investment:**5-10 minutes
+**Time saved:**Hours of symptom-whack-a-mole
 
 ---
 

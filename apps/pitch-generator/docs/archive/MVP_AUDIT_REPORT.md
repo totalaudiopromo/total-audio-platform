@@ -9,7 +9,7 @@
 
 ## 🎯 Executive Summary
 
-**The Gap**: Pitch Generator is **technically complete** but **marketing incomplete** compared to Audio Intel's professional standard.
+**The Gap**: Pitch Generator is **technically complete**but **marketing incomplete**compared to Audio Intel's professional standard.
 
 ### What's Working ✅
 
@@ -21,11 +21,11 @@
 
 ### Critical Marketing Gaps ❌
 
-1. **SEO metadata incomplete** - No OpenGraph tags for social sharing
-2. **Pricing copy is template boilerplate** - Needs pitch-specific value proposition
-3. **No social proof or case studies** - Missing credibility signals
-4. **Homepage copy too vague** - "500+ campaigns" unverified claim
-5. **Free trial mentioned but not implemented** - Inconsistent messaging
+1. **SEO metadata incomplete**- No OpenGraph tags for social sharing
+2. **Pricing copy is template boilerplate**- Needs pitch-specific value proposition
+3. **No social proof or case studies**- Missing credibility signals
+4. **Homepage copy too vague**- "500+ campaigns" unverified claim
+5. **Free trial mentioned but not implemented**- Inconsistent messaging
 
 ---
 
@@ -33,16 +33,16 @@
 
 | Element                 | Audio Intel                                   | Pitch Generator                                  | Gap          |
 | ----------------------- | --------------------------------------------- | ------------------------------------------------ | ------------ |
-| **SEO Metadata**        | ✅ Full OpenGraph + Twitter Cards             | ❌ Basic title + description only                | **CRITICAL** |
-| **Social Proof**        | ✅ BBC Radio 1, Spotify case studies          | ⚠️ Vague "500+ campaigns"                        | **HIGH**     |
-| **Pricing Copy**        | ✅ Time savings calculator, specific features | ❌ Generic template boilerplate                  | **CRITICAL** |
-| **Case Studies**        | ✅ Real contact enrichment examples           | ❌ No examples of generated pitches              | **HIGH**     |
-| **Founder Credibility** | ✅ Chris's 5+ years, BBC Radio 1 experience   | ❌ Not mentioned anywhere                        | **MEDIUM**   |
-| **CTA Strategy**        | ✅ Clear hierarchy, single primary CTA        | ⚠️ Multiple CTAs, unclear priority               | **MEDIUM**   |
-| **Free Trial**          | ✅ FREE tier (10 enrichments)                 | ❌ Claims "7-day free trial" but not implemented | **CRITICAL** |
-| **Mobile UX**           | ✅ 21 issues resolved, tested                 | ❓ Not tested yet                                | **MEDIUM**   |
-| **Analytics**           | ✅ Conversion tracking setup                  | ❌ No analytics installed                        | **HIGH**     |
-| **Onboarding**          | ✅ First-time user guidance                   | ❌ No welcome/tutorial flow                      | **HIGH**     |
+| **SEO Metadata**       | ✅ Full OpenGraph + Twitter Cards             | ❌ Basic title + description only                | **CRITICAL**|
+| **Social Proof**       | ✅ BBC Radio 1, Spotify case studies          | ⚠️ Vague "500+ campaigns"                        | **HIGH**    |
+| **Pricing Copy**       | ✅ Time savings calculator, specific features | ❌ Generic template boilerplate                  | **CRITICAL**|
+| **Case Studies**       | ✅ Real contact enrichment examples           | ❌ No examples of generated pitches              | **HIGH**    |
+| **Founder Credibility**| ✅ Chris's 5+ years, BBC Radio 1 experience   | ❌ Not mentioned anywhere                        | **MEDIUM**  |
+| **CTA Strategy**       | ✅ Clear hierarchy, single primary CTA        | ⚠️ Multiple CTAs, unclear priority               | **MEDIUM**  |
+| **Free Trial**         | ✅ FREE tier (10 enrichments)                 | ❌ Claims "7-day free trial" but not implemented | **CRITICAL**|
+| **Mobile UX**          | ✅ 21 issues resolved, tested                 | ❓ Not tested yet                                | **MEDIUM**  |
+| **Analytics**          | ✅ Conversion tracking setup                  | ❌ No analytics installed                        | **HIGH**    |
+| **Onboarding**         | ✅ First-time user guidance                   | ❌ No welcome/tutorial flow                      | **HIGH**    |
 
 ---
 
@@ -56,8 +56,8 @@
 
 ✅ **Strong value prop**: "Write 50 personalised pitches in 20 minutes"
 ✅ **Clear problem statement**: Lists 3 specific pain points
-❌ **Weak competitor positioning** (line 81): "Generic ChatGPT outputs sound robotic" - need stronger angle
-❌ **Unverified claim** (line 90): "30 seconds per pitch" - is this accurate?
+❌ **Weak competitor positioning**(line 81): "Generic ChatGPT outputs sound robotic" - need stronger angle
+❌ **Unverified claim**(line 90): "30 seconds per pitch" - is this accurate?
 
 **Recommended changes**:
 
@@ -154,7 +154,7 @@
 
 #### ❌ CRITICAL ISSUES - COMPLETE REWRITE NEEDED
 
-**Current pricing copy** (lines 12-30):
+**Current pricing copy**(lines 12-30):
 
 ```typescript
 blurb: 'Designed for indie promoters launching new audio products.',
@@ -210,7 +210,7 @@ const plans = [
 ];
 ```
 
-**Pricing page header** needs customer-facing copy (lines 86-91):
+**Pricing page header**needs customer-facing copy (lines 86-91):
 
 ```typescript
 // BEFORE (developer-facing):
@@ -231,7 +231,7 @@ const plans = [
 
 ### 3. SEO & Meta Tags
 
-**Current implementation** ([app/layout.tsx](app/layout.tsx):11-14):
+**Current implementation**([app/layout.tsx](app/layout.tsx):11-14):
 
 ```typescript
 export const metadata: Metadata = {
@@ -243,12 +243,12 @@ export const metadata: Metadata = {
 
 #### ❌ Missing Critical SEO Elements
 
-1. **No OpenGraph tags** - Social media previews won't work
-2. **No Twitter Card meta** - Twitter/X shares will look broken
-3. **No keywords** - Missing important search terms
-4. **No canonical URL** - Duplicate content risk
-5. **No favicon/app icons** - No branded app icon in browser tabs
-6. **No structured data** - Missing Schema.org SoftwareApplication markup
+1. **No OpenGraph tags**- Social media previews won't work
+2. **No Twitter Card meta**- Twitter/X shares will look broken
+3. **No keywords**- Missing important search terms
+4. **No canonical URL**- Duplicate content risk
+5. **No favicon/app icons**- No branded app icon in browser tabs
+6. **No structured data**- Missing Schema.org SoftwareApplication markup
 
 #### 🔧 REQUIRED: Complete SEO Implementation
 
@@ -365,13 +365,13 @@ export const metadata = defaultMetadata;
 
 #### Required Assets to Create:
 
-1. **`/public/og-pitch-generator.png`** (1200x630px) - Social sharing preview image
-2. **`/public/favicon.ico`** - Browser tab icon
-3. **`/public/favicon-16x16.png`** - Small favicon
-4. **`/public/favicon-32x32.png`** - Standard favicon
-5. **`/public/apple-touch-icon.png`** (180x180px) - iOS home screen icon
-6. **`/public/safari-pinned-tab.svg`** - Safari pinned tab icon
-7. **`/public/site.webmanifest`** - PWA manifest file
+1. **`/public/og-pitch-generator.png`**(1200x630px) - Social sharing preview image
+2. **`/public/favicon.ico`**- Browser tab icon
+3. **`/public/favicon-16x16.png`**- Small favicon
+4. **`/public/favicon-32x32.png`**- Standard favicon
+5. **`/public/apple-touch-icon.png`**(180x180px) - iOS home screen icon
+6. **`/public/safari-pinned-tab.svg`**- Safari pinned tab icon
+7. **`/public/site.webmanifest`**- PWA manifest file
 
 ---
 
@@ -379,17 +379,17 @@ export const metadata = defaultMetadata;
 
 #### ❌ Currently Missing:
 
-1. **Page view tracking** - Don't know traffic volume
-2. **CTA click tracking** - Don't know which CTAs convert
-3. **Signup funnel** - No visibility into conversion rates
-4. **Pitch generation metrics** - Can't measure core feature usage
-5. **Checkout abandonment** - Don't know why users don't complete payment
+1. **Page view tracking**- Don't know traffic volume
+2. **CTA click tracking**- Don't know which CTAs convert
+3. **Signup funnel**- No visibility into conversion rates
+4. **Pitch generation metrics**- Can't measure core feature usage
+5. **Checkout abandonment**- Don't know why users don't complete payment
 
 #### 🔧 REQUIRED: Add Plausible Analytics
 
 **Option 1: Plausible (Recommended - Privacy-focused, UK-based)**
 
-Add to **`app/layout.tsx`** (inside `<head>`):
+Add to **`app/layout.tsx`**(inside `<head>`):
 
 ```typescript
 import Script from 'next/script';
@@ -438,7 +438,7 @@ window.plausible('Signup Complete');
 
 1. User clicks "Start free trial" → `/auth/signin`
 2. User signs in
-3. User lands at... **WHERE?** (Unclear what page they see)
+3. User lands at... **WHERE?**(Unclear what page they see)
 
 **Problem**: New users don't know what to do after signin. No welcome message, no tutorial, no sample data.
 
@@ -580,28 +580,28 @@ export default function DashboardPage() {
 
 #### Core Features Status:
 
-✅ **Pitch generation API** - Confirmed working (per checklist)
-✅ **Contact management** - Database schema exists
-✅ **Template library** - Implemented
-✅ **Pitch history** - Confirmed working
-⚠️ **Copy-to-clipboard** - Needs verification
-❌ **Example pitch screenshot on homepage** - Not present
-❌ **Pitch performance tracking** - Database table exists but UI unclear
+✅ **Pitch generation API**- Confirmed working (per checklist)
+✅ **Contact management**- Database schema exists
+✅ **Template library**- Implemented
+✅ **Pitch history**- Confirmed working
+⚠️ **Copy-to-clipboard**- Needs verification
+❌ **Example pitch screenshot on homepage**- Not present
+❌ **Pitch performance tracking**- Database table exists but UI unclear
 
 #### UX Features Missing:
 
-- [ ] **Bulk pitch generation** - Generate 50 pitches at once
-- [ ] **Pitch editing** - Edit AI output before copying
-- [ ] **Pitch versioning** - Track iterations of same pitch
-- [ ] **Success rate tracking** - Did the pitch get a response?
-- [ ] **Template customisation** - Create custom templates
-- [ ] **Team collaboration** - Share pitches with team (Agency tier)
+- [ ] **Bulk pitch generation**- Generate 50 pitches at once
+- [ ] **Pitch editing**- Edit AI output before copying
+- [ ] **Pitch versioning**- Track iterations of same pitch
+- [ ] **Success rate tracking**- Did the pitch get a response?
+- [ ] **Template customisation**- Create custom templates
+- [ ] **Team collaboration**- Share pitches with team (Agency tier)
 
 ---
 
 ## 🚀 Launch Readiness Scoring
 
-### Technical Readiness: **95%** ✅
+### Technical Readiness: **95%**✅
 
 - Core feature works
 - Database properly configured
@@ -609,7 +609,7 @@ export default function DashboardPage() {
 - Payments integrated
 - Only needs: API keys + testing
 
-### Marketing Readiness: **50%** ⚠️
+### Marketing Readiness: **50%**⚠️
 
 - Homepage exists but needs refinement
 - Pricing page needs complete rewrite
@@ -625,59 +625,59 @@ export default function DashboardPage() {
 
 ### 🔴 CRITICAL (Must fix before launch)
 
-1. **Rewrite pricing page copy** (30 min)
+1. **Rewrite pricing page copy**(30 min)
    - Remove template boilerplate
    - Add pitch-specific features
    - Show value vs time saved
 
-2. **Add complete SEO metadata** (45 min)
+2. **Add complete SEO metadata**(45 min)
    - Create `metadata.ts` with OpenGraph + Twitter Cards
    - Generate OG image (1200x630px)
    - Create favicon set
 
-3. **Fix "free trial" inconsistency** (15 min)
+3. **Fix "free trial" inconsistency**(15 min)
    - Option A: Remove mention from homepage
    - Option B: Implement FREE tier (10 pitches/month)
 
-4. **Add founder credibility to homepage** (20 min)
+4. **Add founder credibility to homepage**(20 min)
    - Replace "500+ campaigns" with Chris's BBC Radio 1 story
    - Add "Built by radio promoters" credibility
 
-5. **Install analytics tracking** (20 min)
+5. **Install analytics tracking**(20 min)
    - Add Plausible script to layout
    - Track CTA clicks, signups, pitch generation
 
 ### 🟡 HIGH PRIORITY (Launch week)
 
-6. **Create onboarding dashboard** (2 hours)
+6. **Create onboarding dashboard**(2 hours)
    - Welcome screen for new users
    - 3-step quick start guide
    - Example pitch preview
 
-7. **Add example pitch screenshot to homepage** (30 min)
+7. **Add example pitch screenshot to homepage**(30 min)
    - Show real AI-generated pitch output
    - Demonstrates quality immediately
 
-8. **Mobile UX testing** (1 hour)
+8. **Mobile UX testing**(1 hour)
    - Run Playwright mobile test suite
    - Fix any responsive design issues
 
-9. **Create OG image and favicon set** (1 hour)
+9. **Create OG image and favicon set**(1 hour)
    - Design 1200x630px social sharing image
    - Generate all required icon sizes
 
-10. **Set up Stripe webhooks** (1 hour)
+10. **Set up Stripe webhooks**(1 hour)
     - Handle checkout.session.completed
     - Handle subscription cancellations
     - Send receipt emails
 
 ### 🟢 MEDIUM PRIORITY (Post-launch week 1)
 
-11. **Add testimonials section** (when available)
+11. **Add testimonials section**(when available)
 12. **Create "How It Works" detailed page**
 13. **Add case study: "See a real pitch that worked"**
 14. **Legal pages**: Privacy, Terms, Refund Policy
-15. **Email welcome sequence** (3-5 emails)
+15. **Email welcome sequence**(3-5 emails)
 
 ---
 

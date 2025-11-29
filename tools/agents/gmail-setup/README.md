@@ -11,12 +11,12 @@ Your Gmail organisation system is ready! Just need to set colours manually:
 
 ### 2. Set These Colours
 
-- **Active Campaigns** →  Green
-- **Needs Action** →  Blue
-- **Station Feedback** →  Orange
-- **Completed** →  Yellow
-- **Old Campaigns** →  Red
-- **Agent** →  Purple
+- **Active Campaigns**→  Green
+- **Needs Action**→  Blue
+- **Station Feedback**→  Orange
+- **Completed**→  Yellow
+- **Old Campaigns**→  Red
+- **Agent**→  Purple
 
 ### 3. Done!
 

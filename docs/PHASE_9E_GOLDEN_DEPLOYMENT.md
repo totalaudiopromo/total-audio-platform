@@ -44,7 +44,7 @@ git push --tags
 
 ### Manual Trigger via GitHub UI
 
-1. Go to **Actions** → **Golden Deployment Pipeline**
+1. Go to **Actions**→ **Golden Deployment Pipeline**
 2. Click **Run workflow**
 3. Select branch and click **Run**
 
@@ -167,7 +167,7 @@ Golden Deployment successful and promoted to production!
 2. Select the affected project (e.g., `audio-intel`)
 3. Click **Deployments**
 4. Find the previous working deployment
-5. Click **⋮** → **Promote to Production**
+5. Click **⋮**→ **Promote to Production**
 
 ### Option 2: Vercel CLI
 

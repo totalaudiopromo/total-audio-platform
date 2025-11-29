@@ -184,10 +184,10 @@ Post-Mortem: To be published within 24 hours
 
 **Similar to P0 but with extended timelines:**
 
-1. **Detection & Acknowledgment** (0-15 minutes)
-2. **Initial Assessment** (15-30 minutes)
-3. **Mitigation** (30-60 minutes)
-4. **Verification** (Post-Mitigation)
+1. **Detection & Acknowledgment**(0-15 minutes)
+2. **Initial Assessment**(15-30 minutes)
+3. **Mitigation**(30-60 minutes)
+4. **Verification**(Post-Mitigation)
 5. **Communication Update**
 
 **Additional Steps:**
@@ -207,7 +207,7 @@ Post-Mortem: To be published within 24 hours
 3. Deploy fix within normal release cycle
 4. Update issue with resolution
 
-**No immediate rollback required** - fix via normal deployment process
+**No immediate rollback required**- fix via normal deployment process
 
 ---
 
@@ -474,8 +474,8 @@ Total Audio Promo
 
 ## Escalation Path
 
-1. **On-call Engineer** (Chris Schofield) - First responder
-2. **Backup Engineer** (TBD) - If on-call unavailable
+1. **On-call Engineer**(Chris Schofield) - First responder
+2. **Backup Engineer**(TBD) - If on-call unavailable
 3. **External Support**:
    - Vercel Support (hosting issues)
    - Supabase Support (database issues)

@@ -56,7 +56,7 @@ The email notification requires macOS Mail.app to be configured with an SMTP acc
 
 ### If Email Fails:
 
-- **No problem!** Desktop notification always works
+- **No problem!**Desktop notification always works
 - Draft still created in ConvertKit
 - Check dashboard manually at https://app.convertkit.com/broadcasts
 
@@ -128,7 +128,7 @@ Check System Preferences:
 
 ### Email Not Arriving?
 
-- **Not a problem** - Desktop notification is primary
+- **Not a problem**- Desktop notification is primary
 - Email is bonus if Mail.app is configured
 - Can always check ConvertKit dashboard directly
 
@@ -142,11 +142,11 @@ tail -f ~/workspace/active/total-audio-platform/tools/agents/logs/newsletter-$(d
 
 ## Summary
 
-**Primary notification:** macOS desktop pop-up (reliable)
-**Backup notification:** Email via Mail.app (if configured)
-**Fallback:** Check ConvertKit dashboard directly
-**Frequency:** Every Monday 9:00 AM
-**Your action:** Review draft within 30 minutes
+**Primary notification:**macOS desktop pop-up (reliable)
+**Backup notification:**Email via Mail.app (if configured)
+**Fallback:**Check ConvertKit dashboard directly
+**Frequency:**Every Monday 9:00 AM
+**Your action:**Review draft within 30 minutes
 
 You won't forget to review the newsletter - you'll get a notification on your Mac every Monday morning! 
 

@@ -4,7 +4,7 @@ notion_url: https://www.notion.so/UPDATED-Total-Audio-Brand-Guidelines-Command-C
 exported_at: 2025-09-26T14:33:11.022Z
 ---
 
-#  UPDATED Total Audio Brand Guidelines - Command Centre Era
+# UPDATED Total Audio Brand Guidelines - Command Centre Era
 
 _Updated August 2025 - Freemium strategy with refined competitive positioning_
 
@@ -185,13 +185,13 @@ _Updated August 2025 - Freemium strategy with refined competitive positioning_
 
 ### DRS Texture Dark Mode Adaptation
 
-- **Invert texture brightness** for dark backgrounds
+- **Invert texture brightness**for dark backgrounds
 
-- **Increase colour overlay opacity** (15-25%) for better visibility
+- **Increase colour overlay opacity**(15-25%) for better visibility
 
-- **Adjust blend modes** (screen/overlay vs multiply)
+- **Adjust blend modes**(screen/overlay vs multiply)
 
-- **Maintain brand colour recognition** across light/dark
+- **Maintain brand colour recognition**across light/dark
 
 ## IMPLEMENTATION GUIDELINES
 
@@ -241,7 +241,7 @@ _Updated August 2025 - Freemium strategy with refined competitive positioning_
 
 ### New Messaging Framework
 
-**Primary:** "Stop paying per submission. Get verified contacts directly."
+**Primary:**"Stop paying per submission. Get verified contacts directly."
 
 **Secondary Positioning:**
 

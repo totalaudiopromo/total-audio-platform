@@ -6,13 +6,13 @@ Your Gmail is now automatically organised with a clean, colour-coded system desi
 
 ## Labels Created
 
-- **Active Campaigns** (Green) - Current radio work
-- **Needs Action** (Blue) - Campaigns requiring your response
-- **Station Feedback** (Orange) - Real responses from stations
-- **Station Auto-Responses** (Grey) - Out of office replies
-- **Completed** (Yellow) - Finished campaigns (last 30 days)
-- **Old Campaigns** (Red) - Archives for reference
-- **Agent** (Purple) - Processed by your radio promo agent
+- **Active Campaigns**(Green) - Current radio work
+- **Needs Action**(Blue) - Campaigns requiring your response
+- **Station Feedback**(Orange) - Real responses from stations
+- **Station Auto-Responses**(Grey) - Out of office replies
+- **Completed**(Yellow) - Finished campaigns (last 30 days)
+- **Old Campaigns**(Red) - Archives for reference
+- **Agent**(Purple) - Processed by your radio promo agent
 
 ## How It Works
 

@@ -8,7 +8,7 @@ Comprehensive regression test suite for the Audio Intel contact enrichment pipel
 
 ### 1. Timeout Handling (`timeout.test.ts`)
 
-**7 test cases** covering 10-second timeout protection:
+**7 test cases**covering 10-second timeout protection:
 
 -  Timeout after 10 seconds per contact
 -  No retries on timeout (fail fast)
@@ -29,7 +29,7 @@ Comprehensive regression test suite for the Audio Intel contact enrichment pipel
 
 ### 2. Retry Logic (`retry.test.ts`)
 
-**10 test cases** covering automatic retry mechanism:
+**10 test cases**covering automatic retry mechanism:
 
 -  Retry failed contacts once (MAX_RETRIES = 1)
 -  Exponential backoff timing (1s → 2s)
@@ -53,7 +53,7 @@ Comprehensive regression test suite for the Audio Intel contact enrichment pipel
 
 ### 3. Partial Success Responses (`partial-success.test.ts`)
 
-**10 test cases** covering partial success handling:
+**10 test cases**covering partial success handling:
 
 -  Always returns `success: true` for partial success
 -  Includes both enriched and failed contacts
@@ -95,7 +95,7 @@ Comprehensive regression test suite for the Audio Intel contact enrichment pipel
 
 ### 4. Parallel Batch Processing (`parallel-batching.test.ts`)
 
-**10 test cases** covering parallel processing performance:
+**10 test cases**covering parallel processing performance:
 
 -  Process 5 contacts in parallel (BATCH_SIZE = 5)
 -  Add 500ms delay between batches

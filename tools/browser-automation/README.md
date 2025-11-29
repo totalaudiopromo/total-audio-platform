@@ -1,6 +1,6 @@
 # Browser Automation Skill
 
-A skill for seamlessly enabling **[Claude Code](https://docs.claude.com/en/docs/claude-code/overview)** to interface with a browser using **[Stagehand](https://github.com/browserbase/stagehand)** (AI browser automation framework). Because Stagehand accepts natural language instructions, it's significantly more context-efficient than native Playwright while providing more features built for automation.
+A skill for seamlessly enabling **[Claude Code](https://docs.claude.com/en/docs/claude-code/overview)**to interface with a browser using **[Stagehand](https://github.com/browserbase/stagehand)**(AI browser automation framework). Because Stagehand accepts natural language instructions, it's significantly more context-efficient than native Playwright while providing more features built for automation.
 
 ## Installation
 
@@ -23,7 +23,7 @@ If you prefer the manual interface:
 3. Enter the marketplace source: `browserbase/agent-browse`
 4. Press enter to select the `browser-automation` plugin
 5. Hit enter again to `Install now`
-6. **Restart Claude Code** for changes to take effect
+6. **Restart Claude Code**for changes to take effect
 
 ## Setup
 
@@ -49,7 +49,7 @@ Claude will handle the rest.
 
 Install Chrome for your platform:
 
-- **macOS** or **Windows**: https://www.google.com/chrome/
+- **macOS**or **Windows**: https://www.google.com/chrome/
 - **Linux**: `sudo apt install google-chrome-stable`
 
 ### Profile refresh

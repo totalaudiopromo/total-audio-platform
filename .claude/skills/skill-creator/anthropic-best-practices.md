@@ -27,7 +27,7 @@ Only add context Claude doesn't already have. Challenge each piece of informatio
 - "Can I assume Claude knows this?"
 - "Does this paragraph justify its token cost?"
 
-**Good example: Concise** (approximately 50 tokens):
+**Good example: Concise**(approximately 50 tokens):
 
 ````markdown theme={null}
 ## Extract PDF text
@@ -42,7 +42,7 @@ with pdfplumber.open("file.pdf") as pdf:
 ```
 ````
 
-**Bad example: Too verbose** (approximately 150 tokens):
+**Bad example: Too verbose**(approximately 150 tokens):
 
 ```markdown theme={null}
 ## Extract PDF text
@@ -60,7 +60,7 @@ The concise version assumes Claude knows what PDFs are and how libraries work.
 
 Match the level of specificity to the task's fragility and variability.
 
-**High freedom** (text-based instructions):
+**High freedom**(text-based instructions):
 
 Use when:
 
@@ -79,7 +79,7 @@ Example:
 4. Verify adherence to project conventions
 ```
 
-**Medium freedom** (pseudocode or scripts with parameters):
+**Medium freedom**(pseudocode or scripts with parameters):
 
 Use when:
 
@@ -102,7 +102,7 @@ def generate_report(data, format="markdown", include_charts=True):
 ```
 ````
 
-**Low freedom** (specific scripts, few or no parameters):
+**Low freedom**(specific scripts, few or no parameters):
 
 Use when:
 
@@ -135,9 +135,9 @@ Skills act as additions to models, so effectiveness depends on the underlying mo
 
 **Testing considerations by model**:
 
-- **Claude Haiku** (fast, economical): Does the Skill provide enough guidance?
-- **Claude Sonnet** (balanced): Is the Skill clear and efficient?
-- **Claude Opus** (powerful reasoning): Does the Skill avoid over-explaining?
+- **Claude Haiku**(fast, economical): Does the Skill provide enough guidance?
+- **Claude Sonnet**(balanced): Is the Skill clear and efficient?
+- **Claude Opus**(powerful reasoning): Does the Skill avoid over-explaining?
 
 What works perfectly for Opus might need more detail for Haiku. If you plan to use your Skill across multiple models, aim for instructions that work well with all of them.
 
@@ -154,7 +154,7 @@ For complete Skill structure details, see the [Skills overview](/en/docs/agents-
 
 ### Naming conventions
 
-Use consistent naming patterns to make Skills easier to reference and discuss. We recommend using **gerund form** (verb + -ing) for Skill names, as this clearly describes the activity or capability the Skill provides.
+Use consistent naming patterns to make Skills easier to reference and discuss. We recommend using **gerund form**(verb + -ing) for Skill names, as this clearly describes the activity or capability the Skill provides.
 
 **Good naming examples (gerund form)**:
 
@@ -189,9 +189,9 @@ The `description` field enables Skill discovery and should include both what the
 <Warning>
   **Always write in third person**. The description is injected into the system prompt, and inconsistent point-of-view can cause discovery problems.
 
-- **Good:** "Processes Excel files and generates reports"
-- **Avoid:** "I can help you process Excel files"
-- **Avoid:** "You can use this to process Excel files"
+- **Good:**"Processes Excel files and generates reports"
+- **Avoid:**"I can help you process Excel files"
+- **Avoid:**"You can use this to process Excel files"
   </Warning>
 
 **Be specific and include key terms**. Include both what the Skill does and specific triggers/contexts for when to use it.
@@ -420,7 +420,7 @@ For details on how this filesystem-based architecture enables progressive disclo
 
 Break complex operations into clear, sequential steps. For particularly complex workflows, provide a checklist that Claude can copy into its response and check off as it progresses.
 
-**Example 1: Research synthesis workflow** (for Skills without code):
+**Example 1: Research synthesis workflow**(for Skills without code):
 
 ````markdown theme={null}
 ## Research synthesis workflow
@@ -463,7 +463,7 @@ Check that every claim references the correct source document. If citations are 
 
 This example shows how workflows apply to analysis tasks that don't require code. The checklist pattern works for any complex, multi-step process.
 
-**Example 2: PDF form filling workflow** (for Skills with code):
+**Example 2: PDF form filling workflow**(for Skills with code):
 
 ````markdown theme={null}
 ## PDF form filling workflow
@@ -514,7 +514,7 @@ Clear steps prevent Claude from skipping critical validation. The checklist help
 
 This pattern greatly improves output quality.
 
-**Example 1: Style guide compliance** (for Skills without code):
+**Example 1: Style guide compliance**(for Skills without code):
 
 ```markdown theme={null}
 ## Content review process
@@ -534,7 +534,7 @@ This pattern greatly improves output quality.
 
 This shows the validation loop pattern using reference documents instead of scripts. The "validator" is STYLE_GUIDE.md, and Claude performs the check by reading and comparing.
 
-**Example 2: Document editing process** (for Skills with code):
+**Example 2: Document editing process**(for Skills with code):
 
 ```markdown theme={null}
 ## Document editing process
@@ -558,14 +558,14 @@ The validation loop catches errors early.
 
 Don't include information that will become outdated:
 
-**Bad example: Time-sensitive** (will become wrong):
+**Bad example: Time-sensitive**(will become wrong):
 
 ```markdown theme={null}
 If you're doing this before August 2025, use the old API.
 After August 2025, use the new API.
 ```
 
-**Good example** (use "old patterns" section):
+**Good example**(use "old patterns" section):
 
 ```markdown theme={null}
 ## Current method
@@ -610,7 +610,7 @@ Consistency helps Claude understand and follow instructions.
 
 Provide templates for output format. Match the level of strictness to your needs.
 
-**For strict requirements** (like API responses or data formats):
+**For strict requirements**(like API responses or data formats):
 
 ````markdown theme={null}
 ## Report structure
@@ -637,7 +637,7 @@ ALWAYS use this exact template structure:
 ```
 ````
 
-**For flexible guidance** (when adaptation is useful):
+**For flexible guidance**(when adaptation is useful):
 
 ````markdown theme={null}
 ## Report structure
@@ -717,8 +717,8 @@ Guide Claude through decision points:
 
 1. Determine the modification type:
 
-   **Creating new content?** → Follow "Creation workflow" below
-   **Editing existing content?** → Follow "Editing workflow" below
+   **Creating new content?**→ Follow "Creation workflow" below
+   **Editing existing content?**→ Follow "Editing workflow" below
 
 2. Creation workflow:
    - Use docx-js library
@@ -740,7 +740,7 @@ Guide Claude through decision points:
 
 ### Build evaluations first
 
-**Create evaluations BEFORE writing extensive documentation.** This ensures your Skill solves real problems rather than documenting imagined ones.
+**Create evaluations BEFORE writing extensive documentation.**This ensures your Skill solves real problems rather than documenting imagined ones.
 
 **Evaluation-driven development:**
 
@@ -801,9 +801,9 @@ The most effective Skill development process involves Claude itself. Work with o
 
 The same hierarchical pattern continues when improving Skills. You alternate between:
 
-- **Working with Claude A** (the expert who helps refine the Skill)
-- **Testing with Claude B** (the agent using the Skill to perform real work)
-- **Observing Claude B's behavior** and bringing insights back to Claude A
+- **Working with Claude A**(the expert who helps refine the Skill)
+- **Testing with Claude B**(the agent using the Skill to perform real work)
+- **Observing Claude B's behavior**and bringing insights back to Claude A
 
 1. **Use the Skill in real workflows**: Give Claude B (with the Skill loaded) actual tasks, not test scenarios
 
@@ -854,10 +854,10 @@ Unix-style paths work across all platforms, while Windows-style paths cause erro
 Don't present multiple approaches unless necessary:
 
 ````markdown theme={null}
-**Bad example: Too many choices** (confusing):
+**Bad example: Too many choices**(confusing):
 "You can use pypdf, or pdfplumber, or PyMuPDF, or pdf2image, or..."
 
-**Good example: Provide a default** (with escape hatch):
+**Good example: Provide a default**(with escape hatch):
 "Use pdfplumber for text extraction:
 
 ```python
@@ -941,8 +941,8 @@ The diagram above shows how executable scripts work alongside instruction files.
 
 **Important distinction**: Make clear in your instructions whether Claude should:
 
-- **Execute the script** (most common): "Run `analyze_form.py` to extract fields"
-- **Read it as reference** (for complex logic): "See `analyze_form.py` for the field extraction algorithm"
+- **Execute the script**(most common): "Run `analyze_form.py` to extract fields"
+- **Read it as reference**(for complex logic): "See `analyze_form.py` for the field extraction algorithm"
 
 For most utility scripts, execution is preferred because it's more reliable and efficient. See the [Runtime environment](#runtime-environment) section below for details on how script execution works.
 
@@ -1009,7 +1009,7 @@ When Claude performs complex, open-ended tasks, it can make mistakes. The "plan-
 
 **Example**: Imagine asking Claude to update 50 form fields in a PDF based on a spreadsheet. Without validation, Claude might reference non-existent fields, create conflicting values, miss required fields, or apply updates incorrectly.
 
-**Solution**: Use the workflow pattern shown above (PDF form filling), but add an intermediate `changes.json` file that gets validated before applying changes. The workflow becomes: analyze → **create plan file** → **validate plan** → execute → verify.
+**Solution**: Use the workflow pattern shown above (PDF form filling), but add an intermediate `changes.json` file that gets validated before applying changes. The workflow becomes: analyze → **create plan file**→ **validate plan**→ execute → verify.
 
 **Why this pattern works:**
 

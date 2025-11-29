@@ -75,7 +75,7 @@ Evaluate readiness to begin implementation by presenting the first task summary 
 <execution_prompt>
 PROMPT: "The spec planning is complete. The first task is:
 
-**Task 1:** [FIRST_TASK_TITLE]
+**Task 1:**[FIRST_TASK_TITLE]
 [BRIEF_DESCRIPTION_OF_TASK_1_AND_SUBTASKS]
 
 Would you like me to proceed with implementing Task 1? I will focus only on this first task and its subtasks unless you specify otherwise.

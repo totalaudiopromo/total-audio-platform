@@ -5,10 +5,10 @@
 
 ## ❌ WHAT AUDIO INTEL IS NOT
 
-- **NOT a contact discovery tool** - you can't input "BBC Radio 1" and get contacts
-- **NOT a magic contact finder** - you can't upload just station names/genres
-- **NOT a replacement for initial research** - users must find basic emails first
-- **NOT a screenshot/Notion export parser** - CSV with emails only
+- **NOT a contact discovery tool**- you can't input "BBC Radio 1" and get contacts
+- **NOT a magic contact finder**- you can't upload just station names/genres
+- **NOT a replacement for initial research**- users must find basic emails first
+- **NOT a screenshot/Notion export parser**- CSV with emails only
 
 ## ✅ WHAT AUDIO INTEL ACTUALLY DOES
 
@@ -18,26 +18,26 @@
 
 ### User Journey (TRUTHFUL)
 
-1. **User finds basic contact emails** via:
+1. **User finds basic contact emails**via:
    - Google searches (e.g., "BBC Radio 1 contact email")
    - Station websites (general info@ emails)
    - LinkedIn searches for presenters
    - Industry databases they already have access to
    - Old spreadsheets from previous campaigns
 
-2. **User uploads CSV** containing:
+2. **User uploads CSV**containing:
    - Contact names
    - **Email addresses (REQUIRED)**
    - Optional: station/platform names, genres, notes
 
-3. **Audio Intel enriches** by researching:
+3. **Audio Intel enriches**by researching:
    - Current presenter assignments (people change shows frequently)
    - Verified submission routes (email vs. web form vs. BBC Introducing Uploader)
    - Submission requirements (clean versions, link format, timing)
    - Genre fit analysis (which shows match your music)
    - Presenter changes since last campaign
 
-4. **User receives enriched data** with:
+4. **User receives enriched data**with:
    - Verified emails still work
    - Current show schedules (e.g., "Scott Mills moved to Radio 2 breakfast Jan 2025")
    - Submission preferences (e.g., "web-link ONLY, NO attachments")
@@ -60,20 +60,20 @@
 
 ### What Users Actually Save Time On
 
-1. **Verifying emails still work** - stops bounces before sending
-2. **Finding current presenter assignments** - people change shows constantly
-3. **Discovering submission requirements** - buried in FAQ pages/submission guidelines
-4. **Identifying correct submission routes** - email vs web form vs third-party platforms
-5. **Genre matching to shows** - which presenters actually play your music type
-6. **Catching policy changes** - e.g., Apple Music mandatory credits from Jan 2025
+1. **Verifying emails still work**- stops bounces before sending
+2. **Finding current presenter assignments**- people change shows constantly
+3. **Discovering submission requirements**- buried in FAQ pages/submission guidelines
+4. **Identifying correct submission routes**- email vs web form vs third-party platforms
+5. **Genre matching to shows**- which presenters actually play your music type
+6. **Catching policy changes**- e.g., Apple Music mandatory credits from Jan 2025
 
 ## 🎯 ACCURATE POSITIONING
 
 ### Who It's For
 
-- **Radio promoters** who have contact lists but need to verify/update them
-- **Independent artists** who've found some emails but need submission intel
-- **PR agencies** who inherited client databases needing current verification
+- **Radio promoters**who have contact lists but need to verify/update them
+- **Independent artists**who've found some emails but need submission intel
+- **PR agencies**who inherited client databases needing current verification
 
 ### What They Must Have First
 
@@ -83,11 +83,11 @@
 
 ### What They Get
 
-- **Verified** current contact information
-- **Enriched** submission requirements and preferences
-- **Updated** presenter assignments and show schedules
-- **Validated** email addresses that actually work
-- **Context** for each contact (genre fit, submission timing, critical warnings)
+- **Verified**current contact information
+- **Enriched**submission requirements and preferences
+- **Updated**presenter assignments and show schedules
+- **Validated**email addresses that actually work
+- **Context**for each contact (genre fit, submission timing, critical warnings)
 
 ## 📊 PROVEN USE CASES
 
@@ -117,11 +117,11 @@
 
 ## 🚫 WHAT WE DON'T (CAN'T) DO
 
-1. **Find emails from nothing** - need at least basic contact info to start
-2. **Parse screenshots or Notion exports** - CSV with emails only
-3. **Accept just station names** - "BBC Radio 1" input alone won't work
-4. **Discover playlist curator contacts** - need curator emails to enrich
-5. **Scrape contacts from scratch** - enrichment, not discovery
+1. **Find emails from nothing**- need at least basic contact info to start
+2. **Parse screenshots or Notion exports**- CSV with emails only
+3. **Accept just station names**- "BBC Radio 1" input alone won't work
+4. **Discover playlist curator contacts**- need curator emails to enrich
+5. **Scrape contacts from scratch**- enrichment, not discovery
 
 ## ✅ WHAT WE SHOULD MARKET
 
@@ -178,11 +178,11 @@
 
 ### The Answer
 
-Users don't struggle to find **basic** emails (info@station.com, presenter@bbc.co.uk).
+Users don't struggle to find **basic**emails (info@station.com, presenter@bbc.co.uk).
 They struggle to:
 
 1. Verify those emails still work
-2. Find the **correct** submission email (not general inbox)
+2. Find the **correct**submission email (not general inbox)
 3. Know current presenter assignments
 4. Discover submission requirements
 5. Understand which contacts fit their genre
@@ -202,4 +202,4 @@ They struggle to:
 
 ---
 
-**Bottom Line**: Audio Intel is a **contact enrichment** tool, not a **contact discovery** tool. Market it truthfully as what it actually is - a time-saving verification and enrichment system for existing contact lists.
+**Bottom Line**: Audio Intel is a **contact enrichment**tool, not a **contact discovery**tool. Market it truthfully as what it actually is - a time-saving verification and enrichment system for existing contact lists.

@@ -18,13 +18,13 @@ Looking at the contact records in `KYARA_AIRTABLE_CONTACTS.json`, I can see the 
 
 The "Status" field in Airtable contains values like:
 
-- **"Opted-In"** (10 contacts)
-- **"Unsubscribed"** (11 contacts)
-- **Empty/No status** (2 contacts: isthisrob@yahoo.com, bob.huggins@goqradio.com)
+- **"Opted-In"**(10 contacts)
+- **"Unsubscribed"**(11 contacts)
+- **Empty/No status**(2 contacts: isthisrob@yahoo.com, bob.huggins@goqradio.com)
 
 ## Contact Breakdown (21 Total)
 
-###  Good Contacts (10 opted-in)
+### Good Contacts (10 opted-in)
 
 1. uniqueexpansionradio@gmail.com - Opted-In (Doris from Unique Expansion Radio)
 2. hal@centralcoastradio.org - Opted-In (Hal Abrams, Central Coast Radio)
@@ -37,7 +37,7 @@ The "Status" field in Airtable contains values like:
 9. isthisrob@yahoo.com - No status (Allovertheplace Radio)
 10. bob.huggins@goqradio.com - No status (Bob Huggins, GoQ Radio)
 
-###  Unsubscribed Contacts (11 contacts)
+### Unsubscribed Contacts (11 contacts)
 
 1. wandagm@3wk.com - Unsubscribed (3WK)
 2. leezalondon@gmail.com - Unsubscribed (The Independent, USA)
@@ -57,10 +57,10 @@ Looking at the "MC TAGS" field in Airtable, these contacts have been tagged in M
 
 **High-Value Tags:**
 
-- **BBC Radio 6 Music Contacts** (michelle.choudhry@bbc.co.uk, Hello@djdebgrant.com, sam.davies@audioalways.com)
-- **Indie Alliance** (Multiple contacts)
-- **Catalina Cara Contacts** (leezalondon@gmail.com, cybermensrevenge@hotmail.com, etc.)
-- **3DAYWKEND Contacts** (Multiple pop/indie contacts)
+- **BBC Radio 6 Music Contacts**(michelle.choudhry@bbc.co.uk, Hello@djdebgrant.com, sam.davies@audioalways.com)
+- **Indie Alliance**(Multiple contacts)
+- **Catalina Cara Contacts**(leezalondon@gmail.com, cybermensrevenge@hotmail.com, etc.)
+- **3DAYWKEND Contacts**(Multiple pop/indie contacts)
 
 ## Two Mailchimp Accounts Problem
 
@@ -71,7 +71,7 @@ You mentioned:
 **Current Situation:**
 
 - This Airtable base was meant for **Total Audio Promo**
-- But you're mostly using it for **Liberty Music PR** contacts
+- But you're mostly using it for **Liberty Music PR**contacts
 - The unsubscribed contacts likely unsubscribed from one account but not the other
 - **Risk**: Adding these contacts to a different Mailchimp account could violate their unsubscribe preference
 
@@ -129,11 +129,11 @@ You asked about "not hitting the limits" - here's the breakdown:
 
 **Would you like me to:**
 
-1. **Check Liberty Mailchimp contact count** to see if we're close to limits?
-2. **Create a script to sync unsubscribe status** from Mailchimp → Airtable for accuracy?
-3. **Filter Airtable contacts by opt-in source** (e.g., only add "Mailchimp Landing Page" to Total Audio Promo)?
-4. **Create separate Airtable views** for Liberty vs Total Audio Promo contacts?
-5. **Investigate why BBC contacts are marked unsubscribed** (they might be valuable enough to manually verify)?
+1. **Check Liberty Mailchimp contact count**to see if we're close to limits?
+2. **Create a script to sync unsubscribe status**from Mailchimp → Airtable for accuracy?
+3. **Filter Airtable contacts by opt-in source**(e.g., only add "Mailchimp Landing Page" to Total Audio Promo)?
+4. **Create separate Airtable views**for Liberty vs Total Audio Promo contacts?
+5. **Investigate why BBC contacts are marked unsubscribed**(they might be valuable enough to manually verify)?
 
 ## Important Notes
 
@@ -145,9 +145,9 @@ You asked about "not hitting the limits" - here's the breakdown:
 
 **High-Value Unsubscribed Contacts to Investigate:**
 
-- **radio.devon@bbc.co.uk** - BBC Radio Devon
-- **sam.davies@audioalways.com** - Producer for Chris Hawkins (BBC 6 Music)
-- **cybermensrevenge@hotmail.com** - Sheffield Live
+- **radio.devon@bbc.co.uk**- BBC Radio Devon
+- **sam.davies@audioalways.com**- Producer for Chris Hawkins (BBC 6 Music)
+- **cybermensrevenge@hotmail.com**- Sheffield Live
 
 These might be worth manually checking - they could be data errors or accidental unsubscribes.
 

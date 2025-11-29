@@ -6,12 +6,12 @@ This directory contains comprehensive end-to-end tests for the Total Audio Promo
 
 ### Core Page Tests
 
-- **`dashboard.spec.ts`** - Dashboard functionality and real-time updates
-- **`integrations.spec.ts`** - Integration management and connectivity
-- **`campaigns.spec.ts`** - Campaign creation and management
-- **`analytics.spec.ts`** - Analytics and reporting features
-- **`contacts.spec.ts`** - Contact management and CRM functionality
-- **`navigation.spec.ts`** - Cross-page navigation and routing
+- **`dashboard.spec.ts`**- Dashboard functionality and real-time updates
+- **`integrations.spec.ts`**- Integration management and connectivity
+- **`campaigns.spec.ts`**- Campaign creation and management
+- **`analytics.spec.ts`**- Analytics and reporting features
+- **`contacts.spec.ts`**- Contact management and CRM functionality
+- **`navigation.spec.ts`**- Cross-page navigation and routing
 
 ## Running Tests
 
@@ -64,14 +64,14 @@ npx playwright test tests/dashboard.spec.ts
 
 ### What We Test
 
--  **Page Loading** - All pages load without errors
--  **Navigation** - Cross-page navigation works correctly
--  **Responsive Design** - Mobile and desktop layouts
--  **Integration Flows** - Gmail, Claude AI, Perplexity connections
--  **Real-time Updates** - Dashboard live data and notifications
--  **User Interactions** - Buttons, forms, and interactive elements
--  **Error Handling** - Graceful handling of edge cases
--  **Accessibility** - Basic accessibility checks
+-  **Page Loading**- All pages load without errors
+-  **Navigation**- Cross-page navigation works correctly
+-  **Responsive Design**- Mobile and desktop layouts
+-  **Integration Flows**- Gmail, Claude AI, Perplexity connections
+-  **Real-time Updates**- Dashboard live data and notifications
+-  **User Interactions**- Buttons, forms, and interactive elements
+-  **Error Handling**- Graceful handling of edge cases
+-  **Accessibility**- Basic accessibility checks
 
 ### Browser Support
 
@@ -282,4 +282,4 @@ npx playwright test --debug dashboard.spec.ts
 
 ---
 
-**Total Audio Promo MVP Testing Suite** 
+**Total Audio Promo MVP Testing Suite**

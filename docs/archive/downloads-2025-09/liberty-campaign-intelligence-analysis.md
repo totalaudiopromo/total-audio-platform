@@ -9,7 +9,7 @@ _Analysis Date: September 2025_
 
 #### Industry Connections & Success Patterns
 
-**Joe Ramsey (Publicist)** - Key Industry Contact:
+**Joe Ramsey (Publicist)**- Key Industry Contact:
 
 - Music Crowns: Successfully placed Jonny Amoral premiere
 - Working across PR4 + PL4 campaign types
@@ -53,7 +53,7 @@ _Analysis Date: September 2025_
 
 ### Team Structure:
 
-- **16 radio specialists** across genres and territories
+- **16 radio specialists**across genres and territories
 - Geographic spread: UK, international markets
 - Specialization areas: Genre-specific targeting
 

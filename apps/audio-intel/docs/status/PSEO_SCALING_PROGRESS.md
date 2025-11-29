@@ -2,7 +2,7 @@
 
 ## Completed (2/8 pages - 25%)
 
-###  BBC Radio 1 Contact Enrichment
+### BBC Radio 1 Contact Enrichment
 
 - **Word count**: ~2,700 words (was ~1,200)
 - **New sections added**:
@@ -15,7 +15,7 @@
 - **Schema markup**:  JSON-LD FAQPage with 6 questions
 - **Deployed**:  Live on production
 
-###  Spotify Editorial Playlist Contacts
+### Spotify Editorial Playlist Contacts
 
 - **Word count**: ~2,800 words (was ~1,400)
 - **New sections added**:
@@ -34,7 +34,7 @@
 
 ### Tier 1 Pages (High priority - 1,000+ monthly searches)
 
-####  BBC Radio 6 Music Contact Enrichment
+#### BBC Radio 6 Music Contact Enrichment
 
 - **Current word count**: ~1,100 words
 - **Target**: 2,500+ words
@@ -45,7 +45,7 @@
   - FAQ with schema (6 questions)
   - Getting started guide
 
-####  BBC Radio 1Xtra Contact Enrichment
+#### BBC Radio 1Xtra Contact Enrichment
 
 - **Current word count**: ~1,000 words
 - **Target**: 2,500+ words
@@ -58,7 +58,7 @@
 
 ### Tier 2 Pages (Medium priority - 500-1,000 monthly searches)
 
-####  Apple Music Editorial Contacts
+#### Apple Music Editorial Contacts
 
 - **Current word count**: ~1,100 words
 - **Target**: 2,500+ words
@@ -69,7 +69,7 @@
   - FAQ with schema (6 questions)
   - Getting started guide
 
-####  BBC Radio 2 Contact Enrichment
+#### BBC Radio 2 Contact Enrichment
 
 - **Current word count**: ~1,000 words
 - **Target**: 2,500+ words
@@ -82,7 +82,7 @@
 
 ### Tier 3 Pages (Lower priority - 200-500 monthly searches)
 
-####  Kerrang Radio Contact Enrichment
+#### Kerrang Radio Contact Enrichment
 
 - **Current word count**: ~900 words
 - **Target**: 2,500+ words
@@ -93,7 +93,7 @@
   - FAQ with schema (6 questions)
   - Getting started guide
 
-####  Absolute Radio Contact Enrichment
+#### Absolute Radio Contact Enrichment
 
 - **Current word count**: ~850 words
 - **Target**: 2,500+ words
@@ -221,12 +221,12 @@ Data flowing to Command Centre dashboard at `command.totalaudiopromo.com/analyti
 
 ## Next Steps
 
-1. **Expand BBC 6 Music page** (Tier 1 priority - 800 monthly searches)
-2. **Expand BBC 1Xtra page** (Tier 1 priority - 600 monthly searches)
-3. **Expand Apple Music page** (Tier 2 priority - 500 monthly searches)
-4. **Expand BBC Radio 2 page** (Tier 2 priority - 400 monthly searches)
-5. **Expand Kerrang page** (Tier 3 priority - 300 monthly searches)
-6. **Expand Absolute page** (Tier 3 priority - 250 monthly searches)
+1. **Expand BBC 6 Music page**(Tier 1 priority - 800 monthly searches)
+2. **Expand BBC 1Xtra page**(Tier 1 priority - 600 monthly searches)
+3. **Expand Apple Music page**(Tier 2 priority - 500 monthly searches)
+4. **Expand BBC Radio 2 page**(Tier 2 priority - 400 monthly searches)
+5. **Expand Kerrang page**(Tier 3 priority - 300 monthly searches)
+6. **Expand Absolute page**(Tier 3 priority - 250 monthly searches)
 
 **Estimated completion time**: 2-3 hours for remaining 6 pages using content template
 

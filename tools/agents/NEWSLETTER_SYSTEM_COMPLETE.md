@@ -6,7 +6,7 @@
 **Last Updated**: October 11, 2025
 **Quality Score**: 78% average (target: 80%+)
 
-** RECENT UPDATE (2025-10-11)**: Depth requirements added - [See upgrade details](NEWSLETTER_DEPTH_UPGRADE.md)
+**RECENT UPDATE (2025-10-11)**: Depth requirements added - [See upgrade details](NEWSLETTER_DEPTH_UPGRADE.md)
 
 ---
 
@@ -14,10 +14,10 @@
 
 Automatically generates "The Unsigned Advantage" newsletter by:
 
-1. **Monitoring 9 RSS feeds** for indie-relevant music industry news
-2. **Filtering stories** by relevance to independent artists (90+ stories → top 3)
-3. **Using Claude API** to write fresh, authentic content in Chris's voice every time
-4. **Creating ConvertKit draft** for your approval before sending
+1. **Monitoring 9 RSS feeds**for indie-relevant music industry news
+2. **Filtering stories**by relevance to independent artists (90+ stories → top 3)
+3. **Using Claude API**to write fresh, authentic content in Chris's voice every time
+4. **Creating ConvertKit draft**for your approval before sending
 
 **NO templates. NO repetition. NO fake examples. Every newsletter is unique and authentic.**
 
@@ -27,21 +27,21 @@ Automatically generates "The Unsigned Advantage" newsletter by:
 
 ### High Priority (Indie Focus):
 
-- **Ari's Take** (0.95) - Ari Herstand's indie artist business advice
-- **Attack Magazine** (0.90) - Electronic music production
-- **Complete Music Update** (0.90) - UK music industry news
-- **Music Business Worldwide** (0.90) - Global industry business
+- **Ari's Take**(0.95) - Ari Herstand's indie artist business advice
+- **Attack Magazine**(0.90) - Electronic music production
+- **Complete Music Update**(0.90) - UK music industry news
+- **Music Business Worldwide**(0.90) - Global industry business
 
 ### UK Scene:
 
-- **DIY Magazine** (0.85) - UK independent artists
-- **The Line of Best Fit** (0.75) - UK indie culture
-- **BBC Music** (0.80) - UK cultural authority
-- **NME** (0.70) - UK music culture
+- **DIY Magazine**(0.85) - UK independent artists
+- **The Line of Best Fit**(0.75) - UK indie culture
+- **BBC Music**(0.80) - UK cultural authority
+- **NME**(0.70) - UK music culture
 
 ### Mainstream Context:
 
-- **Billboard** (0.80) - Charts/trends for "major label drama" angles
+- **Billboard**(0.80) - Charts/trends for "major label drama" angles
 
 ---
 
@@ -50,8 +50,8 @@ Automatically generates "The Unsigned Advantage" newsletter by:
 ### What Claude Knows About You:
 
 - 5+ years radio promotion experience
-- Electronic music producer (**sadact** - underground electronic)
-- Built **Audio Intel** (contact enrichment SaaS)
+- Electronic music producer (**sadact**- underground electronic)
+- Built **Audio Intel**(contact enrichment SaaS)
 - UK-based
 - Works with independent artists daily
 
@@ -74,7 +74,7 @@ Automatically generates "The Unsigned Advantage" newsletter by:
 
 ## Newsletter Framework (Enhanced with Depth Requirements)
 
-Every section follows **"The Unsigned Advantage"** structure with **depth requirements**:
+Every section follows **"The Unsigned Advantage"**structure with **depth requirements**:
 
 ### 1. HOOK (1-2 sentences)
 
@@ -134,7 +134,7 @@ Only if genuinely relevant to contact research/organisation
 3. Filters to top 3 stories (>0.4 relevance score)
 4. Sends each story to Claude API with strict voice instructions
 5. Claude generates 150-200 word section for each story
-6. Creates ConvertKit broadcast as **draft** (not auto-sent)
+6. Creates ConvertKit broadcast as **draft**(not auto-sent)
 7. You review and approve in ConvertKit dashboard
 
 ### API Usage:
@@ -253,12 +253,12 @@ node send-to-convertkit.js --test
 - Claude API generation: £0.01-0.03
 - ConvertKit: Included in your plan
 
-**Monthly** (4 newsletters):
+**Monthly**(4 newsletters):
 
 - Newsletter generation: £0.12
 - Total automation cost: £0.68/month for full system
 
-**Your $23.21 credit = 26+ months** of newsletter automation
+**Your $23.21 credit = 26+ months**of newsletter automation
 
 ---
 

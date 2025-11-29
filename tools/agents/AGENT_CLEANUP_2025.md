@@ -25,7 +25,7 @@ This made it impossible to:
 
 ## The Solution
 
-### 1. **Archived Utility Scripts** (53 files)
+### 1. **Archived Utility Scripts**(53 files)
 
 **Location**: `archive/utilities/`
 
@@ -38,9 +38,9 @@ Moved all debugging, testing, and setup scripts:
 - `fix-*.js` - One-off fixes
 - `setup-*.js`, `get-*.js`, `extract-*.js` - Setup utilities
 
-These are **preserved** (not deleted) but out of the way.
+These are **preserved**(not deleted) but out of the way.
 
-### 2. **Consolidated Campaign Tools** (25+ files)
+### 2. **Consolidated Campaign Tools**(25+ files)
 
 **Location**: `campaigns/`
 
@@ -53,22 +53,22 @@ Organised client-specific tools into subfolders:
 
 These are **campaign tools**, not reusable production agents.
 
-### 3. **Identified Duplicates** (Resolved)
+### 3. **Identified Duplicates**(Resolved)
 
 Found apparent duplicates that are actually **different agents**:
 
-**orchestrator.js** (2 files):
+**orchestrator.js**(2 files):
 
 - `archive/working/orchestrator.js` (629 lines) - Old version
-- `radio-promo/orchestrator.js` (1,149 lines) - **Current production version** 
+- `radio-promo/orchestrator.js` (1,149 lines) - **Current production version**
 
-**analytics-agent.js** (2 files):
+**analytics-agent.js**(2 files):
 
 - `core-agents/business/analytics-agent.js` (839 lines) - Database analytics
 - `radio-promo/agents/analytics-agent.js` (308 lines) - WARM API tracking
-- These serve **different purposes** and are both valid 
+- These serve **different purposes**and are both valid 
 
-### 4. **Created Agent Registry** (agent-registry.json)
+### 4. **Created Agent Registry**(agent-registry.json)
 
 **Location**: `/tools/agents/agent-registry.json`
 
@@ -84,7 +84,7 @@ Comprehensive catalogue of **22 real production agents**:
 
 ## Real Agent Count: 22
 
-### **CORE OPERATIONS** (4 agents)
+### **CORE OPERATIONS**(4 agents)
 
 Production agents for Audio Intel core functionality:
 
@@ -93,7 +93,7 @@ Production agents for Audio Intel core functionality:
 - `agent-manager` - Agent coordination
 - `data-cleanup` - Data quality maintenance (weekly cron)
 
-### **MARKETING & CONTENT** (7 agents)
+### **MARKETING & CONTENT**(7 agents)
 
 Customer acquisition and content generation:
 
@@ -105,7 +105,7 @@ Customer acquisition and content generation:
 - `business-analytics` - Metrics analysis (Monday 10am, saves 4h)
 - `agency-manager` - Partnership management (disabled)
 
-### **CLIENT DELIVERY** (7 agents)
+### **CLIENT DELIVERY**(7 agents)
 
 Liberty Music PR campaign automation (all manual trigger, critical priority):
 
@@ -117,7 +117,7 @@ Liberty Music PR campaign automation (all manual trigger, critical priority):
 - `liberty-coverage` - Professional reporting
 - `liberty-followup` - Automated follow-ups
 
-### **MONITORING & ALERTS** (4 agents)
+### **MONITORING & ALERTS**(4 agents)
 
 System health and cost tracking:
 
@@ -166,7 +166,7 @@ System health and cost tracking:
 
 ## Dashboard Integration
 
-The agent registry includes **visual system metadata** for Command Centre:
+The agent registry includes **visual system metadata**for Command Centre:
 
 ### Category Colors (Text Background Badges)
 
@@ -262,11 +262,11 @@ The agent registry includes **visual system metadata** for Command Centre:
 
 ## Key Takeaways
 
-1. **225 files ≠ 225 agents** - Most were utilities, tests, and campaign tools
-2. **22 real production agents** is a manageable, professional ecosystem
-3. **Organisation matters** - Clear structure enables better dashboard UX
-4. **Agent registry** is the single source of truth for all agents
-5. **Mobile-first dashboard** with 22 agents is fast and usable (not 225!)
+1. **225 files ≠ 225 agents**- Most were utilities, tests, and campaign tools
+2. **22 real production agents**is a manageable, professional ecosystem
+3. **Organisation matters**- Clear structure enables better dashboard UX
+4. **Agent registry**is the single source of truth for all agents
+5. **Mobile-first dashboard**with 22 agents is fast and usable (not 225!)
 
 ---
 

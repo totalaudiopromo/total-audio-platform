@@ -12,7 +12,7 @@ Refactored messy inline enrichment logic into clean agent-based architecture.
 
 #### Before: `/api/enrich-claude/route.ts`
 
-- **514 lines** of mixed concerns
+- **514 lines**of mixed concerns
 - Inline caching logic (44 lines)
 - Inline rate limiting (57 lines)
 - Inline API calls (150+ lines)
@@ -22,7 +22,7 @@ Refactored messy inline enrichment logic into clean agent-based architecture.
 
 #### After: `/api/enrich-claude/route.ts`
 
-- **115 lines** total
+- **115 lines**total
 - Clean agent call: `Agents.intel.execute()`
 - Automatic Supabase logging
 - Built-in metrics tracking
@@ -168,7 +168,7 @@ curl http://localhost:3000/api/agents/stats?name=intel
    - After: 115 lines
    - Reduction: 78%
 
-2. **apps/audio-intel/app/dashboard/agents/page.tsx** (new)
+2. **apps/audio-intel/app/dashboard/agents/page.tsx**(new)
    - Simple metrics dashboard
    - Real-time agent monitoring
    - Query examples
@@ -313,7 +313,7 @@ console.log(result.metrics.latency_ms);
 
 ## Conclusion
 
-The Agent Layer isn't a customer-facing feature - it's **developer infrastructure** that makes your code cleaner, more testable, and easier to monitor.
+The Agent Layer isn't a customer-facing feature - it's **developer infrastructure**that makes your code cleaner, more testable, and easier to monitor.
 
 We've proven the value by refactoring real messy code (514 → 115 lines) while maintaining the same functionality and adding better observability.
 

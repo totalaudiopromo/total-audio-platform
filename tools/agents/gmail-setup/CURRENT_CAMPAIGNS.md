@@ -2,19 +2,19 @@
 
 ## YOUR ACTIVE CAMPAIGNS (Front & Center)
 
-** Kiara - Bloodshot** (50 emails)
+**Kiara - Bloodshot**(50 emails)
 
 - Automatically routes all emails with "Kiara", "Bloodshot", or "KYARA"
 - Stays in inbox if mentions "Chris"
 - Color: Red
 
-** Senior Dunce - Bestial** (44 emails)
+**Senior Dunce - Bestial**(44 emails)
 
 - Automatically routes all emails with "Senior Dunce" or "Bestial"
 - Stays in inbox if mentions "Chris"
 - Color: Pink
 
-** Weekly Releases** (100 emails)
+**Weekly Releases**(100 emails)
 
 - Sam's weekly releases emails
 - Always stays in inbox (marked important)
@@ -87,7 +87,7 @@ Junk/
 
 ## Autopilot Maintenance
 
-**Status:** Running every hour (next runs at top of each hour)
+**Status:**Running every hour (next runs at top of each hour)
 
 **What it does:**
 
@@ -124,9 +124,9 @@ I'll:
 
 ## Label Colors
 
--  **Red** - Kiara Bloodshot
--  **Pink** - Senior Dunce Bestial
--  **Yellow** - Weekly Releases
+-  **Red**- Kiara Bloodshot
+-  **Pink**- Senior Dunce Bestial
+-  **Yellow**- Weekly Releases
 - No color - Everything else
 
 ## What's Working

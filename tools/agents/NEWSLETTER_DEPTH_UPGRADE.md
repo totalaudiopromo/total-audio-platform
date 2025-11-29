@@ -4,7 +4,7 @@
 
 ### 1. Voice Profile Enhancement ([FINAL_CHRIS_VOICE.md](FINAL_CHRIS_VOICE.md))
 
-Added **DEPTH REQUIREMENTS** section:
+Added **DEPTH REQUIREMENTS**section:
 
 - Every newsletter must connect to Chris's actual expertise (radio promotion, Audio Intel data, underground scene)
 - Depth test: "Could only Chris write this?" vs "Could any music blogger write this?"

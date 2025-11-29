@@ -2,7 +2,7 @@
 
 ## Repository Architecture
 
-**Audio Intel has its own separate GitHub repository** and is NOT part of the main monorepo's CI/CD pipeline.
+**Audio Intel has its own separate GitHub repository**and is NOT part of the main monorepo's CI/CD pipeline.
 
 ### Key Details:
 
@@ -22,10 +22,10 @@
 4. GitHub Actions runs tests, linting, and builds
 5. Vercel automatically deploys to `https://intel.totalaudiopromo.com`
 
-###  Common Mistake:
+### Common Mistake:
 
-- **DON'T** push Audio Intel changes to the monorepo (`total-audio-platform`)
-- **DON'T** expect Audio Intel to deploy via the main monorepo's CI/CD pipeline
+- **DON'T**push Audio Intel changes to the monorepo (`total-audio-platform`)
+- **DON'T**expect Audio Intel to deploy via the main monorepo's CI/CD pipeline
 
 ## Repository Setup
 

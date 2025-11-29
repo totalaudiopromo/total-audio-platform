@@ -1,23 +1,23 @@
-#  Pitch Generator - Ready to Run!
+# Pitch Generator - Ready to Run!
 
 ## Setup Complete with Claude/Anthropic
 
-Your Pitch Generator is now configured to use **Claude 3.5 Sonnet** instead of OpenAI GPT-4!
+Your Pitch Generator is now configured to use **Claude 3.5 Sonnet**instead of OpenAI GPT-4!
 
 ### What's Configured 
 
-1. ** Anthropic API** - Already set up with your key
-2. ** Supabase** - Connected to your existing database
-3. ** Google OAuth** - Sign-in ready
-4. ** Stripe** - Payment processing configured
-5. ** All dependencies** - Installed and ready
+1. **Anthropic API**- Already set up with your key
+2. **Supabase**- Connected to your existing database
+3. **Google OAuth**- Sign-in ready
+4. **Stripe**- Payment processing configured
+5. **All dependencies**- Installed and ready
 
 ### Only 1 Thing Left! 
 
 **You need to add your Supabase Service Role Key:**
 
 1. Go to: https://supabase.com/dashboard/project/ucncbighzqudaszewjrv/settings/api
-2. Copy the **"service_role"** key (NOT the anon key)
+2. Copy the **"service_role"**key (NOT the anon key)
 3. Open `.env.local` and uncomment this line:
    ```bash
    SUPABASE_SERVICE_ROLE_KEY=paste-your-key-here
@@ -55,11 +55,11 @@ Open http://localhost:3000
 
 **Claude 3.5 Sonnet is actually perfect for this:**
 
-1.  **More natural writing** - Claude tends to write in a more conversational, human style
-2.  **Better instruction following** - Excellent at matching tone and style requests
-3.  **You already have it** - No need to sign up for another API
-4.  **Cheaper** - $3 per million input tokens vs GPT-4's $30
-5.  **Faster** - Claude is typically faster than GPT-4
+1.  **More natural writing**- Claude tends to write in a more conversational, human style
+2.  **Better instruction following**- Excellent at matching tone and style requests
+3.  **You already have it**- No need to sign up for another API
+4.  **Cheaper**- $3 per million input tokens vs GPT-4's $30
+5.  **Faster**- Claude is typically faster than GPT-4
 
 ### Cost Comparison
 
@@ -110,14 +110,14 @@ model: 'claude-3-5-sonnet-20241022';
 
 ## Ready to Launch!
 
-**Total setup time:** ~5 minutes
+**Total setup time:**~5 minutes
 
 1. Add Supabase service role key (2 mins)
 2. Run database schema (1 min)
 3. Start the app (30 seconds)
 4. Test by generating a pitch (1 min)
 
-**You're basically done!** 
+**You're basically done!**
 
 ---
 
@@ -125,9 +125,9 @@ model: 'claude-3-5-sonnet-20241022';
 
 **For 100 users generating 15 pitches/month:**
 
-- **AI costs:** ~$15/month (Claude)
-- **Supabase:** Free → $25/month
-- **Vercel:** Free → $20/month
+- **AI costs:**~$15/month (Claude)
+- **Supabase:**Free → $25/month
+- **Vercel:**Free → $20/month
 
 **Total: ~$60/month infrastructure**
 

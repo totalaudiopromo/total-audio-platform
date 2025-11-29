@@ -57,7 +57,7 @@ Use the `quick-reference.md` file for instant access to all agent prompts.
 
 ## Project Context
 
-**Total Audio Promo (TAP)** is an AI-powered music promotion platform serving independent artists and PR agencies. The platform combines smart automation with human expertise to deliver efficient, transparent music promotion services.
+**Total Audio Promo (TAP)**is an AI-powered music promotion platform serving independent artists and PR agencies. The platform combines smart automation with human expertise to deliver efficient, transparent music promotion services.
 
 ### Current Tech Stack
 
@@ -112,4 +112,4 @@ Common request templates are available in the `templates/` directory:
 
 ---
 
-**Created for Total Audio Promo** 🎧 Smart systems, real people
+**Created for Total Audio Promo**🎧 Smart systems, real people

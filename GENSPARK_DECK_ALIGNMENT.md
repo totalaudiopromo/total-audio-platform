@@ -334,4 +334,4 @@ After running this prompt through Genspark, you should receive:
 
 ---
 
-**This prompt ensures the Liberty Music PR pitch deck accurately represents the Total Audio Promo platform capabilities and sets realistic expectations for the pilot.** 
+**This prompt ensures the Liberty Music PR pitch deck accurately represents the Total Audio Promo platform capabilities and sets realistic expectations for the pilot.**

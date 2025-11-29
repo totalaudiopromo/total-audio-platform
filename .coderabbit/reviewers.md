@@ -6,14 +6,14 @@ CodeRabbit acts as an automated senior reviewer for the Total Audio Platform. Th
 
 ## Philosophy
 
-**Silent unless needed.** CodeRabbit only comments on substantive issues that could:
+**Silent unless needed.**CodeRabbit only comments on substantive issues that could:
 
 - Break the Golden Verify architecture
 - Introduce security vulnerabilities
 - Violate monorepo boundaries
 - Cause production failures
 
-**Not a style cop.** CodeRabbit doesn't enforce:
+**Not a style cop.**CodeRabbit doesn't enforce:
 
 - Code formatting (Prettier handles this)
 - Naming conventions (trust developer judgment)

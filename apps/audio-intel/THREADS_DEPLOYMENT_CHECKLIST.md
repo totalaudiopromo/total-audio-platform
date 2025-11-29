@@ -464,7 +464,7 @@ If critical issues occur:
 - [ ] Local testing passed
 - [ ] Documentation reviewed
 
-**Signed**: **\*\*\*\***\_**\*\*\*\*** Date: \***\*\_\*\***
+**Signed**: **\*\*\*\***\_**\*\*\*\***Date: \***\*\_\*\***
 
 ### Production Deployment
 
@@ -472,7 +472,7 @@ If critical issues occur:
 - [ ] Cron job active
 - [ ] First posts verified
 
-**Signed**: **\*\*\*\***\_**\*\*\*\*** Date: \***\*\_\*\***
+**Signed**: **\*\*\*\***\_**\*\*\*\***Date: \***\*\_\*\***
 
 ### Post-Deployment
 
@@ -480,7 +480,7 @@ If critical issues occur:
 - [ ] Performance acceptable
 - [ ] No critical issues
 
-**Signed**: **\*\*\*\***\_**\*\*\*\*** Date: \***\*\_\*\***
+**Signed**: **\*\*\*\***\_**\*\*\*\***Date: \***\*\_\*\***
 
 ---
 

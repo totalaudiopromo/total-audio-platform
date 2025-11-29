@@ -53,27 +53,27 @@ Open http://localhost:3000
 
 ### Step 5: Test the App
 
-1. **Visit the landing page** - See the Pitch Generator marketing site
-2. **Sign in** - Use any OAuth provider (configure in NextAuth)
-3. **Add a contact** - Go to Contacts, add your first media contact
-4. **Generate a pitch** - Go to Dashboard → Generate New Pitch
-5. **Review the result** - See AI-generated pitch with 3 subject lines
+1. **Visit the landing page**- See the Pitch Generator marketing site
+2. **Sign in**- Use any OAuth provider (configure in NextAuth)
+3. **Add a contact**- Go to Contacts, add your first media contact
+4. **Generate a pitch**- Go to Dashboard → Generate New Pitch
+5. **Review the result**- See AI-generated pitch with 3 subject lines
 
 ---
 
 ## What Was Built
 
-###  Core Features
+### Core Features
 
-- **Dashboard** - Stats, recent pitches, quick actions
-- **Pitch Generator** - AI-powered pitch creation with GPT-4
-- **Pitch Review** - Edit, copy, and manage generated pitches
-- **Pitch History** - Search, filter, and track all pitches
-- **Contact Management** - Add/edit contacts with rich metadata
-- **Template Library** - 5 genre-specific templates pre-loaded
-- **Batch Mode** - Placeholder for future batch generation
+- **Dashboard**- Stats, recent pitches, quick actions
+- **Pitch Generator**- AI-powered pitch creation with GPT-4
+- **Pitch Review**- Edit, copy, and manage generated pitches
+- **Pitch History**- Search, filter, and track all pitches
+- **Contact Management**- Add/edit contacts with rich metadata
+- **Template Library**- 5 genre-specific templates pre-loaded
+- **Batch Mode**- Placeholder for future batch generation
 
-###  Pages Created
+### Pages Created
 
 - `/` - Landing page (Pitch Generator marketing)
 - `/dashboard` - Main dashboard (auth required)
@@ -84,11 +84,11 @@ Open http://localhost:3000
 - `/pitch/templates` - View template library
 - `/pitch/batch` - Coming soon placeholder
 
-###  API Routes
+### API Routes
 
 - `/api/pitch/generate` - Generate pitch with OpenAI GPT-4
 
-###  Database Schema
+### Database Schema
 
 - `contacts` - Media contacts with genres, notes, preferences
 - `pitches` - Generated pitches with status tracking
@@ -136,9 +136,9 @@ Open http://localhost:3000
 
 The AI quality depends heavily on:
 
-1. **Good contact data** - Add notes about preferences, timing
-2. **Clear key hooks** - Be specific about what makes the track special
-3. **Contact history** - Track interactions to improve personalization
+1. **Good contact data**- Add notes about preferences, timing
+2. **Clear key hooks**- Be specific about what makes the track special
+3. **Contact history**- Track interactions to improve personalization
 
 ### Cost Management
 
@@ -214,7 +214,7 @@ This build follows TAP brand guidelines:
 
 ---
 
-**Built in record time using the TAP SaaS template!** 
+**Built in record time using the TAP SaaS template!**
 
 Total build time: ~2 hours
 Lines of code: ~3,000

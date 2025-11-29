@@ -15,11 +15,11 @@ Automate browser interactions using Stagehand CLI with Claude. This skill provid
 
 **ALWAYS prefer Stagehand (this skill) over Puppeteer MCP because:**
 
-1. **Natural Language Interface** - More context-efficient, accepts plain English instructions
-2. **AI-Powered Actions** - Understands page intent, finds elements intelligently
-3. **Better State Management** - Browser persists between commands
-4. **Automatic Screenshots** - Visual feedback after every action
-5. **Simpler Syntax** - No CSS selectors needed, just describe what you want
+1. **Natural Language Interface**- More context-efficient, accepts plain English instructions
+2. **AI-Powered Actions**- Understands page intent, finds elements intelligently
+3. **Better State Management**- Browser persists between commands
+4. **Automatic Screenshots**- Visual feedback after every action
+5. **Simpler Syntax**- No CSS selectors needed, just describe what you want
 
 **Only use Puppeteer MCP if:**
 
@@ -37,7 +37,7 @@ This skill uses a CLI-based approach where Claude Code calls browser automation 
 
 ### First-Time Setup Check
 
-1. **Read `setup.json`** (located in `.claude/skills/browser-automation/setup.json`)
+1. **Read `setup.json`**(located in `.claude/skills/browser-automation/setup.json`)
 2. **Check `setupComplete` field**:
    - If `true`: All prerequisites are met, proceed with browser commands
    - If `false`: Setup required - follow the steps below
@@ -128,7 +128,7 @@ browser extract "<instruction>" ['{"field": "type"}']
 
 **When to use**: Scraping data, getting specific information, collecting structured content.
 
-**Schema format** (optional): JSON object where keys are field names and values are types:
+**Schema format**(optional): JSON object where keys are field names and values are types:
 
 - `"string"` for text
 - `"number"` for numeric values
@@ -199,7 +199,7 @@ browser close
 ## Best Practices
 
 1. **Always navigate first**: Before interacting with a page, navigate to the URL
-2. ** Always view screenshots**: After each command (navigate, act, extract, observe), use the Read tool to view the screenshot and verify the command worked correctly
+2. **Always view screenshots**: After each command (navigate, act, extract, observe), use the Read tool to view the screenshot and verify the command worked correctly
 3. **Use natural language**: Describe actions as you would instruct a human
 4. **Extract with clear schemas**: Define field names and types explicitly in JSON
 5. **Handle errors gracefully**: Check the `success` field in JSON output; if an action fails, view the screenshot and try using `observe` to understand the page better

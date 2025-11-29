@@ -4,7 +4,7 @@ notion_url: https://www.notion.so/DAILY-TAP-TO-DO-S-SEPTEMBER-2025-2540a35b21ed8
 exported_at: 2025-09-26T14:32:33.220Z
 ---
 
-#  DAILY TAP TO-DO'S - SEPTEMBER 2025
+# DAILY TAP TO-DO'S - SEPTEMBER 2025
 
 _Your daily action centre - Updated for current reality and £500/month goal_
 
@@ -14,29 +14,29 @@ _Your daily action centre - Updated for current reality and £500/month goal_
 
 ### **Email Automation (BROKEN - Priority #1)**
 
-- [ ] **FIX IMMEDIATELY** - Email automation after signup (currently broken)
+- [ ] **FIX IMMEDIATELY**- Email automation after signup (currently broken)
 
-- [ ] **FIX IMMEDIATELY** - Welcome sequence for new users
+- [ ] **FIX IMMEDIATELY**- Welcome sequence for new users
 
-- [ ] **FIX IMMEDIATELY** - Newsletter confirmation flow
+- [ ] **FIX IMMEDIATELY**- Newsletter confirmation flow
 
-- [ ] **BACKUP PLAN** - Create manual email process if API fails
+- [ ] **BACKUP PLAN**- Create manual email process if API fails
 
 ### **Customer Acquisition (ZERO CUSTOMERS - Priority #2)**
 
-- [ ] **THIS WEEK** - List 20 potential customers from your network
+- [ ] **THIS WEEK**- List 20 potential customers from your network
 
-- [ ] **THIS WEEK** - Send outreach to first 5 contacts using proven script
+- [ ] **THIS WEEK**- Send outreach to first 5 contacts using proven script
 
-- [ ] **THIS WEEK** - Post LinkedIn update about Audio Intel
+- [ ] **THIS WEEK**- Post LinkedIn update about Audio Intel
 
-- [ ] **THIS WEEK** - Follow up with any existing beta users
+- [ ] **THIS WEEK**- Follow up with any existing beta users
 
 ---
 
-## **THIS WEEK'S FOCUS** (Sept 6-13)
+## **THIS WEEK'S FOCUS**(Sept 6-13)
 
-### ** Monday Priorities (30 minutes)**
+### **Monday Priorities (30 minutes)**
 
 - [ ] Test email automation status - is it working?
 
@@ -46,7 +46,7 @@ _Your daily action centre - Updated for current reality and £500/month goal_
 
 - [ ] Check Stripe dashboard for any weekend signups
 
-### ** Wednesday Priorities (45 minutes)**
+### **Wednesday Priorities (45 minutes)**
 
 - [ ] Send outreach messages to first 3 contacts
 
@@ -56,7 +56,7 @@ _Your daily action centre - Updated for current reality and £500/month goal_
 
 - [ ] Check user feedback/support requests
 
-### ** Friday Priorities (30 minutes)**
+### **Friday Priorities (30 minutes)**
 
 - [ ] Follow up on Wednesday's outreach
 
@@ -72,24 +72,24 @@ _Your daily action centre - Updated for current reality and £500/month goal_
 
 ### **Audio Intel Platform Issues**
 
-- [ ] **HIGH** - Fix signup email automation (Kit API issues)
+- [ ] **HIGH**- Fix signup email automation (Kit API issues)
 
-- [ ] **HIGH** - Test complete user journey (signup → upload → results)
+- [ ] **HIGH**- Test complete user journey (signup → upload → results)
 
-- [ ] **MEDIUM** - Add simple onboarding flow for new users
+- [ ] **MEDIUM**- Add simple onboarding flow for new users
 
-- [ ] **MEDIUM** - Set up basic analytics (who signs up, where they drop off)
+- [ ] **MEDIUM**- Set up basic analytics (who signs up, where they drop off)
 
-- [ ] **LOW** - Create simple demo video/screenshots
+- [ ] **LOW**- Create simple demo video/screenshots
 
 ### **Infrastructure & Tools**
 
-- [ ] **MEDIUM** - Fix Gmail tags and remove emojis from current inbox
+- [ ] **MEDIUM**- Fix Gmail tags and remove emojis from current inbox
 
-- [ ] **MEDIUM** - Implement mobile-responsive dashboard toggles
+- [ ] **MEDIUM**- Implement mobile-responsive dashboard toggles
 
-- [ ] **LOW** - Deploy production build with SSL verification
-  - [ ] **LOW** - Update main TAP URL as proper landing page
+- [ ] **LOW**- Deploy production build with SSL verification
+  - [ ] **LOW**- Update main TAP URL as proper landing page
 
 ---
 
@@ -97,39 +97,39 @@ _Your daily action centre - Updated for current reality and £500/month goal_
 
 ### **Customer Outreach (THE PRIORITY)**
 
-- [ ] **Week 1** - Reach out to 5 industry contacts
+- [ ] **Week 1**- Reach out to 5 industry contacts
 
-- [ ] **Week 2** - Reach out to 5 more contacts + follow up on Week 1
+- [ ] **Week 2**- Reach out to 5 more contacts + follow up on Week 1
 
-- [ ] **Week 3** - Scale to 10 contacts + LinkedIn posts
+- [ ] **Week 3**- Scale to 10 contacts + LinkedIn posts
 
-- [ ] **Week 4** - Scale to 15 contacts + create case study
+- [ ] **Week 4**- Scale to 15 contacts + create case study
 
 ### **Partnership Opportunities**
 
-- [ ] **Execute DeMarco campaign** (£2-4K opportunity)
+- [ ] **Execute DeMarco campaign**(£2-4K opportunity)
 
-- [ ] **Finalise Liberty Music PR partnership** framework
+- [ ] **Finalise Liberty Music PR partnership**framework
 
-- [ ] **Define revenue sharing** structure (10-15%)
+- [ ] **Define revenue sharing**structure (10-15%)
 
-- [ ] **Create joint service** offering documentation
+- [ ] **Create joint service**offering documentation
 
 ---
 
-## **WHAT WE'RE NOT DOING** (Focus Protection)
+## **WHAT WE'RE NOT DOING**(Focus Protection)
 
- **Complex freemium models** (decided against for now)
+ **Complex freemium models**(decided against for now)
 
- **AI character personalities** (won't drive revenue directly)
+ **AI character personalities**(won't drive revenue directly)
 
- **Viral growth systems** (premature - need customers first)
+ **Viral growth systems**(premature - need customers first)
 
- **100 social media posts** (time sink without customers)
+ **100 social media posts**(time sink without customers)
 
- **Command Centre dashboard** (premature optimisation)
+ **Command Centre dashboard**(premature optimisation)
 
- **Audio character animations** (nice-to-have, not priority)
+ **Audio character animations**(nice-to-have, not priority)
 
 ---
 
@@ -221,7 +221,7 @@ _"Hi [Name], hope you're well. I've been working on a tool for my own radio prom
 
 ## **QUICK ACCESS REMINDERS**
 
-** CRITICAL DAILY:**
+**CRITICAL DAILY:**
 
 - Check Stripe for new signups
 
@@ -229,7 +229,7 @@ _"Hi [Name], hope you're well. I've been working on a tool for my own radio prom
 
 - Respond to customer inquiries within 24 hours
 
-** WEEKLY REVIEW:**
+**WEEKLY REVIEW:**
 
 - Update Master To-Do List progress
 

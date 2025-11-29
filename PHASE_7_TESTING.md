@@ -82,7 +82,7 @@ npm run dev
 stripe listen --forward-to localhost:3000/api/webhooks/stripe
 ```
 
-**Note the webhook signing secret** - update your `.env.local`:
+**Note the webhook signing secret**- update your `.env.local`:
 
 ```bash
 STRIPE_WEBHOOK_SECRET=whsec_xxxxxxxxxxxx
@@ -337,42 +337,42 @@ npx tsx scripts/backfill-stripe.ts --days 90
 
 ### End-to-End Flow Test
 
-1. **User Signup** →
+1. **User Signup**→
 
    ```bash
    # Check events table for user_signed_up event
    SELECT * FROM events WHERE event_name = 'user_signed_up' AND user_id = '<user-id>';
    ```
 
-2. **Contact Enrichment** →
+2. **Contact Enrichment**→
 
    ```bash
    # Check enrichment_completed event
    # Check usage_counters enrichments_count incremented
    ```
 
-3. **Data Export** →
+3. **Data Export**→
 
    ```bash
    # Check export_csv_completed event
    # Check usage_counters exports_count incremented
    ```
 
-4. **Payment (via Stripe CLI test event)** →
+4. **Payment (via Stripe CLI test event)**→
 
    ```bash
    stripe trigger checkout.session.completed
    # Check payments table for new record
    ```
 
-5. **View Admin Dashboard** →
+5. **View Admin Dashboard**→
 
    ```bash
    # Verify all metrics display correctly
    open http://localhost:3000/admin/metrics
    ```
 
-6. **Generate Growth Report** →
+6. **Generate Growth Report**→
    ```bash
    npx tsx scripts/growth-report.ts
    # Verify report includes all sections

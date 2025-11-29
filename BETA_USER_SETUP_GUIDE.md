@@ -17,27 +17,27 @@ This guide covers the complete setup process for granting beta access to users, 
 
 | Field           | Value                   |
 | --------------- | ----------------------- |
-| **Email**       | info@streamer.co.uk     |
-| **Password**    | Streamer2024!BetaAccess |
-| **Name**        | Streamer                |
-| **Role**        | ARTIST                  |
-| **Beta Period** | 60 days                 |
-| **Cost**        | £0/month                |
-| **SSO**         | Enabled across all apps |
+| **Email**      | info@streamer.co.uk     |
+| **Password**   | Streamer2024!BetaAccess |
+| **Name**       | Streamer                |
+| **Role**       | ARTIST                  |
+| **Beta Period**| 60 days                 |
+| **Cost**       | £0/month                |
+| **SSO**        | Enabled across all apps |
 
 ### Available Apps
 
 | App                  | URL                         | Status         | Features                                  |
 | -------------------- | --------------------------- | -------------- | ----------------------------------------- |
-| **Audio Intel**      | intel.totalaudiopromo.com   | LIVE NOW    | Contact enrichment, CSV export, AI search |
-| **Campaign Tracker** | tracker.totalaudiopromo.com | Coming soon | Campaign management, analytics            |
-| **Pitch Generator**  | pitch.totalaudiopromo.com   | Coming soon | AI pitch writing, templates               |
+| **Audio Intel**     | intel.totalaudiopromo.com   | LIVE NOW    | Contact enrichment, CSV export, AI search |
+| **Campaign Tracker**| tracker.totalaudiopromo.com | Coming soon | Campaign management, analytics            |
+| **Pitch Generator** | pitch.totalaudiopromo.com   | Coming soon | AI pitch writing, templates               |
 
 ## Setup Process
 
 ### Prerequisites
 
-1. **Supabase Access** Already Configured
+1. **Supabase Access**Already Configured
    - Supabase project: `ucncbighzqudaszewjrv.supabase.co`
    - `NEXT_PUBLIC_SUPABASE_URL` configured in all apps
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY` configured in all apps
@@ -47,7 +47,7 @@ This guide covers the complete setup process for granting beta access to users, 
    - Resend API account
    - `RESEND_API_KEY` environment variable set
 
-**Note:** Platform uses Supabase (NOT Prisma). All database operations use Supabase directly.
+**Note:**Platform uses Supabase (NOT Prisma). All database operations use Supabase directly.
 
 ### Step 1: Create Beta User Account
 
@@ -66,7 +66,7 @@ npx tsx scripts/setup-jeremy-supabase.ts
 - Configures beta access (500 enrichments limit)
 - Handles existing users gracefully
 
-**Note:** This uses Supabase directly - no Prisma or DATABASE_URL needed.
+**Note:**This uses Supabase directly - no Prisma or DATABASE_URL needed.
 
 **Expected Output:**
 
@@ -197,9 +197,9 @@ Content-Type: application/json
 
 Jeremy's credentials work across all three apps:
 
-- **Audio Intel** - Available now
-- **Campaign Tracker** - Coming soon (same credentials)
-- **Pitch Generator** - Coming soon (same credentials)
+- **Audio Intel**- Available now
+- **Campaign Tracker**- Coming soon (same credentials)
+- **Pitch Generator**- Coming soon (same credentials)
 
 All apps authenticate against the same database using JWT tokens.
 
@@ -217,13 +217,13 @@ All apps authenticate against the same database using JWT tokens.
    - Professional HTML email template
    - Includes all app links and beta details
 
-3. **`scripts/setup-beta-user.sql`** (Alternative)
+3. **`scripts/setup-beta-user.sql`**(Alternative)
    - SQL script for manual database setup
    - Use if TypeScript script unavailable
 
 ### Documentation
 
-1. **`BETA_USER_SETUP_GUIDE.md`** (This file)
+1. **`BETA_USER_SETUP_GUIDE.md`**(This file)
    - Comprehensive setup guide
    - Step-by-step instructions
    - Troubleshooting section
@@ -253,7 +253,7 @@ If you see "User already exists" message:
 
 ### Supabase Connection Error
 
-**Error:** `Supabase URL not found` or connection issues
+**Error:**`Supabase URL not found` or connection issues
 
 **Solution:**
 
@@ -263,7 +263,7 @@ If you see "User already exists" message:
 
 ### Email Not Sending
 
-**Error:** `RESEND_API_KEY not set` or email fails
+**Error:**`RESEND_API_KEY not set` or email fails
 
 **Solution:**
 
@@ -274,7 +274,7 @@ If you see "User already exists" message:
 
 ### Password Hash Error
 
-**Error:** `bcrypt` related errors
+**Error:**`bcrypt` related errors
 
 **Solution:**
 
@@ -285,7 +285,7 @@ npm install bcryptjs @types/bcryptjs
 
 ### Supabase Client Issues
 
-**Error:** `Supabase client not initialized`
+**Error:**`Supabase client not initialized`
 
 **Solution:**
 
@@ -319,11 +319,11 @@ npm install bcryptjs @types/bcryptjs
 
 ### Beta Subscription Details
 
-- **Tier:** ARTIST
-- **Status:** ACTIVE
-- **Monthly Price:** £0.00
-- **Setup Fee:** £0.00
-- **Period End:** 60 days from creation
+- **Tier:**ARTIST
+- **Status:**ACTIVE
+- **Monthly Price:**£0.00
+- **Setup Fee:**£0.00
+- **Period End:**60 days from creation
 
 ### Extending Beta Period
 
@@ -406,5 +406,5 @@ If you encounter issues:
 
 ---
 
-**Last Updated:** 2025-01-XX
-**Version:** 1.0.0
+**Last Updated:**2025-01-XX
+**Version:**1.0.0

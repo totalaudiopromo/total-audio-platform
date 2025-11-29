@@ -221,12 +221,12 @@ Data flowing to Command Centre dashboard at `command.totalaudiopromo.com/analyti
 
 ## Next Steps
 
-1. **Expand BBC 6 Music page** (Tier 1 priority - 800 monthly searches)
-2. **Expand BBC 1Xtra page** (Tier 1 priority - 600 monthly searches)
-3. **Expand Apple Music page** (Tier 2 priority - 500 monthly searches)
-4. **Expand BBC Radio 2 page** (Tier 2 priority - 400 monthly searches)
-5. **Expand Kerrang page** (Tier 3 priority - 300 monthly searches)
-6. **Expand Absolute page** (Tier 3 priority - 250 monthly searches)
+1. **Expand BBC 6 Music page**(Tier 1 priority - 800 monthly searches)
+2. **Expand BBC 1Xtra page**(Tier 1 priority - 600 monthly searches)
+3. **Expand Apple Music page**(Tier 2 priority - 500 monthly searches)
+4. **Expand BBC Radio 2 page**(Tier 2 priority - 400 monthly searches)
+5. **Expand Kerrang page**(Tier 3 priority - 300 monthly searches)
+6. **Expand Absolute page**(Tier 3 priority - 250 monthly searches)
 
 **Estimated completion time**: 2-3 hours for remaining 6 pages using content template
 

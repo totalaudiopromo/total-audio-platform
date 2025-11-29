@@ -1,4 +1,4 @@
-#  PITCH GENERATOR - PRIORITY AUDIT & ACTION PLAN
+# PITCH GENERATOR - PRIORITY AUDIT & ACTION PLAN
 
 **Audited**: October 12, 2025
 **Site**: pitch.totalaudiopromo.com
@@ -8,15 +8,15 @@
 
 ## EXECUTIVE SUMMARY
 
-**Status**:  **PRODUCTION-READY** with **2 CRITICAL fixes** completed and **8 HIGH-PRIORITY** items remaining.
+**Status**:  **PRODUCTION-READY**with **2 CRITICAL fixes**completed and **8 HIGH-PRIORITY**items remaining.
 
 ### Completed This Session
 
--  **robots.txt created** - proper crawl directives
--  **sitemap.ts created** - dynamic sitemap with all pages + 10 blog posts
--  **Privacy Policy created** - GDPR-compliant, UK-specific
--  **Terms of Service created** - UK law, comprehensive
--  **Footer updated** - Legal links added (Privacy, Terms, Blog)
+-  **robots.txt created**- proper crawl directives
+-  **sitemap.ts created**- dynamic sitemap with all pages + 10 blog posts
+-  **Privacy Policy created**- GDPR-compliant, UK-specific
+-  **Terms of Service created**- UK law, comprehensive
+-  **Footer updated**- Legal links added (Privacy, Terms, Blog)
 
 ### Critical Findings
 
@@ -56,34 +56,34 @@ HTTP/2 200
 
 ### 2.  LEGAL COMPLIANCE (UK/GDPR) - **80% COMPLETE**
 
-**Status**:  **PARTIALLY COMPLETE** (2/3 done)
+**Status**:  **PARTIALLY COMPLETE**(2/3 done)
 
-####  COMPLETED:
+#### COMPLETED:
 
-1. **Privacy Policy** - [app/privacy/page.tsx](app/privacy/page.tsx)
+1. **Privacy Policy**- [app/privacy/page.tsx](app/privacy/page.tsx)
    - GDPR-compliant (all rights: access, erasure, portability, etc.)
    - UK ICO contact information
    - Service provider transparency (Supabase, Anthropic, Stripe, Vercel)
    - Data retention policy (30 days after account deletion)
-   - Effort: **2 hours**  DONE
+   - Effort: **2 hours** DONE
 
-2. **Terms of Service** - [app/terms/page.tsx](app/terms/page.tsx)
+2. **Terms of Service**- [app/terms/page.tsx](app/terms/page.tsx)
    - UK law (England and Wales jurisdiction)
    - Clear pricing terms (Free, PRO, Agency, Bundle)
    - 30-day money-back guarantee
    - Acceptable use policy (anti-spam, anti-scraping)
    - AI-generated content disclaimers
-   - Effort: **2 hours**  DONE
+   - Effort: **2 hours** DONE
 
-3. **Footer Links** - [components/SiteFooter.tsx](components/SiteFooter.tsx)
+3. **Footer Links**- [components/SiteFooter.tsx](components/SiteFooter.tsx)
    - Privacy Policy link added 
    - Terms of Service link added 
    - Blog link added 
-   - Effort: **15 mins**  DONE
+   - Effort: **15 mins** DONE
 
-####  REMAINING:
+#### REMAINING:
 
-**A. Cookie Consent Banner** (Optional but Recommended)
+**A. Cookie Consent Banner**(Optional but Recommended)
 **Priority**: Medium
 **Effort**: 1 hour
 **Impact**: Legal transparency (Plausible is cookie-less, so technically not required)
@@ -723,7 +723,7 @@ export async function GET() {
 
 **Current Issues Found**:
 
-**A. Genre Dropdown** - [app/pitch/generate/page.tsx:358-375](app/pitch/generate/page.tsx#L358-L375)
+**A. Genre Dropdown**- [app/pitch/generate/page.tsx:358-375](app/pitch/generate/page.tsx#L358-L375)
 
 -  Has `required` attribute
 -  No visual indication of requirement before submission
@@ -759,7 +759,7 @@ export async function GET() {
 {errors.genre && <p className="mt-1 text-xs text-red-600">{errors.genre}</p>}
 ```
 
-**B. Key Hook Textarea** - [app/pitch/generate/page.tsx:391-407](app/pitch/generate/page.tsx#L391-L407)
+**B. Key Hook Textarea**- [app/pitch/generate/page.tsx:391-407](app/pitch/generate/page.tsx#L391-L407)
 
 -  Has character limit (500)
 -  Shows character count
@@ -803,9 +803,9 @@ const hookIsValid = hookCharCount >= hookMinLength && hookCharCount <= hookMaxLe
 </div>
 ```
 
-**C. Error Messages** - Generic and unhelpful
+**C. Error Messages**- Generic and unhelpful
 
-**Current** ([app/pitch/generate/page.tsx:218-220](app/pitch/generate/page.tsx#L218-L220)):
+**Current**([app/pitch/generate/page.tsx:218-220](app/pitch/generate/page.tsx#L218-L220)):
 
 ```tsx
 } catch (error) {
@@ -862,7 +862,7 @@ const hookIsValid = hookCharCount >= hookMinLength && hookCharCount <= hookMaxLe
 
 **Status**:  **REQUIRES MANUAL TESTING**
 
-**Current AI Implementation** ([lib/openai.ts](lib/openai.ts)):
+**Current AI Implementation**([lib/openai.ts](lib/openai.ts)):
 
 - Model: Claude 3.5 Sonnet ( Good choice)
 - Temperature: 0.8 ( Balanced creativity)
@@ -871,7 +871,7 @@ const hookIsValid = hookCharCount >= hookMinLength && hookCharCount <= hookMaxLe
 
 **Testing Protocol**:
 
-1. **Generate 5 Test Pitches** with same inputs:
+1. **Generate 5 Test Pitches**with same inputs:
    - Artist: "The Midnight Sons"
    - Track: "Northern Lights"
    - Genre: "indie"
@@ -890,7 +890,7 @@ const hookIsValid = hookCharCount >= hookMinLength && hookCharCount <= hookMaxLe
    - Verify genre-appropriate language
    - Check artist comparisons match genre/era
 
-**Observed Issue** ([lib/openai.ts:94-98](lib/openai.ts#L94-L98)):
+**Observed Issue**([lib/openai.ts:94-98](lib/openai.ts#L94-L98)):
 
 ```typescript
 CRITICAL GENRE/STYLE MATCHING RULES:
@@ -917,7 +917,7 @@ This suggests **past issues with inappropriate comparisons**. Need to test if pr
 
 ### 7. PERFORMANCE AUDIT - **MODERATE ISSUES**
 
-**Current Metrics** (from earlier audit):
+**Current Metrics**(from earlier audit):
 
 - Build size: 356MB ( Large)
 - Node modules: 293MB ( Large)
@@ -931,7 +931,7 @@ This suggests **past issues with inappropriate comparisons**. Need to test if pr
 
 ---
 
-### 8. SEO & METADATA - ** EXCELLENT (MINOR GAPS)**
+### 8. SEO & METADATA - **EXCELLENT (MINOR GAPS)**
 
 **Status**:  **95% COMPLETE**
 
@@ -946,11 +946,11 @@ This suggests **past issues with inappropriate comparisons**. Need to test if pr
 
 **Minor Gaps**:
 
-1. **Missing OG Image** - `/og-pitch-generator.png` referenced but doesn't exist
+1. **Missing OG Image**- `/og-pitch-generator.png` referenced but doesn't exist
    - **Priority**: Medium
    - **Effort**: 1 hour (design 1200x630px image)
 
-2. **No JSON-LD Schema** for blog posts
+2. **No JSON-LD Schema**for blog posts
    - **Priority**: Low
    - **Effort**: 2 hours
    - **Impact**: Rich snippets in Google search
@@ -961,9 +961,9 @@ This suggests **past issues with inappropriate comparisons**. Need to test if pr
 
 **Status**:  **NEEDS IMPROVEMENT**
 
-**Current State** ([dashboard/page.tsx:159-177](dashboard/page.tsx#L159-L177)):
+**Current State**([dashboard/page.tsx:159-177](dashboard/page.tsx#L159-L177)):
 
-**Empty State -  EXISTS** but could be better:
+**Empty State -  EXISTS**but could be better:
 
 ```tsx
 {
@@ -1071,17 +1071,17 @@ This suggests **past issues with inappropriate comparisons**. Need to test if pr
 
 ## CONVERSION OPTIMIZATION
 
-### 10. CALL-TO-ACTION CLARITY - ** GOOD, MINOR TWEAKS**
+### 10. CALL-TO-ACTION CLARITY - **GOOD, MINOR TWEAKS**
 
 **Status**:  **MOSTLY CLEAR**
 
-**Homepage CTAs** ([app/page.tsx:63-64](app/page.tsx#L63-L64)):
+**Homepage CTAs**([app/page.tsx:63-64](app/page.tsx#L63-L64)):
 
 -  Primary CTA: "Start free trial →" (clear)
 -  Secondary CTA: "See how it works" (links to #how-it-works)
 -  Free trial messaging: "5 pitches/month forever free"
 
-**Pricing Page** ([app/pricing/page.tsx](app/pricing/page.tsx)):
+**Pricing Page**([app/pricing/page.tsx](app/pricing/page.tsx)):
 
 -  Clear limits: "5 pitches per month" (Free)
 -  Upgrade prompts: Plan selector + checkout form
@@ -1105,11 +1105,11 @@ blurb: 'Get Pitch Generator + Audio Intel + Tracker at one low price. Switch bet
 
 ---
 
-### 11. POPUP & MODAL STRATEGY - ** GOOD**
+### 11. POPUP & MODAL STRATEGY - **GOOD**
 
 **Status**:  **WELL-IMPLEMENTED**
 
-**Exit Intent Popup** ([components/ExitIntentPopup.tsx](components/ExitIntentPopup.tsx)):
+**Exit Intent Popup**([components/ExitIntentPopup.tsx](components/ExitIntentPopup.tsx)):
 
 -  Exists and works
 -  Session-based (only shows once)
@@ -1198,7 +1198,7 @@ export function UsageMeter({ current, limit }: { current: number; limit: number 
 
 ---
 
-### 12. LINK & NAVIGATION VERIFICATION - ** EXCELLENT**
+### 12. LINK & NAVIGATION VERIFICATION - **EXCELLENT**
 
 **Status**:  **ALL LINKS WORKING**
 
@@ -1229,9 +1229,9 @@ export function UsageMeter({ current, limit }: { current: number; limit: number 
 
 **User Journey Map**:
 
-1. **Landing** (homepage) → 2. **Sign Up** → 3. **Dashboard** → 4. **Generate Pitch** → 5. **Copy/Export**
+1. **Landing**(homepage) → 2. **Sign Up**→ 3. **Dashboard**→ 4. **Generate Pitch**→ 5. **Copy/Export**
 
-**Drop-off Points** (hypothetical, needs real data):
+**Drop-off Points**(hypothetical, needs real data):
 
 - Homepage → Sign Up: ~60-70% drop-off (industry standard)
 - Sign Up → First Pitch: ~40-50% drop-off (needs onboarding)
@@ -1359,9 +1359,9 @@ trackEvent('onboarding_step_completed', { step: 'add_contact' });
 
 **Top 3 Revenue Drivers**:
 
-1. **Onboarding Checklist** - Reduces dashboard abandonment
-2. **Usage Meter** - Drives free → PRO upgrades
-3. **Pitch Quality** - Increases retention and referrals
+1. **Onboarding Checklist**- Reduces dashboard abandonment
+2. **Usage Meter**- Drives free → PRO upgrades
+3. **Pitch Quality**- Increases retention and referrals
 
 ---
 

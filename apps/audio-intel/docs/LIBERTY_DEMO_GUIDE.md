@@ -2,8 +2,8 @@
 
 ## Demo Preparation Complete 
 
-**Meeting with:** Dan McCarthy, Liberty Music PR
-**Goal:** Show immediate value of Audio Intel with vision for full command centre
+**Meeting with:**Dan McCarthy, Liberty Music PR
+**Goal:**Show immediate value of Audio Intel with vision for full command centre
 
 ---
 
@@ -11,13 +11,13 @@
 
 ### 1. Liberty-Relevant Demo Examples 
 
-**Homepage Live Demo** now includes 5 real contacts Dan will recognise:
+**Homepage Live Demo**now includes 5 real contacts Dan will recognise:
 
-1. **Greg James** (BBC Radio 1 Breakfast) - Pop, House, Electronic
-2. **Danny Howard** (BBC Radio 1 Dance) - House, Techno, Underground
-3. **MistaJam** (Capital Xtra) - Hip-hop, Grime, Bass
-4. **Spotify Editorial Team** - All genres, 4-week lead time
-5. **Pete Tong** (BBC Radio 1 Essential Selection) - Dance, House legends
+1. **Greg James**(BBC Radio 1 Breakfast) - Pop, House, Electronic
+2. **Danny Howard**(BBC Radio 1 Dance) - House, Techno, Underground
+3. **MistaJam**(Capital Xtra) - Hip-hop, Grime, Bass
+4. **Spotify Editorial Team**- All genres, 4-week lead time
+5. **Pete Tong**(BBC Radio 1 Essential Selection) - Dance, House legends
 
 **Each contact shows:**
 
@@ -35,28 +35,28 @@
 - Real submission timing data per contact
 - Genre-tagged intelligence relevant to Liberty's roster
 
-**Location:** [https://intel.totalaudiopromo.com](https://intel.totalaudiopromo.com)
+**Location:**[https://intel.totalaudiopromo.com](https://intel.totalaudiopromo.com)
 
 ### 3. Case Study Page 
 
-**Created:** `/case-studies` - 3 detailed case studies
+**Created:**`/case-studies` - 3 detailed case studies
 
-1. **BBC Radio 1 Campaign** (sadact electronic launch)
+1. **BBC Radio 1 Campaign**(sadact electronic launch)
    - 15 hours → 15 minutes research time
    - 47 contacts enriched
    - 100% validation success
 
-2. **Spotify Editorial** (House music playlist push)
+2. **Spotify Editorial**(House music playlist push)
    - 10 hours → 20 minutes research time
    - 34 playlist contacts discovered
    - Strategic submission vs desperate submission
 
-3. **Multi-Platform Agency** (Liberty Music PR - hypothetical)
+3. **Multi-Platform Agency**(Liberty Music PR - hypothetical)
    - 20 hours/week → 2 hours/week research
    - 237 contacts across radio/press/playlisting
    - 95% database accuracy
 
-**Location:** [https://intel.totalaudiopromo.com/case-studies](https://intel.totalaudiopromo.com/case-studies)
+**Location:**[https://intel.totalaudiopromo.com/case-studies](https://intel.totalaudiopromo.com/case-studies)
 
 ---
 
@@ -72,14 +72,14 @@
 
 **Show homepage live enrichment:**
 
-1. **Start with Danny Howard** (Liberty-relevant)
+1. **Start with Danny Howard**(Liberty-relevant)
    - Click "Enrich Contact"
    - Show the real-time enrichment (2 seconds)
-   - **Highlight:** "BBC Radio 1 Dance, Friday 7-9pm, house and techno focus, submissions via BBC Music Introducing"
+   - **Highlight:**"BBC Radio 1 Dance, Friday 7-9pm, house and techno focus, submissions via BBC Music Introducing"
 
-2. **Click "Try Another →"** to cycle to Pete Tong
+2. **Click "Try Another →"**to cycle to Pete Tong
    - Show different contact, different submission requirements
-   - **Highlight:** "Essential Selection, very selective, only your best work"
+   - **Highlight:**"Essential Selection, very selective, only your best work"
 
 3. **Explain the value:**
    > "This is what I was doing manually for 15 hours per campaign. Now it's 15 minutes."
@@ -96,7 +96,7 @@
    - Before: Generic submissions, no curator data
    - After: 34 targeted contacts, 4-week lead time intelligence
 
-3. **Show Liberty hypothetical** (the big one)
+3. **Show Liberty hypothetical**(the big one)
    - 20 hours/week contact maintenance → 2 hours
    - 237 contacts enriched and validated
    - Genre-tagged for artist-specific filtering
@@ -107,16 +107,16 @@
 
 ### Part 4: The Vision (5 minutes)
 
-**Pull up Figma mockup** (you'll create this - 2 hours max):
+**Pull up Figma mockup**(you'll create this - 2 hours max):
 
 > "But here's where this goes. Imagine this contact intelligence was just one piece of a platform that automated your entire workflow..."
 
 **Show concepts:**
 
-1. **Multi-campaign dashboard** - All 20+ campaigns visible at once
-2. **AI pitch generation** - Personalized mailouts using contact intel
-3. **Campaign timeline automation** - Press → Playlisting → Radio scheduling
-4. **Automated client reports** - Friday updates write themselves
+1. **Multi-campaign dashboard**- All 20+ campaigns visible at once
+2. **AI pitch generation**- Personalized mailouts using contact intel
+3. **Campaign timeline automation**- Press → Playlisting → Radio scheduling
+4. **Automated client reports**- Friday updates write themselves
 
 **The ask:**
 
@@ -136,15 +136,15 @@
 
 ### What This Saves Liberty:
 
-- **20 hours/week** on contact research and validation
-- **£800-1,200/month** in junior staff time (at £10-15/hour)
-- **Mental bandwidth** for actual campaign strategy vs admin
+- **20 hours/week**on contact research and validation
+- **£800-1,200/month**in junior staff time (at £10-15/hour)
+- **Mental bandwidth**for actual campaign strategy vs admin
 
 ### ROI for Liberty:
 
-- **3 campaigns/month** = 60 hours saved
-- **£19/month Pro plan** = £0.32/hour cost
-- **ROI: 187:1** (60 hours saved × £15/hour = £900 vs £19 cost)
+- **3 campaigns/month**= 60 hours saved
+- **£19/month Pro plan**= £0.32/hour cost
+- **ROI: 187:1**(60 hours saved × £15/hour = £900 vs £19 cost)
 
 ---
 
@@ -221,10 +221,10 @@
 
 ## Demo URLs (Live NOW)
 
-- **Homepage Demo:** https://intel.totalaudiopromo.com
-- **Case Studies:** https://intel.totalaudiopromo.com/case-studies
-- **Full Demo App:** https://intel.totalaudiopromo.com/demo
-- **Pricing:** https://intel.totalaudiopromo.com/pricing
+- **Homepage Demo:**https://intel.totalaudiopromo.com
+- **Case Studies:**https://intel.totalaudiopromo.com/case-studies
+- **Full Demo App:**https://intel.totalaudiopromo.com/demo
+- **Pricing:**https://intel.totalaudiopromo.com/pricing
 
 ---
 
@@ -245,7 +245,7 @@
 
 ## Bottom Line
 
-**What you have:** A working product that solves Dan's contact research problem TODAY.
+**What you have:**A working product that solves Dan's contact research problem TODAY.
 
 **What you're showing:**
 
@@ -253,9 +253,9 @@
 2. Proven case studies with real numbers (5 min)
 3. Vision of where it goes (5 min)
 
-**What you're asking for:** Pilot on 3-5 campaigns, paid or free, with ROI measurement.
+**What you're asking for:**Pilot on 3-5 campaigns, paid or free, with ROI measurement.
 
-**Why this works:** You're not asking Dan to believe in a roadmap. You're asking him to test something that works right now, with a clear vision of what's next IF it proves valuable.
+**Why this works:**You're not asking Dan to believe in a roadmap. You're asking him to test something that works right now, with a clear vision of what's next IF it proves valuable.
 
 ---
 

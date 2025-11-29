@@ -255,9 +255,9 @@ dx/DEVELOPER_FLOW.md                 (600+ lines) - Complete workflow guide
 
 ### Total Impact
 
-- **1,859 insertions** across 7 files
-- **2 deletions** (|| true flags)
-- **1 file renamed** (archived workflow)
+- **1,859 insertions**across 7 files
+- **2 deletions**(|| true flags)
+- **1 file renamed**(archived workflow)
 
 ---
 
@@ -350,7 +350,7 @@ Code → ??? → Manual testing → ??? → Deploy → Hope it works
 -  CI checks fail (fix and push)
 -  Telegram alerts failure (investigate)
 
-**Everything else is automated** 
+**Everything else is automated**
 
 ---
 
@@ -390,7 +390,7 @@ Code → ??? → Manual testing → ??? → Deploy → Hope it works
 
 ### Immediate (Required)
 
-1. **Push Commit** (pending due to server error):
+1. **Push Commit**(pending due to server error):
 
    ```bash
    # Retry push manually
@@ -425,7 +425,7 @@ Code → ??? → Manual testing → ??? → Deploy → Hope it works
    - Watch CodeRabbit, CI, auto-merge, Vercel, Golden Verify
    - Verify Command Centre ingests metrics
 
-7. **Update CLAUDE.md** (Optional):
+7. **Update CLAUDE.md**(Optional):
    - Add governance section referencing new `dx/` documentation
    - Link to CodeRabbit rules
    - Reference Golden Verify enforcement
@@ -525,12 +525,12 @@ git config --list | grep credential
 
 When all steps complete, Total Audio Platform will have:
 
-- **Zero manual deployments** (fully automated)
-- **Zero architecture violations** (CodeRabbit enforces)
-- **Zero deployment failures** (Golden Verify catches issues)
-- **Frictionless developer experience** (code → auto-deploy)
-- **Professional quality** (automated review + testing)
-- **Clear documentation** (dx/ guides for everything)
+- **Zero manual deployments**(fully automated)
+- **Zero architecture violations**(CodeRabbit enforces)
+- **Zero deployment failures**(Golden Verify catches issues)
+- **Frictionless developer experience**(code → auto-deploy)
+- **Professional quality**(automated review + testing)
+- **Clear documentation**(dx/ guides for everything)
 
 ---
 

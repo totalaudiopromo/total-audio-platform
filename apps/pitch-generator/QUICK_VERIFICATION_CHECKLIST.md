@@ -36,7 +36,7 @@ Check these are set for **Production**:
 - [ ] `STRIPE_PRICE_AGENCY_MONTHLY`
 - [ ] `STRIPE_PRICE_AGENCY_ANNUAL`
 
-**If you add or change any:** Click "Redeploy" in Vercel (Settings → Redeploy)
+**If you add or change any:**Click "Redeploy" in Vercel (Settings → Redeploy)
 
 ### 2. Test the Live Site (2 minutes)
 
@@ -80,6 +80,6 @@ Your deployment is successful when:
 
 ---
 
-**Current Status:** 95% Complete
-**Blocking Item:** Verify ANTHROPIC_API_KEY in Vercel
-**Time to Complete:** ~5 minutes
+**Current Status:**95% Complete
+**Blocking Item:**Verify ANTHROPIC_API_KEY in Vercel
+**Time to Complete:**~5 minutes

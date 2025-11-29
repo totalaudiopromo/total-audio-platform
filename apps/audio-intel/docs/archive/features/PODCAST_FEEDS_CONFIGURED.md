@@ -98,19 +98,19 @@ curl http://localhost:3001/api/newsjacker
 
 ## **📊 Expected Content Types**
 
-### **High-Relevance Episodes** (Music Industry + AI/Tech)
+### **High-Relevance Episodes**(Music Industry + AI/Tech)
 
 - Music Tectonics
 - The New Music Business Podcast
 - A New Vibe (when discussing music tech)
 
-### **Medium-Relevance Episodes** (Business + AI/Tech)
+### **Medium-Relevance Episodes**(Business + AI/Tech)
 
 - My First Million
 - Startups for the Rest of Us
 - The Start-Up Ideas Podcast
 
-### **High-Relevance Episodes** (Pure AI/Tech)
+### **High-Relevance Episodes**(Pure AI/Tech)
 
 - The Next Wave
 - Marketing Against the Grain (AI marketing tools)
@@ -134,18 +134,18 @@ curl http://localhost:3001/api/newsjacker
 
 ## **🚨 Next Steps**
 
-1. **Test with confirmed feeds** (3 podcasts)
-2. **Find remaining RSS feeds** (5 podcasts)
+1. **Test with confirmed feeds**(3 podcasts)
+2. **Find remaining RSS feeds**(5 podcasts)
 3. **Add all feeds to environment variables**
 4. **Test full integration**
 5. **Start monitoring for content**
 
 ## **💡 Pro Tips**
 
-- **Start with 3 confirmed feeds** to test the system
-- **Add more feeds gradually** as you find them
-- **Monitor content quality** and adjust feeds as needed
-- **Focus on high-relevance content** for your newsletter
-- **Use demo system** for testing while finding real feeds
+- **Start with 3 confirmed feeds**to test the system
+- **Add more feeds gradually**as you find them
+- **Monitor content quality**and adjust feeds as needed
+- **Focus on high-relevance content**for your newsletter
+- **Use demo system**for testing while finding real feeds
 
 Ready to start monitoring these podcasts for AI and tech insights! 🎵

@@ -10,27 +10,27 @@ A modular, production-ready agent system that handles business-critical workflow
 
 ### 5 Core Agents
 
-1. **IntelAgent** - Contact enrichment & validation
+1. **IntelAgent**- Contact enrichment & validation
    - ContactFinder, LabelMatcher, EnrichmentValidator
    - 100% success rate contact enrichment
    - Quality scoring and validation
 
-2. **PitchAgent** - Pitch drafting & tone validation
+2. **PitchAgent**- Pitch drafting & tone validation
    - PitchFormatter, ToneChecker, FollowUpWriter
    - Brand voice enforcement ("honest maker" tone)
    - Automated follow-up timing
 
-3. **TrackerAgent** - Campaign tracking & analytics
+3. **TrackerAgent**- Campaign tracking & analytics
    - SubmissionLogger, AnalyticsSummariser, ReminderAgent
    - Performance metrics and insights
    - Follow-up reminder system
 
-4. **InsightAgent** - Performance insights
+4. **InsightAgent**- Performance insights
    - Campaign analysis and recommendations
    - Engagement and conversion tracking
    - Trend detection
 
-5. **VoiceGuardAgent** - Brand voice enforcement
+5. **VoiceGuardAgent**- Brand voice enforcement
    - Corporate speak detection
    - AI buzzword flagging
    - Auto-fix suggestions

@@ -4,9 +4,9 @@ notion_url: https://www.notion.so/CURRENT-PRIORITIES-TO-DOS-2660a35b21ed81c8acc7
 exported_at: 2025-09-26T14:33:46.911Z
 ---
 
-#  CURRENT PRIORITIES & TO-DOS
+# CURRENT PRIORITIES & TO-DOS
 
-#  CURRENT STATUS - Audio Intel Ready for Launch
+# CURRENT STATUS - Audio Intel Ready for Launch
 
 _Updated: September 20, 2025 - Foundation Complete, Customer Acquisition Phase_
 
@@ -18,7 +18,7 @@ _Updated: September 20, 2025 - Foundation Complete, Customer Acquisition Phase_
 
 ### Current Position
 
-- **0 paying customers** → Target: £500/month by November 2025
+- **0 paying customers**→ Target: £500/month by November 2025
 
 - **Technical Foundation**:  100% Complete
 
@@ -30,7 +30,7 @@ _Updated: September 20, 2025 - Foundation Complete, Customer Acquisition Phase_
 
 ## MAJOR COMPLETIONS (Since Last Update)
 
-###  TECHNICAL FOUNDATION (100% COMPLETE)
+### TECHNICAL FOUNDATION (100% COMPLETE)
 
 - **Mobile Experience**:  All 21 mobile UX issues fixed, professional mobile experience
 
@@ -48,7 +48,7 @@ _Updated: September 20, 2025 - Foundation Complete, Customer Acquisition Phase_
 
 - **Image Quality**:  All aspect ratio issues resolved, professional visual polish
 
-###  CUSTOMER ACQUISITION READY
+### CUSTOMER ACQUISITION READY
 
 - **Segmentation Strategy**:  Radio/Artists/PR agency targeting with conversion rates
 
@@ -62,7 +62,7 @@ _Updated: September 20, 2025 - Foundation Complete, Customer Acquisition Phase_
 
 - **Industry Credibility**:  5+ years radio promotion experience, BBC Radio 1 pitch history
 
-###  CONTENT & MARKETING SYSTEMS
+### CONTENT & MARKETING SYSTEMS
 
 - **Week 1 Content Calendar**:  16+ posts ready across all platforms
 
@@ -132,7 +132,7 @@ _Updated: September 20, 2025 - Foundation Complete, Customer Acquisition Phase_
 
 ## HIGHEST-PRIORITY PROSPECTS
 
-### **PRIORITY 1: Radio Promoters** 
+### **PRIORITY 1: Radio Promoters**
 
 **Conversion Rate**: 85% (highest priority)
 
@@ -266,9 +266,9 @@ _Updated: September 20, 2025 - Foundation Complete, Customer Acquisition Phase_
 
 ### **Risk Reversal**
 
-- **14-day free trial** with their actual contacts
+- **14-day free trial**with their actual contacts
 
-- **No credit card required** for trial signup
+- **No credit card required**for trial signup
 
 - **Personal onboarding**: Direct access to you during beta
 
@@ -374,7 +374,7 @@ _Next Review: September 27, 2025_
 
 <!-- unhandled child_page -->
 
-#  SPRINT WEEK DASHBOARD - DAY 1
+# SPRINT WEEK DASHBOARD - DAY 1
 
 _Audio Intel Beta Launch Week_
 
@@ -513,37 +513,37 @@ _Your daily action centre - Updated for current reality and £500/month goal_
 
 ### **Email Automation (BROKEN - Priority #1)**
 
-- [ ] **FIX IMMEDIATELY** - Email automation after signup (currently broken)
-- [ ] **FIX IMMEDIATELY** - Welcome sequence for new users
-- [ ] **FIX IMMEDIATELY** - Newsletter confirmation flow
-- [ ] **BACKUP PLAN** - Create manual email process if API fails
+- [ ] **FIX IMMEDIATELY**- Email automation after signup (currently broken)
+- [ ] **FIX IMMEDIATELY**- Welcome sequence for new users
+- [ ] **FIX IMMEDIATELY**- Newsletter confirmation flow
+- [ ] **BACKUP PLAN**- Create manual email process if API fails
 
 ### **Customer Acquisition (ZERO CUSTOMERS - Priority #2)**
 
-- [ ] **THIS WEEK** - List 20 potential customers from your network
-- [ ] **THIS WEEK** - Send outreach to first 5 contacts using proven script
-- [ ] **THIS WEEK** - Post LinkedIn update about Audio Intel
-- [ ] **THIS WEEK** - Follow up with any existing beta users
+- [ ] **THIS WEEK**- List 20 potential customers from your network
+- [ ] **THIS WEEK**- Send outreach to first 5 contacts using proven script
+- [ ] **THIS WEEK**- Post LinkedIn update about Audio Intel
+- [ ] **THIS WEEK**- Follow up with any existing beta users
 
 ---
 
-## **THIS WEEK'S FOCUS** (Sept 6-13)
+## **THIS WEEK'S FOCUS**(Sept 6-13)
 
-### ** Monday Priorities (30 minutes)**
+### **Monday Priorities (30 minutes)**
 
 - [ ] Test email automation status - is it working?
 - [ ] Write list of 10 producer/artist contacts for outreach
 - [ ] Update Audio Intel landing page with clearer value proposition
 - [ ] Check Stripe dashboard for any weekend signups
 
-### ** Wednesday Priorities (45 minutes)**
+### **Wednesday Priorities (45 minutes)**
 
 - [ ] Send outreach messages to first 3 contacts
 - [ ] Post LinkedIn update: "Building Audio Intel for radio promotion"
 - [ ] Follow up on Monday's outreach attempts
 - [ ] Check user feedback/support requests
 
-### ** Friday Priorities (30 minutes)**
+### **Friday Priorities (30 minutes)**
 
 - [ ] Follow up on Wednesday's outreach
 - [ ] Review week's progress vs Master To-Do List
@@ -556,18 +556,18 @@ _Your daily action centre - Updated for current reality and £500/month goal_
 
 ### **Audio Intel Platform Issues**
 
-- [ ] **HIGH** - Fix signup email automation (Kit API issues)
-- [ ] **HIGH** - Test complete user journey (signup → upload → results)
-- [ ] **MEDIUM** - Add simple onboarding flow for new users
-- [ ] **MEDIUM** - Set up basic analytics (who signs up, where they drop off)
-- [ ] **LOW** - Create simple demo video/screenshots
+- [ ] **HIGH**- Fix signup email automation (Kit API issues)
+- [ ] **HIGH**- Test complete user journey (signup → upload → results)
+- [ ] **MEDIUM**- Add simple onboarding flow for new users
+- [ ] **MEDIUM**- Set up basic analytics (who signs up, where they drop off)
+- [ ] **LOW**- Create simple demo video/screenshots
 
 ### **Infrastructure & Tools**
 
-- [ ] **MEDIUM** - Fix Gmail tags and remove emojis from current inbox
-- [ ] **MEDIUM** - Implement mobile-responsive dashboard toggles
-- [ ] **LOW** - Deploy production build with SSL verification
-  - [ ] **LOW** - Update main TAP URL as proper landing page
+- [ ] **MEDIUM**- Fix Gmail tags and remove emojis from current inbox
+- [ ] **MEDIUM**- Implement mobile-responsive dashboard toggles
+- [ ] **LOW**- Deploy production build with SSL verification
+  - [ ] **LOW**- Update main TAP URL as proper landing page
 
 ---
 
@@ -575,28 +575,28 @@ _Your daily action centre - Updated for current reality and £500/month goal_
 
 ### **Customer Outreach (THE PRIORITY)**
 
-- [ ] **Week 1** - Reach out to 5 industry contacts
-- [ ] **Week 2** - Reach out to 5 more contacts + follow up on Week 1
-- [ ] **Week 3** - Scale to 10 contacts + LinkedIn posts
-- [ ] **Week 4** - Scale to 15 contacts + create case study
+- [ ] **Week 1**- Reach out to 5 industry contacts
+- [ ] **Week 2**- Reach out to 5 more contacts + follow up on Week 1
+- [ ] **Week 3**- Scale to 10 contacts + LinkedIn posts
+- [ ] **Week 4**- Scale to 15 contacts + create case study
 
 ### **Partnership Opportunities**
 
-- [ ] **Execute DeMarco campaign** (£2-4K opportunity)
-- [ ] **Finalise Liberty Music PR partnership** framework
-- [ ] **Define revenue sharing** structure (10-15%)
-- [ ] **Create joint service** offering documentation
+- [ ] **Execute DeMarco campaign**(£2-4K opportunity)
+- [ ] **Finalise Liberty Music PR partnership**framework
+- [ ] **Define revenue sharing**structure (10-15%)
+- [ ] **Create joint service**offering documentation
 
 ---
 
-## **WHAT WE'RE NOT DOING** (Focus Protection)
+## **WHAT WE'RE NOT DOING**(Focus Protection)
 
- **Complex freemium models** (decided against for now)
- **AI character personalities** (won't drive revenue directly)
- **Viral growth systems** (premature - need customers first)
- **100 social media posts** (time sink without customers)
- **Command Centre dashboard** (premature optimisation)
- **Audio character animations** (nice-to-have, not priority)
+ **Complex freemium models**(decided against for now)
+ **AI character personalities**(won't drive revenue directly)
+ **Viral growth systems**(premature - need customers first)
+ **100 social media posts**(time sink without customers)
+ **Command Centre dashboard**(premature optimisation)
+ **Audio character animations**(nice-to-have, not priority)
 
 ---
 
@@ -669,12 +669,12 @@ _"Hi [Name], hope you're well. I've been working on a tool for my own radio prom
 
 ## **QUICK ACCESS REMINDERS**
 
-** CRITICAL DAILY:**
+**CRITICAL DAILY:**
 
 - Check Stripe for new signups
 - Review Audio Intel user feedback
 - Respond to customer inquiries within 24 hours
-  ** WEEKLY REVIEW:**
+  **WEEKLY REVIEW:**
 - Update Master To-Do List progress
 - Review revenue dashboard
 - Plan next week's customer targets

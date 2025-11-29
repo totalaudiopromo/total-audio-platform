@@ -29,53 +29,53 @@ Welcome to the Total Audio Promo documentation center. This guide provides compr
 
 ### **🏗️ Architecture & System Design**
 
-- **[SYSTEM_ARCHITECTURE.md](./SYSTEM_ARCHITECTURE.md)** - Complete system architecture, database schema, and technical overview
-- **[API_REFERENCE.md](./API_REFERENCE.md)** - Comprehensive API documentation with endpoints, examples, and authentication
-- **[INTEGRATION_GUIDE.md](./INTEGRATION_GUIDE.md)** - Third-party integrations (Airtable, Mailchimp, Claude AI, etc.)
+- **[SYSTEM_ARCHITECTURE.md](./SYSTEM_ARCHITECTURE.md)**- Complete system architecture, database schema, and technical overview
+- **[API_REFERENCE.md](./API_REFERENCE.md)**- Comprehensive API documentation with endpoints, examples, and authentication
+- **[INTEGRATION_GUIDE.md](./INTEGRATION_GUIDE.md)**- Third-party integrations (Airtable, Mailchimp, Claude AI, etc.)
 
 ### **💼 Business & Strategy**
 
-- **[BUSINESS_CONTEXT.md](./BUSINESS_CONTEXT.md)** - Market analysis, business model, competitive landscape, and strategy
-- **[Total_Audio_Promo_Updated_PRD.md](../Total_Audio_Promo_Updated_PRD.md)** - Product Requirements Document with features and specifications
+- **[BUSINESS_CONTEXT.md](./BUSINESS_CONTEXT.md)**- Market analysis, business model, competitive landscape, and strategy
+- **[Total_Audio_Promo_Updated_PRD.md](../Total_Audio_Promo_Updated_PRD.md)**- Product Requirements Document with features and specifications
 
 ### **⚙️ Development & Operations**
 
-- **[DEVELOPMENT_WORKFLOWS.md](./DEVELOPMENT_WORKFLOWS.md)** - Development setup, commands, Git workflow, and best practices
-- **[AI_AGENTS_GUIDE.md](./AI_AGENTS_GUIDE.md)** - AI agent system architecture, workflows, and implementation
+- **[DEVELOPMENT_WORKFLOWS.md](./DEVELOPMENT_WORKFLOWS.md)**- Development setup, commands, Git workflow, and best practices
+- **[AI_AGENTS_GUIDE.md](./AI_AGENTS_GUIDE.md)**- AI agent system architecture, workflows, and implementation
 
 ### **🔧 Setup & Configuration**
 
-- **[CLAUDE.md](../CLAUDE.md)** - Claude Code development guidance and project overview
-- **[CODERABBIT_SETUP.md](../CODERABBIT_SETUP.md)** - CodeRabbit configuration for automated code review
+- **[CLAUDE.md](../CLAUDE.md)**- Claude Code development guidance and project overview
+- **[CODERABBIT_SETUP.md](../CODERABBIT_SETUP.md)**- CodeRabbit configuration for automated code review
 
 ## 🎯 Specialized Guides
 
 ### **📊 Analytics & SEO**
 
-- **[DATA_FOR_SEO_MCP_SETUP.md](./DATA_FOR_SEO_MCP_SETUP.md)** - SEO data integration setup
-- **[FREE_SEO_TOOLS_IMPLEMENTATION.md](./FREE_SEO_TOOLS_IMPLEMENTATION.md)** - Free SEO tools integration
-- **[CROSS_PROMOTION_IMPLEMENTATION.md](./CROSS_PROMOTION_IMPLEMENTATION.md)** - Cross-promotion features
+- **[DATA_FOR_SEO_MCP_SETUP.md](./DATA_FOR_SEO_MCP_SETUP.md)**- SEO data integration setup
+- **[FREE_SEO_TOOLS_IMPLEMENTATION.md](./FREE_SEO_TOOLS_IMPLEMENTATION.md)**- Free SEO tools integration
+- **[CROSS_PROMOTION_IMPLEMENTATION.md](./CROSS_PROMOTION_IMPLEMENTATION.md)**- Cross-promotion features
 
 ### **🤖 AI & Automation**
 
-- **[ai-agents/](./ai-agents/)** - AI agent documentation and configurations
-- **[context/](./context/)** - Development context and standards
-- **[setup/](./setup/)** - Setup guides and configurations
+- **[ai-agents/](./ai-agents/)**- AI agent documentation and configurations
+- **[context/](./context/)**- Development context and standards
+- **[setup/](./setup/)**- Setup guides and configurations
 
 ### **🔧 Setup & Installation**
 
-- **[setup/GMAIL_SETUP.md](./setup/GMAIL_SETUP.md)** - Gmail integration configuration
-- **[QUICK_REFERENCE.md](./QUICK_REFERENCE.md)** - Quick command and configuration reference
+- **[setup/GMAIL_SETUP.md](./setup/GMAIL_SETUP.md)**- Gmail integration configuration
+- **[QUICK_REFERENCE.md](./QUICK_REFERENCE.md)**- Quick command and configuration reference
 
 ## 🎵 Domain-Specific Docs
 
 ### **🎤 Music Industry Context**
 
-- **[music-tech.md](./music-tech.md)** - Music technology integration
-- **[industry-strategist.md](./industry-strategist.md)** - Music industry strategy
-- **[marketing-mastermind.md](./marketing-mastermind.md)** - Music marketing automation
-- **[growth-hacking.md](./growth-hacking.md)** - Growth optimization strategies
-- **[viral-content.md](./viral-content.md)** - Viral content automation
+- **[music-tech.md](./music-tech.md)**- Music technology integration
+- **[industry-strategist.md](./industry-strategist.md)**- Music industry strategy
+- **[marketing-mastermind.md](./marketing-mastermind.md)**- Music marketing automation
+- **[growth-hacking.md](./growth-hacking.md)**- Growth optimization strategies
+- **[viral-content.md](./viral-content.md)**- Viral content automation
 
 ## 📂 Documentation Categories
 

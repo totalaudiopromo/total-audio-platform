@@ -2,11 +2,11 @@
 
 ## PRODUCT FOCUS
 
-**Audio Intel** is THE revenue generator for Total Audio Promo. Everything here must directly support getting first paying customers.
+**Audio Intel**is THE revenue generator for Total Audio Promo. Everything here must directly support getting first paying customers.
 
 ### Core Function
 
-- **Contact enrichment service** for music industry professionals
+- **Contact enrichment service**for music industry professionals
 - Upload contact lists, get back AI-powered research, export to CSV/Excel
 - On-demand enrichment - no database, no CRM, just intelligence you export and use anywhere
 - UK alternative to expensive US tools (SubmitHub £200-500+/month)
@@ -157,7 +157,7 @@ _"Hi [Name], I've been working on a tool for my own radio promotion campaigns th
 
 ### Current Deployment Workaround (Until GitHub Pro)
 
-**Skip GitHub Actions entirely** and deploy directly from local machine:
+**Skip GitHub Actions entirely**and deploy directly from local machine:
 
 ```bash
 # For preview deployments
@@ -183,15 +183,15 @@ cd apps/pitch-generator && vercel --prod
 
 ### Rollback Strategy
 
-- **Vercel stores every build** in the dashboard
-- **Git still tracks code changes** separately for version control
+- **Vercel stores every build**in the dashboard
+- **Git still tracks code changes**separately for version control
 - **Rollback from dashboard**: Use Vercel web interface
 - **Rollback from CLI**: `vercel rollback <deployment-url>`
 
 ### Important Notes
 
-- This is a **temporary workaround** until GitHub Pro subscription
-- CI checks will remain red - **ignore them** for now
+- This is a **temporary workaround**until GitHub Pro subscription
+- CI checks will remain red - **ignore them**for now
 - Vercel deployments work perfectly without GitHub Actions
 - Code version control via Git is unaffected
 - Manual deployment gives you direct control over what goes live

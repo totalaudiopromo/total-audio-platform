@@ -1,4 +1,4 @@
-#  Audio Intel - Environment Variables Reference
+# Audio Intel - Environment Variables Reference
 
 Copy this file to `.env.local` for local development, or add to Vercel Environment Variables for production.
 
@@ -11,7 +11,7 @@ NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key_here
 ```
 
-**Get from:** [Supabase Dashboard](https://app.supabase.com) → Your Project → Settings → API
+**Get from:**[Supabase Dashboard](https://app.supabase.com) → Your Project → Settings → API
 
 ### Anthropic Claude API (Contact Enrichment)
 
@@ -20,7 +20,7 @@ ANTHROPIC_API_KEY=sk-ant-api03-your_key_here
 ANTHROPIC_MODEL=claude-3-5-sonnet-20241022
 ```
 
-**Get from:** [Anthropic Console](https://console.anthropic.com/) → API Keys
+**Get from:**[Anthropic Console](https://console.anthropic.com/) → API Keys
 
 ### Stripe (Payments & Subscriptions)
 
@@ -39,7 +39,7 @@ NEXT_PUBLIC_STRIPE_PRICE_MONTHLY=price_xxx_monthly
 NEXT_PUBLIC_STRIPE_PRICE_ANNUAL=price_xxx_annual
 ```
 
-**Get from:** [Stripe Dashboard](https://dashboard.stripe.com) → Developers → API Keys & Webhooks
+**Get from:**[Stripe Dashboard](https://dashboard.stripe.com) → Developers → API Keys & Webhooks
 
 ### Base URL
 
@@ -61,7 +61,7 @@ NEXT_PUBLIC_BASE_URL=https://intel.totalaudiopromo.com
 PERPLEXITY_API_KEY=pplx-your_key_here
 ```
 
-**Get from:** [Perplexity](https://www.perplexity.ai/settings/api)
+**Get from:**[Perplexity](https://www.perplexity.ai/settings/api)
 
 ### ConvertKit (Email Marketing & Newsletter)
 
@@ -71,7 +71,7 @@ CONVERTKIT_API_SECRET=your_convertkit_secret
 CONVERTKIT_FORM_ID=your_form_id
 ```
 
-**Get from:** [ConvertKit](https://app.convertkit.com/account_settings/advanced_settings)
+**Get from:**[ConvertKit](https://app.convertkit.com/account_settings/advanced_settings)
 
 ### Notion (Content Database Sync)
 
@@ -80,7 +80,7 @@ NOTION_API_KEY=secret_your_notion_key
 NOTION_DATABASE_ID=your_database_id
 ```
 
-**Get from:** [Notion Integrations](https://www.notion.so/my-integrations)
+**Get from:**[Notion Integrations](https://www.notion.so/my-integrations)
 
 ### Resend (Email Sending)
 
@@ -88,7 +88,7 @@ NOTION_DATABASE_ID=your_database_id
 RESEND_API_KEY=re_your_key_here
 ```
 
-**Get from:** [Resend](https://resend.com/api-keys)
+**Get from:**[Resend](https://resend.com/api-keys)
 
 ### Analytics & SEO
 
@@ -105,7 +105,7 @@ NEXT_PUBLIC_BING_SITE_VERIFICATION=your_bing_verification
 
 1. Create `.env.local` in project root
 2. Copy all REQUIRED variables above
-3. Use **test/development keys** for Stripe (`sk_test_` and `pk_test_`)
+3. Use **test/development keys**for Stripe (`sk_test_` and `pk_test_`)
 4. Run: `npm run dev`
 5. Test at: `http://localhost:3000`
 
@@ -114,20 +114,20 @@ NEXT_PUBLIC_BING_SITE_VERIFICATION=your_bing_verification
 1. Go to [Vercel Dashboard](https://vercel.com/dashboard)
 2. Navigate to: `audio-intel` → Settings → Environment Variables
 3. Add all REQUIRED variables
-4. Use **production keys** for Stripe (`sk_live_` and `pk_live_`)
-5. Set environment to: **Production**, **Preview**, and **Development** (or as needed)
+4. Use **production keys**for Stripe (`sk_live_` and `pk_live_`)
+5. Set environment to: **Production**, **Preview**, and **Development**(or as needed)
 6. Deploy: `git push origin main`
 
 ---
 
 ## Security Notes
 
--  **Never commit `.env.local`** to git (already in `.gitignore`)
--  **Use test keys** for local development
--  **Use live keys** only in Vercel production environment
--  **Rotate keys** if accidentally exposed
--  **Variables starting with `NEXT_PUBLIC_`** are exposed to the browser (client-side)
--  **Variables without `NEXT_PUBLIC_`** are server-side only (secure)
+-  **Never commit `.env.local`**to git (already in `.gitignore`)
+-  **Use test keys**for local development
+-  **Use live keys**only in Vercel production environment
+-  **Rotate keys**if accidentally exposed
+-  **Variables starting with `NEXT_PUBLIC_`**are exposed to the browser (client-side)
+-  **Variables without `NEXT_PUBLIC_`**are server-side only (secure)
 
 ---
 
@@ -165,7 +165,7 @@ Use test card: `4242 4242 4242 4242` (any future date, any CVC)
 | Anthropic Claude        | Pay-per-use      | ~£0.003/request            |
 | Stripe                  | Transaction fees | 1.5% + 20p per transaction |
 | Vercel                  | Pro              | £20/month                  |
-| **Total (pre-revenue)** |                  | **~£20-30/month**          |
+| **Total (pre-revenue)**|                  | **~£20-30/month**         |
 
 ---
 
@@ -193,7 +193,7 @@ Use test card: `4242 4242 4242 4242` (any future date, any CVC)
 
 ---
 
-**Need help?** Check:
+**Need help?**Check:
 
 - [Audio Intel Setup Guide](./docs/setup/SETUP_GUIDE.md)
 - [Authentication Docs](./AUTH_IMPLEMENTATION_COMPLETE.md)

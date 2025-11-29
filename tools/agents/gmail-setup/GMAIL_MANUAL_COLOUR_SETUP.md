@@ -13,31 +13,31 @@ Your Gmail labels are created and working. Here's the quick manual setup to add 
 
 Find each label in the list and click the colour square next to it:
 
-### **Active Campaigns** →  **Green**
+### **Active Campaigns**→  **Green**
 
 - Represents current radio work that needs attention
 
-### **Needs Action** →  **Blue**
+### **Needs Action**→  **Blue**
 
 - Campaigns requiring your immediate response
 
-### **Station Feedback** →  **Orange**
+### **Station Feedback**→  **Orange**
 
 - Real responses from radio stations (important)
 
-### **Station Auto-Responses** →  **Grey**
+### **Station Auto-Responses**→  **Grey**
 
 - Out of office replies (low priority)
 
-### **Completed** →  **Yellow**
+### **Completed**→  **Yellow**
 
 - Finished campaigns from last 30 days
 
-### **Old Campaigns** →  **Red**
+### **Old Campaigns**→  **Red**
 
 - Archive for reference
 
-### **Agent** →  **Purple**
+### **Agent**→  **Purple**
 
 - Processed by your radio promo agent
 

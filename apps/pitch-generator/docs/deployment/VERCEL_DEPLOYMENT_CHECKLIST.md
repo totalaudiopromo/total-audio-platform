@@ -8,7 +8,7 @@
 
 ## Pre-Deployment Checklist
 
-###  Code Ready
+### Code Ready
 
 - [x] Production build successful (28 routes compiled)
 - [x] All 4 MVP priorities complete
@@ -116,12 +116,12 @@ NODE_ENV=production npx tsx --env-file=.env.production scripts/seed-pitch-templa
 
 ### Critical Flows to Test:
 
-1. **Sign In / Sign Up** - Test Google OAuth and demo credentials
-2. **Generate Pitch** - Verify voice profile integration works
-3. **View Templates** - Confirm all 6 templates appear
-4. **Change Status** - Test Draft → Sent → Replied → Success
-5. **Dashboard Empty State** - Create fresh account, verify onboarding
-6. **Mobile Experience** - Test on 375px viewport
+1. **Sign In / Sign Up**- Test Google OAuth and demo credentials
+2. **Generate Pitch**- Verify voice profile integration works
+3. **View Templates**- Confirm all 6 templates appear
+4. **Change Status**- Test Draft → Sent → Replied → Success
+5. **Dashboard Empty State**- Create fresh account, verify onboarding
+6. **Mobile Experience**- Test on 375px viewport
 
 ### Expected Results:
 
@@ -140,25 +140,25 @@ NODE_ENV=production npx tsx --env-file=.env.production scripts/seed-pitch-templa
 
 ### For Liberty Music PR Demo:
 
-**1. Templates Library** (`/pitch/templates`)
+**1. Templates Library**(`/pitch/templates`)
 
 - 6 professional templates with success rates
 - Realistic opening lines and hooks
 - Genre-specific optimizations
 
-**2. Voice Profile** (`/profile/voice`)
+**2. Voice Profile**(`/profile/voice`)
 
 - 7 personalization fields
 - Natural writing style matching
 - Authentic pitch output
 
-**3. Status Tracking** (`/pitch/history`)
+**3. Status Tracking**(`/pitch/history`)
 
 - 4-status workflow: Draft → Sent → Replied → Success
 - Timestamp tracking
 - Real-time dashboard updates
 
-**4. Dashboard** (`/dashboard`)
+**4. Dashboard**(`/dashboard`)
 
 - Professional empty state for new users
 - Stats grid with real-time data
@@ -200,7 +200,7 @@ NODE_ENV=production npx tsx --env-file=.env.production scripts/seed-pitch-templa
 
 ---
 
-**Ready to deploy!** 
+**Ready to deploy!**
 
 Next steps:
 

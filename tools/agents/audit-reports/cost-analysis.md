@@ -314,7 +314,7 @@ Total Monitoring Cost: $0.40/month (£0.32)
 
 **Scenario**: Bulk enrichment of 100 contacts overnight
 
-**Current Approach** (Individual API calls):
+**Current Approach**(Individual API calls):
 
 ```
 100 contacts × $0.12/contact = $12
@@ -421,7 +421,7 @@ Value far exceeds $0.015 cost
 | Newsletter Automation | £0.45            | £5.40           |
 | Radio Promo Agent     | £2.80            | £33.60          |
 | Other Agents (est.)   | £15.00           | £180.00         |
-| **Total**             | **£37.60**       | **£451.20**     |
+| **Total**            | **£37.60**      | **£451.20**    |
 
 _Note: Current costs are lower than projected because many agents aren't using AI yet_
 
@@ -438,7 +438,7 @@ _Note: Current costs are lower than projected because many agents aren't using A
 | Radio Promo Agent     | £1.55            | £1.25       | 45%         |
 | Agent Manager         | £0.32            | N/A         | New         |
 | Other Agents (est.)   | £6.00            | £9.00       | 60%         |
-| **Total**             | **£17.92**       | **£19.68**  | **52%**     |
+| **Total**            | **£17.92**      | **£19.68** | **52%**    |
 
 **Annual Savings**: £236.16
 
@@ -457,11 +457,11 @@ As agents become more capable, usage will increase:
 | Radio Promo Agent     | £2.80           | £5.00            | 2x volume (10 workflows/month)  |
 | Agent Manager         | £0              | £0.50            | Monitoring cost                 |
 | Other Agents          | £15.00          | £20.00           | Increased automation            |
-| **Total**             | **£37.60**      | **£61.50**       | 64% increase in usage           |
+| **Total**            | **£37.60**     | **£61.50**      | 64% increase in usage           |
 
 **Key Insight**: Even with 64% more usage, costs only increase 63% because of caching efficiency.
 
-**Without SDK Upgrade** (same increased usage):
+**Without SDK Upgrade**(same increased usage):
 
 - Estimated cost: £120-150/month (4x current)
 - **Savings vs non-upgraded**: £58.50-88.50/month (49-59%)
@@ -480,25 +480,25 @@ As agents become more capable, usage will increase:
 | Phase 3: Content Agents  | 20 hours     | £1,000        | Week 3-4    |
 | Phase 4: Integration     | 16 hours     | £800          | Week 5      |
 | Phase 5: Testing         | 12 hours     | £600          | Week 6      |
-| **Total**                | **88 hours** | **£4,400**    | **6 weeks** |
+| **Total**               | **88 hours**| **£4,400**   | **6 weeks**|
 
 ---
 
 ### Break-Even Analysis
 
-**Conservative Scenario** (Current usage levels):
+**Conservative Scenario**(Current usage levels):
 
 - Monthly savings: £19.68
 - Implementation cost: £4,400
 - Break-even: 22.4 months (not worth it)
 
-**Realistic Scenario** (Increased usage with SDK):
+**Realistic Scenario**(Increased usage with SDK):
 
 - Monthly savings vs non-upgraded: £58.50-88.50
 - Implementation cost: £4,400
 - Break-even: 4.8-7.5 months 
 
-**Aggressive Scenario** (3x usage growth):
+**Aggressive Scenario**(3x usage growth):
 
 - Monthly savings: £120-150
 - Additional revenue (streaming UX): £120/month
@@ -593,11 +593,11 @@ Cumulative 3-Year Cost: £4,400 (one-time)
 
 **Reasons**:
 
-1. **Break-even in 5-8 months** (realistic scenario)
+1. **Break-even in 5-8 months**(realistic scenario)
 2. **3-year ROI of 105-173%**
-3. **Non-financial benefits** (productivity, reliability, competitive advantage)
-4. **Revenue enablement** (streaming UX improves conversion)
-5. **Foundation for scale** (supports growth to 1,000+ customers)
+3. **Non-financial benefits**(productivity, reliability, competitive advantage)
+4. **Revenue enablement**(streaming UX improves conversion)
+5. **Foundation for scale**(supports growth to 1,000+ customers)
 
 **Phased Approach**:
 

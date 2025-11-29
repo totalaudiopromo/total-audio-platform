@@ -107,8 +107,8 @@ Each field is analyzed for:
 
 ### Completeness Scoring
 
-- **Required Fields** (Email, Name): 25% penalty each if missing
-- **Important Fields** (Company, Role, Genre, Location): 10% penalty each if missing
+- **Required Fields**(Email, Name): 25% penalty each if missing
+- **Important Fields**(Company, Role, Genre, Location): 10% penalty each if missing
 - **Score Range**: 0-100%
 
 ### Consistency Checks

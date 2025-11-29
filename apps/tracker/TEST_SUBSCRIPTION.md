@@ -2,7 +2,7 @@
 
 ## Quick Setup (5 minutes)
 
-###  Step 1: Apply Migration
+### Step 1: Apply Migration
 
 1. Open: https://supabase.com/dashboard/project/mjfhegawkusjlkcgfevp/sql
 2. Copy contents of `supabase/migrations/018_subscription_enforcement.sql`
@@ -15,7 +15,7 @@
    ```
    **Expected**: 4 rows returned
 
-###  Step 2: Mark Yourself as Beta User
+### Step 2: Mark Yourself as Beta User
 
 1. Find your user ID:
    ```sql
@@ -31,12 +31,12 @@
    ```
    **Expected**: `true`
 
-###  Step 3: Test Beta User Can Create Unlimited Campaigns
+### Step 3: Test Beta User Can Create Unlimited Campaigns
 
 1. Sign in to: https://tracker.totalaudiopromo.com
 2. Create 5+ campaigns (should all succeed)
 3. Visit: https://tracker.totalaudiopromo.com/billing
-4. Should see **"Beta User"** badge
+4. Should see **"Beta User"**badge
 5. No upgrade prompts shown
 
 ---
@@ -193,7 +193,7 @@ SELECT * FROM get_user_subscription_details('USER_UUID');
 
 ## Common Issues & Solutions
 
-###  Issue: Campaign creation still allows unlimited for free users
+### Issue: Campaign creation still allows unlimited for free users
 
 **Check:**
 
@@ -205,9 +205,9 @@ SELECT can_create_campaign('USER_UUID');
 SELECT COUNT(*) FROM campaigns WHERE user_id = 'USER_UUID' AND deleted_at IS NULL;
 ```
 
-**Solution:** Ensure migration applied and app restarted
+**Solution:**Ensure migration applied and app restarted
 
-###  Issue: Beta user seeing limits
+### Issue: Beta user seeing limits
 
 **Check:**
 
@@ -215,9 +215,9 @@ SELECT COUNT(*) FROM campaigns WHERE user_id = 'USER_UUID' AND deleted_at IS NUL
 SELECT is_beta_user FROM user_profiles WHERE id = 'USER_UUID';
 ```
 
-**Solution:** Run the UPDATE query to set `is_beta_user = true`
+**Solution:**Run the UPDATE query to set `is_beta_user = true`
 
-###  Issue: Stripe checkout not working
+### Issue: Stripe checkout not working
 
 **Check:**
 
@@ -298,6 +298,6 @@ Your subscription system is working correctly when:
 
 ---
 
-**Ready to Launch!** 
+**Ready to Launch!**
 
 Once all tests pass, your subscription enforcement is production-ready.

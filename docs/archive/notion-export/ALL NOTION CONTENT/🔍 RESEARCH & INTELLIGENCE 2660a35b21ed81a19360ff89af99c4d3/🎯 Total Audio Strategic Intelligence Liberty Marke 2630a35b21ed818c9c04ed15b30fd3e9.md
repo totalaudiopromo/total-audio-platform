@@ -605,7 +605,7 @@ This customer feedback data essentially provides a complete business blueprint: 
 
 ### Market Positioning vs Liberty
 
-**Liberty Current Pricing** (estimated from workflows): £300-2000+ per campaign
+**Liberty Current Pricing**(estimated from workflows): £300-2000+ per campaign
 
 **Total Audio Competitive Pricing**: £100-500 per campaign (same results, 60-80% cost reduction)
 

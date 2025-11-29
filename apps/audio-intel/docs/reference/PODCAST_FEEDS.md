@@ -1,4 +1,4 @@
-#  Podcast Feed Configuration
+# Podcast Feed Configuration
 
 ## **How to Set Up Podcast Monitoring**
 

@@ -16,8 +16,8 @@
 
 **Violations Summary**:
 
-- **Blue colours** (from Audio Intel): 140 instances
-- **Amber colours** (from Pitch Generator): 2 instances
+- **Blue colours**(from Audio Intel): 140 instances
+- **Amber colours**(from Pitch Generator): 2 instances
 - **Affected files**: 93 files across components, pages, and styles
 
 **Critical Files**:
@@ -45,25 +45,25 @@
 
 **Error Categories**:
 
-1. **Supabase Client Issues** (26 errors)
+1. **Supabase Client Issues**(26 errors)
    - Missing `.from()` method on client (Promise not awaited)
    - Missing `.raw` property on client
    - Files affected: `lib/integrations/gmail-reply-tracker.ts`, `lib/integrations/google-sheets-sync.ts`
 
-2. **Missing UI Components** (2 errors)
+2. **Missing UI Components**(2 errors)
    - Cannot find `@/components/ui/card`
    - Cannot find `@/components/ui/badge`
    - Files: `components/billing/BillingDashboard.tsx`, `components/billing/UpgradePrompt.tsx`
 
-3. **Date Handling Issues** (3 errors)
+3. **Date Handling Issues**(3 errors)
    - Undefined dates passed to `new Date()`
    - File: `components/analytics/EnhancedAnalytics.tsx`
 
-4. **Next.js 15 Async Params** (1 error)
+4. **Next.js 15 Async Params**(1 error)
    - Page params must be awaited in Next.js 15
    - File: `.next/types/app/campaigns/[id]/page.ts`
 
-5. **Type Safety** (6 errors)
+5. **Type Safety**(6 errors)
    - OAuth handler missing supabase property
    - Implicit 'any' types
    - Unknown types not assignable
@@ -169,7 +169,7 @@ Audio Intel has comprehensive vercel.json with:
 - Provides detailed violation reports
 - Prevents colour bleeding during CI/CD
 
-**Similar to Audio Intel's system** - professional approach to brand consistency
+**Similar to Audio Intel's system**- professional approach to brand consistency
 
 ---
 
@@ -191,20 +191,20 @@ Audio Intel has comprehensive vercel.json with:
 
 ### What Audio Intel Has That Tracker Needs:
 
-1. **Zero TypeScript errors**  vs Tracker's 38 errors 
-2. **Comprehensive mobile testing** (21 UX issues resolved)  vs Basic tests 
-3. **Clean colour system**  vs 142 violations 
-4. **Working linting**  vs Broken linting 
-5. **Proper vercel.json**  vs Minimal config 
-6. **UI component library**  vs Missing components 
+1. **Zero TypeScript errors** vs Tracker's 38 errors 
+2. **Comprehensive mobile testing**(21 UX issues resolved)  vs Basic tests 
+3. **Clean colour system** vs 142 violations 
+4. **Working linting** vs Broken linting 
+5. **Proper vercel.json** vs Minimal config 
+6. **UI component library** vs Missing components 
 
 ### What Tracker Has That's Good:
 
-1. **Brand validation system**  (same as Audio Intel)
-2. **Tailwind v4 validation**  (same as Audio Intel)
-3. **Playwright configuration**  (similar to Audio Intel)
-4. **PSEO pages**  (18 pages, same strategy as Audio Intel)
-5. **Campaign Intelligence AI**  (unique to Tracker)
+1. **Brand validation system** (same as Audio Intel)
+2. **Tailwind v4 validation** (same as Audio Intel)
+3. **Playwright configuration** (similar to Audio Intel)
+4. **PSEO pages** (18 pages, same strategy as Audio Intel)
+5. **Campaign Intelligence AI** (unique to Tracker)
 
 ---
 
@@ -212,7 +212,7 @@ Audio Intel has comprehensive vercel.json with:
 
 ### Priority 1: BUILD BLOCKERS (Must fix to deploy)
 
-1. **Fix TypeScript errors** (38 errors)
+1. **Fix TypeScript errors**(38 errors)
    - Estimated time: 2-3 hours
    - Impact: CRITICAL - prevents deployment
    - Files: Supabase integrations, billing components, analytics
@@ -222,7 +222,7 @@ Audio Intel has comprehensive vercel.json with:
    - Create/install missing UI components (`card`, `badge`)
    - Estimated time: 30 minutes
 
-3. **Fix colour violations** (142 instances)
+3. **Fix colour violations**(142 instances)
    - Global find/replace blue → purple
    - Update tailwind.config.ts
    - Validate with colour checker
@@ -245,7 +245,7 @@ Audio Intel has comprehensive vercel.json with:
 
 ### Priority 3: CODE QUALITY
 
-6. **Run full linting pass** (after fixing dependencies)
+6. **Run full linting pass**(after fixing dependencies)
    - Fix any remaining lint errors
    - Ensure prettier formatting
    - Estimated time: 1 hour
@@ -284,13 +284,13 @@ Audio Intel has comprehensive vercel.json with:
 
 ## NEXT STEPS
 
-1. **Run fix scripts** (create automated fix for colours)
-2. **Fix TypeScript errors systematically** (by category)
+1. **Run fix scripts**(create automated fix for colours)
+2. **Fix TypeScript errors systematically**(by category)
 3. **Install missing dependencies**
-4. **Test build locally** (`npm run build`)
-5. **Validate with all checkers** (colours, tailwind, typecheck, lint)
-6. **Deploy to staging** and test
-7. **Launch** 
+4. **Test build locally**(`npm run build`)
+5. **Validate with all checkers**(colours, tailwind, typecheck, lint)
+6. **Deploy to staging**and test
+7. **Launch**
 
 ---
 

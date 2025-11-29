@@ -6,59 +6,59 @@ Tidy up your Airtable fields to create a clean, organized, single source of trut
 
 ## CURRENT FIELD STRUCTURE (27 Fields)
 
-###  KEEP - Core Contact Information (8 fields)
+### KEEP - Core Contact Information (8 fields)
 
-1. **Email** (email) - Primary identifier
-2. **First Name** (singleLineText)
-3. **Last Name** (singleLineText)
-4. **Station** (singleLineText) - Need to populate "Unknown" values
-5. **Show** (singleLineText)
-6. **Contact Type** (singleSelect) - Radio, Producer, etc.
-7. **Region / Country** (singleLineText)
-8. **Created At** (createdTime) - System field
+1. **Email**(email) - Primary identifier
+2. **First Name**(singleLineText)
+3. **Last Name**(singleLineText)
+4. **Station**(singleLineText) - Need to populate "Unknown" values
+5. **Show**(singleLineText)
+6. **Contact Type**(singleSelect) - Radio, Producer, etc.
+7. **Region / Country**(singleLineText)
+8. **Created At**(createdTime) - System field
 
-###  KEEP - Genre & Programming (1 field)
+### KEEP - Genre & Programming (1 field)
 
-9. **Genres** (multipleSelects) - Critical for campaign targeting
+9. **Genres**(multipleSelects) - Critical for campaign targeting
 
-###  KEEP - Relationship Status (3 fields - NEED CLEANUP)
+### KEEP - Relationship Status (3 fields - NEED CLEANUP)
 
-10. **Status** (singleSelect) - **UPDATE FROM MAILCHIMP** (currently inaccurate)
-11. **Opt-in Source** (multilineText) - Shows where contact came from
-12. **Last Email Date** (date)
+10. **Status**(singleSelect) - **UPDATE FROM MAILCHIMP**(currently inaccurate)
+11. **Opt-in Source**(multilineText) - Shows where contact came from
+12. **Last Email Date**(date)
 
-###  KEEP - Engagement Tracking (3 fields)
+### KEEP - Engagement Tracking (3 fields)
 
-13. **Last Engagement** (singleSelect)
-14. **Reply Status** (singleSelect) - Replied, Ignored, etc.
-15. **Response Quality** (singleSelect)
+13. **Last Engagement**(singleSelect)
+14. **Reply Status**(singleSelect) - Replied, Ignored, etc.
+15. **Response Quality**(singleSelect)
 
-###  KEEP - Campaign Management (3 fields)
+### KEEP - Campaign Management (3 fields)
 
-16. **Campaigns** (multipleRecordLinks) - Links to campaign records
-17. **Campaigns Contacted** (singleLineText)
-18. **Assigned Freelancer** (singleSelect)
+16. **Campaigns**(multipleRecordLinks) - Links to campaign records
+17. **Campaigns Contacted**(singleLineText)
+18. **Assigned Freelancer**(singleSelect)
 
-###  KEEP - AI Enrichment (3 fields - JUST ADDED)
+### KEEP - AI Enrichment (3 fields - JUST ADDED)
 
-19. **Enrichment Quality** (singleSelect) - High/Medium/Low
-20. **Enrichment Notes** (multilineText) - All AI insights
-21. **Last Enriched** (date)
+19. **Enrichment Quality**(singleSelect) - High/Medium/Low
+20. **Enrichment Notes**(multilineText) - All AI insights
+21. **Last Enriched**(date)
 
-###  CONSOLIDATE/CLEANUP (3 fields)
+### CONSOLIDATE/CLEANUP (3 fields)
 
-22. **Reply Notes** (singleLineText) - **MERGE INTO Notes field**
-23. **Notes** (multilineText) - General notes field
-24. **Description** (multilineText) - **MERGE INTO Notes field**
+22. **Reply Notes**(singleLineText) - **MERGE INTO Notes field**
+23. **Notes**(multilineText) - General notes field
+24. **Description**(multilineText) - **MERGE INTO Notes field**
 
-###  KEEP BUT VERIFY (2 fields)
+### KEEP BUT VERIFY (2 fields)
 
-25. **MC TAGS** (multilineText) - Mailchimp tags (useful for segmentation)
-26. **Interactions** (multipleRecordLinks) - System field
+25. **MC TAGS**(multilineText) - Mailchimp tags (useful for segmentation)
+26. **Interactions**(multipleRecordLinks) - System field
 
-###  EVALUATE (1 field)
+### EVALUATE (1 field)
 
-27. **Test Mode** (checkbox) - Used for testing? Can remove after cleanup
+27. **Test Mode**(checkbox) - Used for testing? Can remove after cleanup
 
 ## CLEANUP ACTIONS
 
@@ -186,11 +186,11 @@ Tidy up your Airtable fields to create a clean, organized, single source of trut
 
 ### Fields to Archive/Remove:
 
-- **Reply Notes** (merged into Notes)
-- **Description** (merged into Notes)
-- **Test Mode** (after cleanup complete)
-- **Campaigns Contacted** (redundant with Campaigns linked records)
-- **Assigned Freelancer** (if not using)
+- **Reply Notes**(merged into Notes)
+- **Description**(merged into Notes)
+- **Test Mode**(after cleanup complete)
+- **Campaigns Contacted**(redundant with Campaigns linked records)
+- **Assigned Freelancer**(if not using)
 
 ## CLEANUP EXECUTION PLAN
 
@@ -246,11 +246,11 @@ node execute-airtable-cleanup.js
 
 Before making ANY changes:
 
-1.  **Full Airtable export to JSON** (already have for KYARA 21)
-2.  **Preview all changes** before committing
-3.  **Batch updates** (not individual API calls - more efficient)
-4.  **Preserve all data** in consolidated fields (no data loss)
-5.  **Test on 10 contacts first** before running on all 517
+1.  **Full Airtable export to JSON**(already have for KYARA 21)
+2.  **Preview all changes**before committing
+3.  **Batch updates**(not individual API calls - more efficient)
+4.  **Preserve all data**in consolidated fields (no data loss)
+5.  **Test on 10 contacts first**before running on all 517
 
 ## EXPECTED RESULTS
 
@@ -274,9 +274,9 @@ Before making ANY changes:
 
 **Would you like me to:**
 
-**A)** Start with Phase 1 (Backup & Preview)?
-**B)** Show you a sample of what the consolidated Notes field would look like?
-**C)** Focus on a specific cleanup action first (e.g., just sync Status)?
-**D)** Create the full cleanup script with interactive approval steps?
+**A)**Start with Phase 1 (Backup & Preview)?
+**B)**Show you a sample of what the consolidated Notes field would look like?
+**C)**Focus on a specific cleanup action first (e.g., just sync Status)?
+**D)**Create the full cleanup script with interactive approval steps?
 
 Let me know which approach you prefer, and I'll proceed accordingly!

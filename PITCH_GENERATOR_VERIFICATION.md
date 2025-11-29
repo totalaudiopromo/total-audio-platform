@@ -16,7 +16,7 @@ Pitch Generator is **production-ready and deployed**. The application successful
 
 ## FEATURES VERIFIED: WORKING 
 
-### 1. **Pitch Generation Workflow** 
+### 1. **Pitch Generation Workflow**
 
 - **Single Pitch Generation**: Form page (`/pitch/generate`) fully functional
   - Contact selector with live dropdown
@@ -48,7 +48,7 @@ Pitch Generator is **production-ready and deployed**. The application successful
   - Suggested send time display
   - Save edited changes
 
-### 2. **Contact Import from Audio Intel** 
+### 2. **Contact Import from Audio Intel**
 
 - **Clipboard Sync Detection**: Implemented in `/pitch/generate/page.tsx`
   - Checks for `import=clipboard` URL parameter
@@ -60,7 +60,7 @@ Pitch Generator is **production-ready and deployed**. The application successful
   - Shows success notification
   - **Status**: Works with proper validation
 
-### 3. **Contact Management** 
+### 3. **Contact Management**
 
 - **Add Contact Manually**: Page (`/pitch/contacts`)
   - Form to add name, role, outlet, email, genre tags, notes
@@ -77,7 +77,7 @@ Pitch Generator is **production-ready and deployed**. The application successful
   - Shows contact info card (role, outlet, genre tags)
   - Information-rich contact context
 
-### 4. **AI Personalization** 
+### 4. **AI Personalization**
 
 - **Anthropic Claude Integration**: Using Claude 3.5 Sonnet
   - Generates pitch body with contact context
@@ -94,7 +94,7 @@ Pitch Generator is **production-ready and deployed**. The application successful
   - Applied to pitch generation
   - Optional but enhances personalisation
 
-### 5. **Dashboard & History** 
+### 5. **Dashboard & History**
 
 - **Dashboard Page**: (`/dashboard`)
   - Stats cards (pitches generated, contacts added)
@@ -106,7 +106,7 @@ Pitch Generator is **production-ready and deployed**. The application successful
   - View individual pitch details
   - Filter/search capabilities
 
-### 6. **Authentication & Security** 
+### 6. **Authentication & Security**
 
 - **NextAuth Setup**: Configured
   - Sign in page (`/auth/signin`)
@@ -115,7 +115,7 @@ Pitch Generator is **production-ready and deployed**. The application successful
   - Protected routes via middleware
   - Dashboard and pitch pages require auth
 
-### 7. **Pricing & Checkout** 
+### 7. **Pricing & Checkout**
 
 - **Pricing Page**: Public access, no login required
   - 3 tiers: FREE (£0), PRO (£19), AGENCY (£79)
@@ -123,7 +123,7 @@ Pitch Generator is **production-ready and deployed**. The application successful
   - Test checkout flow
   - Success page after payment
 
-### 8. **UI/UX Features** 
+### 8. **UI/UX Features**
 
 - **Responsive Design**: Mobile-optimised
   - Tested on desktop, tablet, mobile views
@@ -326,7 +326,7 @@ All relationships working correctly with Supabase client.
 - Email-based auth
 - Protected routes via middleware
 
-**RLS Policies Needed** (for production):
+**RLS Policies Needed**(for production):
 
 - Users can only see their own contacts
 - Users can only see their own pitches
@@ -342,7 +342,7 @@ All relationships working correctly with Supabase client.
 **Hosting**: Vercel
 **Region**: London (lhr1)
 
-**Vercel Config** (`vercel.json`):
+**Vercel Config**(`vercel.json`):
 
 ```json
 {
@@ -456,7 +456,7 @@ OPTION 3: Batch demo (90 sec)
 
 ## TESTING EVIDENCE
 
-**From TESTING_CHECKLIST.md** (October 2025):
+**From TESTING_CHECKLIST.md**(October 2025):
 
 Test case verified (from file):
 
@@ -485,7 +485,7 @@ Expected behavior:
 
 ### Before Recording (Checklist)
 
-1. **CREATE SEED DATA** (1 hour effort)
+1. **CREATE SEED DATA**(1 hour effort)
 
 ```bash
 # Create: apps/pitch-generator/scripts/seed-demo-contacts.ts
@@ -497,7 +497,7 @@ Expected behavior:
 pnpm --filter pitch-generator exec ts-node scripts/seed-demo-contacts.ts
 ```
 
-2. **TEST FLOW BEFORE RECORDING** (15 minutes)
+2. **TEST FLOW BEFORE RECORDING**(15 minutes)
    - [ ] Sign in with founder account
    - [ ] Navigate to /pitch/batch
    - [ ] Select 5 BBC contacts
@@ -507,14 +507,14 @@ pnpm --filter pitch-generator exec ts-node scripts/seed-demo-contacts.ts
    - [ ] Copy all pitches
    - [ ] Check suggested send times appear
 
-3. **PREPARE VISUALS** (10 minutes)
+3. **PREPARE VISUALS**(10 minutes)
    - [ ] Close all other browser tabs
    - [ ] Full screen browser
    - [ ] Good lighting for face cam
    - [ ] Clear audio (use headphones)
    - [ ] Test recording tool (Loom) first
 
-4. **PRACTICE SCRIPT** (5 minutes)
+4. **PRACTICE SCRIPT**(5 minutes)
    - [ ] Read loom-video-script.md Version 2
    - [ ] Time yourself (should be 45-60 sec)
    - [ ] Do dry run on camera
@@ -569,7 +569,7 @@ to their show. Before this took me 2 hours."
 | UI/UX                   | Professional         | 100%       |
 | Authentication          | Secure               | 100%       |
 | Deployment              | Live                 | 100%       |
-| **Demo readiness**      | Ready with seed data | 85%        |
+| **Demo readiness**     | Ready with seed data | 85%        |
 
 ### Demo Blocking Issues: 1
 
@@ -608,6 +608,6 @@ to their show. Before this took me 2 hours."
 
 ## CONCLUSION
 
-Pitch Generator is **ready for customer-facing demos** after creating seed data. The application successfully delivers on all demo script promises. The only friction point is manual contact entry in recorded demos - solved by implementing a seed script.
+Pitch Generator is **ready for customer-facing demos**after creating seed data. The application successfully delivers on all demo script promises. The only friction point is manual contact entry in recorded demos - solved by implementing a seed script.
 
 **Recommendation**: Create seed data script, then proceed with demo filming. The product will perform exactly as promised in the loom script.

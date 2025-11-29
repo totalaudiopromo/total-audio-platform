@@ -10,7 +10,7 @@
 
 ### Workaround Until GitHub Pro Subscription
 
-**DO NOT rely on GitHub Actions** - deploy manually instead:
+**DO NOT rely on GitHub Actions**- deploy manually instead:
 
 ```bash
 # Navigate to Tracker app

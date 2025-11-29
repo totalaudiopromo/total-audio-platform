@@ -37,60 +37,60 @@ Based on your feedback that "Airtable is still a real mess":
 
 #### Core Contact Info (8 fields) 
 
-1. **Email** - Primary identifier
-2. **First Name** - Contact first name
-3. **Last Name** - Contact last name
-4. **Station** - Radio station name
-5. **Show** - Specific show name
-6. **Contact Type** - Radio/Producer/Journalist
-7. **Region / Country** - Location
-8. **Created At** - Auto timestamp
+1. **Email**- Primary identifier
+2. **First Name**- Contact first name
+3. **Last Name**- Contact last name
+4. **Station**- Radio station name
+5. **Show**- Specific show name
+6. **Contact Type**- Radio/Producer/Journalist
+7. **Region / Country**- Location
+8. **Created At**- Auto timestamp
 
 #### Subscription & Status (3 fields) 
 
-9. **Status** - Opted-In/Unsubscribed (synced from Mailchimp Liberty)
-10. **Opt-in Source** - Where they subscribed (Mailchimp Landing Page, etc.)
-11. **Last Email Date** - When last contacted
+9. **Status**- Opted-In/Unsubscribed (synced from Mailchimp Liberty)
+10. **Opt-in Source**- Where they subscribed (Mailchimp Landing Page, etc.)
+11. **Last Email Date**- When last contacted
 
 #### Genre & Targeting (1 field) 
 
-12. **Genres** - Multiple select (Indie, Rock, Electronic, etc.)
+12. **Genres**- Multiple select (Indie, Rock, Electronic, etc.)
 
 #### AI Enrichment (3 fields) 
 
-13. **Enrichment Quality** - High/Medium/Low (AI-powered)
-14. **Enrichment Notes** - Station analysis, pitch strategy
-15. **Last Enriched** - Enrichment timestamp
+13. **Enrichment Quality**- High/Medium/Low (AI-powered)
+14. **Enrichment Notes**- Station analysis, pitch strategy
+15. **Last Enriched**- Enrichment timestamp
 
 #### Notes & Context (1 field) 
 
-16. **Notes** - All contact intelligence (consolidated)
+16. **Notes**- All contact intelligence (consolidated)
 
-**TOTAL: 16 Essential Fields** (down from 27)
+**TOTAL: 16 Essential Fields**(down from 27)
 
 ---
 
 ### Fields to ARCHIVE/HIDE:
 
- **MC TAGS** - Old Mailchimp tags, not actively used
- **Reply Status** - Broken integration
- **Last Engagement** - Broken integration
- **Response Quality** - Not being tracked
- **Campaigns Contacted** - Redundant with Campaigns link
- **Assigned Freelancer** - Not using
- **Interactions** - Empty linked records
- **Campaigns** - Empty linked records
- **Test Mode** - Only 2 contacts, can delete
- **Description** - Already merged into Notes
- **Reply Notes** - Already merged into Notes
+ **MC TAGS**- Old Mailchimp tags, not actively used
+ **Reply Status**- Broken integration
+ **Last Engagement**- Broken integration
+ **Response Quality**- Not being tracked
+ **Campaigns Contacted**- Redundant with Campaigns link
+ **Assigned Freelancer**- Not using
+ **Interactions**- Empty linked records
+ **Campaigns**- Empty linked records
+ **Test Mode**- Only 2 contacts, can delete
+ **Description**- Already merged into Notes
+ **Reply Notes**- Already merged into Notes
 
-**Hide these 11 fields** → Clean, focused interface
+**Hide these 11 fields**→ Clean, focused interface
 
 ---
 
 ## Phase 2: Create Strategic Views
 
-### View 1: **"Priority Contacts"** (BBC & High Quality)
+### View 1: **"Priority Contacts"**(BBC & High Quality)
 
 **Filter**:
 
@@ -170,7 +170,7 @@ Based on your feedback that "Airtable is still a real mess":
 
 ---
 
-### View 7: **"Needs Review"** (Low Quality/Invalid)
+### View 7: **"Needs Review"**(Low Quality/Invalid)
 
 **Filter**:
 
@@ -184,7 +184,7 @@ Based on your feedback that "Airtable is still a real mess":
 
 ---
 
-### View 8: **"All Active Contacts"** (Default)
+### View 8: **"All Active Contacts"**(Default)
 
 **Filter**:
 
@@ -335,7 +335,7 @@ In Airtable UI:
 
 ### Step 2: Create 8 Strategic Views (10 minutes)
 
-**Use the filters I provided above** to create views for:
+**Use the filters I provided above**to create views for:
 
 - Priority Contacts (BBC & High)
 - Subscribed - Ready to Pitch
@@ -374,7 +374,7 @@ node auto-tag-genres-from-enrichment.js
 
 ### Step 5: Clean Up Low Quality Contacts (Optional)
 
-**Review "Needs Review" view** and decide:
+**Review "Needs Review" view**and decide:
 
 - Delete obviously invalid contacts
 - Mark questionable ones for later review
@@ -443,7 +443,7 @@ node auto-tag-genres-from-enrichment.js
 - Keep Airtable simple (research database only)
 - OR add campaign tracking later if you need it
 
-**What do you think?** Should I:
+**What do you think?**Should I:
 
 1. Create the station extraction and genre tagging scripts now?
 2. Wait for enrichment to finish first?

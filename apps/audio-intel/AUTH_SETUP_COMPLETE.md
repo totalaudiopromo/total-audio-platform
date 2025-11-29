@@ -1,4 +1,4 @@
-#  Audio Intel - Authentication Setup Complete
+# Audio Intel - Authentication Setup Complete
 
 **Date**: October 13, 2025
 **Status**: Ready to Test
@@ -13,10 +13,10 @@
 
 ### 2. Auth Components 
 
-- **SignInForm** - Email/password + magic link authentication
-- **SignUpForm** - User registration with email confirmation
-- **UserMenu** - User dropdown (ready to add to layout)
-- **AppAccessGate** - Permission-based access control
+- **SignInForm**- Email/password + magic link authentication
+- **SignUpForm**- User registration with email confirmation
+- **UserMenu**- User dropdown (ready to add to layout)
+- **AppAccessGate**- Permission-based access control
 
 ### 3. Auth Pages 
 
@@ -28,7 +28,7 @@
 
 ### Test Sign Up Flow
 
-1. **Start the server** (already running):
+1. **Start the server**(already running):
 
    ```bash
    # Server is running at http://localhost:3000
@@ -47,7 +47,7 @@
 
 4. **Submit the form**
 
-5. **Check your email** for confirmation link
+5. **Check your email**for confirmation link
 
 6. **Click the confirmation link**
 
@@ -75,7 +75,7 @@
    http://localhost:3000/signin
    ```
 
-2. **Enter your email** (no password)
+2. **Enter your email**(no password)
 
 3. **Click "Send Magic Link"**
 
@@ -89,11 +89,11 @@
 
 1. Go to your [Supabase Dashboard](https://supabase.com/dashboard/project/ucncbighzqudaszewjrv)
 
-2. Check **Authentication → Users** - new user should appear
+2. Check **Authentication → Users**- new user should appear
 
-3. Check **Table Editor → user_profiles** - profile should be created
+3. Check **Table Editor → user_profiles**- profile should be created
 
-4. Check **Table Editor → app_permissions** - should have `audio-intel` access
+4. Check **Table Editor → app_permissions**- should have `audio-intel` access
 
 ## Known Issues / Next Steps
 
@@ -183,7 +183,7 @@ When authentication is fully working, you should be able to:
 
 ## What's Next?
 
-1. **Test the sign-up flow** (most important!)
+1. **Test the sign-up flow**(most important!)
 2. Add UserMenu to layout
 3. Create dashboard page if needed
 4. Add middleware for route protection

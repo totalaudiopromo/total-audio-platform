@@ -6,7 +6,7 @@
 
 ## Template 1: The BBC Radio 1 Story (Best Performer)
 
-**Subject:** How I researched BBC Radio 1 contacts in 15 minutes
+**Subject:**How I researched BBC Radio 1 contacts in 15 minutes
 
 Hi {{firstName}},
 
@@ -20,7 +20,7 @@ The tool is called Audio Intel. It turned my chaotic spreadsheet into an organis
 
 I'm now offering it to other promoters at £19/month (saves ~12 hours per campaign).
 
-**Free demo:** Upload 5 of your contacts, watch it work in real-time.
+**Free demo:**Upload 5 of your contacts, watch it work in real-time.
 
 Interested?
 
@@ -32,7 +32,7 @@ intel.totalaudiopromo.com
 
 ## Template 2: Time Savings Focus
 
-**Subject:** 15 hours → 15 minutes (radio contact research)
+**Subject:**15 hours → 15 minutes (radio contact research)
 
 Hi {{firstName}},
 
@@ -50,7 +50,7 @@ Real results: BBC Radio 1 pitch went from 15 hours research → 15 minutes.
 
 £19/month. First 10 enrichments free.
 
-**Demo:** intel.totalaudiopromo.com
+**Demo:**intel.totalaudiopromo.com
 
 Worth 15 minutes to save 15 hours?
 
@@ -61,7 +61,7 @@ sadact / Audio Intel
 
 ## Template 3: Industry Credibility
 
-**Subject:** Built by someone who actually does radio promotion
+**Subject:**Built by someone who actually does radio promotion
 
 Hi {{firstName}},
 
@@ -79,7 +79,7 @@ Audio Intel saves 12-15 hours per campaign. Real case study: BBC Radio 1 contact
 
 £19/month. Free demo with your actual contacts.
 
-**Try it:** intel.totalaudiopromo.com
+**Try it:**intel.totalaudiopromo.com
 
 Does this solve a real problem for you?
 
@@ -89,7 +89,7 @@ Chris
 
 ## Template 4: Mutual Pain Point
 
-**Subject:** Stop spending weekends researching radio contacts
+**Subject:**Stop spending weekends researching radio contacts
 
 Hi {{firstName}},
 
@@ -109,7 +109,7 @@ Results:
  Works on mobile (not just desktop)
  £19/month (saves 12+ hours per campaign)
 
-**Free demo:** Upload your contacts, see it work instantly.
+**Free demo:**Upload your contacts, see it work instantly.
 
 Worth a look? intel.totalaudiopromo.com
 
@@ -120,7 +120,7 @@ Chris
 
 ## Template 5: Direct Value Prop
 
-**Subject:** £19/month to save 15 hours per campaign
+**Subject:**£19/month to save 15 hours per campaign
 
 Hi {{firstName}},
 
@@ -141,7 +141,7 @@ Audio Intel = automated radio contact research.
 • FREE: 10 enrichments/month
 • PRO: £19/month (unlimited campaigns)
 
-**Demo:** intel.totalaudiopromo.com
+**Demo:**intel.totalaudiopromo.com
 
 5-minute demo worth 15 hours saved?
 
@@ -187,7 +187,7 @@ sadact / Audio Intel founder
 
 ## Follow-up Sequence (If No Reply)
 
-**Day 3:** Quick nudge
+**Day 3:**Quick nudge
 
 ```
 Hi {{firstName}},
@@ -201,7 +201,7 @@ If not, 15-minute demo: intel.totalaudiopromo.com
 Chris
 ```
 
-**Day 7:** Case study
+**Day 7:**Case study
 
 ```
 Hi {{firstName}},
@@ -219,7 +219,7 @@ Worth a look?
 Chris
 ```
 
-**Day 14:** Final follow-up
+**Day 14:**Final follow-up
 
 ```
 Hi {{firstName}},
@@ -263,15 +263,15 @@ sadact / totalaudiopromo.com
 
 ## Expected Results (50 emails sent)
 
-**Open rate:** 65% (32 opens)
-**Click rate:** 45% (22 clicks)
-**Demo booking:** 85% (42 demos)
-**Close rate:** 10% (4 customers)
+**Open rate:**65% (32 opens)
+**Click rate:**45% (22 clicks)
+**Demo booking:**85% (42 demos)
+**Close rate:**10% (4 customers)
 
-**Revenue:** 4 × £19 = **£76/month**
+**Revenue:**4 × £19 = **£76/month**
 
-**Time investment:** 2 hours (scraping + sending)
-**Hourly rate:** £38/hour (not bad for a Tuesday)
+**Time investment:**2 hours (scraping + sending)
+**Hourly rate:**£38/hour (not bad for a Tuesday)
 
 ---
 
@@ -288,8 +288,8 @@ sadact / totalaudiopromo.com
 
 ---
 
-**Total cost:** £0
-**Expected revenue:** £76/month from first 50 emails
-**Time to first customer:** 7-14 days
+**Total cost:**£0
+**Expected revenue:**£76/month from first 50 emails
+**Time to first customer:**7-14 days
 
 Let's go! 

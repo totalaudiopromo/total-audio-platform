@@ -7,7 +7,7 @@
 - Clean, simple interface
 - Built for creators (perfect for solopreneurs)
 
-**Alternative:** Mailchimp (also free tier), but ConvertKit is easier for sequences.
+**Alternative:**Mailchimp (also free tier), but ConvertKit is easier for sequences.
 
 ---
 
@@ -27,7 +27,7 @@
 3. Add reply-to email: your real email (so people can reply)
 4. Verify your domain (follow their steps)
 
-**Important:** Don't skip domain verification or your emails go to spam.
+**Important:**Don't skip domain verification or your emails go to spam.
 
 ### 3. Upload Contacts (2 minutes)
 
@@ -89,7 +89,7 @@ ConvertKit uses `{{ first_name }}` for merge tags.
 - Type: `Hey {{ first_name }},`
 - Sends as: "Hey James,"
 
-**Test it:** Send yourself a test email before launching.
+**Test it:**Send yourself a test email before launching.
 
 ---
 
@@ -123,7 +123,7 @@ Before you hit send:
 2. But set "Start date" to tomorrow 9am
 3. Emails send at same time each day
 
-**Why schedule?** Better deliverability when emails go out at consistent times.
+**Why schedule?**Better deliverability when emails go out at consistent times.
 
 ---
 
@@ -320,11 +320,11 @@ See which gets higher signups.
 
 ## Quick Reference
 
-**Login:** convertkit.com/users/login
-**Dashboard:** convertkit.com/subscribers
-**Sequences:** convertkit.com/sequences
+**Login:**convertkit.com/users/login
+**Dashboard:**convertkit.com/subscribers
+**Sequences:**convertkit.com/sequences
 
-**Support:** ConvertKit has great docs and live chat (if you get stuck)
+**Support:**ConvertKit has great docs and live chat (if you get stuck)
 
 ---
 

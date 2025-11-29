@@ -8,19 +8,19 @@ This document provides detailed examples of common browser automation tasks usin
 
 **Workflow**:
 
-1. **Navigate** to the product page:
+1. **Navigate**to the product page:
 
    ```bash
    browser navigate https://example.com/product/123
    ```
 
-2. **Extract** product data with schema:
+2. **Extract**product data with schema:
 
    ```bash
    browser extract "Extract the product information" '{"productName": "string", "price": "number", "currency": "string", "inStock": "boolean", "rating": "number", "reviewCount": "number"}'
    ```
 
-3. **Close** the browser:
+3. **Close**the browser:
    ```bash
    browser close
    ```
@@ -35,7 +35,7 @@ This document provides detailed examples of common browser automation tasks usin
 
 **Workflow**:
 
-1. **Navigate** to contact page:
+1. **Navigate**to contact page:
 
    ```bash
    browser navigate https://example.com/contact
@@ -65,13 +65,13 @@ This document provides detailed examples of common browser automation tasks usin
    browser act "Click the Submit button"
    ```
 
-6. **Screenshot** to capture confirmation:
+6. **Screenshot**to capture confirmation:
 
    ```bash
    browser screenshot
    ```
 
-7. **Close** the browser:
+7. **Close**the browser:
    ```bash
    browser close
    ```
@@ -84,19 +84,19 @@ This document provides detailed examples of common browser automation tasks usin
 
 **Workflow**:
 
-1. **Navigate** to news site:
+1. **Navigate**to news site:
 
    ```bash
    browser navigate https://techcrunch.com
    ```
 
-2. **Extract** article headlines and summaries:
+2. **Extract**article headlines and summaries:
 
    ```bash
    browser extract "Extract the top 5 article headlines and their summaries" '{"headlines": "string", "summary": "string", "author": "string", "publishedDate": "string"}'
    ```
 
-3. **Close** the browser:
+3. **Close**the browser:
 
    ```bash
    browser close
@@ -112,7 +112,7 @@ This document provides detailed examples of common browser automation tasks usin
 
 **Workflow**:
 
-1. **Navigate** to login page:
+1. **Navigate**to login page:
 
    ```bash
    browser navigate https://example.com/login
@@ -142,19 +142,19 @@ This document provides detailed examples of common browser automation tasks usin
    browser act "Wait for the page to fully load"
    ```
 
-6. **Navigate** to dashboard:
+6. **Navigate**to dashboard:
 
    ```bash
    browser navigate https://example.com/dashboard
    ```
 
-7. **Screenshot** the dashboard:
+7. **Screenshot**the dashboard:
 
    ```bash
    browser screenshot
    ```
 
-8. **Close** the browser:
+8. **Close**the browser:
    ```bash
    browser close
    ```
@@ -169,7 +169,7 @@ This document provides detailed examples of common browser automation tasks usin
 
 **Workflow**:
 
-1. **Navigate** to Google:
+1. **Navigate**to Google:
 
    ```bash
    browser navigate https://www.google.com
@@ -187,13 +187,13 @@ This document provides detailed examples of common browser automation tasks usin
    browser act "Wait for search results to load"
    ```
 
-4. **Extract** search results:
+4. **Extract**search results:
 
    ```bash
    browser extract "Extract the top 5 search results" '{"title": "string", "url": "string", "snippet": "string"}'
    ```
 
-5. **Close** the browser:
+5. **Close**the browser:
    ```bash
    browser close
    ```
@@ -206,7 +206,7 @@ This document provides detailed examples of common browser automation tasks usin
 
 **Workflow**:
 
-1. **Navigate** to the file URL:
+1. **Navigate**to the file URL:
 
    ```bash
    browser navigate https://example.com/documents/report.pdf
@@ -218,7 +218,7 @@ This document provides detailed examples of common browser automation tasks usin
    browser act "Wait for 5 seconds for the download to complete"
    ```
 
-3. **Close** the browser:
+3. **Close**the browser:
    ```bash
    browser close
    ```
@@ -233,25 +233,25 @@ This document provides detailed examples of common browser automation tasks usin
 
 **Workflow**:
 
-1. **Navigate** to the form page:
+1. **Navigate**to the form page:
 
    ```bash
    browser navigate https://example.com/form
    ```
 
-2. **Screenshot** initial state:
+2. **Screenshot**initial state:
 
    ```bash
    browser screenshot
    ```
 
-3. **Observe** available elements:
+3. **Observe**available elements:
 
    ```bash
    browser observe "Find all buttons and their states"
    ```
 
-4. **Observe** form fields:
+4. **Observe**form fields:
 
    ```bash
    browser observe "Find all form input fields and their required status"
@@ -263,19 +263,19 @@ This document provides detailed examples of common browser automation tasks usin
    browser act "Fill in all required fields with test data"
    ```
 
-6. **Screenshot** after filling:
+6. **Screenshot**after filling:
 
    ```bash
    browser screenshot
    ```
 
-7. **Observe** button state again:
+7. **Observe**button state again:
 
    ```bash
    browser observe "Check if the submit button is now enabled"
    ```
 
-8. **Close** the browser:
+8. **Close**the browser:
    ```bash
    browser close
    ```
@@ -290,13 +290,13 @@ Analyze the screenshots and observations to determine the issue.
 
 **Workflow**:
 
-1. **Navigate** to products page:
+1. **Navigate**to products page:
 
    ```bash
    browser navigate https://example.com/products
    ```
 
-2. **Extract** products from page 1:
+2. **Extract**products from page 1:
 
    ```bash
    browser extract "Extract all products on this page" '{"name": "string", "price": "number", "imageUrl": "string"}'
@@ -308,7 +308,7 @@ Analyze the screenshots and observations to determine the issue.
    browser act "Click the Next Page button"
    ```
 
-4. **Extract** products from page 2:
+4. **Extract**products from page 2:
 
    ```bash
    browser extract "Extract all products on this page" '{"name": "string", "price": "number", "imageUrl": "string"}'
@@ -320,13 +320,13 @@ Analyze the screenshots and observations to determine the issue.
    browser act "Click the Next Page button"
    ```
 
-6. **Extract** products from page 3:
+6. **Extract**products from page 3:
 
    ```bash
    browser extract "Extract all products on this page" '{"name": "string", "price": "number", "imageUrl": "string"}'
    ```
 
-7. **Close** the browser:
+7. **Close**the browser:
    ```bash
    browser close
    ```
@@ -337,7 +337,7 @@ Combine and process all extracted data.
 
 ## Tips for Success
 
-- **Be specific with natural language**: "Click the blue Submit button in the footer" is better than "click submit". This is **extremely important** because there's much ambiguity in many websites.
+- **Be specific with natural language**: "Click the blue Submit button in the footer" is better than "click submit". This is **extremely important**because there's much ambiguity in many websites.
 - **Wait when needed**: After navigation or actions that trigger page changes, explicitly wait
 - **Use observe for discovery**: When unsure what elements exist, use observe first
 - **Take screenshots for debugging**: Visual confirmation helps understand what the browser sees

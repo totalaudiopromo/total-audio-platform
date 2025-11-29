@@ -4,15 +4,15 @@
 
 ### Primary Support (95%+ of users)
 
-- **Chrome** 100+ (Desktop & Mobile)
-- **Safari** 15+ (Desktop & iOS)
-- **Firefox** 100+
-- **Edge** 100+
+- **Chrome**100+ (Desktop & Mobile)
+- **Safari**15+ (Desktop & iOS)
+- **Firefox**100+
+- **Edge**100+
 
 ### Secondary Support
 
-- **Samsung Internet** (Android)
-- **Opera** 85+
+- **Samsung Internet**(Android)
+- **Opera**85+
 
 ## Testing Checklist
 
@@ -235,11 +235,11 @@ npm run test:mobile
 
 ### Manual Testing Tools
 
-- **Browser DevTools** - Check console for errors
-- **Lighthouse** - Performance, accessibility, SEO audits
-- **BrowserStack** - Cross-browser/device testing
-- **LambdaTest** - Alternative to BrowserStack
-- **Chrome DevTools Device Mode** - Mobile simulation
+- **Browser DevTools**- Check console for errors
+- **Lighthouse**- Performance, accessibility, SEO audits
+- **BrowserStack**- Cross-browser/device testing
+- **LambdaTest**- Alternative to BrowserStack
+- **Chrome DevTools Device Mode**- Mobile simulation
 
 ### Performance Monitoring
 
@@ -253,28 +253,28 @@ performance.getEntriesByType('paint');
 
 ### Issue: Layout breaks on iOS Safari
 
-**Cause:** 100vh includes URL bar height
-**Fix:** Use `min-h-screen` Tailwind class or CSS custom properties
+**Cause:**100vh includes URL bar height
+**Fix:**Use `min-h-screen` Tailwind class or CSS custom properties
 
 ### Issue: Date input not working on Safari
 
-**Cause:** Safari doesn't support all HTML5 input types
-**Fix:** Provide fallback with text input and placeholder
+**Cause:**Safari doesn't support all HTML5 input types
+**Fix:**Provide fallback with text input and placeholder
 
 ### Issue: PDF export doesn't work
 
-**Cause:** Browser blocking popups
-**Fix:** Show alert asking user to allow popups
+**Cause:**Browser blocking popups
+**Fix:**Show alert asking user to allow popups
 
 ### Issue: Buttons too small on mobile
 
-**Cause:** Touch target size < 44x44px
-**Fix:** Add minimum padding to meet WCAG guidelines
+**Cause:**Touch target size < 44x44px
+**Fix:**Add minimum padding to meet WCAG guidelines
 
 ### Issue: Flash of unstyled content (FOUC)
 
-**Cause:** CSS loading after HTML
-**Fix:** Ensure critical CSS inlined or CSS in <head>
+**Cause:**CSS loading after HTML
+**Fix:**Ensure critical CSS inlined or CSS in <head>
 
 ## Deployment Checklist
 
@@ -336,5 +336,5 @@ When reporting cross-browser issues, include:
 
 ---
 
-**Last Updated:** October 2025
-**Next Review:** After major feature releases or browser updates
+**Last Updated:**October 2025
+**Next Review:**After major feature releases or browser updates

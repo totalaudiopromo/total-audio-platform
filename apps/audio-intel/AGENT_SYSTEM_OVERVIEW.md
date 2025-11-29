@@ -51,7 +51,7 @@
 
 ## Agent Responsibilities
 
-###  IntelAgent - Contact Enrichment
+### IntelAgent - Contact Enrichment
 
 **When to Use**: Artist/release contact research
 **Sub-Agents**:
@@ -76,7 +76,7 @@
 
 ---
 
-###  PitchAgent - Pitch Generation
+### PitchAgent - Pitch Generation
 
 **When to Use**: Creating pitches or follow-ups
 **Sub-Agents**:
@@ -104,7 +104,7 @@
 
 ---
 
-###  TrackerAgent - Campaign Tracking
+### TrackerAgent - Campaign Tracking
 
 **When to Use**: Logging submissions, analytics, reminders
 **Sub-Agents**:
@@ -129,7 +129,7 @@
 
 ---
 
-###  InsightAgent - Performance Insights
+### InsightAgent - Performance Insights
 
 **When to Use**: Campaign analysis and recommendations
 **Output**:
@@ -153,7 +153,7 @@
 
 ---
 
-###  VoiceGuardAgent - Brand Voice
+### VoiceGuardAgent - Brand Voice
 
 **When to Use**: Validating any outbound content
 **Detects**:

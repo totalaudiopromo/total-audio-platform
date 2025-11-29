@@ -12,13 +12,13 @@
 
 | Objective                             | Status      | Evidence                                      |
 | ------------------------------------- | ----------- | --------------------------------------------- |
-| **1⃣ CI/CD Setup**                    | Complete | `.github/workflows/ci.yml`                    |
-| **2⃣ Per-App Deployments**            | Complete | 3 deployment workflows created                |
-| **3⃣ Supabase Backups**               | Complete | Daily automated backups configured            |
-| **4⃣ Metrics Schema**                 | Complete | Migration with events, usage, payments tables |
-| **5⃣ Feature Flags + Env Validation** | Complete | `features.ts` + enhanced `env.ts`             |
-| **6⃣ Documentation**                  | Complete | DEPLOYMENT.md, INCIDENTS.md, SLOS.md          |
-| **7⃣ Changesets Integration**         | Complete | Automated version management                  |
+| **1⃣ CI/CD Setup**                   | Complete | `.github/workflows/ci.yml`                    |
+| **2⃣ Per-App Deployments**           | Complete | 3 deployment workflows created                |
+| **3⃣ Supabase Backups**              | Complete | Daily automated backups configured            |
+| **4⃣ Metrics Schema**                | Complete | Migration with events, usage, payments tables |
+| **5⃣ Feature Flags + Env Validation**| Complete | `features.ts` + enhanced `env.ts`             |
+| **6⃣ Documentation**                 | Complete | DEPLOYMENT.md, INCIDENTS.md, SLOS.md          |
+| **7⃣ Changesets Integration**        | Complete | Automated version management                  |
 
 ---
 
@@ -320,7 +320,7 @@ useFeature('new-feature');
 - Generates changelogs
 - Updates package versions
 
-**Scripts Added** (package.json):
+**Scripts Added**(package.json):
 
 ```json
 {
@@ -351,23 +351,23 @@ pnpm release
 
 | Type                    | Count        | Details                                                     |
 | ----------------------- | ------------ | ----------------------------------------------------------- |
-| **GitHub Workflows**    | 5            | ci.yml, deploy-\*.yml (3), supabase-backup.yml, release.yml |
-| **Database Migrations** | 1            | 20251102_metrics.sql (340 lines)                            |
-| **Documentation**       | 3            | DEPLOYMENT.md, INCIDENTS.md, SLOS.md (185 KB total)         |
-| **Feature Files**       | 2            | features.ts, enhanced env.ts                                |
-| **Configuration**       | 2            | .changeset/config.json, package.json updates                |
-| **TOTAL**               | **13 files** | **~5,500 lines added**                                      |
+| **GitHub Workflows**   | 5            | ci.yml, deploy-\*.yml (3), supabase-backup.yml, release.yml |
+| **Database Migrations**| 1            | 20251102_metrics.sql (340 lines)                            |
+| **Documentation**      | 3            | DEPLOYMENT.md, INCIDENTS.md, SLOS.md (185 KB total)         |
+| **Feature Files**      | 2            | features.ts, enhanced env.ts                                |
+| **Configuration**      | 2            | .changeset/config.json, package.json updates                |
+| **TOTAL**              | **13 files**| **~5,500 lines added**                                     |
 
 ### Automation Improvements
 
 | Area                   | Before            | After                           |
 | ---------------------- | ----------------- | ------------------------------- |
-| **CI/CD**              | Manual builds     | Automated on push               |
-| **Deployments**        | Manual Vercel CLI | Automated per-app workflows     |
-| **Backups**            | None              | Daily automated + verification  |
-| **Version Management** | Manual git tags   | Automated changesets            |
-| **Feature Flags**      | Hardcoded         | Centralized + environment-aware |
-| **Documentation**      | Scattered notes   | Comprehensive runbooks          |
+| **CI/CD**             | Manual builds     | Automated on push               |
+| **Deployments**       | Manual Vercel CLI | Automated per-app workflows     |
+| **Backups**           | None              | Daily automated + verification  |
+| **Version Management**| Manual git tags   | Automated changesets            |
+| **Feature Flags**     | Hardcoded         | Centralized + environment-aware |
+| **Documentation**     | Scattered notes   | Comprehensive runbooks          |
 
 ---
 
@@ -463,11 +463,11 @@ root/
 
 With deployment hardening complete, return to customer acquisition:
 
-1. **Launch Case Study Content** (real enrichment success stories)
-2. **Radio Promoter Outreach** (85% conversion segment)
-3. **Demo Call Optimization** (track conversion with new metrics)
-4. **Newsletter Growth** ("The Unsigned Advantage" subscriber acquisition)
-5. **First Paying Customer** (£500/month goal by November 2025)
+1. **Launch Case Study Content**(real enrichment success stories)
+2. **Radio Promoter Outreach**(85% conversion segment)
+3. **Demo Call Optimization**(track conversion with new metrics)
+4. **Newsletter Growth**("The Unsigned Advantage" subscriber acquisition)
+5. **First Paying Customer**(£500/month goal by November 2025)
 
 ### Metrics to Track (Using New Schema)
 

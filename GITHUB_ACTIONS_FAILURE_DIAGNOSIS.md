@@ -20,7 +20,7 @@
 
 Based on the workflow files and local testing, here were the potential causes:
 
-### 1. **Missing GitHub Secrets** (Most Likely)
+### 1. **Missing GitHub Secrets**(Most Likely)
 
 The CI workflow requires these secrets to build apps:
 
@@ -81,11 +81,11 @@ Go to: `https://github.com/totalaudiopromo/total-audio-platform/settings/secrets
 
 Add these secrets:
 
-1. **NEXT_PUBLIC_SUPABASE_URL** - Your Supabase project URL
-2. **NEXT_PUBLIC_SUPABASE_ANON_KEY** - Supabase anonymous key
-3. **SUPABASE_SERVICE_ROLE_KEY** - Supabase service role key
-4. **TELEGRAM_BOT_TOKEN** (optional, for notifications)
-5. **TELEGRAM_CHAT_ID** (optional, for notifications)
+1. **NEXT_PUBLIC_SUPABASE_URL**- Your Supabase project URL
+2. **NEXT_PUBLIC_SUPABASE_ANON_KEY**- Supabase anonymous key
+3. **SUPABASE_SERVICE_ROLE_KEY**- Supabase service role key
+4. **TELEGRAM_BOT_TOKEN**(optional, for notifications)
+5. **TELEGRAM_CHAT_ID**(optional, for notifications)
 
 ### Step 2: Fix TypeScript Errors
 

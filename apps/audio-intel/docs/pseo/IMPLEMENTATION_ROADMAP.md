@@ -32,7 +32,7 @@ Scale from 1 case study (BBC Radio 1) → 60 programmatic landing pages → 2,00
 
 **Objective**: Research and validate contacts for highest-traffic opportunities
 
-**Tier 1 Targets** (10 pages, 1,200-2,000 monthly searches each):
+**Tier 1 Targets**(10 pages, 1,200-2,000 monthly searches each):
 
 1.  BBC Radio 1 (complete)
 2. Spotify Editorial Playlists
@@ -68,7 +68,7 @@ Scale from 1 case study (BBC Radio 1) → 60 programmatic landing pages → 2,00
 
 **Objective**: Research second wave of content opportunities
 
-**Tier 2 Targets** (20 pages, 300-800 monthly searches each):
+**Tier 2 Targets**(20 pages, 300-800 monthly searches each):
 
 - Amazing Radio, NTS Radio, Rinse FM, Soho Radio
 - Foundation FM, Reprezent Radio, Worldwide FM, Threads Radio
@@ -160,7 +160,7 @@ Scale from 1 case study (BBC Radio 1) → 60 programmatic landing pages → 2,00
 
 **Process**: Same as Week 5, covering final 30 targets
 
-**Tier 3 Targets** (30 pages, 50-300 monthly searches each):
+**Tier 3 Targets**(30 pages, 50-300 monthly searches each):
 
 - Long-tail radio stations (Reform Radio, Balamii, etc.)
 - Music publications (Gold Flake Paint, The 405, etc.)
@@ -346,7 +346,7 @@ Scale from 1 case study (BBC Radio 1) → 60 programmatic landing pages → 2,00
 
 ## Bottom Line
 
-This roadmap takes Audio Intel from **1 manual case study** → **60 programmatic landing pages** → **established authority** in music industry contact intelligence.
+This roadmap takes Audio Intel from **1 manual case study**→ **60 programmatic landing pages**→ **established authority**in music industry contact intelligence.
 
 **Key Success Factors**:
 

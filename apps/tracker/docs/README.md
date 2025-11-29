@@ -8,18 +8,18 @@ All documentation for the Campaign Tracker app, organised by category.
 
 Guides for deployment and configuration:
 
-- **[DEPLOYMENT_GUIDE.md](./setup/DEPLOYMENT_GUIDE.md)** - Production deployment instructions
-- **[MIGRATION_INSTRUCTIONS.md](./setup/MIGRATION_INSTRUCTIONS.md)** - Database migration guide
-- **[RUN_MIGRATION.md](./setup/RUN_MIGRATION.md)** - Migration execution scripts
-- **[QUICK_DEPLOY.md](./setup/QUICK_DEPLOY.md)** - Fast deployment guide
+- **[DEPLOYMENT_GUIDE.md](./setup/DEPLOYMENT_GUIDE.md)**- Production deployment instructions
+- **[MIGRATION_INSTRUCTIONS.md](./setup/MIGRATION_INSTRUCTIONS.md)**- Database migration guide
+- **[RUN_MIGRATION.md](./setup/RUN_MIGRATION.md)**- Migration execution scripts
+- **[QUICK_DEPLOY.md](./setup/QUICK_DEPLOY.md)**- Fast deployment guide
 
 ### `/reference/` - Reference Documentation
 
 Technical references and specifications:
 
-- **[PSEO_STRATEGY_TRACKER.md](./reference/PSEO_STRATEGY_TRACKER.md)** - PSEO implementation strategy
-- **[TAILWIND_V4_README.md](./reference/TAILWIND_V4_README.md)** - Tailwind v4 configuration notes
-- **[README_PRD.md](./reference/README_PRD.md)** - Product requirements document
+- **[PSEO_STRATEGY_TRACKER.md](./reference/PSEO_STRATEGY_TRACKER.md)**- PSEO implementation strategy
+- **[TAILWIND_V4_README.md](./reference/TAILWIND_V4_README.md)**- Tailwind v4 configuration notes
+- **[README_PRD.md](./reference/README_PRD.md)**- Product requirements document
 
 ### `/status/` - Status Reports (Archive)
 
@@ -31,7 +31,7 @@ Historical completion reports:
 - `PSEO_BATCH_1_COMPLETE.md` - First PSEO batch completion
 - `TRACKER_MVP_COMPLETE.md` - MVP milestone completion
 
-> **Note:** Status files are kept for historical reference but are not actively maintained.
+> **Note:**Status files are kept for historical reference but are not actively maintained.
 
 ---
 
@@ -39,8 +39,8 @@ Historical completion reports:
 
 For getting started, see the root-level documentation:
 
-- **[README.md](../README.md)** - Main project overview
-- **[QUICKSTART.md](../QUICKSTART.md)** - Quick start development guide
+- **[README.md](../README.md)**- Main project overview
+- **[QUICKSTART.md](../QUICKSTART.md)**- Quick start development guide
 
 ---
 
@@ -72,22 +72,22 @@ tracker/
 
 When adding new documentation:
 
-1. **Setup guides** → `/docs/setup/`
+1. **Setup guides**→ `/docs/setup/`
    - Deployment instructions
    - Configuration guides
    - Integration setup
 
-2. **How-to guides** → `/docs/guides/`
+2. **How-to guides**→ `/docs/guides/`
    - Feature tutorials
    - Usage examples
    - Best practices
 
-3. **Reference docs** → `/docs/reference/`
+3. **Reference docs**→ `/docs/reference/`
    - Technical specs
    - Architecture docs
    - Strategy documents
 
-4. **Status updates** → `/docs/status/`
+4. **Status updates**→ `/docs/status/`
    - Completion reports
    - Milestone records
    - Historical notes

@@ -26,7 +26,7 @@ This document defines the visual design system for all TAP mini-tools. The aesth
 - Clean white backgrounds
 - High contrast text (black/gray on white)
 - Sharp, deliberate spacing
-- **UK spelling:** colour, personalised, organise, favour, etc.
+- **UK spelling:**colour, personalised, organise, favour, etc.
 
 ---
 
@@ -70,8 +70,8 @@ Danger: #F25F5C (text-danger)
 
 ### Font Stack
 
-- **Primary:** Geist Sans (sans-serif)
-- **Mono:** Geist Mono (monospace)
+- **Primary:**Geist Sans (sans-serif)
+- **Mono:**Geist Mono (monospace)
 
 ### Text Sizes & Weights
 
@@ -294,7 +294,7 @@ Icons should match their context:
 
 ## Template Duplication Workflow
 
-**IMPORTANT:** This TAP SaaS template is your clean starting point. To create a new mini-tool without overwriting the template:
+**IMPORTANT:**This TAP SaaS template is your clean starting point. To create a new mini-tool without overwriting the template:
 
 ### Option 1: Create Tool-Specific Apps (Recommended)
 
@@ -336,7 +336,7 @@ app/
   └── shared/             (Shared components across tools)
 ```
 
-**We recommend Option 1** - each tool as its own deployable app gives you:
+**We recommend Option 1**- each tool as its own deployable app gives you:
 
 - Independent deployment and versioning
 - Tool-specific databases and auth

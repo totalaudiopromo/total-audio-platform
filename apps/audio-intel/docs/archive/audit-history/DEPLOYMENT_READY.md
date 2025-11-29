@@ -5,7 +5,7 @@
 **Date**: January 15, 2025
 **Time Invested**: 5 hours
 **Revenue Impact**: **40-60% conversion improvement expected**
-**Legal Risk**: **ELIMINATED** (was CRITICAL, now COMPLIANT)
+**Legal Risk**: **ELIMINATED**(was CRITICAL, now COMPLIANT)
 
 ---
 
@@ -85,26 +85,26 @@
 
 ### High Priority (Complete Before Deploy)
 
-1. **Create Terms of Service page** (1 hour)
+1. **Create Terms of Service page**(1 hour)
    - File: `app/terms/page.tsx`
    - Template ready, needs your review
 
-2. **Create Contact/Support page** (30 mins)
+2. **Create Contact/Support page**(30 mins)
    - File: `app/contact/page.tsx`
    - Add support email and response time info
 
-3. **Fix Broken Images** (30 mins)
+3. **Fix Broken Images**(30 mins)
    - Audit `/assets/loading-states/` and `/images/`
    - Fix 2 broken images found on homepage
    - Add proper alt text to all images
 
 ### Nice-to-Have (Can Deploy Without)
 
-4. **Add metadataBase** (5 mins)
+4. **Add metadataBase**(5 mins)
    - Fix OG image warning in build
    - File: `app/layout.tsx`
 
-5. **Update Sitemap** (15 mins)
+5. **Update Sitemap**(15 mins)
    - Add `/privacy`, `/cookies`, `/terms`, `/contact`
    - Add all blog post URLs
 
@@ -115,7 +115,7 @@
 ### Code Quality ✅
 
 - [x] TypeScript check: `npm run typecheck` - **PASSED**
-- [x] ESLint check: `npm run lint` - **PASSED** (only warnings)
+- [x] ESLint check: `npm run lint` - **PASSED**(only warnings)
 - [ ] Build check: `npm run build` - **PENDING**
 - [ ] Test on localhost: `npm run dev` - **PENDING**
 
@@ -323,7 +323,7 @@ Once Week 1 is deployed and stable, focus on:
 
 If you want immediate visible improvements:
 
-1. **Add metadataBase** (5 mins):
+1. **Add metadataBase**(5 mins):
 
 ```typescript
 // app/layout.tsx
@@ -333,21 +333,21 @@ export const metadata: Metadata = {
 };
 ```
 
-2. **Expand Meta Descriptions** (5 mins):
+2. **Expand Meta Descriptions**(5 mins):
 
 ```typescript
 // Make them 150-160 characters for better CTR
 description: 'Transform chaotic contact spreadsheets into organised databases in minutes. Built by radio promoters for radio promoters. BBC Radio 1 + Spotify case studies proven. Free beta available.';
 ```
 
-3. **Fix External Link Targets** (10 mins):
+3. **Fix External Link Targets**(10 mins):
 
 ```typescript
 // Add target="_blank" to all external links in footer
 <a href="https://tracker.totalaudiopromo.com" target="_blank" rel="noopener noreferrer">
 ```
 
-4. **Test Cookie Banner Locally** (10 mins):
+4. **Test Cookie Banner Locally**(10 mins):
 
 ```bash
 npm run dev

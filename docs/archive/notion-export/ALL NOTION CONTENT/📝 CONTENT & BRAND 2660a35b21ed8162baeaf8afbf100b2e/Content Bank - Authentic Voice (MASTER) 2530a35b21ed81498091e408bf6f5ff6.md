@@ -4,10 +4,10 @@ _Your authentic voice - properly capitalised, naturally British casual_
 
 ## VOICE CHARACTERISTICS
 
-- **Natural capitalisation** (proper sentences)
-- **British casual language** ("if you get a sec", "would appreciate", "if ya wanna")
+- **Natural capitalisation**(proper sentences)
+- **British casual language**("if you get a sec", "would appreciate", "if ya wanna")
 - **Respectful and time-conscious tone**
-- **"Tbh", "tho", "probs"** used naturally (not forced)
+- **"Tbh", "tho", "probs"**used naturally (not forced)
 - **Professional but never corporate**
 - **Genuine enthusiasm without hype**
 
@@ -128,7 +128,7 @@ Focus on music. Let technology handle the rest mate
 
 ## ACTION TWEETS (Authentic Voice)
 
-**Tweet 1:** Radio submission windows close faster than you think
+**Tweet 1:**Radio submission windows close faster than you think
 
 Most stations plan 6-8 weeks ahead for new music
 
@@ -140,7 +140,7 @@ Include multiple format options (clean/explicit)
 
 Early submission beats perfect timing every time
 
-**Tweet 2:** Playlist curator burnout is real and growing tbh
+**Tweet 2:**Playlist curator burnout is real and growing tbh
 
 Standing out requires genuine personalisation
 
@@ -152,7 +152,7 @@ Offer exclusive content for successful placements
 
 Personal touch beats template emails consistently
 
-**Tweet 3:** Music blog coverage drives 40% more streams than ads
+**Tweet 3:**Music blog coverage drives 40% more streams than ads
 
 Editorial credibility creates lasting audience impact
 
@@ -168,13 +168,13 @@ Editorial coverage compounds, advertising fades
 
 ## PERSONAL TWEETS (Authentic Voice)
 
-**Tweet 1:** Been radio promoting for 5 years and still get nervous pitching new tracks
+**Tweet 1:**Been radio promoting for 5 years and still get nervous pitching new tracks
 
 The difference now? I built the tools that remind me when to follow up
 
 Anxiety doesn't disappear. Systems just make it manageable
 
-**Tweet 2:** The kids ask what I do for work
+**Tweet 2:**The kids ask what I do for work
 
 "I help musicians get heard, and I make computer programs"
 
@@ -182,7 +182,7 @@ Still not sure they understand, but they're proud anyway
 
 Simple explanations are the hardest ones
 
-**Tweet 3:** Spent £2k on music marketing tools last year
+**Tweet 3:**Spent £2k on music marketing tools last year
 
 Every single one had features I didn't need and missed ones I did
 
@@ -190,7 +190,7 @@ That's why I'm building Total Audio Promo
 
 Frustration drives the best innovation
 
-**Tweet 4:** Daughter asked why I'm always on the laptop
+**Tweet 4:**Daughter asked why I'm always on the laptop
 
 "I'm helping musicians like daddy get heard"
 
@@ -202,7 +202,7 @@ Kids are patient, but I really need to find better balance
 
 ## VIBE CODING & CURSOR POSTS (Technical Expertise)
 
-**Post 1:** From Vibe Coder to Production Builder
+**Post 1:**From Vibe Coder to Production Builder
 
 Started building Total Audio Promo prototypes in Vibe Code.
 
@@ -242,7 +242,7 @@ Use the right tool for each phase.
 
 What's your workflow for moving from prototype to production?
 
-**Post 2:** Why Cursor + Claude Code Changed Everything
+**Post 2:**Why Cursor + Claude Code Changed Everything
 
 Just shipped a new feature in 2 hours that would've taken 2 days before.
 

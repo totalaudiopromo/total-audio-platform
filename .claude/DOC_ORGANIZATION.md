@@ -8,11 +8,11 @@ Automated system to keep your Total Audio Platform documentation organised and t
 
 ### Root Level (Only These 5 Files)
 
-- **README.md** - Project overview
-- **SECURITY.md** - Security policies
-- **AUDIO_INTEL_CONTEXT.md** - Business context (frequently referenced)
-- **WEEKLY_FOCUS.md** - Current week priorities (frequently referenced)
-- **BUSINESS_NOTES.md** - Running business log (frequently referenced)
+- **README.md**- Project overview
+- **SECURITY.md**- Security policies
+- **AUDIO_INTEL_CONTEXT.md**- Business context (frequently referenced)
+- **WEEKLY_FOCUS.md**- Current week priorities (frequently referenced)
+- **BUSINESS_NOTES.md**- Running business log (frequently referenced)
 
 ### Organised Directories
 
@@ -66,11 +66,11 @@ Edit `.claude/auto-organise-docs.sh` and add to `DOC_RULES` array:
 
 ## Benefits
 
-**Clean Root** - Only 5 essential files visible
-**Find Docs Faster** - Organised by category
-**No Manual Work** - Run one command to tidy up
-**Flexible** - Easy to customise rules
-**Safe** - Never touches critical files (README, SECURITY, business docs)
+**Clean Root**- Only 5 essential files visible
+**Find Docs Faster**- Organised by category
+**No Manual Work**- Run one command to tidy up
+**Flexible**- Easy to customise rules
+**Safe**- Never touches critical files (README, SECURITY, business docs)
 
 ## When to Run
 

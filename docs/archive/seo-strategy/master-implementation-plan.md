@@ -134,17 +134,17 @@
 
 ### Essential Tools
 
-1. **Google Ads & Analytics** (Free)
-2. **Meta Business Manager** (Free)
-3. **HeyGen** (£24/month for AI avatars)
-4. **ElevenLabs** (£22/month for voice cloning)
-5. **Keyword Research Tool** (Semrush/Ahrefs £100+/month)
+1. **Google Ads & Analytics**(Free)
+2. **Meta Business Manager**(Free)
+3. **HeyGen**(£24/month for AI avatars)
+4. **ElevenLabs**(£22/month for voice cloning)
+5. **Keyword Research Tool**(Semrush/Ahrefs £100+/month)
 
 ### Optional Tools
 
-- **Canva Pro** (£10/month for creative assets)
-- **Hotjar** (£31/month for user behavior tracking)
-- **ConvertKit** (£25/month for email automation)
+- **Canva Pro**(£10/month for creative assets)
+- **Hotjar**(£31/month for user behavior tracking)
+- **ConvertKit**(£25/month for email automation)
 
 ---
 
@@ -174,16 +174,16 @@
 
 ### Immediate Actions (Next 2 Hours)
 
-1. **Set up Google Ads account** and link to Analytics
-2. **Write first video script** for HeyGen avatar
-3. **Research HeyGen pricing** and create account
-4. **Plan first blog post** outline for SEO content
+1. **Set up Google Ads account**and link to Analytics
+2. **Write first video script**for HeyGen avatar
+3. **Research HeyGen pricing**and create account
+4. **Plan first blog post**outline for SEO content
 
 ### This Week Priority
 
-1. **Launch first Google Ads campaign** with £100 budget
-2. **Create first AI avatar video** (30 seconds)
-3. **Set up conversion tracking** in existing GTM
-4. **Plan content calendar** for next 3 months
+1. **Launch first Google Ads campaign**with £100 budget
+2. **Create first AI avatar video**(30 seconds)
+3. **Set up conversion tracking**in existing GTM
+4. **Plan content calendar**for next 3 months
 
-**The foundation is already there with GTM implemented - now we just need to execute this plan systematically!** 🚀
+**The foundation is already there with GTM implemented - now we just need to execute this plan systematically!**🚀

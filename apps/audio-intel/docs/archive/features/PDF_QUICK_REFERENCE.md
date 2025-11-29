@@ -89,7 +89,7 @@ exportContactsToPdf(contacts, 'client-report.pdf', {
 
 ## 🔧 Common Commands
 
-**Convert logo to base64** (macOS):
+**Convert logo to base64**(macOS):
 
 ```bash
 echo "data:image/png;base64,$(base64 -i logo.png)" | pbcopy
@@ -167,7 +167,7 @@ BBC Radio 1 - UK national...   Intelligence Text
 
 ## 🚀 Real-World Examples
 
-**Radio Promoter** (47 contacts, 12 pages):
+**Radio Promoter**(47 contacts, 12 pages):
 
 ```typescript
 exportContactsToPdf(contacts, 'delilah-bon-campaign.pdf', {
@@ -177,7 +177,7 @@ exportContactsToPdf(contacts, 'delilah-bon-campaign.pdf', {
 });
 ```
 
-**PR Agency** (125 contacts, 32 pages):
+**PR Agency**(125 contacts, 32 pages):
 
 ```typescript
 exportContactsToPdf(contacts, 'liberty-campaign.pdf', {
@@ -187,7 +187,7 @@ exportContactsToPdf(contacts, 'liberty-campaign.pdf', {
 });
 ```
 
-**Independent Artist** (15 contacts, 4 pages):
+**Independent Artist**(15 contacts, 4 pages):
 
 ```typescript
 exportContactsToPdf(contacts, 'my-radio-campaign.pdf');

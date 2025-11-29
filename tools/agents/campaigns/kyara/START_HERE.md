@@ -2,9 +2,9 @@
 
 ## Everything You Need - Read This First
 
-**Status:**  Tracker running on port 3004
-**Browser:** Should now be open at http://localhost:3004/dashboard
-**Time to complete:** 5 minutes to add campaign, 30 min to prep demo
+**Status:** Tracker running on port 3004
+**Browser:**Should now be open at http://localhost:3004/dashboard
+**Time to complete:**5 minutes to add campaign, 30 min to prep demo
 
 ---
 
@@ -65,22 +65,22 @@
 
 ## ALL FILES CREATED (In Priority Order)
 
-###  **MUST READ:**
+### **MUST READ:**
 
-1. **[`START_HERE.md`](./START_HERE.md)** ← You are here
+1. **[`START_HERE.md`](./START_HERE.md)**← You are here
    - This summary document
 
-2. **[`QUICK_START_NOW.md`](./QUICK_START_NOW.md)**  **READ NEXT**
+2. **[`QUICK_START_NOW.md`](./QUICK_START_NOW.md)** **READ NEXT**
    - 5-minute guide to add KYARA campaign to tracker
    - Step-by-step with copy/paste data
    - Troubleshooting tips
 
-3. **[`FRIDAY_DEMO_PREP_COMPLETE.md`](./FRIDAY_DEMO_PREP_COMPLETE.md)**  **READ TONIGHT**
+3. **[`FRIDAY_DEMO_PREP_COMPLETE.md`](./FRIDAY_DEMO_PREP_COMPLETE.md)** **READ TONIGHT**
    - Complete prep guide for Dan demo
    - Business case (£3,900 savings, 49:1 ROI)
    - Demo checklist and expected outcomes
 
-###  **FOR DEMO:**
+### **FOR DEMO:**
 
 4. **[`KYARA_CAMPAIGN_SHOWCASE_FOR_DAN_DEMO.md`](./KYARA_CAMPAIGN_SHOWCASE_FOR_DAN_DEMO.md)**
    - Detailed 7-minute demo script
@@ -93,7 +93,7 @@
    - Campaign data to copy/paste
    - Activity timeline details
 
-###  **FOR KYARA CAMPAIGN:**
+### **FOR KYARA CAMPAIGN:**
 
 6. **[`KYARA_MONDAY_RELEASE_BLAST.md`](./KYARA_MONDAY_RELEASE_BLAST.md)**
    - Monday release day email templates
@@ -117,7 +117,7 @@
 
 ### Demo Prep Files:
 
-- **START_HERE.md** (this file): Overview and priority order
+- **START_HERE.md**(this file): Overview and priority order
 - **QUICK_START_NOW.md**: Get campaign into tracker (5 min)
 - **FRIDAY_DEMO_PREP_COMPLETE.md**: Complete demo prep (30 min read)
 - **KYARA_CAMPAIGN_SHOWCASE_FOR_DAN_DEMO.md**: Detailed demo script
@@ -296,9 +296,9 @@
 
 **What You Need:**
 
-1. **5 minutes RIGHT NOW:** Add campaign to tracker
-2. **30 minutes TONIGHT:** Review demo prep
-3. **7 minutes FRIDAY:** Crush the demo
+1. **5 minutes RIGHT NOW:**Add campaign to tracker
+2. **30 minutes TONIGHT:**Review demo prep
+3. **7 minutes FRIDAY:**Crush the demo
 
 **Expected Outcome:**
 

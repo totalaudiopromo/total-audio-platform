@@ -4,15 +4,15 @@
 
 > "Where are you seeing the unsubscribed for these contacts? Is it directly from Airtable?"
 
-**YES** - The "Unsubscribed" status is directly from Airtable, but **IT'S WRONG**.
+**YES**- The "Unsubscribed" status is directly from Airtable, but **IT'S WRONG**.
 
 ## THE PROBLEM
 
-Your Airtable database has **STALE/INCORRECT** subscription status data.
+Your Airtable database has **STALE/INCORRECT**subscription status data.
 
 ### Evidence:
 
-**ALL 21 KYARA contacts are SUBSCRIBED in Mailchimp** 
+**ALL 21 KYARA contacts are SUBSCRIBED in Mailchimp**
 
 But Airtable shows:
 
@@ -26,18 +26,18 @@ But Airtable shows:
 
 ### High-Value Contacts Incorrectly Marked "Unsubscribed" in Airtable:
 
-1. **radio.devon@bbc.co.uk** - BBC Radio Devon
+1. **radio.devon@bbc.co.uk**- BBC Radio Devon
    - Airtable: Unsubscribed 
    - Mailchimp: Subscribed 
    - **Impact**: You might skip pitching BBC Radio Devon because Airtable says "unsubscribed"
 
-2. **sam.davies@audioalways.com** - Producer for Chris Hawkins (BBC 6 Music)
+2. **sam.davies@audioalways.com**- Producer for Chris Hawkins (BBC 6 Music)
    - Airtable: Unsubscribed 
    - Mailchimp: Subscribed 
    - Tags: BBC Radio 6 Music Contacts, Indie Alliance
    - **Impact**: Missing out on a BBC 6 Music producer contact
 
-3. **cybermensrevenge@hotmail.com** - Sheffield Live
+3. **cybermensrevenge@hotmail.com**- Sheffield Live
    - Airtable: Unsubscribed 
    - Mailchimp: Subscribed 
 
@@ -47,8 +47,8 @@ But Airtable shows:
 2. leezalondon@gmail.com - Airtable says "Unsubscribed", Mailchimp says "Subscribed"
 3. cybermensrevenge@hotmail.com - Airtable says "Unsubscribed", Mailchimp says "Subscribed"
 4. scrshell@gmail.com - Airtable says "Unsubscribed", Mailchimp says "Subscribed"
-5. **radio.devon@bbc.co.uk** - Airtable says "Unsubscribed", Mailchimp says "Subscribed"
-6. **sam.davies@audioalways.com** - Airtable says "Unsubscribed", Mailchimp says "Subscribed"
+5. **radio.devon@bbc.co.uk**- Airtable says "Unsubscribed", Mailchimp says "Subscribed"
+6. **sam.davies@audioalways.com**- Airtable says "Unsubscribed", Mailchimp says "Subscribed"
 7. paperlion@outlook.com - Airtable says "Unsubscribed", Mailchimp says "Subscribed"
 8. mrtilleysmusicplaylist@gmail.com - Airtable says "Unsubscribed", Mailchimp says "Subscribed"
 9. isthisrob@yahoo.com - Airtable says "No status", Mailchimp says "Subscribed"
@@ -104,7 +104,7 @@ node sync-all-airtable-from-mailchimp.js
 
 ## RECOMMENDED ACTION
 
-**Run a full sync** to update all 517 contacts in Airtable:
+**Run a full sync**to update all 517 contacts in Airtable:
 
 ```bash
 node sync-all-airtable-from-mailchimp.js
@@ -126,7 +126,7 @@ This will:
 
 - You're enriching contacts based on Airtable status
 - 62% of KYARA contacts had wrong status
-- You almost **skipped enriching BBC Radio Devon** because Airtable said "Unsubscribed"
+- You almost **skipped enriching BBC Radio Devon**because Airtable said "Unsubscribed"
 
 **After Sync**:
 
@@ -138,16 +138,16 @@ This will:
 
 **Before doing the full 517-contact sync**, let me create a script that will:
 
-1. **Preview the changes** (show what would be updated)
-2. **Allow review** before committing
-3. **Backup current Airtable data** before making changes
-4. **Log all changes** for audit trail
+1. **Preview the changes**(show what would be updated)
+2. **Allow review**before committing
+3. **Backup current Airtable data**before making changes
+4. **Log all changes**for audit trail
 
 Would you like me to:
 
-**A)** Create the full sync script with preview mode?
-**B)** Just update the 21 KYARA contacts for now as a test?
-**C)** Delete the Airtable "Status" field and start fresh?
+**A)**Create the full sync script with preview mode?
+**B)**Just update the 21 KYARA contacts for now as a test?
+**C)**Delete the Airtable "Status" field and start fresh?
 
 ---
 

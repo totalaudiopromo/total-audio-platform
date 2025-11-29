@@ -105,9 +105,9 @@ Extract workflow patterns from #team-updates
 
 ## IMPORTANT NOTES
 
-1. **Google Chat API** requires Workspace admin approval for production use
-2. **Calendar** works immediately after OAuth consent
-3. **Chat MCP is read-only** - no message posting (by design)
+1. **Google Chat API**requires Workspace admin approval for production use
+2. **Calendar**works immediately after OAuth consent
+3. **Chat MCP is read-only**- no message posting (by design)
 4. Credentials are stored in `~/.google-*-mcp/` directories
 5. Tokens auto-refresh when expired
 
@@ -142,4 +142,4 @@ Extract workflow patterns from #team-updates
 - Calendar: `/Users/chrisschofield/workspace/active/total-audio-platform/tools/mcp-servers/google-calendar-mcp.js`
 - Chat: `/Users/chrisschofield/workspace/active/total-audio-platform/tools/mcp-servers/google-chat-mcp.js`
 
-**Status:**  Installed, awaiting OAuth credentials
+**Status:** Installed, awaiting OAuth credentials

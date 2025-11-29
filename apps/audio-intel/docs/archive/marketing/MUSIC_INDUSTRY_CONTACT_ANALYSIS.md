@@ -27,10 +27,10 @@ This analysis provides a systematic approach to segment and prioritize music ind
 
 #### Ideal Prospects:
 
-- **Independent radio promoters** (1-5 person teams)
-- **Boutique PR agencies** with radio focus
-- **Artist managers** doing their own radio promotion
-- **Record labels** with in-house radio teams
+- **Independent radio promoters**(1-5 person teams)
+- **Boutique PR agencies**with radio focus
+- **Artist managers**doing their own radio promotion
+- **Record labels**with in-house radio teams
 
 #### Qualification Criteria:
 
@@ -72,10 +72,10 @@ _"Hi [Name], I noticed your work promoting [recent campaign]. I've been in radio
 
 #### Ideal Prospects:
 
-- **Established independent artists** (5K+ monthly Spotify listeners)
-- **Producers** with regular releases
-- **Singer-songwriters** actively promoting
-- **Electronic music producers** (strong UK scene)
+- **Established independent artists**(5K+ monthly Spotify listeners)
+- **Producers**with regular releases
+- **Singer-songwriters**actively promoting
+- **Electronic music producers**(strong UK scene)
 
 #### Qualification Criteria:
 
@@ -117,10 +117,10 @@ _"Hi [Name], love your latest track [track name]. As a producer myself (sadact),
 
 #### Ideal Prospects:
 
-- **Small-medium PR agencies** (5-20 employees)
-- **Music-focused agencies** with multiple clients
+- **Small-medium PR agencies**(5-20 employees)
+- **Music-focused agencies**with multiple clients
 - **Agencies with radio/digital focus**
-- **Growing agencies** looking for efficiency tools
+- **Growing agencies**looking for efficiency tools
 
 #### Qualification Criteria:
 
@@ -162,10 +162,10 @@ _"Hi [Name], I've been watching [Agency Name]'s great work with [recent client].
 
 #### Focus On:
 
-- **Independent labels** (not majors)
-- **Genre-specific labels** (electronic, indie, folk)
+- **Independent labels**(not majors)
+- **Genre-specific labels**(electronic, indie, folk)
 - **Labels with in-house promotion**
-- **New/growing labels** without established systems
+- **New/growing labels**without established systems
 
 ---
 
@@ -285,10 +285,10 @@ For each prospect, gather:
 
 ### Demo Flow (15 minutes max):
 
-1. **Problem Setup** (2 mins): "Show me your current contact research process"
-2. **Audio Intel Magic** (8 mins): Upload their actual contact list, show enrichment
-3. **Value Realization** (3 mins): "This just saved you 10 hours of work"
-4. **Next Steps** (2 mins): Trial offer with their own data
+1. **Problem Setup**(2 mins): "Show me your current contact research process"
+2. **Audio Intel Magic**(8 mins): Upload their actual contact list, show enrichment
+3. **Value Realization**(3 mins): "This just saved you 10 hours of work"
+4. **Next Steps**(2 mins): Trial offer with their own data
 
 ### Demo Data Preparation:
 

@@ -177,33 +177,33 @@ Key tastemaker for breaking artists
 
 ### Before (Soft & Subtle)
 
-- **Borders:** #E2E8F0 (Gray-200)
-- **Text:** #475569 (Slate-600)
-- **Backgrounds:** #F8F9FA (Light gray)
-- **Accents:** Soft blues and purples
+- **Borders:**#E2E8F0 (Gray-200)
+- **Text:**#475569 (Slate-600)
+- **Backgrounds:**#F8F9FA (Light gray)
+- **Accents:**Soft blues and purples
 
 ### After (Bold & High Contrast)
 
-- **Borders:** #000000 (Pure black) ✓
-- **Text:** #000000 (Pure black) ✓
-- **Backgrounds:** #FFFFFF (Pure white) ✓
-- **Accents:** Brand color only ✓
+- **Borders:**#000000 (Pure black) ✓
+- **Text:**#000000 (Pure black) ✓
+- **Backgrounds:**#FFFFFF (Pure white) ✓
+- **Accents:**Brand color only ✓
 
 ## Typography Changes
 
 ### Before
 
-- **Headers:** 20pt normal weight
-- **Body:** 9pt normal weight
-- **Tables:** 9pt normal weight
-- **Style:** Subtle and soft
+- **Headers:**20pt normal weight
+- **Body:**9pt normal weight
+- **Tables:**9pt normal weight
+- **Style:**Subtle and soft
 
 ### After
 
-- **Headers:** 18-22pt bold weight ✓
-- **Body:** 9-11pt bold weight ✓
-- **Tables:** 9-10pt bold weight ✓
-- **Style:** Strong and professional ✓
+- **Headers:**18-22pt bold weight ✓
+- **Body:**9-11pt bold weight ✓
+- **Tables:**9-10pt bold weight ✓
+- **Style:**Strong and professional ✓
 
 ## Spacing & Layout
 
@@ -248,15 +248,15 @@ PRO/AGENCY Tiers:
 
 ### Before
 
-- **10 contacts:** ~150KB
-- **50 contacts:** ~450KB
-- **100 contacts:** ~800KB
+- **10 contacts:**~150KB
+- **50 contacts:**~450KB
+- **100 contacts:**~800KB
 
 ### After
 
-- **10 contacts:** ~140KB ✓ (Slightly smaller)
-- **50 contacts:** ~420KB ✓ (More efficient)
-- **100 contacts:** ~750KB ✓ (Optimized)
+- **10 contacts:**~140KB ✓ (Slightly smaller)
+- **50 contacts:**~420KB ✓ (More efficient)
+- **100 contacts:**~750KB ✓ (Optimized)
 
 **Why smaller?**
 
@@ -309,18 +309,18 @@ Professional client-ready PDFs:
 
 ### Scenario 1: Radio Promoter (PRO Tier)
 
-**Before:** Generic PDF, adds header manually in Word
-**After:** Professional PDF with their logo, ready to send
+**Before:**Generic PDF, adds header manually in Word
+**After:**Professional PDF with their logo, ready to send
 
 ### Scenario 2: PR Agency (AGENCY Tier)
 
-**Before:** Creates custom report in InDesign (2 hours)
-**After:** One-click export with agency branding (30 seconds)
+**Before:**Creates custom report in InDesign (2 hours)
+**After:**One-click export with agency branding (30 seconds)
 
 ### Scenario 3: Independent Artist (FREE Tier)
 
-**Before:** Shares messy spreadsheet with contacts
-**After:** Professional Audio Intel branded PDF
+**Before:**Shares messy spreadsheet with contacts
+**After:**Professional Audio Intel branded PDF
 
 ## Migration Path
 
@@ -370,9 +370,9 @@ function addPremiumHeader(doc, title, subtitle, whiteLabel) {
 
 ### Performance Impact
 
-- **Rendering time:** -5% faster (simpler graphics)
-- **File size:** -10% smaller (optimized elements)
-- **Memory usage:** Same (efficient PDF generation)
+- **Rendering time:**-5% faster (simpler graphics)
+- **File size:**-10% smaller (optimized elements)
+- **Memory usage:**Same (efficient PDF generation)
 
 ## Success Metrics
 
@@ -439,6 +439,6 @@ function addPremiumHeader(doc, title, subtitle, whiteLabel) {
 
 ---
 
-**Summary:** The v2.0 neobrutalist redesign transforms Audio Intel PDFs from generic exports into professional, branded documents that clients are proud to share. With custom logo support for higher tiers, bold visual design, and perfect consistency with the web UI, these PDFs are now a premium feature that differentiates Audio Intel from competitors.
+**Summary:**The v2.0 neobrutalist redesign transforms Audio Intel PDFs from generic exports into professional, branded documents that clients are proud to share. With custom logo support for higher tiers, bold visual design, and perfect consistency with the web UI, these PDFs are now a premium feature that differentiates Audio Intel from competitors.
 
-**Key Takeaway:** Simple, bold, and professional - just like the rest of Audio Intel.
+**Key Takeaway:**Simple, bold, and professional - just like the rest of Audio Intel.

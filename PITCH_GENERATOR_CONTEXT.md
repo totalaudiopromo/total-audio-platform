@@ -11,7 +11,7 @@
 
 ## CURRENT ROLE
 
-**Supporting Audio Intel** - Helps convert enriched contacts into personalised outreach, not primary revenue driver
+**Supporting Audio Intel**- Helps convert enriched contacts into personalised outreach, not primary revenue driver
 
 ## WHAT'S PROVEN & WORKING
 
@@ -107,7 +107,7 @@ npm run db:seed                # Seed demo data
 
 **Workflow**:
 
-1. User enriches contacts in **Audio Intel** (gets full contact details)
+1. User enriches contacts in **Audio Intel**(gets full contact details)
 2. User imports enriched contacts into **Pitch Generator**
 3. User selects template and generates personalised pitches
 4. User exports pitches or sends directly via integrated email

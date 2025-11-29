@@ -16,7 +16,7 @@ BBC Radio 1Xtra is the UK's primary national radio station for urban music, broa
 
 ## Current BBC Radio 1Xtra Presenters (October 2025)
 
-### 1. **Nadia Jae** - Breakfast Show
+### 1. **Nadia Jae**- Breakfast Show
 
 - **Show**: 1Xtra Breakfast
 - **Time**: Weekday mornings (NEEDS VERIFICATION for exact times)
@@ -25,7 +25,7 @@ BBC Radio 1Xtra is the UK's primary national radio station for urban music, broa
 - **Artist Fit**: Broad urban music appeal, accessible hip-hop and grime
 - **Source**: [UKRadioLive BBC 1Xtra Schedule](https://ukradiolive.com/bbc-1xtra/schedule), [RadioToday October 2025](https://www.radiotoday.uk/2025/10/craig-david-lethal-bizzle-and-tinie-tempah-join-1xtra-for-black-history-month/)
 
-### 2. **Kenny Allstar** - Rap Show (HIGH PRIORITY FOR RAP/GRIME)
+### 2. **Kenny Allstar**- Rap Show (HIGH PRIORITY FOR RAP/GRIME)
 
 - **Show**: BBC Radio 1 & 1Xtra Rap Show
 - **Time**: Fridays 11pm-1am (1Xtra), Saturdays 9pm-11pm (Radio 1 simulcast)
@@ -35,7 +35,7 @@ BBC Radio 1Xtra is the UK's primary national radio station for urban music, broa
 - **Notable**: Replaced Tiffany Calver in March 2023
 - **Sources**: [Kenny Allstar Wikipedia](https://en.wikipedia.org/wiki/Kenny_Allstar), [Music Week March 2023](https://www.musicweek.com/interviews/read/an-allstar-is-born-bbc-radio-1-s-kenny-allstar-talks-making-history-on-the-rap-show/087828)
 
-### 3. **DJ Target** - Monday-Thursday & Saturday Shows
+### 3. **DJ Target**- Monday-Thursday & Saturday Shows
 
 - **Show**: DJ Target Show
 - **Time**: Monday-Thursday 7-9pm, Saturday 7-9pm (1Xtra)
@@ -45,7 +45,7 @@ BBC Radio 1Xtra is the UK's primary national radio station for urban music, broa
 - **Notable**: Author of "Grime Kids", respected grime historian and tastemaker
 - **Source**: [Great British Speakers](https://greatbritishspeakers.co.uk/talents/dj-target-speaker/), [Wikipedia](https://en.wikipedia.org/wiki/DJ_Target)
 
-### 4. **Eddie Kadi** - Official UK Afrobeats Chart Show (HIGH PRIORITY FOR AFROBEATS)
+### 4. **Eddie Kadi**- Official UK Afrobeats Chart Show (HIGH PRIORITY FOR AFROBEATS)
 
 - **Show**: The Official UK Afrobeats Chart Show
 - **Time**: Sundays 15:00 (3pm)
@@ -54,7 +54,7 @@ BBC Radio 1Xtra is the UK's primary national radio station for urban music, broa
 - **Notable**: Co-hosts special events and comedy showcases for 1Xtra
 - **Sources**: [UKRadioLive Schedule](https://ukradiolive.com/bbc-1xtra/schedule), [RadioToday October 2025](https://www.radiotoday.uk/2025/10/craig-david-lethal-bizzle-and-tinie-tempah-join-1xtra-for-black-history-month/)
 
-### 5. **Chuckie** - R&B Show (HIGH PRIORITY FOR R&B)
+### 5. **Chuckie**- R&B Show (HIGH PRIORITY FOR R&B)
 
 - **Show**: BBC 1Xtra R&B Show
 - **Time**: NEEDS VERIFICATION (likely Saturday slot based on predecessor's schedule)
@@ -63,7 +63,7 @@ BBC Radio 1Xtra is the UK's primary national radio station for urban music, broa
 - **Artist Fit**: R&B artists, contemporary soul, smooth urban music
 - **Sources**: [RadioToday December 2023](https://radiotoday.co.uk/2023/12/chuckie-to-replace-dj-ace-on-the-bbc-radio-1xtra-rb-show/), [Wikipedia 2024 in British Radio](https://en.wikipedia.org/wiki/2024_in_British_radio)
 
-### 6. **Remi Burgz** - Drivetime
+### 6. **Remi Burgz**- Drivetime
 
 - **Show**: 1Xtra Drivetime
 - **Time**: Monday-Friday 16:00-19:00 (4pm-7pm)
@@ -73,7 +73,7 @@ BBC Radio 1Xtra is the UK's primary national radio station for urban music, broa
 - **Notable**: Replaced Reece Parkinson in April 2023
 - **Sources**: [UKRadioLive Schedule](https://ukradiolive.com/bbc-1xtra/schedule), [On The Radio February 2023](https://ontheradio.co.uk/2023/02/weekday-schedule-changes-at-bbc-radio-1xtra-include-new-presenter/)
 
-### 7. **Kaylee** - Afternoon Show
+### 7. **Kaylee**- Afternoon Show
 
 - **Show**: Weekday Afternoons
 - **Time**: NEEDS VERIFICATION (afternoon slot before Remi Burgz drivetime)
@@ -83,7 +83,7 @@ BBC Radio 1Xtra is the UK's primary national radio station for urban music, broa
 - **Notable**: Joined 1Xtra in April 2023 as part of schedule changes
 - **Source**: [On The Radio February 2023](https://ontheradio.co.uk/2023/02/weekday-schedule-changes-at-bbc-radio-1xtra-include-new-presenter/)
 
-### 8. **Seani B** - Dancehall Show
+### 8. **Seani B**- Dancehall Show
 
 - **Show**: BBC 1Xtra Dancehall Show
 - **Time**: Thursday nights 10pm (as of mid-2024, NEEDS VERIFICATION for October 2025)
@@ -177,7 +177,7 @@ BBC Radio 1Xtra is the UK's primary national radio station for urban music, broa
 
 **CLEAN VERSIONS ONLY**
 
-- **No explicit language** - tracks with swearing will not be considered
+- **No explicit language**- tracks with swearing will not be considered
 - BBC broadcast standards apply to all submissions
 - Upload clean radio edits, not album versions with explicit content
 - **Source**: [Ditto Music BBC Introducing Guide](https://dittomusic.com/en/blog/how-to-get-your-music-played-on-bbc-introducing/), [ICMP BBC Introducing Guide](https://www.icmp.ac.uk/blog/inside-bbc-music-introducing)
@@ -297,7 +297,7 @@ BBC Radio 1Xtra is the UK's primary national radio station for urban music, broa
 
 ## Direct Contact Methods
 
-**IMPORTANT**: BBC Radio 1Xtra does **not** accept unsolicited direct submissions or demos via email or social media. The **only** official route is through **BBC Introducing Uploader**.
+**IMPORTANT**: BBC Radio 1Xtra does **not**accept unsolicited direct submissions or demos via email or social media. The **only**official route is through **BBC Introducing Uploader**.
 
 ### Official Channels (For Information Only)
 

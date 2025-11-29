@@ -12,7 +12,7 @@ _Everything you need to know about the product in one place_
 
 ## CURRENT BUSINESS PHASE
 
-**Customer Acquisition** - Technical foundation complete, now focused on first customers
+**Customer Acquisition**- Technical foundation complete, now focused on first customers
 
 ## WHAT'S PROVEN & WORKING
 

@@ -19,7 +19,7 @@
 
 **File**: `middleware.ts`
 
-**Protected Pages** (redirect to homepage in production):
+**Protected Pages**(redirect to homepage in production):
 
 - `/test`, `/test-tailwind`, `/simple-test`
 - `/debug-content`, `/notion-test`, `/notion-social`
@@ -156,40 +156,40 @@ git push origin main
 
 ## 📋 OPTIONAL WEEK 3 TASKS
 
-These are **nice-to-haves** but not blocking:
+These are **nice-to-haves**but not blocking:
 
 ### High Impact (If You Have Time)
 
-1. **Add BlogStructuredData to each blog post** (1 hour)
+1. **Add BlogStructuredData to each blog post**(1 hour)
    - Import component in each blog page
    - Pass metadata from `blogStructuredData.ts`
    - Impact: 10-15% CTR boost in search
 
-2. **Create Terms of Service page** (1 hour)
+2. **Create Terms of Service page**(1 hour)
    - Similar to Privacy/Cookie pages
    - Legal protection for business
 
-3. **Create Contact/Support page** (30 mins)
+3. **Create Contact/Support page**(30 mins)
    - Support email and response times
    - FAQ or support form
 
 ### Medium Impact
 
-4. **Fix ESLint image warnings** (1 hour)
+4. **Fix ESLint image warnings**(1 hour)
    - Convert `<img>` tags to Next.js `<Image>`
    - Better performance, automatic optimization
 
-5. **Add canonical URLs to pages** (30 mins)
+5. **Add canonical URLs to pages**(30 mins)
    - Prevents duplicate content issues
    - Better SEO
 
 ### Low Priority
 
-6. **Implement lazy loading** (2 hours)
+6. **Implement lazy loading**(2 hours)
    - Lazy load heavy components
    - 30% faster initial page load
 
-7. **Add breadcrumbs** (1 hour)
+7. **Add breadcrumbs**(1 hour)
    - Better navigation
    - SEO benefit
 
@@ -252,7 +252,7 @@ These are **nice-to-haves** but not blocking:
 - After Week 1: 70 signups (7% conversion)
 - After Week 2: 77 signups (7.7% conversion with SEO boost)
 
-**Result**: **54% more signups** from same base traffic
+**Result**: **54% more signups**from same base traffic
 
 ---
 

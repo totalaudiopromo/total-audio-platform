@@ -63,11 +63,11 @@ Activate this skill when:
 
 **Common Deployment Failure Patterns:**
 
-1. **4-10 Second Failures** = Missing Root Directory or wrong build config
-2. **"No Next.js version detected"** = Root Directory not set for monorepo
-3. **Webhook Missing** = Git integration disconnected
-4. **Automatic Deployments Not Triggering** = Webhook deleted or disabled
-5. **Build Timeout (13-14 minutes)** = Dependency or build configuration issue
+1. **4-10 Second Failures**= Missing Root Directory or wrong build config
+2. **"No Next.js version detected"**= Root Directory not set for monorepo
+3. **Webhook Missing**= Git integration disconnected
+4. **Automatic Deployments Not Triggering**= Webhook deleted or disabled
+5. **Build Timeout (13-14 minutes)**= Dependency or build configuration issue
 
 ### Phase 3: Systematic Resolution
 
@@ -180,11 +180,11 @@ Activate this skill when:
 
 ## Common Mistakes to Avoid
 
-1. **DON'T** try to deploy from app directory when using `vercel` CLI
-2. **DON'T** leave Root Directory blank for monorepo apps
-3. **DON'T** assume webhook exists - always verify with `gh api`
-4. **DON'T** skip manual redeploy test before testing automatic deployments
-5. **DON'T** commit large files or regenerate entire repo with prettier during urgent fixes
+1. **DON'T**try to deploy from app directory when using `vercel` CLI
+2. **DON'T**leave Root Directory blank for monorepo apps
+3. **DON'T**assume webhook exists - always verify with `gh api`
+4. **DON'T**skip manual redeploy test before testing automatic deployments
+5. **DON'T**commit large files or regenerate entire repo with prettier during urgent fixes
 
 ## CRITICAL: Multiple Failure Modes (2025-11-10)
 

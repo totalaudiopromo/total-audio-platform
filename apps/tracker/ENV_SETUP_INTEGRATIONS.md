@@ -265,10 +265,10 @@ You should see your connection with encrypted credentials.
 
 ## Security Notes
 
-1. **Never commit `.env.local`** - it's in .gitignore
-2. **Use Supabase Vault for production** - encrypt OAuth tokens
-3. **Rotate secrets regularly** - especially CRON_SECRET
-4. **Monitor error logs** - check `integration_sync_logs` table
+1. **Never commit `.env.local`**- it's in .gitignore
+2. **Use Supabase Vault for production**- encrypt OAuth tokens
+3. **Rotate secrets regularly**- especially CRON_SECRET
+4. **Monitor error logs**- check `integration_sync_logs` table
 
 ---
 

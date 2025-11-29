@@ -96,13 +96,13 @@ Add: "Audio Intel's contact enrichment technology analyses your existing contact
 
 **Comparison Matrix**:
 
-1. **ZoomInfo** - Enterprise B2B (not music-focused)
-2. **Apollo** - Sales-focused (expensive for artists)
-3. **Hunter.io** - Basic email finding (no enrichment)
-4. **FindThatLead** - Generic lead generation
-5. **Clearbit** - Tech industry focus
-6. **FullContact** - Social media enrichment
-7. **Audio Intel** - Music industry specialist ⭐
+1. **ZoomInfo**- Enterprise B2B (not music-focused)
+2. **Apollo**- Sales-focused (expensive for artists)
+3. **Hunter.io**- Basic email finding (no enrichment)
+4. **FindThatLead**- Generic lead generation
+5. **Clearbit**- Tech industry focus
+6. **FullContact**- Social media enrichment
+7. **Audio Intel**- Music industry specialist ⭐
 
 ### Week 3: "How to Enrich Music Contacts: Step-by-Step Guide"
 

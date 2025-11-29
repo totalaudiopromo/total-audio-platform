@@ -27,7 +27,7 @@
 
 ## STRICT RULES FOR AI CONTENT GENERATION:
 
-###  NEVER INVENT:
+### NEVER INVENT:
 
 - Specific artists you like or work with
 - Specific tracks you've made or referenced
@@ -37,7 +37,7 @@
 - Fake examples or made-up scenarios
 - Producer names (Fred Again, etc) as personal examples
 
-###  SAFE TO REFERENCE:
+### SAFE TO REFERENCE:
 
 - "After 5+ years in radio promotion"
 - "Building Audio Intel taught me"
@@ -64,10 +64,10 @@
 
 ### Structure (150-200 words):
 
-1. **HOOK** (1-2 sentences): What happened this week (natural, conversational)
-2. **THE UNSIGNED ADVANTAGE** (2-3 sentences): Why this specific news benefits independent artists over major label artists
-3. **ACTIONABLE STEP** (1-2 sentences): Specific action they can take this week (30min-2hr commitment)
-4. **AUDIO INTEL MENTION** (optional): Only if genuinely relevant to contact research/organisation
+1. **HOOK**(1-2 sentences): What happened this week (natural, conversational)
+2. **THE UNSIGNED ADVANTAGE**(2-3 sentences): Why this specific news benefits independent artists over major label artists
+3. **ACTIONABLE STEP**(1-2 sentences): Specific action they can take this week (30min-2hr commitment)
+4. **AUDIO INTEL MENTION**(optional): Only if genuinely relevant to contact research/organisation
 
 ### Key Principles:
 

@@ -10,16 +10,16 @@
 
 ### Pages Deployed: 8/60 (13.3%) - 80% of Tier 1 Complete!
 
-**Tier 1 - Live Pages** (350-2000 monthly searches):
+**Tier 1 - Live Pages**(350-2000 monthly searches):
 
 1.  [BBC Radio 1 Contact Enrichment](/blog/bbc-radio-1-contact-enrichment) - LIVE (1200/mo)
 2.  [BBC Radio 6 Music Contact Enrichment](/blog/bbc-radio-6-music-contact-enrichment) - LIVE (800/mo)
 3.  [Spotify Editorial Playlist Contacts](/blog/spotify-editorial-playlist-contacts) - LIVE (2000/mo)
-4.  [Apple Music Editorial Contacts](/blog/apple-music-editorial-contacts) - **NEW** (1500/mo)
-5.  [BBC Radio 1Xtra Contact Enrichment](/blog/bbc-radio-1xtra-contact-enrichment) - **NEW** (600/mo)
-6.  [BBC Radio 2 Contact Enrichment](/blog/bbc-radio-2-contact-enrichment) - **NEW** (500/mo)
-7.  [Kerrang Radio Contact Enrichment](/blog/kerrang-radio-contact-enrichment) - **NEW** (350/mo)
-8.  [Absolute Radio Contact Enrichment](/blog/absolute-radio-contact-enrichment) - **NEW** (350/mo)
+4.  [Apple Music Editorial Contacts](/blog/apple-music-editorial-contacts) - **NEW**(1500/mo)
+5.  [BBC Radio 1Xtra Contact Enrichment](/blog/bbc-radio-1xtra-contact-enrichment) - **NEW**(600/mo)
+6.  [BBC Radio 2 Contact Enrichment](/blog/bbc-radio-2-contact-enrichment) - **NEW**(500/mo)
+7.  [Kerrang Radio Contact Enrichment](/blog/kerrang-radio-contact-enrichment) - **NEW**(350/mo)
+8.  [Absolute Radio Contact Enrichment](/blog/absolute-radio-contact-enrichment) - **NEW**(350/mo)
 
 **Tier 1 - Needs More Research**: 9.  Capital FM (400/mo) - 78% confidence, no official submission process found 10.  KISS FM (400/mo) - 75% confidence, no official submission process found
 
@@ -30,16 +30,16 @@
 
 ## Generation System Complete
 
-###  Built Components
+### Built Components
 
-1. **CSV Parser** (`utils/pseo/csvParser.ts`)
+1. **CSV Parser**(`utils/pseo/csvParser.ts`)
    - Parses programmatic-pages.csv
    - Validates research data for truthfulness
    - Enforces 6-month verification requirements
    - Requires 85%+ confidence scores
    - Requires source URLs for all claims
 
-2. **Page Generator** (`utils/pseo/generatePages.ts`)
+2. **Page Generator**(`utils/pseo/generatePages.ts`)
    - Generates Next.js page.tsx files from validated data
    - Includes data verification metadata
    - Creates React components with proper TypeScript
@@ -62,37 +62,37 @@
 
 ### Ready for Research (7 remaining Tier 1 pages)
 
-4. **Apple Music Editorial Contacts** (1500 searches/month)
+4. **Apple Music Editorial Contacts**(1500 searches/month)
    - Status: Research needed
    - File: `research/apple-music-editorial-research.md`
    - Priority: HIGH
 
-5. **BBC Radio 1Xtra** (600 searches/month)
+5. **BBC Radio 1Xtra**(600 searches/month)
    - Status: Research needed
    - File: `research/bbc-radio-1xtra-research.md`
    - Priority: HIGH
 
-6. **BBC Radio 2** (500 searches/month)
+6. **BBC Radio 2**(500 searches/month)
    - Status: Research needed
    - File: `research/bbc-radio-2-research.md`
    - Priority: MEDIUM
 
-7. **KISS FM** (400 searches/month)
+7. **KISS FM**(400 searches/month)
    - Status: Research needed
    - File: `research/kiss-fm-research.md`
    - Priority: MEDIUM
 
-8. **Capital FM** (400 searches/month)
+8. **Capital FM**(400 searches/month)
    - Status: Research needed
    - File: `research/capital-fm-research.md`
    - Priority: MEDIUM
 
-9. **Kerrang Radio** (350 searches/month)
+9. **Kerrang Radio**(350 searches/month)
    - Status: Research needed
    - File: `research/kerrang-radio-research.md`
    - Priority: MEDIUM
 
-10. **Absolute Radio** (350 searches/month)
+10. **Absolute Radio**(350 searches/month)
     - Status: Research needed
     - File: `research/absolute-radio-research.md`
     - Priority: MEDIUM
@@ -129,7 +129,7 @@
 
 ### Week 4-5: Tier 2 Research (20 pages)
 
-**Medium-volume targets** (300-800 monthly searches each):
+**Medium-volume targets**(300-800 monthly searches each):
 
 - Amazing Radio, NTS Radio, Rinse FM
 - DIY Magazine, Clash Music, The Quietus
@@ -147,7 +147,7 @@
 
 ### Week 8: Tier 3 Research & Generation (30 pages)
 
-**Long-tail targets** (50-300 monthly searches each):
+**Long-tail targets**(50-300 monthly searches each):
 
 - Regional BBC Introducing stations
 - Underground blogs and zines
@@ -269,7 +269,7 @@ Before marking as "live" in CSV:
 
 ## Current Blockers
 
-**None** - Generation system is operational and ready for research
+**None**- Generation system is operational and ready for research
 
 ---
 

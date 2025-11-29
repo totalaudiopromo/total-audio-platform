@@ -1,4 +1,4 @@
-#  Autonomous Social Media Posting - COMPLETE
+# Autonomous Social Media Posting - COMPLETE
 
 ## What's Working
 
@@ -158,7 +158,7 @@ curl -X POST https://intel.totalaudiopromo.com/api/cron/social-posting \
 
 If you want to post twice daily (9am and 5pm):
 
-1. **Upgrade to Vercel Pro** ($20/month)
+1. **Upgrade to Vercel Pro**($20/month)
 2. **Update vercel.json**:
    ```json
    "schedule": "0 9,17 * * *"

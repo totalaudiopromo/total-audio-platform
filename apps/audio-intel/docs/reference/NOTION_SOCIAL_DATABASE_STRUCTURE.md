@@ -4,11 +4,11 @@
 
 ### Properties:
 
-**Title** (Title)
+**Title**(Title)
 
 - The main title/headline for the post
 
-**Platform** (Select)
+**Platform**(Select)
 
 - Twitter
 - LinkedIn
@@ -16,7 +16,7 @@
 - Reddit
 - Instagram
 
-**Content Type** (Select)
+**Content Type**(Select)
 
 - Thread
 - Single Post
@@ -24,34 +24,34 @@
 - Comment
 - Reply
 
-**Status** (Select)
+**Status**(Select)
 
 - Draft
 - Scheduled
 - Posted
 - Archived
 
-**Scheduled Date** (Date)
+**Scheduled Date**(Date)
 
 - When to post this content
 
-**Content** (Text)
+**Content**(Text)
 
 - The actual post content
 
-**Engagement** (Number)
+**Engagement**(Number)
 
 - Track likes, comments, shares
 
-**Beta Signups** (Number)
+**Beta Signups**(Number)
 
 - Track how many beta signups this post generated
 
-**Notes** (Text)
+**Notes**(Text)
 
 - Any additional notes or context
 
-**Tags** (Multi-select)
+**Tags**(Multi-select)
 
 - Case Study
 - Problem/Solution

@@ -4,11 +4,11 @@
 
 The audit script analyzes your Airtable contact data to identify:
 
-1. ** Field Mapping Analysis** - Shows data coverage and usage for each field
-2. ** Duplicate Detection** - Finds records with same email or name
-3. ** Data Completeness** - Flags records missing key information
-4. ** Data Inconsistencies** - Identifies formatting and validation issues
-5. ** Recommendations** - Suggests improvements for data quality
+1. **Field Mapping Analysis**- Shows data coverage and usage for each field
+2. **Duplicate Detection**- Finds records with same email or name
+3. **Data Completeness**- Flags records missing key information
+4. **Data Inconsistencies**- Identifies formatting and validation issues
+5. **Recommendations**- Suggests improvements for data quality
 
 ## How to Run the Audit
 
@@ -105,10 +105,10 @@ curl -X POST http://localhost:3001/api/airtable-audit/audit \
 
 ## Next Steps
 
-1. **Set up your credentials** and run the audit
-2. **Review the results** to understand your data quality
-3. **Implement recommendations** to improve data quality
-4. **Set up regular audits** to maintain data quality
-5. **Integrate with your workflow** for ongoing monitoring
+1. **Set up your credentials**and run the audit
+2. **Review the results**to understand your data quality
+3. **Implement recommendations**to improve data quality
+4. **Set up regular audits**to maintain data quality
+5. **Integrate with your workflow**for ongoing monitoring
 
 The audit is designed to be non-destructive - it only analyzes your data and provides recommendations without making any changes to your Airtable base.

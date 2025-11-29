@@ -25,13 +25,13 @@ The following mobile test scripts have been added to `package.json`:
 
 Tests run on 3 UK-focused mobile devices:
 
-1. **Mobile Safari** (iPhone 13) - iOS testing
-2. **Mobile Chrome** (Galaxy S9+) - Android testing
-3. **Mobile Safari iPad** (iPad Pro) - Tablet testing
+1. **Mobile Safari**(iPhone 13) - iOS testing
+2. **Mobile Chrome**(Galaxy S9+) - Android testing
+3. **Mobile Safari iPad**(iPad Pro) - Tablet testing
 
 ### Total Test Count
 
-**18 tests** across 2 test files:
+**18 tests**across 2 test files:
 
 - 9 tests per device configuration
 - 6 tests in `quick-mobile-check.test.js`

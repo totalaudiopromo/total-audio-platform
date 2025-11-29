@@ -4,7 +4,7 @@ notion_url: https://www.notion.so/CONTENT-BRAND-2660a35b21ed8162baeaf8afbf100b2e
 exported_at: 2025-09-26T14:34:06.774Z
 ---
 
-#  CONTENT & BRAND
+# CONTENT & BRAND
 
 _Brand voice, content creation, and marketing materials_
 
@@ -12,103 +12,103 @@ _Brand voice, content creation, and marketing materials_
 
 ## **BRAND STRATEGY**
 
-### ** Brand Positioning:**
+### **Brand Positioning:**
 
-- **UK Music Industry Focus** - British alternative to US tools
+- **UK Music Industry Focus**- British alternative to US tools
 
-- **Producer Credibility** - Real radio promotion experience
+- **Producer Credibility**- Real radio promotion experience
 
-- **Affordable Pricing** - £19.99/month vs £200-500+ competitors
+- **Affordable Pricing**- £19.99/month vs £200-500+ competitors
 
-- **Personal Story** - Bedroom to professional journey
+- **Personal Story**- Bedroom to professional journey
 
-### ** Brand Voice:**
+### **Brand Voice:**
 
-- **Authentic British** - UK spelling and tone
+- **Authentic British**- UK spelling and tone
 
-- **Industry Credible** - 5+ years radio promotion experience
+- **Industry Credible**- 5+ years radio promotion experience
 
-- **Relatable Entrepreneur** - 2am coding sessions, family life
+- **Relatable Entrepreneur**- 2am coding sessions, family life
 
-- **Results-Focused** - BBC Radio 1 pitch experience
+- **Results-Focused**- BBC Radio 1 pitch experience
 
 ---
 
 ## **CONTENT CREATION**
 
-### ** Social Media Content:**
+### **Social Media Content:**
 
-- **LinkedIn Updates** - Professional industry insights
+- **LinkedIn Updates**- Professional industry insights
 
-- **Twitter/X Posts** - Quick tips and product updates
+- **Twitter/X Posts**- Quick tips and product updates
 
-- **Instagram Stories** - Behind-the-scenes development
+- **Instagram Stories**- Behind-the-scenes development
 
-- **YouTube Content** - Product demos and tutorials
+- **YouTube Content**- Product demos and tutorials
 
-### ** Marketing Materials:**
+### **Marketing Materials:**
 
-- **Landing Page Copy** - Value proposition and benefits
+- **Landing Page Copy**- Value proposition and benefits
 
-- **Email Sequences** - Onboarding and retention
+- **Email Sequences**- Onboarding and retention
 
-- **Sales Pages** - Product features and pricing
+- **Sales Pages**- Product features and pricing
 
-- **Case Studies** - Customer success stories
+- **Case Studies**- Customer success stories
 
-### ** Customer Communication:**
+### **Customer Communication:**
 
-- **Onboarding Emails** - Welcome series and setup
+- **Onboarding Emails**- Welcome series and setup
 
-- **Product Updates** - Feature announcements
+- **Product Updates**- Feature announcements
 
-- **Support Content** - Help guides and FAQs
+- **Support Content**- Help guides and FAQs
 
-- **Retention Campaigns** - Engagement and loyalty
+- **Retention Campaigns**- Engagement and loyalty
 
 ---
 
 ## **VISUAL IDENTITY**
 
-### ** Design Assets:**
+### **Design Assets:**
 
-- **Logo Variations** - Different formats and sizes
+- **Logo Variations**- Different formats and sizes
 
-- **Colour Palette** - Brand colours and usage
+- **Colour Palette**- Brand colours and usage
 
-- **Typography** - Font choices and hierarchy
+- **Typography**- Font choices and hierarchy
 
-- **Image Style** - Photography and graphics style
+- **Image Style**- Photography and graphics style
 
-### ** Platform Assets:**
+### **Platform Assets:**
 
-- **Social Media Templates** - Consistent visual style
+- **Social Media Templates**- Consistent visual style
 
-- **Website Graphics** - Headers, icons, and illustrations
+- **Website Graphics**- Headers, icons, and illustrations
 
-- **Email Templates** - Branded communication design
+- **Email Templates**- Branded communication design
 
-- **Product Screenshots** - Feature demonstrations
+- **Product Screenshots**- Feature demonstrations
 
 ---
 
 ## **CURRENT CONTENT PRIORITIES**
 
-### ** This Week:**
+### **This Week:**
 
-1. **Landing page copy update** - Clearer value proposition
+1. **Landing page copy update**- Clearer value proposition
 
-1. **LinkedIn post** - Building Audio Intel announcement
+1. **LinkedIn post**- Building Audio Intel announcement
 
-1. **Customer outreach templates** - Personalised messages
+1. **Customer outreach templates**- Personalised messages
 
-### ** Next Sprint:**
+### **Next Sprint:**
 
-1. **Video content** - Product demo creation
+1. **Video content**- Product demo creation
 
-1. **Email sequence** - Automated onboarding
+1. **Email sequence**- Automated onboarding
 
-1. **Case study development** - First customer success story
+1. **Case study development**- First customer success story
 
 ---
 
@@ -354,10 +354,10 @@ _Updated August 2025 - Freemium strategy with refined competitive positioning_
 
 ### DRS Texture Dark Mode Adaptation
 
-- **Invert texture brightness** for dark backgrounds
-- **Increase colour overlay opacity** (15-25%) for better visibility
-- **Adjust blend modes** (screen/overlay vs multiply)
-- **Maintain brand colour recognition** across light/dark
+- **Invert texture brightness**for dark backgrounds
+- **Increase colour overlay opacity**(15-25%) for better visibility
+- **Adjust blend modes**(screen/overlay vs multiply)
+- **Maintain brand colour recognition**across light/dark
 
 ## IMPLEMENTATION GUIDELINES
 
@@ -407,7 +407,7 @@ _Updated August 2025 - Freemium strategy with refined competitive positioning_
 
 ### New Messaging Framework
 
-**Primary:** "Stop paying per submission. Get verified contacts directly."
+**Primary:**"Stop paying per submission. Get verified contacts directly."
 **Secondary Positioning:**
 
 - vs Groover: "€29/month for submissions vs £19/month for unlimited contact intelligence"
@@ -464,10 +464,10 @@ _Your authentic voice - properly capitalised, naturally British casual_
 
 ## VOICE CHARACTERISTICS
 
-- **Natural capitalisation** (proper sentences)
-- **British casual language** ("if you get a sec", "would appreciate", "if ya wanna")
+- **Natural capitalisation**(proper sentences)
+- **British casual language**("if you get a sec", "would appreciate", "if ya wanna")
 - **Respectful and time-conscious tone**
-- **"Tbh", "tho", "probs"** used naturally (not forced)
+- **"Tbh", "tho", "probs"**used naturally (not forced)
 - **Professional but never corporate**
 - **Genuine enthusiasm without hype**
 
@@ -547,19 +547,19 @@ Why 94% of music marketing tasks can be automated:
 
 ## ACTION TWEETS (Authentic Voice)
 
-**Tweet 1:** Radio submission windows close faster than you think
+**Tweet 1:**Radio submission windows close faster than you think
 Most stations plan 6-8 weeks ahead for new music
 Submit 2 months before target airplay date
 Research their typical lead times first
 Include multiple format options (clean/explicit)
 Early submission beats perfect timing every time
-**Tweet 2:** Playlist curator burnout is real and growing tbh
+**Tweet 2:**Playlist curator burnout is real and growing tbh
 Standing out requires genuine personalisation
 Reference their last 3 playlist additions specifically
 Explain why your track fits their curation style
 Offer exclusive content for successful placements
 Personal touch beats template emails consistently
-**Tweet 3:** Music blog coverage drives 40% more streams than ads
+**Tweet 3:**Music blog coverage drives 40% more streams than ads
 Editorial credibility creates lasting audience impact
 Target blogs covering similar artists recently
 Offer exclusive interviews or behind-scenes content
@@ -570,18 +570,18 @@ Editorial coverage compounds, advertising fades
 
 ## PERSONAL TWEETS (Authentic Voice)
 
-**Tweet 1:** Been radio promoting for 5 years and still get nervous pitching new tracks
+**Tweet 1:**Been radio promoting for 5 years and still get nervous pitching new tracks
 The difference now? I built the tools that remind me when to follow up
 Anxiety doesn't disappear. Systems just make it manageable
-**Tweet 2:** The kids ask what I do for work
+**Tweet 2:**The kids ask what I do for work
 "I help musicians get heard, and I make computer programs"
 Still not sure they understand, but they're proud anyway
 Simple explanations are the hardest ones
-**Tweet 3:** Spent £2k on music marketing tools last year
+**Tweet 3:**Spent £2k on music marketing tools last year
 Every single one had features I didn't need and missed ones I did
 That's why I'm building Total Audio Promo
 Frustration drives the best innovation
-**Tweet 4:** Daughter asked why I'm always on the laptop
+**Tweet 4:**Daughter asked why I'm always on the laptop
 "I'm helping musicians like daddy get heard"
 She said "okay daddy" and went back to her drawing
 Kids are patient, but I really need to find better balance
@@ -590,7 +590,7 @@ Kids are patient, but I really need to find better balance
 
 ## VIBE CODING & CURSOR POSTS (Technical Expertise)
 
-**Post 1:** From Vibe Coder to Production Builder
+**Post 1:**From Vibe Coder to Production Builder
 Started building Total Audio Promo prototypes in Vibe Code.
 Rapid iteration. Visual feedback. No technical barriers.
 But here's what I learned:
@@ -615,7 +615,7 @@ The transition taught me everything:
   Don't choose between speed and quality.
   Use the right tool for each phase.
   What's your workflow for moving from prototype to production?
-  **Post 2:** Why Cursor + Claude Code Changed Everything
+  **Post 2:**Why Cursor + Claude Code Changed Everything
   Just shipped a new feature in 2 hours that would've taken 2 days before.
   The difference? Cursor IDE with Claude Code integration.
   Here's how my development workflow evolved:
@@ -854,21 +854,21 @@ AND Log timestamp
 
 ## **This Week's Priority Posts**
 
-###  **Monday Launch**
+### **Monday Launch**
 
 **Platform**: LinkedIn + Twitter
 **Content**: 94% Automation Thread
 **Status**: Ready to post
 **Goal**: Establish thought leadership
 
-###  **Wednesday Personal**
+### **Wednesday Personal**
 
 **Platform**: LinkedIn
 **Content**: Building Audio Intel story
 **Status**: Ready to post
 **Goal**: Build personal connection
 
-###  **Friday Demo**
+### **Friday Demo**
 
 **Platform**: Twitter + Blue Sky
 **Content**: Radio submission tips
@@ -1227,40 +1227,40 @@ testConnection();
 
 Your Social Media Content database has these properties:
 
-- **Title** (title)
-- **Content** (rich_text)
-- **Platform** (multi_select): LinkedIn, Twitter/X, Blue Sky, Threads, Reddit
-- **Content Type** (select): Thread, Single Tweet, LinkedIn Article, LinkedIn Post, Reddit Post, Story Update
-- **Status** (select): Draft, Ready to Post, Scheduled, Posted, Performing Well
-- **Scheduled Date** (date)
-- **Post Time** (rich_text): "9:00am GMT", "12:00pm GMT"
-- **API Status** (select): Pending, Posted Successfully, Failed - Retry, Failed - Manual Review
-- **Content Optimised** (checkbox)
-- **UTM Tracking** (rich_text)
-- **Engagement Target** (number)
-- **Actual Engagement** (number)
-- **Beta Signups** (number)
-- **Tags** (multi_select): 94% Automation, Personal Story, Industry Insight, Product Demo, Customer Acquisition, Competitive Advantage
-- **Notes** (rich_text)
+- **Title**(title)
+- **Content**(rich_text)
+- **Platform**(multi_select): LinkedIn, Twitter/X, Blue Sky, Threads, Reddit
+- **Content Type**(select): Thread, Single Tweet, LinkedIn Article, LinkedIn Post, Reddit Post, Story Update
+- **Status**(select): Draft, Ready to Post, Scheduled, Posted, Performing Well
+- **Scheduled Date**(date)
+- **Post Time**(rich_text): "9:00am GMT", "12:00pm GMT"
+- **API Status**(select): Pending, Posted Successfully, Failed - Retry, Failed - Manual Review
+- **Content Optimised**(checkbox)
+- **UTM Tracking**(rich_text)
+- **Engagement Target**(number)
+- **Actual Engagement**(number)
+- **Beta Signups**(number)
+- **Tags**(multi_select): 94% Automation, Personal Story, Industry Insight, Product Demo, Customer Acquisition, Competitive Advantage
+- **Notes**(rich_text)
 
 ## **Ready-to-Post Content Available**
 
 Your database already contains:
 
-1. **94% Automation Thread** - Ready for LinkedIn + Twitter + Threads
-1. **Building Audio Intel Story** - Ready for LinkedIn
-1. **Radio Submission Tips** - Ready for Twitter + Blue Sky
-1. **vs Groover/SubmitHub** - Draft stage for LinkedIn + Twitter
+1. **94% Automation Thread**- Ready for LinkedIn + Twitter + Threads
+1. **Building Audio Intel Story**- Ready for LinkedIn
+1. **Radio Submission Tips**- Ready for Twitter + Blue Sky
+1. **vs Groover/SubmitHub**- Draft stage for LinkedIn + Twitter
 
 ## **Next Steps for Cursor**
 
-1. **Set up Notion integration** (steps above)
-1. **Test connection** with the test file
-1. **Build automation script** using the specification document
-1. **Implement UK timing logic** with GMT-based scheduling
-1. **Add platform APIs** for posting automation
-1. **Create content processing** (UK spelling, no emojis)
-1. **Set up cron scheduling** for automated posting
+1. **Set up Notion integration**(steps above)
+1. **Test connection**with the test file
+1. **Build automation script**using the specification document
+1. **Implement UK timing logic**with GMT-based scheduling
+1. **Add platform APIs**for posting automation
+1. **Create content processing**(UK spelling, no emojis)
+1. **Set up cron scheduling**for automated posting
    Once you have the Notion integration token and share the database, Cursor will be able to read and update your social media content for full automation.
    **Database ID**: `7002006e-000f-42ff-a414-6130df40d8d7`
    **Database URL**: [Social Media Content - User Acquisition](https://www.notion.so/75c7e9291f49412ca546b4e880291455)
@@ -1452,10 +1452,10 @@ setInterval(runAutomation, 15 * 60 * 1000);
 
 Your database has these posts ready:
 
-- **94% Automation Thread** (Twitter/LinkedIn/Threads)
-- **Building Audio Intel Story** (LinkedIn)
-- **Radio Submission Tips** (Twitter/Blue Sky)
-- **vs Groover/SubmitHub** (LinkedIn/Twitter)
+- **94% Automation Thread**(Twitter/LinkedIn/Threads)
+- **Building Audio Intel Story**(LinkedIn)
+- **Radio Submission Tips**(Twitter/Blue Sky)
+- **vs Groover/SubmitHub**(LinkedIn/Twitter)
 
 ## **Weekly Workflow**
 

@@ -258,4 +258,4 @@ if (study) {
 
 ---
 
-**Questions?** Check the full documentation files or reference the inline TypeScript comments.
+**Questions?**Check the full documentation files or reference the inline TypeScript comments.

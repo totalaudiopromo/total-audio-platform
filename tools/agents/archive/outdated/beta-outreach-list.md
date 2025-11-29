@@ -118,11 +118,11 @@ Want to check it out?"
 
 ## ✅ **Action Steps for Today**
 
-1. **Fill in your actual contacts** in the tables above
-2. **Prioritize High/Medium contacts** for this week
-3. **Send 5 messages today** using the scripts
-4. **Track responses** in the table
-5. **Set up simple system** (spreadsheet/notes app) for ongoing tracking
+1. **Fill in your actual contacts**in the tables above
+2. **Prioritize High/Medium contacts**for this week
+3. **Send 5 messages today**using the scripts
+4. **Track responses**in the table
+5. **Set up simple system**(spreadsheet/notes app) for ongoing tracking
 
 ## 📈 **Success Metrics**
 

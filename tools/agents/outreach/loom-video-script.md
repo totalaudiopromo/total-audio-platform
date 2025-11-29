@@ -1,9 +1,9 @@
 # Loom Video Script (60 seconds, Record Once, Use Forever)
 
-**Purpose:** Replace 500 demo calls with one video
-**Length:** 60 seconds
-**Tool:** Loom (free) or iPhone screen recording
-**Upload:** YouTube (unlisted) + embed on landing page
+**Purpose:**Replace 500 demo calls with one video
+**Length:**60 seconds
+**Tool:**Loom (free) or iPhone screen recording
+**Upload:**YouTube (unlisted) + embed on landing page
 
 ---
 
@@ -256,16 +256,16 @@ team."
 
 ### Primary Locations
 
-1. **Audio Intel Homepage** (above the fold)
+1. **Audio Intel Homepage**(above the fold)
    - Autoplay (muted)
    - "Watch demo" button
    - Unmutes on click
 
-2. **Cold Email** (as link)
+2. **Cold Email**(as link)
    - "Watch 60-second demo: [link]"
    - Track clicks via bit.ly or similar
 
-3. **Landing Page** (/demo or /watch)
+3. **Landing Page**(/demo or /watch)
    - Dedicated demo page
    - Video + CTA below
    - "Try it free" button
@@ -333,22 +333,22 @@ team."
 
 ## Pro Tips from Successful SaaS Videos
 
-1. **Show real data** (BBC Radio 1 contacts = instant credibility)
-2. **Keep it short** (60 sec max, 45 sec ideal)
-3. **One clear CTA** ("Try it free: intel.totalaudiopromo.com")
-4. **No bullshit** (no stock music, no corporate speak)
-5. **Be yourself** (sadact producer energy, not Silicon Valley)
+1. **Show real data**(BBC Radio 1 contacts = instant credibility)
+2. **Keep it short**(60 sec max, 45 sec ideal)
+3. **One clear CTA**("Try it free: intel.totalaudiopromo.com")
+4. **No bullshit**(no stock music, no corporate speak)
+5. **Be yourself**(sadact producer energy, not Silicon Valley)
 
 ---
 
 ## Common Mistakes to Avoid
 
- **Too long** (90+ seconds, people drop off)
- **Too salesy** (sounds like an ad, not a demo)
- **Fake data** (using test data instead of real BBC contacts)
- **Bad audio** (laptop mic, background noise)
- **No CTA** (people watch, don't know what to do next)
- **Over-produced** (fancy editing that looks fake)
+ **Too long**(90+ seconds, people drop off)
+ **Too salesy**(sounds like an ad, not a demo)
+ **Fake data**(using test data instead of real BBC contacts)
+ **Bad audio**(laptop mic, background noise)
+ **No CTA**(people watch, don't know what to do next)
+ **Over-produced**(fancy editing that looks fake)
 
 ---
 
@@ -358,10 +358,10 @@ This one 60-second video replaces 500 demo calls.
 
 Record it this weekend. Use it forever.
 
-**Version to record:** Version 2 (Problem → Solution, 60 sec)
-**Tool:** Loom (free)
-**Data to show:** Real BBC Radio 1 contacts (Clara Amfo, Jack Saunders)
-**CTA:** "Try it free: intel.totalaudiopromo.com"
+**Version to record:**Version 2 (Problem → Solution, 60 sec)
+**Tool:**Loom (free)
+**Data to show:**Real BBC Radio 1 contacts (Clara Amfo, Jack Saunders)
+**CTA:**"Try it free: intel.totalaudiopromo.com"
 
 Ready to record? Open Loom, hit record, follow the script above.
 

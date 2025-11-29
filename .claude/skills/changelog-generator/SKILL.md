@@ -86,7 +86,7 @@ guidelines from CHANGELOG_STYLE.md
 - Corrected notification badge count
 ```
 
-**Inspired by:** Manik Aggarwal's use case from Lenny's Newsletter
+**Inspired by:**Manik Aggarwal's use case from Lenny's Newsletter
 
 ## Tips
 

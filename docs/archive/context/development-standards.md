@@ -107,10 +107,10 @@ interface AudioCharacterProps {
 
 ### Component Naming Conventions
 
-- **PascalCase** for component names: `AudioCharacter`, `BrandButton`
-- **camelCase** for props and functions: `onClick`, `handleSubmit`
-- **kebab-case** for file names when multiple words: `brand-button.tsx`
-- **UPPER_SNAKE_CASE** for constants: `TOOL_COLORS`, `ANIMATION_DURATION`
+- **PascalCase**for component names: `AudioCharacter`, `BrandButton`
+- **camelCase**for props and functions: `onClick`, `handleSubmit`
+- **kebab-case**for file names when multiple words: `brand-button.tsx`
+- **UPPER_SNAKE_CASE**for constants: `TOOL_COLORS`, `ANIMATION_DURATION`
 
 ### Component Structure Template
 
@@ -121,7 +121,7 @@ import { AudioCharacter } from '@total-audio/audio-brand';
 
 interface ComponentNameProps {
   // Props with JSDoc comments
-  /** Brief description of the prop */
+  /**Brief description of the prop */
   variant?: 'default' | 'destructive' | 'outline';
   size?: 'sm' | 'md' | 'lg';
   children: React.ReactNode;

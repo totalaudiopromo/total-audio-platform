@@ -14,21 +14,21 @@
 
 ### Week 1 Critical Fixes (5 hours)
 
-1. ✅ **TypeScript & ESLint enabled** - Zero errors found!
-2. ✅ **Exit popup optimized** - 30s delay, no mobile, ESC key support
-3. ✅ **GDPR cookie banner** - Accept/Decline with GA consent mode
-4. ✅ **Privacy Policy page** - Complete UK GDPR compliance
-5. ✅ **Cookie Policy page** - All cookie types documented
-6. ✅ **Footer legal links** - Easy access to policies
+1. ✅ **TypeScript & ESLint enabled**- Zero errors found!
+2. ✅ **Exit popup optimized**- 30s delay, no mobile, ESC key support
+3. ✅ **GDPR cookie banner**- Accept/Decline with GA consent mode
+4. ✅ **Privacy Policy page**- Complete UK GDPR compliance
+5. ✅ **Cookie Policy page**- All cookie types documented
+6. ✅ **Footer legal links**- Easy access to policies
 
 ### Week 2 Performance Optimizations (30 mins)
 
-7. ✅ **Removed unused dependencies** - Cleaner package.json
-8. ✅ **Protected test pages** - 18 pages redirect in production
-9. ✅ **Complete sitemap** - 19 URLs (was 10)
-10. ✅ **Structured data utilities** - Ready for blog posts
-11. ✅ **Fixed pricing inconsistencies** - £19/£79 everywhere
-12. ✅ **Added metadataBase** - OG images working properly
+7. ✅ **Removed unused dependencies**- Cleaner package.json
+8. ✅ **Protected test pages**- 18 pages redirect in production
+9. ✅ **Complete sitemap**- 19 URLs (was 10)
+10. ✅ **Structured data utilities**- Ready for blog posts
+11. ✅ **Fixed pricing inconsistencies**- £19/£79 everywhere
+12. ✅ **Added metadataBase**- OG images working properly
 
 ---
 
@@ -189,42 +189,42 @@ git push origin main
 
 ## ⏭️ OPTIONAL: WEEK 3 TASKS
 
-These are **nice-to-haves** if you have extra time:
+These are **nice-to-haves**if you have extra time:
 
 ### High Priority (2-3 hours)
 
-1. **Terms of Service page** (1 hour)
+1. **Terms of Service page**(1 hour)
    - Legal protection for business
    - Similar to Privacy/Cookie pages
 
-2. **Contact/Support page** (30 mins)
+2. **Contact/Support page**(30 mins)
    - Support email and response times
    - FAQ or contact form
 
-3. **Add structured data to blog posts** (1 hour)
+3. **Add structured data to blog posts**(1 hour)
    - Import `BlogStructuredData` component
    - Add to each blog post for rich snippets
    - 10-15% CTR boost in search results
 
 ### Medium Priority (2-3 hours)
 
-4. **Fix image warnings** (1 hour)
+4. **Fix image warnings**(1 hour)
    - Convert `<img>` to Next.js `<Image>`
    - Automatic optimization
 
-5. **Add canonical URLs** (30 mins)
+5. **Add canonical URLs**(30 mins)
    - Prevent duplicate content
    - Better SEO
 
-6. **Implement rate limiting** (2 hours)
+6. **Implement rate limiting**(2 hours)
    - API protection
    - Security improvement
 
 ### Low Priority (Nice-to-Haves)
 
-7. **Lazy loading for heavy components** (2 hours)
-8. **Breadcrumb navigation** (1 hour)
-9. **Bundle analyzer** (30 mins)
+7. **Lazy loading for heavy components**(2 hours)
+8. **Breadcrumb navigation**(1 hour)
+9. **Bundle analyzer**(30 mins)
 
 ---
 

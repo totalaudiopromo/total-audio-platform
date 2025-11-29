@@ -27,7 +27,7 @@ node radio-promo-agent.js personal-workflow downloads:your-file-name.txt
 
 ## **Supported Transcript Sources**
 
-### **Otter.ai Downloads** (Your Current Files)
+### **Otter.ai Downloads**(Your Current Files)
 
 ```bash
 downloads:filename.txt
@@ -37,7 +37,7 @@ downloads:filename.txt
 - Automatically adds .txt extension if needed
 - Perfect for your existing Otter.ai files
 
-### **Google Gemini** (Future Use)
+### **Google Gemini**(Future Use)
 
 ```bash
 gemini:transcript-id
@@ -47,7 +47,7 @@ gemini:transcript-id
 - Will integrate with Gemini API
 - Currently placeholder implementation
 
-### **Otter.ai API** (If You Have Access)
+### **Otter.ai API**(If You Have Access)
 
 ```bash
 otter:transcript-id

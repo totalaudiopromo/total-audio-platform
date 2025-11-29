@@ -6,7 +6,7 @@
 
 ## Overview
 
-Phase 10A adds **Golden Intelligence** — an automated post-deployment validation and rollback system that ensures production deployments meet quality standards. If any health checks fail after a Golden deployment, the system automatically rolls back to the previous stable version.
+Phase 10A adds **Golden Intelligence**— an automated post-deployment validation and rollback system that ensures production deployments meet quality standards. If any health checks fail after a Golden deployment, the system automatically rolls back to the previous stable version.
 
 ### Key Features
 
@@ -41,13 +41,13 @@ Golden Deployment Pipeline
 
 ## Workflow Trigger
 
-The Golden Intelligence workflow runs **automatically** after the Golden Deployment Pipeline completes:
+The Golden Intelligence workflow runs **automatically**after the Golden Deployment Pipeline completes:
 
-1. **Golden Deployment Pipeline** finishes (success or failure)
-2. **Golden Intelligence** workflow triggers automatically
-3. **Post-Check** runs health endpoint validation
-4. **If post-check fails** → **Rollback** runs automatically
-5. **Telegram notifications** sent at each step
+1. **Golden Deployment Pipeline**finishes (success or failure)
+2. **Golden Intelligence**workflow triggers automatically
+3. **Post-Check**runs health endpoint validation
+4. **If post-check fails**→ **Rollback**runs automatically
+5. **Telegram notifications**sent at each step
 
 ### Manual Trigger
 
@@ -103,11 +103,11 @@ The post-check validates `.lighthouse/budget.json` structure:
 
 If post-check fails, the rollback script:
 
-1. **Fetches recent deployments** from Vercel API
+1. **Fetches recent deployments**from Vercel API
 2. **Identifies current production deployment**
 3. **Finds previous READY production deployment**
-4. **Promotes previous deployment** back to production
-5. **Sends Telegram notification** with rollback details
+4. **Promotes previous deployment**back to production
+5. **Sends Telegram notification**with rollback details
 
 **Rollback Criteria**:
 
@@ -358,13 +358,13 @@ pnpm tsx scripts/golden-rollback.ts
 
 The Golden Intelligence workflow integrates seamlessly with the existing Golden Deployment Pipeline:
 
-1. **Golden Deployment** (`golden-deploy.yml`) completes
-2. **Golden Intelligence** (`golden-intelligence.yml`) triggers automatically
-3. **Post-Check** validates production deployments
-4. **If checks pass** → Deployment is confirmed successful
-5. **If checks fail** → Automatic rollback to previous version
+1. **Golden Deployment**(`golden-deploy.yml`) completes
+2. **Golden Intelligence**(`golden-intelligence.yml`) triggers automatically
+3. **Post-Check**validates production deployments
+4. **If checks pass**→ Deployment is confirmed successful
+5. **If checks fail**→ Automatic rollback to previous version
 
-**No manual intervention required** — the system handles everything automatically.
+**No manual intervention required**— the system handles everything automatically.
 
 ---
 

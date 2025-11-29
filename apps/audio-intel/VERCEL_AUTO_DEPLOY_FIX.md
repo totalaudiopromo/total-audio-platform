@@ -9,9 +9,9 @@ When you deleted the old Vercel project and created a new one, the GitHub integr
 ### Step 1: Check Current Integration
 
 1. Go to Vercel Dashboard: https://vercel.com/chris-projects-6ffe0e29/audio-intel
-2. Click **Settings** tab
-3. Click **Git** in the sidebar
-4. Check if **GitHub Repository** is connected
+2. Click **Settings**tab
+3. Click **Git**in the sidebar
+4. Check if **GitHub Repository**is connected
 
 ### Step 2: If Not Connected
 

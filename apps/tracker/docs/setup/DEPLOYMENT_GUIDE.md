@@ -82,7 +82,7 @@ STRIPE_WEBHOOK_SECRET=whsec_... (copy from Audio Intel)
 
 ### Step 3: Test Core Flow Locally (10 mins)
 
-1. **Login** with confirmed user:
+1. **Login**with confirmed user:
    - http://localhost:3001/login
    - Email: test@tracker.com
    - Password: password123

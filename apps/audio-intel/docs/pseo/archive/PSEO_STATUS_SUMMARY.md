@@ -145,7 +145,7 @@
 
 ### Priority 5: Generate Next 20 Pages (Week 3-4)
 
-**Tier 3 targets** (300-800 monthly searches):
+**Tier 3 targets**(300-800 monthly searches):
 
 - Capital FM, KISS FM, Triple J, Radio Nova, NTS Radio, etc.
 
@@ -155,21 +155,21 @@
 
 ### Short-Term (This Week)
 
-1. **Fix analytics tracking** - You need to see if this is working!
-2. **Expand BBC Radio 1 page** - Test the scaling strategy
-3. **Add FAQ schema** - Win featured snippets in Google
+1. **Fix analytics tracking**- You need to see if this is working!
+2. **Expand BBC Radio 1 page**- Test the scaling strategy
+3. **Add FAQ schema**- Win featured snippets in Google
 
 ### Medium-Term (Next 2 Weeks)
 
-1. **Expand all 8 existing pages** - 2,000+ words each
-2. **Add internal linking** - Keep users in the funnel
-3. **Track conversion rates** - PSEO → Signup → Payment
+1. **Expand all 8 existing pages**- 2,000+ words each
+2. **Add internal linking**- Keep users in the funnel
+3. **Track conversion rates**- PSEO → Signup → Payment
 
 ### Long-Term (Next Month)
 
-1. **Generate 20 new Tier 3 pages** - Scale to 28 total pages
-2. **Optimize for featured snippets** - FAQs + structured data
-3. **Build PSEO dashboard** - Custom view in Command Centre
+1. **Generate 20 new Tier 3 pages**- Scale to 28 total pages
+2. **Optimize for featured snippets**- FAQs + structured data
+3. **Build PSEO dashboard**- Custom view in Command Centre
 
 ---
 
@@ -217,11 +217,11 @@
 
 ## ✅ SESSION DELIVERABLES
 
-1. **REAL_VALUE_PROPOSITION.md** - Truthful product positioning
-2. **ANALYTICS_SETUP.md** - Complete analytics infrastructure guide
-3. **PSEO_SCALING_STRATEGY.md** - 60-page roadmap with templates
-4. **PSEO_STATUS_SUMMARY.md** - This file (executive summary)
-5. **All 8 PSEO pages** - Corrected for truthfulness, deployed live
+1. **REAL_VALUE_PROPOSITION.md**- Truthful product positioning
+2. **ANALYTICS_SETUP.md**- Complete analytics infrastructure guide
+3. **PSEO_SCALING_STRATEGY.md**- 60-page roadmap with templates
+4. **PSEO_STATUS_SUMMARY.md**- This file (executive summary)
+5. **All 8 PSEO pages**- Corrected for truthfulness, deployed live
 
 **Git Commits**:
 
@@ -236,11 +236,11 @@
 
 **Choose one**:
 
-**A) Fix analytics so you can track traffic** → Update Command Centre API connection
-**B) Scale content to increase traffic** → Expand BBC Radio 1 page to 2,500+ words
-**C) Both** → Fix analytics (30min) then expand content (2-3 hours)
+**A) Fix analytics so you can track traffic**→ Update Command Centre API connection
+**B) Scale content to increase traffic**→ Expand BBC Radio 1 page to 2,500+ words
+**C) Both**→ Fix analytics (30min) then expand content (2-3 hours)
 
-**My recommendation**: **C) Both** - Fix analytics first so you can measure the impact of the content expansion.
+**My recommendation**: **C) Both**- Fix analytics first so you can measure the impact of the content expansion.
 
 ---
 

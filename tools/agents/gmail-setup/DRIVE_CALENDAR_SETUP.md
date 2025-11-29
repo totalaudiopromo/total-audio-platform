@@ -42,17 +42,17 @@ Right-click each folder → "Change color":
 
 **Liberty Music PR subfolders:**
 
-- **Active Campaigns** →  Green
-- **Station Feedback & Assets** →  Orange
-- **Needs Action** →  Blue
-- **Completed** →  Yellow
-- **Archive** →  Red
-- **Internal Team** → Light blue
+- **Active Campaigns**→  Green
+- **Station Feedback & Assets**→  Orange
+- **Needs Action**→  Blue
+- **Completed**→  Yellow
+- **Archive**→  Red
+- **Internal Team**→ Light blue
 
 **Main folders:**
 
-- **Personal Tools** →  Purple
-- **Marketing Archive** →  Grey
+- **Personal Tools**→  Purple
+- **Marketing Archive**→  Grey
 
 ### 4. Done!
 
@@ -84,10 +84,10 @@ Create these 4 calendars:
 
 For each calendar, click the 3 dots → Settings → Color:
 
-- **Campaign Deadlines** →  Tomato (red)
-- **Station Follow-ups** →  Tangerine (orange)
-- **Action Items** →  Blueberry (blue)
-- **Team Meetings** →  Grape (purple)
+- **Campaign Deadlines**→  Tomato (red)
+- **Station Follow-ups**→  Tangerine (orange)
+- **Action Items**→  Blueberry (blue)
+- **Team Meetings**→  Grape (purple)
 
 ### 3. Done!
 

@@ -15,16 +15,16 @@
 
 ### Ad Groups
 
-1. **Playlist Contacts** - CPCs: $3-8
+1. **Playlist Contacts**- CPCs: $3-8
    - playlist curator email
    - spotify playlist contacts
    - apple music playlists
-2. **Radio Contacts** - CPCs: $2-6
+2. **Radio Contacts**- CPCs: $2-6
    - radio DJ contacts
    - radio station emails
    - music radio promotion
 
-3. **Music Blogger Contacts** - CPCs: $2-5
+3. **Music Blogger Contacts**- CPCs: $2-5
    - music blog submission
    - music journalist contacts
    - music reviewer emails

@@ -318,11 +318,11 @@ interface EnrichedCaseStudyData extends CaseStudyData {
 
 ### CSV Parsing Rules
 
-- **Semicolons (`;`)** separate array values in fields like `search_intent`, `audience`, `proof_points`
-- **Commas** are field delimiters (standard CSV)
-- **Quotes** around values with commas are handled automatically
-- **Empty rows** are skipped
-- **Missing slugs** cause row to be ignored
+- **Semicolons (`;`)**separate array values in fields like `search_intent`, `audience`, `proof_points`
+- **Commas**are field delimiters (standard CSV)
+- **Quotes**around values with commas are handled automatically
+- **Empty rows**are skipped
+- **Missing slugs**cause row to be ignored
 
 ---
 
@@ -492,7 +492,7 @@ The existing BBC Radio 1 case study serves as the template. Here's how the CSV m
 bbc-radio-1,/blog/bbc-radio-1-contact-enrichment,"BBC Radio 1 Contact Enrichment: From 18 Hours to 2 Minutes | Audio Intel",...
 ```
 
-**Generated Metadata** (matches existing):
+**Generated Metadata**(matches existing):
 
 ```typescript
 {
@@ -550,4 +550,4 @@ When `types/case-study.ts` is created by the other agent:
 
 ---
 
-**Questions?** Check the inline documentation in the utility files or reference the BBC Radio 1 case study implementation.
+**Questions?**Check the inline documentation in the utility files or reference the BBC Radio 1 case study implementation.

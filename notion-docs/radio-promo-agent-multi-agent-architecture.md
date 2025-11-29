@@ -4,7 +4,7 @@ notion_url: https://www.notion.so/RADIO-PROMO-AGENT-MULTI-AGENT-ARCHITECTURE-265
 exported_at: 2025-09-26T14:33:21.765Z
 ---
 
-#  RADIO PROMO AGENT - MULTI-AGENT ARCHITECTURE
+# RADIO PROMO AGENT - MULTI-AGENT ARCHITECTURE
 
 _Specialized AI agents for different aspects of radio campaign automation_
 
@@ -18,17 +18,17 @@ _Specialized AI agents for different aspects of radio campaign automation_
 
 ### **Why Multi-Agent Architecture Makes Sense:**
 
--  **Specialized expertise** - each agent optimized for specific tasks
+-  **Specialized expertise**- each agent optimized for specific tasks
 
--  **Parallel processing** - multiple agents work simultaneously
+-  **Parallel processing**- multiple agents work simultaneously
 
--  **Easier debugging** - isolate issues to specific agents
+-  **Easier debugging**- isolate issues to specific agents
 
--  **Scalable development** - build and test agents independently
+-  **Scalable development**- build and test agents independently
 
--  **Maintainable code** - clear separation of concerns
+-  **Maintainable code**- clear separation of concerns
 
--  **Flexible deployment** - enable/disable specific agents as needed
+-  **Flexible deployment**- enable/disable specific agents as needed
 
 ---
 
@@ -311,17 +311,17 @@ const analytics = await analyticsAgent.initializeTracking(campaignData);
 
 ### **Agent Development Priority**
 
-1. **Intelligence Agent** - Foundation for all other agents
+1. **Intelligence Agent**- Foundation for all other agents
 
-1. **Email Agent** - Highest immediate time-saving impact
+1. **Email Agent**- Highest immediate time-saving impact
 
-1. **Analytics Agent** - Real-time value for clients
+1. **Analytics Agent**- Real-time value for clients
 
-1. **Project Agent** - [Monday.com](http://monday.com/) integration
+1. **Project Agent**- [Monday.com](http://monday.com/) integration
 
-1. **Radio Agent** - Complex but high-value automation
+1. **Radio Agent**- Complex but high-value automation
 
-1. **Coverage Agent** - Final piece for complete automation
+1. **Coverage Agent**- Final piece for complete automation
 
 ---
 

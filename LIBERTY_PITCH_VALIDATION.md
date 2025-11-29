@@ -68,7 +68,7 @@
 6. `/apps/audio-intel/agents/core/AgentRegistry.ts` 
 7. `/scripts/test-skills.ts` 
 
-**Status**: All user-facing references use **VoiceGuard™** trademark symbol.
+**Status**: All user-facing references use **VoiceGuard™**trademark symbol.
 
 ---
 
@@ -76,11 +76,11 @@
 
 **Production error handling implemented (730+ lines):**
 
-- **ErrorBoundary.tsx** (186 lines) - React error boundaries
-- **Toast.tsx** (128 lines) - User-friendly notifications
-- **ToastContainer.tsx** (56 lines) - Notification stacking
-- **useToast hook** (100 lines) - Type-safe API
-- **ErrorLogger.ts** (260 lines) - Centralized error categorization
+- **ErrorBoundary.tsx**(186 lines) - React error boundaries
+- **Toast.tsx**(128 lines) - User-friendly notifications
+- **ToastContainer.tsx**(56 lines) - Notification stacking
+- **useToast hook**(100 lines) - Type-safe API
+- **ErrorLogger.ts**(260 lines) - Centralized error categorization
 
 **Status**: Professional error handling ready for demo.
 
@@ -94,7 +94,7 @@
 
 - 50 contacts × 90 seconds = 75 minutes (1.25 hours)
 - Manual research: 15-30 min per contact × 50 = 12.5-25 hours
-- **Claim is CONSERVATIVE** (actual savings could be higher)
+- **Claim is CONSERVATIVE**(actual savings could be higher)
 
 #### **Slide 3: "£2,212 - £4,425/month waste"**
 
@@ -110,7 +110,7 @@
 
 - Contact enrichment agent has comprehensive error handling
 - Demo shows successful enrichment for BBC Radio 6 Music, BBC Radio 1, Spotify
-- **Claim is ACCURATE** (based on production testing)
+- **Claim is ACCURATE**(based on production testing)
 
 #### **Slide 5: "90 seconds each"**
 
@@ -135,7 +135,7 @@
 - Time saved: 14.75 hours × £30 = £442.50 per campaign
 - 5 campaigns/month: 73.75 hours = £2,212.50 value
 - Cost: £400/month standard rate
-- ROI: (£2,212.50 - £400) / £400 = **453%** 
+- ROI: (£2,212.50 - £400) / £400 = **453%**
 - **Claim is ACCURATE**
 
 #### **Slide 8: "Phase 1: Radio Team Pilot - Free for 2 months"**
@@ -188,9 +188,9 @@ Integration badges (Gmail, Airtable sync)
 
 **Recommended Demo Flow:**
 
-1. **Audio Intel** - Show 15 hours → 15 minutes transformation
-2. **Pitch Generator** - Show VoiceGuard™ compliance scoring
-3. **Campaign Tracker** - Show 45% response rate analytics
+1. **Audio Intel**- Show 15 hours → 15 minutes transformation
+2. **Pitch Generator**- Show VoiceGuard™ compliance scoring
+3. **Campaign Tracker**- Show 45% response rate analytics
 
 ---
 
@@ -199,7 +199,7 @@ Integration badges (Gmail, Airtable sync)
 **Slide 6: "Example from UK radio promotion workflows"**
 
 - Footer correctly states: "contact data is illustrative; no personal emails shown"
-- **This is ACCURATE** - demo uses realistic but anonymised examples
+- **This is ACCURATE**- demo uses realistic but anonymised examples
 
 **Slide 5: "Live demo of contact enrichment during presentation"**
 
@@ -293,7 +293,7 @@ Integration badges (Gmail, Airtable sync)
 
 ## GO/NO-GO RECOMMENDATION
 
-### **GO FOR PITCH** 
+### **GO FOR PITCH**
 
 **Confidence Level**: **95%**
 
@@ -313,4 +313,4 @@ Integration badges (Gmail, Airtable sync)
 
 ---
 
-**This platform is ready to pitch to Liberty Music PR on 19 November 2025.** 
+**This platform is ready to pitch to Liberty Music PR on 19 November 2025.**

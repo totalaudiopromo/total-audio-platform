@@ -2,7 +2,7 @@
 
 ## Overview
 
-The CSV workflow enables seamless transfer of enriched contacts from **Audio Intel** to **Tracker** for campaign management. This guide covers the complete end-to-end workflow for radio promoters, PR agencies, and independent artists.
+The CSV workflow enables seamless transfer of enriched contacts from **Audio Intel**to **Tracker**for campaign management. This guide covers the complete end-to-end workflow for radio promoters, PR agencies, and independent artists.
 
 ## Business Value
 
@@ -28,13 +28,13 @@ The CSV workflow enables seamless transfer of enriched contacts from **Audio Int
 
 ### Option A: Direct Send (Recommended)
 
-1. **In Audio Intel** (`/demo`):
+1. **In Audio Intel**(`/demo`):
    - Upload contacts spreadsheet or paste emails
    - Run enrichment (auto-detects BBC Radio 1, Spotify, etc.)
-   - Click **"Send to Tracker"** button
+   - Click **"Send to Tracker"**button
    - CSV downloads automatically + Tracker opens
 
-2. **In Tracker** (`/dashboard/import`):
+2. **In Tracker**(`/dashboard/import`):
    - Import page auto-detects Audio Intel source
    - Review preview of enriched contacts
    - Click "Import" to add to campaign
@@ -180,19 +180,19 @@ useEffect(() => {
 
 **Scenario**: Radio promoter needs to pitch new sadact track to 50 BBC/commercial stations
 
-1. **Research Phase** (Audio Intel):
+1. **Research Phase**(Audio Intel):
    - Upload list of 50 station emails
    - Run enrichment → 15 minutes
    - Review contact intelligence
-   - **Send to Tracker** button
+   - **Send to Tracker**button
 
-2. **Campaign Management** (Tracker):
+2. **Campaign Management**(Tracker):
    - Automatically opens with 50 contacts
    - Import as "sadact - Q1 2025 Radio Campaign"
    - Track email sends via Gmail integration
    - Monitor responses in dashboard
 
-3. **Follow-up** (Tracker):
+3. **Follow-up**(Tracker):
    - See response rates by outlet type
    - Track which contacts opened emails
    - Export analytics for client reporting
@@ -203,13 +203,13 @@ useEffect(() => {
 
 **Scenario**: Agency needs to provide client with enriched contact list + campaign tracking
 
-1. **Client Spreadsheet** (Audio Intel):
+1. **Client Spreadsheet**(Audio Intel):
    - Client sends chaotic Excel with 100+ contacts
    - Upload to Audio Intel
    - Enrich all contacts
    - Export PDF for client deliverable
 
-2. **Campaign Setup** (Tracker):
+2. **Campaign Setup**(Tracker):
    - Use "Send to Tracker" for campaign management
    - Set up campaign with client's artist name
    - Track pitching progress
@@ -223,12 +223,12 @@ useEffect(() => {
 
 **Scenario**: Artist has 25 key contacts researched over months, wants to track responses
 
-1. **Consolidate Research** (Audio Intel):
+1. **Consolidate Research**(Audio Intel):
    - Paste 25 emails collected from Instagram, websites, etc.
    - Run enrichment to fill gaps
    - Validate contact accuracy
 
-2. **Pitch Tracking** (Tracker):
+2. **Pitch Tracking**(Tracker):
    - Send contacts to Tracker
    - Create "Self-Release Campaign"
    - Log each pitch sent
@@ -371,11 +371,11 @@ Error: Export to Tracker failed
 
 To analyze tool effectiveness:
 
-1. **Enrichment Quality** (Audio Intel):
+1. **Enrichment Quality**(Audio Intel):
    - High confidence contacts: 85%
    - Platform coverage: BBC, Spotify, Radio 1
 
-2. **Campaign Performance** (Tracker):
+2. **Campaign Performance**(Tracker):
    - Response rate: 22% (high-confidence contacts)
    - Response rate: 8% (medium-confidence contacts)
    - Time to first response: 3.2 days average

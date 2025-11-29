@@ -103,11 +103,11 @@ Use the file-creator subagent to create the file: .agent-os/product/mission.md a
 
     ### User Personas
 
-    **[USER_TYPE]** ([AGE_RANGE])
-    - **Role:** [JOB_TITLE]
-    - **Context:** [BUSINESS_CONTEXT]
-    - **Pain Points:** [PAIN_POINT_1], [PAIN_POINT_2]
-    - **Goals:** [GOAL_1], [GOAL_2]
+    **[USER_TYPE]**([AGE_RANGE])
+    - **Role:**[JOB_TITLE]
+    - **Context:**[BUSINESS_CONTEXT]
+    - **Pain Points:**[PAIN_POINT_1], [PAIN_POINT_2]
+    - **Goals:**[GOAL_1], [GOAL_2]
 
   </template>
   <schema>
@@ -128,7 +128,7 @@ Use the file-creator subagent to create the file: .agent-os/product/mission.md a
 
     [PROBLEM_DESCRIPTION]. [QUANTIFIABLE_IMPACT].
 
-    **Our Solution:** [SOLUTION_DESCRIPTION]
+    **Our Solution:**[SOLUTION_DESCRIPTION]
 
   </template>
   <constraints>
@@ -161,11 +161,11 @@ Use the file-creator subagent to create the file: .agent-os/product/mission.md a
 
     ### Core Features
 
-    - **[FEATURE_NAME]:** [USER_BENEFIT_DESCRIPTION]
+    - **[FEATURE_NAME]:**[USER_BENEFIT_DESCRIPTION]
 
     ### Collaboration Features
 
-    - **[FEATURE_NAME]:** [USER_BENEFIT_DESCRIPTION]
+    - **[FEATURE_NAME]:**[USER_BENEFIT_DESCRIPTION]
 
   </template>
   <constraints>
@@ -289,8 +289,8 @@ Use the file-creator subagent to create the following file: .agent-os/product/ro
 <features_per_phase>3-7</features_per_phase>
 <phase_template> ## Phase [NUMBER]: [NAME]
 
-    **Goal:** [PHASE_GOAL]
-    **Success Criteria:** [MEASURABLE_CRITERIA]
+    **Goal:**[PHASE_GOAL]
+    **Success Criteria:**[MEASURABLE_CRITERIA]
 
     ### Features
 

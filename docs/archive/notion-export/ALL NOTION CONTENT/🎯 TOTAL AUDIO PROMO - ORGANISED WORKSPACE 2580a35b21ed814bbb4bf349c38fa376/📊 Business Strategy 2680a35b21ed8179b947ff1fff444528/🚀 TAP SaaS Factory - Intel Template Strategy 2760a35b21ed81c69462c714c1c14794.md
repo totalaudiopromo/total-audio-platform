@@ -25,20 +25,20 @@ Use Audio Intel's proven frontend/backend architecture as a template for rapid S
 
 ### Keep From Intel:
 
-- **User Authentication System** - login/signup/password reset
-- **Stripe Integration** - subscriptions, webhooks, billing
-- **Dashboard Shell** - navigation, user profile, settings
-- **Database Schema** - users, subscriptions, basic models
-- **Email System** - notifications, onboarding sequences
-- **Deployment Pipeline** - however you're hosting Intel
-- **UI Component Library** - buttons, forms, layouts
+- **User Authentication System**- login/signup/password reset
+- **Stripe Integration**- subscriptions, webhooks, billing
+- **Dashboard Shell**- navigation, user profile, settings
+- **Database Schema**- users, subscriptions, basic models
+- **Email System**- notifications, onboarding sequences
+- **Deployment Pipeline**- however you're hosting Intel
+- **UI Component Library**- buttons, forms, layouts
 
 ### Strip Out:
 
-- **Audio Analysis Logic** - all the Intel-specific processing
-- **Audio File Handling** - upload/storage/analysis workflows
-- **Intel Dashboard Content** - charts, metrics, audio-specific UI
-- **Audio Database Tables** - tracks, analysis results, etc.
+- **Audio Analysis Logic**- all the Intel-specific processing
+- **Audio File Handling**- upload/storage/analysis workflows
+- **Intel Dashboard Content**- charts, metrics, audio-specific UI
+- **Audio Database Tables**- tracks, analysis results, etc.
 
 ---
 
@@ -208,18 +208,18 @@ Use Audio Intel's proven frontend/backend architecture as a template for rapid S
 
 1. **Clone template repo**
 2. **Rename project/branding**
-3. **Add core functionality** (the unique bit)
-4. **Update database schema** for new data models
-5. **Modify dashboard content** for new tool
+3. **Add core functionality**(the unique bit)
+4. **Update database schema**for new data models
+5. **Modify dashboard content**for new tool
 6. **Test auth/payments unchanged**
-7. **Deploy to new subdomain** ([toolname.totalaudiopromo.com](http://toolname.totalaudiopromo.com))
+7. **Deploy to new subdomain**([toolname.totalaudiopromo.com](http://toolname.totalaudiopromo.com))
 8. **Launch to user base**
 
 ### Template Maintenance:
 
-- **Keep updated** with any Intel improvements
-- **Version control** so can roll back if issues
-- **Backup strategy** for all tool databases
+- **Keep updated**with any Intel improvements
+- **Version control**so can roll back if issues
+- **Backup strategy**for all tool databases
 
 ---
 

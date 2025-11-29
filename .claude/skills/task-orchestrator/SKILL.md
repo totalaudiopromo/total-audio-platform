@@ -23,7 +23,7 @@ Multiple specialist subagents working parallel = fast.
 - Multiple files/areas need simultaneous updates
 - Quality checks can run independently (typecheck + tests + lint)
 
-###  DON'T Use Task Tool When:
+### DON'T Use Task Tool When:
 
 - Simple single-skill task (<15 minutes)
 - Sequential dependencies (must finish A before starting B)
@@ -86,7 +86,7 @@ Return doc structure.
 
 **Result**: All 3 tasks run simultaneously. Total time = slowest task (not sum of all).
 
-###  WRONG: Sequential Messages
+### WRONG: Sequential Messages
 
 ```xml
 <!-- Don't do this - runs serially -->
@@ -213,7 +213,7 @@ Return:
 - Verification that typecheck passes
 ```
 
-###  Bad Prompts
+### Bad Prompts
 
 - Vague objectives ("fix stuff")
 - No specific tasks listed
@@ -229,7 +229,7 @@ Fix TypeScript errors
 
 ## Integration with Customer Acquisition Phase
 
-**During customer acquisition** (NOW - before £500/month):
+**During customer acquisition**(NOW - before £500/month):
 
 ### Delegate Technical Work
 
@@ -390,8 +390,8 @@ If you notice:
 
 **Always ask yourself**: "Can this be parallelized?"
 
-- If **YES** → Use Task tool (multiple calls in one message)
-- If **NO** → Handle directly
+- If **YES**→ Use Task tool (multiple calls in one message)
+- If **NO**→ Handle directly
 
 When in doubt, delegate. Subagents are fast and specialized.
 

@@ -14,8 +14,8 @@ You are the strategic development assistant for **Total Audio**, a UK music prom
 
 ### **Future Vision: Agentic Platform Architecture**
 
-- **Total Audio Promo** → Stable production SaaS suite (Intel, Pitch, Tracker)
-- **TotalAud.io** → Experimental creative interface for AI-powered campaign orchestration
+- **Total Audio Promo**→ Stable production SaaS suite (Intel, Pitch, Tracker)
+- **TotalAud.io**→ Experimental creative interface for AI-powered campaign orchestration
 - **Architecture**: Shared Agent Layer + Skill Registry powering both frontends
 - **Philosophy**: "Make marketing music as creative as making it" - AI augmentation, not automation
 - **Timeline**: After sustainable £500/month revenue proves Audio Intel viability
@@ -39,9 +39,9 @@ You are not building new architecture yet — your work should directly support 
 
 **CRITICAL**: Always reference the simplified local documentation system:
 
-1. **WEEKLY_FOCUS.md** - Current week's priorities and daily progress (CHECK FIRST)
-2. **AUDIO_INTEL_CONTEXT.md** - Complete business model, customer segments, product context
-3. **BUSINESS_NOTES.md** - Running log of decisions, feedback, and insights
+1. **WEEKLY_FOCUS.md**- Current week's priorities and daily progress (CHECK FIRST)
+2. **AUDIO_INTEL_CONTEXT.md**- Complete business model, customer segments, product context
+3. **BUSINESS_NOTES.md**- Running log of decisions, feedback, and insights
 
 **Simplified Documentation Protocol:**
 
@@ -56,7 +56,7 @@ You are not building new architecture yet — your work should directly support 
 
 ### Single Source of Truth Principle
 
-**NEVER create new .md files without explicit user permission.** The project uses a strict documentation structure to prevent chaos.
+**NEVER create new .md files without explicit user permission.**The project uses a strict documentation structure to prevent chaos.
 
 ### Approved Documentation Locations ONLY
 
@@ -95,7 +95,7 @@ You are not building new architecture yet — your work should directly support 
 
 1. Ask yourself: "Can this be added to WEEKLY_FOCUS.md, AUDIO_INTEL_CONTEXT.md, or BUSINESS_NOTES.md?"
 2. If yes → **UPDATE existing file instead**
-3. If no → **Ask user for explicit permission** to create new file
+3. If no → **Ask user for explicit permission**to create new file
 
 **When user asks to "document" something:**
 
@@ -123,7 +123,7 @@ Only create new .md files with explicit permission for:
 - Legal/compliance documentation
 - External stakeholder documentation
 
-**Default response:** "I can add this to [WEEKLY_FOCUS.md/AUDIO_INTEL_CONTEXT.md/BUSINESS_NOTES.md] in the [section name] section. Should I do that instead of creating a new file?"
+**Default response:**"I can add this to [WEEKLY_FOCUS.md/AUDIO_INTEL_CONTEXT.md/BUSINESS_NOTES.md] in the [section name] section. Should I do that instead of creating a new file?"
 
 ### File Lifecycle Management
 
@@ -174,9 +174,9 @@ Only create new .md files with explicit permission for:
 
 **Current Apps (TotalAudioPromo.com):**
 
-1. **Audio Intel** - Contact enrichment & validation (REVENUE FOCUS)
-2. **Pitch Generator** - Personalised pitch generation at scale
-3. **Campaign Tracker** - CRM-style radio submission tracking
+1. **Audio Intel**- Contact enrichment & validation (REVENUE FOCUS)
+2. **Pitch Generator**- Personalised pitch generation at scale
+3. **Campaign Tracker**- CRM-style radio submission tracking
 
 **Future Architecture (After Revenue Validation):**
 
@@ -200,12 +200,12 @@ Only create new .md files with explicit permission for:
 
 **Agent Layer Concept:**
 
-- **Intel Agent** → Data enrichment & contact discovery
-- **Pitch Agent** → Draft, personalise, and optimise pitches
-- **Follow-Up Agent** → Detect non-responses, craft follow-ups
-- **Tracker Agent** → Log campaign events & analytics
-- **Insight Agent** → Summarise performance & recommend actions
-- **VoiceGuard Agent** → Enforce tone, brand voice, authenticity
+- **Intel Agent**→ Data enrichment & contact discovery
+- **Pitch Agent**→ Draft, personalise, and optimise pitches
+- **Follow-Up Agent**→ Detect non-responses, craft follow-ups
+- **Tracker Agent**→ Log campaign events & analytics
+- **Insight Agent**→ Summarise performance & recommend actions
+- **VoiceGuard Agent**→ Enforce tone, brand voice, authenticity
 
 **Skill Registry (Claude Skills-Inspired):**
 
@@ -392,13 +392,13 @@ npm run test:unit                # Unit tests
 
 ### Overview
 
-Complete agent-based testing infrastructure with **3 intelligent agents** that analyze, generate, and execute tests automatically across all apps.
+Complete agent-based testing infrastructure with **3 intelligent agents**that analyze, generate, and execute tests automatically across all apps.
 
 **Status**: Operational (committed hash: `476276d6`, 46 files, 6,523+ lines)
 
 ### Architecture Components
 
-**1. Shared Testing Package** (`@total-audio/testing`)
+**1. Shared Testing Package**(`@total-audio/testing`)
 
 - Touch target validators (WCAG 2.2 Level AA - 44px minimum)
 - Accessibility validators (ARIA, contrast, keyboard navigation)
@@ -406,44 +406,44 @@ Complete agent-based testing infrastructure with **3 intelligent agents** that a
 - Responsive breakpoint validators
 - UK market device configurations (iPhone 13, Galaxy S9+, iPad Pro)
 
-**2. Three Intelligent Agents** (`tools/agents/active/testing/`)
+**2. Three Intelligent Agents**(`tools/agents/active/testing/`)
 
-**Component Analyzer** (`component-analyzer.js`):
+**Component Analyzer**(`component-analyzer.js`):
 
 - Scans React components for mobile UX issues
 - Detects touch targets < 44px, missing ARIA attributes, responsive issues
 - Generates JSON report: `reports/component-analysis.json`
 - Run: `node tools/agents/active/testing/component-analyzer.js`
 
-**Test Generator** (`test-generator.js`):
+**Test Generator**(`test-generator.js`):
 
 - Reads Component Analyzer output
 - Auto-generates targeted Playwright tests for each issue
 - Creates tests in `apps/*/tests/generated/`
 - Run: `node tools/agents/active/testing/test-generator.js`
 
-**Cross-App Orchestrator** (`cross-app-orchestrator.js`):
+**Cross-App Orchestrator**(`cross-app-orchestrator.js`):
 
 - Orchestrates complete testing pipeline: Analyze → Generate → Test
-- **Parallel execution** across all 3 apps (3-5x faster)
+- **Parallel execution**across all 3 apps (3-5x faster)
 - Generates comprehensive cross-app report
 - Run: `node tools/agents/active/testing/cross-app-orchestrator.js`
 
-**3. Mobile Test Suites** (Playwright)
+**3. Mobile Test Suites**(Playwright)
 
 - **Audio Intel**: 3 mobile tests (touch targets, performance, user journey)
 - **Pitch Generator**: 5 mobile tests (complete suite)
 - **Campaign Tracker**: 6 mobile tests (including modal interactions)
-- Total: **529 tests** across all apps
+- Total: **529 tests**across all apps
 
 **4. Claude Code Skills**
 
-- **Testing Orchestrator Skill** (`.claude/skills/testing-orchestrator/`)
+- **Testing Orchestrator Skill**(`.claude/skills/testing-orchestrator/`)
   - Trigger with: "Run mobile tests", "Analyze components", "Generate tests"
   - Coordinates agent execution via Bash tool
   - Natural language testing interface
 
-- **Task Orchestrator Skill** (`.claude/skills/task-orchestrator/`)
+- **Task Orchestrator Skill**(`.claude/skills/task-orchestrator/`)
   - Parallel agent coordination
   - 3-5x faster execution patterns
 
@@ -563,7 +563,7 @@ claude mcp remove [name]         # Remove MCP server
 
 ### The Problem That Was Fixed
 
-**ALL GitHub Actions workflows were failing** with `ERR_PNPM_OUTDATED_LOCKFILE`.
+**ALL GitHub Actions workflows were failing**with `ERR_PNPM_OUTDATED_LOCKFILE`.
 
 **Root Cause**: `pnpm-lock.yaml` was out of sync with `apps/tracker/package.json` because the `@total-audio/testing` workspace package was added to package.json but the lockfile wasn't regenerated.
 
@@ -606,36 +606,36 @@ Developer Push to main
    - Example: `archive/github-workflows-2025/` is correct location
    - `.github/workflows/archive/` is WRONG - workflows still execute
 
-3. **Active workflows** (keep these ONLY):
+3. **Active workflows**(keep these ONLY):
    - `.github/workflows/ci.yml` - Validation (lint, typecheck, test, build)
    - `.github/workflows/golden-verify.yml` - Post-deployment health checks
 
-4. **Archived workflows** (must stay archived):
+4. **Archived workflows**(must stay archived):
    - `archive/github-workflows-2025/ci-cd.yml` - Legacy duplicate
    - `archive/github-workflows-2025/release.yml` - Legacy NPM publishing
 
 ### Responsibilities of Each Layer
 
-**ci.yml** (GitHub Actions):
+**ci.yml**(GitHub Actions):
 
 - Runs on: Every push to `main`, every PR
 - Purpose: Validate code quality BEFORE deployment
 - Actions: Lint, typecheck, test, build (to verify it compiles)
-- **Does NOT deploy** - that's Vercel's job
+- **Does NOT deploy**- that's Vercel's job
 
-**Vercel** (GitHub App Integration):
+**Vercel**(GitHub App Integration):
 
 - Trigger: Automatic on push to `main`
 - Purpose: Build and deploy apps to production
 - Configuration: Per-app `vercel.json` files + Dashboard settings
 - No CLI commands needed - fully automatic
 
-**golden-verify.yml** (GitHub Actions):
+**golden-verify.yml**(GitHub Actions):
 
 - Runs on: After Vercel deploys, hourly health checks, scheduled summaries
 - Purpose: Verify deployed sites are healthy
 - Actions: Health checks, reports, Telegram notifications (failures only)
-- **Does NOT build or test** - those happened in ci.yml
+- **Does NOT build or test**- those happened in ci.yml
 
 ### Verification Checklist (How to Test Pipeline is Working)
 
@@ -853,9 +853,9 @@ When providing advice or strategies, always:
 
 - Marketing music should be **as creative as making it**
 - Agents act like **bandmates or crew members**, not black-box AIs
-- **Transparency always on** - users can edit or disable any AI output
-- Support **"AI-Light" mode** for cautious users
-- **Augmentation, not automation** - "AI as your promo crew"
+- **Transparency always on**- users can edit or disable any AI output
+- Support **"AI-Light" mode**for cautious users
+- **Augmentation, not automation**- "AI as your promo crew"
 
 ### Design Inspiration
 
@@ -987,17 +987,17 @@ When providing advice or strategies, always:
 
 ### Current Phase Questions (October 2025)
 
-- **Will this help acquire the first paying customer?** → Yes = Priority
-- **Does this improve demo conversion?** → Yes = High priority
-- **Does this require more than 2 hours?** → Yes = Break into smaller tasks
-- **Is this vanity metric or real value?** → Vanity = Reject
+- **Will this help acquire the first paying customer?**→ Yes = Priority
+- **Does this improve demo conversion?**→ Yes = High priority
+- **Does this require more than 2 hours?**→ Yes = Break into smaller tasks
+- **Is this vanity metric or real value?**→ Vanity = Reject
 
 ### Future Phase Questions (After £500/month)
 
-- **Does this align with agentic architecture vision?** → Yes = Consider
-- **Can this be modularised as a Skill?** → Yes = Design accordingly
-- **Does this improve TotalAud.io creative experience?** → Yes = Experiment
-- **Will this scale across both domains?** → Yes = Build shared infrastructure
+- **Does this align with agentic architecture vision?**→ Yes = Consider
+- **Can this be modularised as a Skill?**→ Yes = Design accordingly
+- **Does this improve TotalAud.io creative experience?**→ Yes = Experiment
+- **Will this scale across both domains?**→ Yes = Build shared infrastructure
 
 ### Claude Execution Filter
 

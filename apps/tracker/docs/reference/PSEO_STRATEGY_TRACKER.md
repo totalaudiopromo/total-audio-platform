@@ -22,22 +22,22 @@
 
 ### Radio Campaign Tracking (1,000-2,000 searches/month)
 
-1. **BBC Radio 1 Campaign Tracking** - 1,500 searches/month
-2. **BBC Radio 6 Music Campaign Analytics** - 900 searches/month
-3. **Community Radio Promotion Tracking** - 800 searches/month
-4. **BBC Introducing Campaign Tracking** - 700 searches/month
-5. **Commercial Radio Campaign Tracking** - 650 searches/month
+1. **BBC Radio 1 Campaign Tracking**- 1,500 searches/month
+2. **BBC Radio 6 Music Campaign Analytics**- 900 searches/month
+3. **Community Radio Promotion Tracking**- 800 searches/month
+4. **BBC Introducing Campaign Tracking**- 700 searches/month
+5. **Commercial Radio Campaign Tracking**- 650 searches/month
 
 ### Playlist Campaign Tracking (1,500-3,000 searches/month)
 
-6. **Spotify Playlist Campaign Tracking** - 2,800 searches/month
-7. **Apple Music Playlist Analytics** - 1,800 searches/month
-8. **Deezer Playlist Campaign Tracking** - 600 searches/month
+6. **Spotify Playlist Campaign Tracking**- 2,800 searches/month
+7. **Apple Music Playlist Analytics**- 1,800 searches/month
+8. **Deezer Playlist Campaign Tracking**- 600 searches/month
 
 ### General Campaign Topics (2,000+ searches/month)
 
-9. **Music PR Campaign Tracking** - 2,200 searches/month
-10. **Blog Campaign Analytics for Musicians** - 1,900 searches/month
+9. **Music PR Campaign Tracking**- 2,200 searches/month
+10. **Blog Campaign Analytics for Musicians**- 1,900 searches/month
 
 ## TIER 2 PSEO PAGES (20 MEDIUM-PRIORITY)
 
@@ -138,14 +138,14 @@ the industry average (18% for your genre) and exactly what to improve.
 ```markdown
 ## Real [Platform] Campaign: Before vs After Tracker
 
-**Before Tracker** (Manual Spreadsheet):
+**Before Tracker**(Manual Spreadsheet):
 
 - 8 hours/week updating campaign status
 - No idea if 15% response rate is good
 - Repeated same mistakes across 3 campaigns
 - Couldn't prove value to label
 
-**After Tracker** (AI Intelligence):
+**After Tracker**(AI Intelligence):
 
 - 15 minutes/week reviewing insights
 - Immediately saw 15% is below the 22% genre average
@@ -350,11 +350,11 @@ Focus on genre and location-specific long-tail (1,500-1,800 words each)
 
 ## IMMEDIATE ACTIONS
 
-1. **Add meta tags to existing pages** (homepage, dashboard, demo)
-2. **Create blog index structure** (like Intel)
+1. **Add meta tags to existing pages**(homepage, dashboard, demo)
+2. **Create blog index structure**(like Intel)
 3. **Build PSEO page wrapper component**
-4. **Write first 3 Tier 1 pages** (BBC Radio 1, Spotify, PR)
-5. **Set up analytics tracking** (page views, conversions)
+4. **Write first 3 Tier 1 pages**(BBC Radio 1, Spotify, PR)
+5. **Set up analytics tracking**(page views, conversions)
 
 ---
 

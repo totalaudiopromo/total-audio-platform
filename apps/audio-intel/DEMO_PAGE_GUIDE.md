@@ -302,7 +302,7 @@ Modify the `loadLibertyDemoData()` function to include:
 
 ## Support
 
-**Questions?** Contact Chris at:
+**Questions?**Contact Chris at:
 
 - Email: chris@totalaudiopromo.com
 - GitHub: github.com/totalaudiopromo/audio-intel

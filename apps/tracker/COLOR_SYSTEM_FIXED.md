@@ -4,7 +4,7 @@
 
 ## Summary
 
-Fixed the entire color system in the Tracker app to match the Total Audio Promo brand guidelines. Tracker's primary brand color is **Teal/Cyan (#14B8A6)** - verified from live site tracker.totalaudiopromo.com.
+Fixed the entire color system in the Tracker app to match the Total Audio Promo brand guidelines. Tracker's primary brand color is **Teal/Cyan (#14B8A6)**- verified from live site tracker.totalaudiopromo.com.
 
 ## Changes Made
 

@@ -4,9 +4,9 @@ _THE main file - start here every day_
 
 ## THIS WEEK'S 3 BIG GOALS
 
-1. **Phase 11: Unified Intelligence** - Complete Golden Verify + Testing integration
-2. **Infrastructure Consolidation** - Deploy integrated ops dashboard to Command Centre
-3. **CI/CD Stability** - Verify clean deployment pipeline with all green checks
+1. **Phase 11: Unified Intelligence**- Complete Golden Verify + Testing integration
+2. **Infrastructure Consolidation**- Deploy integrated ops dashboard to Command Centre
+3. **CI/CD Stability**- Verify clean deployment pipeline with all green checks
 
 ---
 
@@ -145,11 +145,11 @@ _What to carry forward or focus on next_
 
 _Use this block to test the framework safely. Skip any item that creates drag._
 
-- [ ] **Define** (`D`): Capture next week's single measurable target → 
-- [ ] **Eliminate** (`E`): List any task you're pausing or deleting → 
-- [ ] **Simplify** (`S₁`): Note the workflow to streamline (demo, onboarding, outreach) → 
-- [ ] **Speed up** (`S₂`): Decide one feedback loop to shorten (e.g., 24h follow-ups) → 
-- [ ] **Automate** (`A`): Choose the repeatable win to systemise after two successful loops → 
+- [ ] **Define**(`D`): Capture next week's single measurable target → 
+- [ ] **Eliminate**(`E`): List any task you're pausing or deleting → 
+- [ ] **Simplify**(`S₁`): Note the workflow to streamline (demo, onboarding, outreach) → 
+- [ ] **Speed up**(`S₂`): Decide one feedback loop to shorten (e.g., 24h follow-ups) → 
+- [ ] **Automate**(`A`): Choose the repeatable win to systemise after two successful loops → 
 
 ---
 

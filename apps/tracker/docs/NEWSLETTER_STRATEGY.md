@@ -22,7 +22,7 @@
 - **User Journey**: Launch campaign → Track results → Learn patterns → Improve
 - **Call to Action**: "Track your next campaign", "Compare against benchmarks"
 
-**ZERO OVERLAP** - Perfect funnel synergy
+**ZERO OVERLAP**- Perfect funnel synergy
 
 ---
 
@@ -57,7 +57,7 @@ Tags to add:
 CTA: "Get weekly campaign insights like this. No fluff, just benchmarks."
 ```
 
-#### 3. **Dashboard User Tag** (API trigger)
+#### 3. **Dashboard User Tag**(API trigger)
 
 ```
 Tag: tracker-active-user
@@ -69,7 +69,7 @@ Purpose: Separate content track for active users vs prospects
 
 ## EMAIL SEQUENCES
 
-### Sequence 1: **New Tracker Subscriber Welcome** (5 emails)
+### Sequence 1: **New Tracker Subscriber Welcome**(5 emails)
 
 **Day 1 - Welcome + Quick Win**
 
@@ -103,7 +103,7 @@ Brighton, UK
 
 ### Sequence 2: **Weekly "Campaign Intelligence" Newsletter**
 
-**Tuesday delivery** (less inbox competition than Monday)
+**Tuesday delivery**(less inbox competition than Monday)
 
 **Format:**
 
@@ -202,21 +202,21 @@ Chris
 
 ## NEWSLETTER SEGMENTS
 
-### Segment 1: **Prospects** (tag: tracker-interested, NOT tracker-active-user)
+### Segment 1: **Prospects**(tag: tracker-interested, NOT tracker-active-user)
 
 - Focus: Why campaign tracking matters
 - Benchmarks to prove value
 - FOMO: "Artists who track vs artists who don't"
 - CTA: Start free trial
 
-### Segment 2: **Active Users** (tag: tracker-active-user)
+### Segment 2: **Active Users**(tag: tracker-active-user)
 
 - Focus: Advanced campaign optimization
 - Deeper insights and patterns
 - Case studies from their campaigns
 - CTA: Upgrade to PRO, refer other artists
 
-### Segment 3: **Hybrid Users** (tags: audio-intel-active + tracker-active)
+### Segment 3: **Hybrid Users**(tags: audio-intel-active + tracker-active)
 
 - Focus: Complete workflow optimization
 - Cross-tool insights

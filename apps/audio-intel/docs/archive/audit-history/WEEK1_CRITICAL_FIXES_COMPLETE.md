@@ -176,7 +176,7 @@ import CookieConsent from 'react-cookie-consent';
 - `app/terms/page.tsx` - Terms of Service
 - `app/contact/page.tsx` - Contact/Support page
 
-**Templates Ready** (awaiting creation):
+**Templates Ready**(awaiting creation):
 
 - Cookie Policy: Types of cookies, purpose, opt-out instructions
 - Terms of Service: Service agreement, usage terms, disclaimers
@@ -260,16 +260,16 @@ import CookieConsent from 'react-cookie-consent';
 
 ### Immediate (Today - 3 Hours)
 
-1. **Create Cookie Policy page** (1 hour)
-2. **Create Terms of Service page** (1 hour)
-3. **Fix broken images & add alt text** (1 hour)
+1. **Create Cookie Policy page**(1 hour)
+2. **Create Terms of Service page**(1 hour)
+3. **Fix broken images & add alt text**(1 hour)
 
 ### High Priority (This Week - 2 Days)
 
-4. **Update Footer with legal links** (30 mins)
-5. **Add sitemap entries for legal pages** (15 mins)
-6. **Test cookie banner on mobile** (30 mins)
-7. **Add metadataBase to fix OG images** (5 mins)
+4. **Update Footer with legal links**(30 mins)
+5. **Add sitemap entries for legal pages**(15 mins)
+6. **Test cookie banner on mobile**(30 mins)
+7. **Add metadataBase to fix OG images**(5 mins)
 
 ---
 
@@ -356,7 +356,7 @@ import CookieConsent from 'react-cookie-consent';
 - 7% conversion rate (40% improvement) = 70 signups
 - 24% bounce rate (60% reduction) = 760 engaged visitors
 
-**Result**: **40% more signups** (50 → 70) from same traffic
+**Result**: **40% more signups**(50 → 70) from same traffic
 
 ---
 

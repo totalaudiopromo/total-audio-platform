@@ -4,16 +4,16 @@
 
 **Campaign Stats to Reference:**
 
-- **85 plays** achieved pre-release
-- **Amazing Radio** confirmed support
-- **9 countries** reach
-- **Monday 14th October** official release date
+- **85 plays**achieved pre-release
+- **Amazing Radio**confirmed support
+- **9 countries**reach
+- **Monday 14th October**official release date
 
 ---
 
 ## Template 1: WARM Follow-Up (Anika Luna - Triple J Home & Hosed)
 
-**Subject:** Following up - KYARA "Bloodshot" (now live)
+**Subject:**Following up - KYARA "Bloodshot" (now live)
 
 **Body:**
 
@@ -44,7 +44,7 @@ chrisschofield@libertymusicpr.com
 
 ## Template 2: Music Director Follow-Up (Claire Mooney - Triple J)
 
-**Subject:** KYARA "Bloodshot" update - Amazing Radio + 85 plays
+**Subject:**KYARA "Bloodshot" update - Amazing Radio + 85 plays
 
 **Body:**
 
@@ -74,7 +74,7 @@ Liberty Music PR
 
 ## Template 3: Community Radio Follow-Up (Triple R, PBS FM)
 
-**Subject:** KYARA "Bloodshot" - Amazing Radio support + momentum
+**Subject:**KYARA "Bloodshot" - Amazing Radio support + momentum
 
 **Body:**
 
@@ -102,7 +102,7 @@ chrisschofield@libertymusicpr.com
 
 ## Template 4: Commercial Radio Follow-Up (KIIS, Nova)
 
-**Subject:** KYARA "Bloodshot" - crossover momentum (Amazing Radio + 85 plays)
+**Subject:**KYARA "Bloodshot" - crossover momentum (Amazing Radio + 85 plays)
 
 **Body:**
 
@@ -132,7 +132,7 @@ Liberty Music PR
 
 ## Template 5: UK Specialist Shows (Non-Responders)
 
-**Subject:** KYARA "Bloodshot" - Australian artist, Amazing Radio support
+**Subject:**KYARA "Bloodshot" - Australian artist, Amazing Radio support
 
 **Body:**
 
@@ -160,18 +160,18 @@ chrisschofield@libertymusicpr.com
 
 ### Day 1-2 (Tuesday-Wednesday Post-Release):
 
-- **Send to WARM contacts** (Anika Luna) - Template 1
-- **Send to Music Directors** (Claire Mooney) - Template 2
+- **Send to WARM contacts**(Anika Luna) - Template 1
+- **Send to Music Directors**(Claire Mooney) - Template 2
 
 ### Day 3-4 (Thursday-Friday):
 
-- **Community radio** (Triple R, PBS FM) - Template 3
-- **UK specialist shows** (non-responders) - Template 5
+- **Community radio**(Triple R, PBS FM) - Template 3
+- **UK specialist shows**(non-responders) - Template 5
 
 ### Day 5-7 (Weekend/Monday):
 
-- **Commercial radio** (KIIS, Nova) - Template 4
-- **Second-tier contacts** from new target list
+- **Commercial radio**(KIIS, Nova) - Template 4
+- **Second-tier contacts**from new target list
 
 ---
 
@@ -179,11 +179,11 @@ chrisschofield@libertymusicpr.com
 
 ### Momentum Metrics:
 
- **85 plays** across **9 countries** pre-release
- **Amazing Radio** (UK) confirmed support
- **Triple J** history (Home & Hosed - "Yearn")
- **Sydney-based** independent artist
- **Self-produced** (bedroom studio credibility)
+ **85 plays**across **9 countries**pre-release
+ **Amazing Radio**(UK) confirmed support
+ **Triple J**history (Home & Hosed - "Yearn")
+ **Sydney-based**independent artist
+ **Self-produced**(bedroom studio credibility)
 
 ### Production Quality:
 
@@ -269,15 +269,15 @@ Create a simple spreadsheet to track:
 
 ## Links to Include:
 
-**Spotify:** [INSERT KYARA BLOODSHOT SPOTIFY LINK]
-**Apple Music:** [INSERT APPLE MUSIC LINK]
-**WAV Download:** [INSERT WETRANSFER/DROPBOX LINK]
-**SoundCloud:** https://on.soundcloud.com/1oiblSoRYCp1swzCr3 (if applicable)
+**Spotify:**[INSERT KYARA BLOODSHOT SPOTIFY LINK]
+**Apple Music:**[INSERT APPLE MUSIC LINK]
+**WAV Download:**[INSERT WETRANSFER/DROPBOX LINK]
+**SoundCloud:**https://on.soundcloud.com/1oiblSoRYCp1swzCr3 (if applicable)
 
 ---
 
-**Created:** October 12, 2025
-**Campaign:** KYARA "Bloodshot" Release Week
-**Release Date:** Monday 14th October 2025
-**Region:** Australia + UK
-**Gmail Account:** chrisschofield@libertymusicpr.com
+**Created:**October 12, 2025
+**Campaign:**KYARA "Bloodshot" Release Week
+**Release Date:**Monday 14th October 2025
+**Region:**Australia + UK
+**Gmail Account:**chrisschofield@libertymusicpr.com

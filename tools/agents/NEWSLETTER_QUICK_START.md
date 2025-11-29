@@ -14,9 +14,9 @@ node send-to-convertkit.js --test
 
 ## What You Get
 
-- **3 newsletter sections** from indie-relevant music news
-- **Fresh content** written in your voice by Claude API
-- **ConvertKit draft** ready for your review
+- **3 newsletter sections**from indie-relevant music news
+- **Fresh content**written in your voice by Claude API
+- **ConvertKit draft**ready for your review
 - **Cost**: £0.01-0.03 per newsletter
 
 ## Voice Quality Checks
@@ -32,10 +32,10 @@ Every newsletter should have:
 
 ## Monday Workflow
 
-1. **Generate** (5 min): Run newsletter generator
-2. **Review** (5 min): Read 3 sections, check voice
-3. **Edit** (optional): Tweak any sections if needed
-4. **Schedule** (2 min): Approve in ConvertKit for Tuesday 9am
+1. **Generate**(5 min): Run newsletter generator
+2. **Review**(5 min): Read 3 sections, check voice
+3. **Edit**(optional): Tweak any sections if needed
+4. **Schedule**(2 min): Approve in ConvertKit for Tuesday 9am
 5. **Done**: 12 minutes total
 
 ## Success Metrics

@@ -114,7 +114,7 @@
 
 ### Simplification Cascades
 
-**Use When:** (Deferred until post-£500/month)
+**Use When:**(Deferred until post-£500/month)
 
 - Code has obvious duplication
 - Multiple components do same thing
@@ -222,21 +222,21 @@ Is it a NEW WORKFLOW PATTERN?
 
 ## Red Flags (When to Stop & Use Skills)
 
-###  Use Systematic Debugging If:
+### Use Systematic Debugging If:
 
 - "I've tried 3 different approaches and none work"
 - "This error message doesn't make sense"
 - "It works locally but fails in production"
 - "I've been debugging for >30 minutes"
 
-###  Use Two-Hour Session Validator If:
+### Use Two-Hour Session Validator If:
 
 - "This is taking longer than expected"
 - "I've gone down a rabbit hole"
 - "This optimization isn't customer-facing"
 - "I'm refactoring instead of shipping"
 
-###  Use Brainstorming If:
+### Use Brainstorming If:
 
 - "I'm not sure how to approach this feature"
 - "Multiple solutions seem equally valid"
@@ -363,6 +363,6 @@ Keep?: [Yes/No/Archive]
 
 ---
 
-**Last Updated:** October 2025
-**Next Review:** After first customer acquisition
-**Philosophy:** Skills should accelerate customer acquisition, not distract from it
+**Last Updated:**October 2025
+**Next Review:**After first customer acquisition
+**Philosophy:**Skills should accelerate customer acquisition, not distract from it

@@ -16,7 +16,7 @@ Week 3 high-priority optimizations focused on SEO improvements, legal page creat
 
 ### 1. Legal & Support Pages (Business Protection) ✅
 
-#### **Terms of Service Page** ([/terms](/terms))
+#### **Terms of Service Page**([/terms](/terms))
 
 - **Purpose**: Legal protection for Audio Intel business operations
 - **Coverage**:
@@ -32,7 +32,7 @@ Week 3 high-priority optimizations focused on SEO improvements, legal page creat
 - **Design**: Neo-brutalist style matching site design
 - **Business Impact**: Protection from legal disputes, clear user expectations
 
-#### **Contact & Support Page** ([/contact](/contact))
+#### **Contact & Support Page**([/contact](/contact))
 
 - **Purpose**: Customer support infrastructure and communication
 - **Features**:
@@ -57,14 +57,14 @@ Week 3 high-priority optimizations focused on SEO improvements, legal page creat
 
 - **Component Created**: [components/BlogStructuredData.tsx](/components/BlogStructuredData.tsx)
 - **Implementation**: Added to 8 case study blog posts:
-  1. **BBC Radio 1 Contact Enrichment** - BBC Radio 1 pitching workflow case study
-  2. **BBC Radio 1Xtra Contact Enrichment** - Urban/grime/Afrobeats route analysis
-  3. **BBC Radio 2 Contact Enrichment** - 35-54 demographic targeting strategy
-  4. **BBC Radio 6 Music Contact Enrichment** - Indie artist radio promotion
-  5. **Spotify Editorial Playlist Contacts** - Playlist submission workflow
-  6. **Apple Music Editorial Contacts** - Distributor route requirements
-  7. **Kerrang Radio Contact Enrichment** - Rock/metal submission route
-  8. **Absolute Radio Contact Enrichment** - Self-released artist pathway
+  1. **BBC Radio 1 Contact Enrichment**- BBC Radio 1 pitching workflow case study
+  2. **BBC Radio 1Xtra Contact Enrichment**- Urban/grime/Afrobeats route analysis
+  3. **BBC Radio 2 Contact Enrichment**- 35-54 demographic targeting strategy
+  4. **BBC Radio 6 Music Contact Enrichment**- Indie artist radio promotion
+  5. **Spotify Editorial Playlist Contacts**- Playlist submission workflow
+  6. **Apple Music Editorial Contacts**- Distributor route requirements
+  7. **Kerrang Radio Contact Enrichment**- Rock/metal submission route
+  8. **Absolute Radio Contact Enrichment**- Self-released artist pathway
 
 - **Schema Markup**:
 
@@ -154,24 +154,24 @@ Week 3 high-priority optimizations focused on SEO improvements, legal page creat
 
 ### New Files (2)
 
-1. **app/terms/page.tsx** - Terms of Service legal page
-2. **app/contact/page.tsx** - Contact & Support page
+1. **app/terms/page.tsx**- Terms of Service legal page
+2. **app/contact/page.tsx**- Contact & Support page
 
 ### Modified Files (8)
 
-1. **app/blog/bbc-radio-1-contact-enrichment/page.tsx** - Added structured data + canonical URL
-2. **app/blog/bbc-radio-1xtra-contact-enrichment/page.tsx** - Added structured data + canonical URL
-3. **app/blog/bbc-radio-2-contact-enrichment/page.tsx** - Added structured data + canonical URL
-4. **app/blog/bbc-radio-6-music-contact-enrichment/page.tsx** - Added structured data + canonical URL
-5. **app/blog/spotify-editorial-playlist-contacts/page.tsx** - Added structured data + canonical URL
-6. **app/blog/apple-music-editorial-contacts/page.tsx** - Added structured data + canonical URL
-7. **app/blog/kerrang-radio-contact-enrichment/page.tsx** - Added structured data + canonical URL
-8. **app/blog/absolute-radio-contact-enrichment/page.tsx** - Added structured data + canonical URL
+1. **app/blog/bbc-radio-1-contact-enrichment/page.tsx**- Added structured data + canonical URL
+2. **app/blog/bbc-radio-1xtra-contact-enrichment/page.tsx**- Added structured data + canonical URL
+3. **app/blog/bbc-radio-2-contact-enrichment/page.tsx**- Added structured data + canonical URL
+4. **app/blog/bbc-radio-6-music-contact-enrichment/page.tsx**- Added structured data + canonical URL
+5. **app/blog/spotify-editorial-playlist-contacts/page.tsx**- Added structured data + canonical URL
+6. **app/blog/apple-music-editorial-contacts/page.tsx**- Added structured data + canonical URL
+7. **app/blog/kerrang-radio-contact-enrichment/page.tsx**- Added structured data + canonical URL
+8. **app/blog/absolute-radio-contact-enrichment/page.tsx**- Added structured data + canonical URL
 
 ### Component Dependencies
 
-- **components/BlogStructuredData.tsx** - Reusable structured data component (from Week 2)
-- **utils/blogStructuredData.ts** - Blog post metadata utility (from Week 2)
+- **components/BlogStructuredData.tsx**- Reusable structured data component (from Week 2)
+- **utils/blogStructuredData.ts**- Blog post metadata utility (from Week 2)
 
 ---
 

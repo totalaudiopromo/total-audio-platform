@@ -1,6 +1,6 @@
 # 🎯 Priority Contact Lists for Audio Intel Outreach
 
-**IMMEDIATE ACTION PLAN** - Ready to execute contact analysis and outreach
+**IMMEDIATE ACTION PLAN**- Ready to execute contact analysis and outreach
 
 ## 🏆 TIER 1: RADIO PROMOTERS (START HERE)
 
@@ -282,62 +282,62 @@ Budget Authority: [who controls tool spend]
 
 ### Radio Promoter Demo Script (15 mins):
 
-1. **Problem Validation** (3 mins):
+1. **Problem Validation**(3 mins):
    - "Walk me through your current contact research process"
    - "How long does a typical radio campaign contact list take?"
    - "What's your biggest frustration with current tools?"
 
-2. **Audio Intel Solution** (8 mins):
+2. **Audio Intel Solution**(8 mins):
    - Upload their actual 20-contact email list
    - Show real-time enrichment happening
    - Highlight radio-specific data (contact preferences, submission guidelines)
    - Compare: "15 hours manual work → 15 minutes with Audio Intel"
 
-3. **Value Realization** (2 mins):
+3. **Value Realization**(2 mins):
    - Calculate time savings: "£25/hour × 15 hours = £375 per campaign"
    - Show cost comparison: "Audio Intel = £19.99/month = one hour of your time"
 
-4. **Trial Close** (2 mins):
+4. **Trial Close**(2 mins):
    - "Try it free for 14 days with your real contact lists"
    - "No credit card needed, cancel anytime"
    - "I'll personally make sure it works for your workflow"
 
 ### Artist/Producer Demo Script (12 mins):
 
-1. **Artist Credibility** (2 mins):
+1. **Artist Credibility**(2 mins):
    - "Love your latest track [specific track name]"
    - "As a producer myself (sadact), I know the contact research pain"
 
-2. **Solution Demo** (7 mins):
+2. **Solution Demo**(7 mins):
    - Focus on playlist curator and blog contact discovery
    - Show genre-specific filtering
    - Demonstrate social media profile enrichment
 
-3. **Value for Artists** (2 mins):
+3. **Value for Artists**(2 mins):
    - "More time creating, less time researching"
    - "Find contacts your competitors don't know about"
 
-4. **Artist-Friendly Trial** (1 min):
+4. **Artist-Friendly Trial**(1 min):
    - Free trial with their genre focus
    - No contract, cancel anytime
 
 ### PR Agency Demo Script (20 mins):
 
-1. **Agency Efficiency Focus** (5 mins):
+1. **Agency Efficiency Focus**(5 mins):
    - "How much time does your team spend on contact research?"
    - "What's your cost per hour for junior staff research?"
 
-2. **Efficiency Demonstration** (10 mins):
+2. **Efficiency Demonstration**(10 mins):
    - Show bulk contact enrichment
    - Demonstrate team collaboration features
    - Calculate team time savings
 
-3. **ROI Presentation** (3 mins):
+3. **ROI Presentation**(3 mins):
    - Junior staff time saved: £15/hour × 20 hours = £300/week
    - Audio Intel cost: £39.99/month
    - ROI: 8x return on investment
 
-4. **Agency Trial Program** (2 mins):
+4. **Agency Trial Program**(2 mins):
    - Extended 30-day trial for agencies
    - Team training included
    - Success metrics tracking
@@ -399,9 +399,9 @@ CURRENT TRAJECTORY: On Track / Behind / Ahead
 
 ### Today:
 
-1. **Set up tracking system** (simple spreadsheet)
-2. **Research first 5 radio promoters** using LinkedIn
-3. **Prepare Audio Intel demo environment** with sample data
+1. **Set up tracking system**(simple spreadsheet)
+2. **Research first 5 radio promoters**using LinkedIn
+3. **Prepare Audio Intel demo environment**with sample data
 4. **Write first personalized outreach message**
 
 ### This Week:

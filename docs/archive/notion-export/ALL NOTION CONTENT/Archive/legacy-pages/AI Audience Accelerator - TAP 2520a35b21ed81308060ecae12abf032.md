@@ -148,8 +148,8 @@ The x axis should be numbered one to ten the y axis should include desire, frust
 
 ### Key Elements Used:
 
-- **[1. WHAT YOU TALK ABOUT]:** Music Marketing & Promotion
-- **[2. TARGET AUDIENCE]:** Your complete dual audience context from the document above
+- **[1. WHAT YOU TALK ABOUT]:**Music Marketing & Promotion
+- **[2. TARGET AUDIENCE]:**Your complete dual audience context from the document above
 
 This prompt will generate the emotional foundation we need to create your Content Strategy Matrix in the next step, identifying the specific pain points and aspirations that will drive your most effective content topics.
 
@@ -234,7 +234,7 @@ Now, I want you to create a Content Strategy by filling out the matrix.
 
 Fill out the matrix by applying each of the 3 proven content formats from the x axis to the 3 content buckets on the y axis.
 
-The output should be formatted in a table, so that each resulting matrix field has a **bolded** headline describing it, with 2 sentences below explaining the component of the content strategy.
+The output should be formatted in a table, so that each resulting matrix field has a **bolded**headline describing it, with 2 sentences below explaining the component of the content strategy.
 
 After outputting the table, suggest 2 content ideas for each component of the Content Strategy.
 
@@ -242,11 +242,11 @@ After outputting the table, suggest 2 content ideas for each component of the Co
 
 ### Key Elements Used:
 
-- **[1. GIVE CONTEXT]:** Your complete authentic personal and business context
-- **[2. TARGET AUDIENCE]:** Your dual audience (independent artists + PR agencies)
-- **[3. TOPIC 1]:** AI-Powered Music Marketing Tools
-- **[3. TOPIC 2]:** Radio Promotion & Industry Relationships
-- **[3. TOPIC 3]:** Independent Artist Development & Success
+- **[1. GIVE CONTEXT]:**Your complete authentic personal and business context
+- **[2. TARGET AUDIENCE]:**Your dual audience (independent artists + PR agencies)
+- **[3. TOPIC 1]:**AI-Powered Music Marketing Tools
+- **[3. TOPIC 2]:**Radio Promotion & Industry Relationships
+- **[3. TOPIC 3]:**Independent Artist Development & Success
 
 This will create a 3x3 matrix (9 content types total) that covers every angle of your expertise with the right content format for maximum growth, engagement, and monetization.
 

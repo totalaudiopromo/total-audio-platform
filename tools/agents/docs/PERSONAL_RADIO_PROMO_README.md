@@ -15,12 +15,12 @@ Your enhanced Radio Promo Agent now includes personal workflow automation capabi
 
 ### Personal Workflow Automation
 
-1. **Google Meet transcript processing** - Extract campaign briefs from meeting recordings
-2. **Monday.com campaign auto-creation** - Generate structured campaign boards
-3. **Liberty-style press release generation** - Professional PR templates
-4. **WARM API play tracking** - Monitor track performance with notifications
-5. **Google Chat integration** - Team notifications for campaign wins
-6. **Verification system** - Approve each step before execution
+1. **Google Meet transcript processing**- Extract campaign briefs from meeting recordings
+2. **Monday.com campaign auto-creation**- Generate structured campaign boards
+3. **Liberty-style press release generation**- Professional PR templates
+4. **WARM API play tracking**- Monitor track performance with notifications
+5. **Google Chat integration**- Team notifications for campaign wins
+6. **Verification system**- Approve each step before execution
 
 ## Setup
 
@@ -93,7 +93,7 @@ node radio-promo-agent.js no-verify
 
 ### Complete Workflow Example
 
-1. **Record your campaign planning meeting** and save transcript as `meeting.txt`
+1. **Record your campaign planning meeting**and save transcript as `meeting.txt`
 2. **Run the complete workflow**:
 
    ```bash

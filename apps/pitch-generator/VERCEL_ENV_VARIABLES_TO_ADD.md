@@ -11,7 +11,7 @@ NEXTAUTH_SECRET
 NEXTAUTH_URL
 ```
 
-**Value for NEXTAUTH_URL:** `https://pitch.totalaudiopromo.com`
+**Value for NEXTAUTH_URL:**`https://pitch.totalaudiopromo.com`
 
 ### Supabase Database
 
@@ -33,7 +33,7 @@ ANTHROPIC_API_KEY
 NEXT_PUBLIC_BASE_URL
 ```
 
-**Value:** `https://pitch.totalaudiopromo.com`
+**Value:**`https://pitch.totalaudiopromo.com`
 
 ---
 
@@ -109,9 +109,9 @@ STRIPE_PRICE_AGENCY_ANNUAL=<from-vault>
 5.  `NEXTAUTH_SECRET`
 6.  `NEXTAUTH_URL` = `https://pitch.totalaudiopromo.com`
 
-**Add these second (for full functionality):** 7. `GOOGLE_CLIENT_ID` + `GOOGLE_CLIENT_SECRET` (Google OAuth) 8. `DEMO_USER_EMAIL` + `DEMO_USER_PASSWORD` (Demo login) 9. `NEXT_PUBLIC_BASE_URL` = `https://pitch.totalaudiopromo.com`
+**Add these second (for full functionality):**7. `GOOGLE_CLIENT_ID` + `GOOGLE_CLIENT_SECRET` (Google OAuth) 8. `DEMO_USER_EMAIL` + `DEMO_USER_PASSWORD` (Demo login) 9. `NEXT_PUBLIC_BASE_URL` = `https://pitch.totalaudiopromo.com`
 
-**Add these last (for payments):** 10. `STRIPE_SECRET_KEY` 11. `STRIPE_PRICE_*` (all 4 price IDs)
+**Add these last (for payments):**10. `STRIPE_SECRET_KEY` 11. `STRIPE_PRICE_*` (all 4 price IDs)
 
 ---
 
@@ -119,14 +119,14 @@ STRIPE_PRICE_AGENCY_ANNUAL=<from-vault>
 
 1. Go to: https://vercel.com/dashboard
 2. Select your `pitch-generator` project
-3. Go to: **Settings** → **Environment Variables**
+3. Go to: **Settings**→ **Environment Variables**
 4. For each variable:
    - Click **Add New**
    - Paste variable name
    - Paste value from your vault
-   - Select environment: **Production** (and Preview + Development if you want)
+   - Select environment: **Production**(and Preview + Development if you want)
    - Click **Save**
-5. After adding all variables, go to **Deployments** → **Redeploy**
+5. After adding all variables, go to **Deployments**→ **Redeploy**
 
 ---
 
@@ -151,7 +151,7 @@ Look for entries named like:
 
 ## After Adding
 
-1. **Redeploy** in Vercel (required for changes to take effect)
+1. **Redeploy**in Vercel (required for changes to take effect)
 2. Test the site: https://pitch.totalaudiopromo.com
 3. Try signing in and generating a pitch
 4. Check Vercel function logs for any errors

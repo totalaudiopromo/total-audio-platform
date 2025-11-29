@@ -2,10 +2,10 @@
 
 ## 🎯 Project Overview
 
-**Total Audio Promo** is an AI-powered music promotion ecosystem serving two markets:
+**Total Audio Promo**is an AI-powered music promotion ecosystem serving two markets:
 
-- **Independent Artists** (£50-200/month): Emerging talent seeking affordable automation
-- **PR Agencies** (£500-2000/month): Firms managing multiple clients at scale
+- **Independent Artists**(£50-200/month): Emerging talent seeking affordable automation
+- **PR Agencies**(£500-2000/month): Firms managing multiple clients at scale
 
 **Core Mission**: Eliminate 94% of repetitive tasks in music PR while increasing campaign effectiveness by 300%+.
 

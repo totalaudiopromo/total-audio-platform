@@ -6,7 +6,7 @@
 
 1. Open Claude Code settings (⌘,)
 2. Go to **Capabilities**
-3. Enable **"Skills"** toggle
+3. Enable **"Skills"**toggle
 4. Restart Claude Code
 
 ### Step 2: Install Skills via Plugin Marketplace
@@ -82,13 +82,13 @@ Close and reopen Claude Code to load new skills.
 
 ## Priority Skills for Total Audio Projects
 
-###  Install First (This Week)
+### Install First (This Week)
 
 #### 1. Skill Creator
 
-**Why:** Create custom skills for both projects
-**Repo:** https://github.com/obra/superpowers
-**Path:** `skills/skill-creator/`
+**Why:**Create custom skills for both projects
+**Repo:**https://github.com/obra/superpowers
+**Path:**`skills/skill-creator/`
 
 **First Custom Skills to Create:**
 
@@ -98,9 +98,9 @@ Close and reopen Claude Code to load new skills.
 
 #### 2. Changelog Generator
 
-**Why:** Customer trust + demo call prep
-**Repo:** https://github.com/ComposioHQ/awesome-claude-skills
-**Path:** `changelog-generator/`
+**Why:**Customer trust + demo call prep
+**Repo:**https://github.com/ComposioHQ/awesome-claude-skills
+**Path:**`changelog-generator/`
 
 **Use Cases:**
 
@@ -110,9 +110,9 @@ Close and reopen Claude Code to load new skills.
 
 #### 3. Systematic Debugging
 
-**Why:** Prevents 2-hour sessions turning into rabbit holes
-**Repo:** https://github.com/obra/superpowers
-**Path:** `skills/systematic-debugging/`
+**Why:**Prevents 2-hour sessions turning into rabbit holes
+**Repo:**https://github.com/obra/superpowers
+**Path:**`skills/systematic-debugging/`
 
 **Use Cases:**
 
@@ -126,9 +126,9 @@ Close and reopen Claude Code to load new skills.
 
 #### 4. Brainstorming
 
-**Why:** Feature planning and customer acquisition strategy
-**Repo:** https://github.com/obra/superpowers
-**Path:** `skills/brainstorming/`
+**Why:**Feature planning and customer acquisition strategy
+**Repo:**https://github.com/obra/superpowers
+**Path:**`skills/brainstorming/`
 
 **Use Cases:**
 
@@ -142,9 +142,9 @@ Close and reopen Claude Code to load new skills.
 
 #### 5. Simplification Cascades
 
-**Why:** Refactoring should wait until post-customer acquisition
-**Repo:** https://github.com/obra/superpowers-skills
-**Path:** `skills/problem-solving/simplification-cascades/`
+**Why:**Refactoring should wait until post-customer acquisition
+**Repo:**https://github.com/obra/superpowers-skills
+**Path:**`skills/problem-solving/simplification-cascades/`
 
 **When to Use:**
 
@@ -188,8 +188,8 @@ Skills have access to:
 
 #### 1. audio-intel-mobile-validator
 
-**Purpose:** Enforce 21 mobile UX standards resolved in September 2025
-**Triggers:** When creating/modifying components in `apps/audio-intel/`
+**Purpose:**Enforce 21 mobile UX standards resolved in September 2025
+**Triggers:**When creating/modifying components in `apps/audio-intel/`
 **Checks:**
 
 - Touch target sizes (min 44x44px)
@@ -200,8 +200,8 @@ Skills have access to:
 
 #### 2. customer-acquisition-tracker
 
-**Purpose:** Track demo calls, conversions, revenue metrics
-**Triggers:** When updating CLAUDE.md with customer data
+**Purpose:**Track demo calls, conversions, revenue metrics
+**Triggers:**When updating CLAUDE.md with customer data
 **Outputs:**
 
 - Current conversion rates by segment (Radio 85%, Artist 60%, Agency 70%)
@@ -210,8 +210,8 @@ Skills have access to:
 
 #### 3. two-hour-session-validator
 
-**Purpose:** Prevent scope creep during 2-hour sessions
-**Triggers:** At session start and every 30 minutes
+**Purpose:**Prevent scope creep during 2-hour sessions
+**Triggers:**At session start and every 30 minutes
 **Checks:**
 
 - Current task scope fits in remaining time
@@ -224,8 +224,8 @@ Skills have access to:
 
 #### 1. experimental-sandbox-guard
 
-**Purpose:** Prevent experimental code from affecting production (Audio Intel)
-**Triggers:** When working in `/totalaud.io` directory
+**Purpose:**Prevent experimental code from affecting production (Audio Intel)
+**Triggers:**When working in `/totalaud.io` directory
 **Checks:**
 
 - No shared dependencies with Audio Intel
@@ -234,8 +234,8 @@ Skills have access to:
 
 #### 2. theme-system-validator
 
-**Purpose:** Enforce consistency across 5 themes (ascii, xp, aqua, daw, analogue)
-**Triggers:** When modifying theme configs or theme-aware components
+**Purpose:**Enforce consistency across 5 themes (ascii, xp, aqua, daw, analogue)
+**Triggers:**When modifying theme configs or theme-aware components
 **Checks:**
 
 - All themes have required config keys
@@ -244,8 +244,8 @@ Skills have access to:
 
 #### 3. onboarding-flow-tester
 
-**Purpose:** Validate 4-phase onboarding state machine
-**Triggers:** When modifying onboarding components/hooks
+**Purpose:**Validate 4-phase onboarding state machine
+**Triggers:**When modifying onboarding components/hooks
 **Checks:**
 
 - Phase transitions work correctly
@@ -372,6 +372,6 @@ If multiple skills try to activate simultaneously:
 
 ---
 
-**Last Updated:** October 2025
-**Status:** Ready for implementation
-**Next Action:** Enable Skills in Claude Code settings (⌘, → Capabilities → Skills)
+**Last Updated:**October 2025
+**Status:**Ready for implementation
+**Next Action:**Enable Skills in Claude Code settings (⌘, → Capabilities → Skills)

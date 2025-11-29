@@ -1,6 +1,6 @@
 # @total-audio/core-db
 
-**Single source of truth** for Supabase integration across Total Audio Platform.
+**Single source of truth**for Supabase integration across Total Audio Platform.
 
 ## Overview
 
@@ -174,8 +174,8 @@ All apps (audio-intel, tracker, pitch-generator) should migrate to use this pack
 
 ### RLS (Row Level Security)
 
-- **createClient()** and **createServerClient()** use the anon key and respect RLS policies
-- **createAdminClient()** uses the service role key and **bypasses RLS**
+- **createClient()**and **createServerClient()**use the anon key and respect RLS policies
+- **createAdminClient()**uses the service role key and **bypasses RLS**
 - Only use admin client in secure server contexts with explicit permission checks
 
 ### Environment Variables

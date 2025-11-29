@@ -26,7 +26,7 @@ If you haven't created @TotalAudioBot yet:
 2. Send `/newbot` command
 3. Follow prompts to name your bot (e.g., "Total Audio Bot")
 4. Set username (e.g., `@TotalAudioBot`)
-5. Save the **bot token** provided by BotFather
+5. Save the **bot token**provided by BotFather
 
 ### Step 2: Get Your Chat ID
 
@@ -40,7 +40,7 @@ If you haven't created @TotalAudioBot yet:
 
 ### Step 3: Add GitHub Secrets
 
-Add these secrets to **both** repositories:
+Add these secrets to **both**repositories:
 
 #### For `total-audio-platform`:
 
@@ -62,8 +62,8 @@ Add these secrets to **both** repositories:
 
 #### Test in `total-audio-platform`:
 
-1. Go to **Actions** tab: https://github.com/totalaudiopromo/total-audio-platform/actions
-2. Select **"Telegram Notification Test"** workflow
+1. Go to **Actions**tab: https://github.com/totalaudiopromo/total-audio-platform/actions
+2. Select **"Telegram Notification Test"**workflow
 3. Click **"Run workflow"**
 4. Enter test message: `Testing from total-audio-platform`
 5. Within 3-5 seconds, check Telegram for:
@@ -204,11 +204,11 @@ Use the emoji prefixes to identify which system sent the notification.
 
 Potential additions to the notification system:
 
-- **Deployment notifications** - Vercel/production deploy status
-- **Error alerts** - Runtime errors from production
-- **User activity spikes** - Unusual traffic patterns
-- **Support bot** - Separate `@TotalAudioSupportBot` for customer queries
-- **Team channels** - Send notifications to team group chat instead of individual
+- **Deployment notifications**- Vercel/production deploy status
+- **Error alerts**- Runtime errors from production
+- **User activity spikes**- Unusual traffic patterns
+- **Support bot**- Separate `@TotalAudioSupportBot` for customer queries
+- **Team channels**- Send notifications to team group chat instead of individual
 
 ## Security Notes
 

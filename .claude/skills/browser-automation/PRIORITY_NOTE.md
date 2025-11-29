@@ -11,11 +11,11 @@
 
 Stagehand is set as the PRIMARY web automation tool because:
 
-1. **Natural language interface** - More intuitive than CSS selectors
-2. **AI-powered element detection** - Finds buttons, forms, links intelligently
-3. **Better context efficiency** - Less token usage than Puppeteer
-4. **Automatic screenshots** - Visual feedback after every action
-5. **Persistent browser** - State maintained between commands
+1. **Natural language interface**- More intuitive than CSS selectors
+2. **AI-powered element detection**- Finds buttons, forms, links intelligently
+3. **Better context efficiency**- Less token usage than Puppeteer
+4. **Automatic screenshots**- Visual feedback after every action
+5. **Persistent browser**- State maintained between commands
 
 ## Fallback to Puppeteer MCP
 

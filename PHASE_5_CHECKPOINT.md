@@ -130,7 +130,7 @@ curl http://localhost:3000/api/usage \
   -v
 ```
 
-**Expected:** 200 OK with usage data
+**Expected:**200 OK with usage data
 
 #### Step 5: Test Data Fetching
 
@@ -268,7 +268,7 @@ SUPABASE_SERVICE_ROLE_KEY (if using admin client)
 
 ### Issue 1: "Cannot find module '@total-audio/core-db'"
 
-**Cause:** TypeScript path mapping not resolved
+**Cause:**TypeScript path mapping not resolved
 **Fix:**
 
 ```bash
@@ -279,8 +279,8 @@ pnpm --filter @total-audio/core-db typecheck
 
 ### Issue 2: "cookies() expects no arguments"
 
-**Cause:** Not awaiting createServerClient
-**Fix:** Ensure all server route usage has:
+**Cause:**Not awaiting createServerClient
+**Fix:**Ensure all server route usage has:
 
 ```typescript
 const supabase = await createServerClient(cookies());
@@ -288,8 +288,8 @@ const supabase = await createServerClient(cookies());
 
 ### Issue 3: Middleware auth check broken
 
-**Cause:** updateSession return type changed
-**Fix:** Verify middleware destructures correctly:
+**Cause:**updateSession return type changed
+**Fix:**Verify middleware destructures correctly:
 
 ```typescript
 const { supabaseResponse, user } = await updateSession(request);
@@ -297,12 +297,12 @@ const { supabaseResponse, user } = await updateSession(request);
 
 ### Issue 4: RLS policy violations
 
-**Cause:** User context not passed correctly
-**Fix:** Check server routes use cookies(), not direct client
+**Cause:**User context not passed correctly
+**Fix:**Check server routes use cookies(), not direct client
 
 ### Issue 5: Type errors on Database type
 
-**Cause:** Types not generated from schema
+**Cause:**Types not generated from schema
 **Fix:**
 
 ```bash

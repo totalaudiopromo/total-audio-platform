@@ -32,14 +32,14 @@ matrix:
   app: [audio-intel, tracker, pitch-generator, command-centre, web]
 ```
 
-**CHANGE TO** (Option A - Use actual package name):
+**CHANGE TO**(Option A - Use actual package name):
 
 ```yaml
 matrix:
   app: [audio-intel, tracker, pitch-generator, command-centre, total-audio-promo-frontend]
 ```
 
-**OR** (Option B - Add mapping step, cleaner):
+**OR**(Option B - Add mapping step, cleaner):
 
 ```yaml
 matrix:

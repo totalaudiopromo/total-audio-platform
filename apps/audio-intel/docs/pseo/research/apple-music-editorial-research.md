@@ -8,7 +8,7 @@
 
 ## Executive Summary
 
-**CRITICAL FINDING**: Unlike Spotify, Apple Music does **NOT** offer direct playlist pitching for independent artists. Editorial playlist consideration requires working through approved distributors who have access to the Apple Music Pitch tool.
+**CRITICAL FINDING**: Unlike Spotify, Apple Music does **NOT**offer direct playlist pitching for independent artists. Editorial playlist consideration requires working through approved distributors who have access to the Apple Music Pitch tool.
 
 **Key Differences from Spotify**:
 
@@ -23,7 +23,7 @@
 
 ### Who Has Access?
 
-**Apple Music Partners Only** - The Apple Music Pitch tool is exclusively available to:
+**Apple Music Partners Only**- The Apple Music Pitch tool is exclusively available to:
 
 - Approved distributors (iTunes Partners)
 - Record labels with iTunes Partner accounts
@@ -49,7 +49,7 @@ To use Apple Music Pitch, partners must:
 
 ### Official Preferred Partners List
 
-**Verified Apple Music Preferred Distributors** (as of October 2025):
+**Verified Apple Music Preferred Distributors**(as of October 2025):
 
 | Distributor                   | Dolby Atmos | Credits | Lyrics | Motion Art | Analytics |
 | ----------------------------- | ----------- | ------- | ------ | ---------- | --------- |
@@ -73,7 +73,7 @@ To use Apple Music Pitch, partners must:
 
 ### Preferred Plus Tier
 
-**"Preferred Plus" Distributors** (highest tier):
+**"Preferred Plus" Distributors**(highest tier):
 
 - Believe Digital
 - FUGA
@@ -91,7 +91,7 @@ To use Apple Music Pitch, partners must:
 - **UnitedMasters**: Claims direct Apple Music editorial team relationships
 - **LANDR**: Listed as preferred partner of Apple Music
 
-**Action Required**: Artists should **directly ask their distributor** if they have Apple Music Pitch tool access.
+**Action Required**: Artists should **directly ask their distributor**if they have Apple Music Pitch tool access.
 
 ---
 
@@ -118,7 +118,7 @@ When distributors submit pitches via Apple Music Pitch, they provide:
 - Artist name and track details
 - Promotion start date and territories
 
-**Enhanced Metadata** (Highly Recommended):
+**Enhanced Metadata**(Highly Recommended):
 
 - Spatial Audio (Dolby Atmos) details
 - Motion Artwork
@@ -157,7 +157,7 @@ Each track must include at least one role from each of three groups:
 
 ### Flagship Global Playlists
 
-**New Music Daily** (Premiere Global Editorial Playlist):
+**New Music Daily**(Premiere Global Editorial Playlist):
 
 - **Format**: 60 songs, multi-genre
 - **Update Frequency**: Daily (Monday-Friday)
@@ -169,15 +169,15 @@ Each track must include at least one role from each of three groups:
 
 ### Genre-Specific Flagship Playlists
 
-**40+ Genre-Specific Editorial Playlists** (2025):
+**40+ Genre-Specific Editorial Playlists**(2025):
 
-- **Rap Life** (Hip-Hop/Rap)
-- **Pop Chill** (Pop)
-- **Afrobeats Weekly** (Afrobeats)
-- **Country Heat** (Country)
-- **danceXL** (Dance/Electronic)
-- **ALT CTRL** (Alternative)
-- **Rock Hits** (Rock)
+- **Rap Life**(Hip-Hop/Rap)
+- **Pop Chill**(Pop)
+- **Afrobeats Weekly**(Afrobeats)
+- **Country Heat**(Country)
+- **danceXL**(Dance/Electronic)
+- **ALT CTRL**(Alternative)
+- **Rock Hits**(Rock)
 
 **Update Frequency**: Daily or weekly depending on playlist
 **Editorial Team**: Global Apple Music curators
@@ -461,16 +461,16 @@ Each track must include at least one role from each of three groups:
 
 | Feature                       | Apple Music                   | Spotify                       |
 | ----------------------------- | ----------------------------- | ----------------------------- |
-| **Direct Artist Pitching**    |  No - Distributor only      |  Yes - Spotify for Artists   |
-| **Minimum Lead Time**         | 10 days (via distributor)     | 7 days (artist direct)        |
-| **Public Submission Portal**  |  No                         |  Yes                         |
-| **Editorial Team Access**     | Closed/Private                | Semi-open via portal          |
-| **Playlist Update Frequency** | Daily/Weekly varies           | Weekly (New Music Friday)     |
-| **Feedback on Submissions**   |  None                       |  None                       |
-| **Independent Curators**      |  No user playlists featured |  Yes - large curator network |
-| **Analytics Dashboard**       | Apple Music for Artists       | Spotify for Artists           |
-| **Lyrics Requirement**        |  Mandatory (Jan 2025)        | Optional but recommended      |
-| **Contributor Credits**       |  Mandatory (Jan 2025)        | Optional but recommended      |
+| **Direct Artist Pitching**   |  No - Distributor only      |  Yes - Spotify for Artists   |
+| **Minimum Lead Time**        | 10 days (via distributor)     | 7 days (artist direct)        |
+| **Public Submission Portal** |  No                         |  Yes                         |
+| **Editorial Team Access**    | Closed/Private                | Semi-open via portal          |
+| **Playlist Update Frequency**| Daily/Weekly varies           | Weekly (New Music Friday)     |
+| **Feedback on Submissions**  |  None                       |  None                       |
+| **Independent Curators**     |  No user playlists featured |  Yes - large curator network |
+| **Analytics Dashboard**      | Apple Music for Artists       | Spotify for Artists           |
+| **Lyrics Requirement**       |  Mandatory (Jan 2025)        | Optional but recommended      |
+| **Contributor Credits**      |  Mandatory (Jan 2025)        | Optional but recommended      |
 
 **Sources**: Comparison compiled from Apple Music Pitch User Guide and Spotify for Artists documentation
 

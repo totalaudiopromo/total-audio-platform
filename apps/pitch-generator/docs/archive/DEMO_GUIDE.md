@@ -1,8 +1,8 @@
 # Pitch Generator - Quick Demo Guide
 
-**Production URL:** https://pitch.totalaudiopromo.com
-**Demo Time:** 4 minutes
-**Key Message:** "This is my actual workflow - saves 14 hours per campaign"
+**Production URL:**https://pitch.totalaudiopromo.com
+**Demo Time:**4 minutes
+**Key Message:**"This is my actual workflow - saves 14 hours per campaign"
 
 ---
 
@@ -33,7 +33,7 @@
 **Add a real contact you know:**
 
 - Name, role, outlet
-- **Notes field:** "Previously supported [artist], plays [genre]"
+- **Notes field:**"Previously supported [artist], plays [genre]"
 - Enter track details
 - Click Generate → **30 seconds**
 
@@ -133,4 +133,4 @@ ROI: 91x
 
 ---
 
-**Bottom line:** Honest demo showing real time savings is more impressive than pretending it's magic.
+**Bottom line:**Honest demo showing real time savings is more impressive than pretending it's magic.

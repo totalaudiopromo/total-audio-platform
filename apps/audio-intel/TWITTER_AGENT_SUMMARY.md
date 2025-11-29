@@ -10,7 +10,7 @@ A complete X/Twitter autonomous posting agent has been built for Audio Intel soc
 
 ### Core Agent
 
-- **`lib/twitter-posting-agent.ts`** - Main agent implementation
+- **`lib/twitter-posting-agent.ts`**- Main agent implementation
   - Single tweet posting (280 character limit)
   - Thread posting (5-7 tweets with auto-splitting)
   - Content mapping from markdown
@@ -20,7 +20,7 @@ A complete X/Twitter autonomous posting agent has been built for Audio Intel soc
 
 ### Documentation
 
-- **`lib/TWITTER_AGENT_README.md`** - Comprehensive documentation
+- **`lib/TWITTER_AGENT_README.md`**- Comprehensive documentation
   - API reference
   - Usage examples
   - Configuration guide
@@ -29,7 +29,7 @@ A complete X/Twitter autonomous posting agent has been built for Audio Intel soc
 
 ### Examples & Testing
 
-- **`lib/examples/twitter-agent-example.ts`** - Usage examples
+- **`lib/examples/twitter-agent-example.ts`**- Usage examples
   - Single tweet example
   - Thread posting example
   - Scheduled posts example
@@ -38,14 +38,14 @@ A complete X/Twitter autonomous posting agent has been built for Audio Intel soc
 
 ### Configuration
 
-- **`.env.twitter.example`** - Environment variable template
+- **`.env.twitter.example`**- Environment variable template
   - Twitter API credentials format
   - Setup instructions
   - Security notes
 
 ### Verification
 
-- **`scripts/verify-twitter-setup.ts`** - Setup verification script
+- **`scripts/verify-twitter-setup.ts`**- Setup verification script
   - Checks package installation
   - Verifies file structure
   - Validates configuration
@@ -69,36 +69,36 @@ A complete X/Twitter autonomous posting agent has been built for Audio Intel soc
 
 ## Content Mapping
 
-Content extracted from **`social-content/TWITTER_X_THREADS_RADIO_PROMOTERS.md`** and mapped to agent:
+Content extracted from **`social-content/TWITTER_X_THREADS_RADIO_PROMOTERS.md`**and mapped to agent:
 
 ### 6 Pre-configured Threads
 
-1. **The 2AM Reality** (7 tweets)
+1. **The 2AM Reality**(7 tweets)
    - Origin story and problem awareness
    - Time savings demonstration
    - Founder credibility
 
-2. **The Contact Intelligence Reality** (7 tweets)
+2. **The Contact Intelligence Reality**(7 tweets)
    - Feature demonstration
    - Manual vs automated comparison
    - Response rate improvements
 
-3. **The Brighton Producer Story** (8 tweets)
+3. **The Brighton Producer Story**(8 tweets)
    - Authentic founder background
    - Real campaign examples
    - Music industry credibility
 
-4. **The Submission Window Problem** (7 tweets)
+4. **The Submission Window Problem**(7 tweets)
    - Urgency and time-sensitive opportunities
    - Real-world failure example
    - Speed advantage demonstration
 
-5. **The Cost Reality** (7 tweets)
+5. **The Cost Reality**(7 tweets)
    - Pricing comparison (Muck Rack, Cision vs Audio Intel)
    - UK market positioning
    - Value proposition
 
-6. **The Response Rate Breakthrough** (7 tweets)
+6. **The Response Rate Breakthrough**(7 tweets)
    - Results and social proof
    - Generic vs personalised comparison
    - 3% → 28% response rate improvement
@@ -116,7 +116,7 @@ Each thread includes:
 
 ## Environment Variables Required
 
-Add these to **`.env.local`** (never commit to git):
+Add these to **`.env.local`**(never commit to git):
 
 ```bash
 # Twitter API Key (Consumer Key)
@@ -407,9 +407,9 @@ console.log({
 
 ### Immediate (Before First Use)
 
-1.  **Add Twitter API credentials** to `.env.local`
-2.  **Test health check** to verify API connection
-3.  **Run example script** to test posting (use test account first)
+1.  **Add Twitter API credentials**to `.env.local`
+2.  **Test health check**to verify API connection
+3.  **Run example script**to test posting (use test account first)
 
 ### Short-term (First Week)
 

@@ -86,7 +86,7 @@ node generate-kyara-priority-list.js
 
 ### Contacts Already Enriched
 
-- **140 contacts** enriched in previous sessions
+- **140 contacts**enriched in previous sessions
 - These include the 10 KYARA contacts we tested earlier
 - All enrichment preserved in Airtable
 
@@ -158,8 +158,8 @@ Files created:
 
 **Will include**:
 
-- **triple j contacts** (Anika Luna - Home & Hosed, etc.)
-- **BBC 6 Music contacts** (Tom Ravenscroft, etc.)
+- **triple j contacts**(Anika Luna - Home & Hosed, etc.)
+- **BBC 6 Music contacts**(Tom Ravenscroft, etc.)
 - **High-quality indie specialists**
 - **Previous responders with indie/alt focus**
 
@@ -311,9 +311,9 @@ Once the scripts run, create these views in Airtable UI:
 - 100% enriched contact database (516/516)
 - Auto-populated station names
 - Auto-tagged genres
-- **Ready-to-use KYARA campaign priority list** with top 30 contacts to pitch this week
+- **Ready-to-use KYARA campaign priority list**with top 30 contacts to pitch this week
 
-**No more "Airtable mess"** - Clean, organized, actionable contact intelligence for KYARA campaign.
+**No more "Airtable mess"**- Clean, organized, actionable contact intelligence for KYARA campaign.
 
 ---
 

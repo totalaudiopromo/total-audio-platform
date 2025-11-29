@@ -8,20 +8,20 @@ Since CoverageBook doesn't have a public API, we'll export your actual campaign 
 
 ### Option A: Export All Campaign Data
 
-1. **Log into CoverageBook** with your Liberty account
-2. **Go to Coverage Vault** (central repository of all coverage)
-3. **Select date range** for your campaigns (e.g., last 6 months)
-4. **Filter by client** if needed (for specific Liberty campaigns)
-5. **Click "Export"** → Choose CSV format
-6. **Save the file** as `liberty_coveragebook_export.csv`
+1. **Log into CoverageBook**with your Liberty account
+2. **Go to Coverage Vault**(central repository of all coverage)
+3. **Select date range**for your campaigns (e.g., last 6 months)
+4. **Filter by client**if needed (for specific Liberty campaigns)
+5. **Click "Export"**→ Choose CSV format
+6. **Save the file**as `liberty_coveragebook_export.csv`
 
 ### Option B: Export Individual Campaign Data
 
-1. **Open specific campaign** in CoverageBook
+1. **Open specific campaign**in CoverageBook
 2. **Go to "Coverage" tab**
 3. **Click "Export Coverage"**
 4. **Choose CSV format**
-5. **Save with campaign name** (e.g., `reigns_made_for_coverage.csv`)
+5. **Save with campaign name**(e.g., `reigns_made_for_coverage.csv`)
 
 ## Step 2: Prepare CSV Data
 
@@ -114,29 +114,29 @@ node ../radio-promo-agent.js coveragebook-find "DIY"
 
 ### Campaign Insights
 
-- **Total mentions** across all outlets
-- **Total reach** and impressions
-- **Top performing articles** by reach
-- **Media type breakdown** (Online, Radio, Print)
-- **Outlet performance** ranking
-- **Sentiment analysis** (positive, neutral, negative)
+- **Total mentions**across all outlets
+- **Total reach**and impressions
+- **Top performing articles**by reach
+- **Media type breakdown**(Online, Radio, Print)
+- **Outlet performance**ranking
+- **Sentiment analysis**(positive, neutral, negative)
 
 ### Strategic Intelligence
 
-- **Which outlets** work best for Liberty campaigns
-- **What content** gets the most reach
-- **Campaign performance** over time
-- **Media relationships** that drive results
-- **ROI insights** for future campaigns
+- **Which outlets**work best for Liberty campaigns
+- **What content**gets the most reach
+- **Campaign performance**over time
+- **Media relationships**that drive results
+- **ROI insights**for future campaigns
 
 ## Step 6: Regular Updates
 
 ### Monthly Data Refresh
 
-1. **Export new data** from CoverageBook monthly
-2. **Import latest campaigns** into agent
-3. **Compare performance** across months
-4. **Identify trends** and opportunities
+1. **Export new data**from CoverageBook monthly
+2. **Import latest campaigns**into agent
+3. **Compare performance**across months
+4. **Identify trends**and opportunities
 
 ### Example Monthly Workflow
 
@@ -158,16 +158,16 @@ node ../radio-promo-agent.js coveragebook-report
 
 ### Data Organization
 
-- **Name campaigns consistently** (e.g., "Artist - Track Name")
-- **Include date ranges** in campaign names for time-based analysis
-- **Group similar campaigns** for broader insights
+- **Name campaigns consistently**(e.g., "Artist - Track Name")
+- **Include date ranges**in campaign names for time-based analysis
+- **Group similar campaigns**for broader insights
 
 ### Analysis Strategy
 
-- **Compare campaign performance** to identify what works
-- **Track outlet relationships** to prioritize outreach
-- **Monitor sentiment trends** to improve messaging
-- **Use reach data** to justify campaign budgets
+- **Compare campaign performance**to identify what works
+- **Track outlet relationships**to prioritize outreach
+- **Monitor sentiment trends**to improve messaging
+- **Use reach data**to justify campaign budgets
 
 ### Integration with Radio Research
 
@@ -183,18 +183,18 @@ node ../radio-promo-agent.js coveragebook-find "BBC Radio 6 Music"
 
 Once you import Liberty's actual CoverageBook data, you'll have:
 
-- **Complete campaign history** with real metrics
-- **Outlet performance analysis** based on actual results
-- **Campaign success patterns** to replicate
-- **Media relationship insights** for future outreach
-- **ROI tracking** for Liberty's PR efforts
-- **Competitive intelligence** from your coverage data
+- **Complete campaign history**with real metrics
+- **Outlet performance analysis**based on actual results
+- **Campaign success patterns**to replicate
+- **Media relationship insights**for future outreach
+- **ROI tracking**for Liberty's PR efforts
+- **Competitive intelligence**from your coverage data
 
 This gives you a powerful combination of:
 
-- **Historical performance data** (CoverageBook)
-- **Future opportunity research** (Radio Research)
-- **Campaign automation** (Monday.com, Typeform, Mailchimp)
-- **Play tracking** (WARM API)
+- **Historical performance data**(CoverageBook)
+- **Future opportunity research**(Radio Research)
+- **Campaign automation**(Monday.com, Typeform, Mailchimp)
+- **Play tracking**(WARM API)
 
 Your Liberty Radio Promo Agent will become a comprehensive PR intelligence and automation system! 

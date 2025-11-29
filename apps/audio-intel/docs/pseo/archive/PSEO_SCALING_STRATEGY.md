@@ -8,17 +8,17 @@
 
 ### Tier 1 - High Search Volume (1,000+ monthly)
 
-1. **BBC Radio 1** - 1,200 searches/month ✅ LIVE
-2. **Spotify Editorial** - 2,000 searches/month ✅ LIVE
-3. **Apple Music Editorial** - 1,500 searches/month ✅ LIVE
+1. **BBC Radio 1**- 1,200 searches/month ✅ LIVE
+2. **Spotify Editorial**- 2,000 searches/month ✅ LIVE
+3. **Apple Music Editorial**- 1,500 searches/month ✅ LIVE
 
 ### Tier 2 - Medium Search Volume (300-800 monthly)
 
-4. **BBC Radio 6 Music** - 800 searches/month ✅ LIVE
-5. **BBC Radio 1Xtra** - 600 searches/month ✅ LIVE
-6. **BBC Radio 2** - 500 searches/month ✅ LIVE
-7. **Kerrang Radio** - 350 searches/month ✅ LIVE
-8. **Absolute Radio** - 300 searches/month ✅ LIVE
+4. **BBC Radio 6 Music**- 800 searches/month ✅ LIVE
+5. **BBC Radio 1Xtra**- 600 searches/month ✅ LIVE
+6. **BBC Radio 2**- 500 searches/month ✅ LIVE
+7. **Kerrang Radio**- 350 searches/month ✅ LIVE
+8. **Absolute Radio**- 300 searches/month ✅ LIVE
 
 ### Current Word Count
 
@@ -29,18 +29,18 @@
 
 ### SEO Benefits
 
-1. **Google prefers comprehensive content** - 2,000+ words rank higher
-2. **Answer more long-tail keywords** - capture "how to submit to BBC Radio 1" variations
-3. **Reduce bounce rate** - more valuable content keeps users engaged
-4. **Internal linking opportunities** - link between related PSEO pages
-5. **Featured snippet potential** - FAQ sections can win position zero
+1. **Google prefers comprehensive content**- 2,000+ words rank higher
+2. **Answer more long-tail keywords**- capture "how to submit to BBC Radio 1" variations
+3. **Reduce bounce rate**- more valuable content keeps users engaged
+4. **Internal linking opportunities**- link between related PSEO pages
+5. **Featured snippet potential**- FAQ sections can win position zero
 
 ### Business Benefits
 
-1. **Higher conversion rates** - educated visitors convert better
-2. **Lower cost per acquisition** - organic traffic is free
-3. **Authority positioning** - comprehensive guides = expert status
-4. **Long-term traffic** - evergreen content compounds over time
+1. **Higher conversion rates**- educated visitors convert better
+2. **Lower cost per acquisition**- organic traffic is free
+3. **Authority positioning**- comprehensive guides = expert status
+4. **Long-term traffic**- evergreen content compounds over time
 
 ## 📝 CONTENT EXPANSION TEMPLATE
 
@@ -344,12 +344,12 @@ If you're targeting BBC Radio 1, you might also benefit from:
 
 ## ⚡ IMMEDIATE NEXT STEPS
 
-1. **Choose Tier 1 page to expand first** (BBC Radio 1 recommended)
-2. **Research and write new sections** (2-3 hours)
-3. **Add FAQ schema markup** (30 minutes)
-4. **Internal linking updates** (15 minutes)
-5. **Deploy and track performance** (ongoing)
+1. **Choose Tier 1 page to expand first**(BBC Radio 1 recommended)
+2. **Research and write new sections**(2-3 hours)
+3. **Add FAQ schema markup**(30 minutes)
+4. **Internal linking updates**(15 minutes)
+5. **Deploy and track performance**(ongoing)
 
 ---
 
-**Ready to scale?** Let's start with BBC Radio 1 expansion to 2,500+ words as proof of concept.
+**Ready to scale?**Let's start with BBC Radio 1 expansion to 2,500+ words as proof of concept.

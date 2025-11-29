@@ -28,7 +28,7 @@ The Total Audio Command Centre is the central nervous system for Total Audio Pro
 
 **Design System**: Professional texture-enhanced cards matching Audio Intel exactly
 
-**Color Palette** (from Audio Intel globals.css):
+**Color Palette**(from Audio Intel globals.css):
 
 ```css
 :root {
@@ -50,7 +50,7 @@ The Total Audio Command Centre is the central nervous system for Total Audio Pro
 }
 ```
 
-**Typography** (Audio Intel Standard):
+**Typography**(Audio Intel Standard):
 
 - **Primary Font**: Inter (Google Fonts)
 - **Fallback**: system-ui, sans-serif
@@ -61,7 +61,7 @@ The Total Audio Command Centre is the central nervous system for Total Audio Pro
   - Body: `text-base` (Metrics and content)
   - Small: `text-sm text-gray-600` (Labels and descriptions)
 
-**Component Standards** (EXACT Audio Intel Match):
+**Component Standards**(EXACT Audio Intel Match):
 
 ```css
 /* Cards - Same as Audio Intel */
@@ -98,7 +98,7 @@ The Total Audio Command Centre is the central nervous system for Total Audio Pro
 }
 ```
 
-**Texture Background** (Audio Intel Standard):
+**Texture Background**(Audio Intel Standard):
 
 ```css
 /* Same texture system as Audio Intel */
@@ -124,7 +124,7 @@ The Total Audio Command Centre is the central nervous system for Total Audio Pro
 
 #### 1. Real-Time Business Dashboard
 
-**4-Card Metric Grid** (Audio Intel Style):
+**4-Card Metric Grid**(Audio Intel Style):
 
 ```typescript
 interface BusinessMetrics {
@@ -155,7 +155,7 @@ interface BusinessMetrics {
 }
 ```
 
-**Card Layout** (Audio Intel Standard):
+**Card Layout**(Audio Intel Standard):
 
 ```jsx
 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

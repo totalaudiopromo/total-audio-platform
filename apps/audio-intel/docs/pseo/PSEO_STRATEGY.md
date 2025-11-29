@@ -2,7 +2,7 @@
 
 ## Strategic Goal
 
-Position Audio Intel as the **definitive source** for music industry contact intelligence through programmatic case study content that:
+Position Audio Intel as the **definitive source**for music industry contact intelligence through programmatic case study content that:
 
 1. Captures high-intent organic search traffic ("how to pitch [station/platform]")
 2. Demonstrates real contact enrichment value with factual examples
@@ -15,7 +15,7 @@ Position Audio Intel as the **definitive source** for music industry contact int
 
 **Search Intent**: "how to pitch [station name]", "[station] contact email", "[station] submission guidelines"
 
-**High-Value Targets** (20 pages):
+**High-Value Targets**(20 pages):
 
 - BBC Radio 1 ( Complete - template example)
 - BBC Radio 6 Music (indie/alternative focus)
@@ -42,7 +42,7 @@ Position Audio Intel as the **definitive source** for music industry contact int
 
 **Search Intent**: "how to pitch spotify playlist", "[platform] playlist contact", "get on [platform] editorial"
 
-**High-Value Targets** (15 pages):
+**High-Value Targets**(15 pages):
 
 - Spotify Editorial Playlists (genre-specific guides)
 - Apple Music Editorial
@@ -59,7 +59,7 @@ Position Audio Intel as the **definitive source** for music industry contact int
 
 **Search Intent**: "how to get featured on [publication]", "[blog] submission contact"
 
-**High-Value Targets** (25 pages):
+**High-Value Targets**(25 pages):
 
 - The Line of Best Fit
 - DIY Magazine

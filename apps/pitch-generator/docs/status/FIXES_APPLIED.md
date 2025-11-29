@@ -1,4 +1,4 @@
-#  Fixes Applied - Pitch Generator
+# Fixes Applied - Pitch Generator
 
 ## Issues Fixed
 
@@ -45,17 +45,17 @@ Or manually run the contents of `add-demo-data.sql` in your Supabase SQL editor.
 
 After completing the manual steps:
 
-1. **Dashboard** (`/dashboard`) will show:
+1. **Dashboard**(`/dashboard`) will show:
    - Total pitches: 3
    - Sent pitches: 2
    - Draft pitches: 1
    - Recent pitches list with proper text colors
 
-2. **Contacts** (`/pitch/contacts`) will show:
+2. **Contacts**(`/pitch/contacts`) will show:
    - 5 demo contacts (Sarah Johnson, Mike Chen, etc.)
    - All text visible on white background
 
-3. **History** (`/pitch/history`) will show:
+3. **History**(`/pitch/history`) will show:
    - 3 demo pitches with proper status badges
    - All text visible on white background
 

@@ -1,8 +1,8 @@
-#  The Unsigned Advantage Newsletter - Complete Setup Guide
+# The Unsigned Advantage Newsletter - Complete Setup Guide
 
 ## Current State Summary
 
-** What's Built:**
+**What's Built:**
 
 - Newsletter signup integration on `/beta` page
 - ConvertKit tag system (`newsletter_unsigned_advantage` - ID: 10182443)
@@ -12,7 +12,7 @@
 - Newsletter management dashboard at `/newsletter-dashboard`
 - API endpoints for content generation and sending
 
-** What Needs Setup:**
+**What Needs Setup:**
 
 - ConvertKit automation sequences
 - Weekly content publishing workflow
@@ -157,12 +157,12 @@ interface NewsletterData {
 
 The system is set up to pull content from:
 
-1. **Music Business Worldwide** - Industry news and analysis
-2. **Hypebot** - Music marketing and technology
-3. **Music Ally** - Music tech and streaming insights
-4. **The New Music Industry** - Independent artist focus
-5. **Indie Music Marketing** - Marketing strategies
-6. **Music Industry Blog** - General industry insights
+1. **Music Business Worldwide**- Industry news and analysis
+2. **Hypebot**- Music marketing and technology
+3. **Music Ally**- Music tech and streaming insights
+4. **The New Music Industry**- Independent artist focus
+5. **Indie Music Marketing**- Marketing strategies
+6. **Music Industry Blog**- General industry insights
 
 ### Adding New Sources
 
@@ -325,11 +325,11 @@ Returns: HTML preview
 
 ## Next Steps
 
-1. **Set up ConvertKit automation** (15 minutes)
-2. **Generate and send first issue** (30 minutes)
-3. **Monitor performance for 2 weeks** (ongoing)
-4. **Optimise based on data** (ongoing)
-5. **Add more research sources** (as needed)
+1. **Set up ConvertKit automation**(15 minutes)
+2. **Generate and send first issue**(30 minutes)
+3. **Monitor performance for 2 weeks**(ongoing)
+4. **Optimise based on data**(ongoing)
+5. **Add more research sources**(as needed)
 
 The newsletter system is now fully built and ready to use. The dashboard provides everything you need to manage content, and the API handles all the technical aspects automatically.
 

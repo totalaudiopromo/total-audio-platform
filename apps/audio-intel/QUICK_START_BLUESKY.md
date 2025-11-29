@@ -1,4 +1,4 @@
-#  Bluesky Autonomous Posting - Quick Start
+# Bluesky Autonomous Posting - Quick Start
 
 **⏱ Time to Deploy: 5 minutes**
 
@@ -18,7 +18,7 @@
 
 Go to: https://vercel.com/chris-projects-6ffe0e29/audio-intel/settings/environment-variables
 
-Add these 3 variables to **all environments** (Production, Preview, Development):
+Add these 3 variables to **all environments**(Production, Preview, Development):
 
 | Name                   | Value                    | Example                        |
 | ---------------------- | ------------------------ | ------------------------------ |
@@ -43,14 +43,14 @@ Vercel automatically deploys.
 
 ## Done!
 
-Your agent now posts **twice daily** at:
+Your agent now posts **twice daily**at:
 
-- **9am UK time** (morning commute)
-- **5pm UK time** (end-of-work)
+- **9am UK time**(morning commute)
+- **5pm UK time**(end-of-work)
 
-**Content:** 9 posts over 4 weeks from your pre-written content calendar
+**Content:**9 posts over 4 weeks from your pre-written content calendar
 
-**Cost:** £0 (Vercel free tier)
+**Cost:**£0 (Vercel free tier)
 
 ---
 
@@ -75,9 +75,9 @@ Check your posts appeared correctly
 
 ## Need More Info?
 
-- **Full docs:** `BLUESKY_AUTONOMOUS_POSTING_SETUP.md`
-- **Complete summary:** `BLUESKY_AUTONOMOUS_AGENT_COMPLETE.md`
-- **Setup checker:** Run `bash scripts/setup-bluesky-posting.sh`
+- **Full docs:**`BLUESKY_AUTONOMOUS_POSTING_SETUP.md`
+- **Complete summary:**`BLUESKY_AUTONOMOUS_AGENT_COMPLETE.md`
+- **Setup checker:**Run `bash scripts/setup-bluesky-posting.sh`
 
 ---
 
@@ -89,4 +89,4 @@ Check your posts appeared correctly
  Zero ongoing costs
  Easy monitoring via Vercel logs
 
-**That's it - your Bluesky agent is live!** 
+**That's it - your Bluesky agent is live!**

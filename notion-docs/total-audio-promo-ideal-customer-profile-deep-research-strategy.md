@@ -4,7 +4,7 @@ notion_url: https://www.notion.so/Total-Audio-Promo-Ideal-Customer-Profile-Deep-
 exported_at: 2025-09-26T14:33:04.018Z
 ---
 
-#  Total Audio Promo: Ideal Customer Profile Deep Research Strategy
+# Total Audio Promo: Ideal Customer Profile Deep Research Strategy
 
 > Research Goal: Identify and validate ideal customers for Audio Intel’s freemium SaaS model
 
@@ -16,33 +16,33 @@ exported_at: 2025-09-26T14:33:04.018Z
 
 **Market Size & Segments:**
 
-- **37,000+ musicians** in UK across all demographics and genres
+- **37,000+ musicians**in UK across all demographics and genres
 
-- **Independent sector:** 29.2% of UK music consumption (£2.2B+ market)
+- **Independent sector:**29.2% of UK music consumption (£2.2B+ market)
 
-- **Independent market share growing:** 25% (2019) → 29.2% (2023)
+- **Independent market share growing:**25% (2019) → 29.2% (2023)
 
-- **Indies outperforming majors:** 16.1% revenue growth vs 9% industry average
+- **Indies outperforming majors:**16.1% revenue growth vs 9% industry average
 
 **Financial Reality:**
 
-- **Average indie artist income:** £20,700/year (UK Musicians’ Census)
+- **Average indie artist income:**£20,700/year (UK Musicians’ Census)
 
-- **46% earn nothing** from music
+- **46% earn nothing**from music
 
-- **Only 18% sustain themselves** financially through music
+- **Only 18% sustain themselves**financially through music
 
-- **84% can’t afford touring** (major pain point for promotion needs)
+- **84% can’t afford touring**(major pain point for promotion needs)
 
-- **70.6% fund careers** through personal savings
+- **70.6% fund careers**through personal savings
 
 **Spending Patterns:**
 
-- **Lack of exposure:** 41% cite as biggest roadblock
+- **Lack of exposure:**41% cite as biggest roadblock
 
-- **Professional equipment access:** 70% have access (not a barrier)
+- **Professional equipment access:**70% have access (not a barrier)
 
-- **Promotion budget constraint:** Most have <£1,000 annual marketing spend
+- **Promotion budget constraint:**Most have <£1,000 annual marketing spend
 
 ---
 
@@ -106,7 +106,7 @@ Pain Points:
 
 **Target Interview Segments:**
 
-** Segment A: Pro Tier Subscribers (£19/month)**_Sample Size: 10-15 interviews_
+**Segment A: Pro Tier Subscribers (£19/month)**_Sample Size: 10-15 interviews_
 
 ```plain text
 Pre-Audio Intel:
@@ -128,7 +128,7 @@ Value Perception:
 
 ```
 
-** Segment B: Agency Tier Prospects (£79/month)**_Sample Size: 5-8 interviews_
+**Segment B: Agency Tier Prospects (£79/month)**_Sample Size: 5-8 interviews_
 
 ```plain text
 Business Context:
@@ -145,7 +145,7 @@ Upgrade Triggers:
 
 ```
 
-** Segment C: Active Free Users (Not Converted)**_Sample Size: 8-12 interviews_
+**Segment C: Active Free Users (Not Converted)**_Sample Size: 8-12 interviews_
 
 ```plain text
 Usage Patterns:
@@ -161,7 +161,7 @@ Alternative Solutions:
 
 ```
 
-** Segment D: Churned Users (Left Platform)**_Sample Size: 5-8 interviews_
+**Segment D: Churned Users (Left Platform)**_Sample Size: 5-8 interviews_
 
 ```plain text
 Departure Reasons:
@@ -178,31 +178,31 @@ Departure Reasons:
 
 **Direct Competitors (Contact Research):**
 
-- **SubmitHub:** £1 per submission model (different pricing strategy)
+- **SubmitHub:**£1 per submission model (different pricing strategy)
 
-- **Groover:** Contact discovery + guaranteed feedback
+- **Groover:**Contact discovery + guaranteed feedback
 
-- **Music Gateway:** Comprehensive platform with contacts
+- **Music Gateway:**Comprehensive platform with contacts
 
 **Adjacent Competitors (Promotion Services):**
 
-- **Plus Music PR:** £795+ campaign packages (shows budget ceiling)
+- **Plus Music PR:**£795+ campaign packages (shows budget ceiling)
 
-- **Prescription PR:** Targeting indie/alternative (our core segment)
+- **Prescription PR:**Targeting indie/alternative (our core segment)
 
-- **Decent Music PR:** Independent artists + labels
+- **Decent Music PR:**Independent artists + labels
 
-- **Liberty Music PR:** Digital-first approach (similar positioning)
+- **Liberty Music PR:**Digital-first approach (similar positioning)
 
 **Key Insights from Competitive Analysis:**
 
-- **Campaign pricing:** £795-£39,999 shows massive price range
+- **Campaign pricing:**£795-£39,999 shows massive price range
 
-- **Target segments:** Most focus on “independent artists” (our core)
+- **Target segments:**Most focus on “independent artists” (our core)
 
-- **Service delivery:** Manual vs our automated approach
+- **Service delivery:**Manual vs our automated approach
 
-- **Geographic focus:** London-centric vs our broader UK approach
+- **Geographic focus:**London-centric vs our broader UK approach
 
 ---
 
@@ -242,13 +242,13 @@ Departure Reasons:
 
 **Target Schedule:**
 
-- **2-3 interviews per day** across all segments
+- **2-3 interviews per day**across all segments
 
-- **30-45 minutes per interview** (structured but conversational)
+- **30-45 minutes per interview**(structured but conversational)
 
-- **Mix of video and phone** based on user preference
+- **Mix of video and phone**based on user preference
 
-- **Immediate notes capture** after each interview
+- **Immediate notes capture**after each interview
 
 ### **Week 4: Analysis & ICP Development**
 
@@ -380,7 +380,7 @@ Departure Reasons:
 
 - Prefer free/DIY solutions over paid tools
 
-**Strategy:** Focus free tier on education, conversion later as they mature
+**Strategy:**Focus free tier on education, conversion later as they mature
 
 ---
 
@@ -388,33 +388,33 @@ Departure Reasons:
 
 ### **Quantitative Research Tools**
 
-- **Stripe Dashboard:** Revenue and conversion analytics
+- **Stripe Dashboard:**Revenue and conversion analytics
 
-- **Audio Intel Analytics:** Usage patterns and feature adoption
+- **Audio Intel Analytics:**Usage patterns and feature adoption
 
-- **Google Analytics:** Traffic sources and user journey
+- **Google Analytics:**Traffic sources and user journey
 
-- **Mixpanel/Amplitude:** User behavior tracking (if implemented)
+- **Mixpanel/Amplitude:**User behavior tracking (if implemented)
 
 ### **Qualitative Research Tools**
 
-- **Zoom/Google Meet:** Video interviews with recording
+- **Zoom/Google Meet:**Video interviews with recording
 
-- **Calendly:** Interview scheduling automation
+- **Calendly:**Interview scheduling automation
 
-- **Notion:** Interview notes and data organization
+- **Notion:**Interview notes and data organization
 
-- **Loom:** Screen recordings for user workflow analysis
+- **Loom:**Screen recordings for user workflow analysis
 
 ### **Interview Incentives**
 
-- **Pro users:** Free month extension or feature preview
+- **Pro users:**Free month extension or feature preview
 
-- **Free users:** 3-month Pro trial for participation
+- **Free users:**3-month Pro trial for participation
 
-- **Churned users:** Free return trial if interested
+- **Churned users:**Free return trial if interested
 
-- **Agency prospects:** Custom consultation session
+- **Agency prospects:**Custom consultation session
 
 ---
 
@@ -422,33 +422,33 @@ Departure Reasons:
 
 ### **Quantitative Targets**
 
-- **30+ interviews completed** across all segments
+- **30+ interviews completed**across all segments
 
-- **90%+ current customer coverage** (talk to representative sample)
+- **90%+ current customer coverage**(talk to representative sample)
 
-- **Statistical significance** on conversion patterns
+- **Statistical significance**on conversion patterns
 
-- **Clear usage pattern identification** for each tier
+- **Clear usage pattern identification**for each tier
 
 ### **Qualitative Targets**
 
-- **3-5 recurring themes** per customer segment
+- **3-5 recurring themes**per customer segment
 
-- **Clear value proposition validation** for each tier
+- **Clear value proposition validation**for each tier
 
-- **Specific feature requests** with priority ranking
+- **Specific feature requests**with priority ranking
 
-- **Pricing sensitivity thresholds** for each segment
+- **Pricing sensitivity thresholds**for each segment
 
 ### **Outcome Targets**
 
-- **Refined pricing strategy** based on willingness to pay
+- **Refined pricing strategy**based on willingness to pay
 
-- **Improved onboarding flow** based on conversion insights
+- **Improved onboarding flow**based on conversion insights
 
-- **Feature roadmap priorities** based on customer needs
+- **Feature roadmap priorities**based on customer needs
 
-- **Marketing messaging optimization** for each segment
+- **Marketing messaging optimization**for each segment
 
 ---
 
@@ -456,40 +456,40 @@ Departure Reasons:
 
 ### **Today (Setup)**
 
-1. **Export current user data** from Stripe and Audio Intel
+1. **Export current user data**from Stripe and Audio Intel
 
-1. **Create interview script templates** for each segment
+1. **Create interview script templates**for each segment
 
-1. **Set up Calendly** for interview scheduling
+1. **Set up Calendly**for interview scheduling
 
-1. **Design email outreach** for interview recruitment
+1. **Design email outreach**for interview recruitment
 
 ### **This Week (Launch)**
 
-1. **Send interview requests** to 50+ users across segments
+1. **Send interview requests**to 50+ users across segments
 
-1. **Schedule first 10 interviews** for next week
+1. **Schedule first 10 interviews**for next week
 
-1. **Begin data analysis** on current user patterns
+1. **Begin data analysis**on current user patterns
 
-1. **Create interview tracking system** in Notion
+1. **Create interview tracking system**in Notion
 
 ### **Success Indicators**
 
-- **10+ interview confirmations** within 48 hours of outreach
+- **10+ interview confirmations**within 48 hours of outreach
 
-- **Clear usage patterns** identified from current data
+- **Clear usage patterns**identified from current data
 
-- **Interview script validation** with first 2-3 participants
+- **Interview script validation**with first 2-3 participants
 
-- **Research momentum** maintained throughout 4-week timeline
+- **Research momentum**maintained throughout 4-week timeline
 
 ---
 
 _“The goal isn’t to find customers for your product. It’s to find the right product for your customers.” - Focus on learning, not confirming assumptions._
 
-**Research Start Date:** [This Week]
+**Research Start Date:**[This Week]
 
-**Expected Completion:** [4 Weeks]
+**Expected Completion:**[4 Weeks]
 
-**Expected Outcome:** Clear ICP validation and optimized pricing strategy for Audio Intel 
+**Expected Outcome:**Clear ICP validation and optimized pricing strategy for Audio Intel 

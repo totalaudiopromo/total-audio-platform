@@ -107,12 +107,12 @@ console.log(health.healthy ? ' Ready' : ' Not ready');
 
 The agent will automatically post these threads when scheduled:
 
-1. **Oct 1, 8am** - "The Brighton Producer Story"
-2. **Oct 6, 8am** - "The BBC Radio 1 Test"
-3. **Oct 10, 8am** - "The Brighton Producer Story" (repeat)
-4. **Oct 15, 8am** - "The Submission Window Problem"
-5. **Oct 21, 1pm** - "The Cost Reality"
-6. **Oct 24, 8am** - "The Response Rate Breakthrough"
+1. **Oct 1, 8am**- "The Brighton Producer Story"
+2. **Oct 6, 8am**- "The BBC Radio 1 Test"
+3. **Oct 10, 8am**- "The Brighton Producer Story" (repeat)
+4. **Oct 15, 8am**- "The Submission Window Problem"
+5. **Oct 21, 1pm**- "The Cost Reality"
+6. **Oct 24, 8am**- "The Response Rate Breakthrough"
 
 Run `processScheduledPosts()` hourly to catch posts within their scheduled time window.
 
@@ -168,12 +168,12 @@ Add to crontab:
 
 All content pre-configured and ready to post:
 
-- **The 2AM Reality** - Origin story (7 tweets)
-- **The Contact Intelligence Reality** - Features (7 tweets)
-- **The Brighton Producer Story** - Founder story (8 tweets)
-- **The Submission Window Problem** - Urgency (7 tweets)
-- **The Cost Reality** - Pricing (7 tweets)
-- **The Response Rate Breakthrough** - Results (7 tweets)
+- **The 2AM Reality**- Origin story (7 tweets)
+- **The Contact Intelligence Reality**- Features (7 tweets)
+- **The Brighton Producer Story**- Founder story (8 tweets)
+- **The Submission Window Problem**- Urgency (7 tweets)
+- **The Cost Reality**- Pricing (7 tweets)
+- **The Response Rate Breakthrough**- Results (7 tweets)
 
 **Total**: 43 tweets across 6 threads
 

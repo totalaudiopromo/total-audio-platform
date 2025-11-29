@@ -36,9 +36,9 @@ npx ts-node scripts/send-welcome-email.ts info@streamer.co.uk
 
 ## App URLs
 
-- **Audio Intel:** https://intel.totalaudiopromo.com LIVE
-- **Campaign Tracker:** https://tracker.totalaudiopromo.com Coming soon
-- **Pitch Generator:** https://pitch.totalaudiopromo.com Coming soon
+- **Audio Intel:**https://intel.totalaudiopromo.com LIVE
+- **Campaign Tracker:**https://tracker.totalaudiopromo.com Coming soon
+- **Pitch Generator:**https://pitch.totalaudiopromo.com Coming soon
 
 ## Verification
 
@@ -54,12 +54,12 @@ Should return JWT token and user data with subscription info.
 
 ## Troubleshooting
 
-**User exists?** Script handles it - safe to re-run.
+**User exists?**Script handles it - safe to re-run.
 
-**Email fails?** Check `RESEND_API_KEY` is set.
+**Email fails?**Check `RESEND_API_KEY` is set.
 
-**Database error?** Verify `DATABASE_URL` in `.env.local`.
+**Database error?**Verify `DATABASE_URL` in `.env.local`.
 
 ---
 
-**Full Guide:** See `BETA_USER_SETUP_GUIDE.md` for detailed instructions.
+**Full Guide:**See `BETA_USER_SETUP_GUIDE.md` for detailed instructions.

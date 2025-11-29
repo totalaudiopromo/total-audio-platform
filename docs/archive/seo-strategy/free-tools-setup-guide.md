@@ -90,7 +90,7 @@
 - Who ranks in top 10? (competitors, directories, blogs)
 - What content type? (product pages, guides, tools)
 - Content quality? (comprehensive vs basic)
-- **Gap opportunities?** (outdated info, poor UX, missing angles)
+- **Gap opportunities?**(outdated info, poor UX, missing angles)
 
 ## 🎯 Free Competitor Research
 
@@ -125,11 +125,11 @@
 
 ### Music Industry Communities to Research:
 
-1. **r/WeAreTheMusicMakers** - Independent artists
-2. **r/edmproduction** - Electronic music producers
-3. **r/trapproduction** - Hip-hop producers
-4. **Gearslutz Forum** - Audio professionals
-5. **VI-Control** - Composers and producers
+1. **r/WeAreTheMusicMakers**- Independent artists
+2. **r/edmproduction**- Electronic music producers
+3. **r/trapproduction**- Hip-hop producers
+4. **Gearslutz Forum**- Audio professionals
+5. **VI-Control**- Composers and producers
 
 ### What to Look For:
 
@@ -149,10 +149,10 @@
 
 ### Process:
 
-1. **Search music promotion topics** on YouTube
+1. **Search music promotion topics**on YouTube
 2. **Note autocomplete suggestions**
-3. **Check popular video titles** in music marketing niche
-4. **Look at comment sections** for questions and pain points
+3. **Check popular video titles**in music marketing niche
+4. **Look at comment sections**for questions and pain points
 
 ### Typical YouTube Searches to Try:
 
@@ -173,10 +173,10 @@
 
 ### Red Flags to Avoid:
 
-❌ **Zero CPC data** (no commercial intent)
-❌ **All big music sites ranking** (too competitive)
-❌ **Declining Google Trends** (shrinking market)
-❌ **Too broad** ("music" is too general)
+❌ **Zero CPC data**(no commercial intent)
+❌ **All big music sites ranking**(too competitive)
+❌ **Declining Google Trends**(shrinking market)
+❌ **Too broad**("music" is too general)
 
 ## 🚀 Today's Action Items (2-3 Hours)
 
@@ -213,4 +213,4 @@ Create a simple Google Sheet with these columns:
 | music contact database    | [Your data] | [Your data] | [Your data] | Weak content in pos 4-6 | Comprehensive guide | 9               |
 | playlist curator contacts | [Your data] | [Your data] | [Your data] | Missing UK focus        | UK-specific list    | 8               |
 
-**Ready to dive into the Keywords Everywhere data you found? Share what you discovered and I'll help prioritize the best opportunities for Audio Intel!** 🎯
+**Ready to dive into the Keywords Everywhere data you found? Share what you discovered and I'll help prioritize the best opportunities for Audio Intel!**🎯

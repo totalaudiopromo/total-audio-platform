@@ -317,13 +317,13 @@ Upload your basic contact list. Audio Intel enriches with:
 3. https://www.musicgateway.com/radio-station/bbc-introducing
 4. https://www.musicgateway.com/radio-station/radio-2
 
-**Schedule Changes & Presenter Info:** 5. https://radiotoday.co.uk/2025/02/new-show-for-zoe-ball-and-a-move-for-pick-of-the-pops-on-bbc-radio-2/ 6. https://www.atvtoday.co.uk/246265-bbc/ 7. https://en.wikipedia.org/wiki/BBC_Radio_2
+**Schedule Changes & Presenter Info:**5. https://radiotoday.co.uk/2025/02/new-show-for-zoe-ball-and-a-move-for-pick-of-the-pops-on-bbc-radio-2/ 6. https://www.atvtoday.co.uk/246265-bbc/ 7. https://en.wikipedia.org/wiki/BBC_Radio_2
 
-**Audience Demographics:** 8. https://bebroadcast.co.uk/bbc-national-radio-targets/ 9. https://www.radiocentre.org/files/appendix_a___bdrc_bbc_r1_r2_audience_research_website.pdf
+**Audience Demographics:**8. https://bebroadcast.co.uk/bbc-national-radio-targets/ 9. https://www.radiocentre.org/files/appendix_a___bdrc_bbc_r1_r2_audience_research_website.pdf
 
-**Submission Best Practices:** 10. https://www.theunsignedguide.com/blog/718-bbc-introducing-share-advice-on-getting-radio-airplay-for-your-music 11. https://www.prsformusic.com/m-magazine/how-to/how-to-get-played-on-the-radio-in-2025 12. https://www.musicconnection.com/get-your-music-bbc-radio/
+**Submission Best Practices:**10. https://www.theunsignedguide.com/blog/718-bbc-introducing-share-advice-on-getting-radio-airplay-for-your-music 11. https://www.prsformusic.com/m-magazine/how-to/how-to-get-played-on-the-radio-in-2025 12. https://www.musicconnection.com/get-your-music-bbc-radio/
 
-**Additional Verification:** 13. https://routenote.com/blog/how-to-get-your-music-featured-on-bbc-radio-6-music/ 14. Wikipedia BBC Radio 2 presenters 15. Multiple UK radio schedule aggregators
+**Additional Verification:**13. https://routenote.com/blog/how-to-get-your-music-featured-on-bbc-radio-6-music/ 14. Wikipedia BBC Radio 2 presenters 15. Multiple UK radio schedule aggregators
 
 ---
 

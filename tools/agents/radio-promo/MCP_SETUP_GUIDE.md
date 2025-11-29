@@ -1,4 +1,4 @@
-#  **MCP Setup Guide for Liberty Music PR**
+# **MCP Setup Guide for Liberty Music PR**
 
 ## **Why MCPs are Better Than Custom APIs**
 
@@ -10,15 +10,15 @@
 
 ## **Current MCP Status**
 
-###  **Working MCPs**
+### **Working MCPs**
 
-- **Puppeteer MCP** - Web automation
-- **Notion MCP** - Project management
-- **Google Services MCP** - Gmail, Drive, Calendar (custom)
+- **Puppeteer MCP**- Web automation
+- **Notion MCP**- Project management
+- **Google Services MCP**- Gmail, Drive, Calendar (custom)
 
-###  **Failed MCPs**
+### **Failed MCPs**
 
-- **GitHub MCP** - Connection failed
+- **GitHub MCP**- Connection failed
 
 ## **Google Services MCP Setup**
 

@@ -1,10 +1,10 @@
 # Vercel Environment Variables Checklist
 
-**Production URL:** https://pitch.totalaudiopromo.com
+**Production URL:**https://pitch.totalaudiopromo.com
 
 ## Required Environment Variables
 
-###  Authentication (NextAuth.js)
+### Authentication (NextAuth.js)
 
 ```bash
 NEXTAUTH_SECRET=<random-secret-string>
@@ -19,7 +19,7 @@ DEMO_USER_EMAIL=founder@totalaudiopromo.com
 DEMO_USER_PASSWORD=buildfast
 ```
 
-###  Supabase Database
+### Supabase Database
 
 ```bash
 NEXT_PUBLIC_SUPABASE_URL=<your-supabase-project-url>
@@ -27,13 +27,13 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=<your-supabase-anon-key>
 SUPABASE_SERVICE_ROLE_KEY=<your-supabase-service-role-key>
 ```
 
-###  AI Provider (Claude)
+### AI Provider (Claude)
 
 ```bash
 ANTHROPIC_API_KEY=<your-anthropic-api-key>
 ```
 
-###  Stripe (Payment Processing)
+### Stripe (Payment Processing)
 
 ```bash
 STRIPE_SECRET_KEY=<your-stripe-secret-key>
@@ -45,7 +45,7 @@ STRIPE_PRICE_AGENCY_MONTHLY=price_xxx
 STRIPE_PRICE_AGENCY_ANNUAL=price_xxx
 ```
 
-###  Base URL
+### Base URL
 
 ```bash
 NEXT_PUBLIC_BASE_URL=https://pitch.totalaudiopromo.com
@@ -59,8 +59,8 @@ NEXT_PUBLIC_BASE_URL=https://pitch.totalaudiopromo.com
 
 1. Go to https://vercel.com/dashboard
 2. Select your `pitch-generator` project
-3. Go to **Settings** → **Environment Variables**
-4. Check that all the variables above are set for **Production** environment
+3. Go to **Settings**→ **Environment Variables**
+4. Check that all the variables above are set for **Production**environment
 
 ### Via Vercel CLI:
 
@@ -112,9 +112,9 @@ vercel env add ANTHROPIC_API_KEY production
 
 After adding/updating environment variables:
 
-1. **Redeploy** - Vercel needs to rebuild for env vars to take effect
-2. **Test the live site** - Try signing in, generating a pitch
-3. **Check logs** - Vercel Dashboard → Deployments → View Function Logs
+1. **Redeploy**- Vercel needs to rebuild for env vars to take effect
+2. **Test the live site**- Try signing in, generating a pitch
+3. **Check logs**- Vercel Dashboard → Deployments → View Function Logs
 
 ---
 

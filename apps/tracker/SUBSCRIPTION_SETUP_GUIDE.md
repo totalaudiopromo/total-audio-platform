@@ -183,7 +183,7 @@ WHERE is_beta_user = true;
 
 ### Test 1: Free User Limits
 
-Create a **new test account** (or use an existing non-beta user):
+Create a **new test account**(or use an existing non-beta user):
 
 ```sql
 -- Create test user profile (after signup via UI)
@@ -420,7 +420,7 @@ SELECT id, email FROM auth.users WHERE id IN (
 
 ### Issue: Migration fails with "column already exists"
 
-**Solution:** Run this to check and manually add missing columns:
+**Solution:**Run this to check and manually add missing columns:
 
 ```sql
 -- Check which columns exist
@@ -479,6 +479,6 @@ WHERE routine_name = 'can_create_campaign';
 
 ---
 
-**Setup Complete!** 
+**Setup Complete!**
 
 Your subscription enforcement is now ready to use. Users will be limited by their tier, and you can mark trusted users as beta testers for unlimited access.

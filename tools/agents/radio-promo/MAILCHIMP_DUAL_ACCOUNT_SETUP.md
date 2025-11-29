@@ -120,7 +120,7 @@ TAP_MAILCHIMP_LIST_ID=2c81175fba
 
 After sync completes:
 
-- **516 total contacts** in Airtable
+- **516 total contacts**in Airtable
 - Each contact will show:
   - Which Mailchimp account (Liberty/TAP/Both/None)
   - Subscription status (subscribed/unsubscribed/cleaned)
@@ -133,7 +133,7 @@ After sync completes:
 
 Use this to:
 
-1. **Identify duplicates** (contacts in Both accounts)
-2. **Target campaigns** by Mailchimp account
-3. **Clean up** contacts that are in Neither account
-4. **Maintain separation** between Liberty and TAP contact lists
+1. **Identify duplicates**(contacts in Both accounts)
+2. **Target campaigns**by Mailchimp account
+3. **Clean up**contacts that are in Neither account
+4. **Maintain separation**between Liberty and TAP contact lists

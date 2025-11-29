@@ -9,20 +9,20 @@ description: Use when creating or developing anything, before writing code or im
 
 Transform rough ideas into fully-formed designs through structured questioning and alternative exploration.
 
-**Core principle:** Ask questions to understand, explore alternatives, present design incrementally for validation.
+**Core principle:**Ask questions to understand, explore alternatives, present design incrementally for validation.
 
-**Announce at start:** "I'm using the brainstorming skill to refine your idea into a design."
+**Announce at start:**"I'm using the brainstorming skill to refine your idea into a design."
 
 ## Quick Reference
 
 | Phase                       | Key Activities                   | Tool Usage                             | Output                               |
 | --------------------------- | -------------------------------- | -------------------------------------- | ------------------------------------ |
-| **1. Understanding**        | Ask questions (one at a time)    | AskUserQuestion for choices            | Purpose, constraints, criteria       |
-| **2. Exploration**          | Propose 2-3 approaches           | AskUserQuestion for approach selection | Architecture options with trade-offs |
-| **3. Design Presentation**  | Present in 200-300 word sections | Open-ended questions                   | Complete design with validation      |
-| **4. Design Documentation** | Write design document            | writing-clearly-and-concisely skill    | Design doc in docs/plans/            |
-| **5. Worktree Setup**       | Set up isolated workspace        | using-git-worktrees skill              | Ready development environment        |
-| **6. Planning Handoff**     | Create implementation plan       | writing-plans skill                    | Detailed task breakdown              |
+| **1. Understanding**       | Ask questions (one at a time)    | AskUserQuestion for choices            | Purpose, constraints, criteria       |
+| **2. Exploration**         | Propose 2-3 approaches           | AskUserQuestion for approach selection | Architecture options with trade-offs |
+| **3. Design Presentation** | Present in 200-300 word sections | Open-ended questions                   | Complete design with validation      |
+| **4. Design Documentation**| Write design document            | writing-clearly-and-concisely skill    | Design doc in docs/plans/            |
+| **5. Worktree Setup**      | Set up isolated workspace        | using-git-worktrees skill              | Ready development environment        |
+| **6. Planning Handoff**    | Create implementation plan       | writing-plans skill                    | Detailed task breakdown              |
 
 ## The Process
 
@@ -42,7 +42,7 @@ Brainstorming Progress:
 
 - Check current project state in working directory
 - Ask ONE question at a time to refine the idea
-- **Use AskUserQuestion tool** when you have multiple choice options
+- **Use AskUserQuestion tool**when you have multiple choice options
 - Gather: Purpose, constraints, success criteria
 
 **Example using AskUserQuestion:**
@@ -59,7 +59,7 @@ Options:
 
 - Propose 2-3 different approaches
 - For each: Core architecture, trade-offs, complexity assessment
-- **Use AskUserQuestion tool** to present approaches as structured choices
+- **Use AskUserQuestion tool**to present approaches as structured choices
 - Ask your human partner which approach resonates
 
 **Example using AskUserQuestion:**
@@ -83,9 +83,9 @@ Options:
 
 After design is validated, write it to a permanent document:
 
-- **File location:** `docs/plans/YYYY-MM-DD-<topic>-design.md` (use actual date and descriptive topic)
-- **RECOMMENDED SUB-SKILL:** Use elements-of-style:writing-clearly-and-concisely (if available) for documentation quality
-- **Content:** Capture the design as discussed and validated in Phase 3, organized into the sections that emerged from the conversation
+- **File location:**`docs/plans/YYYY-MM-DD-<topic>-design.md` (use actual date and descriptive topic)
+- **RECOMMENDED SUB-SKILL:**Use elements-of-style:writing-clearly-and-concisely (if available) for documentation quality
+- **Content:**Capture the design as discussed and validated in Phase 3, organized into the sections that emerged from the conversation
 - Commit the design document to git before proceeding
 
 ### Phase 5: Worktree Setup (for implementation)
@@ -93,7 +93,7 @@ After design is validated, write it to a permanent document:
 When design is approved and implementation will follow:
 
 - Announce: "I'm using the using-git-worktrees skill to set up an isolated workspace."
-- **REQUIRED SUB-SKILL:** Use superpowers:using-git-worktrees
+- **REQUIRED SUB-SKILL:**Use superpowers:using-git-worktrees
 - Follow that skill's process for directory selection, safety verification, and setup
 - Return here when worktree ready
 
@@ -104,7 +104,7 @@ Ask: "Ready to create the implementation plan?"
 When your human partner confirms (any affirmative response):
 
 - Announce: "I'm using the writing-plans skill to create the implementation plan."
-- **REQUIRED SUB-SKILL:** Use superpowers:writing-plans
+- **REQUIRED SUB-SKILL:**Use superpowers:writing-plans
 - Create detailed plan in the worktree
 
 ## Question Patterns
@@ -166,16 +166,16 @@ digraph revisit_phases {
 - Partner questions approach during Phase 3 → Return to Phase 2
 - Something doesn't make sense → Go back and clarify
 
-**Don't force forward linearly** when going backward would give better results.
+**Don't force forward linearly**when going backward would give better results.
 
 ## Key Principles
 
 | Principle                  | Application                                                           |
 | -------------------------- | --------------------------------------------------------------------- |
-| **One question at a time** | Phase 1: Single question per message, use AskUserQuestion for choices |
-| **Structured choices**     | Use AskUserQuestion tool for 2-4 options with trade-offs              |
-| **YAGNI ruthlessly**       | Remove unnecessary features from all designs                          |
-| **Explore alternatives**   | Always propose 2-3 approaches before settling                         |
-| **Incremental validation** | Present design in sections, validate each                             |
-| **Flexible progression**   | Go backward when needed - flexibility > rigidity                      |
-| **Announce usage**         | State skill usage at start of session                                 |
+| **One question at a time**| Phase 1: Single question per message, use AskUserQuestion for choices |
+| **Structured choices**    | Use AskUserQuestion tool for 2-4 options with trade-offs              |
+| **YAGNI ruthlessly**      | Remove unnecessary features from all designs                          |
+| **Explore alternatives**  | Always propose 2-3 approaches before settling                         |
+| **Incremental validation**| Present design in sections, validate each                             |
+| **Flexible progression**  | Go backward when needed - flexibility > rigidity                      |
+| **Announce usage**        | State skill usage at start of session                                 |

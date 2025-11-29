@@ -7,7 +7,7 @@
 
 ## What You Need for KYARA Campaign
 
-### 1. **Email Pitch** (Gmail - Plain Text)
+### 1. **Email Pitch**(Gmail - Plain Text)
 
 For warm contacts (Anika Luna, Claire Mooney)
 
@@ -41,7 +41,7 @@ Chris
 
 ---
 
-### 2. **Electronic Press Kit (EPK)** - Professional PDF
+### 2. **Electronic Press Kit (EPK)**- Professional PDF
 
 For cold contacts or follow-ups
 
@@ -57,9 +57,9 @@ For cold contacts or follow-ups
 
 **Tools to create**:
 
-- **Canva** (easiest - has EPK templates)
-- **Adobe InDesign** (professional)
-- **Google Slides** → Export as PDF (free)
+- **Canva**(easiest - has EPK templates)
+- **Adobe InDesign**(professional)
+- **Google Slides**→ Export as PDF (free)
 
 ---
 
@@ -95,7 +95,7 @@ For cold contacts or follow-ups
 
 **Subject**: KYARA - New single for Home & Hosed (following up from "Yearn")
 
-**Body** (Plain text, no HTML):
+**Body**(Plain text, no HTML):
 
 ```
 Hi Anika,
@@ -323,7 +323,7 @@ Offer all 3 options - let them choose their preferred platform
 - Follow-up date
 - Notes on feedback
 
-**Follow-up Template** (if no response after 5 days):
+**Follow-up Template**(if no response after 5 days):
 
 ```
 Hi [Name],
@@ -346,12 +346,12 @@ Chris
 
 ## Pro Tips
 
-1. **Personalize every email** - even small changes make a difference
-2. **Reference specific shows/times** - shows you've done research
-3. **Keep it brief** - radio people are busy
-4. **Make downloading easy** - one-click access
-5. **Include context** - why this fits their station
-6. **Be authentic** - Chris, you're a radio promo veteran, use that voice!
+1. **Personalize every email**- even small changes make a difference
+2. **Reference specific shows/times**- shows you've done research
+3. **Keep it brief**- radio people are busy
+4. **Make downloading easy**- one-click access
+5. **Include context**- why this fits their station
+6. **Be authentic**- Chris, you're a radio promo veteran, use that voice!
 
 ---
 

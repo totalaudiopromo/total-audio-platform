@@ -356,7 +356,7 @@ pnpm tsx scripts/golden-intelligence.ts
 
 **File**: `.github/workflows/golden-verify.yml`
 
-**New Step** (added after verification):
+**New Step**(added after verification):
 
 ```yaml
 - name: Ingest Golden Verify + Testing Results to Command Centre
@@ -450,9 +450,9 @@ LIMIT 20;
 
 ### Database Query Performance
 
-- **Golden Verify History** (20 results): ~50ms
-- **Latest Status** (3 apps): ~30ms
-- **Testing Results** (50 results): ~60ms
+- **Golden Verify History**(20 results): ~50ms
+- **Latest Status**(3 apps): ~30ms
+- **Testing Results**(50 results): ~60ms
 - **Pass Rate Calculation**: ~40ms
 
 **Optimization**:
@@ -593,7 +593,7 @@ Current retention policies:
 - **testing_results**: Indefinite (use for trend analysis)
 - **GitHub Actions artifacts**: 30 days
 
-**Cleanup Script** (future):
+**Cleanup Script**(future):
 
 ```sql
 -- Delete Golden Verify data older than 90 days

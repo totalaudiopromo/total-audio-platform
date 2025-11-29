@@ -11,14 +11,14 @@ description: Use when working on Total Audio Platform (Audio Intel) during custo
 
 This skill enforces focus on getting first paying customers for Audio Intel, not building the perfect product.
 
-**Core principle:** Every task must answer "Does this help acquire the first paying customer?"
+**Core principle:**Every task must answer "Does this help acquire the first paying customer?"
 
 ## When to Use
 
 Use this skill when working on:
 
-- **Total Audio Platform** (`~/workspace/active/total-audio-platform/`)
-- **Audio Intel** specifically (`apps/audio-intel/`)
+- **Total Audio Platform**(`~/workspace/active/total-audio-platform/`)
+- **Audio Intel**specifically (`apps/audio-intel/`)
 - Any customer-facing feature work
 - Planning 2-hour development sessions
 
@@ -86,7 +86,7 @@ If you can't explain how this task helps acquire first paying customer, STOP and
 - Add usage analytics
 - Make first-time experience smooth
 
-###  DON'T (Technical Perfection)
+### DON'T (Technical Perfection)
 
 **Premature Optimization:**
 
@@ -149,7 +149,7 @@ If you catch yourself:
 - "Let me make this perfect..."
 - Planning work beyond 2-hour session scope
 
-**ALL of these mean:** STOP. Return to customer acquisition focus.
+**ALL of these mean:**STOP. Return to customer acquisition focus.
 
 ## When Technical Work IS Justified
 
@@ -174,8 +174,8 @@ If you catch yourself:
 **Before proposing any work:**
 
 1. Use this skill to validate customer acquisition focus
-2. If debugging, use **systematic-debugging** to fix fast
-3. After fixing, use **changelog-generator** for customer communication
+2. If debugging, use **systematic-debugging**to fix fast
+3. After fixing, use **changelog-generator**for customer communication
 
 **This skill overrides:**
 
@@ -192,8 +192,8 @@ totalaud.io is your experimental sandbox - perfectionism, refactoring, wild idea
 
 **Clear separation:**
 
-- **Total Audio Platform** = customer acquisition focus, ship fast, validate with users
-- **totalaud.io** = experimental, learn, innovate, no pressure
+- **Total Audio Platform**= customer acquisition focus, ship fast, validate with users
+- **totalaud.io**= experimental, learn, innovate, no pressure
 
 ## Time-Boxed Sessions (2 Hours)
 
@@ -208,7 +208,7 @@ totalaud.io is your experimental sandbox - perfectionism, refactoring, wild idea
 - Original task: "Fix signup error"
 - Scope creep: "Fix signup error + refactor auth + improve validation + add analytics"
 
-**If scope expanding:** STOP. Ship original task. Add other items to backlog.
+**If scope expanding:**STOP. Ship original task. Add other items to backlog.
 
 ## Success Metrics
 
@@ -217,7 +217,7 @@ totalaud.io is your experimental sandbox - perfectionism, refactoring, wild idea
 - Demo calls booked this week: **\_**
 - Beta signups this week: **\_**
 - Customer feedback received: **\_**
-- Time spent on non-customer work: **\_** (target: < 20%)
+- Time spent on non-customer work: **\_**(target: < 20%)
 
 **Monthly Check:**
 
@@ -252,7 +252,7 @@ totalaud.io is your experimental sandbox - perfectionism, refactoring, wild idea
 - NOT feature completeness (core value proven)
 - Customer acquisition execution (demos, outreach, trust-building)
 
-**This skill prevents:** Wasting 2-hour sessions on technical perfectionism when customer acquisition actions are what's needed.
+**This skill prevents:**Wasting 2-hour sessions on technical perfectionism when customer acquisition actions are what's needed.
 
 ## Bottom Line
 
@@ -271,4 +271,4 @@ totalaud.io is your experimental sandbox - perfectionism, refactoring, wild idea
 - Clean up technical debt
 - Build advanced features
 
-**Right now:** Focus ruthlessly on first paying customer.
+**Right now:**Focus ruthlessly on first paying customer.

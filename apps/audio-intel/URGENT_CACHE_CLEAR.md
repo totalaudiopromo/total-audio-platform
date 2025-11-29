@@ -1,4 +1,4 @@
-#  URGENT: Vercel Cache Issue
+# URGENT: Vercel Cache Issue
 
 **Status**: Production is still serving 79+ hour old cached version  
 **Problem**: `x-vercel-cache: HIT` and `x-nextjs-prerender: 1` indicate old static cache
@@ -27,7 +27,7 @@ etag: "1ccefe22c74f3f7bb6264e11fdd7ecb3"  # ← OLD etag
 3. **Clear Cache**:
    - Click on the deployment
    - Go to "..." menu → **"Redeploy"**
-   - Check **"Use existing build cache"** = OFF
+   - Check **"Use existing build cache"**= OFF
    - Click **"Redeploy"**
 
 ### Option 2: Force New Deployment
@@ -49,7 +49,7 @@ git push origin main
 Add explicit cache control to `next.config.js`:
 
 ```javascript
-/** @type {import('next').NextConfig} */
+/**@type {import('next').NextConfig} */
 const nextConfig = {
   headers: async () => [
     {

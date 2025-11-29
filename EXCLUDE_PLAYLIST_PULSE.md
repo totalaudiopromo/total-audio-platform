@@ -2,7 +2,7 @@
 
 ## Issue
 
-The CI/CD pipeline is checking for `playlist-pulse` but this app should be **EXCLUDED** from all builds, tests, and deployments.
+The CI/CD pipeline is checking for `playlist-pulse` but this app should be **EXCLUDED**from all builds, tests, and deployments.
 
 ## Apps to Include (ONLY THESE)
 

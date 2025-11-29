@@ -10,10 +10,10 @@ Your Google Chat exports contain a goldmine of Liberty Music PR's internal campa
 
 ### Google Chat Data
 
-- **"Success Shout Outs"** - 50+ team members sharing campaign wins in real-time
-- **"Radio Superstars"** - 16 radio specialists with genre/territory expertise
-- **Individual/Group DMs** - Campaign planning and coordination conversations
-- **Liberty team structure** - Clear hierarchy and specialization patterns
+- **"Success Shout Outs"**- 50+ team members sharing campaign wins in real-time
+- **"Radio Superstars"**- 16 radio specialists with genre/territory expertise
+- **Individual/Group DMs**- Campaign planning and coordination conversations
+- **Liberty team structure**- Clear hierarchy and specialization patterns
 
 ### WARM Reports Available
 
@@ -25,25 +25,25 @@ Your Google Chat exports contain a goldmine of Liberty Music PR's internal campa
 
 ### 1. High-Value Media Placements
 
-**EARMILK** = Premium tier placement
+**EARMILK**= Premium tier placement
 
 - Client reaction: "Mark was delighted especially with the EARMILK feature"
 - Consistent pattern of client satisfaction when secured
 - Use for premium pricing tier justification
 
-**Music Crowns** = Strong industry recognition
+**Music Crowns**= Strong industry recognition
 
 - Premiere placements generate team excitement (fire emoji reactions)
 - "big ups to @Joe Ramsey for this write up for Jonny Amoral"
 
-**FAME + TAGG + Others** = Multi-outlet success
+**FAME + TAGG + Others**= Multi-outlet success
 
 - Combined placements = "delighted clients"
 - Bundle approach more effective than single hits
 
 ### 2. Key Industry Relationships
 
-**Joe Ramsey (Publicist)** - Critical contact
+**Joe Ramsey (Publicist)**- Critical contact
 
 - High success rate across multiple mentions
 - Covers indie/alternative artists effectively
@@ -72,7 +72,7 @@ Your Google Chat exports contain a goldmine of Liberty Music PR's internal campa
 
 ### 4. Campaign Structure Intelligence
 
-**PR4 + PL4 Packages** (Press Level 4 + Playlist Level 4)
+**PR4 + PL4 Packages**(Press Level 4 + Playlist Level 4)
 
 - 6-week comprehensive campaigns
 - Multi-service bundling (press + radio + playlisting)

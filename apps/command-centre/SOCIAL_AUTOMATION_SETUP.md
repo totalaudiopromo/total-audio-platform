@@ -1,14 +1,14 @@
-#  Social Media Automation Setup Guide
+# Social Media Automation Setup Guide
 
 Complete automation system with content verification and duplicate detection.
 
 ## What You Get
 
-- **Automated posting** to Twitter/X, LinkedIn, BlueSky, Facebook
-- **Content verification** before posting
-- **Duplicate detection** across all platforms
-- **Manual approval workflow** for quality control
-- **Zero Twitter API costs** using Puppeteer automation
+- **Automated posting**to Twitter/X, LinkedIn, BlueSky, Facebook
+- **Content verification**before posting
+- **Duplicate detection**across all platforms
+- **Manual approval workflow**for quality control
+- **Zero Twitter API costs**using Puppeteer automation
 
 ## Quick Start (5 Minutes)
 
@@ -139,12 +139,12 @@ crontab -e
 
 Ready-to-post templates include:
 
-- **BBC Radio 1 case study** posts
-- **Spotify playlist success** stories
-- **"15 hours → 15 minutes"** value propositions
-- **Real founder story** content
-- **Industry insight** posts
-- **Professional credibility** content
+- **BBC Radio 1 case study**posts
+- **Spotify playlist success**stories
+- **"15 hours → 15 minutes"**value propositions
+- **Real founder story**content
+- **Industry insight**posts
+- **Professional credibility**content
 
 ## Verification Process
 
@@ -236,10 +236,10 @@ Before any post goes live:
 
 ## Next Steps
 
-1. **Start with BlueSky** (free, easy setup)
-2. **Test with dry runs** until comfortable
-3. **Add LinkedIn** for professional reach
-4. **Scale to other platforms** as needed
-5. **Monitor and optimize** based on engagement
+1. **Start with BlueSky**(free, easy setup)
+2. **Test with dry runs**until comfortable
+3. **Add LinkedIn**for professional reach
+4. **Scale to other platforms**as needed
+5. **Monitor and optimize**based on engagement
 
 Your Audio Intel content is ready to go live with full verification and quality control!

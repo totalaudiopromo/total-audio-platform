@@ -1,8 +1,8 @@
 # Free Cold Email System for Audio Intel
 
-**Total Cost:** £0
-**Target:** 50 radio promoter emails → 4 customers = £76/month
-**Time:** 2-4 hours/week
+**Total Cost:**£0
+**Target:**50 radio promoter emails → 4 customers = £76/month
+**Time:**2-4 hours/week
 
 ---
 
@@ -83,27 +83,27 @@ chmod +x complete-workflow.sh
 
 ### Email Finding
 
-- **Hunter.io** - 25 searches/month (free)
-- **Snov.io** - 50 credits/month (free)
+- **Hunter.io**- 25 searches/month (free)
+- **Snov.io**- 50 credits/month (free)
 
 ### Scraping
 
-- **Google Maps** - Unlimited (free)
-- **Puppeteer MCP** - Browser automation (free, via Claude Code)
+- **Google Maps**- Unlimited (free)
+- **Puppeteer MCP**- Browser automation (free, via Claude Code)
 
 ### Verification
 
-- **LinkedIn** - Manual verification (free)
+- **LinkedIn**- Manual verification (free)
 
 ### Enrichment
 
-- **Audio Intel** - Your existing contact enrichment tool (free for your use)
+- **Audio Intel**- Your existing contact enrichment tool (free for your use)
 
 ### Sending
 
-- **Gmail** - Manual sending (free, <20 emails)
-- **Mailchimp** - 500 emails/month free tier
-- **Your existing Gmail Autopilot** - Auto-sorting and tracking
+- **Gmail**- Manual sending (free, <20 emails)
+- **Mailchimp**- 500 emails/month free tier
+- **Your existing Gmail Autopilot**- Auto-sorting and tracking
 
 ---
 
@@ -115,7 +115,7 @@ chmod +x complete-workflow.sh
 | Click rate          | 45%  | 22 clicks     |
 | Demo bookings       | 85%  | 42 demos      |
 | Close rate          | 10%  | 4 customers   |
-| **Monthly revenue** | -    | **£76/month** |
+| **Monthly revenue**| -    | **£76/month**|
 
 ---
 
@@ -165,11 +165,11 @@ chmod +x complete-workflow.sh
 
 ## What NOT to Do
 
- **Don't buy Apollo.io** - Use free Hunter + Snov instead
- **Don't send generic emails** - Personalise every single one
- **Don't send all 50 at once** - Test 10, optimize, scale
- **Don't use AI voice** - Your authentic voice is your moat
- **Don't skip LinkedIn verification** - Quality > quantity
+ **Don't buy Apollo.io**- Use free Hunter + Snov instead
+ **Don't send generic emails**- Personalise every single one
+ **Don't send all 50 at once**- Test 10, optimize, scale
+ **Don't use AI voice**- Your authentic voice is your moat
+ **Don't skip LinkedIn verification**- Quality > quantity
 
 ---
 
@@ -210,10 +210,10 @@ tools/agents/outreach/
 
 ## Success Metrics
 
-**Target:** First customer within 14 days
-**Method:** 50 emails → 42 demos → 4 customers
-**Revenue:** £76/month (from £0 spend)
-**Time:** 3 hours total (£25/hour)
+**Target:**First customer within 14 days
+**Method:**50 emails → 42 demos → 4 customers
+**Revenue:**£76/month (from £0 spend)
+**Time:**3 hours total (£25/hour)
 
 ---
 
@@ -256,15 +256,15 @@ tools/agents/outreach/
 
 ## Next Steps
 
-1. **Today:** Run quick start (5 minutes)
-2. **This week:** Send first 10 emails
-3. **Next week:** Scale to 50 emails
-4. **Within 14 days:** Close first customer (£19/month)
+1. **Today:**Run quick start (5 minutes)
+2. **This week:**Send first 10 emails
+3. **Next week:**Scale to 50 emails
+4. **Within 14 days:**Close first customer (£19/month)
 
 ---
 
-**Total Cost:** £0
-**Expected Revenue:** £76/month (4 customers)
-**Time to First Customer:** 7-14 days
+**Total Cost:**£0
+**Expected Revenue:**£76/month (4 customers)
+**Time to First Customer:**7-14 days
 
 Let's go! 

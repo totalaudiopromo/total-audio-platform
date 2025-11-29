@@ -115,7 +115,7 @@ browser act "Double-click the file icon"
 
 **Best Practices**:
 
-- Be **specific** about which element to interact with
+- Be **specific**about which element to interact with
 - Include visual descriptors ("button next to the form", "top menu", "form at bottom")
 - For ambiguous elements, mention nearby context
 - Break complex actions into multiple simple actions

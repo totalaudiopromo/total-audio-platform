@@ -215,20 +215,20 @@ These are the tasks to be completed for the spec detailed in @.agent-os/specs/[F
 
 ## Application Framework
 
-- **Framework:** [FRAMEWORK]
-- **Version:** [VERSION]
+- **Framework:**[FRAMEWORK]
+- **Version:**[VERSION]
 
 ## Database
 
-- **Primary Database:** [DATABASE]
+- **Primary Database:**[DATABASE]
 
 ## JavaScript
 
-- **Framework:** [JS_FRAMEWORK]
+- **Framework:**[JS_FRAMEWORK]
 
 ## CSS Framework
 
-- **Framework:** [CSS_FRAMEWORK]
+- **Framework:**[CSS_FRAMEWORK]
 
 [ADDITIONAL_STACK_ITEMS]
 ```
@@ -244,8 +244,8 @@ These are the tasks to be completed for the spec detailed in @.agent-os/specs/[F
 
 ## Phase 1: [PHASE_NAME] ([DURATION])
 
-**Goal:** [PHASE_GOAL]
-**Success Criteria:** [CRITERIA]
+**Goal:**[PHASE_GOAL]
+**Success Criteria:**[CRITERIA]
 
 ### Must-Have Features
 
@@ -267,10 +267,10 @@ These are the tasks to be completed for the spec detailed in @.agent-os/specs/[F
 
 ## [CURRENT_DATE]: Initial Product Planning
 
-**ID:** DEC-001
-**Status:** Accepted
-**Category:** Product
-**Stakeholders:** Product Owner, Tech Lead, Team
+**ID:**DEC-001
+**Status:**Accepted
+**Category:**Product
+**Stakeholders:**Product Owner, Tech Lead, Team
 
 ### Decision
 

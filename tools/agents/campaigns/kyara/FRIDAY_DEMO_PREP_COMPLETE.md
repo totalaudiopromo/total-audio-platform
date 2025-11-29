@@ -2,9 +2,9 @@
 
 ## KYARA "Bloodshot" Campaign Showcase for Dan (Liberty Music PR)
 
-**Demo Date:** Friday 11th October 2025
-**Purpose:** Show Dan how tracker.totalaudiopromo.com streamlines Liberty's campaign workflow
-**Campaign:** KYARA "Bloodshot" (Real Liberty client, releasing Monday 14th Oct)
+**Demo Date:**Friday 11th October 2025
+**Purpose:**Show Dan how tracker.totalaudiopromo.com streamlines Liberty's campaign workflow
+**Campaign:**KYARA "Bloodshot" (Real Liberty client, releasing Monday 14th Oct)
 
 ---
 
@@ -12,7 +12,7 @@
 
 ### 1. **KYARA_CAMPAIGN_SHOWCASE_FOR_DAN_DEMO.md**
 
-**What it is:** Complete demo script and strategy
+**What it is:**Complete demo script and strategy
 **What's in it:**
 
 - Demo script (minute-by-minute walkthrough)
@@ -22,13 +22,13 @@
 - Visual demo screenshots to prepare
 - Killer demo moments
 
-**When to use:** Read this Thursday night/Friday morning to prep
+**When to use:**Read this Thursday night/Friday morning to prep
 
 ---
 
 ### 2. **KYARA_BLOODSHOT_FOLLOWUP_TEMPLATES.md**
 
-**What it is:** 5 follow-up email templates for non-responders
+**What it is:**5 follow-up email templates for non-responders
 **What's in it:**
 
 - Template 1: WARM Follow-Up (Anika Luna - Triple J)
@@ -39,13 +39,13 @@
 - Timing strategy (when to send each)
 - Personalization notes
 
-**When to use:** After Monday's release day blast, for contacts who don't respond
+**When to use:**After Monday's release day blast, for contacts who don't respond
 
 ---
 
 ### 3. **KYARA_BLOODSHOT_NEW_CONTACTS.md**
 
-**What it is:** 30 UK & Australian specialist electronic contacts
+**What it is:**30 UK & Australian specialist electronic contacts
 **What's in it:**
 
 - 15 Australian targets (Triple J network, community radio, digital)
@@ -56,13 +56,13 @@
 - Tracking spreadsheet setup
 - Success metrics
 
-**When to use:** For release week push (post-Monday) and ongoing campaign expansion
+**When to use:**For release week push (post-Monday) and ongoing campaign expansion
 
 ---
 
 ### 4. **KYARA_MONDAY_RELEASE_BLAST.md**
 
-**What it is:** Monday 14th Oct release day email blast template
+**What it is:**Monday 14th Oct release day email blast template
 **What's in it:**
 
 - 4 email templates (WARM, non-responders, new contacts, Amazing Radio thank-you)
@@ -73,13 +73,13 @@
 - Success metrics to track
 - Pre-send checklist
 
-**When to use:** Sunday night (13th Oct) / Monday morning (14th Oct) for release day blast
+**When to use:**Sunday night (13th Oct) / Monday morning (14th Oct) for release day blast
 
 ---
 
 ### 5. **add-kyara-campaign-to-tracker.js**
 
-**What it is:** Node.js script to add KYARA campaign data to tracker
+**What it is:**Node.js script to add KYARA campaign data to tracker
 **What's in it:**
 
 - Campaign data (budget, dates, stats, notes)
@@ -87,7 +87,7 @@
 - Supabase integration
 - Automated insert script
 
-**When to use:** Run Thursday night to populate tracker with KYARA campaign data for Friday demo
+**When to use:**Run Thursday night to populate tracker with KYARA campaign data for Friday demo
 
 ---
 
@@ -130,7 +130,7 @@ Take 5-6 screenshots of:
 5. Next actions panel
 6. Stats/metrics view
 
-**Save screenshots:** `~/Desktop/kyara-demo-screenshots/`
+**Save screenshots:**`~/Desktop/kyara-demo-screenshots/`
 
 ---
 
@@ -170,9 +170,9 @@ Take 5-6 screenshots of:
 
 ### Minute 3-4: Dashboard Walkthrough
 
-1. **Campaign Card:** "At a glance: 15 contacts pitched, 85 plays already, 3 confirmed adds"
-2. **Activity Timeline:** "Every email, response, milestone logged automatically"
-3. **Integration Status:** "Gmail, Mailchimp, WARM all synced - no manual data entry"
+1. **Campaign Card:**"At a glance: 15 contacts pitched, 85 plays already, 3 confirmed adds"
+2. **Activity Timeline:**"Every email, response, milestone logged automatically"
+3. **Integration Status:**"Gmail, Mailchimp, WARM all synced - no manual data entry"
 
 ### Minute 5-6: The Value Prop
 
@@ -207,13 +207,13 @@ Take 5-6 screenshots of:
 - 200 hours/month saved on admin
 - 40 hours/month saved on client reports
 - 20 hours/month saved on team coordination
-- **Total: 260 hours/month = £3,900/month saved** (at £15/hour)
+- **Total: 260 hours/month = £3,900/month saved**(at £15/hour)
 
 **Cost:**
 
 - Pilot: FREE (4 weeks)
 - Agency Plan: £79/month (unlimited campaigns)
-- **ROI: 49:1** (£3,900 saved vs £79 cost)
+- **ROI: 49:1**(£3,900 saved vs £79 cost)
 
 ---
 
@@ -284,14 +284,14 @@ Take 5-6 screenshots of:
 
 ### 1. KYARA Release Day Blast
 
-**When:** Monday 14th Oct, 7:00am AEST (Sunday night GMT)
-**Recipients:** 30-40 contacts (AU + UK)
-**Template:** Use `KYARA_MONDAY_RELEASE_BLAST.md` templates
-**Send via:** Mailchimp (bulk) or Gmail (personal)
+**When:**Monday 14th Oct, 7:00am AEST (Sunday night GMT)
+**Recipients:**30-40 contacts (AU + UK)
+**Template:**Use `KYARA_MONDAY_RELEASE_BLAST.md` templates
+**Send via:**Mailchimp (bulk) or Gmail (personal)
 
 ### 2. Follow-Up with Dan
 
-**When:** Monday afternoon (after demo Friday)
+**When:**Monday afternoon (after demo Friday)
 **What to say:**
 "Thanks for taking the time Friday. Let me know if you want to move forward with the pilot - happy to get started this week with a couple of campaigns."
 
@@ -363,10 +363,10 @@ Take 5-6 screenshots of:
 
 **What You Need to Do:**
 
-1. **Thursday night:** Run script, verify tracker, take screenshots (1 hour)
-2. **Friday morning:** Review demo script, prep environment (30 min)
-3. **Friday demo:** Show Dan, walk through features, ask for pilot (7 min)
-4. **Monday:** Send release day blast, follow up with Dan
+1. **Thursday night:**Run script, verify tracker, take screenshots (1 hour)
+2. **Friday morning:**Review demo script, prep environment (30 min)
+3. **Friday demo:**Show Dan, walk through features, ask for pilot (7 min)
+4. **Monday:**Send release day blast, follow up with Dan
 
 **Expected Result:**
 Dan commits to 4-week pilot with 3-5 Liberty campaigns. You measure time savings, prove ROI, decide on full agency rollout.
@@ -389,9 +389,9 @@ You're showing Dan a tool that will save Liberty 200+ hours a month on campaign 
 
 ---
 
-**Created:** October 12, 2025
-**Demo Date:** Friday 11th October 2025
-**Campaign:** KYARA "Bloodshot" (Liberty Music PR)
-**Release Date:** Monday 14th October 2025
-**Tool:** tracker.totalaudiopromo.com
-**Expected Outcome:** 4-week pilot agreement with Liberty Music PR
+**Created:**October 12, 2025
+**Demo Date:**Friday 11th October 2025
+**Campaign:**KYARA "Bloodshot" (Liberty Music PR)
+**Release Date:**Monday 14th October 2025
+**Tool:**tracker.totalaudiopromo.com
+**Expected Outcome:**4-week pilot agreement with Liberty Music PR

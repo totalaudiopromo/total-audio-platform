@@ -6,7 +6,7 @@ exported_at: 2025-09-26T14:33:09.491Z
 
 # CC WORKFLOW
 
-** One command to rule them all **
+**One command to rule them all **
 
 **cd /Users/chrisschofield/workspace/active/total-audio-platform/ && npm run status && npm run dev:audio-intel**
 

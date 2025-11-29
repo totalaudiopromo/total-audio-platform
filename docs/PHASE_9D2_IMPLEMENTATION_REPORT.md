@@ -206,16 +206,16 @@ Format your response as JSON: { "subject": "...", "content": "..." }`;
 
 **Endpoints**:
 
-1. **GET** - List recent broadcasts
+1. **GET**- List recent broadcasts
    - Fetches from ConvertKit API v3
    - Returns broadcast metadata (id, subject, status)
 
-2. **POST** - Create broadcast (draft or scheduled)
+2. **POST**- Create broadcast (draft or scheduled)
    - Draft: `{ subject, content, public: false }`
    - Scheduled: `{ subject, content, published_at, public: true }`
    - Returns broadcast ID and status
 
-3. **PUT** - Update existing broadcast
+3. **PUT**- Update existing broadcast
    - Modify subject/content of drafts
    - Returns updated broadcast data
 
@@ -302,7 +302,7 @@ Format your response as JSON: { "subject": "...", "content": "..." }`;
 
 All workflows verified operational with scripts in `/scripts/`:
 
-#### 1. **Agent Health Check** (`.github/workflows/agent-health.yml`)
+#### 1. **Agent Health Check**(`.github/workflows/agent-health.yml`)
 
 - **Schedule**: Nightly at 02:00 UTC
 - **Script**: `scripts/agent-observability.ts`
@@ -316,7 +316,7 @@ All workflows verified operational with scripts in `/scripts/`:
   - Latency monitoring
   - Failure alerts with GitHub Actions run link
 
-#### 2. **Feedback Digest** (`.github/workflows/feedback-digest.yml`)
+#### 2. **Feedback Digest**(`.github/workflows/feedback-digest.yml`)
 
 - **Schedule**: Weekly on Fridays at 16:00 UTC
 - **Script**: `scripts/feedback-digest.ts`
@@ -326,7 +326,7 @@ All workflows verified operational with scripts in `/scripts/`:
   - Average ratings
   - Trend indicators
 
-#### 3. **Growth Reflex** (`.github/workflows/growth-reflex.yml`)
+#### 3. **Growth Reflex**(`.github/workflows/growth-reflex.yml`)
 
 - **Schedule**: Weekly on Mondays at 09:00 UTC
 - **Script**: `scripts/growth-reflex.ts`
@@ -343,7 +343,7 @@ All workflows verified operational with scripts in `/scripts/`:
 - `TAP_DISCORD_BOT_TOKEN` - Telegram bot token
 - `TELEGRAM_CHAT_ID` - Target chat/channel ID
 
-**Utility Functions** (`lib/telegram.ts`):
+**Utility Functions**(`lib/telegram.ts`):
 
 - `isTelegramConfigured()` - Config validation
 - `sendTelegramMessage()` - Core message sender
@@ -600,7 +600,7 @@ NEXT_PUBLIC_SUPABASE_URL="..."
 
 ### TypeScript Validation
 
-**Pre-existing errors** (not introduced by Phase 9D-2):
+**Pre-existing errors**(not introduced by Phase 9D-2):
 
 - `apps/command-centre/app/api/agents/performance-report/route.ts:123` - Type mismatch
 - `apps/command-centre/app/api/business-metrics/route.ts:87` - String literal type issue
@@ -615,28 +615,28 @@ NEXT_PUBLIC_SUPABASE_URL="..."
 
 ### Commit History (Phase 9D-2)
 
-1. **3034d38** - `feat: connect ops-console dashboards to Phase 9B live data (Phase 9D-2)`
+1. **3034d38**- `feat: connect ops-console dashboards to Phase 9B live data (Phase 9D-2)`
    - Created 4 API routes (agents, feedback, growth, health)
    - Updated 4 dashboard pages with live data fetching
    - Removed mock data, added green "Active" badges
 
-2. **d1b4596** - `feat: implement social integrations - BlueSky + Threads (Phase 9D-2A)`
+2. **d1b4596**- `feat: implement social integrations - BlueSky + Threads (Phase 9D-2A)`
    - Created BlueSky API route with App Password auth
    - Created Threads API stub (beta status)
    - Updated social dashboard with live status checks
 
-3. **f8fd347** - `feat: implement automation APIs - newsjacker + email (Phase 9D-2B)`
+3. **f8fd347**- `feat: implement automation APIs - newsjacker + email (Phase 9D-2B)`
    - Created newsjacker API with RSS parsing + Claude 3.5 Sonnet
    - Created email automation API with ConvertKit CRUD
    - Both behind FEATURE_AUTOMATION flag
 
-4. **bfeb63a** - `feat: add SEO and analytics integration (Phase 9D-2C)`
+4. **bfeb63a**- `feat: add SEO and analytics integration (Phase 9D-2C)`
    - Created sitemap.ts with dynamic routes
    - Created robots.txt with AI crawler blocking
    - Integrated Plausible analytics in layout
    - Verified Telegram workflows operational
 
-5. **fbb1769** - `perf: optimize Lighthouse scores (Phase 9D-2D)`
+5. **fbb1769**- `perf: optimize Lighthouse scores (Phase 9D-2D)`
    - Fixed viewport accessibility (88→95 score)
    - Added Next.js performance optimizations (SWC, console removal, modern images)
    - Documented dev vs production performance expectations
@@ -834,13 +834,13 @@ Already configured in `middleware.ts` (Phase 9D-1):
 
 Phase 9D-2 successfully transformed the Command Centre Ops Console from a static UI into a fully integrated, data-driven platform. All core systems are operational:
 
-**14/15 tasks complete** (93% completion rate)
-**Live data integration** across all dashboards
-**Social platforms** connected (BlueSky active, Threads scaffolded)
-**Automation infrastructure** operational (AI newsletter generation, email management)
-**SEO & Analytics** integrated (sitemap, robots.txt, Plausible)
-**Telegram notifications** automated (3 workflows active)
-**Performance optimized** (3/4 Lighthouse categories ≥90)
+**14/15 tasks complete**(93% completion rate)
+**Live data integration**across all dashboards
+**Social platforms**connected (BlueSky active, Threads scaffolded)
+**Automation infrastructure**operational (AI newsletter generation, email management)
+**SEO & Analytics**integrated (sitemap, robots.txt, Plausible)
+**Telegram notifications**automated (3 workflows active)
+**Performance optimized**(3/4 Lighthouse categories ≥90)
 
 ### Key Metrics
 
@@ -853,7 +853,7 @@ Phase 9D-2 successfully transformed the Command Centre Ops Console from a static
 
 ### Production Readiness
 
-The Command Centre is **production-ready** with the following caveats:
+The Command Centre is **production-ready**with the following caveats:
 
 1. Set environment variables in Vercel
 2. Add Telegram secrets to GitHub Actions

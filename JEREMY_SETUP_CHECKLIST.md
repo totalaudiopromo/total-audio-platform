@@ -31,7 +31,7 @@
 npx tsx scripts/setup-jeremy-supabase.ts
 ```
 
-**Status:** Complete - Jeremy's account created in Supabase
+**Status:**Complete - Jeremy's account created in Supabase
 
 ### 2. Welcome Email
 
@@ -41,7 +41,7 @@ export RESEND_API_KEY="your-key"
 npx tsx scripts/send-welcome-email.ts info@streamer.co.uk
 ```
 
-**Status:** Waiting (you said don't send yet)
+**Status:**Waiting (you said don't send yet)
 
 ### 3. Verify Access
 
@@ -95,7 +95,7 @@ CONVERTKIT_API_SECRET="BMiOCi6hPDA73O1pnwXh7_bXEBi5zMzf7Tgk5rP_trI"
    - Monitor usage: `npx tsx scripts/monitor-jeremy-usage.ts`
    - Verify access: `npx tsx scripts/verify-jeremy-access.ts`
 
-3. **Send Welcome Email** (when ready)
+3. **Send Welcome Email**(when ready)
    - Run: `npx tsx scripts/send-welcome-email.ts info@streamer.co.uk`
 
 ## Account Summary
@@ -107,11 +107,11 @@ CONVERTKIT_API_SECRET="BMiOCi6hPDA73O1pnwXh7_bXEBi5zMzf7Tgk5rP_trI"
 
 ## Quick Links
 
-- **Audio Intel:** https://intel.totalaudiopromo.com
-- **ConvertKit Dashboard:** https://app.convertkit.com/subscribers
-- **Supabase Dashboard:** https://supabase.com/dashboard (check your project)
+- **Audio Intel:**https://intel.totalaudiopromo.com
+- **ConvertKit Dashboard:**https://app.convertkit.com/subscribers
+- **Supabase Dashboard:**https://supabase.com/dashboard (check your project)
 
 ---
 
-**Last Updated:** 2025-11-15
-**Status:** ConvertKit | Supabase | Email (ready to send)
+**Last Updated:**2025-11-15
+**Status:**ConvertKit | Supabase | Email (ready to send)

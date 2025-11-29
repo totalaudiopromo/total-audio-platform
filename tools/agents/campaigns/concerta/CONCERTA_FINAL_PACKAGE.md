@@ -10,7 +10,7 @@ Based on Google Meet discussion 7 November 2025
 
 ### Key Details from Our Call
 
-**Campaign Focus** (from transcript):
+**Campaign Focus**(from transcript):
 
 - Primary: Dance & Electronic stations (international underground)
 - Secondary: Mainstream UK radio stations
@@ -146,17 +146,17 @@ www.libertymusicpr.com
 
 ### Monday 11 November - Launch Day
 
-**9:00 AM GMT** - First Send (UK Electronic/Dance)
+**9:00 AM GMT**- First Send (UK Electronic/Dance)
 
 - ~60 UK-based electronic/dance specialists
 - Includes BBC contacts, mainstream targets
 
-**11:00 AM GMT** - Second Send (European)
+**11:00 AM GMT**- Second Send (European)
 
 - ~40 European electronic/dance stations
 - International underground stations
 
-**2:00 PM GMT** - Third Send (US/International)
+**2:00 PM GMT**- Third Send (US/International)
 
 - ~32 global electronic/dance contacts
 - Time-zone optimized
@@ -194,13 +194,13 @@ www.libertymusicpr.com
 
 ### Available Now 
 
-1. **Profile Images** (4 high-res variants)
+1. **Profile Images**(4 high-res variants)
    - CONCERTA_High-res_1.jpg
    - CONCERTA_High-res_2.jpg
    - CONCERTA_High-res_3.jpg
    - CONCERTA_High-res_4.jpg
 
-2. **Track Artwork** (Multiple variants)
+2. **Track Artwork**(Multiple variants)
    - Anime-inspired artwork (4 versions)
    - Futuristic city artwork (4 versions)
    - Typography layouts included

@@ -38,7 +38,7 @@
 - × £30/hour = £442.50 value per campaign
 - × 5 campaigns/month = £2,212.50 value/month
 - - £400 standard rate = £1,812.50 net savings
-- ROI = (£1,812.50 / £400) = **453%** MATH CHECKS OUT
+- ROI = (£1,812.50 / £400) = **453%**MATH CHECKS OUT
 
 **BUT**: This assumes:
 
@@ -61,14 +61,14 @@
 
 ### Add These Slides/Sections
 
-**"How We Built This"** (Insert after Slide 1)
+**"How We Built This"**(Insert after Slide 1)
 
 - Chris's 5+ years radio promotion background at Liberty
 - Built solving his own pain points
 - Not a tech startup - actual music industry insider
 - **Why**: Establishes credibility and authentic "insider" positioning
 
-**"Integration with Your Stack"** (Insert after Slide 4)
+**"Integration with Your Stack"**(Insert after Slide 4)
 
 - Monday.com (you know Liberty uses this)
 - Typeform (client intake)
@@ -76,14 +76,14 @@
 - Gmail + Airtable (current workflow)
 - **Why**: Shows you understand Liberty's existing tools and aren't replacing them
 
-**"What This Doesn't Do"** (Insert after Slide 6)
+**"What This Doesn't Do"**(Insert after Slide 6)
 
 - Doesn't replace human relationships (you still need to nurture contacts)
 - Doesn't guarantee coverage (still needs good music)
 - Doesn't write pitches from scratch (augments, not replaces)
 - **Why**: Builds trust through honesty. Shows you're not overselling.
 
-**Mobile-First UX Mention** (Add to Slide 4)
+**Mobile-First UX Mention**(Add to Slide 4)
 
 - WCAG 2.2 Level AA compliance
 - Works on tablets/phones (radio team can enrich contacts on the go)
@@ -250,7 +250,7 @@ Chris says:
 
 **LIVE DEMO EXECUTION (8 minutes)**
 
-**SETUP** (30 seconds):
+**SETUP**(30 seconds):
 
 - Open intel.totalaudiopromo.com/demo
 - Have 5-10 test stations ready (BBC Radio 6 Music, BBC Radio 1, Absolute Radio, etc.)
@@ -258,29 +258,29 @@ Chris says:
 
 **Demo Flow**:
 
-1. **Upload Station List** (1 min)
+1. **Upload Station List**(1 min)
    - Show CSV upload or manual entry
    - Paste 5 stations: "BBC Radio 6 Music, BBC Radio 1, Absolute Radio, Kiss FM, Capital FM"
    - Say: "These are stations from a typical indie/pop campaign. Watch how fast this runs."
 
-2. **Watch Enrichment** (3 mins)
+2. **Watch Enrichment**(3 mins)
    - Show real-time enrichment progress bar
    - Click on BBC Radio 6 Music result when complete
    - Say: "See - we've got Lauren Laverne, 6 Music Breakfast, her programme contact email. That would've taken me 15-20 minutes to research manually. Done in 90 seconds."
    - Show 2-3 more results
    - Emphasise: "100% hit rate on these mainstream UK stations. Occasionally we'll hit a defunct local station or a contact that's gone private, so I say 99%+ success rate to be honest about edge cases."
 
-3. **Export to Airtable/CSV** (1 min)
+3. **Export to Airtable/CSV**(1 min)
    - Click "Export to Airtable" or "Download CSV"
    - Say: "And now this lives in your Airtable base or Monday.com board. Ready to use. No more Excel chaos."
 
-4. **Quick Pitch Generator Demo** (2 mins)
+4. **Quick Pitch Generator Demo**(2 mins)
    - Switch to pitch.totalaudiopromo.com/demo
    - Show pre-filled artist bio
    - Generate pitch
    - Say: "Notice the British spelling - 'personalise', 'organised'. VoiceGuard detected 'leverage' and flagged it as corporate speak. It preserves your authentic tone."
 
-5. **Campaign Tracker Overview** (1 min)
+5. **Campaign Tracker Overview**(1 min)
    - Switch to tracker.totalaudiopromo.com/demo
    - Show dashboard with campaign progress
    - Say: "And Campaign Tracker gives you the full view: sent, opened, replied, playlist added. One click export to Coveragebook for client reports."
@@ -555,4 +555,4 @@ Chris says:
 
 You've got this, Chris. The platform is solid, the pitch is honest, and you're the perfect person to present it (insider credibility + technical expertise). Make those 5 critical revisions, record that backup video, and you're ready to go. 
 
-**Good luck on 19 November!** 
+**Good luck on 19 November!**

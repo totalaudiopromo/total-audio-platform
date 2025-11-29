@@ -8,8 +8,8 @@ Generate personalized, professional music PR pitches in seconds by combining AI 
 
 ## Product Overview
 
-**URL:** pitch.totalaudiopromo.com  
-**Tagline:** Write 50 personalized pitches in 20 minutes
+**URL:**pitch.totalaudiopromo.com  
+**Tagline:**Write 50 personalized pitches in 20 minutes
 
 ### Core Value Proposition
 
@@ -67,13 +67,13 @@ Stop spending 5+ hours writing pitches. Let Pitch Generator write personalized e
 
 ## Tech Stack
 
-- **Frontend:** Next.js 15 + React 19
-- **Styling:** Tailwind CSS with custom TAP design system
-- **Database:** Supabase (PostgreSQL)
-- **AI:** OpenAI GPT-4
-- **Authentication:** NextAuth.js
-- **Payments:** Stripe (template ready)
-- **Icons:** Lucide React
+- **Frontend:**Next.js 15 + React 19
+- **Styling:**Tailwind CSS with custom TAP design system
+- **Database:**Supabase (PostgreSQL)
+- **AI:**OpenAI GPT-4
+- **Authentication:**NextAuth.js
+- **Payments:**Stripe (template ready)
+- **Icons:**Lucide React
 
 ---
 
@@ -176,15 +176,15 @@ Visit `http://localhost:3000`
 
 ### Components
 
-- **glass-panel:** Frosted glass effect with backdrop blur
-- **cta-button:** Gradient button (iris → magenta)
-- **subtle-button:** Outlined ghost button
-- **badge-postcraft:** Small uppercase label
+- **glass-panel:**Frosted glass effect with backdrop blur
+- **cta-button:**Gradient button (iris → magenta)
+- **subtle-button:**Outlined ghost button
+- **badge-postcraft:**Small uppercase label
 
 ### Typography
 
-- **Headers:** Playfair Display (display font)
-- **Body:** Inter (sans-serif)
+- **Headers:**Playfair Display (display font)
+- **Body:**Inter (sans-serif)
 
 ---
 
@@ -304,14 +304,14 @@ Generates a new pitch using AI.
 
 ### Standalone Pricing
 
-- **Free:** 3 pitches/month
-- **Solo:** £15/month - Unlimited pitches
-- **Pro:** £25/month - Batch mode + analytics
+- **Free:**3 pitches/month
+- **Solo:**£15/month - Unlimited pitches
+- **Pro:**£25/month - Batch mode + analytics
 
 ### Bundle Pricing
 
-- **Intel + Pitch:** £29/month (save £5)
-- **Professional Bundle:** £49/month (all tools)
+- **Intel + Pitch:**£29/month (save £5)
+- **Professional Bundle:**£49/month (all tools)
 
 ---
 

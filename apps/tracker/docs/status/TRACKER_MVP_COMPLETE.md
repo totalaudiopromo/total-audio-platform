@@ -1,4 +1,4 @@
-#  TRACKER MVP - COMPLETE
+# TRACKER MVP - COMPLETE
 
 ## Ship Status: READY TO DEPLOY 
 
@@ -68,10 +68,10 @@ Smart insights:
 
 ### Demo Campaigns:
 
-1. **BBC Radio 1 - Future Sounds** (Electronic, £550)
-2. **NME & Line of Best Fit** (Indie, £420)
-3. **Spotify UK Editorial** (Electronic, £380)
-4. **BBC 6Music Daytime** (Indie, £480)
+1. **BBC Radio 1 - Future Sounds**(Electronic, £550)
+2. **NME & Line of Best Fit**(Indie, £420)
+3. **Spotify UK Editorial**(Electronic, £380)
+4. **BBC 6Music Daytime**(Indie, £480)
 
 ### Industry Benchmarks (20 combinations):
 

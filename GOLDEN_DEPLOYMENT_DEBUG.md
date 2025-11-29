@@ -60,11 +60,11 @@ Attempting to deploy Phase 9E Golden Deployment Pipeline via git tag `v2.5.1-gol
 
 ## Critical Questions for Codex
 
-1. **What is the EXACT error message** from the latest GitHub Actions run?
+1. **What is the EXACT error message**from the latest GitHub Actions run?
    - User says "same errors" but hasn't provided the exact error text
    - Need to see actual build logs to confirm it's not still the tsconfig issue
 
-2. **Is there a different missing file** that's gitignored?
+2. **Is there a different missing file**that's gitignored?
    - Pattern: File exists locally but not in git repo
    - Check .gitignore for patterns that might exclude required files
 

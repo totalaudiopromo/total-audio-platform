@@ -10,10 +10,10 @@
 
 | Tool                   | Status        | Issues Found               | Demo-Blocking?                    |
 | ---------------------- | ------------- | -------------------------- | --------------------------------- |
-| **Campaign Tracker**   | **ISSUES** | 3 major discrepancies      | **YES** - Script needs adjustment |
-| **Audio Intel**        | **READY**  | None                       | No                                |
-| **Pitch Generator**    | **READY**  | None                       | No                                |
-| **Demo Data (sadact)** | **WORKS**  | Minor - no pre-loaded data | No                                |
+| **Campaign Tracker**  | **ISSUES**| 3 major discrepancies      | **YES**- Script needs adjustment |
+| **Audio Intel**       | **READY** | None                       | No                                |
+| **Pitch Generator**   | **READY** | None                       | No                                |
+| **Demo Data (sadact)**| **WORKS** | Minor - no pre-loaded data | No                                |
 
 ---
 
@@ -47,21 +47,21 @@
 
 **Script Says**: "Navigate to http://localhost:3000/dashboard/liberty"  
 **Reality**: Route doesn't exist. Should be `/dashboard`  
-**Impact**: **DEMO-BLOCKING** - Demo will fail at first step  
+**Impact**: **DEMO-BLOCKING**- Demo will fail at first step  
 **Fix**: Update demo script to use `/dashboard` OR create `/dashboard/liberty` route
 
 #### Issue 2: Campaign Detail Tabs Don't Match (BLOCKING)
 
 **Script Says**: "4 tabs (Overview, Contacts, Timeline, Reports)"  
 **Reality**: Single-page layout with sections (Stats, Contact List, Timeline, Notes)  
-**Impact**: **DEMO-BLOCKING** - Script describes UI that doesn't exist  
+**Impact**: **DEMO-BLOCKING**- Script describes UI that doesn't exist  
 **Fix**: Update demo script to match actual UI OR add tabs (not recommended - too much work)
 
 #### Issue 3: WARM Report Upload Missing (BLOCKING)
 
 **Script Says**: "WARM report upload works"  
 **Reality**: No WARM upload functionality found  
-**Impact**: **DEMO-BLOCKING** - Can't demo this feature  
+**Impact**: **DEMO-BLOCKING**- Can't demo this feature  
 **Fix**: Remove from demo script OR build feature (not recommended - too much work)
 
 ### What Actually Works 
@@ -176,9 +176,9 @@
 
 | Tool                 | sadact Data             | "Maybe (i)" Data              | Status                        |
 | -------------------- | ----------------------- | ----------------------------- | ----------------------------- |
-| **Audio Intel**      | Case study exists    | Can reference in demo      | Works                      |
-| **Pitch Generator**  | Can enter manually   | Can enter manually         | Works                      |
-| **Campaign Tracker** | Seed script includes | Not specifically mentioned | Works (use seed campaigns) |
+| **Audio Intel**     | Case study exists    | Can reference in demo      | Works                      |
+| **Pitch Generator** | Can enter manually   | Can enter manually         | Works                      |
+| **Campaign Tracker**| Seed script includes | Not specifically mentioned | Works (use seed campaigns) |
 
 ### Verification 
 
@@ -186,7 +186,7 @@
 - Pitch Generator: Can enter sadact/"Maybe (i)" during demo
 - Campaign Tracker: sadact campaigns in seed script (can use)
 
-**No blocking issues** - All tools can handle demo data 
+**No blocking issues**- All tools can handle demo data 
 
 ---
 
@@ -265,8 +265,8 @@ WHERE name LIKE '%KYARA%'
 - [x] Dashboard works
 - [x] Campaign cards show metrics
 - [x] Campaign detail page works
-- [ ] **Update demo script** (REQUIRED)
-- [ ] **Verify Liberty campaigns** (REQUIRED)
+- [ ] **Update demo script**(REQUIRED)
+- [ ] **Verify Liberty campaigns**(REQUIRED)
 - [ ] Test full demo flow (RECOMMENDED)
 
 ### Audio Intel

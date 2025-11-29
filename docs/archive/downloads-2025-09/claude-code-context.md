@@ -4,8 +4,8 @@
 
 You are working on **Total Audio Promo**, a revolutionary AI-powered music promotion platform that serves two distinct markets:
 
-1. **Independent Artists** (£50-200/month): Solo artists and emerging talent seeking affordable, automated promotion
-2. **PR Agencies** (£500-2000/month): Music marketing firms managing multiple clients and scaling operations
+1. **Independent Artists**(£50-200/month): Solo artists and emerging talent seeking affordable, automated promotion
+2. **PR Agencies**(£500-2000/month): Music marketing firms managing multiple clients and scaling operations
 
 **Core Mission**: Eliminate 94% of repetitive tasks in music PR while increasing campaign effectiveness by 300%+.
 

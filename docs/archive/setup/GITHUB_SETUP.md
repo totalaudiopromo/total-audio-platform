@@ -5,10 +5,10 @@
 ### Step 1: Create the GitHub Repository
 
 1. Go to [https://github.com/new](https://github.com/new)
-2. **Repository name:** `total-audio-promo-clean`
-3. **Description:** `Clean version of Total Audio Promo without large texture files`
-4. **Visibility:** Public (or Private if you prefer)
-5. **Important:** DO NOT initialize with README, .gitignore, or license
+2. **Repository name:**`total-audio-promo-clean`
+3. **Description:**`Clean version of Total Audio Promo without large texture files`
+4. **Visibility:**Public (or Private if you prefer)
+5. **Important:**DO NOT initialize with README, .gitignore, or license
 6. Click "Create repository"
 
 ### Step 2: Push the Clean Code

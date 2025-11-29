@@ -99,9 +99,9 @@
 
 ### High-Performing Posts
 
-1. **"Stop wasting your weekends researching contacts"** - 25+ engagement
-2. **"Built by a producer who hated manual research"** - 30+ engagement
-3. **"94% of research time is wasted on outdated info"** - 20+ engagement
+1. **"Stop wasting your weekends researching contacts"**- 25+ engagement
+2. **"Built by a producer who hated manual research"**- 30+ engagement
+3. **"94% of research time is wasted on outdated info"**- 20+ engagement
 
 ### What Made Them Work
 
@@ -115,9 +115,9 @@
 
 ### Low-Performing Posts
 
-1. **"Generic industry advice"** - 5 engagement
-2. **"Too technical explanation"** - 3 engagement
-3. **"No clear value proposition"** - 4 engagement
+1. **"Generic industry advice"**- 5 engagement
+2. **"Too technical explanation"**- 3 engagement
+3. **"No clear value proposition"**- 4 engagement
 
 ### What Went Wrong
 
@@ -131,11 +131,11 @@
 
 ### Based on Performance
 
-1. **Problem-focused content** performs best on LinkedIn
-2. **Personal stories** get highest engagement
-3. **Specific statistics** increase credibility
-4. **Monday morning** posts get most engagement
-5. **Questions** increase comments and replies
+1. **Problem-focused content**performs best on LinkedIn
+2. **Personal stories**get highest engagement
+3. **Specific statistics**increase credibility
+4. **Monday morning**posts get most engagement
+5. **Questions**increase comments and replies
 
 ### Content Improvements
 

@@ -73,7 +73,7 @@ This complete guide covers everything you need to promote {{GENRE}} music on UK 
 
 ### Regional Stations Playing {{GENRE}}
 
-1. **Station Name** (Region)
+1. **Station Name**(Region)
    - Coverage: [AREA]
    - {{GENRE}} Shows: [SCHEDULE]
    - Contact: [METHOD]
@@ -198,19 +198,19 @@ Most UK stations have specific {{GENRE}} slots:
 
 ### Campaign Results
 
-**Tier 1 Stations** (Perfect {{GENRE}} fit)
+**Tier 1 Stations**(Perfect {{GENRE}} fit)
 
 - Targeted: 12 stations
 - Responses: 8 (67%)
 - Placements: 6 (50%)
 
-**Tier 2 Stations** (Good {{GENRE}} fit)
+**Tier 2 Stations**(Good {{GENRE}} fit)
 
 - Targeted: 18 stations
 - Responses: 11 (61%)
 - Placements: 8 (44%)
 
-**Tier 3 Stations** (Possible {{GENRE}} fit)
+**Tier 3 Stations**(Possible {{GENRE}} fit)
 
 - Targeted: 15 stations
 - Responses: 6 (40%)
@@ -237,7 +237,7 @@ Most UK stations have specific {{GENRE}} slots:
 
 ### Top Regional {{GENRE}} Stations
 
-1. **[STATION_NAME]** (Region)
+1. **[STATION_NAME]**(Region)
    - {{GENRE}} Programming: [SCHEDULE]
    - Submission: [PROCESS]
    - Response Time: [TIMEFRAME]
@@ -250,25 +250,25 @@ Most UK stations have specific {{GENRE}} slots:
 
 ### Seasonal Patterns
 
-**Spring** (March-May)
+**Spring**(March-May)
 
 - Best for: [GENRE_CHARACTERISTICS]
 - Programming focus: [THEMES]
 - Submission windows: [DETAILS]
 
-**Summer** (June-August)
+**Summer**(June-August)
 
 - Best for: [GENRE_CHARACTERISTICS]
 - Festival tie-ins: [OPPORTUNITIES]
 - Programming changes: [NOTES]
 
-**Autumn** (September-November)
+**Autumn**(September-November)
 
 - Best for: [GENRE_CHARACTERISTICS]
 - Back-to-school audience: [DEMOGRAPHICS]
 - Programming focus: [THEMES]
 
-**Winter** (December-February)
+**Winter**(December-February)
 
 - Best for: [GENRE_CHARACTERISTICS]
 - Holiday programming: [CONSIDERATIONS]
@@ -434,7 +434,7 @@ A: Audio Intel automatically identifies {{GENRE}} programming across all UK stat
 
 Ready to promote your {{GENRE}} music on UK radio?
 
-**[CTA Button]** Start Free Trial - Process Your First {{GENRE}} Campaign
+**[CTA Button]**Start Free Trial - Process Your First {{GENRE}} Campaign
 
 **No card required. 10 enrichments free.**
 
@@ -651,7 +651,7 @@ Leverage station events:
 
 ## Start Your {{CITY}} Radio Campaign
 
-**[CTA Button]** Target {{STATION_COUNT}}+ {{CITY}} Stations Now
+**[CTA Button]**Target {{STATION_COUNT}}+ {{CITY}} Stations Now
 
 Free trial includes:
 

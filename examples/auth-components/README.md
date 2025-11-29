@@ -334,12 +334,12 @@ If users exist but profiles don't, see troubleshooting in `SUPABASE_SETUP_GUIDE.
 
 ## Best Practices
 
-1. **Always test authentication flows** after making changes
-2. **Handle loading states** to prevent flashing content
-3. **Show clear error messages** for better UX
-4. **Implement password reset** for production
-5. **Use HTTPS in production** for secure cookies
-6. **Test on mobile** to ensure responsive design works
+1. **Always test authentication flows**after making changes
+2. **Handle loading states**to prevent flashing content
+3. **Show clear error messages**for better UX
+4. **Implement password reset**for production
+5. **Use HTTPS in production**for secure cookies
+6. **Test on mobile**to ensure responsive design works
 
 ## Next Steps
 

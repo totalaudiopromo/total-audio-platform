@@ -4,25 +4,25 @@
 
 Place these files in `/Users/chrisschofield/workspace/active/total-audio-platform/apps/tracker/public/`:
 
-### 1. **favicon.ico** (16x16 and 32x32)
+### 1. **favicon.ico**(16x16 and 32x32)
 
 - Standard browser favicon
 - Should use Total Audio Promo logo or "T" monogram
 - Generate at: https://realfavicongenerator.net/
 
-### 2. **apple-touch-icon.png** (180x180)
+### 2. **apple-touch-icon.png**(180x180)
 
 - iOS home screen icon
 - Should be 180x180px PNG
 - No transparency, add background color
 
-### 3. **icon.png** (512x512)
+### 3. **icon.png**(512x512)
 
 - Android/PWA icon
 - 512x512px PNG with transparency
 - Used for app manifest
 
-### 4. **manifest.json** (Web App Manifest)
+### 4. **manifest.json**(Web App Manifest)
 
 ```json
 {
@@ -63,9 +63,9 @@ Place these files in `/Users/chrisschofield/workspace/active/total-audio-platfor
 
 ## Quick Generation Steps
 
-1. **Use existing logo** from `/public/images/total_audio_promo_logo_trans.png`
+1. **Use existing logo**from `/public/images/total_audio_promo_logo_trans.png`
 
-2. **Generate favicons** at https://realfavicongenerator.net/:
+2. **Generate favicons**at https://realfavicongenerator.net/:
    - Upload logo
    - Adjust settings:
      - iOS: Add purple (#9333ea) background
@@ -73,9 +73,9 @@ Place these files in `/Users/chrisschofield/workspace/active/total-audio-platfor
      - Windows: Purple background
    - Download package
 
-3. **Place files** in `/public/` directory
+3. **Place files**in `/public/` directory
 
-4. **Update layout.tsx** with links above
+4. **Update layout.tsx**with links above
 
 5. **Test**:
    - Clear browser cache

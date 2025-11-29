@@ -2,7 +2,7 @@
 
 ## 5-Minute Setup (Do This Right Now!)
 
-**Your tracker is RUNNING:** Port 3004 is active 
+**Your tracker is RUNNING:**Port 3004 is active 
 
 ---
 
@@ -16,7 +16,7 @@
 open http://localhost:3004/dashboard
 ```
 
-**OR** if deployed:
+**OR**if deployed:
 
 ```bash
 open https://tracker.totalaudiopromo.com/dashboard
@@ -96,22 +96,22 @@ MONDAY 14th: Release blast ready (30 contacts)
 
 **After campaign created, add these activities:**
 
-1. **Oct 7** - Email Sent
+1. **Oct 7**- Email Sent
    - "Initial pitch to 15 Australian radio contacts"
 
-2. **Oct 8** - Email Sent
+2. **Oct 8**- Email Sent
    - "5 Gmail drafts auto-created (Liberty inbox)"
 
-3. **Oct 9** - Response
+3. **Oct 9**- Response
    - "Amazing Radio UK confirmed support - ADDED TO ROTATION"
 
-4. **Oct 10** - Milestone
+4. **Oct 10**- Milestone
    - "WARM: 85 plays across 9 countries (pre-release)"
 
-5. **Oct 10** - Email Sent
+5. **Oct 10**- Email Sent
    - "Mailchimp campaign to 20 UK contacts (BBC specialists)"
 
-6. **Oct 11** - Scheduled
+6. **Oct 11**- Scheduled
    - "Release day blast prepared (Monday 7am AEST, 30 recipients)"
 
 ---
@@ -138,7 +138,7 @@ MONDAY 14th: Release blast ready (30 contacts)
 4. Any charts/graphs showing
 5. Campaign stats summary
 
-**Save to:** `~/Desktop/kyara-demo-screenshots/`
+**Save to:**`~/Desktop/kyara-demo-screenshots/`
 
 ---
 
@@ -263,10 +263,10 @@ PORT=3004 npm run dev -- apps/tracker
 
 **What To Do:**
 
-1. **RIGHT NOW:** Create KYARA campaign (5 min)
-2. **Tonight:** Review demo prep files (30 min)
-3. **Friday:** Show Dan, crush demo (7 min)
-4. **Monday:** Use tracker for release day blast
+1. **RIGHT NOW:**Create KYARA campaign (5 min)
+2. **Tonight:**Review demo prep files (30 min)
+3. **Friday:**Show Dan, crush demo (7 min)
+4. **Monday:**Use tracker for release day blast
 
 **Expected Outcome:**
 

@@ -1,7 +1,7 @@
 # Claude Code Skills - Quick Start Guide
 
-**Time Required:** 30 minutes
-**Goal:** Get 3 essential skills running today
+**Time Required:**30 minutes
+**Goal:**Get 3 essential skills running today
 
 ---
 
@@ -11,11 +11,11 @@
    - Press `⌘,` (Command + Comma)
    - Or click the gear icon
 
-2. Navigate to **Capabilities** section
+2. Navigate to **Capabilities**section
 
-3. Find **"Skills"** toggle and turn it **ON**
+3. Find **"Skills"**toggle and turn it **ON**
 
-4. **Restart Claude Code** (important!)
+4. **Restart Claude Code**(important!)
 
 5. Verify skills are enabled:
    - Open a chat
@@ -190,19 +190,19 @@ ls -la ~/.claude/skills/
 
 ## Quick Tips
 
-1. **Start Small:** Just install these 3 core skills today
-2. **Test Immediately:** Use skills with real work to see value
-3. **Create Custom Skills:** Use Skill Creator to codify your workflow patterns
-4. **Archive Unused:** If a skill isn't helping, move it to `~/.claude/skills-archive/`
-5. **Manual Invocation:** You can always explicitly ask Claude to "Use [skill name]"
+1. **Start Small:**Just install these 3 core skills today
+2. **Test Immediately:**Use skills with real work to see value
+3. **Create Custom Skills:**Use Skill Creator to codify your workflow patterns
+4. **Archive Unused:**If a skill isn't helping, move it to `~/.claude/skills-archive/`
+5. **Manual Invocation:**You can always explicitly ask Claude to "Use [skill name]"
 
 ---
 
-**Time Invested:** 30 minutes
-**Expected Value:** 30%+ time savings on debugging, automatic changelog generation, foundation for custom skills
+**Time Invested:**30 minutes
+**Expected Value:**30%+ time savings on debugging, automatic changelog generation, foundation for custom skills
 
-**Next Action:** Open Claude Code settings (⌘,) → Capabilities → Enable Skills → Restart
+**Next Action:**Open Claude Code settings (⌘,) → Capabilities → Enable Skills → Restart
 
 ---
 
-**Questions?** Check [SKILLS_SETUP_GUIDE.md](../SKILLS_SETUP_GUIDE.md) for detailed instructions or ask Claude: "How do I use the [skill name] skill?"
+**Questions?**Check [SKILLS_SETUP_GUIDE.md](../SKILLS_SETUP_GUIDE.md) for detailed instructions or ask Claude: "How do I use the [skill name] skill?"

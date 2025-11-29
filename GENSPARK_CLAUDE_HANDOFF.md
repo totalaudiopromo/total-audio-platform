@@ -17,10 +17,10 @@ Super Agent, using the context provided, generate a professional weekly KPI dash
 
 **Structured Output Schema (Required):**
 
-- **XLSX Reports:** Always include Data, Charts, Methodology, and Raw Data tabs
-- **PDF Reports:** Always include Executive Summary, Detailed Analysis, Appendix with Methodology
-- **Google Slides:** Always include slide count (8-12), speaker notes, PDF export option
-- **Markdown (Notion):** Always include Date, Author, Data Sources, Last Updated, clickable links to source documents
+- **XLSX Reports:**Always include Data, Charts, Methodology, and Raw Data tabs
+- **PDF Reports:**Always include Executive Summary, Detailed Analysis, Appendix with Methodology
+- **Google Slides:**Always include slide count (8-12), speaker notes, PDF export option
+- **Markdown (Notion):**Always include Date, Author, Data Sources, Last Updated, clickable links to source documents
 
 ---
 
@@ -41,17 +41,17 @@ UK-based music promotion technology and creative services serving independent ar
 
 **Primary Segments (Proven Conversion Rates):**
 
-1. **Radio Promoters** (85% conversion rate - HIGHEST PRIORITY)
+1. **Radio Promoters**(85% conversion rate - HIGHEST PRIORITY)
    - Profile: Music industry professionals managing radio campaigns
    - Pain Point: 15+ hours per campaign on manual contact research
    - Value: Professional time savings, organised data instead of Excel chaos
 
-2. **Solo Artists with Budget** (60% conversion)
+2. **Solo Artists with Budget**(60% conversion)
    - Profile: Independent artists with promotion budgets
    - Pain Point: Weekends spent researching instead of creating music
    - Value: Reclaim creative time, professional campaign results
 
-3. **PR Agencies** (70% conversion)
+3. **PR Agencies**(70% conversion)
    - Profile: Small PR agencies and management companies
    - Pain Point: Junior staff spending hours on repetitive contact research
    - Value: Staff efficiency, multi-client processing capability
@@ -60,26 +60,26 @@ UK-based music promotion technology and creative services serving independent ar
 
 **Total Audio Promo SaaS Suite (Production Apps):**
 
-1. **Audio Intel** - Contact enrichment & validation SaaS
+1. **Audio Intel**- Contact enrichment & validation SaaS
    - Brand Colour: Electric Blue (#2563EB / blue-600)
    - 100% enrichment success rate
    - "15 hours → 15 minutes" contact research time savings
    - Real competition: Manual Excel chaos, not submission platforms
    - Live: https://intel.totalaudiopromo.com
 
-2. **Pitch Generator** - Personalised pitch generation at scale
+2. **Pitch Generator**- Personalised pitch generation at scale
    - Brand Colour: Amber (#F59E0B / amber-500)
    - AI-powered personalisation
    - Authentic voice preservation (VoiceGuard system)
    - Live: https://pitch.totalaudiopromo.com
 
-3. **Campaign Tracker** - CRM-style radio submission tracking
+3. **Campaign Tracker**- CRM-style radio submission tracking
    - Brand Colour: Teal/Cyan (#14B8A6 / teal-500)
    - Campaign performance analytics
    - Follow-up automation
    - Live: https://tracker.totalaudiopromo.com
 
-4. **Command Centre** - Personal productivity dashboard
+4. **Command Centre**- Personal productivity dashboard
    - Brand Colour: Violet (#7c3aed / violet-600)
    - Newsletter management
    - Social media automation
@@ -764,10 +764,10 @@ Design: Use Command Centre violet (#7c3aed) for automation system visuals
 ```markdown
 # Monthly Business Performance Report
 
-**Date:** [Current Month YYYY]
-**Author:** Claude x Genspark Super Agent
-**Data Sources:** Supabase, Notion, Crunch, ConvertKit, WEEKLY_FOCUS.md
-**Last Updated:** [Timestamp]
+**Date:**[Current Month YYYY]
+**Author:**Claude x Genspark Super Agent
+**Data Sources:**Supabase, Notion, Crunch, ConvertKit, WEEKLY_FOCUS.md
+**Last Updated:**[Timestamp]
 
 ---
 
@@ -871,11 +871,11 @@ async function enrichContact(contactName: string, station: string) {
 
 **Save Locations:**
 
-- **Executive Reports** → Notion "Business Intelligence" database
-- **KPI Dashboards** → Genspark workspace + Notion embed
-- **Content Calendars** → Notion "Marketing" database + Google Sheets sync
-- **Financial Reports** → Notion "Finance" database (link to Crunch)
-- **Case Studies** → Notion "Customer Success" database
+- **Executive Reports**→ Notion "Business Intelligence" database
+- **KPI Dashboards**→ Genspark workspace + Notion embed
+- **Content Calendars**→ Notion "Marketing" database + Google Sheets sync
+- **Financial Reports**→ Notion "Finance" database (link to Crunch)
+- **Case Studies**→ Notion "Customer Success" database
 
 ### Quality Assurance Checklist
 
@@ -938,24 +938,24 @@ Before finalising any output, verify:
 
 **When generating automation/dashboards, always ask:**
 
-1. **Customer Acquisition Impact:** Will this help acquire first paying customers for Audio Intel?
+1. **Customer Acquisition Impact:**Will this help acquire first paying customers for Audio Intel?
    - If YES → High priority for Total Audio Promo
    - If NO → Defer until after revenue proof point
 
-2. **Revenue Validation:** Does this support £500/month milestone tracking?
+2. **Revenue Validation:**Does this support £500/month milestone tracking?
    - If YES → Include in KPI dashboards and financial reports
    - If NO → Defer until after revenue proof point
 
-3. **Segment Focus:** Which customer segment benefits most?
+3. **Segment Focus:**Which customer segment benefits most?
    - Radio Promoters (85% conversion) → HIGHEST PRIORITY
    - Solo Artists (60%) → Content marketing and free tier focus
    - PR Agencies (70%) → AGENCY tier and multi-client features
 
-4. **Time Efficiency:** Can this be executed within 2-hour development sessions?
+4. **Time Efficiency:**Can this be executed within 2-hour development sessions?
    - If YES → Immediate implementation
    - If NO → Break into smaller milestones or defer
 
-5. **Authentic Credibility:** Does this leverage Chris's 5+ years radio promotion experience?
+5. **Authentic Credibility:**Does this leverage Chris's 5+ years radio promotion experience?
    - If YES → Emphasise in outreach, case studies, demo scripts
    - If NO → Ensure it doesn't conflict with authentic industry voice
 
@@ -1008,7 +1008,7 @@ Before finalising any output, verify:
 - realise (not realize)
 - catalogue (not catalog)
 
-**Exception:** Framework conventions retain US spelling:
+**Exception:**Framework conventions retain US spelling:
 
 - React component props: `color="#2563EB"`
 - Tailwind classes: `bg-slate-800 text-center`
@@ -1098,7 +1098,7 @@ Before finalising any output, verify:
 
 **This hand-off enables Claude Code to generate business intelligence, automation structures, and strategic reports for use in Genspark Super Agent, AI Sheets, Slides, and research features. All outputs should support the £500/month customer acquisition goal while maintaining authentic British industry credibility.**
 
-**Last Updated:** November 2025
-**Primary Business Focus:** Total Audio Promo customer acquisition (Audio Intel revenue validation)
-**Target Milestone:** £500/month recurring revenue by end of November 2025
-**Brand System:** Tool-specific colours (Intel: #2563EB, Tracker: #14B8A6, Pitch: #F59E0B, Command: #7c3aed)
+**Last Updated:**November 2025
+**Primary Business Focus:**Total Audio Promo customer acquisition (Audio Intel revenue validation)
+**Target Milestone:**£500/month recurring revenue by end of November 2025
+**Brand System:**Tool-specific colours (Intel: #2563EB, Tracker: #14B8A6, Pitch: #F59E0B, Command: #7c3aed)

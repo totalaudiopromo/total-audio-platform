@@ -62,12 +62,12 @@ export const metadata: Metadata = {
 
 Replace all instances of `bg-blue-500` / `text-blue-500` / `border-blue-500` with your tool's signature colour:
 
-- **Audio Intel:** `bg-blue-500` (Electric Blue) - Keep as is!
-- **Playlist Pulse:** `bg-green-500` (Neon Green)
-- **Release Radar:** `bg-amber-500` (Orange/Amber)
-- **Trend Track:** `bg-purple-500` (Purple/Magenta)
-- **Content Clone:** `bg-pink-500` (Hot Pink)
-- **Success Predict:** `bg-yellow-500` (Gold/Yellow)
+- **Audio Intel:**`bg-blue-500` (Electric Blue) - Keep as is!
+- **Playlist Pulse:**`bg-green-500` (Neon Green)
+- **Release Radar:**`bg-amber-500` (Orange/Amber)
+- **Trend Track:**`bg-purple-500` (Purple/Magenta)
+- **Content Clone:**`bg-pink-500` (Hot Pink)
+- **Success Predict:**`bg-yellow-500` (Gold/Yellow)
 
 #### 4. Update Tool Names
 
@@ -214,4 +214,4 @@ Starting a new tool? Use this checklist:
 
 Refer to `DESIGN_SYSTEM.md` for aesthetic standards and component patterns.
 
-**Remember:** This template is your friend. Keep it clean, duplicate freely, and build brilliant tools. 🎵
+**Remember:**This template is your friend. Keep it clean, duplicate freely, and build brilliant tools. 🎵

@@ -25,7 +25,7 @@
 - 90%+ client retention
 - More time for creative work
 
-**Quote:** "Audio Intel transformed our workflow completely. We went from data entry to strategy."
+**Quote:**"Audio Intel transformed our workflow completely. We went from data entry to strategy."
 
 ---
 
@@ -52,7 +52,7 @@
 - More radio airplay
 - Increased fan engagement
 
-**Quote:** "Finally, a tool built for indie artists, not big labels."
+**Quote:**"Finally, a tool built for indie artists, not big labels."
 
 ---
 
@@ -79,7 +79,7 @@
 - More releases per year
 - Higher ROI on promotion
 
-**Quote:** "Audio Intel pays for itself with every successful campaign."
+**Quote:**"Audio Intel pays for itself with every successful campaign."
 
 ---
 
@@ -105,7 +105,7 @@
 - [Quantifiable result 2]
 - [Quantifiable result 3]
 
-**Quote:** "[Client testimonial]"
+**Quote:**"[Client testimonial]"
 
 ---
 

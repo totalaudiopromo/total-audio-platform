@@ -8,17 +8,17 @@ Audio Intel's PDF export system now features beautiful, simple neobrutalist desi
 
 ### Neobrutalist Aesthetic
 
-- **Bold black borders** (2px weight) on all major elements
-- **High contrast** black text on white backgrounds
-- **Sharp corners** with minimal rounded edges
-- **Shadow effects** created with offset borders
-- **Clean, professional** appearance matching the web UI
+- **Bold black borders**(2px weight) on all major elements
+- **High contrast**black text on white backgrounds
+- **Sharp corners**with minimal rounded edges
+- **Shadow effects**created with offset borders
+- **Clean, professional**appearance matching the web UI
 
 ### Color Strategy
 
-- **Black (#000000)** - Primary borders and text
-- **White (#FFFFFF)** - All backgrounds
-- **Brand Color** - Company primary color for accents
+- **Black (#000000)**- Primary borders and text
+- **White (#FFFFFF)**- All backgrounds
+- **Brand Color**- Company primary color for accents
 - **Confidence Colors**:
   - High: Green (#22C55E)
   - Medium: Orange (#FB923C)
@@ -28,7 +28,7 @@ Audio Intel's PDF export system now features beautiful, simple neobrutalist desi
 
 ### Custom Logo Implementation
 
-**Location:** [exportToPdf.ts:159-182](../utils/exportToPdf.ts#L159-L182)
+**Location:**[exportToPdf.ts:159-182](../utils/exportToPdf.ts#L159-L182)
 
 ```typescript
 if (hasCustomLogo && whiteLabel?.logoUrl) {
@@ -59,15 +59,15 @@ if (hasCustomLogo && whiteLabel?.logoUrl) {
 
 ### Logo Requirements
 
-- **Format:** Base64 encoded image (PNG, JPG)
-- **Size:** 30mm x 30mm square container
-- **Resolution:** Minimum 300x300px recommended
-- **Transparency:** Supported for PNG
-- **Fallback:** Company initials (2 letters) if image fails
+- **Format:**Base64 encoded image (PNG, JPG)
+- **Size:**30mm x 30mm square container
+- **Resolution:**Minimum 300x300px recommended
+- **Transparency:**Supported for PNG
+- **Fallback:**Company initials (2 letters) if image fails
 
 ### Providing Custom Logos
 
-**Method 1: Base64 String** (Recommended)
+**Method 1: Base64 String**(Recommended)
 
 ```typescript
 const whiteLabel = {
@@ -91,7 +91,7 @@ const whiteLabel = {
 
 ### 1. Header Section
 
-**Dimensions:** 210mm x 55mm
+**Dimensions:**210mm x 55mm
 
 **Elements:**
 
@@ -102,7 +102,7 @@ const whiteLabel = {
 - Report title (22pt bold black)
 - Subtitle (11pt bold brand color)
 
-**Code Location:** [exportToPdf.ts:139-222](../utils/exportToPdf.ts#L139-L222)
+**Code Location:**[exportToPdf.ts:139-222](../utils/exportToPdf.ts#L139-L222)
 
 ### 2. Content Tables
 
@@ -115,7 +115,7 @@ const whiteLabel = {
 - Centered confidence and platform columns
 - Bold text throughout for readability
 
-**Code Location:** [exportToPdf.ts:259-302](../utils/exportToPdf.ts#L259-L302)
+**Code Location:**[exportToPdf.ts:259-302](../utils/exportToPdf.ts#L259-L302)
 
 ### 3. Contact Detail Cards
 
@@ -127,11 +127,11 @@ const whiteLabel = {
 - Confidence badge (color-coded, white text)
 - Intelligence text below (10pt normal black)
 
-**Code Location:** [exportToPdf.ts:459-501](../utils/exportToPdf.ts#L459-L501)
+**Code Location:**[exportToPdf.ts:459-501](../utils/exportToPdf.ts#L459-L501)
 
 ### 4. Footer Section
 
-**Dimensions:** 10, 275, 190, 20
+**Dimensions:**10, 275, 190, 20
 
 **Elements:**
 
@@ -141,7 +141,7 @@ const whiteLabel = {
 - Generation date (left, brand color)
 - "Powered by Total Audio Promo" (right, gray)
 
-**Code Location:** [exportToPdf.ts:224-257](../utils/exportToPdf.ts#L224-L257)
+**Code Location:**[exportToPdf.ts:224-257](../utils/exportToPdf.ts#L224-L257)
 
 ## Tier-Based Features
 
@@ -154,17 +154,17 @@ const whiteLabel = {
 
 ### PRO Tier (£19/month)
 
-- **Custom company logo** ✓
-- **Custom brand color** ✓
+- **Custom company logo**✓
+- **Custom brand color**✓
 - No watermarks
 - No page limits
 - All contact intelligence included
 
 ### AGENCY Tier (£79/month)
 
-- **Custom company logo** ✓
-- **Custom brand color** ✓
-- **Bulk export** (100+ contacts)
+- **Custom company logo**✓
+- **Custom brand color**✓
+- **Bulk export**(100+ contacts)
 - No watermarks
 - No page limits
 - Priority support
@@ -328,14 +328,14 @@ doc.text('Powered by Your Company', 195, 290, { align: 'right' });
 
 ### Dependencies
 
-- **jsPDF** - Core PDF generation library
-- **jspdf-autotable** - Table generation plugin
+- **jsPDF**- Core PDF generation library
+- **jspdf-autotable**- Table generation plugin
 
 ### File Locations
 
-- **Main Export Logic:** `apps/audio-intel/utils/exportToPdf.ts`
-- **Export Service:** `apps/audio-intel/utils/exportService.ts`
-- **Demo Page Usage:** `apps/audio-intel/app/demo/page.tsx`
+- **Main Export Logic:**`apps/audio-intel/utils/exportToPdf.ts`
+- **Export Service:**`apps/audio-intel/utils/exportService.ts`
+- **Demo Page Usage:**`apps/audio-intel/app/demo/page.tsx`
 
 ### Color Conversion Helper
 
@@ -380,17 +380,17 @@ function hexToRgb(hex: string): [number, number, number] {
 
 ### Optimization Tips
 
-1. **Compress logos:** Use PNG-8 or optimized PNG-24
-2. **Limit logo size:** Maximum 100KB recommended
-3. **Batch processing:** Process 50 contacts at a time for large exports
-4. **Browser limits:** Test with 200+ contacts to check memory usage
+1. **Compress logos:**Use PNG-8 or optimized PNG-24
+2. **Limit logo size:**Maximum 100KB recommended
+3. **Batch processing:**Process 50 contacts at a time for large exports
+4. **Browser limits:**Test with 200+ contacts to check memory usage
 
 ### Expected Generation Times
 
-- **10 contacts:** < 1 second
-- **50 contacts:** 1-2 seconds
-- **100 contacts:** 2-4 seconds
-- **500 contacts:** 10-15 seconds
+- **10 contacts:**< 1 second
+- **50 contacts:**1-2 seconds
+- **100 contacts:**2-4 seconds
+- **500 contacts:**10-15 seconds
 
 ## Future Enhancements
 
@@ -422,9 +422,9 @@ function hexToRgb(hex: string): [number, number, number] {
 
 ### Getting Help
 
-- **PRO/AGENCY Support:** support@totalaudiopromo.com
-- **Community Forum:** https://community.totalaudiopromo.com
-- **GitHub Issues:** https://github.com/totalaudiopromo/audio-intel/issues
+- **PRO/AGENCY Support:**support@totalaudiopromo.com
+- **Community Forum:**https://community.totalaudiopromo.com
+- **GitHub Issues:**https://github.com/totalaudiopromo/audio-intel/issues
 
 ### Examples Repository
 
@@ -433,9 +433,9 @@ Find complete working examples at:
 
 ---
 
-**Last Updated:** October 2025
-**Version:** 2.0 (Neobrutalist Redesign)
-**Maintainer:** Total Audio Promo Team
+**Last Updated:**October 2025
+**Version:**2.0 (Neobrutalist Redesign)
+**Maintainer:**Total Audio Promo Team
 
 **Changes in v2.0:**
 

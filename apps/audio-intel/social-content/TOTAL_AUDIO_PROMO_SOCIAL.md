@@ -31,12 +31,12 @@ Generate authentic UK music industry social media posts for Total Audio Promo's 
 
 ### **Industry Statistics**
 
-- **94%** of research time spent on outdated info
-- **Only 6%** of contacts actually work
-- **15+ hours** wasted weekly on contact research
-- **780 hours** annually spent on research (32+ days)
-- **300%** better response rates with personalized pitches
-- **£2,000+** monthly time savings for agencies
+- **94%**of research time spent on outdated info
+- **Only 6%**of contacts actually work
+- **15+ hours**wasted weekly on contact research
+- **780 hours**annually spent on research (32+ days)
+- **300%**better response rates with personalized pitches
+- **£2,000+**monthly time savings for agencies
 
 ### **Core Pain Points**
 

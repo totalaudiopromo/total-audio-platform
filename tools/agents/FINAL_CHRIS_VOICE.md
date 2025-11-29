@@ -3,10 +3,10 @@
 ## VERIFIED FACTS (NO NAME DROPPING):
 
 - 5+ years radio promotion experience
-- Electronic music producer as **sadact** (Brighton-based, originally from North-West England)
+- Electronic music producer as **sadact**(Brighton-based, originally from North-West England)
 - sadact genre: House, Breaks, Future Garage (influenced by 90s UK scene)
 - Released "Stabiliser" EP (April 2024), "Total Audio Transfer" (October 2023)
-- Built **Audio Intel** (contact enrichment tool) because he was tired of manual contact research at midnight
+- Built **Audio Intel**(contact enrichment tool) because he was tired of manual contact research at midnight
 - UK-based
 - Works with independent artists daily
 
@@ -36,10 +36,10 @@
 
 ## CONVERSATIONAL PHRASES (use sparingly):
 
-- **"Right, so"** - ONLY at the very start (first sentence only)
-- **"Here's the thing"** - For transitions between points
-- **"Your move"** - ONLY for action steps
-- **DO NOT** repeat "Right, so" in every paragraph
+- **"Right, so"**- ONLY at the very start (first sentence only)
+- **"Here's the thing"**- For transitions between points
+- **"Your move"**- ONLY for action steps
+- **DO NOT**repeat "Right, so" in every paragraph
 
 ## FOCUS:
 
@@ -51,8 +51,8 @@
 
 ## TOOL PHILOSOPHY:
 
-**AI music generation** = Replaces creativity (the fun part) 
-**Audio Intel** = Replaces tedious spreadsheet admin (the boring part) 
+**AI music generation**= Replaces creativity (the fun part) 
+**Audio Intel**= Replaces tedious spreadsheet admin (the boring part) 
 
 Built Audio Intel because Chris was spending hours researching contact emails at midnight instead of making music as sadact. Tools should automate the marketing grind, not the creative process. Know the difference.
 

@@ -63,7 +63,7 @@
 
 **How It Works:**
 
-- Artists can submit **up to 2 tracks per month** via BBC Introducing Uploader
+- Artists can submit **up to 2 tracks per month**via BBC Introducing Uploader
 - Guarantee that BBC Introducing team will listen within 6 months
 - Regional team receives notifications based on artist's postcode
 - Strong tracks are forwarded to national stations including 6 Music
@@ -91,7 +91,7 @@
 - Listens to 200 tracks weekly, room for 25 on Listening Post
 - Featured tracks may appear on BBC Introducing Mixtape
 
-**Submission URL:** https://freshonthenet.co.uk/send/
+**Submission URL:**https://freshonthenet.co.uk/send/
 
 ### Direct Contact Information
 
@@ -101,7 +101,7 @@
 - Note: Station moved to Broadcasting House in February 2024
 - Email submissions to individual producers/presenters (research specific contacts)
 
-**Important:** BBC 6 Music receives too many submissions to provide individual feedback
+**Important:**BBC 6 Music receives too many submissions to provide individual feedback
 
 ## Show-Specific Submission Preferences
 
@@ -312,12 +312,12 @@
 
 ## Research Methodology
 
-1. **Web search** for current 2025 BBC Radio 6 Music schedule
-2. **Cross-reference** presenter information across multiple sources
-3. **Verify** submission processes via official BBC Introducing documentation
-4. **Identify** genre preferences through presenter backgrounds and show descriptions
-5. **Compile** common mistakes from industry submission guides
-6. **Focus** on indie/alternative artist needs and pain points
+1. **Web search**for current 2025 BBC Radio 6 Music schedule
+2. **Cross-reference**presenter information across multiple sources
+3. **Verify**submission processes via official BBC Introducing documentation
+4. **Identify**genre preferences through presenter backgrounds and show descriptions
+5. **Compile**common mistakes from industry submission guides
+6. **Focus**on indie/alternative artist needs and pain points
 
 ---
 

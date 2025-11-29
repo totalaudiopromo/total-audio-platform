@@ -2,7 +2,7 @@
 
 ## Security Commands
 
-Run these from the **root directory** of the project:
+Run these from the **root directory**of the project:
 
 ```bash
 # Full security check (audit + scan)
