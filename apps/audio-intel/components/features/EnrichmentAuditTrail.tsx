@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Card } from '@total-audio/ui/components/card';
 import { Badge } from '@total-audio/ui/components/badge';
 import { Button } from '@total-audio/ui/components/button';
@@ -46,13 +46,10 @@ export function EnrichmentAuditTrail({
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    fetchAuditLogs();
-  }, [contactEmail, contactId, limit]);
-
-  async function fetchAuditLogs() {
+  const fetchAuditLogs = useCallback(async () => {
     try {
       setLoading(true);
+      setError(null);
 
       const params = new URLSearchParams();
       if (contactEmail) params.append('contactEmail', contactEmail);
@@ -74,7 +71,11 @@ export function EnrichmentAuditTrail({
     } finally {
       setLoading(false);
     }
-  }
+  }, [contactEmail, contactId, limit]);
+
+  useEffect(() => {
+    fetchAuditLogs();
+  }, [fetchAuditLogs]);
 
   function toggleExpanded(id: string) {
     const newExpanded = new Set(expandedIds);

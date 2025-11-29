@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Badge } from '@total-audio/ui/components/badge';
 import { Loader2 } from 'lucide-react';
 
@@ -35,13 +35,10 @@ export function ContactConfidenceBadge({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    fetchConfidence();
-  }, [contactId]);
-
-  async function fetchConfidence() {
+  const fetchConfidence = useCallback(async () => {
     try {
       setLoading(true);
+      setError(null);
       const response = await fetch(`/api/contacts/confidence?contactId=${contactId}`);
       const data = await response.json();
 
@@ -56,7 +53,11 @@ export function ContactConfidenceBadge({
     } finally {
       setLoading(false);
     }
-  }
+  }, [contactId]);
+
+  useEffect(() => {
+    fetchConfidence();
+  }, [fetchConfidence]);
 
   if (loading) {
     return (

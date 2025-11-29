@@ -50,7 +50,7 @@ export function PitchVariationsViewer({
 
   async function generateVariation(variationType: PitchVariation['variationType']) {
     try {
-      setLoading({ ...loading, [variationType]: true });
+      setLoading((prev) => ({ ...prev, [variationType]: true }));
       setError(null);
 
       const response = await fetch('/api/pitch/variations', {
@@ -75,15 +75,15 @@ export function PitchVariationsViewer({
         throw new Error(data.error || 'Failed to generate pitch');
       }
 
-      setVariations({
-        ...variations,
+      setVariations((prev) => ({
+        ...prev,
         [variationType]: data.variation,
-      });
+      }));
     } catch (err: any) {
       console.error('Error generating pitch variation:', err);
       setError(err.message);
     } finally {
-      setLoading({ ...loading, [variationType]: false });
+      setLoading((prev) => ({ ...prev, [variationType]: false }));
     }
   }
 
