@@ -8,7 +8,7 @@ import { Check, Sparkles, ArrowRight, Mail, Zap } from 'lucide-react';
 
 function SuccessContent() {
   const searchParams = useSearchParams();
-  const sessionId = searchParams.get('session_id');
+  const sessionId = searchParams?.get('session_id');
   const [showConfetti, setShowConfetti] = useState(true);
 
   useEffect(() => {
