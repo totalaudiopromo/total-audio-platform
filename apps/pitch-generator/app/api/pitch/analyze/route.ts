@@ -1,5 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Anthropic from '@anthropic-ai/sdk';
+import {
+  getUserFromRequest,
+  getCorsHeaders,
+  corsOptionsResponse,
+  successResponse,
+  unauthorized,
+  validationError,
+  internalError,
+} from '@total-audio/core-db';
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
@@ -23,12 +32,25 @@ interface AnalysisResult {
   };
 }
 
+// Handle OPTIONS for CORS preflight
+export async function OPTIONS(req: NextRequest) {
+  return corsOptionsResponse(req.headers.get('origin'));
+}
+
 export async function POST(request: NextRequest) {
+  const corsHeaders = getCorsHeaders(request.headers.get('origin'));
+
   try {
+    // Use unified auth (supports API keys and sessions)
+    const auth = await getUserFromRequest(request);
+    if (!auth.success) {
+      return unauthorized(auth.error.message, corsHeaders);
+    }
+
     const { pitchBody, subjectLine, contactType } = await request.json();
 
     if (!pitchBody) {
-      return NextResponse.json({ error: 'Pitch body is required' }, { status: 400 });
+      return validationError('Pitch body is required', undefined, corsHeaders);
     }
 
     // Check if API key is configured
@@ -36,9 +58,9 @@ export async function POST(request: NextRequest) {
       !process.env.ANTHROPIC_API_KEY ||
       process.env.ANTHROPIC_API_KEY === 'your-anthropic-api-key'
     ) {
-      return NextResponse.json(
-        { error: 'Anthropic API key not configured. Add ANTHROPIC_API_KEY to .env.local' },
-        { status: 500 }
+      return internalError(
+        'Anthropic API key not configured. Add ANTHROPIC_API_KEY to .env.local',
+        corsHeaders
       );
     }
 
@@ -114,12 +136,10 @@ Be honest but constructive. Provide specific, actionable suggestions.`;
       throw new Error('Failed to parse analysis response');
     }
 
-    return NextResponse.json({ analysis });
-  } catch (error: any) {
+    return successResponse({ analysis }, undefined, 200, corsHeaders);
+  } catch (error: unknown) {
     console.error('Pitch analysis error:', error);
-    return NextResponse.json(
-      { error: error.message || 'Failed to analyse pitch' },
-      { status: 500 }
-    );
+    const message = error instanceof Error ? error.message : 'Failed to analyse pitch';
+    return internalError(message, corsHeaders);
   }
 }

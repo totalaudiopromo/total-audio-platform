@@ -642,6 +642,22 @@ importers:
         specifier: 5.7.2
         version: 5.7.2
 
+  packages/api-client:
+    dependencies:
+      '@total-audio/api-types':
+        specifier: workspace:*
+        version: link:../api-types
+    devDependencies:
+      typescript:
+        specifier: 5.7.2
+        version: 5.7.2
+
+  packages/api-types:
+    devDependencies:
+      typescript:
+        specifier: 5.7.2
+        version: 5.7.2
+
   packages/auth:
     dependencies:
       '@supabase/ssr':

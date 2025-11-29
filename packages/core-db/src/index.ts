@@ -26,8 +26,16 @@
  *   return await updateSession(request);
  * }
  *
+ * // API Authentication (API keys + session)
+ * import { getUserFromRequest, successResponse, errorResponse } from "@total-audio/core-db/auth";
+ * const auth = await getUserFromRequest(request);
+ * if (!auth.success) return errorResponse(auth.error.code, auth.error.message, auth.error.status);
+ *
+ * // CORS utilities
+ * import { withCors, corsOptionsResponse } from "@total-audio/core-db/utils";
+ *
  * // Types
- * import type { Database, Json } from "@total-audio/core-db/types";
+ * import type { Database, Json, ApiResponse } from "@total-audio/core-db/types";
  *
  * // Utilities
  * import { isAdmin, ownsResource } from "@total-audio/core-db";
@@ -42,8 +50,57 @@ export {
   ErrorLogger,
   createErrorLogger,
   errorLogger,
+  // API helpers
+  successResponse,
+  errorResponse,
+  unauthorized,
+  forbidden,
+  forbiddenError,
+  notFound,
+  validationError,
+  badRequest,
+  conflict,
+  rateLimited,
+  subscriptionRequired,
+  quotaExceeded,
+  internalError,
+  serviceUnavailable,
+  timeout,
+  withErrorHandling,
+  paginationMeta,
+  generateRequestId,
+  // CORS utilities
+  withCors,
+  corsOptionsResponse,
+  corsResponse,
+  withCorsHandler,
+  getCorsHeaders,
+  isAllowedOrigin,
+  getAllowedOrigins,
 } from './utils';
 export type { ErrorCategory, ErrorLogEntry } from './utils';
+
+// Re-export auth module
+export {
+  getUserFromRequest,
+  checkScope,
+  validateApiKey,
+  generateApiKey,
+  hashApiKey,
+  hasScope,
+  API_SCOPES,
+} from './auth';
+export type {
+  AuthContext,
+  AuthError,
+  AuthMethod,
+  AuthResult,
+  GetUserOptions,
+  ApiKeyContext,
+  ApiKeyError,
+  ApiKeyValidationResult,
+  ApiScope,
+} from './auth';
 
 // Re-export workspace queries
 export { WorkspaceQueries, createWorkspaceQueries } from './workspace/queries';

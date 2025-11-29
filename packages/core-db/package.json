@@ -10,6 +10,7 @@
     "./middleware": "./src/middleware.ts",
     "./types": "./src/types/index.ts",
     "./utils": "./src/utils/index.ts",
+    "./auth": "./src/auth/index.ts",
     "./contexts/workspace-context": "./src/contexts/workspace-context.tsx",
     "./workspace/queries": "./src/workspace/queries.ts",
     "./integrations": "./src/integrations/index.ts",

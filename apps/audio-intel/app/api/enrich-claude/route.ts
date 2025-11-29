@@ -1,6 +1,11 @@
 /**
- * Claude API Enrichment Endpoint - Production-Ready v2.2.0 (Phase 11)
+ * Claude API Enrichment Endpoint - Production-Ready v2.3.0 (Phase 12)
  * Uses IntelAgent with ClaudeEnrichmentService for contact enrichment
+ *
+ * Phase 12 Enhancements:
+ * - Unified auth supporting both API keys and Supabase sessions
+ * - Standardised API response format
+ * - Proper CORS with allowed origins (not wildcard)
  *
  * Phase 11 Enhancements:
  * - Actual token usage tracking from Anthropic API (not estimates)
@@ -10,7 +15,7 @@
  * - Cost tracking with actual API response data
  *
  * Features:
- * - API key validation
+ * - API key validation (TAP API keys + Supabase sessions)
  * - Rate limit handling with automatic retry
  * - Cost tracking and metrics
  * - Comprehensive error recovery:
@@ -19,7 +24,7 @@
  *   - Timeout protection (10s per contact)
  *   - Partial success responses (never fail entire batch)
  *   - Rate limit detection and handling
- * - CORS support for demo pages
+ * - CORS support for totalaud.io and demo pages
  * - Request/response timing
  * - Detailed error tracking and logging
  */
@@ -27,6 +32,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Agents } from '@/agents';
 import { logEnrichmentBatch } from '@/utils/supabaseClient';
+import { getUserFromRequest, getCorsHeaders, corsOptionsResponse } from '@total-audio/core-db';
 
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 
@@ -74,12 +80,13 @@ function checkRateLimit(ip: string): { allowed: boolean; resetAt?: number } {
 }
 
 /**
- * Add CORS headers for demo/development
+ * Add CORS headers using unified CORS utility
  */
-function addCorsHeaders(response: NextResponse): NextResponse {
-  response.headers.set('Access-Control-Allow-Origin', '*');
-  response.headers.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+function addCorsHeaders(response: NextResponse, origin: string | null = null): NextResponse {
+  const corsHeaders = getCorsHeaders(origin);
+  Object.entries(corsHeaders).forEach(([key, value]) => {
+    response.headers.set(key, value);
+  });
   return response;
 }
 
@@ -177,31 +184,48 @@ async function enrichContactWithRetry(
   }
 }
 
-export async function OPTIONS() {
-  return addCorsHeaders(NextResponse.json({ success: true }));
+export async function OPTIONS(req: NextRequest) {
+  return corsOptionsResponse(req.headers.get('origin'));
 }
 
 export async function POST(req: NextRequest) {
   const start = Date.now();
   const ip = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown';
+  const origin = req.headers.get('origin');
 
   try {
-    // 1. Validate API key configuration
+    // 1. Validate user authentication (API key or session)
+    const auth = await getUserFromRequest(req);
+    if (!auth.success) {
+      console.warn(`[Enrichment API] Unauthorized request from ${ip}`);
+      return addCorsHeaders(
+        NextResponse.json(
+          {
+            success: false,
+            error: { code: 'UNAUTHORIZED', message: auth.error.message },
+          },
+          { status: 401 }
+        ),
+        origin
+      );
+    }
+
+    // 2. Validate Anthropic API key configuration
     if (!ANTHROPIC_API_KEY) {
       console.error('[Enrichment API] ANTHROPIC_API_KEY not configured');
       return addCorsHeaders(
         NextResponse.json(
           {
             success: false,
-            error: 'API key not configured',
-            code: 'MISSING_API_KEY',
+            error: { code: 'MISSING_API_KEY', message: 'API key not configured' },
           },
           { status: 500 }
-        )
+        ),
+        origin
       );
     }
 
-    // 2. Check rate limits
+    // 3. Check rate limits
     const rateLimit = checkRateLimit(ip);
     if (!rateLimit.allowed) {
       const resetIn = Math.ceil((rateLimit.resetAt! - Date.now()) / 1000);
@@ -210,16 +234,15 @@ export async function POST(req: NextRequest) {
         NextResponse.json(
           {
             success: false,
-            error: 'Rate limit exceeded',
-            code: 'RATE_LIMIT_EXCEEDED',
-            resetIn,
+            error: { code: 'RATE_LIMITED', message: 'Rate limit exceeded', details: { resetIn } },
           },
           { status: 429 }
-        )
+        ),
+        origin
       );
     }
 
-    // 3. Parse and validate request body
+    // 4. Parse and validate request body
     let body;
     try {
       body = await req.json();
@@ -229,27 +252,27 @@ export async function POST(req: NextRequest) {
         NextResponse.json(
           {
             success: false,
-            error: 'Invalid JSON in request body',
-            code: 'INVALID_JSON',
+            error: { code: 'VALIDATION_ERROR', message: 'Invalid JSON in request body' },
           },
           { status: 400 }
-        )
+        ),
+        origin
       );
     }
 
     const contacts = body.contacts || [];
 
-    // 4. Validate contacts array
+    // 5. Validate contacts array
     if (!Array.isArray(contacts)) {
       return addCorsHeaders(
         NextResponse.json(
           {
             success: false,
-            error: 'contacts must be an array',
-            code: 'INVALID_CONTACTS_TYPE',
+            error: { code: 'VALIDATION_ERROR', message: 'contacts must be an array' },
           },
           { status: 400 }
-        )
+        ),
+        origin
       );
     }
 
@@ -258,17 +281,12 @@ export async function POST(req: NextRequest) {
         NextResponse.json(
           {
             success: false,
-            error: 'No contacts provided',
-            code: 'EMPTY_CONTACTS',
-            summary: {
-              total: 0,
-              enriched: 0,
-              failed: 0,
-              cost: 0,
-            },
+            error: { code: 'VALIDATION_ERROR', message: 'No contacts provided' },
+            data: { summary: { total: 0, enriched: 0, failed: 0, cost: 0 } },
           },
           { status: 400 }
-        )
+        ),
+        origin
       );
     }
 
@@ -560,7 +578,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    return addCorsHeaders(NextResponse.json(response));
+    return addCorsHeaders(NextResponse.json(response), origin);
   } catch (error: any) {
     const elapsed = ((Date.now() - start) / 1000).toFixed(2);
     console.error('[Enrichment API] Unexpected error:', error);
@@ -571,12 +589,15 @@ export async function POST(req: NextRequest) {
         NextResponse.json(
           {
             success: false,
-            error: 'Request timeout',
-            code: 'TIMEOUT',
-            elapsed: `${elapsed}s`,
+            error: {
+              code: 'TIMEOUT',
+              message: 'Request timeout',
+              details: { elapsed: `${elapsed}s` },
+            },
           },
           { status: 504 }
-        )
+        ),
+        origin
       );
     }
 
@@ -585,12 +606,15 @@ export async function POST(req: NextRequest) {
         NextResponse.json(
           {
             success: false,
-            error: 'Claude API rate limit exceeded',
-            code: 'CLAUDE_RATE_LIMIT',
-            elapsed: `${elapsed}s`,
+            error: {
+              code: 'RATE_LIMITED',
+              message: 'Claude API rate limit exceeded',
+              details: { elapsed: `${elapsed}s` },
+            },
           },
           { status: 429 }
-        )
+        ),
+        origin
       );
     }
 
@@ -598,97 +622,64 @@ export async function POST(req: NextRequest) {
       NextResponse.json(
         {
           success: false,
-          error: error.message || 'Enrichment processing failed',
-          code: 'INTERNAL_ERROR',
-          elapsed: `${elapsed}s`,
+          error: {
+            code: 'INTERNAL_ERROR',
+            message: error.message || 'Enrichment processing failed',
+            details: { elapsed: `${elapsed}s` },
+          },
         },
         { status: 500 }
-      )
+      ),
+      origin
     );
   }
 }
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const origin = req.headers.get('origin');
   return addCorsHeaders(
     NextResponse.json({
-      service: 'Audio Intel Contact Enrichment API',
-      version: '2.1.0',
-      status: ANTHROPIC_API_KEY ? 'operational' : 'degraded',
-      provider: {
-        name: 'IntelAgent',
-        model: ANTHROPIC_API_KEY ? 'Claude 3.5 Sonnet' : 'Fallback Mode',
-        version: '2.0.0',
-      },
-      pricing: {
-        costPerContact: ANTHROPIC_API_KEY ? '$0.003' : '$0.000',
-        estimatedCostPer100: ANTHROPIC_API_KEY ? '$0.30' : '$0.00',
-      },
-      rateLimit: {
-        maxRequests: RATE_LIMIT_MAX_REQUESTS,
-        windowMs: RATE_LIMIT_WINDOW_MS,
-        window: '1 minute',
-      },
-      features: [
-        'Production-ready error handling',
-        'Request/response timing metrics',
-        'Cost tracking per request',
-        'Rate limiting protection',
-        'CORS support for demo pages',
-        'Batch and single contact processing',
-        'Automatic retry with exponential backoff',
-        'Timeout protection (10s per contact)',
-        'Graceful degradation with fallback intelligence',
-        'Partial success responses',
-        'Rate limit detection and handling',
-        'Detailed logging and debugging',
-      ],
-      endpoints: {
-        enrich: 'POST /api/enrich-claude',
-        status: 'GET /api/enrich-claude',
-      },
-      requestFormat: {
-        method: 'POST',
-        contentType: 'application/json',
-        body: {
-          contacts: [
-            {
-              name: 'Contact Name (required)',
-              email: 'contact@example.com (optional)',
-              genre: 'Genre (optional)',
-              region: 'UK (optional)',
-            },
-          ],
+      success: true,
+      data: {
+        service: 'Audio Intel Contact Enrichment API',
+        version: '2.3.0',
+        status: ANTHROPIC_API_KEY ? 'operational' : 'degraded',
+        authentication: 'Required (API key or session)',
+        provider: {
+          name: 'IntelAgent',
+          model: ANTHROPIC_API_KEY ? 'Claude 3.5 Sonnet' : 'Fallback Mode',
+          version: '2.0.0',
         },
+        pricing: {
+          costPerContact: ANTHROPIC_API_KEY ? '$0.003' : '$0.000',
+          estimatedCostPer100: ANTHROPIC_API_KEY ? '$0.30' : '$0.00',
+        },
+        rateLimit: {
+          maxRequests: RATE_LIMIT_MAX_REQUESTS,
+          windowMs: RATE_LIMIT_WINDOW_MS,
+          window: '1 minute',
+        },
+        features: [
+          'API key and session authentication',
+          'Production-ready error handling',
+          'Request/response timing metrics',
+          'Cost tracking per request',
+          'Rate limiting protection',
+          'CORS support for totalaud.io',
+          'Batch and single contact processing',
+          'Automatic retry with exponential backoff',
+          'Timeout protection (10s per contact)',
+          'Graceful degradation with fallback intelligence',
+          'Partial success responses',
+          'Rate limit detection and handling',
+        ],
+        endpoints: {
+          enrich: 'POST /api/enrich-claude',
+          status: 'GET /api/enrich-claude',
+        },
+        documentation: 'https://intel.totalaudiopromo.com/documentation',
       },
-      responseFormat: {
-        success: 'boolean (always true for partial success)',
-        enriched: 'EnrichedContact[] (includes successful and fallback contacts)',
-        summary: {
-          total: 'number',
-          enriched: 'number (successfully enriched)',
-          failed: 'number (returned with fallback intelligence)',
-          retried: 'number (contacts retried)',
-          timedOut: 'number (contacts that timed out)',
-          cost: 'number (in USD)',
-        },
-        metrics: {
-          totalTime: 'string (seconds)',
-          enrichmentTime: 'string (seconds)',
-          averageTimePerContact: 'string (milliseconds)',
-          successRate: 'string (percentage)',
-          retryRate: 'string (percentage of successful that were retried)',
-          timeoutRate: 'string (percentage that timed out)',
-          contactsPerSecond: 'number',
-        },
-        errorRecovery: {
-          enabled: 'boolean',
-          maxRetries: 'number',
-          retryDelay: 'string (milliseconds)',
-          timeout: 'string (milliseconds)',
-          gracefulDegradation: 'boolean',
-        },
-      },
-      documentation: 'https://intel.totalaudiopromo.com/documentation',
-    })
+    }),
+    origin
   );
 }

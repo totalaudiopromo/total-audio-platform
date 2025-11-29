@@ -1,70 +1,87 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { validateEmailListAdvanced } from '@/utils/advancedEmailValidation';
+import {
+  getUserFromRequest,
+  getCorsHeaders,
+  corsOptionsResponse,
+  successResponse,
+  unauthorized,
+  validationError,
+  internalError,
+} from '@total-audio/core-db';
+
+// Handle OPTIONS for CORS preflight
+export async function OPTIONS(req: NextRequest) {
+  return corsOptionsResponse(req.headers.get('origin'));
+}
 
 export async function POST(request: NextRequest) {
+  const corsHeaders = getCorsHeaders(request.headers.get('origin'));
+
   try {
+    // Validate authentication
+    const auth = await getUserFromRequest(request);
+    if (!auth.success) {
+      return unauthorized(auth.error.message, corsHeaders);
+    }
+
     const body = await request.json();
-    const { emails, batchMode = false } = body;
+    const { emails } = body;
 
     if (!emails || !Array.isArray(emails)) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'Emails array is required',
-        },
-        { status: 400 }
-      );
+      return validationError('Emails array is required', undefined, corsHeaders);
     }
 
     // Remove duplicates and clean emails
     const cleanEmails = [...new Set(emails.map((email: string) => email.trim().toLowerCase()))];
 
     if (cleanEmails.length === 0) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'No valid emails provided',
-        },
-        { status: 400 }
-      );
+      return validationError('No valid emails provided', undefined, corsHeaders);
     }
 
     // Validate emails with advanced validation
     const validationResult = await validateEmailListAdvanced(cleanEmails);
 
-    return NextResponse.json({
-      success: true,
-      data: validationResult,
-      processed: cleanEmails.length,
-      timestamp: new Date().toISOString(),
-    });
-  } catch (error: any) {
-    console.error('Email validation error:', error);
-    return NextResponse.json(
+    return successResponse(
       {
-        success: false,
-        error: error.message || 'Email validation failed',
+        results: validationResult,
+        processed: cleanEmails.length,
+        timestamp: new Date().toISOString(),
       },
-      { status: 500 }
+      undefined,
+      200,
+      corsHeaders
     );
+  } catch (error: unknown) {
+    console.error('Email validation error:', error);
+    const message = error instanceof Error ? error.message : 'Email validation failed';
+    return internalError(message, corsHeaders);
   }
 }
 
-export async function GET() {
-  return NextResponse.json({
-    success: true,
-    message: 'Email validation API is ready',
-    features: [
-      'RFC-compliant syntax validation',
-      'DNS MX record checking',
-      'SMTP connection testing',
-      'Disposable email detection (100+ domains)',
-      'Role-based email detection',
-      'Spam trap detection',
-      'Catch-all domain detection',
-      'Reputation scoring',
-      'Business email classification',
-      'Advanced confidence scoring',
-    ],
-  });
+export async function GET(req: NextRequest) {
+  const corsHeaders = getCorsHeaders(req.headers.get('origin'));
+
+  return successResponse(
+    {
+      service: 'Email Validation API',
+      status: 'ready',
+      authentication: 'Required (API key or session)',
+      features: [
+        'RFC-compliant syntax validation',
+        'DNS MX record checking',
+        'SMTP connection testing',
+        'Disposable email detection (100+ domains)',
+        'Role-based email detection',
+        'Spam trap detection',
+        'Catch-all domain detection',
+        'Reputation scoring',
+        'Business email classification',
+        'Advanced confidence scoring',
+      ],
+    },
+    undefined,
+    200,
+    corsHeaders
+  );
 }

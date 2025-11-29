@@ -1,14 +1,40 @@
 // ============================================================================
 // BENCHMARKS API ROUTE
 // GET: Fetch industry benchmark data
+// Supports both API key and session authentication
 // ============================================================================
 
 import { createServerClient } from '@total-audio/core-db/server';
+import {
+  getUserFromRequest,
+  successResponse,
+  internalError,
+  unauthorized,
+  withCors,
+  corsOptionsResponse,
+} from '@total-audio/core-db';
 import { cookies } from 'next/headers';
-import { NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
+
+// Handle CORS preflight
+export async function OPTIONS(request: Request) {
+  return corsOptionsResponse(request.headers.get('origin'));
+}
+
 export async function GET(request: Request) {
+  const origin = request.headers.get('origin');
+
+  // Authenticate (supports both API key and session)
+  const auth = await getUserFromRequest(request, {
+    requiredScope: 'tracker:read',
+    allowAnonymous: false,
+  });
+
+  if (!auth.success) {
+    return withCors(unauthorized(auth.error.message), origin);
+  }
+
   const supabase = await createServerClient(cookies());
 
   const { searchParams } = new URL(request.url);
@@ -28,13 +54,13 @@ export async function GET(request: Request) {
   const { data, error } = await query;
 
   if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return withCors(internalError(error.message), origin);
   }
 
   // If requesting specific platform + genre, return single benchmark
   if (platform && genre && data && data.length > 0) {
-    return NextResponse.json(data[0]);
+    return withCors(successResponse(data[0]), origin);
   }
 
-  return NextResponse.json(data || []);
+  return withCors(successResponse(data || []), origin);
 }

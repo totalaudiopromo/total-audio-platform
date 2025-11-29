@@ -1,20 +1,36 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@total-audio/core-db/server';
 import { cookies } from 'next/headers';
 import { generatePitch } from '@/lib/openai';
 import { getSuggestedSendTime } from '@/lib/sendTimeHelper';
+import {
+  getUserFromRequest,
+  getCorsHeaders,
+  corsOptionsResponse,
+  successResponse,
+  unauthorized,
+  validationError,
+  notFound,
+  internalError,
+} from '@total-audio/core-db';
 
-export async function POST(req: Request) {
+// Handle OPTIONS for CORS preflight
+export async function OPTIONS(req: NextRequest) {
+  return corsOptionsResponse(req.headers.get('origin'));
+}
+
+export async function POST(req: NextRequest) {
+  const corsHeaders = getCorsHeaders(req.headers.get('origin'));
+
   try {
-    const supabase = await createServerClient(cookies());
-    const {
-      data: { user },
-      error: authError,
-    } = await supabase.auth.getUser();
-
-    if (authError || !user) {
-      return NextResponse.json({ error: 'Unauthorised' }, { status: 401 });
+    // Use unified auth (supports API keys and sessions)
+    const auth = await getUserFromRequest(req);
+    if (!auth.success) {
+      return unauthorized(auth.error.message, corsHeaders);
     }
+
+    // Create Supabase client for database operations
+    const supabase = await createServerClient(cookies());
 
     const body = await req.json();
     const {
@@ -31,9 +47,10 @@ export async function POST(req: Request) {
 
     // Validate required fields
     if (!contactId || !artistName || !trackTitle || !keyHook) {
-      return NextResponse.json(
-        { error: 'Missing required fields: contactId, artistName, trackTitle, keyHook' },
-        { status: 400 }
+      return validationError(
+        'Missing required fields: contactId, artistName, trackTitle, keyHook',
+        undefined,
+        corsHeaders
       );
     }
 
@@ -47,7 +64,7 @@ export async function POST(req: Request) {
         .single();
 
       if (contactError || !fetchedContact) {
-        return NextResponse.json({ error: 'Contact not found' }, { status: 404 });
+        return notFound('Contact', corsHeaders);
       }
       contact = fetchedContact;
     }
@@ -55,8 +72,8 @@ export async function POST(req: Request) {
     // Get smart send time suggestion
     const sendTimeSuggestion = getSuggestedSendTime(contact.outlet, contact.role);
 
-    // Get user's voice profile
-    const userId = user.email || user.id;
+    // Get user's voice profile using auth context
+    const userId = auth.context.userId;
 
     const { data: voiceProfile } = await supabase
       .from('user_pitch_settings')
@@ -116,26 +133,29 @@ export async function POST(req: Request) {
 
     if (pitchError) {
       console.error('Error saving pitch:', pitchError);
-      return NextResponse.json({ error: 'Failed to save pitch' }, { status: 500 });
+      return internalError('Failed to save pitch', corsHeaders);
     }
 
-    return NextResponse.json({
-      pitchId: pitch.id,
-      pitch: {
-        id: pitch.id,
-        subject_line: pitch.subject_line,
-        pitch_body: pitch.pitch_body,
-        suggested_send_time: pitch.suggested_send_time,
-        contact_name: contact.name,
-        artist_name: pitch.artist_name,
-        track_title: pitch.track_title,
+    return successResponse(
+      {
+        pitchId: pitch.id,
+        pitch: {
+          id: pitch.id,
+          subject_line: pitch.subject_line,
+          pitch_body: pitch.pitch_body,
+          suggested_send_time: pitch.suggested_send_time,
+          contact_name: contact.name,
+          artist_name: pitch.artist_name,
+          track_title: pitch.track_title,
+        },
       },
-    });
-  } catch (error: any) {
-    console.error('Pitch generation error:', error);
-    return NextResponse.json(
-      { error: error.message || 'Failed to generate pitch' },
-      { status: 500 }
+      undefined,
+      200,
+      corsHeaders
     );
+  } catch (error: unknown) {
+    console.error('Pitch generation error:', error);
+    const message = error instanceof Error ? error.message : 'Failed to generate pitch';
+    return internalError(message, corsHeaders);
   }
 }

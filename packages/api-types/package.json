@@ -1,0 +1,29 @@
+{
+  "name": "@total-audio/api-types",
+  "version": "1.0.0",
+  "description": "TypeScript types for Total Audio Platform API - shared between apps and SDK clients",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./intel": "./src/intel.ts",
+    "./pitch": "./src/pitch.ts",
+    "./tracker": "./src/tracker.ts",
+    "./common": "./src/common.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "keywords": [
+    "total-audio",
+    "api-types",
+    "typescript",
+    "sdk"
+  ],
+  "author": "Total Audio Promo",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
