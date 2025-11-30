@@ -6,7 +6,7 @@ Use this template before any customer demo.
 
 ### 1. Audio Intel Smoke Test
 
-- [ ] Can log in to https://intel.totalaudiopromo.com
+- [ ] Can log in to <https://intel.totalaudiopromo.com>
 - [ ] Dashboard loads without errors
 - [ ] Can perform a test enrichment (use test contact)
 - [ ] Results display correctly

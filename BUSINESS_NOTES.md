@@ -41,7 +41,7 @@ Pattern: `{type}/{yyyy-mm}/{short-description}`
 **Naming convention:**
 Worktree directories go in `../worktrees/` relative to main repo:
 
-```
+```text
 ~/workspace/active/
 ├── total-audio-platform/        # Main repo
 └── worktrees/
