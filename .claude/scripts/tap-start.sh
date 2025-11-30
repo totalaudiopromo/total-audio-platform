@@ -4,8 +4,9 @@
 # Displays context and priorities at the start of each coding session
 #
 
-# Configuration - adjust if repo location changes
-TAP_ROOT="${TAP_ROOT:-/Users/chrisschofield/workspace/active/total-audio-platform}"
+# Configuration - auto-detect repo root (portable)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+TAP_ROOT="${TAP_ROOT:-$(cd "$SCRIPT_DIR/../.." && pwd)}"
 STATE_FILE="$TAP_ROOT/.claude/tmp/session-state.txt"
 
 # Ensure tmp directory exists
@@ -22,10 +23,10 @@ echo "║                $(date '+%A, %d %B %Y %H:%M')                  ║"
 echo "╚════════════════════════════════════════════════════════════════╝"
 echo ""
 
-# Weekly Focus (first 50 lines)
-echo "📋 WEEKLY FOCUS (first 50 lines):"
+# Weekly Focus (first 30 lines - matches session-start.md prompt)
+echo "📋 WEEKLY FOCUS (first 30 lines):"
 echo "─────────────────────────────────"
-head -50 WEEKLY_FOCUS.md 2>/dev/null || echo "WEEKLY_FOCUS.md not found"
+head -30 WEEKLY_FOCUS.md 2>/dev/null || echo "WEEKLY_FOCUS.md not found"
 echo ""
 echo "─────────────────────────────────"
 echo ""

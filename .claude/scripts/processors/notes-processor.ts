@@ -16,13 +16,16 @@ import * as path from 'path';
 import { AuditLogger } from '../../workflow/audit-logger';
 
 // Configuration
-const PROJECT_ROOT = '/Users/chrisschofield/workspace/active/total-audio-platform';
+const PROJECT_ROOT = path.resolve(__dirname, '../../..');
 const BUSINESS_NOTES = path.join(PROJECT_ROOT, 'BUSINESS_NOTES.md');
 const CLAUDE_DIR = path.join(PROJECT_ROOT, '.claude');
 const DROPZONES_DIR = path.join(CLAUDE_DIR, 'dropzones');
 const PROCESSED_DIR = path.join(DROPZONES_DIR, 'processed');
 
 const logger = new AuditLogger();
+
+// Ensure output directories exist so writes don't fail
+fs.mkdirSync(PROCESSED_DIR, { recursive: true });
 
 export interface ParsedNotes {
   title: string;

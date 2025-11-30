@@ -17,7 +17,7 @@ You are assisting with Total Audio Platform development.
 
 ## This Session
 
-Here is my current WEEKLY_FOCUS.md summary:
+Here is my current WEEKLY_FOCUS.md summary (first 30 lines):
 
 [PASTE FIRST 30 LINES OF WEEKLY_FOCUS.md HERE]
 

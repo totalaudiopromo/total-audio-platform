@@ -4,7 +4,9 @@
 # Removes merged branches and prunes stale remote refs
 #
 
-TAP_ROOT="${TAP_ROOT:-/Users/chrisschofield/workspace/active/total-audio-platform}"
+# Auto-detect repo root (portable)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+TAP_ROOT="${TAP_ROOT:-$(cd "$SCRIPT_DIR/../.." && pwd)}"
 cd "$TAP_ROOT" || exit 1
 
 DRY_RUN=${1:-"--dry-run"}
@@ -27,7 +29,7 @@ if [[ -z "$MERGED" ]]; then
 
     # Also show experiment/claude branches that might be stale
     echo "Checking for stale exp/ and claude/ branches..."
-    STALE=$(git branch | grep -E "^\s*(exp|claude)/" | head -10)
+    STALE=$(git branch | grep -E "^[* ]*(exp|claude)[/-]" | sed 's/^[* ]*//' | head -10)
     if [[ -n "$STALE" ]]; then
         echo "Found potential stale branches (not auto-deleted):"
         echo "$STALE"
