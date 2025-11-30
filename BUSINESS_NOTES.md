@@ -2,6 +2,70 @@
 
 _Capture everything here, process into actions weekly_
 
+## 🔀 GIT WORKFLOW
+
+### Branch Naming Convention
+
+Pattern: `{type}/{yyyy-mm}/{short-description}`
+
+**Types:**
+
+- `feat/` - New features
+- `fix/` - Bug fixes
+- `exp/` - Experiments (safe to delete)
+- `claude/` - Claude-generated branches
+
+**Examples:**
+
+- `feat/2025-11/customer-outreach-tracking`
+- `fix/2025-11/ci-typescript-errors`
+- `exp/2025-11/new-enrichment-api`
+- `claude/2025-11/dropzone-notes-processor`
+
+**Monthly cleanup rule:** Delete any `exp/` or `claude/` branches older than 30 days.
+
+### Git Worktree Usage
+
+**When to use worktrees:**
+
+- Long-running experiments that shouldn't block main work
+- Claude automation that modifies many files
+- Testing migrations or breaking changes in isolation
+
+**When to use normal branches:**
+
+- Quick fixes (under 1 hour)
+- Feature work that you'll finish in one session
+- Anything that needs frequent rebasing
+
+**Naming convention:**
+Worktree directories go in `../worktrees/` relative to main repo:
+
+```
+~/workspace/active/
+├── total-audio-platform/        # Main repo
+└── worktrees/
+    └── tap-exp-notes-processor/ # Worktree for experiment
+```
+
+**Commands:**
+
+```bash
+# Create worktree for experiment
+git worktree add ../worktrees/tap-exp-notes-processor -b exp/2025-11/notes-processor
+
+# List all worktrees
+git worktree list
+
+# Remove worktree when done
+git worktree remove ../worktrees/tap-exp-notes-processor
+
+# Prune stale worktree refs
+git worktree prune
+```
+
+---
+
 ## 📅 NOVEMBER 2025
 
 ### Week of Nov 20th - Git Repository Cleanup & Demo Fixes
