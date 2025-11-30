@@ -2,6 +2,18 @@
 
 _THE main file - start here every day_
 
+## 🎯 DAILY RITUAL
+
+Before opening any infrastructure ticket:
+
+1. Log 3 outreach actions in CUSTOMER_OUTREACH_LOG.md
+2. Check for replies to previous outreach
+3. Follow up on any pending demos
+
+_Revenue before infrastructure._
+
+---
+
 ## 📅 THIS WEEK'S 3 BIG GOALS
 
 1. ✅ **Phase 11: Unified Intelligence** - Complete Golden Verify + Testing integration
