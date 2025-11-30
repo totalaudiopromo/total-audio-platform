@@ -85,12 +85,15 @@ export default function SimpleAudioIntelDemo() {
 
     const urlParams = new URLSearchParams(window.location.search);
     const emailParam = urlParams.get('email');
-    const storedEmail = localStorage.getItem('beta_user_email');
+    const storedEmail =
+      typeof window !== 'undefined' ? localStorage.getItem('beta_user_email') : null;
 
     const email = emailParam || storedEmail;
     if (email) {
       setUserEmail(email);
-      localStorage.setItem('beta_user_email', email);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('beta_user_email', email);
+      }
 
       // Check beta trial status
       checkBetaStatus(email);

@@ -88,12 +88,15 @@ export function OnboardingChecklist({ userId }: OnboardingChecklistProps) {
   const handleDismiss = () => {
     setIsVisible(false);
     // Store dismissal in localStorage to persist across page reloads
-    localStorage.setItem('onboarding-dismissed', 'true');
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('onboarding-dismissed', 'true');
+    }
   };
 
   // Check if previously dismissed
   useEffect(() => {
-    const dismissed = localStorage.getItem('onboarding-dismissed');
+    const dismissed =
+      typeof window !== 'undefined' ? localStorage.getItem('onboarding-dismissed') : null;
     if (dismissed === 'true') {
       setIsVisible(false);
     }

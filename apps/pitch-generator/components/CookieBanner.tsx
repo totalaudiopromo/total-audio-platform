@@ -8,8 +8,9 @@ export function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Check if user has already consented
-    const hasConsented = localStorage.getItem('cookieConsent');
+    // Check if user has already consented (only on client-side)
+    const hasConsented =
+      typeof window !== 'undefined' ? localStorage.getItem('cookieConsent') : null;
     if (!hasConsented) {
       // Show banner after 1 second delay
       const timer = setTimeout(() => {
@@ -20,14 +21,18 @@ export function CookieBanner() {
   }, []);
 
   const handleAccept = () => {
-    localStorage.setItem('cookieConsent', 'accepted');
-    localStorage.setItem('cookieConsentDate', new Date().toISOString());
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('cookieConsent', 'accepted');
+      localStorage.setItem('cookieConsentDate', new Date().toISOString());
+    }
     setIsVisible(false);
   };
 
   const handleDecline = () => {
-    localStorage.setItem('cookieConsent', 'declined');
-    localStorage.setItem('cookieConsentDate', new Date().toISOString());
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('cookieConsent', 'declined');
+      localStorage.setItem('cookieConsentDate', new Date().toISOString());
+    }
     setIsVisible(false);
   };
 

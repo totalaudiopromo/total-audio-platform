@@ -10,9 +10,11 @@ export function ExitIntentPopup() {
   const [engagementTime, setEngagementTime] = useState(0);
 
   useEffect(() => {
-    // Check if user has already signed up (you'll need to implement this check)
-    const hasSignedUp = sessionStorage.getItem('userSignedUp');
-    const hasSeenPopup = sessionStorage.getItem('exitIntentShown');
+    // Check if user has already signed up (client-side only)
+    const hasSignedUp =
+      typeof window !== 'undefined' ? sessionStorage.getItem('userSignedUp') : null;
+    const hasSeenPopup =
+      typeof window !== 'undefined' ? sessionStorage.getItem('exitIntentShown') : null;
 
     if (hasSeenPopup || hasSignedUp) {
       setHasShown(true);
@@ -42,7 +44,9 @@ export function ExitIntentPopup() {
       if (e.clientY <= 0 && !hasShown && engagementTime >= 30) {
         setIsVisible(true);
         setHasShown(true);
-        sessionStorage.setItem('exitIntentShown', 'true');
+        if (typeof window !== 'undefined') {
+          sessionStorage.setItem('exitIntentShown', 'true');
+        }
       }
     };
 

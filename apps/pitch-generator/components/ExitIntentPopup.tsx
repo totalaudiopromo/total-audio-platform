@@ -10,16 +10,18 @@ export function ExitIntentPopup() {
   const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
-    // Check if user has already dismissed the popup permanently
-    const hasDismissedPermanently = localStorage.getItem('exitIntentDismissed');
+    // Check if user has already dismissed the popup permanently (only on client-side)
+    const hasDismissedPermanently =
+      typeof window !== 'undefined' ? localStorage.getItem('exitIntentDismissed') : null;
     if (hasDismissedPermanently === 'true') {
       setHasShown(true);
       setIsInitialized(true);
       return;
     }
 
-    // Check if user has already seen the popup in this session
-    const hasSeenPopup = sessionStorage.getItem('exitIntentShown');
+    // Check if user has already seen the popup in this session (client-side only)
+    const hasSeenPopup =
+      typeof window !== 'undefined' ? sessionStorage.getItem('exitIntentShown') : null;
     if (hasSeenPopup === 'true') {
       setHasShown(true);
       setIsInitialized(true);
@@ -35,7 +37,9 @@ export function ExitIntentPopup() {
         if (e.clientY <= 0 && !hasShown && isInitialized) {
           setIsVisible(true);
           setHasShown(true);
-          sessionStorage.setItem('exitIntentShown', 'true');
+          if (typeof window !== 'undefined') {
+            sessionStorage.setItem('exitIntentShown', 'true');
+          }
         }
       };
 
@@ -56,8 +60,10 @@ export function ExitIntentPopup() {
   const handleDismissPermanently = () => {
     setIsVisible(false);
     setHasShown(true);
-    localStorage.setItem('exitIntentDismissed', 'true');
-    sessionStorage.setItem('exitIntentShown', 'true');
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('exitIntentDismissed', 'true');
+      sessionStorage.setItem('exitIntentShown', 'true');
+    }
   };
 
   // Don't render anything if user has permanently dismissed or already seen the popup

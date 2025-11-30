@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useSession } from '@/hooks/useAuth';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -48,7 +48,11 @@ const GENRES = [
 export default function BatchGeneratePage() {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const supabase = createClient();
+  // Only create supabase client on client-side
+  const supabase = useMemo(() => {
+    if (typeof window === 'undefined') return null;
+    return createClient();
+  }, []);
   const [loading, setLoading] = useState(false);
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [selectedContactIds, setSelectedContactIds] = useState<string[]>([]);
@@ -78,6 +82,7 @@ export default function BatchGeneratePage() {
   }, [session]);
 
   async function loadContacts() {
+    if (!supabase) return;
     try {
       const userId = session?.user?.email || '';
       const { data, error } = await supabase

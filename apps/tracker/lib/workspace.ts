@@ -68,14 +68,24 @@ export type WorkspaceActivity = {
 
 // Workspace management utilities
 export class WorkspaceManager {
-  private supabase = createClient();
+  private _supabase: ReturnType<typeof createClient> | null = null;
+
+  private getSupabase() {
+    if (typeof window === 'undefined') {
+      throw new Error('WorkspaceManager can only be used on the client-side');
+    }
+    if (!this._supabase) {
+      this._supabase = createClient();
+    }
+    return this._supabase;
+  }
 
   async createWorkspace(
     name: string,
     slug: string,
     ownerId: string
   ): Promise<Workspace | null> {
-    const { data, error } = await this.supabase
+    const { data, error } = await this.getSupabase()
       .from('workspaces')
       .insert({
         name,
@@ -98,7 +108,7 @@ export class WorkspaceManager {
   }
 
   async getUserWorkspaces(userId: string): Promise<Workspace[]> {
-    const { data, error } = await this.supabase
+    const { data, error } = await this.getSupabase()
       .from('workspace_members')
       .select('workspace:workspaces(*)')
       .eq('user_id', userId);
@@ -112,7 +122,7 @@ export class WorkspaceManager {
   }
 
   async getWorkspaceMembers(workspaceId: string): Promise<WorkspaceMember[]> {
-    const { data, error } = await this.supabase
+    const { data, error } = await this.getSupabase()
       .from('workspace_members')
       .select(
         `
@@ -137,7 +147,7 @@ export class WorkspaceManager {
     role: WorkspaceRole = 'member',
     invitedBy?: string
   ): Promise<WorkspaceMember | null> {
-    const { data, error } = await this.supabase
+    const { data, error } = await this.getSupabase()
       .from('workspace_members')
       .insert({
         workspace_id: workspaceId,
@@ -174,7 +184,7 @@ export class WorkspaceManager {
     userId: string,
     newRole: WorkspaceRole
   ): Promise<boolean> {
-    const { error } = await this.supabase
+    const { error } = await this.getSupabase()
       .from('workspace_members')
       .update({ role: newRole })
       .eq('workspace_id', workspaceId)
@@ -189,7 +199,7 @@ export class WorkspaceManager {
   }
 
   async removeMember(workspaceId: string, userId: string): Promise<boolean> {
-    const { error } = await this.supabase
+    const { error } = await this.getSupabase()
       .from('workspace_members')
       .delete()
       .eq('workspace_id', workspaceId)
@@ -214,7 +224,7 @@ export class WorkspaceManager {
     const expiresAt = new Date();
     expiresAt.setDate(expiresAt.getDate() + 7); // 7 days expiry
 
-    const { data, error } = await this.supabase
+    const { data, error } = await this.getSupabase()
       .from('workspace_invitations')
       .insert({
         workspace_id: workspaceId,
@@ -250,7 +260,7 @@ export class WorkspaceManager {
 
   async acceptInvitation(token: string, userId: string): Promise<boolean> {
     // Get invitation
-    const { data: invitation, error: invError } = await this.supabase
+    const { data: invitation, error: invError } = await this.getSupabase()
       .from('workspace_invitations')
       .select('*')
       .eq('token', token)
@@ -281,7 +291,7 @@ export class WorkspaceManager {
     }
 
     // Mark invitation as accepted
-    await this.supabase
+    await this.getSupabase()
       .from('workspace_invitations')
       .update({ accepted_at: new Date().toISOString() })
       .eq('id', invitation.id);
@@ -294,7 +304,7 @@ export class WorkspaceManager {
     userId: string,
     requiredRole: WorkspaceRole = 'member'
   ): Promise<boolean> {
-    const { data, error } = await this.supabase
+    const { data, error } = await this.getSupabase()
       .from('workspace_members')
       .select('role')
       .eq('workspace_id', workspaceId)
@@ -318,7 +328,7 @@ export class WorkspaceManager {
     workspaceId: string,
     limit: number = 50
   ): Promise<WorkspaceActivity[]> {
-    const { data, error } = await this.supabase
+    const { data, error } = await this.getSupabase()
       .from('workspace_activity_log')
       .select(
         `
@@ -346,7 +356,7 @@ export class WorkspaceManager {
     resourceId?: string,
     metadata: Record<string, any> = {}
   ): Promise<void> {
-    await this.supabase.from('workspace_activity_log').insert({
+    await this.getSupabase().from('workspace_activity_log').insert({
       workspace_id: workspaceId,
       user_id: userId,
       action,
@@ -365,7 +375,7 @@ export class WorkspaceManager {
       agency_name?: string;
     }
   ): Promise<boolean> {
-    const { error } = await this.supabase
+    const { error } = await this.getSupabase()
       .from('workspaces')
       .update({ custom_branding: branding })
       .eq('id', workspaceId);

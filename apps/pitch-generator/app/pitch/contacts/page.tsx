@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useSession } from '@/hooks/useAuth';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -11,7 +11,11 @@ import type { Contact } from '@/lib/types';
 export default function ContactsPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const supabase = createClient();
+  // Only create supabase client on client-side
+  const supabase = useMemo(() => {
+    if (typeof window === 'undefined') return null;
+    return createClient();
+  }, []);
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [loading, setLoading] = useState(true);
   const [showAddForm, setShowAddForm] = useState(false);
@@ -39,6 +43,7 @@ export default function ContactsPage() {
   }, [session]);
 
   async function loadContacts() {
+    if (!supabase) return;
     try {
       const userId = session?.user?.email || '';
       const { data, error } = await supabase
@@ -58,6 +63,7 @@ export default function ContactsPage() {
 
   async function handleAddContact(e: React.FormEvent) {
     e.preventDefault();
+    if (!supabase) return;
 
     try {
       const userId = session?.user?.email || '';
@@ -98,6 +104,7 @@ export default function ContactsPage() {
   }
 
   async function handleDeleteContact(contactId: string) {
+    if (!supabase) return;
     const confirmed = confirm('Are you sure you want to delete this contact?');
     if (!confirmed) return;
 
@@ -113,6 +120,7 @@ export default function ContactsPage() {
   }
 
   async function handleImportCSV(e: React.ChangeEvent<HTMLInputElement>) {
+    if (!supabase) return;
     const file = e.target.files?.[0];
     if (!file) return;
 

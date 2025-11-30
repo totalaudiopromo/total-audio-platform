@@ -8,8 +8,9 @@ export function CookieConsent() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Check if user has already consented
-    const hasConsented = localStorage.getItem('cookieConsent');
+    // Check if user has already consented (with SSR safety check)
+    const hasConsented =
+      typeof window !== 'undefined' ? localStorage.getItem('cookieConsent') : null;
     if (!hasConsented) {
       // Show banner after 1 second delay
       const timer = setTimeout(() => {
@@ -20,8 +21,10 @@ export function CookieConsent() {
   }, []);
 
   const handleAccept = () => {
-    localStorage.setItem('cookieConsent', 'accepted');
-    localStorage.setItem('cookieConsentDate', new Date().toISOString());
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('cookieConsent', 'accepted');
+      localStorage.setItem('cookieConsentDate', new Date().toISOString());
+    }
     setIsVisible(false);
     // Enable Google Analytics
     if (typeof window !== 'undefined' && (window as any).gtag) {
@@ -32,8 +35,10 @@ export function CookieConsent() {
   };
 
   const handleDecline = () => {
-    localStorage.setItem('cookieConsent', 'declined');
-    localStorage.setItem('cookieConsentDate', new Date().toISOString());
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('cookieConsent', 'declined');
+      localStorage.setItem('cookieConsentDate', new Date().toISOString());
+    }
     setIsVisible(false);
     // Disable analytics if user declines
     if (typeof window !== 'undefined' && (window as any).gtag) {

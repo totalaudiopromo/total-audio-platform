@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useSession } from '@/hooks/useAuth';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -9,7 +9,7 @@ import { createClient } from '@total-audio/core-db/client';
 import type { Contact } from '@/lib/db';
 import { trackPitchGenerated, trackContactAdded, trackFormValidationError } from '@/lib/analytics';
 
-const supabase = createClient();
+// Note: supabase is created inside the component using useMemo to avoid SSR issues
 
 interface FormData {
   contactId: string;
@@ -42,6 +42,10 @@ const GENRES = [
 export default function GeneratePitchPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
+  const supabase = useMemo(() => {
+    if (typeof window === 'undefined') return null;
+    return createClient();
+  }, []);
   const [loading, setLoading] = useState(false);
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [selectedContact, setSelectedContact] = useState<Contact | null>(null);
@@ -118,6 +122,7 @@ export default function GeneratePitchPage() {
         }
 
         // Create new contact in Supabase
+        if (!supabase) return;
         const userId = session?.user?.email || '';
         const { data: newContact, error } = await supabase
           .from('contacts')
@@ -178,6 +183,7 @@ export default function GeneratePitchPage() {
   }, [session]);
 
   async function loadContacts() {
+    if (!supabase) return;
     try {
       const userId = session?.user?.email || '';
       const { data, error } = await supabase
