@@ -53,11 +53,19 @@ export function WorkspaceProvider({ children }: WorkspaceProviderProps) {
   const [workspaces, setWorkspaces] = useState<Workspace[]>([]);
   const [currentWorkspace, setCurrentWorkspaceState] = useState<Workspace | null>(null);
   const [loading, setLoading] = useState(true);
+  const [supabase, setSupabase] = useState<ReturnType<typeof createClient> | null>(null);
 
-  const supabase = createClient();
-
-  // Load user and workspaces on mount
+  // Create Supabase client only on client-side
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setSupabase(createClient());
+    }
+  }, []);
+
+  // Load user and workspaces on mount (only when supabase client is ready)
+  useEffect(() => {
+    if (!supabase) return;
+
     loadUserAndWorkspaces();
 
     // Subscribe to auth changes
@@ -76,10 +84,12 @@ export function WorkspaceProvider({ children }: WorkspaceProviderProps) {
     return () => {
       subscription.unsubscribe();
     };
-  }, []);
+  }, [supabase]);
 
   // Load user and workspaces
   const loadUserAndWorkspaces = async () => {
+    if (!supabase) return;
+
     try {
       setLoading(true);
       const {
@@ -100,6 +110,8 @@ export function WorkspaceProvider({ children }: WorkspaceProviderProps) {
 
   // Load user's workspaces
   const loadWorkspaces = async (userId: string) => {
+    if (!supabase) return;
+
     try {
       // Fetch workspaces via workspace_members join
       const { data, error } = await supabase
@@ -135,8 +147,9 @@ export function WorkspaceProvider({ children }: WorkspaceProviderProps) {
 
       // Auto-select workspace
       if (userWorkspaces.length > 0) {
-        // Try to restore from localStorage
-        const savedWorkspaceId = localStorage.getItem('currentWorkspaceId');
+        // Try to restore from localStorage (with SSR safety check)
+        const savedWorkspaceId =
+          typeof window !== 'undefined' ? localStorage.getItem('currentWorkspaceId') : null;
         const savedWorkspace = userWorkspaces.find(w => w.id === savedWorkspaceId);
 
         if (savedWorkspace) {
@@ -154,7 +167,9 @@ export function WorkspaceProvider({ children }: WorkspaceProviderProps) {
   // Set current workspace (with localStorage persistence)
   const setCurrentWorkspace = (workspace: Workspace) => {
     setCurrentWorkspaceState(workspace);
-    localStorage.setItem('currentWorkspaceId', workspace.id);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('currentWorkspaceId', workspace.id);
+    }
   };
 
   // Check if user has access to specific app in current workspace

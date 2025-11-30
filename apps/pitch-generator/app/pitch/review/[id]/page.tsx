@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useSession } from '@/hooks/useAuth';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
@@ -25,7 +25,11 @@ export default function ReviewPitchPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const params = useParams();
-  const supabase = createClient();
+  // Only create supabase client on client-side
+  const supabase = useMemo(() => {
+    if (typeof window === 'undefined') return null;
+    return createClient();
+  }, []);
   const pitchId = params.id as string;
 
   const [pitch, setPitch] = useState<Pitch | null>(null);
@@ -285,7 +289,9 @@ export default function ReviewPitchPage() {
       const data = await response.json();
 
       // Delete the old pitch
-      await supabase.from('pitches').delete().eq('id', pitch.id);
+      if (supabase) {
+        await supabase.from('pitches').delete().eq('id', pitch.id);
+      }
 
       // Navigate to the new pitch
       router.push(`/pitch/review/${data.pitchId}`);

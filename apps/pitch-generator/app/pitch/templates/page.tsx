@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useSession } from '@/hooks/useAuth';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -9,7 +9,11 @@ import { createClient } from '@total-audio/core-db/client';
 import type { PitchTemplate } from '@/lib/types';
 
 export default function TemplatesPage() {
-  const supabase = createClient();
+  // Only create supabase client on client-side
+  const supabase = useMemo(() => {
+    if (typeof window === 'undefined') return null;
+    return createClient();
+  }, []);
   const { data: session, status } = useSession();
   const router = useRouter();
   const [templates, setTemplates] = useState<PitchTemplate[]>([]);
@@ -27,6 +31,7 @@ export default function TemplatesPage() {
   }, []);
 
   async function loadTemplates() {
+    if (!supabase) return;
     try {
       const { data, error } = await supabase
         .from('pitch_templates')

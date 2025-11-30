@@ -2,8 +2,10 @@
 
 import React from 'react';
 import { ConditionalTrackerLayout } from '@/components/ConditionalTrackerLayout';
-import { ExitIntentPopup } from '@/components/ExitIntentPopup';
-import { CookieConsent } from '@/components/CookieConsent';
+import {
+  ExitIntentPopup,
+  CookieConsent,
+} from '@/components/ClientOnlyComponents';
 import { WorkspaceProvider } from '@total-audio/core-db/contexts/workspace-context';
 
 export default function ClientLayout({

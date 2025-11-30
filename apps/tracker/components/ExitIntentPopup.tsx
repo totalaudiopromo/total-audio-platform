@@ -20,12 +20,23 @@ export function ExitIntentPopup() {
       return;
     }
 
-    const hasSeenPopup = sessionStorage.getItem('exitIntentShown');
-    const lastShown = sessionStorage.getItem('exitIntentLastShown');
+    // Client-side only storage checks
+    const hasSeenPopup =
+      typeof window !== 'undefined'
+        ? sessionStorage.getItem('exitIntentShown')
+        : null;
+    const lastShown =
+      typeof window !== 'undefined'
+        ? sessionStorage.getItem('exitIntentLastShown')
+        : null;
     const now = Date.now();
 
     // Reset if more than 24 hours since last shown
-    if (lastShown && now - parseInt(lastShown) > 24 * 60 * 60 * 1000) {
+    if (
+      typeof window !== 'undefined' &&
+      lastShown &&
+      now - parseInt(lastShown) > 24 * 60 * 60 * 1000
+    ) {
       sessionStorage.removeItem('exitIntentShown');
       sessionStorage.removeItem('exitIntentLastShown');
     }
@@ -60,8 +71,10 @@ export function ExitIntentPopup() {
     const showPopup = () => {
       setIsVisible(true);
       setHasShown(true);
-      sessionStorage.setItem('exitIntentShown', 'true');
-      sessionStorage.setItem('exitIntentLastShown', Date.now().toString());
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem('exitIntentShown', 'true');
+        sessionStorage.setItem('exitIntentLastShown', Date.now().toString());
+      }
 
       // Track event in GTM
       if (typeof window !== 'undefined' && (window as any).dataLayer) {

@@ -19,6 +19,13 @@ import type { Database } from './types/database';
  * ```
  */
 export function createClient() {
+  // SSR safety check - createBrowserClient accesses localStorage which isn't available during SSR
+  if (typeof window === 'undefined') {
+    throw new Error(
+      'createClient() can only be called on the client-side. Use useEffect or useMemo with SSR guards.'
+    );
+  }
+
   // Access environment variables at runtime, not import time
   // This avoids RSC serialisation issues during static generation
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;

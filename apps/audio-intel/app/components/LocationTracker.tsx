@@ -11,11 +11,14 @@ export default function LocationTracker({ email, page = 'unknown' }: LocationTra
   useEffect(() => {
     const trackLocation = async () => {
       try {
-        // Generate or retrieve session ID
-        let sessionId = sessionStorage.getItem('audio-intel-session-id');
+        // Generate or retrieve session ID (client-side only)
+        let sessionId =
+          typeof window !== 'undefined' ? sessionStorage.getItem('audio-intel-session-id') : null;
         if (!sessionId) {
           sessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-          sessionStorage.setItem('audio-intel-session-id', sessionId);
+          if (typeof window !== 'undefined') {
+            sessionStorage.setItem('audio-intel-session-id', sessionId);
+          }
         }
 
         // Track this page visit with geolocation
@@ -41,8 +44,10 @@ export default function LocationTracker({ email, page = 'unknown' }: LocationTra
           if (data.success && data.location?.city) {
             console.log(`📍 Location tracked: ${data.location.city}, ${data.location.country}`);
 
-            // Store location in sessionStorage for potential future use
-            sessionStorage.setItem('user-location', JSON.stringify(data.location));
+            // Store location in sessionStorage for potential future use (client-side only)
+            if (typeof window !== 'undefined') {
+              sessionStorage.setItem('user-location', JSON.stringify(data.location));
+            }
           }
         }
       } catch (error) {
