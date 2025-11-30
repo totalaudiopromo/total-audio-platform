@@ -29,7 +29,7 @@ const ERRORS_DIR = path.join(DROPZONES_DIR, 'errors');
 const PROCESSORS_DIR = path.join(CLAUDE_DIR, 'scripts', 'processors');
 
 // Processor types
-export type ProcessorType = 'intel' | 'epk' | 'unknown';
+export type ProcessorType = 'intel' | 'epk' | 'notes' | 'unknown';
 
 // Routing rules
 interface RoutingRule {
@@ -53,6 +53,11 @@ const ROUTING_RULES: RoutingRule[] = [
     pattern: /^contacts-.*\.csv$/i,
     processor: 'intel',
     description: 'Contacts CSV (legacy naming)',
+  },
+  {
+    pattern: /^notes-.*\.(md|txt)$/i,
+    processor: 'notes',
+    description: 'Session notes for BUSINESS_NOTES.md',
   },
 ];
 
