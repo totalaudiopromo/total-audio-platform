@@ -4,8 +4,9 @@
 # Records session work and next priorities
 #
 
-# Configuration
-TAP_ROOT="${TAP_ROOT:-/Users/chrisschofield/workspace/active/total-audio-platform}"
+# Configuration - auto-detect repo root (portable)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+TAP_ROOT="${TAP_ROOT:-$(cd "$SCRIPT_DIR/../.." && pwd)}"
 STATE_FILE="$TAP_ROOT/.claude/tmp/session-state.txt"
 
 # Ensure tmp directory exists
