@@ -52,11 +52,48 @@ The reality is this: Most artists will wait 6 months to understand this shift. A
 Remember: Industry changes create new gatekeepers. We find them first.`;
 }
 
+// Different intro styles for variety
+const THREAD_INTROS = [
+  '🧵 Industry thread:',
+  '💡 Music industry insight:',
+  '📊 Intel drop:',
+  '🎯 Opportunity alert:',
+  '⚡ Industry shift:',
+  '🔍 Pattern spotted:',
+  '📡 Signal detected:',
+  '🚀 Movement update:',
+];
+
+const HOOK_STYLES = [
+  (angle: string) => `Here's what this actually means for indie artists: ${angle}`,
+  (angle: string) => `The real story here: ${angle}`,
+  (angle: string) => `What smart indies see: ${angle}`,
+  (angle: string) => `The angle most miss: ${angle}`,
+  (angle: string) => `Why this matters now: ${angle}`,
+  (angle: string) => `Decoding the signal: ${angle}`,
+];
+
+const CLOSERS = [
+  'The unsigned advantage is speed. Move now.',
+  'Contact intelligence beats mass marketing. Every time.',
+  'First movers win. Audio Intel users move first.',
+  'While majors debate, indies execute.',
+  'Intelligence is the new advantage. Get it first.',
+  'This is why we track industry movements.',
+  'Opportunity favours the prepared.',
+  'Right contacts + right timing = results.',
+];
+
 export function generateTwitterContent(opportunity: any): string[] {
   const isHighUrgency =
     opportunity.urgencyLevel === 'immediate' || opportunity.urgencyLevel === 'high';
   const title = opportunity.title || 'Industry news';
   const angle = opportunity.audioIntelAngle || 'New opportunities for smart indies';
+
+  // Pick random styles for variety
+  const randomIntro = THREAD_INTROS[Math.floor(Math.random() * THREAD_INTROS.length)];
+  const randomHook = HOOK_STYLES[Math.floor(Math.random() * HOOK_STYLES.length)];
+  const randomCloser = CLOSERS[Math.floor(Math.random() * CLOSERS.length)];
 
   // Generate different thread styles based on content type and urgency
   if (isHighUrgency) {
@@ -78,23 +115,38 @@ export function generateTwitterContent(opportunity: any): string[] {
         `${angle}`,
         `Audio Intel finds them. You reach them. Simple.`,
       ];
+    } else if (title.toLowerCase().includes('radio') || title.toLowerCase().includes('bbc')) {
+      return [
+        `📻 RADIO INTEL: ${title.substring(0, 110)}...`,
+        `Radio is still the gold standard for breaking artists. This changes how you approach it.`,
+        randomHook(angle),
+        randomCloser,
+      ];
+    } else if (title.toLowerCase().includes('ai') || title.toLowerCase().includes('artificial')) {
+      return [
+        `🤖 AI + MUSIC UPDATE: ${title.substring(0, 100)}...`,
+        `AI is reshaping music marketing. Here's how smart indies are using it:`,
+        randomHook(angle),
+        `Automate the boring stuff. Keep the human connection.`,
+        randomCloser,
+      ];
     } else {
       return [
         `🚨 BREAKING: ${title.substring(0, 120)}...`,
         `While everyone else processes this news, here's what Audio Intel users already know:`,
         `${angle}`,
-        `First-mover advantage belongs to those with the best intelligence. That's us.`,
+        randomCloser,
       ];
     }
   }
 
-  // Regular urgency threads
+  // Regular urgency threads with more variety
   if (title.toLowerCase().includes('independent') || title.toLowerCase().includes('indie')) {
     return [
       `🎯 Indies winning again: ${title.substring(0, 110)}...`,
       `${angle}`,
       `The unsigned advantage: Major labels take months to adapt. Indies move in days.`,
-      `Audio Intel makes sure you move first. 🚀`,
+      randomCloser,
     ];
   } else if (
     title.toLowerCase().includes('streaming') ||
@@ -102,15 +154,43 @@ export function generateTwitterContent(opportunity: any): string[] {
   ) {
     return [
       `📡 Platform intel: ${title.substring(0, 110)}...`,
-      `${angle}`,
+      randomHook(angle),
       `New platforms = new submission opportunities. Audio Intel users spot them first.`,
     ];
-  } else {
+  } else if (title.toLowerCase().includes('sync') || title.toLowerCase().includes('licensing')) {
     return [
-      `🎵 Industry intel: ${title.substring(0, 100)}...`,
-      `${angle}`,
-      `The unsigned advantage strikes again.`,
+      `🎬 SYNC OPPORTUNITY: ${title.substring(0, 100)}...`,
+      `Sync deals are still the fastest path to real revenue for indies.`,
+      randomHook(angle),
+      `The right contact at the right time. That's the game.`,
     ];
+  } else if (title.toLowerCase().includes('pr') || title.toLowerCase().includes('press')) {
+    return [
+      `📰 PR INTEL: ${title.substring(0, 110)}...`,
+      `Press coverage still matters. Here's the angle most miss:`,
+      randomHook(angle),
+      randomCloser,
+    ];
+  } else if (
+    title.toLowerCase().includes('social') ||
+    title.toLowerCase().includes('tiktok') ||
+    title.toLowerCase().includes('instagram')
+  ) {
+    return [
+      `📱 SOCIAL INTEL: ${title.substring(0, 100)}...`,
+      `Algorithms change. Relationships don't.`,
+      randomHook(angle),
+      `Build the contacts that outlast any platform shift.`,
+    ];
+  } else if (title.toLowerCase().includes('festival') || title.toLowerCase().includes('live')) {
+    return [
+      `🎪 LIVE MUSIC UPDATE: ${title.substring(0, 100)}...`,
+      `Festivals and live opportunities are opening up. Here's who to know:`,
+      randomHook(angle),
+      randomCloser,
+    ];
+  } else {
+    return [`${randomIntro} ${title.substring(0, 100)}...`, randomHook(angle), randomCloser];
   }
 }
 
