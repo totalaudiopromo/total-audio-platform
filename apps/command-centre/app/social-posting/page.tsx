@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import {
   Share2,
   Copy,
@@ -16,7 +17,10 @@ import {
   CheckCircle,
   XCircle,
   ExternalLink,
+  Sparkles,
+  ArrowLeft,
 } from 'lucide-react';
+import Link from 'next/link';
 
 interface AuthenticPost {
   id: string;
@@ -28,6 +32,16 @@ interface AuthenticPost {
   character_count: number;
   created_at: string;
   post_type: string;
+}
+
+interface NewsContent {
+  id: string;
+  title: string;
+  source: string;
+  angle: string;
+  twitter: string[];
+  linkedin: string | null;
+  newsletter: any[];
 }
 
 interface PlatformConfig {
@@ -46,6 +60,10 @@ interface PostResult {
 }
 
 export default function SocialPostingPage() {
+  const searchParams = useSearchParams();
+  const newsId = searchParams.get('newsId');
+  const fromNews = searchParams.get('fromNews') === 'true';
+
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [posts, setPosts] = useState<AuthenticPost[]>([]);
   const [loading, setLoading] = useState(true);
@@ -60,6 +78,11 @@ export default function SocialPostingPage() {
   const [posting, setPosting] = useState<Record<string, boolean>>({});
   const [postResults, setPostResults] = useState<Record<string, PostResult[]>>({});
   const [selectedPlatforms, setSelectedPlatforms] = useState<Record<string, string[]>>({});
+
+  // Newsjacking content state
+  const [newsContent, setNewsContent] = useState<NewsContent | null>(null);
+  const [newsLoading, setNewsLoading] = useState(false);
+  const [customContent, setCustomContent] = useState<string>('');
 
   // Load platform configuration
   const loadPlatformConfig = async () => {
@@ -100,13 +123,56 @@ export default function SocialPostingPage() {
     }
   };
 
+  // Load news content if coming from newsjacking page
+  const loadNewsContent = async (id: string) => {
+    setNewsLoading(true);
+    try {
+      // Use the orchestrate API to generate content from the opportunity
+      const response = await fetch('/api/newsjacking/orchestrate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'generate',
+          opportunityId: id,
+        }),
+      });
+      const result = await response.json();
+
+      if (result.success && result.data) {
+        setNewsContent({
+          id: result.data.id,
+          title: result.data.originalStory?.title || 'News Story',
+          source: result.data.originalStory?.source || 'Unknown',
+          angle: result.data.angle || '',
+          twitter: result.data.twitter || [],
+          linkedin: result.data.linkedin?.article || result.data.linkedin || null,
+          newsletter: result.data.newsletter || [],
+        });
+        // Pre-populate custom content with first Twitter post
+        if (result.data.twitter && result.data.twitter.length > 0) {
+          setCustomContent(result.data.twitter[0]);
+        }
+      }
+    } catch (error) {
+      console.error('Failed to load news content:', error);
+    } finally {
+      setNewsLoading(false);
+    }
+  };
+
   useEffect(() => {
     loadContent();
     loadPlatformConfig();
+
+    // Load news content if coming from newsjacking
+    if (fromNews && newsId) {
+      loadNewsContent(newsId);
+    }
+
     const interval = setInterval(loadContent, 10 * 60 * 1000);
     return () => clearInterval(interval);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedPlatform, selectedType]);
+  }, [selectedPlatform, selectedType, newsId, fromNews]);
 
   // Direct post to platforms
   const handleDirectPost = async (postId: string, content: string) => {
@@ -268,6 +334,178 @@ export default function SocialPostingPage() {
           </div>
         </div>
       </div>
+
+      {/* News Content Posting Section - Only shown when coming from newsjacking */}
+      {fromNews && (
+        <div className="postcraft-section bg-gradient-to-r from-purple-50 to-blue-50 border border-purple-200">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-2">
+              <Sparkles className="w-5 h-5 text-purple-600" />
+              <h2 className="text-lg font-bold text-purple-900">Newsjacking Post</h2>
+            </div>
+            <Link
+              href="/newsjacking"
+              className="flex items-center gap-1 text-sm text-purple-600 hover:text-purple-800"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Back to Intel
+            </Link>
+          </div>
+
+          {newsLoading ? (
+            <div className="flex items-center justify-center py-8">
+              <Loader2 className="w-6 h-6 animate-spin text-purple-600" />
+              <span className="ml-2 text-purple-700">Loading news content...</span>
+            </div>
+          ) : newsContent ? (
+            <div className="space-y-4">
+              {/* Story Info */}
+              <div className="bg-white rounded-lg p-4 border border-purple-200">
+                <h3 className="font-semibold text-gray-900 mb-1">{newsContent.title}</h3>
+                <p className="text-sm text-gray-500 mb-2">Source: {newsContent.source}</p>
+                {newsContent.angle && (
+                  <p className="text-sm text-purple-700 italic">Angle: {newsContent.angle}</p>
+                )}
+              </div>
+
+              {/* Content Editor */}
+              <div className="space-y-3">
+                <label className="block text-sm font-medium text-gray-700">
+                  Post Content (edit before posting)
+                </label>
+                <textarea
+                  value={customContent}
+                  onChange={e => setCustomContent(e.target.value)}
+                  rows={5}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-sm"
+                  placeholder="Enter your post content..."
+                />
+                <div className="flex justify-between text-xs text-gray-500">
+                  <span>{customContent.length} characters</span>
+                  <span className={customContent.length > 280 ? 'text-orange-600' : ''}>
+                    {customContent.length > 280 ? 'May be truncated on some platforms' : ''}
+                  </span>
+                </div>
+              </div>
+
+              {/* Quick Content Options */}
+              {newsContent.twitter.length > 1 && (
+                <div className="space-y-2">
+                  <p className="text-sm font-medium text-gray-700">Quick options:</p>
+                  <div className="flex flex-wrap gap-2">
+                    {newsContent.twitter.slice(0, 3).map((tweet, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setCustomContent(tweet)}
+                        className="text-xs px-3 py-1 bg-purple-100 text-purple-700 rounded-full hover:bg-purple-200"
+                      >
+                        Option {idx + 1}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Platform Selection */}
+              <div className="space-y-2">
+                <p className="text-sm font-medium text-gray-700">Post to:</p>
+                <div className="flex flex-wrap gap-2">
+                  {Object.entries(platformConfig)
+                    .filter(([, config]) => config.configured)
+                    .map(([key, config]) => (
+                      <button
+                        key={key}
+                        onClick={() => togglePlatformSelection('news-post', key)}
+                        className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                          (selectedPlatforms['news-post'] || []).includes(key)
+                            ? 'bg-purple-600 text-white'
+                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                        }`}
+                      >
+                        {config.name}
+                      </button>
+                    ))}
+                </div>
+              </div>
+
+              {/* Post Button */}
+              <button
+                onClick={() => handleDirectPost('news-post', customContent)}
+                disabled={
+                  posting['news-post'] ||
+                  !customContent.trim() ||
+                  (selectedPlatforms['news-post'] || []).length === 0
+                }
+                className={`w-full py-3 rounded-lg font-semibold flex items-center justify-center gap-2 ${
+                  posting['news-post'] ||
+                  !customContent.trim() ||
+                  (selectedPlatforms['news-post'] || []).length === 0
+                    ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                    : 'bg-purple-600 text-white hover:bg-purple-700'
+                }`}
+              >
+                {posting['news-post'] ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Posting...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5" />
+                    Post Now
+                  </>
+                )}
+              </button>
+
+              {/* Post Results */}
+              {postResults['news-post'] && postResults['news-post'].length > 0 && (
+                <div className="space-y-2">
+                  {postResults['news-post'].map((result, idx) => (
+                    <div
+                      key={idx}
+                      className={`p-3 rounded-lg flex items-center justify-between ${
+                        result.success
+                          ? 'bg-green-50 border border-green-200'
+                          : 'bg-red-50 border border-red-200'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        {result.success ? (
+                          <CheckCircle className="w-5 h-5 text-green-600" />
+                        ) : (
+                          <XCircle className="w-5 h-5 text-red-600" />
+                        )}
+                        <span
+                          className={`font-medium ${result.success ? 'text-green-800' : 'text-red-800'}`}
+                        >
+                          {platformConfig[result.platform]?.name || result.platform}
+                        </span>
+                      </div>
+                      {result.success && result.url && (
+                        <a
+                          href={result.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm text-green-600 hover:text-green-800 flex items-center gap-1"
+                        >
+                          View <ExternalLink className="w-3 h-3" />
+                        </a>
+                      )}
+                      {!result.success && (
+                        <span className="text-sm text-red-600">{result.error}</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="text-center py-8 text-gray-500">
+              <p>Could not load news content. Try refreshing or go back to select another story.</p>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Platform Status */}
       <div className="postcraft-section">
