@@ -147,5 +147,3 @@ Answer the user's question with specific, actionable insights based on this data
     };
   }
 }
-
-export * from './types';
