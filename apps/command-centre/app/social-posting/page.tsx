@@ -11,11 +11,16 @@ import {
   Music,
   RefreshCw,
   Filter,
+  Send,
+  Loader2,
+  CheckCircle,
+  XCircle,
+  ExternalLink,
 } from 'lucide-react';
 
 interface AuthenticPost {
   id: string;
-  platform: 'twitter' | 'linkedin' | 'bluesky' | 'instagram';
+  platform: 'twitter' | 'linkedin' | 'bluesky' | 'instagram' | 'threads';
   content: string;
   topic: string;
   engagement_score: number;
@@ -23,6 +28,21 @@ interface AuthenticPost {
   character_count: number;
   created_at: string;
   post_type: string;
+}
+
+interface PlatformConfig {
+  configured: boolean;
+  name: string;
+  charLimit: number;
+  note?: string;
+}
+
+interface PostResult {
+  platform: string;
+  success: boolean;
+  postId?: string;
+  url?: string;
+  error?: string;
 }
 
 export default function SocialPostingPage() {
@@ -34,6 +54,25 @@ export default function SocialPostingPage() {
   const [selectedType, setSelectedType] = useState<string>('all');
   const [stats, setStats] = useState<any>(null);
   const [metrics, setMetrics] = useState<any>(null);
+
+  // Direct posting state
+  const [platformConfig, setPlatformConfig] = useState<Record<string, PlatformConfig>>({});
+  const [posting, setPosting] = useState<Record<string, boolean>>({});
+  const [postResults, setPostResults] = useState<Record<string, PostResult[]>>({});
+  const [selectedPlatforms, setSelectedPlatforms] = useState<Record<string, string[]>>({});
+
+  // Load platform configuration
+  const loadPlatformConfig = async () => {
+    try {
+      const response = await fetch('/api/social/post');
+      const result = await response.json();
+      if (result.success) {
+        setPlatformConfig(result.platforms);
+      }
+    } catch (error) {
+      console.error('Failed to load platform config:', error);
+    }
+  };
 
   // Load fresh content from API
   const loadContent = async () => {
@@ -63,13 +102,56 @@ export default function SocialPostingPage() {
 
   useEffect(() => {
     loadContent();
-    // Auto-refresh every 10 minutes for fresh content
+    loadPlatformConfig();
     const interval = setInterval(loadContent, 10 * 60 * 1000);
     return () => clearInterval(interval);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedPlatform, selectedType]); // loadContent intentionally not in deps
+  }, [selectedPlatform, selectedType]);
 
-  // Static fallback posts for immediate display while loading
+  // Direct post to platforms
+  const handleDirectPost = async (postId: string, content: string) => {
+    const platforms = selectedPlatforms[postId] || [];
+    if (platforms.length === 0) {
+      alert('Please select at least one platform to post to');
+      return;
+    }
+
+    setPosting(prev => ({ ...prev, [postId]: true }));
+    setPostResults(prev => ({ ...prev, [postId]: [] }));
+
+    try {
+      const response = await fetch('/api/social/post', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ content, platforms }),
+      });
+
+      const result = await response.json();
+      setPostResults(prev => ({ ...prev, [postId]: result.results || [] }));
+    } catch (error) {
+      console.error('Direct post error:', error);
+      setPostResults(prev => ({
+        ...prev,
+        [postId]: platforms.map(p => ({ platform: p, success: false, error: 'Request failed' })),
+      }));
+    } finally {
+      setPosting(prev => ({ ...prev, [postId]: false }));
+    }
+  };
+
+  // Toggle platform selection for a post
+  const togglePlatformSelection = (postId: string, platform: string) => {
+    setSelectedPlatforms(prev => {
+      const current = prev[postId] || [];
+      if (current.includes(platform)) {
+        return { ...prev, [postId]: current.filter(p => p !== platform) };
+      } else {
+        return { ...prev, [postId]: [...current, platform] };
+      }
+    });
+  };
+
+  // Static fallback posts
   const fallbackPosts: AuthenticPost[] = [
     {
       id: 'post-1',
@@ -107,42 +189,6 @@ export default function SocialPostingPage() {
       created_at: new Date().toISOString(),
       post_type: 'founder_advice',
     },
-    {
-      id: 'post-4',
-      platform: 'twitter',
-      content:
-        'Audio Intel beta update:\n\n• 12,847 emails validated\n• 3,672 contacts enriched\n• 97.4% delivery rate\n• 4 paying beta customers\n\nBuilding in public means sharing real numbers.\n\nPre-launch but already proving product-market fit.',
-      topic: 'Progress Update',
-      engagement_score: 91,
-      ready_to_post: true,
-      character_count: 0,
-      created_at: new Date().toISOString(),
-      post_type: 'progress_update',
-    },
-    {
-      id: 'post-5',
-      platform: 'linkedin',
-      content:
-        "Why I'm building Total Audio Promo in public:\n\n1. Accountability - can't fake progress when everyone's watching\n2. Feedback loops - customers tell me what they actually need\n3. Authenticity - no marketing BS, just real founder updates\n4. Community - other music tech founders share their experiences\n\nTransparency isn't a marketing strategy. It's how you build trust.\n\nWhat are you building? Let's connect.",
-      topic: 'Building in Public',
-      engagement_score: 88,
-      ready_to_post: true,
-      character_count: 0,
-      created_at: new Date().toISOString(),
-      post_type: 'building_in_public',
-    },
-    {
-      id: 'post-6',
-      platform: 'twitter',
-      content:
-        'Music PR agencies charge £500-2000 per campaign.\n\n50% of that cost is manual contact research.\n\nAudio Intel automates the research for £45.\n\nSame result, 90% less cost, 95% faster.\n\nThis is how you disrupt an industry.',
-      topic: 'Market Disruption',
-      engagement_score: 92,
-      ready_to_post: true,
-      character_count: 0,
-      created_at: new Date().toISOString(),
-      post_type: 'market_disruption',
-    },
   ];
 
   const handleCopy = async (content: string, id: string) => {
@@ -163,6 +209,8 @@ export default function SocialPostingPage() {
         return 'bg-blue-600 text-white';
       case 'bluesky':
         return 'bg-sky-500 text-white';
+      case 'threads':
+        return 'bg-gray-900 text-white';
       case 'instagram':
         return 'bg-gradient-to-r from-purple-500 to-pink-500 text-white';
       default:
@@ -178,6 +226,8 @@ export default function SocialPostingPage() {
         return 'in';
       case 'bluesky':
         return 'BS';
+      case 'threads':
+        return 'TH';
       case 'instagram':
         return 'IG';
       default:
@@ -186,6 +236,9 @@ export default function SocialPostingPage() {
   };
 
   const displayPosts = posts.length > 0 ? posts : fallbackPosts;
+  const configuredPlatforms = Object.entries(platformConfig).filter(
+    ([, config]) => config.configured
+  );
 
   return (
     <div className="postcraft-page postcraft-container">
@@ -193,10 +246,10 @@ export default function SocialPostingPage() {
       <div className="postcraft-section">
         <div className="postcraft-section-header text-center">
           <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
-            Authentic Content
+            Social Posting Hub
           </h1>
-          <p className="text-gray-600">Ready-to-share posts in your authentic voice</p>
-          <div className="flex items-center justify-center gap-3 mt-4">
+          <p className="text-gray-600">Post directly to social platforms from your mobile</p>
+          <div className="flex items-center justify-center gap-3 mt-4 flex-wrap">
             <button
               onClick={loadContent}
               disabled={refreshing}
@@ -209,11 +262,29 @@ export default function SocialPostingPage() {
             <div className="postcraft-status">
               <div className="postcraft-status-dot"></div>
               <span>
-                {displayPosts.length} posts ready{' '}
-                {metrics && `• ${Number(metrics.customers) || 0} customers`}
+                {displayPosts.length} posts ready • {configuredPlatforms.length} platforms connected
               </span>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Platform Status */}
+      <div className="postcraft-section">
+        <h3 className="font-semibold text-gray-900 mb-3">Connected Platforms</h3>
+        <div className="flex flex-wrap gap-2">
+          {Object.entries(platformConfig).map(([key, config]) => (
+            <div
+              key={key}
+              className={`px-3 py-2 rounded-lg text-sm font-medium ${
+                config.configured
+                  ? 'bg-green-100 text-green-800 border border-green-200'
+                  : 'bg-gray-100 text-gray-500 border border-gray-200'
+              }`}
+            >
+              {config.name} {config.configured ? '✓' : '✗'}
+            </div>
+          ))}
         </div>
       </div>
 
@@ -237,7 +308,7 @@ export default function SocialPostingPage() {
                 <option value="twitter">Twitter/X</option>
                 <option value="linkedin">LinkedIn</option>
                 <option value="bluesky">Bluesky</option>
-                <option value="instagram">Instagram</option>
+                <option value="threads">Threads</option>
               </select>
             </div>
 
@@ -280,11 +351,11 @@ export default function SocialPostingPage() {
           <div className="postcraft-metric-card">
             <div className="postcraft-metric-header">
               <div className="postcraft-metric-icon" style={{ background: '#dbeafe' }}>
-                <Users className="w-5 h-5 text-blue-900" />
+                <Send className="w-5 h-5 text-blue-900" />
               </div>
             </div>
-            <div className="postcraft-metric-value">{displayPosts.length}</div>
-            <div className="postcraft-metric-label">Ready Posts</div>
+            <div className="postcraft-metric-value">{configuredPlatforms.length}</div>
+            <div className="postcraft-metric-label">Platforms Ready</div>
           </div>
 
           <div className="postcraft-metric-card">
@@ -303,15 +374,15 @@ export default function SocialPostingPage() {
                 <Calendar className="w-5 h-5 text-red-800" />
               </div>
             </div>
-            <div className="postcraft-metric-value">0</div>
-            <div className="postcraft-metric-label">Generic AI Slop</div>
+            <div className="postcraft-metric-value">{displayPosts.length}</div>
+            <div className="postcraft-metric-label">Ready Posts</div>
           </div>
         </div>
 
-        {/* Authentic Content Feed */}
+        {/* Content Feed with Direct Posting */}
         <div className="postcraft-section">
           <div className="postcraft-section-header">
-            <h2>Your Authentic Content Library</h2>
+            <h2>Post Directly to Platforms</h2>
           </div>
 
           {loading && posts.length === 0 ? (
@@ -325,8 +396,8 @@ export default function SocialPostingPage() {
               {displayPosts.map(post => (
                 <div key={post.id} className="postcraft-metric-card">
                   {/* Post Header */}
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-3">
+                  <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
+                    <div className="flex items-center gap-2 flex-wrap">
                       <span
                         className={`px-3 py-1 rounded-full text-sm font-medium ${getPlatformColor(
                           post.platform
@@ -338,7 +409,7 @@ export default function SocialPostingPage() {
                         {post.topic}
                       </span>
                       <span className="postcraft-metric-badge postcraft-badge-success">
-                        {post.engagement_score}% engagement
+                        {post.engagement_score}%
                       </span>
                     </div>
 
@@ -356,21 +427,125 @@ export default function SocialPostingPage() {
                       ) : (
                         <>
                           <Copy className="w-4 h-4" />
-                          Copy Post
+                          Copy
                         </>
                       )}
                     </button>
                   </div>
 
                   {/* Post Content */}
-                  <div className="bg-gray-50 p-4 rounded border border-gray-200 font-mono text-sm text-gray-800 whitespace-pre-line">
+                  <div className="bg-gray-50 p-4 rounded border border-gray-200 font-mono text-sm text-gray-800 whitespace-pre-line mb-4">
                     {post.content}
                   </div>
 
+                  {/* Platform Selection for Direct Post */}
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Select platforms to post to:
+                    </label>
+                    <div className="flex flex-wrap gap-2">
+                      {Object.entries(platformConfig)
+                        .filter(([, config]) => config.configured)
+                        .map(([key, config]) => {
+                          const isSelected = (selectedPlatforms[post.id] || []).includes(key);
+                          const charCount = post.content.length;
+                          const overLimit = charCount > config.charLimit;
+
+                          return (
+                            <button
+                              key={key}
+                              onClick={() => togglePlatformSelection(post.id, key)}
+                              disabled={overLimit}
+                              className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                                overLimit
+                                  ? 'bg-red-100 text-red-400 cursor-not-allowed'
+                                  : isSelected
+                                    ? 'bg-blue-600 text-white'
+                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                              }`}
+                              title={
+                                overLimit
+                                  ? `Content too long (${charCount}/${config.charLimit})`
+                                  : config.name
+                              }
+                            >
+                              {config.name}
+                              {isSelected && <Check className="w-3 h-3 inline ml-1" />}
+                              {overLimit && <span className="ml-1 text-xs">⚠️</span>}
+                            </button>
+                          );
+                        })}
+                    </div>
+                  </div>
+
+                  {/* Direct Post Button */}
+                  <button
+                    onClick={() => handleDirectPost(post.id, post.content)}
+                    disabled={posting[post.id] || (selectedPlatforms[post.id] || []).length === 0}
+                    className={`w-full py-3 px-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-all ${
+                      posting[post.id]
+                        ? 'bg-blue-400 text-white cursor-wait'
+                        : (selectedPlatforms[post.id] || []).length === 0
+                          ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                          : 'bg-blue-600 text-white hover:bg-blue-700 active:scale-98'
+                    }`}
+                  >
+                    {posting[post.id] ? (
+                      <>
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                        Posting...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-5 h-5" />
+                        Post to {(selectedPlatforms[post.id] || []).length || 0} Platform
+                        {(selectedPlatforms[post.id] || []).length !== 1 ? 's' : ''}
+                      </>
+                    )}
+                  </button>
+
+                  {/* Post Results */}
+                  {postResults[post.id] && postResults[post.id].length > 0 && (
+                    <div className="mt-4 space-y-2">
+                      {postResults[post.id].map((result, idx) => (
+                        <div
+                          key={idx}
+                          className={`p-3 rounded-lg flex items-center justify-between ${
+                            result.success
+                              ? 'bg-green-50 border border-green-200'
+                              : 'bg-red-50 border border-red-200'
+                          }`}
+                        >
+                          <div className="flex items-center gap-2">
+                            {result.success ? (
+                              <CheckCircle className="w-5 h-5 text-green-600" />
+                            ) : (
+                              <XCircle className="w-5 h-5 text-red-600" />
+                            )}
+                            <span className="font-medium capitalize">{result.platform}</span>
+                            <span className={result.success ? 'text-green-700' : 'text-red-700'}>
+                              {result.success ? 'Posted!' : result.error}
+                            </span>
+                          </div>
+                          {result.url && (
+                            <a
+                              href={result.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-blue-600 hover:text-blue-800 flex items-center gap-1"
+                            >
+                              View <ExternalLink className="w-4 h-4" />
+                            </a>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
                   {/* Post Footer */}
                   <div className="flex items-center justify-between mt-3 text-xs text-gray-500">
-                    <span>Character count: {post.character_count || post.content.length}</span>
-                    <span>Ready to post immediately</span>
+                    <span>Character count: {post.content.length}</span>
+                    <span>Tap platforms then post</span>
                   </div>
                 </div>
               ))}
@@ -411,37 +586,31 @@ export default function SocialPostingPage() {
                 <div className="text-gray-600">Delivery Rate</div>
               </div>
             </div>
-            <p className="text-xs text-gray-500 mt-3">
-              All content uses these real numbers for authenticity • Auto-refreshes every 10 minutes
-            </p>
           </div>
         )}
 
         {/* Instructions */}
         <div className="postcraft-section">
-          <h3 className="text-lg font-semibold mb-3 text-gray-900">
-            Endless Authentic Content Stream
-          </h3>
+          <h3 className="text-lg font-semibold mb-3 text-gray-900">How to Post</h3>
           <div className="text-sm text-gray-700 leading-6">
             <p className="mb-3">
-              <strong>1. Endless Stream:</strong> Click refresh for new posts anytime. Content
-              auto-generates with real Audio Intel metrics.
+              <strong>1. Select Platforms:</strong> Tap the platform buttons below each post to
+              select where you want to publish.
             </p>
             <p className="mb-3">
-              <strong>2. Platform Filtering:</strong> Use filters to get platform-specific content
-              (Twitter, LinkedIn, Bluesky, Instagram).
+              <strong>2. Check Character Limits:</strong> Platforms with ⚠️ mean your content
+              exceeds their character limit.
             </p>
             <p className="mb-3">
-              <strong>3. Content Types:</strong> Progress updates, founder stories, industry
-              insights, customer stories - all in your voice.
+              <strong>3. Post Directly:</strong> Tap "Post to X Platforms" to publish immediately.
             </p>
             <p className="mb-3">
-              <strong>4. Real Numbers:</strong> Every post includes actual Audio Intel metrics for
-              maximum authenticity.
+              <strong>4. View Results:</strong> Success and failure statuses appear below each post
+              with links to view.
             </p>
             <p>
-              <strong>5. High Engagement:</strong> Content optimized for 85-95% engagement rates
-              based on your authentic founder story.
+              <strong>5. Copy Option:</strong> Still want to post manually? Use the Copy button to
+              paste anywhere.
             </p>
           </div>
         </div>
