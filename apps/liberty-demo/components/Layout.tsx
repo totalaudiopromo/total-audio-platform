@@ -13,6 +13,7 @@ import {
   Search,
   Bell,
   FolderOpen,
+  Sparkles,
 } from 'lucide-react';
 
 interface LayoutProps {
@@ -72,6 +73,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             label="Overview"
           />
           <NavItem href="/dashboard/crm" icon={<Users size={18} />} label="CRM Intelligence" />
+          <NavItem href="/dashboard/leads" icon={<Sparkles size={18} />} label="AI Lead Gen" />
           <NavItem href="/dashboard/assets" icon={<FolderOpen size={18} />} label="Asset Hub" />
           <NavItem href="/dashboard/intake" icon={<FileText size={18} />} label="Artist Intake" />
           <NavItem href="/dashboard/ops" icon={<Calendar size={18} />} label="Operations" />

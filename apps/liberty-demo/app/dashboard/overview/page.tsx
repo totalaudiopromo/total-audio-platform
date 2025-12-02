@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import CampaignCard from '@/components/CampaignCard';
 import LeadGenPanel from '@/components/LeadGenPanel';
+import { LeadStats } from '@/components/leads';
 import ActivityStream from '@/components/ActivityStream';
 import WarmPanel from '@/components/WarmPanel';
 import MondayTimelinePanel from '@/components/MondayTimelinePanel';
@@ -20,15 +21,36 @@ import {
   CheckCircle,
   Loader2,
 } from 'lucide-react';
+import type { LeadStats as LeadStatsType } from '@/lib/leads/types';
+import { getMockLeadStats } from '@/lib/leads/mock-data';
 import { fetchLibertyCampaignSummaries } from '@/lib/api/tracker';
 import type { TrackerCampaignSummary } from '@/lib/types';
 
 const DashboardOverview: React.FC = () => {
   const [campaigns, setCampaigns] = useState<TrackerCampaignSummary[]>([]);
   const [loading, setLoading] = useState(true);
+  const [leadStats, setLeadStats] = useState<LeadStatsType | null>(null);
   const [notificationStatus, setNotificationStatus] = useState<
     'idle' | 'sending' | 'sent' | 'error'
   >('idle');
+
+  // Fetch lead stats
+  const fetchLeadStats = useCallback(async () => {
+    try {
+      const response = await fetch('/api/leads/stats');
+      if (response.ok) {
+        const data = await response.json();
+        setLeadStats(data);
+      } else {
+        // Fallback to mock stats
+        setLeadStats(getMockLeadStats());
+      }
+    } catch (error) {
+      console.error('Failed to fetch lead stats:', error);
+      // Fallback to mock stats
+      setLeadStats(getMockLeadStats());
+    }
+  }, []);
 
   const sendTestNotification = async () => {
     setNotificationStatus('sending');
@@ -89,10 +111,14 @@ const DashboardOverview: React.FC = () => {
         if (active) setLoading(false);
       }
     })();
+
+    // Also fetch lead stats
+    fetchLeadStats();
+
     return () => {
       active = false;
     };
-  }, []);
+  }, [fetchLeadStats]);
 
   // Calculate aggregated stats from campaigns
   const stats = {
@@ -268,6 +294,18 @@ const DashboardOverview: React.FC = () => {
 
         {/* Right Sidebar */}
         <div className="space-y-6">
+          {/* AI Lead Gen Stats Widget */}
+          {leadStats && (
+            <div className="relative">
+              <a
+                href="/dashboard/leads"
+                className="absolute top-4 right-4 text-xs text-[#3AA9BE] hover:underline font-sans z-10"
+              >
+                View All →
+              </a>
+              <LeadStats stats={leadStats} compact />
+            </div>
+          )}
           <GmailInboxPanel />
           <ChrisRadioPanel />
           <WarmPanel />
