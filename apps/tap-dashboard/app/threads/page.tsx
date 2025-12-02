@@ -31,76 +31,96 @@ export default function ThreadsPage() {
   const tabs: Tab[] = [
     {
       id: 'narrative',
-      label: 'narrative',
+      label: 'Narrative',
       content: narrativeLoading ? (
         <Card>
-          <p className="text-tap-grey lowercase">loading narrative thread...</p>
+          <div className="p-4">
+            <p className="text-slate-500">Loading narrative thread...</p>
+          </div>
         </Card>
       ) : narrativeThread ? (
         <NarrativeThreadView thread={narrativeThread} />
       ) : (
         <Card>
-          <p className="text-tap-grey lowercase">no narrative thread available</p>
+          <div className="p-4">
+            <p className="text-slate-500">No narrative thread available</p>
+          </div>
         </Card>
       ),
     },
     {
       id: 'campaign',
-      label: 'campaign',
+      label: 'Campaign',
       content: campaignLoading ? (
         <Card>
-          <p className="text-tap-grey lowercase">loading campaign thread...</p>
+          <div className="p-4">
+            <p className="text-slate-500">Loading campaign thread...</p>
+          </div>
         </Card>
       ) : campaignThread ? (
         <NarrativeThreadView thread={campaignThread} />
       ) : (
         <Card>
-          <p className="text-tap-grey lowercase">no campaign thread available</p>
+          <div className="p-4">
+            <p className="text-slate-500">No campaign thread available</p>
+          </div>
         </Card>
       ),
     },
     {
       id: 'creative',
-      label: 'creative',
+      label: 'Creative',
       content: creativeLoading ? (
         <Card>
-          <p className="text-tap-grey lowercase">loading creative thread...</p>
+          <div className="p-4">
+            <p className="text-slate-500">Loading creative thread...</p>
+          </div>
         </Card>
       ) : creativeThread ? (
         <NarrativeThreadView thread={creativeThread} />
       ) : (
         <Card>
-          <p className="text-tap-grey lowercase">no creative thread available</p>
+          <div className="p-4">
+            <p className="text-slate-500">No creative thread available</p>
+          </div>
         </Card>
       ),
     },
     {
       id: 'scene',
-      label: 'scene',
+      label: 'Scene',
       content: sceneLoading ? (
         <Card>
-          <p className="text-tap-grey lowercase">loading scene thread...</p>
+          <div className="p-4">
+            <p className="text-slate-500">Loading scene thread...</p>
+          </div>
         </Card>
       ) : sceneThread ? (
         <NarrativeThreadView thread={sceneThread} />
       ) : (
         <Card>
-          <p className="text-tap-grey lowercase">no scene thread available</p>
+          <div className="p-4">
+            <p className="text-slate-500">No scene thread available</p>
+          </div>
         </Card>
       ),
     },
     {
       id: 'performance',
-      label: 'performance',
+      label: 'Performance',
       content: performanceLoading ? (
         <Card>
-          <p className="text-tap-grey lowercase">loading performance thread...</p>
+          <div className="p-4">
+            <p className="text-slate-500">Loading performance thread...</p>
+          </div>
         </Card>
       ) : performanceThread ? (
         <NarrativeThreadView thread={performanceThread} />
       ) : (
         <Card>
-          <p className="text-tap-grey lowercase">no performance thread available</p>
+          <div className="p-4">
+            <p className="text-slate-500">No performance thread available</p>
+          </div>
         </Card>
       ),
     },
@@ -109,8 +129,8 @@ export default function ThreadsPage() {
   return (
     <PageContainer>
       <SectionHeader
-        title="signal threads"
-        description="narrative timelines connecting all your campaign events"
+        title="Signal Threads"
+        description="Narrative timelines connecting all your campaign events"
       />
 
       <Tabbed tabs={tabs} defaultTab="narrative" />

@@ -1,3 +1,5 @@
+import clsx from 'clsx';
+
 interface MetricProps {
   label: string;
   value: string | number;
@@ -17,14 +19,14 @@ export function Metric({ label, value, change, format = 'number' }: MetricProps)
 
   return (
     <div className="space-y-1">
-      <p className="text-xs text-tap-grey uppercase tracking-wider">{label}</p>
+      <p className="text-xs text-muted-foreground uppercase tracking-wider font-medium">{label}</p>
       <div className="flex items-baseline gap-2">
-        <p className="text-2xl font-mono font-semibold text-tap-white">{formattedValue()}</p>
+        <p className="text-2xl font-mono font-bold text-foreground">{formattedValue()}</p>
         {change && (
           <span
-            className={clsx('text-xs font-mono', {
-              'text-green-400': change.direction === 'up',
-              'text-red-400': change.direction === 'down',
+            className={clsx('text-xs font-mono font-semibold', {
+              'text-green-600': change.direction === 'up',
+              'text-red-600': change.direction === 'down',
             })}
           >
             {change.direction === 'up' ? '↑' : '↓'} {Math.abs(change.value)}%
@@ -34,5 +36,3 @@ export function Metric({ label, value, change, format = 'number' }: MetricProps)
     </div>
   );
 }
-
-import clsx from 'clsx';

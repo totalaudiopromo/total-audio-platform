@@ -14,32 +14,36 @@ export function CoverageMapCard({ coverage }: CoverageMapCardProps) {
   return (
     <Card>
       <div className="flex items-start justify-between mb-4">
-        <h3 className="text-lg font-semibold text-tap-white lowercase">coverage footprint</h3>
-        <Badge variant="info">{coverage.coverageScore.toFixed(0)} score</Badge>
+        <h3 className="text-lg font-bold text-foreground">Coverage Footprint</h3>
+        <Badge variant="teal">{coverage.coverageScore.toFixed(0)} score</Badge>
       </div>
 
       <div className="grid grid-cols-3 gap-4 mb-4">
         <div>
-          <p className="text-xs text-tap-grey uppercase tracking-wider mb-1">total events</p>
-          <p className="text-2xl font-mono font-semibold text-tap-white">{coverage.totalEvents}</p>
+          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1 font-medium">
+            Total Events
+          </p>
+          <p className="text-2xl font-mono font-bold text-foreground">{coverage.totalEvents}</p>
         </div>
         <div>
-          <p className="text-xs text-tap-grey uppercase tracking-wider mb-1">countries</p>
-          <p className="text-2xl font-mono font-semibold text-tap-white">
+          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1 font-medium">
+            Countries
+          </p>
+          <p className="text-2xl font-mono font-bold text-foreground">
             {coverage.countriesReached}
           </p>
         </div>
         <div>
-          <p className="text-xs text-tap-grey uppercase tracking-wider mb-1">cities</p>
-          <p className="text-2xl font-mono font-semibold text-tap-white">
-            {coverage.citiesReached}
+          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1 font-medium">
+            Cities
           </p>
+          <p className="text-2xl font-mono font-bold text-foreground">{coverage.citiesReached}</p>
         </div>
       </div>
 
-      <div className="bg-tap-black/30 rounded-lg p-4 border border-tap-panel/30">
-        <p className="text-xs text-tap-grey lowercase text-center">
-          interactive map view available on coverage page →
+      <div className="bg-muted rounded-xl p-4 border-2 border-black shadow-brutal-sm">
+        <p className="text-xs text-muted-foreground text-center">
+          Interactive map view available on coverage page →
         </p>
       </div>
     </Card>
