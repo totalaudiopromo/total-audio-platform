@@ -1,14 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import {
-  Share2,
   Copy,
   Check,
   Calendar,
   TrendingUp,
-  Users,
   Music,
   RefreshCw,
   Filter,
@@ -41,7 +39,7 @@ interface NewsContent {
   angle: string;
   twitter: string[];
   linkedin: string | null;
-  newsletter: any[];
+  newsletter: unknown[];
 }
 
 interface PlatformConfig {
@@ -59,7 +57,46 @@ interface PostResult {
   error?: string;
 }
 
+interface ContentStats {
+  averageEngagement?: number;
+}
+
+interface LiveMetrics {
+  customers?: number;
+  emailsValidated?: number;
+  contactsEnriched?: number;
+  deliveryRate?: string;
+}
+
+// Loading fallback for Suspense boundary
+function SocialPostingLoading() {
+  return (
+    <div className="postcraft-page postcraft-container">
+      <div className="postcraft-section">
+        <div className="postcraft-section-header text-center">
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+            Social Posting Hub
+          </h1>
+          <p className="text-gray-600">Loading...</p>
+          <div className="flex items-center justify-center gap-3 mt-4">
+            <Loader2 className="w-6 h-6 animate-spin text-blue-600" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Main page component wrapped in Suspense
 export default function SocialPostingPage() {
+  return (
+    <Suspense fallback={<SocialPostingLoading />}>
+      <SocialPostingContent />
+    </Suspense>
+  );
+}
+
+function SocialPostingContent() {
   const searchParams = useSearchParams();
   const newsId = searchParams.get('newsId');
   const fromNews = searchParams.get('fromNews') === 'true';
@@ -70,8 +107,8 @@ export default function SocialPostingPage() {
   const [refreshing, setRefreshing] = useState(false);
   const [selectedPlatform, setSelectedPlatform] = useState<string>('all');
   const [selectedType, setSelectedType] = useState<string>('all');
-  const [stats, setStats] = useState<any>(null);
-  const [metrics, setMetrics] = useState<any>(null);
+  const [stats, setStats] = useState<ContentStats | null>(null);
+  const [metrics, setMetrics] = useState<LiveMetrics | null>(null);
 
   // Direct posting state
   const [platformConfig, setPlatformConfig] = useState<Record<string, PlatformConfig>>({});
