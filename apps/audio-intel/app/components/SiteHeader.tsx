@@ -7,8 +7,9 @@ import { WorkspaceSwitcher } from '@total-audio/ui/WorkspaceSwitcher';
 import { useWorkspace } from '@total-audio/core-db/contexts/workspace-context';
 import { UsageStats } from '@/components/UsageStats';
 import { createClient } from '@total-audio/core-db/client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import type { SupabaseClient } from '@supabase/supabase-js';
 
 const links = [
   { href: '/', label: 'Home' },
@@ -20,10 +21,17 @@ const links = [
 export function SiteHeader() {
   const [user, setUser] = useState<any>(null);
   const router = useRouter();
-  const supabase = createClient();
+  // Use ref to store supabase client, initialised inside useEffect to avoid SSR issues
+  const supabaseRef = useRef<SupabaseClient | null>(null);
   const { currentWorkspace, workspaces, setCurrentWorkspace } = useWorkspace();
 
   useEffect(() => {
+    // Initialise client only on client-side
+    if (!supabaseRef.current) {
+      supabaseRef.current = createClient();
+    }
+    const supabase = supabaseRef.current;
+
     // Get initial session
     supabase.auth.getUser().then(({ data: { user } }) => {
       setUser(user);
@@ -40,9 +48,11 @@ export function SiteHeader() {
   }, []);
 
   const handleSignOut = async () => {
-    await supabase.auth.signOut();
-    router.push('/');
-    router.refresh();
+    if (supabaseRef.current) {
+      await supabaseRef.current.auth.signOut();
+      router.push('/');
+      router.refresh();
+    }
   };
 
   const authComponent = user ? (

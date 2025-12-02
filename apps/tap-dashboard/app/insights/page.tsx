@@ -17,10 +17,12 @@ export default function InsightsPage() {
   const tabs: Tab[] = [
     {
       id: 'correlations',
-      label: 'correlations',
+      label: 'Correlations',
       content: correlationsLoading ? (
         <Card>
-          <p className="text-tap-grey lowercase">loading correlations...</p>
+          <div className="p-4">
+            <p className="text-slate-500">Loading correlations...</p>
+          </div>
         </Card>
       ) : correlations ? (
         <CorrelationList
@@ -30,16 +32,20 @@ export default function InsightsPage() {
         />
       ) : (
         <Card>
-          <p className="text-tap-grey lowercase">no correlation data available</p>
+          <div className="p-4">
+            <p className="text-slate-500">No correlation data available</p>
+          </div>
         </Card>
       ),
     },
     {
       id: 'trajectory',
-      label: 'trajectory',
+      label: 'Trajectory',
       content: trajectoryLoading ? (
         <Card>
-          <p className="text-tap-grey lowercase">loading trajectory...</p>
+          <div className="p-4">
+            <p className="text-slate-500">Loading trajectory...</p>
+          </div>
         </Card>
       ) : trajectory ? (
         <TrajectoryForecast
@@ -50,27 +56,31 @@ export default function InsightsPage() {
         />
       ) : (
         <Card>
-          <p className="text-tap-grey lowercase">no trajectory data available</p>
+          <div className="p-4">
+            <p className="text-slate-500">No trajectory data available</p>
+          </div>
         </Card>
       ),
     },
     {
       id: 'patterns',
-      label: 'patterns',
+      label: 'Patterns',
       content: (
         <Card>
-          <p className="text-sm text-tap-grey lowercase">
-            pattern analysis available in main dashboard
-          </p>
+          <div className="p-4">
+            <p className="text-sm text-slate-500">Pattern analysis available in main dashboard</p>
+          </div>
         </Card>
       ),
     },
     {
       id: 'recommendations',
-      label: 'recommendations',
+      label: 'Recommendations',
       content: (
         <Card>
-          <p className="text-sm text-tap-grey lowercase">ai-powered recommendations coming soon</p>
+          <div className="p-4">
+            <p className="text-sm text-slate-500">AI-powered recommendations coming soon</p>
+          </div>
         </Card>
       ),
     },
@@ -79,8 +89,8 @@ export default function InsightsPage() {
   return (
     <PageContainer>
       <SectionHeader
-        title="intelligence insights"
-        description="deep analysis of your campaigns and creative work"
+        title="Intelligence Insights"
+        description="Deep analysis of your campaigns and creative work"
       />
 
       <Tabbed tabs={tabs} defaultTab="correlations" />

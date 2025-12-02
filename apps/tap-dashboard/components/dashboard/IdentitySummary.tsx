@@ -20,23 +20,29 @@ interface IdentitySummaryProps {
 export function IdentitySummary({ identity }: IdentitySummaryProps) {
   return (
     <Card>
-      <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">identity profile</h3>
+      <h3 className="text-lg font-bold text-foreground mb-4">Identity Profile</h3>
 
       <div className="space-y-4">
         <div>
-          <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">brand voice</p>
-          <p className="text-sm text-tap-white lowercase">{identity.brandVoice.tone}</p>
+          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2 font-medium">
+            Brand Voice
+          </p>
+          <p className="text-sm text-foreground">{identity.brandVoice.tone}</p>
         </div>
 
         <div>
-          <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">primary scene</p>
-          <Badge variant="info">{identity.sceneIdentity.primaryScene}</Badge>
+          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2 font-medium">
+            Primary Scene
+          </p>
+          <Badge variant="teal">{identity.sceneIdentity.primaryScene}</Badge>
         </div>
 
         <div>
-          <p className="text-xs text-tap-grey uppercase tracking-wider mb-2">microgenres</p>
+          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2 font-medium">
+            Microgenres
+          </p>
           <div className="flex flex-wrap gap-2">
-            <Badge variant="default">{identity.microgenreMap.primary}</Badge>
+            <Badge variant="amber">{identity.microgenreMap.primary}</Badge>
             {identity.microgenreMap.secondary.slice(0, 3).map(genre => (
               <Badge key={genre} variant="default" size="sm">
                 {genre}
@@ -45,12 +51,12 @@ export function IdentitySummary({ identity }: IdentitySummaryProps) {
           </div>
         </div>
 
-        <div className="pt-4 border-t border-tap-panel/30">
+        <div className="pt-4 border-t border-border">
           <a
             href="/identity"
-            className="text-xs text-tap-cyan hover:text-tap-cyan/80 lowercase transition-colors duration-180"
+            className="text-xs text-brand-slate hover:text-brand-slate-dark font-medium transition-colors duration-180"
           >
-            view full identity profile →
+            View full identity profile →
           </a>
         </div>
       </div>

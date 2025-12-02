@@ -22,39 +22,40 @@ interface TrajectoryChartProps {
 export function TrajectoryChart({ data }: TrajectoryChartProps) {
   return (
     <Card>
-      <h3 className="text-lg font-semibold text-tap-white lowercase mb-4">90-day trajectory</h3>
+      <h3 className="text-lg font-bold text-foreground mb-4">90-Day Trajectory</h3>
       {data.length === 0 ? (
-        <p className="text-sm text-tap-grey lowercase">no trajectory data available</p>
+        <p className="text-sm text-muted-foreground">No trajectory data available</p>
       ) : (
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={data}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#161A1D" />
+            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
             <XAxis
               dataKey="day"
-              stroke="#9CA3AF"
+              stroke="#6b7280"
               style={{ fontSize: '12px', fontFamily: 'JetBrains Mono' }}
             />
-            <YAxis stroke="#9CA3AF" style={{ fontSize: '12px', fontFamily: 'JetBrains Mono' }} />
+            <YAxis stroke="#6b7280" style={{ fontSize: '12px', fontFamily: 'JetBrains Mono' }} />
             <Tooltip
               contentStyle={{
-                backgroundColor: '#161A1D',
-                border: '1px solid #161A1D',
-                borderRadius: '8px',
-                color: '#E9EDEF',
+                backgroundColor: '#ffffff',
+                border: '2px solid #000000',
+                borderRadius: '12px',
+                color: '#1a1a2e',
+                boxShadow: '4px 4px 0px rgba(0,0,0,1)',
               }}
             />
             <Line
               type="monotone"
               dataKey="coverageEvents"
-              stroke="#3AA9BE"
-              strokeWidth={2}
+              stroke="#14b8a6"
+              strokeWidth={3}
               dot={false}
             />
             <Line
               type="monotone"
               dataKey="replyRate"
-              stroke="#10B981"
-              strokeWidth={2}
+              stroke="#F59E0B"
+              strokeWidth={3}
               dot={false}
             />
           </LineChart>

@@ -29,7 +29,7 @@ const ERRORS_DIR = path.join(DROPZONES_DIR, 'errors');
 const PROCESSORS_DIR = path.join(CLAUDE_DIR, 'scripts', 'processors');
 
 // Processor types
-export type ProcessorType = 'intel' | 'epk' | 'unknown';
+export type ProcessorType = 'intel' | 'epk' | 'notes' | 'unknown';
 
 // Routing rules
 interface RoutingRule {
@@ -53,6 +53,11 @@ const ROUTING_RULES: RoutingRule[] = [
     pattern: /^contacts-.*\.csv$/i,
     processor: 'intel',
     description: 'Contacts CSV (legacy naming)',
+  },
+  {
+    pattern: /^notes-.*\.(md|txt)$/i,
+    processor: 'notes',
+    description: 'Session notes for BUSINESS_NOTES.md',
   },
 ];
 
@@ -174,7 +179,7 @@ export async function executeProcessor(routing: RoutingResult): Promise<Processo
 
   // Handle unknown file type
   if (routing.processor === 'unknown') {
-    const error = `Unknown file type: ${routing.filename}. Expected intel-*.csv or epk-*.{md,json}`;
+    const error = `Unknown file type: ${routing.filename}. Expected intel-*.csv, epk-*.{md,json}, or notes-*.{md,txt}`;
     logger.warn('processor', 'unknown-file-type', { filename: routing.filename });
     moveToErrors(routing.filename, error);
     return {
@@ -210,7 +215,7 @@ export async function executeProcessor(routing: RoutingResult): Promise<Processo
     const processor = await import(processorPath);
 
     if (typeof processor.processFile !== 'function') {
-      const error = `Processor ${routing.processor} does not export a 'process' function`;
+      const error = `Processor ${routing.processor} does not export a 'processFile' function`;
       logger.error('processor', 'invalid-processor', { processor: routing.processor });
       moveToErrors(routing.filename, error);
       return {
