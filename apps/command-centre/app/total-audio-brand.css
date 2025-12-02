@@ -1,0 +1,375 @@
+/* ========================================
+   TOTAL AUDIO PROMO - UNIFIED BRAND SYSTEM
+   ======================================== */
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* ========================================
+   BRAND FOUNDATION
+   ======================================== */
+
+:root {
+  /* Brand Colors - Clean B&W Foundation */
+  --tap-black: #000000;
+  --tap-white: #ffffff;
+  --tap-gray-50: #f9fafb;
+  --tap-gray-100: #f3f4f6;
+  --tap-gray-200: #e5e7eb;
+  --tap-gray-300: #d1d5db;
+  --tap-gray-400: #9ca3af;
+  --tap-gray-500: #6b7280;
+  --tap-gray-600: #4b5563;
+  --tap-gray-700: #374151;
+  --tap-gray-800: #1f2937;
+  --tap-gray-900: #111827;
+
+  /* Tool Color Activation System */
+  --audio-intel: #3b82f6;      /* Electric Blue */
+  --playlist-pulse: #22c55e;   /* Neon Green */
+  --release-radar: #f59e0b;    /* Orange/Amber */
+  --trend-track: #a855f7;      /* Purple/Magenta */
+  --content-clone: #ec4899;    /* Hot Pink */
+  --success-predict: #eab308;  /* Gold/Yellow */
+  --voice-echo: #f59e0b;       /* Orange/Amber */
+  --command-centre: #6366f1;   /* Indigo */
+
+  /* Postcraft Variables (alias to main brand) */
+  --postcraft-blue: var(--audio-intel);
+  --postcraft-purple: var(--trend-track);
+  --postcraft-green: var(--playlist-pulse);
+  --postcraft-orange: var(--release-radar);
+
+  /* Typography */
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+}
+
+/* ========================================
+   BASE STYLES
+   ======================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background: var(--tap-white);
+  color: var(--tap-gray-900);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================
+   POSTCRAFT-STYLE DASHBOARD COMPONENTS
+   ======================================== */
+
+.postcraft-page {
+  font-family: var(--font-family);
+  background: var(--tap-gray-50);
+  color: var(--tap-gray-900);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.postcraft-section {
+  margin-bottom: 2rem;
+}
+
+.postcraft-section-header {
+  margin-bottom: 1.5rem;
+}
+
+.postcraft-section-header h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--tap-gray-900);
+  margin-bottom: 0.5rem;
+}
+
+.postcraft-card {
+  background: var(--tap-white);
+  border: 2px solid var(--tap-gray-200);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.postcraft-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+  border-color: var(--audio-intel);
+}
+
+.postcraft-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.postcraft-metric-card {
+  background: var(--tap-white);
+  border: 3px solid var(--tap-black);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+  transition: all 0.2s ease;
+}
+
+.postcraft-metric-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.postcraft-metric-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--tap-gray-600);
+  margin-bottom: 0.5rem;
+}
+
+.postcraft-metric-value {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--tap-gray-900);
+  line-height: 1;
+}
+
+.postcraft-metric-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--tap-black);
+  box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.postcraft-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.postcraft-status-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+  background: var(--playlist-pulse);
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* ========================================
+   CARD SYSTEM
+   ======================================== */
+
+.tap-card {
+  background: var(--tap-white);
+  border: 2px solid var(--tap-gray-200);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.tap-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--tap-gray-200);
+  transition: all 0.3s ease;
+}
+
+.tap-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+  border-color: var(--tap-gray-300);
+}
+
+/* ========================================
+   TYPOGRAPHY SYSTEM
+   ======================================== */
+
+.tap-heading-1 {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--tap-gray-900);
+  margin-bottom: 1rem;
+  letter-spacing: -0.025em;
+}
+
+.tap-heading-2 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--tap-gray-900);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.025em;
+}
+
+.tap-heading-3 {
+  font-size: 1.875rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--tap-gray-900);
+  margin-bottom: 0.5rem;
+}
+
+/* ========================================
+   BUTTON SYSTEM
+   ======================================== */
+
+.tap-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 0.75rem;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+  min-height: 44px; /* Touch target size */
+}
+
+.tap-button-primary {
+  background: var(--audio-intel);
+  color: var(--tap-white);
+  border-color: var(--audio-intel);
+}
+
+.tap-button-primary:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+}
+
+/* ========================================
+   LAYOUT UTILITIES
+   ======================================== */
+
+.tap-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.tap-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.tap-grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+}
+
+.tap-grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+.tap-grid-4 {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+.tap-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.tap-focus:focus {
+  outline: 2px solid var(--audio-intel);
+  outline-offset: 2px;
+}
+
+/* ========================================
+   MOBILE RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+  .postcraft-metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .tap-grid-2,
+  .tap-grid-3,
+  .tap-grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .postcraft-metric-value {
+    font-size: 1.875rem;
+  }
+
+  .tap-heading-1 {
+    font-size: 2.25rem;
+  }
+
+  .tap-heading-2 {
+    font-size: 1.875rem;
+  }
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+  .tap-nav,
+  .tap-button,
+  .tap-loading {
+    display: none !important;
+  }
+
+  .tap-card,
+  .postcraft-card,
+  .postcraft-metric-card {
+    border: 1px solid var(--tap-gray-300) !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+  }
+
+  .tap-heading-1,
+  .tap-heading-2,
+  .tap-heading-3 {
+    color: var(--tap-black) !important;
+  }
+}

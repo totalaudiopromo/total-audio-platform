@@ -1,0 +1,304 @@
+/* 📱 COMMAND CENTRE MOBILE OPTIMIZATIONS */
+
+@media (max-width: 767px) {
+  /* Reset container padding for mobile */
+  .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Header mobile optimization */
+  .command-header {
+    padding: 1rem !important;
+    height: auto !important;
+  }
+
+  .command-header .container {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1rem !important;
+  }
+
+  .command-logo-container {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    text-align: center !important;
+  }
+
+  .command-logo-text {
+    font-size: 1.75rem !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Dashboard grid mobile */
+  .command-dashboard-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  .command-metric-card {
+    padding: 1.5rem !important;
+    border-radius: 20px !important;
+    text-align: center !important;
+  }
+
+  .command-metric-title {
+    font-size: 1.25rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .command-metric-value {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .command-metric-subtitle {
+    font-size: 0.95rem !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Charts and graphs mobile */
+  .command-chart-container {
+    padding: 1.5rem !important;
+    margin: 1rem 0 !important;
+    border-radius: 20px !important;
+  }
+
+  .command-chart-title {
+    font-size: 1.5rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* Beta users section mobile */
+  .command-beta-users {
+    padding: 1.5rem !important;
+    margin: 1rem 0 !important;
+  }
+
+  .command-beta-users-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .command-beta-user-card {
+    padding: 1rem !important;
+    border-radius: 12px !important;
+    text-align: left !important;
+  }
+
+  /* Agent status mobile */
+  .command-agents-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .command-agent-card {
+    padding: 1.5rem !important;
+    border-radius: 16px !important;
+  }
+
+  .command-agent-name {
+    font-size: 1.125rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .command-agent-status {
+    font-size: 0.875rem !important;
+    padding: 0.25rem 0.75rem !important;
+    border-radius: 12px !important;
+  }
+
+  /* Navigation mobile */
+  .command-nav {
+    flex-direction: column !important;
+    gap: 1rem !important;
+    width: 100% !important;
+  }
+
+  .command-nav-link {
+    font-size: 0.875rem !important;
+    padding: 0.75rem !important;
+    text-align: center !important;
+    border-radius: 8px !important;
+  }
+
+  /* Buttons mobile */
+  .command-button {
+    width: 100% !important;
+    height: 48px !important;
+    font-size: 1rem !important;
+    padding: 1rem !important;
+    border-radius: 12px !important;
+    margin: 0.5rem 0 !important;
+  }
+
+  /* Tables mobile */
+  .command-table-container {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    margin: 1rem 0 !important;
+    border-radius: 16px !important;
+  }
+
+  .command-table {
+    min-width: 600px !important;
+    font-size: 0.875rem !important;
+  }
+
+  .command-table th,
+  .command-table td {
+    padding: 0.75rem 0.5rem !important;
+  }
+
+  /* Modals and dialogs mobile */
+  .command-modal {
+    width: calc(100vw - 2rem) !important;
+    max-width: none !important;
+    margin: 1rem !important;
+    border-radius: 20px !important;
+    padding: 2rem !important;
+  }
+
+  .command-modal-title {
+    font-size: 1.5rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* Form inputs mobile */
+  .command-input,
+  .command-select {
+    width: 100% !important;
+    height: 48px !important;
+    font-size: 1rem !important;
+    padding: 1rem !important;
+    border-radius: 12px !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* Progress indicators mobile */
+  .command-progress-card {
+    padding: 1.5rem !important;
+    border-radius: 16px !important;
+    margin-bottom: 1rem !important;
+    text-align: center !important;
+  }
+
+  .command-progress-title {
+    font-size: 1.125rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .command-progress-bar {
+    height: 12px !important;
+    border-radius: 12px !important;
+    margin: 1rem 0 !important;
+  }
+
+  .command-progress-text {
+    font-size: 0.875rem !important;
+    margin-top: 0.5rem !important;
+  }
+
+  /* Typography fixes */
+  h1, h2, h3, h4, h5, h6 {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  /* Prevent horizontal scroll */
+  body, html {
+    overflow-x: hidden !important;
+  }
+
+  .command-container {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    padding: 0 1rem !important;
+  }
+
+  /* Touch optimization */
+  button, a, input, select {
+    min-height: 44px !important;
+    touch-action: manipulation !important;
+  }
+
+  /* Badge optimizations */
+  .command-badge {
+    font-size: 0.75rem !important;
+    padding: 0.25rem 0.75rem !important;
+    border-radius: 12px !important;
+  }
+
+  /* Status indicators mobile */
+  .command-status-online {
+    width: 12px !important;
+    height: 12px !important;
+    border-radius: 50% !important;
+  }
+
+  /* Hide non-essential elements on mobile */
+  .command-desktop-only {
+    display: none !important;
+  }
+
+  .command-mobile-only {
+    display: block !important;
+  }
+
+  /* Spacing adjustments */
+  .command-section {
+    padding: 2rem 0 !important;
+  }
+
+  .command-section-title {
+    font-size: 1.75rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 1.5rem !important;
+    text-align: center !important;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .command-dashboard-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .command-agents-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .command-beta-users-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .command-metric-card,
+  .command-agent-card,
+  .command-chart-container {
+    transition: none !important;
+  }
+
+  .command-metric-card:hover,
+  .command-agent-card:hover,
+  .command-chart-container:hover {
+    transform: none !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .command-metric-card,
+  .command-agent-card {
+    border-width: 3px !important;
+    border-color: #000 !important;
+  }
+}

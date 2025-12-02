@@ -1,0 +1,19 @@
+{
+  "framework": "nextjs",
+  "installCommand": "cd /vercel/path0/apps/command-centre && npm install --legacy-peer-deps",
+  "buildCommand": "cd /vercel/path0/apps/command-centre && npm run build",
+  "outputDirectory": ".next",
+  "env": {
+    "NEXT_PUBLIC_BASE_URL": "https://command.totalaudiopromo.com",
+    "NEXT_PUBLIC_APP_NAME": "Command Centre",
+    "NEXT_PUBLIC_APP_DESCRIPTION": "Total Audio Promo Command Centre - Internal Business Dashboard",
+    "NEXTAUTH_URL": "https://command.totalaudiopromo.com",
+    "NODE_ENV": "production"
+  },
+  "functions": {
+    "app/api/**": {
+      "maxDuration": 30
+    }
+  },
+  "regions": ["lhr1"]
+}
