@@ -504,6 +504,37 @@
   border: 2px solid #000000;
 }
 
+/* Neobrutalist Utility Classes */
+@layer components {
+  .btn-primary {
+    @apply bg-teal-600 text-white border-4 border-black rounded-xl px-6 py-3 font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-teal-700 active:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5 min-h-[44px];
+  }
+
+  .btn-secondary {
+    @apply bg-white text-black border-4 border-black rounded-xl px-6 py-3 font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-gray-50 active:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5 min-h-[44px];
+  }
+
+  .btn-subtle {
+    @apply bg-white text-black border-2 border-black rounded-xl px-5 py-2.5 font-semibold shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 min-h-[44px];
+  }
+
+  .input-brutal {
+    @apply w-full border-2 border-black rounded-xl py-3.5 px-4 text-gray-900 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-1 transition-all min-h-[44px];
+  }
+
+  .card-brutal {
+    @apply bg-white border-4 border-black rounded-2xl p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)];
+  }
+
+  .card-brutal-sm {
+    @apply bg-white border-2 border-black rounded-xl p-4 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)];
+  }
+
+  .label-brutal {
+    @apply block text-xs font-black uppercase tracking-wider text-gray-700 mb-2;
+  }
+}
+
 /* Custom scrollbar styles */
 ::-webkit-scrollbar {
   width: 8px;
