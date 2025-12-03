@@ -1,7 +1,9 @@
 export type Campaign = {
   id: string;
   user_id: string;
+  // DB uses 'title', app uses 'name' - support both for compatibility
   name: string;
+  title?: string; // DB field alias
   artist_name: string;
   release_type: 'single' | 'EP' | 'album' | null;
   budget: number;

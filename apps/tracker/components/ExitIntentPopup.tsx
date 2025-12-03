@@ -13,6 +13,7 @@ export function ExitIntentPopup() {
   useEffect(() => {
     // Don't show on dashboard, signup, or login pages
     if (
+      !pathname ||
       pathname.startsWith('/dashboard') ||
       pathname === '/signup' ||
       pathname === '/login'

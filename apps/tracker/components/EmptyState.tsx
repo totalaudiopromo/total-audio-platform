@@ -60,14 +60,14 @@ export function EmptyState({
             (action.href ? (
               <Link
                 href={action.href}
-                className="cta-button inline-flex items-center justify-center rounded-xl border-4 border-black bg-blue-600 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 hover:bg-blue-700 active:scale-95 min-h-[44px] w-full sm:w-auto"
+                className="cta-button inline-flex items-center justify-center rounded-xl border-4 border-black bg-teal-600 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 hover:bg-teal-700 active:scale-95 min-h-[44px] w-full sm:w-auto"
               >
                 {action.label}
               </Link>
             ) : (
               <button
                 onClick={action.onClick}
-                className="cta-button inline-flex items-center justify-center rounded-xl border-4 border-black bg-blue-600 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 hover:bg-blue-700 active:scale-95 min-h-[44px] w-full sm:w-auto"
+                className="cta-button inline-flex items-center justify-center rounded-xl border-4 border-black bg-teal-600 px-6 py-3 text-sm font-bold text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-1 hover:-translate-y-1 hover:bg-teal-700 active:scale-95 min-h-[44px] w-full sm:w-auto"
               >
                 {action.label}
               </button>

@@ -134,7 +134,22 @@ export function WorkspaceProvider({ children }: WorkspaceProviderProps) {
         .eq('user_id', userId);
 
       if (error) {
-        console.error('Error loading workspaces:', error);
+        // Gracefully handle missing workspace tables (not all apps use workspaces)
+        const errorCode = (error as { code?: string }).code;
+        const errorMsg = (error as { message?: string }).message;
+        if (
+          errorCode === 'PGRST200' ||
+          errorCode === '42P01' ||
+          errorMsg?.includes('does not exist') ||
+          errorMsg?.includes('relation')
+        ) {
+          // Table doesn't exist - this is expected for apps that don't use workspace feature
+          return;
+        }
+        // Only log meaningful errors (not empty objects)
+        if (errorMsg || errorCode) {
+          console.error('Error loading workspaces:', errorMsg || errorCode);
+        }
         return;
       }
 
