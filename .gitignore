@@ -166,6 +166,7 @@ coverage/
 # Backup files
 *.backup
 *.bak
+*.bak*
 *.tmp
 
 # Large data files

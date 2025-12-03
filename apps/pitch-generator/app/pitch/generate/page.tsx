@@ -276,8 +276,13 @@ export default function GeneratePitchPage() {
 
   if (status === 'loading') {
     return (
-      <div className="flex min-h-[60vh] items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-brand-amber-dark" />
+      <div
+        className="flex min-h-[60vh] items-center justify-center"
+        role="status"
+        aria-live="polite"
+      >
+        <Loader2 className="h-8 w-8 animate-spin text-brand-amber-dark" aria-hidden="true" />
+        <span className="sr-only">Loading page...</span>
       </div>
     );
   }
@@ -321,8 +326,15 @@ export default function GeneratePitchPage() {
             <button
               onClick={() => setErrorMessage(null)}
               className="flex-shrink-0 text-red-600 hover:text-red-800 transition"
+              aria-label="Dismiss error message"
             >
-              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -379,7 +391,7 @@ export default function GeneratePitchPage() {
               required
               value={formData.contactId}
               onChange={e => handleContactChange(e.target.value)}
-              className="mt-2 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-gray-900 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
+              className="mt-2 w-full rounded-xl border-4 border-black bg-white px-4 py-4 min-h-[44px] font-bold text-gray-900 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
             >
               <option value="">Select a contact...</option>
               {contacts.map(contact => (
@@ -436,7 +448,7 @@ export default function GeneratePitchPage() {
               value={formData.artistName}
               onChange={e => setFormData({ ...formData, artistName: e.target.value })}
               placeholder="e.g. The Midnight Sons"
-              className="mt-2 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
+              className="mt-2 w-full rounded-xl border-4 border-black bg-white px-4 py-4 min-h-[44px] font-bold text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
             />
           </div>
 
@@ -451,7 +463,7 @@ export default function GeneratePitchPage() {
               value={formData.trackTitle}
               onChange={e => setFormData({ ...formData, trackTitle: e.target.value })}
               placeholder="e.g. Northern Lights"
-              className="mt-2 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
+              className="mt-2 w-full rounded-xl border-4 border-black bg-white px-4 py-4 min-h-[44px] font-bold text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
             />
           </div>
 
@@ -470,7 +482,7 @@ export default function GeneratePitchPage() {
               required
               value={formData.genre}
               onChange={e => setFormData({ ...formData, genre: e.target.value })}
-              className="mt-2 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-gray-900 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
+              className="mt-2 w-full rounded-xl border-4 border-black bg-white px-4 py-4 min-h-[44px] font-bold text-gray-900 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
             >
               {GENRES.map(genre => (
                 <option key={genre} value={genre} className="bg-white text-gray-900">
@@ -490,7 +502,7 @@ export default function GeneratePitchPage() {
               required
               value={formData.releaseDate}
               onChange={e => setFormData({ ...formData, releaseDate: e.target.value })}
-              className="mt-2 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-gray-900 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
+              className="mt-2 w-full rounded-xl border-4 border-black bg-white px-4 py-4 min-h-[44px] font-bold text-gray-900 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
             />
           </div>
 
@@ -514,7 +526,7 @@ export default function GeneratePitchPage() {
               }
               rows={4}
               placeholder="e.g. Intimate indie-folk about finding home after years of touring. Think Laura Marling meets Phoebe Bridgers - sparse production, honest lyrics, gorgeous harmonies."
-              className={`mt-2 w-full rounded-xl border-4 bg-white px-4 py-3 font-bold text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-4 min-h-[150px] ${
+              className={`mt-2 w-full rounded-xl border-4 bg-white px-4 py-4 min-h-[150px] font-bold text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-4 ${
                 hookCharCount === 0
                   ? 'border-black focus:ring-cyan-400'
                   : hookIsValid
@@ -571,7 +583,7 @@ export default function GeneratePitchPage() {
               value={formData.trackLink}
               onChange={e => setFormData({ ...formData, trackLink: e.target.value })}
               placeholder="https://open.spotify.com/track/..."
-              className="mt-2 w-full rounded-xl border-4 border-black bg-white px-4 py-3 font-bold text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
+              className="mt-2 w-full rounded-xl border-4 border-black bg-white px-4 py-4 min-h-[44px] font-bold text-gray-900 placeholder:text-gray-500 transition focus:outline-none focus:ring-4 focus:ring-cyan-400"
             />
           </div>
 
@@ -584,7 +596,7 @@ export default function GeneratePitchPage() {
                   key={tone}
                   type="button"
                   onClick={() => setFormData({ ...formData, tone })}
-                  className={`flex-1 rounded-xl border-4 px-4 py-3 text-sm font-bold transition ${
+                  className={`flex-1 rounded-xl border-4 px-4 py-4 min-h-[44px] text-sm font-bold transition ${
                     formData.tone === tone
                       ? 'border-black bg-brand-amber text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]'
                       : 'border-black bg-white text-gray-900 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-gray-50'
@@ -602,15 +614,16 @@ export default function GeneratePitchPage() {
               type="submit"
               disabled={loading || !formData.contactId}
               className="cta-button w-full disabled:cursor-not-allowed disabled:opacity-50"
+              aria-label={loading ? 'Generating pitch, please wait' : 'Generate pitch'}
             >
               {loading ? (
                 <>
-                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                  Generating your pitch...
+                  <Loader2 className="mr-2 h-5 w-5 animate-spin" aria-hidden="true" />
+                  <span aria-live="polite">Generating your pitch...</span>
                 </>
               ) : (
                 <>
-                  <Sparkles className="mr-2 h-5 w-5" />
+                  <Sparkles className="mr-2 h-5 w-5" aria-hidden="true" />
                   Generate Pitch
                 </>
               )}

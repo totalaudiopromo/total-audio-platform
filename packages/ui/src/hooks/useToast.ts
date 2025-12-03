@@ -9,6 +9,7 @@ export interface UseToastOptions {
 
 export interface ShowToastOptions extends UseToastOptions {
   title?: string;
+  message: string;
 }
 
 /**
