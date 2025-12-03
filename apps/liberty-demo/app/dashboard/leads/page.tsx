@@ -164,51 +164,45 @@ export default function LeadsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F7F6F2] px-6 py-8">
+    <div className="space-y-8">
       {/* Header */}
-      <div className="mb-8">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-[#3AA9BE]/10 rounded-lg">
-              <Sparkles size={24} className="text-[#3AA9BE]" />
-            </div>
-            <div>
-              <h1 className="text-2xl font-semibold text-black font-sans">AI Lead Generation</h1>
-              <p className="text-sm text-[#737373] font-sans mt-0.5">
-                Discover emerging artists who need PR representation
-              </p>
-            </div>
-            <span className="ml-4 text-[10px] font-mono bg-[#3AA9BE]/10 text-[#3AA9BE] px-2 py-1 rounded">
-              BETA
-            </span>
+      <div className="flex justify-between items-end border-b border-[#D9D7D2] pb-6">
+        <div className="flex items-center gap-3">
+          <div className="p-2 bg-[#3AA9BE]/10 rounded-lg">
+            <Sparkles size={24} className="text-[#3AA9BE]" />
           </div>
+          <div>
+            <h1 className="text-2xl font-semibold text-black font-sans">Artist Discovery</h1>
+            <p className="text-sm text-[#737373] font-sans mt-0.5">
+              AI-powered discovery of emerging artists who need PR representation
+            </p>
+          </div>
+          <span className="ml-4 text-[10px] font-mono bg-[#3AA9BE]/10 text-[#3AA9BE] px-2 py-1 rounded">
+            BETA
+          </span>
+        </div>
 
-          <div className="flex items-center gap-3">
-            <button
-              onClick={handleRefresh}
-              disabled={loading}
-              className="liberty-btn-secondary flex items-center gap-2"
-            >
-              <RefreshCw size={16} className={loading ? 'animate-spin' : ''} />
-              <span>Refresh</span>
-            </button>
-            <button className="liberty-btn-secondary flex items-center gap-2">
-              <Download size={16} />
-              <span>Export</span>
-            </button>
-            <button className="liberty-btn-ghost flex items-center gap-2">
-              <Settings size={16} />
-            </button>
-          </div>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={handleRefresh}
+            disabled={loading}
+            className="liberty-btn-secondary flex items-center gap-2"
+          >
+            <RefreshCw size={16} className={loading ? 'animate-spin' : ''} />
+            <span>Refresh</span>
+          </button>
+          <button className="liberty-btn-secondary flex items-center gap-2">
+            <Download size={16} />
+            <span>Export</span>
+          </button>
+          <button className="liberty-btn-ghost flex items-center gap-2">
+            <Settings size={16} />
+          </button>
         </div>
       </div>
 
       {/* Stats Overview */}
-      {stats && (
-        <div className="mb-8">
-          <LeadStats stats={stats} />
-        </div>
-      )}
+      {stats && <LeadStats stats={stats} />}
 
       {/* Lead Grid */}
       <LeadGrid

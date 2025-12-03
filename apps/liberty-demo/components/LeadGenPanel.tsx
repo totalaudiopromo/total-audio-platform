@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import {
   PlusCircle,
   CheckCircle,
@@ -6,6 +7,7 @@ import {
   BrainCircuit,
   UserCheck,
   ArrowRight,
+  ExternalLink,
 } from 'lucide-react';
 import { fetchLeadSuggestionsForArtist } from '@/lib/api/intel';
 import type { IntelContact } from '@/lib/types';
@@ -58,14 +60,19 @@ const LeadGenPanel: React.FC = () => {
 
   return (
     <div className="bg-white border border-[#D9D7D2] rounded-xl overflow-hidden flex flex-col h-full">
-      <div className="p-4 border-b border-[#D9D7D2] flex justify-between items-center">
-        <h3 className="font-sans font-semibold tracking-tight text-black flex items-center text-sm">
-          <Sparkles size={14} className="mr-2 text-[#737373]" />
-          AI Lead Gen
-        </h3>
-        <span className="text-[10px] font-mono bg-[#F5F5F5] px-2 py-0.5 rounded text-[#737373]">
-          BETA
-        </span>
+      <div className="p-4 border-b border-[#D9D7D2]">
+        <div className="flex justify-between items-center mb-2">
+          <h3 className="font-sans font-semibold tracking-tight text-black flex items-center text-sm">
+            <Sparkles size={14} className="mr-2 text-[#737373]" />
+            Contact Suggestions
+          </h3>
+          <span className="text-[10px] font-mono bg-[#F5F5F5] px-2 py-0.5 rounded text-[#737373]">
+            BETA
+          </span>
+        </div>
+        <p className="text-[10px] text-[#737373] font-sans">
+          AI-suggested contacts for your campaigns
+        </p>
       </div>
 
       <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-[#FAFAF8]">
@@ -164,6 +171,17 @@ const LeadGenPanel: React.FC = () => {
             </div>
           );
         })}
+      </div>
+
+      {/* View All Link */}
+      <div className="px-4 py-3 border-t border-[#D9D7D2] bg-white">
+        <Link
+          href="/dashboard/contacts"
+          className="flex items-center justify-center gap-2 text-xs font-medium text-[#737373] hover:text-black transition-colors"
+        >
+          <span>View All Contacts</span>
+          <ExternalLink size={12} />
+        </Link>
       </div>
     </div>
   );
