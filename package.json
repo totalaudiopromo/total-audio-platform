@@ -65,7 +65,7 @@
   "license": "UNLICENSED",
   "pnpm": {
     "overrides": {
-      "next": "15.3.0",
+      "next": "15.3.6",
       "react": "19.1.0",
       "react-dom": "19.1.0",
       "typescript": "5.7.2",
