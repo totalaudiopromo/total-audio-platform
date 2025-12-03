@@ -2,9 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Network, Search, Filter, MoreHorizontal } from 'lucide-react';
-import MermaidChart from '@/components/MermaidChart';
 import Loading from '@/components/Loading';
-import { SAMPLE_MERMAID_FLOW } from '@/lib/constants';
 import { fetchPriorityContacts } from '@/lib/api/intel';
 import type { IntelContact } from '@/lib/types';
 
@@ -182,7 +180,26 @@ const CRM: React.FC = () => {
             <div className="text-xs text-tap-muted mb-4">
               Logic for <span className="font-medium text-tap-text">"Festival Season Pitch"</span>
             </div>
-            <MermaidChart code={SAMPLE_MERMAID_FLOW} />
+            {/* Workflow diagram - simplified for demo */}
+            <div className="w-full overflow-hidden rounded-md border border-tap-line bg-tap-bg p-4">
+              <div className="flex flex-col items-center gap-2 text-sm">
+                <div className="bg-tap-accent/10 text-tap-accent px-3 py-1.5 rounded-lg font-medium">
+                  New Lead
+                </div>
+                <div className="text-tap-muted">↓</div>
+                <div className="bg-tap-panel border border-tap-line px-3 py-1.5 rounded-lg">
+                  Initial Pitch
+                </div>
+                <div className="text-tap-muted">↓</div>
+                <div className="bg-tap-panel border border-tap-line px-3 py-1.5 rounded-lg">
+                  Follow Up (3 days)
+                </div>
+                <div className="text-tap-muted">↓</div>
+                <div className="bg-tap-good/10 text-tap-good px-3 py-1.5 rounded-lg font-medium">
+                  Placement
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -13,6 +13,9 @@ import {
   Search,
   Bell,
   FolderOpen,
+  Sparkles,
+  UserPlus,
+  ChevronDown,
 } from 'lucide-react';
 
 interface LayoutProps {
@@ -44,6 +47,60 @@ const NavItem: React.FC<NavItemProps> = ({ href, icon, label }) => {
   );
 };
 
+interface NavGroupProps {
+  icon: React.ReactNode;
+  label: string;
+  children: { href: string; icon: React.ReactNode; label: string }[];
+}
+
+const NavGroup: React.FC<NavGroupProps> = ({ icon, label, children }) => {
+  const pathname = usePathname();
+  const [isOpen, setIsOpen] = React.useState(() =>
+    children.some(child => pathname.startsWith(child.href))
+  );
+  const isAnyChildActive = children.some(child => pathname === child.href);
+
+  return (
+    <div className="space-y-1">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className={`flex items-center justify-between w-full px-3 py-2.5 rounded-lg text-sm font-jakarta font-medium transition-all ${
+          isAnyChildActive
+            ? 'text-[#111] bg-white/50'
+            : 'text-[#737373] hover:text-[#111] hover:bg-white/50'
+        }`}
+      >
+        <div className="flex items-center space-x-3">
+          {icon}
+          <span>{label}</span>
+        </div>
+        <ChevronDown
+          size={14}
+          className={`transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+        />
+      </button>
+      {isOpen && (
+        <div className="ml-4 pl-3 border-l border-[#D9D7D2] space-y-1">
+          {children.map(child => (
+            <Link
+              key={child.href}
+              href={child.href}
+              className={`flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-jakarta font-medium transition-all ${
+                pathname === child.href
+                  ? 'bg-white text-[#111] shadow-sm'
+                  : 'text-[#737373] hover:text-[#111] hover:bg-white/50'
+              }`}
+            >
+              {child.icon}
+              <span>{child.label}</span>
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="min-h-screen flex bg-[#F7F6F2] font-jakarta text-[#111]">
@@ -72,6 +129,22 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             label="Overview"
           />
           <NavItem href="/dashboard/crm" icon={<Users size={18} />} label="CRM Intelligence" />
+          <NavGroup
+            icon={<Sparkles size={18} />}
+            label="Lead Gen"
+            children={[
+              {
+                href: '/dashboard/leads',
+                icon: <UserPlus size={16} />,
+                label: 'Artist Discovery',
+              },
+              {
+                href: '/dashboard/contacts',
+                icon: <Search size={16} />,
+                label: 'Contact Research',
+              },
+            ]}
+          />
           <NavItem href="/dashboard/assets" icon={<FolderOpen size={18} />} label="Asset Hub" />
           <NavItem href="/dashboard/intake" icon={<FileText size={18} />} label="Artist Intake" />
           <NavItem href="/dashboard/ops" icon={<Calendar size={18} />} label="Operations" />
