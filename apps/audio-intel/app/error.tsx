@@ -16,7 +16,7 @@ export default function Error({
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-white via-white to-white">
       <div className="bg-white rounded-2xl border-4 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] max-w-md text-center">
-        <div className="mx-auto flex h-16 w-16 items-center justify-centre rounded-full bg-red-100 mb-6">
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-red-100 mb-6">
           <svg
             className="h-8 w-8 text-red-600"
             fill="none"
