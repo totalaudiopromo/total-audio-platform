@@ -159,7 +159,7 @@ export default function IntegrationsPage() {
               {/* Connected badge */}
               {gmailConnection?.status === 'active' && (
                 <div className="bg-green-500 text-white font-black px-4 py-2 rounded-xl border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transform rotate-3">
-                  ✓ CONNECTED
+                  CONNECTED
                 </div>
               )}
             </div>

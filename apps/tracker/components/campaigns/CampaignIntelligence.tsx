@@ -212,25 +212,25 @@ export function CampaignIntelligence({
             </p>
             <ul className="space-y-2 mb-6">
               <li className="flex items-start gap-2">
-                <span className="text-green-600 font-black">✓</span>
+                <span className="text-green-600 font-black text-sm">•</span>
                 <span className="text-sm font-bold text-gray-700">
                   What worked and what didn't (Campaign Autopsy)
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-green-600 font-black">✓</span>
+                <span className="text-green-600 font-black text-sm">•</span>
                 <span className="text-sm font-bold text-gray-700">
                   Your exact next move with draft pitch email
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-green-600 font-black">✓</span>
+                <span className="text-green-600 font-black text-sm">•</span>
                 <span className="text-sm font-bold text-gray-700">
                   Brutal honesty reality check with timeline
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-green-600 font-black">✓</span>
+                <span className="text-green-600 font-black text-sm">•</span>
                 <span className="text-sm font-bold text-gray-700">
                   3 quick wins you can do THIS WEEK
                 </span>
@@ -262,7 +262,7 @@ export function CampaignIntelligence({
             onClick={() => copyToClipboard(autopsy.autopsy, 'autopsy')}
             className="px-3 py-1.5 bg-white/80 hover:bg-white rounded-lg font-bold text-xs transition-colors border-2 border-teal-600 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95"
           >
-            {copied === 'autopsy' ? '✓ Copied' : 'Copy'}
+            {copied === 'autopsy' ? 'Copied' : 'Copy'}
           </button>
         </div>
         <div className="prose prose-sm max-w-none">
@@ -282,7 +282,7 @@ export function CampaignIntelligence({
             onClick={() => copyToClipboard(autopsy.nextMove, 'nextMove')}
             className="px-3 py-1.5 bg-white/80 hover:bg-white rounded-lg font-bold text-xs transition-colors border-2 border-green-600 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95"
           >
-            {copied === 'nextMove' ? '✓ Copied' : 'Copy'}
+            {copied === 'nextMove' ? 'Copied' : 'Copy'}
           </button>
         </div>
         <div className="prose prose-sm max-w-none">
@@ -302,7 +302,7 @@ export function CampaignIntelligence({
             onClick={() => copyToClipboard(autopsy.brutalHonesty, 'brutal')}
             className="px-3 py-1.5 bg-white/80 hover:bg-white rounded-lg font-bold text-xs transition-colors border-2 border-orange-600 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95"
           >
-            {copied === 'brutal' ? '✓ Copied' : 'Copy'}
+            {copied === 'brutal' ? 'Copied' : 'Copy'}
           </button>
         </div>
         <div className="prose prose-sm max-w-none">
@@ -322,7 +322,7 @@ export function CampaignIntelligence({
             onClick={() => copyToClipboard(autopsy.quickWins, 'wins')}
             className="px-3 py-1.5 bg-white/80 hover:bg-white rounded-lg font-bold text-xs transition-colors border-2 border-teal-600 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 active:scale-95"
           >
-            {copied === 'wins' ? '✓ Copied' : 'Copy'}
+            {copied === 'wins' ? 'Copied' : 'Copy'}
           </button>
         </div>
         <div className="prose prose-sm max-w-none">

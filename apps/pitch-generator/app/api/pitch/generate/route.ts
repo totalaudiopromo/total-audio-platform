@@ -75,6 +75,29 @@ export async function POST(req: NextRequest) {
     // Get user's voice profile using auth context
     const userId = auth.context.userId;
 
+    // Check for existing pitch to same contact for same track
+    const { data: existingPitch } = await supabase
+      .from('pitches')
+      .select('id, status, contact_name, track_title, created_at')
+      .eq('contact_id', contactId)
+      .ilike('track_title', trackTitle) // Case-insensitive match
+      .in('status', ['draft', 'pending', 'sent'])
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .maybeSingle(); // Use maybeSingle to avoid error when no results
+
+    // If duplicate found, include warning in response but don't block
+    let duplicateWarning = null;
+    if (existingPitch) {
+      duplicateWarning = {
+        type: 'duplicate_pitch',
+        message: `You pitched ${existingPitch.contact_name} for "${existingPitch.track_title}" on ${new Date(existingPitch.created_at).toLocaleDateString('en-GB')}`,
+        existingPitchId: existingPitch.id,
+        lastPitchDate: existingPitch.created_at,
+        canProceed: true,
+      };
+    }
+
     const { data: voiceProfile } = await supabase
       .from('user_pitch_settings')
       .select(
@@ -148,6 +171,7 @@ export async function POST(req: NextRequest) {
           artist_name: pitch.artist_name,
           track_title: pitch.track_title,
         },
+        warning: duplicateWarning, // null if no duplicate
       },
       undefined,
       200,

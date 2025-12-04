@@ -10,7 +10,7 @@ export default function VoiceSetupPage() {
     writingSamples: '',
     principles: '',
     preferences: '',
-    constraints: ''
+    constraints: '',
   });
 
   const [isAnalyzing, setIsAnalyzing] = useState(false);
@@ -36,33 +36,38 @@ export default function VoiceSetupPage() {
     {
       field: 'background',
       label: 'Your Background & Role',
-      placeholder: 'Paste your background here...\n\nExample: I run Liberty Music PR, a boutique agency specialising in radio promotion for indie artists. We work with BBC Radio 1, 6 Music, and regional stations across the UK. I have been in the industry for 8 years and value authentic, personal relationships with DJs and producers.',
-      helper: 'Tell us about your agency, experience, and the types of artists you work with'
+      placeholder:
+        'Paste your background here...\n\nExample: I run Liberty Music PR, a boutique agency specialising in radio promotion for indie artists. We work with BBC Radio 1, 6 Music, and regional stations across the UK. I have been in the industry for 8 years and value authentic, personal relationships with DJs and producers.',
+      helper: 'Tell us about your agency, experience, and the types of artists you work with',
     },
     {
       field: 'writingSamples',
       label: 'Writing Samples',
-      placeholder: "Paste 2-3 examples of your best pitches here...\n\nExample: \"Hi Jack, Hope you're well! Quick one about this track from Billie Marten - it's got that late-night Radio 1 energy you champion. She's already had support from Huw Stephens and this feels like a natural next step. The production is clean but not over-polished, exactly the kind of thing that works on your show. Stream below - would love to know what you think. Cheers, Sam\"",
-      helper: 'Copy and paste 2-3 of your most successful pitch emails'
+      placeholder:
+        "Paste 2-3 examples of your best pitches here...\n\nExample: \"Hi Jack, Hope you're well! Quick one about this track from Billie Marten - it's got that late-night Radio 1 energy you champion. She's already had support from Huw Stephens and this feels like a natural next step. The production is clean but not over-polished, exactly the kind of thing that works on your show. Stream below - would love to know what you think. Cheers, Sam\"",
+      helper: 'Copy and paste 2-3 of your most successful pitch emails',
     },
     {
       field: 'principles',
       label: 'Your Communication Principles',
-      placeholder: 'Paste your communication style guide here...\n\nExample:\n- Always personalise to the specific DJ/show\n- Keep it under 150 words\n- Lead with why it fits their taste, not the artist bio\n- Never use PR speak like "hotly-tipped" or "exciting new artist"\n- Always include a specific call to action',
-      helper: 'What rules do you follow when writing pitches?'
+      placeholder:
+        'Paste your communication style guide here...\n\nExample:\n- Always personalise to the specific DJ/show\n- Keep it under 150 words\n- Lead with why it fits their taste, not the artist bio\n- Never use PR speak like "hotly-tipped" or "exciting new artist"\n- Always include a specific call to action',
+      helper: 'What rules do you follow when writing pitches?',
     },
     {
       field: 'preferences',
       label: 'Tone & Style Preferences',
-      placeholder: 'Paste your tone preferences here...\n\nExample:\n- Professional but warm (like emailing a friend who happens to be in radio)\n- British spelling always\n- Use "Cheers" not "Best regards"\n- Reference previous conversations when relevant\n- Show genuine enthusiasm without being pushy',
-      helper: 'How should your pitches sound and feel?'
+      placeholder:
+        'Paste your tone preferences here...\n\nExample:\n- Professional but warm (like emailing a friend who happens to be in radio)\n- British spelling always\n- Use "Cheers" not "Best regards"\n- Reference previous conversations when relevant\n- Show genuine enthusiasm without being pushy',
+      helper: 'How should your pitches sound and feel?',
     },
     {
       field: 'constraints',
       label: 'Things to Avoid',
-      placeholder: 'Paste your no-go list here...\n\nExample:\n- Never mention streaming numbers in first pitch\n- Avoid generic compliments\n- Don\'t compare artists to more than one reference\n- Never send mass emails\n- Don\'t pitch to shows that don\'t fit the genre',
-      helper: 'What should VoiceGuard™ never do in your pitches?'
-    }
+      placeholder:
+        "Paste your no-go list here...\n\nExample:\n- Never mention streaming numbers in first pitch\n- Avoid generic compliments\n- Don't compare artists to more than one reference\n- Never send mass emails\n- Don't pitch to shows that don't fit the genre",
+      helper: 'What should VoiceGuard™ never do in your pitches?',
+    },
   ];
 
   return (
@@ -77,29 +82,25 @@ export default function VoiceSetupPage() {
             Create Your VoiceGuard™ Profile
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Copy and paste from your Apple Notes to train VoiceGuard™ on your authentic voice.
-            Every pitch will sound like you wrote it personally.
+            Copy and paste from your Apple Notes to train VoiceGuard™ on your authentic voice. Every
+            pitch will sound like you wrote it personally.
           </p>
           <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-amber-100 border-2 border-amber-600 rounded-full">
             <Shield className="w-4 h-4 text-amber-800" />
-            <span className="text-sm font-bold text-amber-800">
-              LIBERTY MUSIC PR DEMO MODE
-            </span>
+            <span className="text-sm font-bold text-amber-800">LIBERTY MUSIC PR DEMO MODE</span>
           </div>
         </div>
 
         {/* Voice Setup Form */}
         <div className="space-y-8">
-          {questions.map((q) => (
+          {questions.map(q => (
             <div
               key={q.field}
               className="bg-white border-4 border-black rounded-xl p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
             >
               <div className="flex items-start justify-between mb-3">
                 <div className="flex-1">
-                  <label className="text-lg font-bold text-gray-900 block mb-1">
-                    {q.label}
-                  </label>
+                  <label className="text-lg font-bold text-gray-900 block mb-1">{q.label}</label>
                   <p className="text-sm text-gray-600">{q.helper}</p>
                 </div>
                 <button
@@ -116,12 +117,12 @@ export default function VoiceSetupPage() {
               </div>
               <textarea
                 value={voiceData[q.field as keyof typeof voiceData]}
-                onChange={(e) => setVoiceData({...voiceData, [q.field]: e.target.value})}
+                onChange={e => setVoiceData({ ...voiceData, [q.field]: e.target.value })}
                 placeholder={q.placeholder}
                 className="w-full h-40 p-4 border-2 border-gray-300 rounded-lg font-mono text-sm resize-none focus:border-amber-500 focus:outline-none"
               />
               <div className="mt-2 text-xs text-gray-500">
-                💡 Tip: Copy directly from Apple Notes and paste here
+                Tip: Copy directly from Apple Notes and paste here
               </div>
             </div>
           ))}
@@ -130,9 +131,7 @@ export default function VoiceSetupPage() {
         {/* Analysis Section */}
         <div className="mt-12 bg-gradient-to-r from-amber-500 to-orange-500 border-4 border-black rounded-xl p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
           <div className="text-center">
-            <h2 className="text-2xl font-black text-white mb-4">
-              Ready to Activate VoiceGuard™?
-            </h2>
+            <h2 className="text-2xl font-black text-white mb-4">Ready to Activate VoiceGuard™?</h2>
             <p className="text-white/90 mb-6">
               Once analyzed, VoiceGuard™ will ensure every pitch matches your authentic voice
             </p>

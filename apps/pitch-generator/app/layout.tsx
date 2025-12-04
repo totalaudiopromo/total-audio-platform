@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import ClientLayout from '@/components/ClientLayout';
 import { defaultMetadata } from './metadata';
+import { SkipNavigation } from '@total-audio/ui';
 
 // Force dynamic rendering for all routes to avoid RSC serialisation issues
 // with process.env during static generation in Next.js 15
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             style={{ display: 'none', visibility: 'hidden' }}
           ></iframe>
         </noscript>
+        <SkipNavigation />
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>

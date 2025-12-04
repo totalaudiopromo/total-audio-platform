@@ -122,7 +122,7 @@ export default function PitchGeneratorDemo() {
         {/* Header with VoiceGuard™ Badge */}
         <div className="text-center mb-8 sm:mb-12">
           <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-amber-100 border-2 border-amber-600 rounded-full">
-            <span className="text-sm font-bold text-amber-800">🛡️ VOICEGUARD™ POWERED</span>
+            <span className="text-sm font-bold text-amber-800">VOICEGUARD™ POWERED</span>
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-4">
             Pitch Generator Demo
@@ -142,7 +142,7 @@ export default function PitchGeneratorDemo() {
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
               <div className="flex-1">
                 <h3 className="text-xl font-black text-gray-900 mb-2">
-                  🎯 Quick Demo: Generate a Pitch
+                  Quick Demo: Generate a Pitch
                 </h3>
                 <p className="text-sm text-gray-700 font-bold">
                   Generate a personalised pitch for BBC Radio 1's Jack Saunders instantly. Real

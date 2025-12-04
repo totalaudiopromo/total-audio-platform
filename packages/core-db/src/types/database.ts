@@ -2421,6 +2421,8 @@ export type Database = {
           full_name: string | null;
           id: string;
           is_beta_user: boolean | null;
+          onboarding_completed: boolean;
+          onboarding_skipped_at: string | null;
           stripe_customer_id: string | null;
           subscription_status: string | null;
           subscription_tier: string;
@@ -2433,6 +2435,8 @@ export type Database = {
           full_name?: string | null;
           id: string;
           is_beta_user?: boolean | null;
+          onboarding_completed?: boolean;
+          onboarding_skipped_at?: string | null;
           stripe_customer_id?: string | null;
           subscription_status?: string | null;
           subscription_tier?: string;
@@ -2445,6 +2449,8 @@ export type Database = {
           full_name?: string | null;
           id?: string;
           is_beta_user?: boolean | null;
+          onboarding_completed?: boolean;
+          onboarding_skipped_at?: string | null;
           stripe_customer_id?: string | null;
           subscription_status?: string | null;
           subscription_tier?: string;

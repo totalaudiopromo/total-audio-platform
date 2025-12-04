@@ -105,27 +105,21 @@ export function ExitIntentPopup() {
             {/* Value props */}
             <div className="space-y-4 mb-8">
               <div className="flex items-start gap-3 bg-white rounded-xl p-4 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                <div className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-md border-2 border-black flex items-center justify-center">
-                  <span className="text-white text-sm font-black">✓</span>
-                </div>
+                <div className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-md border-2 border-black flex items-center justify-center"></div>
                 <p className="text-gray-900 font-bold">
                   <span className="font-black">No credit card required</span> - Start generating
                   pitches immediately
                 </p>
               </div>
               <div className="flex items-start gap-3 bg-white rounded-xl p-4 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                <div className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-md border-2 border-black flex items-center justify-center">
-                  <span className="text-white text-sm font-black">✓</span>
-                </div>
+                <div className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-md border-2 border-black flex items-center justify-center"></div>
                 <p className="text-gray-900 font-bold">
                   <span className="font-black">BBC Radio 1 templates</span> - 14-18% response rates
                   vs 2% generic pitches
                 </p>
               </div>
               <div className="flex items-start gap-3 bg-white rounded-xl p-4 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                <div className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-md border-2 border-black flex items-center justify-center">
-                  <span className="text-white text-sm font-black">✓</span>
-                </div>
+                <div className="flex-shrink-0 w-6 h-6 bg-green-500 rounded-md border-2 border-black flex items-center justify-center"></div>
                 <p className="text-gray-900 font-bold">
                   <span className="font-black">5 pitches/month forever free</span> - Test with real
                   contacts

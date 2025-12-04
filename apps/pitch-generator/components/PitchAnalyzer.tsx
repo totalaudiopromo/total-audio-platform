@@ -74,13 +74,13 @@ export function PitchAnalyser({ pitchBody, subjectLine, contactType }: PitchAnal
   const getGradeLabel = (grade: string) => {
     switch (grade) {
       case 'excellent':
-        return '🔥 Excellent';
+        return 'Excellent';
       case 'good':
-        return '✅ Good';
+        return 'Good';
       case 'needs_work':
-        return '⚠️ Needs Work';
+        return 'Needs Work';
       case 'poor':
-        return '❌ Needs Major Revision';
+        return 'Needs Major Revision';
       default:
         return grade;
     }
@@ -180,7 +180,7 @@ export function PitchAnalyser({ pitchBody, subjectLine, contactType }: PitchAnal
                       analysis.lengthAnalysis.isOptimal ? 'text-green-600' : 'text-amber-600'
                     }`}
                   >
-                    {analysis.lengthAnalysis.isOptimal ? 'Yes ✓' : 'No ⚠️'}
+                    {analysis.lengthAnalysis.isOptimal ? 'Yes' : 'No'}
                   </span>
                 </div>
                 <p className="mt-2 text-xs text-gray-600">

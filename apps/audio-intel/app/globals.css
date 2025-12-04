@@ -25,6 +25,12 @@
   input[type="reset"] {
     @apply min-h-[44px] min-w-[44px];
   }
+
+  /* WCAG 2.2 Level AA Focus Styles */
+  *:focus-visible {
+    outline: 3px solid #3b82f6;
+    outline-offset: 2px;
+  }
 }
 
 /* Neobrutalist Design System - matching Pitch Generator & Tracker */

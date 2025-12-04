@@ -201,8 +201,13 @@ export default function ContactsPage() {
 
   if (status === 'loading' || loading) {
     return (
-      <div className="flex min-h-[60vh] items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-brand-amber-dark" />
+      <div
+        className="flex min-h-[60vh] items-center justify-center"
+        role="status"
+        aria-live="polite"
+      >
+        <Loader2 className="h-8 w-8 animate-spin text-brand-amber-dark" aria-hidden="true" />
+        <span className="sr-only">Loading contacts...</span>
       </div>
     );
   }
@@ -264,8 +269,8 @@ export default function ContactsPage() {
           </div>
           <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3">
             <p className="text-sm text-amber-900">
-              <strong>💡 Pro tip:</strong> Use Audio Intel to enrich your contacts first, then
-              export as CSV and import here for best results.
+              <strong>Pro tip:</strong> Use Audio Intel to enrich your contacts first, then export
+              as CSV and import here for best results.
             </p>
           </div>
         </div>

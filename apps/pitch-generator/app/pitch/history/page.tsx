@@ -101,8 +101,13 @@ export default function PitchHistoryPage() {
 
   if (status === 'loading' || loading) {
     return (
-      <div className="flex min-h-[60vh] items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-brand-amber-dark" />
+      <div
+        className="flex min-h-[60vh] items-center justify-center"
+        role="status"
+        aria-live="polite"
+      >
+        <Loader2 className="h-8 w-8 animate-spin text-brand-amber-dark" aria-hidden="true" />
+        <span className="sr-only">Loading pitch history...</span>
       </div>
     );
   }

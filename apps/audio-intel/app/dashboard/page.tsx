@@ -6,7 +6,11 @@ export const dynamic = 'force-dynamic';
 import { useEffect, useState } from 'react';
 import { createClient } from '@total-audio/core-db/client';
 import Link from 'next/link';
+import { Sparkles, Check } from 'lucide-react';
 import { UserMenu } from '@/components/auth/UserMenu';
+import { InsightsPanel } from './components/InsightsPanel';
+import { EmptyState } from '@total-audio/ui';
+import type { User } from '@supabase/supabase-js';
 
 interface UserProfile {
   subscription_tier: 'beta' | 'professional' | 'agency' | null;
@@ -15,7 +19,7 @@ interface UserProfile {
 }
 
 export default function DashboardPage() {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -51,8 +55,14 @@ export default function DashboardPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-gray-600">Loading...</p>
+          <div
+            className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"
+            role="status"
+            aria-label="Loading"
+          />
+          <p className="text-gray-600" aria-live="polite">
+            Loading...
+          </p>
         </div>
       </div>
     );
@@ -143,6 +153,36 @@ export default function DashboardPage() {
           </Link>
         </div>
 
+        {/* Insights Panel - Show when user has activity */}
+        {userProfile && (userProfile.enrichments_used || 0) > 0 && (
+          <div className="mb-12">
+            <InsightsPanel
+              totalContacts={userProfile.enrichments_used || 0}
+              enrichmentsUsed={userProfile.enrichments_used || 0}
+            />
+          </div>
+        )}
+
+        {/* Empty State - Show for new users */}
+        {(!userProfile || (userProfile.enrichments_used || 0) === 0) && (
+          <div className="mb-12">
+            <EmptyState
+              icon={<Sparkles className="h-8 w-8 text-blue-600" />}
+              title="Let's find your first contacts"
+              description="Upload a CSV of contacts and watch AI transform hours of research into minutes"
+              valueReminder="Transform 15 hours of research into 15 minutes"
+              primaryAction={{
+                label: 'Upload Contacts',
+                href: '/demo',
+              }}
+              secondaryAction={{
+                label: 'See how it works',
+                href: '/help',
+              }}
+            />
+          </div>
+        )}
+
         {/* Stats Grid */}
         <div className="grid md:grid-cols-3 gap-4 md:gap-6 mb-12">
           <div className="bg-white rounded-xl border-4 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
@@ -213,7 +253,7 @@ export default function DashboardPage() {
                 Single Sign-On
               </span>
               <span className="inline-flex items-center gap-2 rounded-full bg-green-100 border-2 border-green-600 px-4 py-1.5 text-xs font-black uppercase text-green-800">
-                ✓ Active
+                <Check className="h-3 w-3" /> Active
               </span>
             </div>
           </div>
