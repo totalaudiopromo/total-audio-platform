@@ -109,8 +109,8 @@ export function InsightsPanel({
 
         {/* Suggested Action */}
         <div className="flex items-start gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-amber-100 flex-shrink-0">
-            <Lightbulb className="h-5 w-5 text-amber-600" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 flex-shrink-0">
+            <Lightbulb className="h-5 w-5 text-blue-600" />
           </div>
           <div>
             <p className="text-sm font-black uppercase tracking-wider text-gray-500">
