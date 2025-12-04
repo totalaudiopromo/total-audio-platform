@@ -6,7 +6,7 @@ export const dynamic = 'force-dynamic';
 import { useEffect, useState } from 'react';
 import { createClient } from '@total-audio/core-db/client';
 import Link from 'next/link';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, Check } from 'lucide-react';
 import { UserMenu } from '@/components/auth/UserMenu';
 import { InsightsPanel } from './components/InsightsPanel';
 import { EmptyState } from '@total-audio/ui';
@@ -253,7 +253,7 @@ export default function DashboardPage() {
                 Single Sign-On
               </span>
               <span className="inline-flex items-center gap-2 rounded-full bg-green-100 border-2 border-green-600 px-4 py-1.5 text-xs font-black uppercase text-green-800">
-                ✓ Active
+                <Check className="h-3 w-3" /> Active
               </span>
             </div>
           </div>

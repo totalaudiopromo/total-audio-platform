@@ -186,7 +186,7 @@ export default function PitchStatusToggle({
                 disabled={isUpdating}
                 className="flex-1 bg-green-500 hover:bg-green-600 text-white font-bold px-4 py-3 rounded-lg border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all disabled:opacity-50"
               >
-                ✓ Send & Track
+                Send & Track
               </button>
               <button
                 onClick={handleJustMarkSent}

@@ -269,8 +269,8 @@ export default function ContactsPage() {
           </div>
           <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3">
             <p className="text-sm text-amber-900">
-              <strong>💡 Pro tip:</strong> Use Audio Intel to enrich your contacts first, then
-              export as CSV and import here for best results.
+              <strong>Pro tip:</strong> Use Audio Intel to enrich your contacts first, then export
+              as CSV and import here for best results.
             </p>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Sparkles, Zap, Clock, Target, TrendingUp, Copy, Star, Brain } from 'lucide-react';
+import { Sparkles, Zap, Clock, Target, TrendingUp, Copy, Star, Brain, Check } from 'lucide-react';
 import {
   JsonLd,
   generateWebsiteJsonLd,
@@ -131,7 +131,7 @@ export default function HomePage() {
         <section className="glass-panel overflow-hidden bg-gradient-to-br from-amber-50 to-yellow-50 px-6 py-12 sm:px-10">
           <div className="text-center">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border-2 border-amber-800 bg-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-              <span className="text-2xl">⚡</span>
+              <Zap className="h-5 w-5 text-amber-800" />
               <span className="text-sm font-bold uppercase tracking-wider text-amber-800">
                 The Features That Actually Matter
               </span>
@@ -308,21 +308,21 @@ export default function HomePage() {
               </p>
               <div className="mt-6 space-y-3">
                 <div className="flex items-start gap-3">
-                  <span className="text-green-600">✓</span>
+                  <Check className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
                   <p className="text-sm text-gray-700">
                     <strong>Tested on real campaigns:</strong> 300+ pitches, 15 campaigns, 5 years
                     of data
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="text-green-600">✓</span>
+                  <Check className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
                   <p className="text-sm text-gray-700">
                     <strong>Built for UK market:</strong> BBC Radio 1/6 Music benchmarks, playlist
                     curator language
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <span className="text-green-600">✓</span>
+                  <Check className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
                   <p className="text-sm text-gray-700">
                     <strong>No learning curve:</strong> If you can write one good pitch, you can use
                     this tool

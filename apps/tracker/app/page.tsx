@@ -162,7 +162,6 @@ export default async function HomePage() {
       <section className="glass-panel overflow-hidden bg-gradient-to-br from-teal-50 to-cyan-50 px-6 py-12 sm:px-10">
         <div className="text-center">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border-2 border-teal-600 bg-white px-4 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-            <span className="text-2xl">⚡</span>
             <span className="text-sm font-bold uppercase tracking-wider text-teal-600">
               New AI Feature
             </span>

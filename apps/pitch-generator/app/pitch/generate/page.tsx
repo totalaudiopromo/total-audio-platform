@@ -375,8 +375,8 @@ export default function GeneratePitchPage() {
           </div>
           {voiceProfileActive && (
             <div className="mt-4 rounded-lg border border-success/30 bg-success/5 px-4 py-3 text-sm text-gray-900/80">
-              ✨ <strong>Your authentic voice is enabled.</strong> This pitch will be written in
-              your natural writing style.
+              <strong>Your authentic voice is enabled.</strong> This pitch will be written in your
+              natural writing style.
             </div>
           )}
         </div>
