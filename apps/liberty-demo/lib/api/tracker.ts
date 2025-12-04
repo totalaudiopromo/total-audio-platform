@@ -2,7 +2,7 @@ import { tapFetch } from '../httpClient';
 import type { TrackerCampaignSummary, TrackerCampaignDetail } from '@/lib/types';
 import { CAMPAIGNS, ARTISTS } from '@/lib/constants';
 
-const USE_MOCKS = true; // Force mocks for demo
+const USE_MOCKS = !process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export async function fetchLibertyCampaignSummaries(): Promise<TrackerCampaignSummary[]> {
   if (USE_MOCKS) {

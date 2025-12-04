@@ -2,7 +2,7 @@ import { tapFetch } from '../httpClient';
 import type { WarmAgencySummary, WarmSpin } from '@/lib/types';
 import { WARM_AGENCY_SUMMARY, WARM_SPINS_BY_CAMPAIGN } from '@/lib/constants';
 
-const USE_MOCKS = true; // Force mocks for demo
+const USE_MOCKS = !process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export async function fetchWarmAgencySummary(agencyId: string): Promise<WarmAgencySummary[]> {
   if (USE_MOCKS) {
