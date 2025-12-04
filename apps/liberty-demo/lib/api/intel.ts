@@ -2,7 +2,7 @@ import { tapFetch } from '../httpClient';
 import type { IntelContact } from '@/lib/types';
 import { CONTACTS } from '@/lib/constants';
 
-const USE_MOCKS = !process.env.NEXT_PUBLIC_API_BASE_URL;
+const USE_MOCKS = true; // Force mocks for demo
 
 export async function fetchPriorityContacts(): Promise<IntelContact[]> {
   if (USE_MOCKS) {
