@@ -54,21 +54,28 @@ export default function OnboardingPage() {
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [hasLoadedFromStorage, setHasLoadedFromStorage] = useState(false);
 
-  // Save progress to localStorage
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('tap_onboarding_step', String(currentStep));
-    }
-  }, [currentStep]);
-
-  // Load progress from localStorage
+  // Load progress from localStorage first (runs once on mount)
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('tap_onboarding_step');
-      if (saved) setCurrentStep(parseInt(saved, 10));
+      if (saved) {
+        const savedStep = parseInt(saved, 10);
+        if (!isNaN(savedStep) && savedStep >= 0 && savedStep < STEPS.length) {
+          setCurrentStep(savedStep);
+        }
+      }
+      setHasLoadedFromStorage(true);
     }
   }, []);
+
+  // Save progress to localStorage (only after initial load is complete)
+  useEffect(() => {
+    if (hasLoadedFromStorage && typeof window !== 'undefined') {
+      localStorage.setItem('tap_onboarding_step', String(currentStep));
+    }
+  }, [currentStep, hasLoadedFromStorage]);
 
   const handleComplete = async () => {
     setIsLoading(true);
