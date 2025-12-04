@@ -31,7 +31,7 @@ function getMilestoneKey(type: MilestoneType, count: number): string {
  * Load seen milestones from localStorage (SSR-safe)
  */
 function loadSeenMilestones(): Set<string> {
-  if (typeof window === 'undefined') {
+  if (typeof window === 'undefined' || typeof localStorage === 'undefined') {
     return new Set();
   }
 
@@ -52,7 +52,7 @@ function loadSeenMilestones(): Set<string> {
  * Save seen milestones to localStorage (SSR-safe)
  */
 function saveSeenMilestones(milestones: Set<string>): void {
-  if (typeof window === 'undefined') {
+  if (typeof window === 'undefined' || typeof localStorage === 'undefined') {
     return;
   }
 
@@ -149,7 +149,7 @@ export function useMilestones() {
    */
   const resetMilestones = useCallback(() => {
     setSeenMilestones(new Set());
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
       localStorage.removeItem(STORAGE_KEY);
     }
   }, []);
