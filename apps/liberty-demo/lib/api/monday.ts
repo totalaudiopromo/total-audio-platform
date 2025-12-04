@@ -1,7 +1,7 @@
 import { MONDAY_TIMELINES, MONDAY_ALLOCATIONS } from '@/lib/constants';
 import type { MondayTimeline, MondayAllocation } from '@/lib/types';
 
-const USE_MOCKS = true; // Force mocks for demo
+const USE_MOCKS = !process.env.NEXT_PUBLIC_ENABLE_LIVE_API;
 
 // Chris Radio Campaign type
 export interface ChrisRadioCampaign {
