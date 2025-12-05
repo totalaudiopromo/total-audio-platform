@@ -241,13 +241,26 @@ export class ClaudeEnrichmentService {
         throw new Error('Unexpected response type from Claude');
       }
 
-      // Parse JSON response
+      // P1 Fix: Safe JSON extraction with validation
       const jsonMatch = content.text.match(/\{[\s\S]*\}/);
       if (!jsonMatch) {
-        throw new Error('No JSON found in Claude response');
+        console.warn('[ClaudeEnrichment] No JSON found in Claude response, using fallback');
+        return this.getFallbackEnrichment(contact);
       }
 
-      const enrichmentData = JSON.parse(jsonMatch[0]);
+      let enrichmentData: any;
+      try {
+        enrichmentData = JSON.parse(jsonMatch[0]);
+      } catch (parseError) {
+        console.warn('[ClaudeEnrichment] JSON parse failed, using fallback:', parseError);
+        return this.getFallbackEnrichment(contact);
+      }
+
+      // Validate required fields exist
+      if (!enrichmentData || typeof enrichmentData !== 'object') {
+        console.warn('[ClaudeEnrichment] Invalid response structure, using fallback');
+        return this.getFallbackEnrichment(contact);
+      }
 
       // Calculate cost with selected model pricing
       const cost =
@@ -310,32 +323,41 @@ export class ClaudeEnrichmentService {
             if (searchContent.type === 'text') {
               const searchJsonMatch = searchContent.text.match(/\{[\s\S]*\}/);
               if (searchJsonMatch) {
-                const searchEnrichmentData = JSON.parse(searchJsonMatch[0]);
+                // P1 Fix: Safe JSON parsing for web search enrichment
+                let searchEnrichmentData: any;
+                try {
+                  searchEnrichmentData = JSON.parse(searchJsonMatch[0]);
 
-                // Calculate additional cost (Haiku is cheaper)
-                const searchCost =
-                  searchResponse.usage.input_tokens * MODELS.haiku.inputCost +
-                  searchResponse.usage.output_tokens * MODELS.haiku.outputCost;
+                  // Calculate additional cost (Haiku is cheaper)
+                  const searchCost =
+                    searchResponse.usage.input_tokens * MODELS.haiku.inputCost +
+                    searchResponse.usage.output_tokens * MODELS.haiku.outputCost;
 
-                costTracker.addCost(searchCost);
+                  costTracker.addCost(searchCost);
 
-                console.log(
-                  `[ClaudeEnrichment] Web search enrichment for ${contact.email} with Haiku ` +
-                    `(cost: $${searchCost.toFixed(4)}, total: $${(cost + searchCost).toFixed(4)}, ` +
-                    `confidence improved: ${enriched.confidence} → ${searchEnrichmentData.confidence})`
-                );
+                  console.log(
+                    `[ClaudeEnrichment] Web search enrichment for ${contact.email} with Haiku ` +
+                      `(cost: $${searchCost.toFixed(4)}, total: $${(cost + searchCost).toFixed(4)}, ` +
+                      `confidence improved: ${enriched.confidence} → ${searchEnrichmentData.confidence})`
+                  );
 
-                // Return improved enrichment
-                const improvedEnriched: EnrichedContact = {
-                  ...contact,
-                  ...searchEnrichmentData,
-                  enrichedAt: new Date(),
-                  source: 'claude-with-search',
-                  cost: cost + searchCost,
-                };
+                  // Return improved enrichment
+                  const improvedEnriched: EnrichedContact = {
+                    ...contact,
+                    ...searchEnrichmentData,
+                    enrichedAt: new Date(),
+                    source: 'claude-with-search',
+                    cost: cost + searchCost,
+                  };
 
-                enrichmentCache.set(contact.email, improvedEnriched, options?.cacheTTL);
-                return improvedEnriched;
+                  enrichmentCache.set(contact.email, improvedEnriched, options?.cacheTTL);
+                  return improvedEnriched;
+                } catch {
+                  console.warn(
+                    `[ClaudeEnrichment] Web search JSON parse failed for ${contact.email}`
+                  );
+                  // Continue with original enrichment (fall through)
+                }
               }
             }
           }
