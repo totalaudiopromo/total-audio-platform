@@ -165,8 +165,8 @@ export function ExitIntentPopup() {
                   <span className="text-white text-sm font-black">✓</span>
                 </div>
                 <p className="text-gray-900 font-bold">
-                  <span className="font-black">Free forever</span> - Track
-                  unlimited campaigns, no credit card required
+                  <span className="font-black">Start free</span> - Track your
+                  first 3 campaigns, no credit card required
                 </p>
               </div>
               <div className="flex items-start gap-3 bg-white rounded-xl p-4 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">

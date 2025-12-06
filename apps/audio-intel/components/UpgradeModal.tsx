@@ -143,7 +143,7 @@ export function UpgradeModal({
           <div className="text-center p-4 bg-blue-50 border-2 border-blue-200 rounded-lg">
             <p className="text-sm text-blue-800">
               <Zap className="inline h-4 w-4 mr-1" />
-              Upgrade now and get <strong>50% off your first year</strong> as a beta founder
+              Upgrade now for <strong>unlimited enrichments</strong> and priority support
             </p>
           </div>
         </div>

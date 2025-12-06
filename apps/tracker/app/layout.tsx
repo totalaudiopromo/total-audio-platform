@@ -56,7 +56,7 @@ export const metadata: Metadata = {
       'Simple campaign tracking for indie artists and radio promoters. Stop using spreadsheets for radio submission campaigns.',
     images: [
       {
-        url: '/og-tracker.png',
+        url: 'https://tracker.totalaudiopromo.com/og-tracker.png',
         width: 1200,
         height: 630,
         alt: 'Total Audio Tracker - Campaign tracking for music promotion',
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     title: 'Total Audio Tracker – Simple Campaign Tracking',
     description:
       'Stop using spreadsheets for radio promotion campaigns. Simple tracking for indie artists and radio promoters.',
-    images: ['/og-tracker.png'],
+    images: ['https://tracker.totalaudiopromo.com/og-tracker.png'],
     creator: '@totalaudiopromo',
     site: '@totalaudiopromo',
   },
