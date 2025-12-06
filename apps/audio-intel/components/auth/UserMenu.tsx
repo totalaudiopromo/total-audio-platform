@@ -4,25 +4,49 @@ import { useState, useEffect } from 'react';
 import { createClient } from '@total-audio/core-db/client';
 import type { User } from '@supabase/supabase-js';
 
+interface UserProfile {
+  subscription_tier: string;
+}
+
 export function UserMenu() {
   const [user, setUser] = useState<User | null>(null);
+  const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const supabase = createClient();
 
   useEffect(() => {
-    // Get initial session
-    supabase.auth.getUser().then(({ data: { user } }) => {
+    // Get initial session and profile
+    supabase.auth.getUser().then(async ({ data: { user } }) => {
       setUser(user);
+      if (user) {
+        // Fetch user profile for subscription tier
+        const { data: profile } = await supabase
+          .from('user_profiles')
+          .select('subscription_tier')
+          .eq('id', user.id)
+          .single();
+        setUserProfile(profile);
+      }
       setLoading(false);
     });
 
     // Listen for auth changes
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
+    } = supabase.auth.onAuthStateChange(async (_event, session) => {
       setUser(session?.user ?? null);
+      if (session?.user) {
+        const { data: profile } = await supabase
+          .from('user_profiles')
+          .select('subscription_tier')
+          .eq('id', session.user.id)
+          .single();
+        setUserProfile(profile);
+      } else {
+        setUserProfile(null);
+      }
       setLoading(false);
     });
 
@@ -79,7 +103,13 @@ export function UserMenu() {
         </div>
         <div className="text-left hidden sm:block">
           <p className="text-sm font-medium">{displayName}</p>
-          <p className="text-xs text-gray-500">Free Plan</p>
+          <p className="text-xs text-gray-500">
+            {userProfile?.subscription_tier === 'professional'
+              ? 'Pro Plan'
+              : userProfile?.subscription_tier === 'agency'
+                ? 'Agency Plan'
+                : 'Free Plan'}
+          </p>
         </div>
       </button>
 
