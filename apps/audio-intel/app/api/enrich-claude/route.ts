@@ -56,6 +56,43 @@ const globalRateLimiter = {
   blockDuration: 60000, // 1 minute block duration
 };
 
+// P1 Fix: Circuit breaker for API failures (prevents hammering failing API)
+const circuitBreaker = {
+  failures: 0,
+  lastFailure: 0,
+  isOpen: false,
+  threshold: 5, // Open after 5 consecutive failures
+  cooldownMs: 60000, // 1 minute cooldown
+
+  recordFailure() {
+    this.failures++;
+    this.lastFailure = Date.now();
+    if (this.failures >= this.threshold) {
+      this.isOpen = true;
+      console.warn('[CircuitBreaker] OPEN - API failures exceeded threshold');
+    }
+  },
+
+  recordSuccess() {
+    this.failures = 0;
+    this.isOpen = false;
+  },
+
+  canProceed(): boolean {
+    if (!this.isOpen) return true;
+    if (Date.now() - this.lastFailure > this.cooldownMs) {
+      this.isOpen = false; // Half-open: allow one request through
+      console.log('[CircuitBreaker] Half-open - allowing test request');
+      return true;
+    }
+    return false;
+  },
+};
+
+// P1 Fix: Input validation constants
+const MAX_CONTACTS_PER_REQUEST = 100;
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 // In-memory rate limiting (replace with Redis in production)
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
 
@@ -98,17 +135,27 @@ function sleep(ms: number): Promise<void> {
 }
 
 /**
- * Execute function with timeout protection
+ * Execute function with timeout protection (P1 Fix: proper timer cleanup)
  */
 async function withTimeout<T>(
   promise: Promise<T>,
   timeoutMs: number,
   timeoutError: string = 'Operation timed out'
 ): Promise<T> {
-  return Promise.race([
-    promise,
-    new Promise<T>((_, reject) => setTimeout(() => reject(new Error(timeoutError)), timeoutMs)),
-  ]);
+  let timeoutId: NodeJS.Timeout;
+
+  const timeoutPromise = new Promise<never>((_, reject) => {
+    timeoutId = setTimeout(() => reject(new Error(timeoutError)), timeoutMs);
+  });
+
+  try {
+    const result = await Promise.race([promise, timeoutPromise]);
+    clearTimeout(timeoutId!);
+    return result;
+  } catch (error) {
+    clearTimeout(timeoutId!);
+    throw error;
+  }
 }
 
 /**
@@ -290,8 +337,55 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // 5. Process contacts through IntelAgent with error recovery (PARALLEL BATCHES)
-    console.log(`[Enrichment API] Processing ${contacts.length} contacts for ${ip}`);
+    // P1 Fix: Validate batch size limit
+    if (contacts.length > MAX_CONTACTS_PER_REQUEST) {
+      return addCorsHeaders(
+        NextResponse.json(
+          {
+            success: false,
+            error: {
+              code: 'VALIDATION_ERROR',
+              message: `Maximum ${MAX_CONTACTS_PER_REQUEST} contacts per request. You sent ${contacts.length}. Please split into smaller batches.`,
+            },
+          },
+          { status: 400 }
+        ),
+        origin
+      );
+    }
+
+    // P1 Fix: Filter invalid emails (skip, don't reject entire batch)
+    const validContacts = contacts.filter((c: any) => c.email && EMAIL_REGEX.test(c.email));
+    const skippedContacts = contacts.filter((c: any) => !c.email || !EMAIL_REGEX.test(c.email));
+
+    if (skippedContacts.length > 0) {
+      console.log(
+        `[Enrichment API] Skipping ${skippedContacts.length} contacts with invalid/missing emails`
+      );
+    }
+
+    // P1 Fix: Check circuit breaker before processing
+    if (!circuitBreaker.canProceed()) {
+      return addCorsHeaders(
+        NextResponse.json(
+          {
+            success: false,
+            error: {
+              code: 'SERVICE_UNAVAILABLE',
+              message:
+                'Enrichment service temporarily unavailable due to API issues. Please try again in 1 minute.',
+            },
+          },
+          { status: 503 }
+        ),
+        origin
+      );
+    }
+
+    // 6. Process contacts through IntelAgent with error recovery (PARALLEL BATCHES)
+    console.log(
+      `[Enrichment API] Processing ${validContacts.length} valid contacts for ${ip} (${skippedContacts.length} skipped)`
+    );
 
     const enrichedResults: any[] = [];
     const failedResults: any[] = [];
@@ -461,13 +555,13 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // Process contacts in parallel batches
-    for (let i = 0; i < contacts.length; i += BATCH_SIZE) {
-      const batch = contacts.slice(i, i + BATCH_SIZE);
+    // Process validContacts in parallel batches (P1 Fix: use filtered contacts)
+    for (let i = 0; i < validContacts.length; i += BATCH_SIZE) {
+      const batch = validContacts.slice(i, i + BATCH_SIZE);
       const batchStart = Date.now();
 
       console.log(
-        `[Enrichment API] Processing batch ${Math.floor(i / BATCH_SIZE) + 1}/${Math.ceil(contacts.length / BATCH_SIZE)} (${batch.length} contacts)`
+        `[Enrichment API] Processing batch ${Math.floor(i / BATCH_SIZE) + 1}/${Math.ceil(validContacts.length / BATCH_SIZE)} (${batch.length} contacts)`
       );
 
       // Process batch in parallel
@@ -495,26 +589,50 @@ export async function POST(req: NextRequest) {
       );
 
       // Add delay between batches to respect rate limits (except for last batch)
-      if (i + BATCH_SIZE < contacts.length) {
+      if (i + BATCH_SIZE < validContacts.length) {
         await sleep(BATCH_DELAY_MS);
       }
     }
 
-    // Combine enriched and failed results for partial success response
-    const allResults = [...enrichedResults, ...failedResults];
+    // P1 Fix: Create skipped results for invalid emails
+    const skippedResults = skippedContacts.map((c: any) => ({
+      ...c,
+      intelligence: 'Skipped - invalid or missing email address',
+      contactIntelligence: 'Skipped - invalid or missing email address',
+      confidence: 'None',
+      researchConfidence: 'None',
+      skipped: true,
+      reason: !c.email ? 'Missing email' : 'Invalid email format',
+      lastResearched: new Date().toISOString(),
+    }));
+
+    // Combine enriched, failed, and skipped results for complete response
+    const allResults = [...enrichedResults, ...failedResults, ...skippedResults];
+
+    // P1 Fix: Record success for circuit breaker
+    if (successCount > 0) {
+      circuitBreaker.recordSuccess();
+    } else if (failedCount > validContacts.length * 0.5) {
+      // Record failure if >50% failed
+      circuitBreaker.recordFailure();
+    }
 
     const enrichmentElapsed = Date.now() - enrichmentStart;
     const totalElapsed = ((Date.now() - start) / 1000).toFixed(2);
-    const successRate = Math.round((successCount / contacts.length) * 100);
+    const totalProcessed = validContacts.length;
+    const successRate = totalProcessed > 0 ? Math.round((successCount / totalProcessed) * 100) : 0;
 
-    // 6. Build comprehensive response with error recovery metrics
+    // 7. Build comprehensive response with error recovery metrics (P1 Fix: includes skipped)
     const response = {
       success: true, // Always true for partial success
-      enriched: allResults, // All contacts returned (successful or fallback)
+      enriched: allResults, // All contacts returned (successful, fallback, or skipped)
+      skipped: skippedResults, // P1 Fix: Separate skipped array for clarity
       summary: {
         total: contacts.length,
+        processed: validContacts.length,
         enriched: successCount,
         failed: failedCount,
+        skipped: skippedContacts.length,
         retried: retriedCount,
         timedOut: timedOutCount,
         cost: parseFloat(totalCost.toFixed(4)),
@@ -522,11 +640,16 @@ export async function POST(req: NextRequest) {
       metrics: {
         totalTime: `${totalElapsed}s`,
         enrichmentTime: `${(enrichmentElapsed / 1000).toFixed(2)}s`,
-        averageTimePerContact: `${(enrichmentElapsed / contacts.length).toFixed(0)}ms`,
+        averageTimePerContact:
+          totalProcessed > 0 ? `${(enrichmentElapsed / totalProcessed).toFixed(0)}ms` : '0ms',
         successRate: `${successRate}%`,
         retryRate: successCount > 0 ? `${Math.round((retriedCount / successCount) * 100)}%` : '0%',
-        timeoutRate: `${Math.round((timedOutCount / contacts.length) * 100)}%`,
-        contactsPerSecond: parseFloat((contacts.length / parseFloat(totalElapsed)).toFixed(2)),
+        timeoutRate:
+          totalProcessed > 0 ? `${Math.round((timedOutCount / totalProcessed) * 100)}%` : '0%',
+        contactsPerSecond:
+          parseFloat(totalElapsed) > 0
+            ? parseFloat((totalProcessed / parseFloat(totalElapsed)).toFixed(2))
+            : 0,
       },
       errorRecovery: {
         enabled: true,
@@ -534,16 +657,17 @@ export async function POST(req: NextRequest) {
         retryDelay: `${RETRY_DELAY_MS}ms`,
         timeout: `${CONTACT_TIMEOUT_MS}ms`,
         gracefulDegradation: true,
+        circuitBreakerStatus: circuitBreaker.isOpen ? 'open' : 'closed',
       },
       provider: {
         name: 'IntelAgent',
         model: 'Claude 3.5 Sonnet',
-        version: '2.0.0',
+        version: '2.4.0', // P1 version bump
       },
     };
 
     console.log(
-      `[Enrichment API] Completed: ${successCount}/${contacts.length} enriched (${totalElapsed}s, $${totalCost.toFixed(4)}, ${retriedCount} retried, ${timedOutCount} timed out)`
+      `[Enrichment API] Completed: ${successCount}/${validContacts.length} enriched, ${skippedContacts.length} skipped (${totalElapsed}s, $${totalCost.toFixed(4)}, ${retriedCount} retried, ${timedOutCount} timed out)`
     );
 
     // Phase 11: Silent intelligence - log batch to Supabase (non-blocking)
@@ -557,7 +681,7 @@ export async function POST(req: NextRequest) {
         retried: retriedCount,
         timed_out: timedOutCount,
         cost: parseFloat(totalCost.toFixed(4)),
-        avg_time_ms: Math.round(enrichmentElapsed / contacts.length),
+        avg_time_ms: totalProcessed > 0 ? Math.round(enrichmentElapsed / totalProcessed) : 0,
         success_rate: successRate,
         input_tokens: totalInputTokens,
         output_tokens: totalOutputTokens,
@@ -565,9 +689,12 @@ export async function POST(req: NextRequest) {
         ip_address: ip,
         metadata: {
           provider: 'IntelAgent',
-          version: '2.2.0',
+          version: '2.4.0',
           adaptive_retry_enabled: ADAPTIVE_RETRY_ENABLED,
-          contacts_per_second: contacts.length / parseFloat(totalElapsed),
+          contacts_per_second:
+            parseFloat(totalElapsed) > 0 ? totalProcessed / parseFloat(totalElapsed) : 0,
+          skipped: skippedContacts.length,
+          circuit_breaker_status: circuitBreaker.isOpen ? 'open' : 'closed',
         },
       });
     } catch (supabaseError) {

@@ -27,10 +27,31 @@ function getPerplexityApiKey() {
 const enrichmentCache = new Map<string, { result: any; timestamp: number }>();
 const CACHE_TTL = 7 * 24 * 60 * 60 * 1000; // 7 days for more aggressive reuse
 
+// P1 Fix: Cache cleanup - run every 10 minutes to prevent memory leaks
+const CACHE_CLEANUP_INTERVAL = 10 * 60 * 1000;
+let lastCleanup = Date.now();
+
+function cleanupCache() {
+  const now = Date.now();
+  if (now - lastCleanup < CACHE_CLEANUP_INTERVAL) return;
+
+  lastCleanup = now;
+  let cleaned = 0;
+  for (const [key, value] of enrichmentCache.entries()) {
+    if (now - value.timestamp > CACHE_TTL) {
+      enrichmentCache.delete(key);
+      cleaned++;
+    }
+  }
+  if (cleaned > 0) {
+    console.log(`[Cache] Cleaned ${cleaned} expired entries, ${enrichmentCache.size} remaining`);
+  }
+}
+
 // Simple in-memory rate limiter per email to reduce upstream 429s
 const requestTimestamps = new Map<string, number[]>();
 const WINDOW_MS = 60 * 1000; // 1 minute
-const MAX_REQUESTS_PER_MINUTE = 10; // per unique cacheKey/email
+const MAX_REQUESTS_PER_MINUTE = 100; // P1 Fix: Unified rate limit (was 10)
 
 function isRateLimited(key: string): boolean {
   const now = Date.now();
@@ -257,6 +278,9 @@ export async function OPTIONS(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   const corsHeaders = getCorsHeaders(req.headers.get('origin'));
+
+  // P1 Fix: Run cache cleanup on each request (non-blocking)
+  cleanupCache();
 
   // Validate authentication
   const auth = await getUserFromRequest(req);
