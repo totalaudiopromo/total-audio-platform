@@ -81,8 +81,16 @@ export function useIntegrations() {
       if (!isMountedRef.current) return;
 
       const mapped: Partial<Record<IntegrationType, Integration>> = {};
-      (data || []).forEach((conn: Integration) => {
-        mapped[conn.integration_type] = conn;
+      (data || []).forEach(conn => {
+        // Cast to Integration, filtering out entries without user_id
+        if (conn.user_id) {
+          const typedConn = {
+            ...conn,
+            user_id: conn.user_id,
+            sync_enabled: conn.sync_enabled ?? false,
+          } as Integration;
+          mapped[conn.integration_type as IntegrationType] = typedConn;
+        }
       });
 
       setConnections({

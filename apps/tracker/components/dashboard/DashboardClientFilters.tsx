@@ -79,7 +79,9 @@ export function DashboardClientFilters({
         // Perform search
         const searchFiltered = initialCampaigns.filter(
           c =>
-            c.name.toLowerCase().includes(result.data.query.toLowerCase()) ||
+            (c.name || '')
+              .toLowerCase()
+              .includes(result.data.query.toLowerCase()) ||
             c.artist_name
               ?.toLowerCase()
               .includes(result.data.query.toLowerCase()) ||

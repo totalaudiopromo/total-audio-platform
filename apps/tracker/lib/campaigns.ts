@@ -35,10 +35,28 @@ export async function createCampaign(
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) throw new Error('Not authenticated');
-  const payload = { ...input, user_id: user.id };
+
+  // Construct insert payload with required fields
+  const insertPayload = {
+    title: input.title || input.name || 'Untitled Campaign',
+    user_id: user.id,
+    name: input.name,
+    artist_name: input.artist_name,
+    platform: input.platform,
+    status: input.status,
+    budget: input.budget,
+    start_date: input.start_date,
+    end_date: input.end_date,
+    target_reach: input.target_reach,
+    actual_reach: input.actual_reach,
+    notes: input.notes,
+    genre: input.genre,
+    workspace_id: input.workspace_id,
+  };
+
   const { data, error } = await supabase
     .from('campaigns')
-    .insert(payload)
+    .insert(insertPayload)
     .select('*')
     .single();
   if (error) throw error;

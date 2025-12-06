@@ -48,8 +48,10 @@ export function EnhancedAnalytics({ campaigns }: EnhancedAnalyticsProps) {
     );
     const avgSuccessRate =
       completedCampaigns.length > 0
-        ? completedCampaigns.reduce((sum, c) => sum + c.success_rate, 0) /
-          completedCampaigns.length
+        ? completedCampaigns.reduce(
+            (sum, c) => sum + (c.success_rate ?? 0),
+            0
+          ) / completedCampaigns.length
         : 0;
 
     // Cost per result

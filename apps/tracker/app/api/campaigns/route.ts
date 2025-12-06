@@ -223,12 +223,31 @@ export async function POST(request: NextRequest) {
   if (body.social_engagement)
     payload.social_engagement = Number(body.social_engagement);
 
-  // Insert campaign
-  const { data, error } = await (supabase
+  // Insert campaign - cast payload to proper insert type
+  const insertPayload = {
+    title: payload.title as string,
+    user_id: payload.user_id as string,
+    name: payload.name as string | null,
+    artist_name: payload.artist_name as string | null,
+    platform: payload.platform as string | null,
+    genre: payload.genre as string | null,
+    status: payload.status as string | null,
+    notes: payload.notes as string | null,
+    start_date: payload.start_date as string | null,
+    end_date: payload.end_date as string | null,
+    budget: payload.budget as number | null,
+    target_reach: payload.target_reach as number | null,
+    actual_reach: payload.actual_reach as number | null,
+    streams: payload.streams as number | null,
+    saves: payload.saves as number | null,
+    social_engagement: payload.social_engagement as number | null,
+  };
+
+  const { data, error } = await supabase
     .from('campaigns')
-    .insert([payload])
+    .insert(insertPayload)
     .select()
-    .single() as any);
+    .single();
 
   if (error) {
     console.error('Campaign creation error:', error);

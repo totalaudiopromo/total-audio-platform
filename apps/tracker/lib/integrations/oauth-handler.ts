@@ -3,7 +3,8 @@
  * Supports Google Sheets, Gmail, Airtable, Mailchimp
  */
 
-import { createClient as createServerClient } from '@total-audio/core-db/server';
+import { createServerClient } from '@total-audio/core-db/server';
+import { cookies } from 'next/headers';
 import { nanoid } from 'nanoid';
 import crypto from 'crypto';
 
@@ -95,7 +96,7 @@ export class OAuthHandler {
     const pkce = usesPKCE ? generatePKCE() : null;
 
     // Store state in database for CSRF protection (server-side)
-    const supabase = await createServerClient();
+    const supabase = await createServerClient(cookies());
 
     // Store state temporarily (expires in 10 minutes)
     const expiresAt = new Date(Date.now() + 10 * 60 * 1000).toISOString();
@@ -146,7 +147,7 @@ export class OAuthHandler {
     state: string
   ): Promise<{ tokens: OAuthTokens; userId: string }> {
     // Verify state for CSRF protection (from database)
-    const supabase = await createServerClient();
+    const supabase = await createServerClient(cookies());
 
     const { data: storedState, error: stateError } = await supabase
       .from('oauth_states')
@@ -220,6 +221,10 @@ export class OAuthHandler {
     // Clean up state from database
     await supabase.from('oauth_states').delete().eq('state', state);
 
+    if (!storedState.user_id) {
+      throw new Error('Invalid OAuth state - missing user_id');
+    }
+
     return { tokens, userId: storedState.user_id };
   }
 
@@ -265,30 +270,31 @@ export class OAuthHandler {
     userId: string,
     integrationType: IntegrationType,
     tokens: OAuthTokens,
-    settings: Record<string, any> = {}
+    settings: Record<string, unknown> = {}
   ): Promise<string> {
-    const supabase = await createServerClient();
+    const supabase = await createServerClient(cookies());
+
+    // Cast settings and credentials to proper Json type for Supabase
+    const insertData = {
+      user_id: userId,
+      integration_type: integrationType,
+      credentials: {
+        access_token: tokens.access_token,
+        refresh_token: tokens.refresh_token,
+        expires_at: tokens.expires_at,
+        token_type: tokens.token_type,
+      } as unknown as Record<string, never>,
+      settings: settings as unknown as Record<string, never>,
+      status: 'active',
+      error_message: null,
+      error_count: 0,
+    };
+
     const { data, error } = await supabase
       .from('integration_connections')
-      .upsert(
-        {
-          user_id: userId,
-          integration_type: integrationType,
-          credentials: {
-            access_token: tokens.access_token,
-            refresh_token: tokens.refresh_token,
-            expires_at: tokens.expires_at,
-            token_type: tokens.token_type,
-          },
-          settings,
-          status: 'active',
-          error_message: null,
-          error_count: 0,
-        },
-        {
-          onConflict: 'user_id,integration_type',
-        }
-      )
+      .upsert(insertData, {
+        onConflict: 'user_id,integration_type',
+      })
       .select('id')
       .single();
 
@@ -303,7 +309,7 @@ export class OAuthHandler {
    * Get connection for user
    */
   async getConnection(userId: string, integrationType: IntegrationType) {
-    const supabase = await createServerClient();
+    const supabase = await createServerClient(cookies());
     const { data, error } = await supabase
       .from('integration_connections')
       .select('*')
@@ -325,7 +331,7 @@ export class OAuthHandler {
     userId: string,
     integrationType: IntegrationType
   ): Promise<void> {
-    const supabase = await createServerClient();
+    const supabase = await createServerClient(cookies());
     const { error } = await supabase
       .from('integration_connections')
       .update({
@@ -344,7 +350,7 @@ export class OAuthHandler {
    * Get valid access token (refreshes if expired)
    */
   async getValidAccessToken(connectionId: string): Promise<string> {
-    const supabase = await createServerClient();
+    const supabase = await createServerClient(cookies());
     const { data: connection } = await supabase
       .from('integration_connections')
       .select('*')
@@ -355,7 +361,7 @@ export class OAuthHandler {
       throw new Error('Connection not found');
     }
 
-    const credentials = connection.credentials as OAuthTokens;
+    const credentials = connection.credentials as unknown as OAuthTokens;
 
     // Check if token is expired (with 5 minute buffer)
     if (
@@ -364,7 +370,7 @@ export class OAuthHandler {
     ) {
       // Token expired or about to expire - refresh it
       const newTokens = await this.refreshToken(
-        connection.integration_type,
+        connection.integration_type as IntegrationType,
         credentials.refresh_token!
       );
 

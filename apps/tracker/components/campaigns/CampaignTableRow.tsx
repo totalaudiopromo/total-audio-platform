@@ -30,8 +30,10 @@ const platformColours: Record<PlatformType, string> = {
 
 // Status badge colours
 const statusColours: Record<CampaignStatus, string> = {
+  draft: 'bg-gray-100 text-gray-600 border-gray-300',
   planning: 'bg-teal-100 text-teal-800 border-teal-300',
   active: 'bg-green-100 text-green-800 border-green-300',
+  paused: 'bg-orange-100 text-orange-800 border-orange-300',
   completed: 'bg-gray-100 text-gray-800 border-gray-300',
   archived: 'bg-slate-100 text-slate-600 border-slate-300',
 };
@@ -130,7 +132,8 @@ export function CampaignTableRow({
         {campaign.platform ? (
           <span
             className={`inline-flex items-center px-2 py-1 rounded-lg text-xs font-black border-2 border-black shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] ${
-              platformColours[campaign.platform] || 'bg-gray-100 text-gray-800'
+              platformColours[campaign.platform as PlatformType] ||
+              'bg-gray-100 text-gray-800'
             }`}
           >
             {campaign.platform}
@@ -144,22 +147,23 @@ export function CampaignTableRow({
       <td className="px-4 py-3 w-28">
         <span
           className={`inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-black border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] ${
-            statusColours[campaign.status]
+            statusColours[(campaign.status ?? 'draft') as CampaignStatus] ||
+            'bg-gray-100 text-gray-800'
           }`}
         >
-          {campaign.status}
+          {campaign.status ?? 'draft'}
         </span>
       </td>
 
       {/* Health Score */}
       <td className="px-4 py-3 w-32">
-        <HealthProgressBar score={campaign.performance_score} />
+        <HealthProgressBar score={campaign.performance_score ?? 0} />
       </td>
 
       {/* Budget */}
       <td className="px-4 py-3 w-24">
         <span className="font-mono font-bold text-gray-900">
-          {formatCurrency(campaign.budget)}
+          {formatCurrency(campaign.budget ?? 0)}
         </span>
       </td>
 
@@ -167,14 +171,14 @@ export function CampaignTableRow({
       <td className="px-4 py-3 w-24">
         <span
           className={`font-mono font-bold ${
-            campaign.success_rate >= 70
+            (campaign.success_rate ?? 0) >= 70
               ? 'text-green-600'
-              : campaign.success_rate >= 40
+              : (campaign.success_rate ?? 0) >= 40
                 ? 'text-amber-600'
                 : 'text-gray-500'
           }`}
         >
-          {campaign.success_rate}%
+          {campaign.success_rate ?? 0}%
         </span>
       </td>
 
@@ -191,7 +195,7 @@ export function CampaignTableRow({
       {/* Start Date */}
       <td className="px-4 py-3 w-28">
         <span className="text-sm font-bold text-gray-700">
-          {formatDate(campaign.start_date)}
+          {formatDate(campaign.start_date ?? undefined)}
         </span>
       </td>
 
