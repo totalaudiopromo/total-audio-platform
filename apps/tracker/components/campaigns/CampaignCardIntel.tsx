@@ -10,9 +10,11 @@ interface CampaignCardIntelProps {
 }
 
 export function CampaignCardIntel({ campaign }: CampaignCardIntelProps) {
-  const statusColors = {
+  const statusColors: Record<string, string> = {
+    draft: 'bg-gray-100 text-gray-500',
     planning: 'bg-gray-100 text-gray-700',
     active: 'bg-teal-100 text-teal-700',
+    paused: 'bg-orange-100 text-orange-700',
     completed: 'bg-green-100 text-green-700',
     archived: 'bg-gray-100 text-gray-500',
   };
@@ -38,10 +40,11 @@ export function CampaignCardIntel({ campaign }: CampaignCardIntelProps) {
           </div>
           <span
             className={`px-3 py-1 rounded-full text-xs font-medium ${
-              statusColors[campaign.status]
+              statusColors[campaign.status ?? 'draft'] ||
+              'bg-gray-100 text-gray-700'
             }`}
           >
-            {campaign.status}
+            {campaign.status ?? 'draft'}
           </span>
         </div>
 
@@ -63,17 +66,17 @@ export function CampaignCardIntel({ campaign }: CampaignCardIntelProps) {
             <p className="text-xs text-gray-500 mb-1">Success Rate</p>
             <p
               className={`text-lg font-bold ${performanceColor(
-                campaign.success_rate
+                campaign.success_rate ?? 0
               )}`}
             >
-              {Math.round(campaign.success_rate)}%
+              {Math.round(campaign.success_rate ?? 0)}%
             </p>
           </div>
           <div>
             <p className="text-xs text-gray-500 mb-1">Cost/Result</p>
             <p className="text-lg font-bold text-gray-900">
-              {campaign.cost_per_result > 0
-                ? `£${Math.round(campaign.cost_per_result)}`
+              {(campaign.cost_per_result ?? 0) > 0
+                ? `£${Math.round(campaign.cost_per_result ?? 0)}`
                 : '-'}
             </p>
           </div>
@@ -81,20 +84,20 @@ export function CampaignCardIntel({ campaign }: CampaignCardIntelProps) {
             <p className="text-xs text-gray-500 mb-1">Performance</p>
             <p
               className={`text-lg font-bold ${performanceColor(
-                campaign.performance_score
+                campaign.performance_score ?? 0
               )}`}
             >
-              {campaign.performance_score}/100
+              {campaign.performance_score ?? 0}/100
             </p>
           </div>
         </div>
 
-        {campaign.target_reach > 0 && (
+        {(campaign.target_reach ?? 0) > 0 && (
           <div className="mb-4">
             <div className="flex justify-between text-xs text-gray-600 mb-1">
               <span>Progress</span>
               <span>
-                {campaign.actual_reach} / {campaign.target_reach}
+                {campaign.actual_reach ?? 0} / {campaign.target_reach ?? 0}
               </span>
             </div>
             <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
@@ -103,7 +106,9 @@ export function CampaignCardIntel({ campaign }: CampaignCardIntelProps) {
                 style={{
                   width: `${Math.min(
                     100,
-                    (campaign.actual_reach / campaign.target_reach) * 100
+                    ((campaign.actual_reach ?? 0) /
+                      (campaign.target_reach ?? 1)) *
+                      100
                   )}%`,
                 }}
               />

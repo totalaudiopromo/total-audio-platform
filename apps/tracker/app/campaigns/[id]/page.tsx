@@ -37,10 +37,22 @@ export default async function CampaignDetailPage({
     .eq('campaign_id', id)
     .order('activity_date', { ascending: false });
 
+  // Cast to expected types - DB returns nullable fields but components expect proper types
+  const typedCampaign = {
+    ...campaign,
+    name: campaign.name || campaign.title || 'Untitled Campaign',
+  };
+
+  // Map activities to expected Activity type with activity_date alias
+  const typedActivities = (activities || []).map(a => ({
+    ...a,
+    activity_date: a.timestamp || a.created_at || new Date().toISOString(),
+  }));
+
   return (
     <CampaignDetailClient
-      campaign={campaign}
-      activities={activities || []}
+      campaign={typedCampaign as any}
+      activities={typedActivities as any}
       userId={user.id}
     />
   );

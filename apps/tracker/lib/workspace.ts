@@ -104,7 +104,11 @@ export class WorkspaceManager {
     // Add owner as admin member
     await this.addMember(data.id, ownerId, 'admin');
 
-    return data;
+    // Cast to Workspace type (plan_tier defaults in DB may differ)
+    return {
+      ...data,
+      plan_tier: (data.plan_tier as Workspace['plan_tier']) || 'free',
+    } as Workspace;
   }
 
   async getUserWorkspaces(userId: string): Promise<Workspace[]> {
@@ -122,14 +126,10 @@ export class WorkspaceManager {
   }
 
   async getWorkspaceMembers(workspaceId: string): Promise<WorkspaceMember[]> {
+    // Note: Cannot join auth.users directly - fetch members only
     const { data, error } = await this.getSupabase()
       .from('workspace_members')
-      .select(
-        `
-        *,
-        user:auth.users(email, user_metadata)
-      `
-      )
+      .select('*')
       .eq('workspace_id', workspaceId)
       .order('joined_at', { ascending: true });
 
@@ -138,7 +138,13 @@ export class WorkspaceManager {
       return [];
     }
 
-    return data || [];
+    // Map to WorkspaceMember type with explicit role casting
+    return (data || []).map(member => ({
+      ...member,
+      role: member.role as WorkspaceRole,
+      permissions: (member.permissions || {}) as Record<string, boolean>,
+      joined_at: member.joined_at || '',
+    })) as WorkspaceMember[];
   }
 
   async addMember(
@@ -171,12 +177,17 @@ export class WorkspaceManager {
       'workspace_member',
       data.id,
       {
-        new_member_email: data.user?.email,
         role,
       }
     );
 
-    return data;
+    // Return with proper type casting
+    return {
+      ...data,
+      role: data.role as WorkspaceRole,
+      permissions: (data.permissions || {}) as Record<string, boolean>,
+      joined_at: data.joined_at || '',
+    } as WorkspaceMember;
   }
 
   async updateMemberRole(
@@ -255,7 +266,13 @@ export class WorkspaceManager {
       }
     );
 
-    return data;
+    // Return with proper type casting
+    return {
+      ...data,
+      role: data.role as WorkspaceRole,
+      accepted_at: data.accepted_at,
+      created_at: data.created_at || '',
+    } as WorkspaceInvitation;
   }
 
   async acceptInvitation(token: string, userId: string): Promise<boolean> {
@@ -282,8 +299,8 @@ export class WorkspaceManager {
     const member = await this.addMember(
       invitation.workspace_id,
       userId,
-      invitation.role,
-      invitation.invited_by
+      invitation.role as WorkspaceRole,
+      invitation.invited_by || undefined
     );
 
     if (!member) {
@@ -321,21 +338,18 @@ export class WorkspaceManager {
       client: 1,
     };
 
-    return roleHierarchy[data.role] >= roleHierarchy[requiredRole];
+    const userRole = data.role as WorkspaceRole;
+    return (roleHierarchy[userRole] ?? 0) >= (roleHierarchy[requiredRole] ?? 0);
   }
 
   async getWorkspaceActivity(
     workspaceId: string,
     limit: number = 50
   ): Promise<WorkspaceActivity[]> {
+    // Note: Cannot join auth.users directly - fetch activity only
     const { data, error } = await this.getSupabase()
       .from('workspace_activity_log')
-      .select(
-        `
-        *,
-        user:auth.users(email, user_metadata)
-      `
-      )
+      .select('*')
       .eq('workspace_id', workspaceId)
       .order('created_at', { ascending: false })
       .limit(limit);
@@ -345,7 +359,12 @@ export class WorkspaceManager {
       return [];
     }
 
-    return data || [];
+    // Map to WorkspaceActivity type
+    return (data || []).map(activity => ({
+      ...activity,
+      metadata: (activity.metadata || {}) as Record<string, unknown>,
+      created_at: activity.created_at || '',
+    })) as WorkspaceActivity[];
   }
 
   async logActivity(

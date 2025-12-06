@@ -20,6 +20,7 @@ import type { CampaignActivity } from '@/lib/types/tracker';
 type Campaign = {
   id: string;
   name: string;
+  artist_name?: string;
   platform: string;
   genre: string;
   status: string;
@@ -96,12 +97,15 @@ export function CampaignDetailClient({
     id: a.id,
     campaign_id: a.campaign_id,
     timestamp: a.activity_date,
-    activity_type: a.activity_type as any,
+    activity_type: a.activity_type,
     description: a.description,
-    contact_name: a.contact_name,
-    contact_org: a.contact_org,
-    platform: a.platform,
-    importance: 'medium' as const,
+    contact_name: a.contact_name ?? null,
+    contact_org: a.contact_org ?? null,
+    platform: a.platform ?? null,
+    metric: null,
+    value: null,
+    importance: 'medium',
+    metadata: a.metadata ?? null,
     created_at: a.created_at,
   }));
 

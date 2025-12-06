@@ -13,7 +13,7 @@ export class GmailReplyTracker {
   private readonly integrationType = 'gmail';
 
   private async getSupabaseClient() {
-    return await createClient();
+    return await createServerClient(cookies());
   }
 
   /**
@@ -106,24 +106,32 @@ export class GmailReplyTracker {
                 })
                 .eq('id', tracked.id);
 
-              // Update campaign status
-              await supabase
-                .from('campaigns')
-                .update({
-                  status: 'replied',
-                  notes: supabase.rpc('concat_notes', {
-                    current_notes: '',
-                    new_note: `\n\n✉️ Reply received: ${snippet.substring(
-                      0,
-                      200
-                    )}`,
-                  }),
-                })
-                .eq('id', tracked.campaign_id);
+              // Update campaign status if campaign_id exists
+              // Note: concat_notes RPC doesn't exist, so we fetch existing notes first
+              if (tracked.campaign_id) {
+                const { data: existingCampaign } = await supabase
+                  .from('campaigns')
+                  .select('notes')
+                  .eq('id', tracked.campaign_id)
+                  .single();
+
+                const existingNotes = existingCampaign?.notes || '';
+                const newNote = `\n\n✉️ Reply received: ${snippet.substring(0, 200)}`;
+
+                await supabase
+                  .from('campaigns')
+                  .update({
+                    status: 'active', // 'replied' is not a valid status
+                    notes: existingNotes + newNote,
+                  })
+                  .eq('id', tracked.campaign_id);
+
+                console.log(
+                  `Reply detected for campaign ${tracked.campaign_id}`
+                );
+              }
 
               repliesFound++;
-
-              console.log(`Reply detected for campaign ${tracked.campaign_id}`);
 
               await this.logActivity({
                 connectionId,

@@ -81,35 +81,39 @@ export default async function ActivityTimeline() {
         </div>
       ) : (
         <ul className="space-y-3" role="list" aria-label="Activity list">
-          {activities.map(a => (
-            <li
-              key={a.id}
-              className="flex items-start justify-between p-3 bg-gray-50 rounded-xl border-2 border-gray-200"
-              role="listitem"
-            >
-              <div className="flex-1 min-w-0">
-                <div className="text-sm font-bold text-gray-900">
-                  {formatActivityType(a.type)}
-                </div>
-                <div className="text-xs font-medium text-gray-600">
-                  {a.platform || 'Unknown'}
-                  {a.contact_name ? ` - ${a.contact_name}` : ''}
-                </div>
-                {a.notes && (
-                  <div className="text-xs text-gray-500 mt-1 truncate">
-                    {a.notes}
-                  </div>
-                )}
-              </div>
-              <div
-                className={`text-xs font-bold px-3 py-1 rounded-lg border-2 min-w-20 text-center flex-shrink-0 ${getStatusColour(a.status)}`}
-                role="status"
-                aria-label={`Status: ${a.status}`}
+          {activities.map(a => {
+            const activityType = a.type || a.activity_type || 'Unknown';
+            const activityStatus = a.status || 'pending';
+            return (
+              <li
+                key={a.id}
+                className="flex items-start justify-between p-3 bg-gray-50 rounded-xl border-2 border-gray-200"
+                role="listitem"
               >
-                {a.status}
-              </div>
-            </li>
-          ))}
+                <div className="flex-1 min-w-0">
+                  <div className="text-sm font-bold text-gray-900">
+                    {formatActivityType(activityType)}
+                  </div>
+                  <div className="text-xs font-medium text-gray-600">
+                    {a.platform || 'Unknown'}
+                    {a.contact_name ? ` - ${a.contact_name}` : ''}
+                  </div>
+                  {a.notes && (
+                    <div className="text-xs text-gray-500 mt-1 truncate">
+                      {a.notes}
+                    </div>
+                  )}
+                </div>
+                <div
+                  className={`text-xs font-bold px-3 py-1 rounded-lg border-2 min-w-20 text-center flex-shrink-0 ${getStatusColour(activityStatus)}`}
+                  role="status"
+                  aria-label={`Status: ${activityStatus}`}
+                >
+                  {activityStatus}
+                </div>
+              </li>
+            );
+          })}
         </ul>
       )}
     </div>
