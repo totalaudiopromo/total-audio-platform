@@ -5,7 +5,7 @@ export const siteConfig = {
   description:
     'Write 50 personalised music PR pitches in 20 minutes. AI-powered pitch writing for artists, managers, and radio promoters. Built by a producer with 5+ years music PR experience.',
   url: 'https://pitch.totalaudiopromo.com',
-  ogImage: '/og-pitch-generator.png',
+  ogImage: 'https://pitch.totalaudiopromo.com/og-pitch-generator.png',
   keywords: [
     'music PR pitches',
     'radio promotion pitches',
